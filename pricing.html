@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>מחירון | דרך ההייטק - קורסי תכנות לילדים</title>
+    <meta name="description" content="מחירון קורסי תכנות לילדים - קורסים דיגיטליים מ-290₪, שיעורים פרטיים מ-156₪ לשעה. חבילות משתלמות עם הנחות.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="https://hai.tech/wp-content/uploads/2023/11/hi-tech-logo.png">
+    
+    <style>
+        .pricing-hero {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
+            padding: 140px 20px 80px;
+            text-align: center;
+            color: white;
+        }
+        
+        .pricing-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .pricing-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .pricing-section {
+            padding: 4rem 2rem;
+        }
+        
+        .pricing-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #1f2937;
+        }
+        
+        .pricing-subtitle {
+            text-align: center;
+            color: #6b7280;
+            margin-bottom: 3rem;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 2px solid #e5e7eb;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+        }
+        
+        .pricing-card.popular {
+            border-color: #8b5cf6;
+            background: linear-gradient(180deg, #faf5ff 0%, white 100%);
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pricing-card .price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #6366f1;
+            margin: 1rem 0;
+        }
+        
+        .pricing-card .price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #6b7280;
+        }
+        
+        .pricing-card .savings {
+            background: #dcfce7;
+            color: #166534;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+        
+        .pricing-features li {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #f3f4f6;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .pricing-features .check {
+            color: #10b981;
+            width: 20px;
+            height: 20px;
+        }
+        
+        .pricing-card .btn {
+            width: 100%;
+            margin-top: 1rem;
+        }
+        
+        .digital-courses-section {
+            background: #f9fafb;
+        }
+        
+        .digital-price-card {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .digital-price-card .price {
+            font-size: 3rem;
+        }
+        
+        .duo-section {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+        }
+        
+        .duo-section h2 {
+            color: #92400e;
+        }
+        
+        .guarantee-section {
+            background: #ecfdf5;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .guarantee-section h3 {
+            color: #065f46;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .guarantee-section p {
+            color: #047857;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 768px) {
+            .pricing-hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .pricing-card .price {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="logo">
+                    <img src="https://hai.tech/wp-content/uploads/2023/11/hi-tech-logo.png" alt="דרך ההייטק">
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="index.html">ראשי</a></li>
+                    <li><a href="index.html#courses">קורסים דיגיטליים</a></li>
+                    <li><a href="index.html#private">שיעורים פרטיים</a></li>
+                    <li><a href="index.html#contact">צור קשר</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="pricing-hero">
+        <div class="container">
+            <h1>💰 מחירון</h1>
+            <p>השקעה בעתיד הילדים - במחירים הוגנים</p>
+        </div>
+    </section>
+
+    <!-- Digital Courses Pricing -->
+    <section class="pricing-section digital-courses-section">
+        <div class="container">
+            <h2>🖥️ קורסים דיגיטליים</h2>
+            <p class="pricing-subtitle">למידה עצמית מהבית בכל זמן שנוח</p>
+            
+            <div class="pricing-card digital-price-card">
+                <h3>קורס דיגיטלי מלא</h3>
+                <div class="price">290₪ <span>חד פעמי</span></div>
+                <ul class="pricing-features">
+                    <li><i data-lucide="check" class="check"></i> גישה לנצח - ללא הגבלת זמן</li>
+                    <li><i data-lucide="check" class="check"></i> 12-20 שיעורי וידאו מקצועיים</li>
+                    <li><i data-lucide="check" class="check"></i> תרגילים ופרויקטים מעשיים</li>
+                    <li><i data-lucide="check" class="check"></i> תמיכה מקצועית בוואטסאפ</li>
+                    <li><i data-lucide="check" class="check"></i> תעודת סיום</li>
+                </ul>
+                <a href="index.html#courses" class="btn btn-primary">צפו בכל הקורסים</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Private Lessons Pricing -->
+    <section class="pricing-section">
+        <div class="container">
+            <h2>👨‍🏫 שיעורים פרטיים 1:1</h2>
+            <p class="pricing-subtitle">שיעורים אישיים בזום עם מדריך מקצועי</p>
+            
+            <div class="pricing-grid">
+                <!-- Gold -->
+                <div class="pricing-card">
+                    <h3>🥇 Gold</h3>
+                    <div class="price">166₪ <span>/ לשיעור</span></div>
+                    <p>16 שיעורים</p>
+                    <ul class="pricing-features">
+                        <li><i data-lucide="check" class="check"></i> 16 שיעורים × 45 דקות</li>
+                        <li><i data-lucide="check" class="check"></i> מדריך אישי מקצועי</li>
+                        <li><i data-lucide="check" class="check"></i> תוכנית לימודים מותאמת</li>
+                        <li><i data-lucide="check" class="check"></i> הקלטות לצפייה חוזרת</li>
+                        <li><i data-lucide="check" class="check"></i> <strong>קורס דיגיטלי במתנה!</strong></li>
+                    </ul>
+                    <a href="index.html#contact" class="btn btn-primary">התחילו עכשיו</a>
+                </div>
+                
+                <!-- Classic - Popular -->
+                <div class="pricing-card popular">
+                    <span class="popular-badge">⭐ הכי פופולרי</span>
+                    <h3>🏆 Classic</h3>
+                    <div class="price">160₪ <span>/ לשיעור</span></div>
+                    <span class="savings">חיסכון 6%</span>
+                    <p>24 שיעורים</p>
+                    <ul class="pricing-features">
+                        <li><i data-lucide="check" class="check"></i> 24 שיעורים × 45 דקות</li>
+                        <li><i data-lucide="check" class="check"></i> מדריך אישי מקצועי</li>
+                        <li><i data-lucide="check" class="check"></i> תוכנית לימודים מותאמת</li>
+                        <li><i data-lucide="check" class="check"></i> הקלטות לצפייה חוזרת</li>
+                        <li><i data-lucide="check" class="check"></i> <strong>2 קורסים דיגיטליים במתנה!</strong></li>
+                    </ul>
+                    <a href="index.html#contact" class="btn btn-cta">התחילו עכשיו</a>
+                </div>
+                
+                <!-- Premium -->
+                <div class="pricing-card">
+                    <h3>💎 Premium</h3>
+                    <div class="price">156₪ <span>/ לשיעור</span></div>
+                    <span class="savings">חיסכון 10%</span>
+                    <p>32 שיעורים</p>
+                    <ul class="pricing-features">
+                        <li><i data-lucide="check" class="check"></i> 32 שיעורים × 45 דקות</li>
+                        <li><i data-lucide="check" class="check"></i> מדריך אישי מקצועי</li>
+                        <li><i data-lucide="check" class="check"></i> תוכנית לימודים מותאמת</li>
+                        <li><i data-lucide="check" class="check"></i> הקלטות לצפייה חוזרת</li>
+                        <li><i data-lucide="check" class="check"></i> <strong>4 קורסים דיגיטליים במתנה!</strong></li>
+                    </ul>
+                    <a href="index.html#contact" class="btn btn-primary">התחילו עכשיו</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Duo Pricing -->
+    <section class="pricing-section duo-section">
+        <div class="container">
+            <h2>👫 שיעורים בזוגות - חיסכון משמעותי!</h2>
+            <p class="pricing-subtitle">הזמינו חבר או בן משפחה ותחסכו יחד</p>
+            
+            <div class="pricing-grid">
+                <!-- Gold Duo -->
+                <div class="pricing-card">
+                    <h3>🥇 Gold זוגי</h3>
+                    <div class="price">117₪ <span>/ לשיעור למשתתף</span></div>
+                    <p>16 שיעורים</p>
+                    <ul class="pricing-features">
+                        <li><i data-lucide="check" class="check"></i> למידה עם חבר/בן משפחה</li>
+                        <li><i data-lucide="check" class="check"></i> 16 שיעורים × 45 דקות</li>
+                        <li><i data-lucide="check" class="check"></i> קורס דיגיטלי במתנה</li>
+                    </ul>
+                    <a href="index.html#contact" class="btn btn-primary">התחילו עכשיו</a>
+                </div>
+                
+                <!-- Classic Duo -->
+                <div class="pricing-card">
+                    <h3>🏆 Classic זוגי</h3>
+                    <div class="price">112₪ <span>/ לשיעור למשתתף</span></div>
+                    <p>24 שיעורים</p>
+                    <ul class="pricing-features">
+                        <li><i data-lucide="check" class="check"></i> למידה עם חבר/בן משפחה</li>
+                        <li><i data-lucide="check" class="check"></i> 24 שיעורים × 45 דקות</li>
+                        <li><i data-lucide="check" class="check"></i> 2 קורסים דיגיטליים במתנה</li>
+                    </ul>
+                    <a href="index.html#contact" class="btn btn-primary">התחילו עכשיו</a>
+                </div>
+                
+                <!-- Premium Duo -->
+                <div class="pricing-card">
+                    <h3>💎 Premium זוגי</h3>
+                    <div class="price">101₪ <span>/ לשיעור למשתתף</span></div>
+                    <span class="savings">המשתלם ביותר!</span>
+                    <p>32 שיעורים</p>
+                    <ul class="pricing-features">
+                        <li><i data-lucide="check" class="check"></i> למידה עם חבר/בן משפחה</li>
+                        <li><i data-lucide="check" class="check"></i> 32 שיעורים × 45 דקות</li>
+                        <li><i data-lucide="check" class="check"></i> כל 8 הקורסים הדיגיטליים במתנה!</li>
+                    </ul>
+                    <a href="index.html#contact" class="btn btn-cta">התחילו עכשיו</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee -->
+    <section class="guarantee-section">
+        <div class="container">
+            <h3>✅ החזר כספי מובטח</h3>
+            <p>עד השיעור השלישי - אין מחויבות! אם לא מרוצים, מקבלים החזר מלא (בניכוי השיעורים שנלמדו).</p>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" style="background: linear-gradient(135deg, #6366f1, #8b5cf6); padding: 4rem 2rem; text-align: center; color: white;">
+        <div class="container">
+            <h2 style="font-size: 2rem; margin-bottom: 1rem;">יש שאלות? נשמח לעזור!</h2>
+            <p style="margin-bottom: 2rem; opacity: 0.9;">יועצות הלימודים שלנו כאן לכוון אתכם לבחירה המתאימה</p>
+            <a href="https://wa.me/972533009742" class="btn btn-cta" style="background: white; color: #6366f1;">
+                <i data-lucide="message-circle"></i>
+                דברו איתנו בוואטסאפ
+            </a>
+        </div>
+    </section>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

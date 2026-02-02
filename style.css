@@ -2254,3 +2254,74 @@ a.hero-badge-top:hover {
         justify-content: center;
     }
 }
+
+/* ===== PRICE BANNERS ===== */
+.price-banner {
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    border: 2px solid #f59e0b;
+    border-radius: 12px;
+    padding: 1rem 2rem;
+    margin: 1.5rem auto;
+    max-width: 500px;
+    text-align: center;
+}
+
+.price-tag {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #92400e;
+}
+
+.price-benefit {
+    display: block;
+    font-size: 0.9rem;
+    color: #78350f;
+    margin-top: 0.3rem;
+}
+
+.price-banner-small {
+    background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+    border: 2px solid #10b981;
+    border-radius: 10px;
+    padding: 0.8rem 1.2rem;
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.price-highlight {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #065f46;
+}
+
+.price-link {
+    color: #059669;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.price-link:hover {
+    color: #047857;
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .price-banner {
+        padding: 0.8rem 1rem;
+    }
+    
+    .price-tag {
+        font-size: 1.1rem;
+    }
+    
+    .price-banner-small {
+        flex-direction: column;
+        text-align: center;
+    }
+}
