@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הקורסים שלי | HAI Tech Academy</title>
+    <link rel="stylesheet" href="css/lms.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-page">
+    <nav class="lms-navbar">
+        <div class="navbar-brand">
+            <a href="../index.html">
+                <img src="../images/logo.png" alt="HAI Tech Academy" class="navbar-logo">
+            </a>
+        </div>
+        <div class="navbar-menu">
+            <a href="index.html" class="nav-link active">הקורסים שלי</a>
+            <a href="#" class="nav-link">קטלוג קורסים</a>
+            <a href="#" class="nav-link">תעודות</a>
+        </div>
+        <div class="navbar-user">
+            <button class="notification-btn" aria-label="התראות">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                </svg>
+                <span class="notification-badge">2</span>
+            </button>
+            <div class="user-dropdown">
+                <button class="user-btn">
+                    <div class="user-avatar" id="userAvatar">א</div>
+                    <span class="user-name" id="userName">אורח</span>
+                </button>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">הפרופיל שלי</a>
+                    <a href="#" class="dropdown-item">הגדרות</a>
+                    <hr>
+                    <a href="#" class="dropdown-item" onclick="LMS.logout()">התנתק</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <main class="dashboard-main">
+        <aside class="dashboard-sidebar">
+            <div class="profile-card">
+                <div class="profile-avatar" id="profileAvatar">א</div>
+                <h3 class="profile-name" id="profileName">אורח</h3>
+                <p class="profile-level">רמת מתחיל</p>
+                <div class="profile-stats">
+                    <div class="stat">
+                        <span class="stat-value" id="coursesCount">0</span>
+                        <span class="stat-label">קורסים</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value" id="hoursCount">0</span>
+                        <span class="stat-label">שעות למידה</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value" id="certificatesCount">0</span>
+                        <span class="stat-label">תעודות</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="streak-card">
+                <div class="streak-icon">🔥</div>
+                <div class="streak-info">
+                    <span class="streak-count" id="streakCount">0</span>
+                    <span class="streak-label">ימים רצופים</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="#" class="sidebar-link active">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    </svg>
+                    דף הבית
+                </a>
+                <a href="#" class="sidebar-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                    כל הקורסים
+                </a>
+                <a href="#" class="sidebar-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    היסטוריה
+                </a>
+                <a href="#" class="sidebar-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    שמורים
+                </a>
+            </nav>
+        </aside>
+        
+        <section class="dashboard-content">
+            <header class="content-header">
+                <h1>הקורסים שלי</h1>
+                <p>המשך מאיפה שהפסקת</p>
+            </header>
+            
+            <div class="continue-learning" id="continueSection" style="display: none;">
+                <h2>המשך ללמוד</h2>
+                <div class="continue-card" id="continueCard">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+            
+            <div class="courses-section">
+                <div class="section-header">
+                    <h2>הקורסים שלי</h2>
+                    <div class="filter-tabs">
+                        <button class="filter-tab active" data-filter="all">הכל</button>
+                        <button class="filter-tab" data-filter="in-progress">בתהליך</button>
+                        <button class="filter-tab" data-filter="completed">הושלמו</button>
+                    </div>
+                </div>
+                
+                <div class="courses-grid" id="coursesGrid">
+                    <!-- Course cards populated by JS -->
+                    <div class="empty-state" id="emptyState">
+                        <div class="empty-icon">📚</div>
+                        <h3>עדיין אין לך קורסים</h3>
+                        <p>התחל ללמוד עכשיו ובנה את הקריירה שלך ב-AI</p>
+                        <a href="#" class="btn btn-primary">גלה קורסים</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="recommended-section">
+                <h2>מומלץ עבורך</h2>
+                <div class="recommended-grid">
+                    <div class="course-card recommended">
+                        <div class="course-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <span class="course-badge">חדש</span>
+                        </div>
+                        <div class="course-content">
+                            <h3>מבוא ל-Machine Learning</h3>
+                            <p>למד את היסודות של למידת מכונה</p>
+                            <div class="course-meta">
+                                <span>12 שיעורים</span>
+                                <span>6 שעות</span>
+                            </div>
+                            <a href="#" class="btn btn-outline">התחל עכשיו</a>
+                        </div>
+                    </div>
+                    
+                    <div class="course-card recommended">
+                        <div class="course-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                            <span class="course-badge">פופולרי</span>
+                        </div>
+                        <div class="course-content">
+                            <h3>Python למתחילים</h3>
+                            <p>שפת התכנות הפופולרית ביותר ל-AI</p>
+                            <div class="course-meta">
+                                <span>20 שיעורים</span>
+                                <span>10 שעות</span>
+                            </div>
+                            <a href="#" class="btn btn-outline">התחל עכשיו</a>
+                        </div>
+                    </div>
+                    
+                    <div class="course-card recommended">
+                        <div class="course-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        </div>
+                        <div class="course-content">
+                            <h3>Deep Learning מתקדם</h3>
+                            <p>רשתות נוירונים ו-Transformers</p>
+                            <div class="course-meta">
+                                <span>15 שיעורים</span>
+                                <span>8 שעות</span>
+                            </div>
+                            <a href="#" class="btn btn-outline">התחל עכשיו</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <script src="js/lms.js"></script>
+    <script>
+        // Initialize dashboard
+        LMS.initDashboard();
+    </script>
+</body>
+</html>

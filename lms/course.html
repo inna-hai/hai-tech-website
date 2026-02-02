@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>צפייה בקורס | HAI Tech Academy</title>
+    <link rel="stylesheet" href="css/lms.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="course-page">
+    <nav class="lms-navbar course-navbar">
+        <div class="navbar-brand">
+            <a href="index.html" class="back-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                חזרה לקורסים
+            </a>
+        </div>
+        <div class="navbar-title" id="courseTitle">
+            מבוא ל-Machine Learning
+        </div>
+        <div class="navbar-progress">
+            <span id="progressText">0% הושלם</span>
+            <div class="progress-bar-mini">
+                <div class="progress-fill" id="progressBar" style="width: 0%"></div>
+            </div>
+        </div>
+    </nav>
+    
+    <main class="course-main">
+        <aside class="lessons-sidebar">
+            <div class="sidebar-header">
+                <h2>תוכן הקורס</h2>
+                <button class="toggle-sidebar" aria-label="הסתר תפריט">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="lessons-list" id="lessonsList">
+                <div class="lesson-module">
+                    <button class="module-header" data-module="1">
+                        <span class="module-icon">📖</span>
+                        <div class="module-info">
+                            <span class="module-title">מבוא ויסודות</span>
+                            <span class="module-meta">4 שיעורים • 45 דק'</span>
+                        </div>
+                        <svg class="module-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="module-lessons">
+                        <a href="#" class="lesson-item active" data-lesson="1">
+                            <span class="lesson-status completed">✓</span>
+                            <div class="lesson-info">
+                                <span class="lesson-title">מה זה Machine Learning?</span>
+                                <span class="lesson-duration">10:32</span>
+                            </div>
+                        </a>
+                        <a href="#" class="lesson-item" data-lesson="2">
+                            <span class="lesson-status current">▶</span>
+                            <div class="lesson-info">
+                                <span class="lesson-title">סוגי למידה: Supervised vs Unsupervised</span>
+                                <span class="lesson-duration">15:20</span>
+                            </div>
+                        </a>
+                        <a href="#" class="lesson-item" data-lesson="3">
+                            <span class="lesson-status"></span>
+                            <div class="lesson-info">
+                                <span class="lesson-title">הכנת Data Set</span>
+                                <span class="lesson-duration">12:45</span>
+                            </div>
+                        </a>
+                        <a href="#" class="lesson-item" data-lesson="4">
+                            <span class="lesson-status"></span>
+                            <div class="lesson-info">
+                                <span class="lesson-title">תרגול: ניתוח נתונים ראשון</span>
+                                <span class="lesson-duration">8:15</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="lesson-module">
+                    <button class="module-header" data-module="2">
+                        <span class="module-icon">🧮</span>
+                        <div class="module-info">
+                            <span class="module-title">אלגוריתמים בסיסיים</span>
+                            <span class="module-meta">5 שיעורים • 1:10 שעות</span>
+                        </div>
+                        <svg class="module-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="module-lessons collapsed">
+                        <a href="#" class="lesson-item" data-lesson="5">
+                            <span class="lesson-status"></span>
+                            <div class="lesson-info">
+                                <span class="lesson-title">Linear Regression</span>
+                                <span class="lesson-duration">18:00</span>
+                            </div>
+                        </a>
+                        <a href="#" class="lesson-item" data-lesson="6">
+                            <span class="lesson-status"></span>
+                            <div class="lesson-info">
+                                <span class="lesson-title">Logistic Regression</span>
+                                <span class="lesson-duration">14:30</span>
+                            </div>
+                        </a>
+                        <a href="#" class="lesson-item" data-lesson="7">
+                            <span class="lesson-status"></span>
+                            <div class="lesson-info">
+                                <span class="lesson-title">Decision Trees</span>
+                                <span class="lesson-duration">16:45</span>
+                            </div>
+                        </a>
+                        <a href="#" class="lesson-item" data-lesson="8">
+                            <span class="lesson-status"></span>
+                            <div class="lesson-info">
+                                <span class="lesson-title">K-Nearest Neighbors</span>
+                                <span class="lesson-duration">12:00</span>
+                            </div>
+                        </a>
+                        <a href="#" class="lesson-item" data-lesson="9">
+                            <span class="lesson-status"></span>
+                            <div class="lesson-info">
+                                <span class="lesson-title">תרגול: בניית מודל ראשון</span>
+                                <span class="lesson-duration">10:00</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="lesson-module">
+                    <button class="module-header" data-module="3">
+                        <span class="module-icon">🎯</span>
+                        <div class="module-info">
+                            <span class="module-title">פרויקט מסכם</span>
+                            <span class="module-meta">3 שיעורים • 45 דק'</span>
+                        </div>
+                        <svg class="module-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="module-lessons collapsed">
+                        <a href="#" class="lesson-item" data-lesson="10">
+                            <span class="lesson-status"></span>
+                            <div class="lesson-info">
+                                <span class="lesson-title">הגדרת הפרויקט</span>
+                                <span class="lesson-duration">10:00</span>
+                            </div>
+                        </a>
+                        <a href="#" class="lesson-item" data-lesson="11">
+                            <span class="lesson-status"></span>
+                            <div class="lesson-info">
+                                <span class="lesson-title">פיתוח המודל</span>
+                                <span class="lesson-duration">20:00</span>
+                            </div>
+                        </a>
+                        <a href="#" class="lesson-item" data-lesson="12">
+                            <span class="lesson-status"></span>
+                            <div class="lesson-info">
+                                <span class="lesson-title">הגשה וסיכום</span>
+                                <span class="lesson-duration">15:00</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        
+        <section class="course-content">
+            <div class="video-container">
+                <div class="video-player" id="videoPlayer">
+                    <div class="video-placeholder">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                        <p>לחץ להפעלת הווידאו</p>
+                    </div>
+                    <video id="lessonVideo" style="display: none;">
+                        <source src="" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-controls">
+                    <button class="control-btn" id="prevLesson">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="19 20 9 12 19 4 19 20"></polygon>
+                            <line x1="5" y1="19" x2="5" y2="5"></line>
+                        </svg>
+                        שיעור קודם
+                    </button>
+                    <button class="control-btn primary" id="markComplete">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        סמן כהושלם
+                    </button>
+                    <button class="control-btn" id="nextLesson">
+                        שיעור הבא
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="5 4 15 12 5 20 5 4"></polygon>
+                            <line x1="19" y1="5" x2="19" y2="19"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="content-tabs">
+                <button class="content-tab active" data-tab="overview">סקירה</button>
+                <button class="content-tab" data-tab="notes">הערות שלי</button>
+                <button class="content-tab" data-tab="resources">משאבים</button>
+                <button class="content-tab" data-tab="discussion">דיון</button>
+            </div>
+            
+            <div class="tab-content" id="tabContent">
+                <div class="tab-pane active" id="overview">
+                    <h2 id="lessonTitle">סוגי למידה: Supervised vs Unsupervised</h2>
+                    <p id="lessonDescription">
+                        בשיעור זה נלמד על שני סוגי הלמידה העיקריים ב-Machine Learning: 
+                        למידה מפוקחת (Supervised Learning) ולמידה לא מפוקחת (Unsupervised Learning).
+                        נבין מתי להשתמש בכל סוג ונראה דוגמאות מעשיות.
+                    </p>
+                    <div class="lesson-topics">
+                        <h3>נושאים בשיעור:</h3>
+                        <ul>
+                            <li>הגדרת Supervised Learning</li>
+                            <li>דוגמאות: Classification ו-Regression</li>
+                            <li>הגדרת Unsupervised Learning</li>
+                            <li>דוגמאות: Clustering ו-Dimensionality Reduction</li>
+                            <li>איך לבחור את הגישה הנכונה</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="tab-pane" id="notes">
+                    <div class="notes-container">
+                        <h3>הערות שלי</h3>
+                        <textarea id="userNotes" placeholder="רשום כאן את ההערות שלך..."></textarea>
+                        <button class="btn btn-primary" id="saveNotes">שמור הערות</button>
+                    </div>
+                </div>
+                
+                <div class="tab-pane" id="resources">
+                    <h3>משאבים נוספים</h3>
+                    <div class="resources-list">
+                        <a href="#" class="resource-item">
+                            <span class="resource-icon">📄</span>
+                            <div class="resource-info">
+                                <span class="resource-title">מצגת השיעור (PDF)</span>
+                                <span class="resource-size">2.3 MB</span>
+                            </div>
+                        </a>
+                        <a href="#" class="resource-item">
+                            <span class="resource-icon">💻</span>
+                            <div class="resource-info">
+                                <span class="resource-title">קוד דוגמה - Jupyter Notebook</span>
+                                <span class="resource-size">1.1 MB</span>
+                            </div>
+                        </a>
+                        <a href="#" class="resource-item">
+                            <span class="resource-icon">📚</span>
+                            <div class="resource-info">
+                                <span class="resource-title">קריאה נוספת - מאמר</span>
+                                <span class="resource-size">קישור חיצוני</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="tab-pane" id="discussion">
+                    <h3>דיון</h3>
+                    <p class="coming-soon">פורום הדיון יהיה זמין בקרוב!</p>
+                </div>
+            </div>
+        </section>
+        
+        <aside class="ai-assistant" id="aiAssistant">
+            <div class="assistant-header">
+                <div class="assistant-avatar">🤖</div>
+                <div class="assistant-info">
+                    <span class="assistant-name">AI עוזר</span>
+                    <span class="assistant-status">מוכן לעזור</span>
+                </div>
+                <button class="toggle-assistant" id="toggleAssistant">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="assistant-chat" id="chatMessages">
+                <div class="chat-message assistant">
+                    <div class="message-content">
+                        שלום! 👋 אני העוזר שלך בקורס. יש לך שאלה על השיעור?
+                    </div>
+                </div>
+            </div>
+            
+            <div class="assistant-input">
+                <input type="text" id="chatInput" placeholder="שאל שאלה...">
+                <button class="send-btn" id="sendMessage">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </div>
+        </aside>
+        
+        <button class="open-assistant" id="openAssistant" style="display: none;">
+            <span class="assistant-icon">🤖</span>
+            <span>שאל את AI</span>
+        </button>
+    </main>
+    
+    <script src="js/lms.js"></script>
+    <script>
+        // Initialize course viewer
+        LMS.initCourse();
+    </script>
+</body>
+</html>
