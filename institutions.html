@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>תוכניות למוסדות חינוך | מוכרים בגפ"ן | דרך ההייטק</title>
+    <meta name="description" content="תוכניות תכנות ובינה מלאכותית לבתי ספר ומוסדות חינוך. מוכרים בגפ״ן, מאושרים במשרד החינוך. 12 קורסים לתלמידים, 3 קורסים לצוותי חינוך. מספרי תוכניות: 53659, 9682, 34102.">
+    <meta name="keywords" content="גפן, תוכניות למוסדות חינוך, קורס תכנות לבתי ספר, AI למורים, הכשרת מורים טכנולוגיה, בינה מלאכותית בחינוך">
+    <meta name="author" content="דרך ההייטק">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hai.tech/institutions.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hai.tech/institutions.html">
+    <meta property="og:title" content="תוכניות למוסדות חינוך | דרך ההייטק">
+    <meta property="og:description" content="מוכרים בגפ״ן | תוכניות מאושרות במשרד החינוך | מספרי תוכניות: 53659, 9682, 34102">
+    <meta property="og:locale" content="he_IL">
+    
+    <!-- Fonts & Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="https://hai.tech/wp-content/uploads/2023/11/hi-tech-logo.png">
+
+    <style>
+        /* ===== Institutions Page - AI & Tech Design ===== */
+        
+        /* Hero Section - Futuristic AI Theme */
+        .inst-hero {
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding: 140px 20px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Animated Grid Background */
+        .inst-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(139, 92, 246, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(139, 92, 246, 0.1) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: gridMove 20s linear infinite;
+        }
+        
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(60px, 60px); }
+        }
+        
+        /* Glowing Orbs */
+        .inst-hero::after {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.1); }
+        }
+        
+        .inst-hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            max-width: 950px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .gapen-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(139, 92, 246, 0.2);
+            backdrop-filter: blur(15px);
+            padding: 14px 28px;
+            border-radius: var(--radius-full);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(139, 92, 246, 0.4);
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+            animation: badgeGlow 2s ease-in-out infinite;
+        }
+        
+        @keyframes badgeGlow {
+            0%, 100% { box-shadow: 0 0 30px rgba(139, 92, 246, 0.3); }
+            50% { box-shadow: 0 0 50px rgba(139, 92, 246, 0.5); }
+        }
+        
+        .inst-hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            margin-bottom: 1.5rem;
+            color: white;
+            line-height: 1.2;
+            text-shadow: 0 0 40px rgba(139, 92, 246, 0.5);
+        }
+        
+        .inst-hero h1 span {
+            background: linear-gradient(90deg, #a78bfa, #60a5fa, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .inst-hero-desc {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            line-height: 1.9;
+            color: #e2e8f0;
+        }
+        
+        /* Stats Box - Glassmorphism */
+        .inst-stats {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+            margin: 2.5rem 0;
+            padding: 28px 40px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+        
+        .inst-stat {
+            text-align: center;
+            padding: 0 24px;
+        }
+        
+        .inst-stat-number {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #a78bfa, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Heebo', monospace;
+            letter-spacing: 2px;
+        }
+        
+        .inst-stat-label {
+            font-size: 0.9rem;
+            opacity: 0.85;
+            margin-top: 6px;
+            color: #e2e8f0;
+        }
+        
+        .inst-hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        
+        .inst-hero-buttons .btn-primary {
+            background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+            border: none;
+            box-shadow: 0 10px 40px rgba(139, 92, 246, 0.4);
+        }
+        
+        .inst-hero-buttons .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(139, 92, 246, 0.5);
+        }
+        
+        /* Programs Section - Clean & Modern */
+        .programs-section {
+            padding: 100px 0;
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+            position: relative;
+        }
+        
+        .programs-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #302b63 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .programs-intro {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.15rem;
+            line-height: 1.9;
+        }
+        
+        /* Tabs - AI Style */
+        .programs-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            padding: 18px 36px;
+            border: 2px solid #e2e8f0;
+            border-radius: var(--radius-full);
+            background: white;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            font-family: inherit;
+        }
+        
+        .tab-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.15);
+            border-color: #a78bfa;
+        }
+        
+        .tab-btn.active {
+            background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 10px 40px rgba(139, 92, 246, 0.4);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeInUp 0.6s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Programs Grid - Card Design */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        
+        .program-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(139, 92, 246, 0.1);
+        }
+        
+        .program-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(139, 92, 246, 0.15);
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+        
+        .program-image {
+            height: 150px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .program-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: inherit;
+            filter: brightness(1.1);
+        }
+        
+        .program-icon {
+            width: 60px;
+            height: 60px;
+            color: white;
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.2));
+        }
+        
+        .program-grade {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(10px);
+            padding: 8px 16px;
+            border-radius: var(--radius-full);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: white;
+            z-index: 1;
+        }
+        
+        /* Program Colors - Vibrant Gradients */
+        .program-image.scratch { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
+        .program-image.ai-creators { background: linear-gradient(135deg, #8b5cf6, #a78bfa); }
+        .program-image.entrepreneurship { background: linear-gradient(135deg, #ec4899, #f472b6); }
+        .program-image.ai-world { background: linear-gradient(135deg, #6366f1, #818cf8); }
+        .program-image.hackathon { background: linear-gradient(135deg, #f43f5e, #fb7185); }
+        .program-image.stem { background: linear-gradient(135deg, #22c55e, #4ade80); }
+        .program-image.print3d { background: linear-gradient(135deg, #14b8a6, #2dd4bf); }
+        .program-image.futuremakers { background: linear-gradient(135deg, #0ea5e9, #38bdf8); }
+        .program-image.apps { background: linear-gradient(135deg, #3b82f6, #60a5fa); }
+        .program-image.cyber { background: linear-gradient(135deg, #ef4444, #f87171); }
+        .program-image.excellence { background: linear-gradient(135deg, #d946ef, #e879f9); }
+        .program-image.teachers { background: linear-gradient(135deg, #8b5cf6, #6366f1); }
+        
+        .program-body {
+            padding: 26px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .program-body h3 {
+            font-size: 1.15rem;
+            margin-bottom: 12px;
+            line-height: 1.5;
+            color: #1e293b;
+        }
+        
+        .program-body p {
+            color: #64748b;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            flex: 1;
+        }
+        
+        .program-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+        
+        .program-tag {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(99, 102, 241, 0.1));
+            padding: 6px 14px;
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
+            color: #6366f1;
+            font-weight: 600;
+        }
+        
+        .program-meta {
+            display: flex;
+            gap: 18px;
+            margin-top: 18px;
+            padding-top: 18px;
+            border-top: 1px solid #f1f5f9;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+        
+        .program-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        /* Teachers Intro - AI Theme */
+        .teachers-intro {
+            max-width: 900px;
+            margin: 0 auto 3rem;
+            text-align: center;
+            padding: 40px 45px;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(99, 102, 241, 0.08));
+            border-radius: 20px;
+            border: 1px solid rgba(139, 92, 246, 0.15);
+            box-shadow: 0 10px 40px rgba(139, 92, 246, 0.08);
+        }
+        
+        .teachers-intro h3 {
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .teachers-intro h3 svg {
+            color: #8b5cf6;
+        }
+        
+        .teachers-intro p {
+            color: #64748b;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        
+        /* Clients Section - Modern */
+        .clients-section {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .clients-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 18px;
+            margin-top: 3rem;
+        }
+        
+        .client-card {
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+            padding: 22px 18px;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .client-card:hover {
+            border-color: #a78bfa;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(139, 92, 246, 0.15);
+            background: white;
+        }
+        
+        .client-card span {
+            font-size: 0.9rem;
+            color: #334155;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+        
+        .clients-note {
+            text-align: center;
+            margin-top: 2.5rem;
+            color: #64748b;
+            font-style: italic;
+            font-size: 1rem;
+        }
+        
+        /* CTA Section Override */
+        .inst-cta {
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .programs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .clients-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .inst-stats {
+                gap: 24px;
+                padding: 24px;
+            }
+            
+            .inst-stat-number {
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (max-width: 700px) {
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .inst-hero h1 {
+                font-size: 1.9rem;
+            }
+            
+            .programs-section h2 {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .clients-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .inst-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .tab-btn {
+                padding: 14px 24px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to main content -->
+    <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
+
+    <!-- Student Banner -->
+    <div class="student-banner">
+        <div class="container">
+            <span><i data-lucide="graduation-cap" class="icon-sm"></i> תלמידים רשומים? </span>
+            <a href="https://haitechdigitalcourses.hai.tech" target="_blank">לחצו כאן לכניסה לקורסים שלכם <i data-lucide="arrow-left" class="icon-xs"></i></a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="https://hai.tech/wp-content/uploads/2023/11/hi-tech-logo.png" alt="דרך ההייטק" width="120" height="80">
+            </a>
+            <button class="mobile-menu-btn" aria-label="תפריט">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html#courses">קורסים דיגיטליים</a></li>
+                <li><a href="index.html#private">שיעורים פרטיים</a></li>
+                <li><a href="institutions.html"><i data-lucide="school" class="nav-icon"></i> למוסדות</a></li>
+                <li><a href="blog.html"><i data-lucide="newspaper" class="nav-icon"></i> בלוג</a></li>
+                <li><a href="index.html#about">אודות</a></li>
+                <li><a href="https://haitechdigitalcourses.hai.tech" class="btn btn-student" target="_blank"><i data-lucide="log-in" class="nav-icon"></i> כניסה לתלמידים</a></li>
+                <li><a href="#contact" class="btn btn-nav">צור קשר</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="main-content" class="inst-hero">
+        <div class="container">
+            <div class="inst-hero-content">
+                <div class="gapen-badge"><i data-lucide="award" class="icon-sm"></i> מוכרים בגפ"ן | תוכניות מאושרות במאגר משרד החינוך</div>
+                <h1>הכשרות טכנולוגיות ו-AI<br><span>לתלמידים ולצוותי חינוך</span></h1>
+                <p class="inst-hero-desc">מלווים תלמידים וצוותי חינוך במסע חווייתי לעולמות הקוד, היזמות והבינה המלאכותית.<br>הדרכות מקצועיות בבתי ספר ובזום — עם תעודות ותיעוד מלא.</p>
+                
+                <div class="inst-stats">
+                    <div class="inst-stat">
+                        <span class="inst-stat-number">53659</span>
+                        <span class="inst-stat-label">יזמות טכנולוגית ו-AI</span>
+                    </div>
+                    <div class="inst-stat">
+                        <span class="inst-stat-number">9682</span>
+                        <span class="inst-stat-label">מתכנתים צעירים</span>
+                    </div>
+                    <div class="inst-stat">
+                        <span class="inst-stat-number">34102</span>
+                        <span class="inst-stat-label">הכשרה להוראה טכנולוגית</span>
+                    </div>
+                </div>
+                
+                <div class="inst-hero-buttons">
+                    <a href="#programs" class="btn btn-primary btn-lg">
+                        <i data-lucide="monitor" class="icon-sm"></i>
+                        לקטלוג התוכניות
+                    </a>
+                    <a href="https://wa.me/972533009742?text=היי, אנחנו מוסד חינוכי ומעוניינים לשמוע על התוכניות שלכם" class="btn btn-whatsapp btn-lg" target="_blank">
+                        <i data-lucide="message-circle" class="icon-sm"></i>
+                        דברו איתנו
+                    </a>
+                </div>
+
+                <div class="lecture-image-container">
+                    <img src="images/inna-lecture.jpg" alt="אינה גרוייס מרצה לצוותי חינוך" class="lecture-image">
+                    <p class="lecture-caption"><i data-lucide="users" class="icon-xs"></i> הרצאה לצוותי חינוך</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Programs Section -->
+    <section id="programs" class="programs-section">
+        <div class="container">
+            <h2>קטלוג התוכניות שלנו</h2>
+            <p class="programs-intro">תכניות לימוד מותאמות לתלמידים בכל שכבות הגיל ולצוותי חינוך.<br>כל התוכניות כוללות תעודה, חומרי לימוד וניתנות להתאמה אישית.</p>
+            
+            <div class="programs-tabs">
+                <button class="tab-btn active" onclick="showTab('students')">
+                    <i data-lucide="monitor" class="icon-sm"></i>
+                    תלמידים (12 קורסים)
+                </button>
+                <button class="tab-btn" onclick="showTab('teachers')">
+                    <i data-lucide="graduation-cap" class="icon-sm"></i>
+                    צוותי חינוך (3 קורסים)
+                </button>
+            </div>
+            
+            <!-- Students Tab -->
+            <div id="students" class="tab-content active">
+                <div class="programs-grid">
+                    
+                    <!-- CodeStart -->
+                    <article class="program-card">
+                        <div class="program-image scratch">
+                            <i data-lucide="cat" class="program-icon"></i>
+                            <span class="program-grade">א'-ד'</span>
+                        </div>
+                        <div class="program-body">
+                            <h3>CodeStart – חשיבה מחשובית עם Scratch</h3>
+                            <p>היכרות עם תכנות חזותי וחשיבה לוגית. יצירת משחקים, אנימציות ופרויקטים אישיים.</p>
+                            <div class="program-tags">
+                                <span class="program-tag">תכנות חזותי</span>
+                                <span class="program-tag">חשיבה מחשובית</span>
+                            </div>
+                            <div class="program-meta">
+                                <span><i data-lucide="calendar" class="icon-xs"></i> שנתי / חצי שנתי</span>
+                                <span><i data-lucide="file-badge" class="icon-xs"></i> תעודה</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- AI Creators -->
+                    <article class="program-card">
+                        <div class="program-image ai-creators">
+                            <i data-lucide="palette" class="program-icon"></i>
+                            <span class="program-grade">ג'-ו'</span>
+                        </div>
+                        <div class="program-body">
+                            <h3>AI Creators – בינה מלאכותית יוצרת</h3>
+                            <p>עבודה עם כלי AI ליצירת סיפורים, מוזיקה, ירחון בית ספרי ומשחק קופסא.</p>
+                            <div class="program-tags">
+                                <span class="program-tag">יצירתיות + AI</span>
+                            </div>
+                            <div class="program-meta">
+                                <span><i data-lucide="calendar" class="icon-xs"></i> שנתי / חצי שנתי</span>
+                                <span><i data-lucide="file-badge" class="icon-xs"></i> תעודה</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- STEM ומיינקראפט -->
+                    <article class="program-card">
+                        <div class="program-image stem">
+                            <i data-lucide="zap" class="program-icon"></i>
+                            <span class="program-grade">ג'-ו'</span>
+                        </div>
+                        <div class="program-body">
+                            <h3>STEM ומיינקראפט: בונים עתיד ירוק</h3>
+                            <p>בניית וחקירת עולמות של אנרגיה ירוקה בסביבת Minecraft Education Edition.</p>
+                            <div class="program-tags">
+                                <span class="program-tag">STEM</span>
+                                <span class="program-tag">מיינקראפט</span>
+                            </div>
+                            <div class="program-meta">
+                                <span><i data-lucide="calendar" class="icon-xs"></i> שנתי / חצי שנתי</span>
+                                <span><i data-lucide="file-badge" class="icon-xs"></i> תעודה</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- יזמות ובינה מלאכותית -->
+                    <article class="program-card">
+                        <div class="program-image entrepreneurship">
+                            <i data-lucide="lightbulb" class="program-icon"></i>
+                            <span class="program-grade">ה'-ו'</span>
+                        </div>
+                        <div class="program-body">
+                            <h3>יזמות ובינה מלאכותית</h3>
+                            <p>פיתוח רעיונות חדשניים והפיכתם למיזמים אמיתיים בעזרת כלי AI.</p>
+                            <div class="program-tags">
+                                <span class="program-tag">יזמות + AI</span>
+                            </div>
+                            <div class="program-meta">
+                                <span><i data-lucide="calendar" class="icon-xs"></i> שנתי / חצי שנתי</span>
+                                <span><i data-lucide="file-badge" class="icon-xs"></i> תעודה</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- העולם החכם סביבנו -->
+                    <article class="program-card">
+                        <div class="program-image ai-world">
+                            <i data-lucide="globe" class="program-icon"></i>
+                            <span class="program-grade">ה'-ו'</span>
+                        </div>
+                        <div class="program-body">
+                            <h3>העולם החכם סביבנו – AI תיאורטי</h3>
+                            <p>היכרות עם עולם ה-AI ללא מחשב. תרחישים מהחיים, מיפוי רעיונות וטיעונים.</p>
+                            <div class="program-tags">
+                                <span class="program-tag">AI כללי</span>
+                                <span class="program-tag">ללא מחשב</span>
+                            </div>
+                            <div class="program-meta">
+                                <span><i data-lucide="calendar" class="icon-xs"></i> סדנאות</span>
+                                <span><i data-lucide="file-badge" class="icon-xs"></i> תעודה</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- האקתונים ה'-ו' -->
+                    <article class="program-card">
+                        <div class="program-image hackathon">
+                            <i data-lucide="rocket" class="program-icon"></i>
+                            <span class="program-grade">ה'-ו'</span>
+                        </div>
+                        <div class="program-body">
+                            <h3>האקתונים וימי שיא</h3>
+                            <p>אירוע שיא בו תלמידים הופכים ליזמים ליום — חושבים, מתכננים ומפתחים פתרונות.</p>
+                            <div class="program-tags">
+                                <span class="program-tag">יזמות</span>
+                                <span class="program-tag">AI</span>
+                            </div>
+                            <div class="program-meta">
+                                <span><i data-lucide="calendar" class="icon-xs"></i> חד פעמי / סדנה</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- פיתוח מוצר בתלת-ממד -->
+                    <article class="program-card">
+                        <div class="program-image print3d">
+                            <i data-lucide="printer" class="program-icon"></i>
+                            <span class="program-grade">ד'-ז'</span>
+                        </div>
+                        <div class="program-body">
+                            <h3>פיתוח מוצר בתלת-ממד</h3>
+                            <p>עיצוב ופיתוח מוצרים — מחשיבה הנדסית ועד פרויקט גמר עם הדפסה אמיתית.</p>
+                            <div class="program-tags">
+                                <span class="program-tag">יזמות</span>
+                                <span class="program-tag">הדפסת 3D</span>
+                            </div>
+                            <div class="program-meta">
+                                <span><i data-lucide="calendar" class="icon-xs"></i> 30 מפגשים</span>
+                                <span><i data-lucide="file-badge" class="icon-xs"></i> תעודה</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- FutureMakers -->
+                    <article class="program-card">
+                        <div class="program-image futuremakers">
+                            <i data-lucide="sparkles" class="program-icon"></i>
+                            <span class="program-grade">ז'-י"ב</span>
+                        </div>
+                        <div class="program-body">
+                            <h3>FutureMakers – יזמות בעידן החדש</h3>
+                            <p>פיתוח מיזמים בצוות, שימוש ב-AI לפתרון בעיות אמיתיות והכנת אפליקציה.</p>
+                            <div class="program-tags">
+                                <span class="program-tag">יזמות + AI</span>
+                                <span class="program-tag">אפליקציות</span>
+                            </div>
+                            <div class="program-meta">
+                                <span><i data-lucide="calendar" class="icon-xs"></i> שנתי</span>
+                                <span><i data-lucide="file-badge" class="icon-xs"></i> תעודה</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- האקתונים ז'-י"ב -->
+                    <article class="program-card">
+                        <div class="program-image hackathon">
+                            <i data-lucide="trophy" class="program-icon"></i>
+                            <span class="program-grade">ז'-י"ב</span>
+                        </div>
+                        <div class="program-body">
+                            <h3>האקתונים וימי שיא</h3>
+                            <p>יום חוויתי הכולל פיתוח מיזמים, עבודת צוות ותחרות אמיתית כמו בהייטק.</p>
+                            <div class="program-tags">
+                                <span class="program-tag">יזמות + AI</span>
+                            </div>
+                            <div class="program-meta">
+                                <span><i data-lucide="calendar" class="icon-xs"></i> חד פעמי / סדנה</span>
+                                <span><i data-lucide="file-badge" class="icon-xs"></i> תעודה</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- פיתוח אפליקציות ובינה מלאכותית -->
+                    <article class="program-card">
+                        <div class="program-image apps">
+                            <i data-lucide="smartphone" class="program-icon"></i>
+                            <span class="program-grade">ז'-ט'</span>
+                        </div>
+                        <div class="program-body">
+                            <h3>פיתוח אפליקציות ובינה מלאכותית</h3>
+                            <p>פיתוח אפליקציות עם יכולות AI — צ'אטבוטים, תכנון, תכנות ויזמות.</p>
+                            <div class="program-tags">
+                                <span class="program-tag">AI + פיתוח</span>
+                                <span class="program-tag">יזמות</span>
+                            </div>
+                            <div class="program-meta">
+                                <span><i data-lucide="calendar" class="icon-xs"></i> שנתי</span>
+                                <span><i data-lucide="file-badge" class="icon-xs"></i> תעודה</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- תכנות, בינה מלאכותית וסייבר -->
+                    <article class="program-card">
+                        <div class="program-image cyber">
+                            <i data-lucide="shield" class="program-icon"></i>
+                            <span class="program-grade">ז'-ט'</span>
+                        </div>
+                        <div class="program-body">
+                            <h3>תכנות, בינה מלאכותית וסייבר</h3>
+                            <p>קורס שמחבר בין קוד, AI והגנת סייבר. ממשקים חכמים ואוריינות טכנולוגית.</p>
+                            <div class="program-tags">
+                                <span class="program-tag">תכנות</span>
+                                <span class="program-tag">סייבר</span>
+                            </div>
+                            <div class="program-meta">
+                                <span><i data-lucide="calendar" class="icon-xs"></i> שנתי</span>
+                                <span><i data-lucide="file-badge" class="icon-xs"></i> תעודה</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- תכנית מצוינות -->
+                    <article class="program-card">
+                        <div class="program-image excellence">
+                            <i data-lucide="star" class="program-icon"></i>
+                            <span class="program-grade">ז'-ח'</span>
+                        </div>
+                        <div class="program-body">
+                            <h3>מצוינות ביזמות טכנולוגית-חברתית</h3>
+                            <p>תכנית למרכזי מצוינות — פיתוח מיזם כיתתי שנותן מענה לאתגר חברתי.</p>
+                            <div class="program-tags">
+                                <span class="program-tag">יזמות + AI</span>
+                                <span class="program-tag">מצוינות</span>
+                            </div>
+                            <div class="program-meta">
+                                <span><i data-lucide="calendar" class="icon-xs"></i> 12 מפגשים</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                </div>
+            </div>
+            
+            <!-- Teachers Tab -->
+            <div id="teachers" class="tab-content">
+                <div class="teachers-intro">
+                    <h3><i data-lucide="graduation-cap" class="icon-sm"></i> קורסים לצוותי חינוך והוראה</h3>
+                    <p>בעידן שבו בינה מלאכותית משנה את כללי המשחק, אנו מציעים תכניות חדשניות לצוותי חינוך — לשילוב AI בשיעור, בליווי תלמידים ובהובלת תהליכי למידה. כל איש/ת צוות יוצא/ת עם <strong>תוצר מעשי</strong>: מצגת, מערך שיעור, בוט אישי או מערכת ניהול.</p>
+                </div>
+                
+                <div class="programs-grid">
+                    
+                    <!-- קורס בינה מלאכותית למורים -->
+                    <article class="program-card">
+                        <div class="program-image teachers">
+                            <i data-lucide="cpu" class="program-icon"></i>
+                            <span class="program-grade">צוותי חינוך</span>
+                        </div>
+                        <div class="program-body">
+                            <h3>קורס בינה מלאכותית למורים</h3>
+                            <p>שימוש בכלי AI בעבודה היומיומית: שאלונים, מערכי שיעור, מצגות ודוחות תלמידים.</p>
+                            <div class="program-tags">
+                                <span class="program-tag">פיתוח מקצועי</span>
+                                <span class="program-tag">חדשנות פדגוגית</span>
+                            </div>
+                            <div class="program-meta">
+                                <span><i data-lucide="calendar" class="icon-xs"></i> 8-15 מפגשים</span>
+                                <span><i data-lucide="file-badge" class="icon-xs"></i> תעודה</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- קורס פדגוגיה מבוססת פרויקטים -->
+                    <article class="program-card">
+                        <div class="program-image teachers">
+                            <i data-lucide="book-open" class="program-icon"></i>
+                            <span class="program-grade">צוותי חינוך</span>
+                        </div>
+                        <div class="program-body">
+                            <h3>פדגוגיה מבוססת פרויקטים + AI</h3>
+                            <p>שילוב PBL עם כלי AI. תכנון יחידות הוראה סביב אתגר אמיתי.</p>
+                            <div class="program-tags">
+                                <span class="program-tag">PBL</span>
+                                <span class="program-tag">חדשנות פדגוגית</span>
+                            </div>
+                            <div class="program-meta">
+                                <span><i data-lucide="calendar" class="icon-xs"></i> 8-15 מפגשים</span>
+                                <span><i data-lucide="file-badge" class="icon-xs"></i> תעודה</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- הכשרה להוראה טכנולוגית -->
+                    <article class="program-card">
+                        <div class="program-image teachers">
+                            <i data-lucide="user-check" class="program-icon"></i>
+                            <span class="program-grade">צוותי חינוך</span>
+                        </div>
+                        <div class="program-body">
+                            <h3>הכשרה להוראה טכנולוגית</h3>
+                            <p>תכנית מעשית למורים שרוצים ללמד תכנות, AI וחשיבה מחשובית. כולל משאבים מוכנים.</p>
+                            <div class="program-tags">
+                                <span class="program-tag">פיתוח מקצועי</span>
+                                <span class="program-tag">טכנולוגיה</span>
+                            </div>
+                            <div class="program-meta">
+                                <span><i data-lucide="calendar" class="icon-xs"></i> 8-15 מפגשים</span>
+                                <span><i data-lucide="file-badge" class="icon-xs"></i> תעודה</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                </div>
+            </div>
+            
+            <div class="courses-cta" style="margin-top: 3rem;">
+                <p><i data-lucide="graduation-cap" class="icon-sm"></i> רוצים לשמוע על התוכניות בפירוט?</p>
+                <a href="https://wa.me/972533009742?text=היי, אנחנו מוסד חינוכי ומעוניינים לשמוע על התוכניות שלכם" class="btn btn-whatsapp" target="_blank">
+                    <i data-lucide="message-circle" class="icon-sm"></i>
+                    דברו איתנו — נתאים תוכנית בדיוק לכם
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="clients-section">
+        <div class="container">
+            <h2>מוסדות שכבר עובדים איתנו</h2>
+            <p class="section-subtitle">בתי ספר, רשויות וארגונים שבוטחים בנו להוביל את דור העתיד של ההייטק</p>
+            
+            <div class="clients-grid">
+                <div class="client-card"><i data-lucide="school" class="icon-xs"></i><span>כיוונים באר שבע</span></div>
+                <div class="client-card"><i data-lucide="building-2" class="icon-xs"></i><span>מרכז קהילתי נווה דאב</span></div>
+                <div class="client-card"><i data-lucide="graduation-cap" class="icon-xs"></i><span>אורט</span></div>
+                <div class="client-card"><i data-lucide="school" class="icon-xs"></i><span>כפר יונה</span></div>
+                <div class="client-card"><i data-lucide="school" class="icon-xs"></i><span>תיכון עירוני רבין</span></div>
+                <div class="client-card"><i data-lucide="school" class="icon-xs"></i><span>תיכון המקיף עומר</span></div>
+                <div class="client-card"><i data-lucide="building-2" class="icon-xs"></i><span>מועצה אזורית חבל מודיעין</span></div>
+                <div class="client-card"><i data-lucide="building-2" class="icon-xs"></i><span>מתנ"ס רמות אשכול</span></div>
+                <div class="client-card"><i data-lucide="building-2" class="icon-xs"></i><span>קהילת הבית היהודי</span></div>
+                <div class="client-card"><i data-lucide="users" class="icon-xs"></i><span>בני עקיבא</span></div>
+                <div class="client-card"><i data-lucide="school" class="icon-xs"></i><span>כפר בתיה</span></div>
+                <div class="client-card"><i data-lucide="school" class="icon-xs"></i><span>בן גוריון באר שבע</span></div>
+                <div class="client-card"><i data-lucide="building-2" class="icon-xs"></i><span>מרכז סקו"פ חולון</span></div>
+                <div class="client-card"><i data-lucide="graduation-cap" class="icon-xs"></i><span>אוניברסיטת תל אביב</span></div>
+                <div class="client-card"><i data-lucide="flask-conical" class="icon-xs"></i><span>מצוינות מדעית בן גוריון</span></div>
+                <div class="client-card"><i data-lucide="graduation-cap" class="icon-xs"></i><span>SCE המכללה להנדסה</span></div>
+                <div class="client-card"><i data-lucide="graduation-cap" class="icon-xs"></i><span>אוניברסיטת בן גוריון</span></div>
+            </div>
+            
+            <p class="clients-note">ועוד בתי ספר, רשויות וארגונים רבים בכל רחבי הארץ.</p>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section inst-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>רוצים להביא את דרך ההייטק למוסד שלכם?</h2>
+                <p>נשמח לספר לכם על התוכניות ולהתאים פתרון מושלם לצרכים שלכם</p>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/972533009742?text=היי, אנחנו מוסד חינוכי ומעוניינים לשמוע על התוכניות שלכם" class="btn btn-whatsapp btn-lg" target="_blank">
+                        <i data-lucide="message-circle" class="icon-sm"></i>
+                        דברו איתנו בוואטסאפ
+                    </a>
+                    <a href="mailto:info@hai.tech" class="btn btn-outline btn-lg">
+                        <i data-lucide="mail" class="icon-sm"></i>
+                        info@hai.tech
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>צרו קשר</h2>
+            <p class="section-subtitle">השאירו פרטים ונחזור אליכם בהקדם עם הצעה מותאמת</p>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-card primary-contact">
+                        <i data-lucide="message-circle" class="contact-icon whatsapp-icon"></i>
+                        <h4>וואטסאפ (מומלץ)</h4>
+                        <a href="https://wa.me/972533009742" target="_blank" class="contact-link-primary">לחצו לשליחת הודעה</a>
+                        <p class="contact-note">זמינים בימים א'-ה'</p>
+                    </div>
+                    <div class="contact-card">
+                        <i data-lucide="mail" class="contact-icon"></i>
+                        <h4>אימייל</h4>
+                        <a href="mailto:info@hai.tech">info@hai.tech</a>
+                    </div>
+<!-- וואטסאפ בלבד - אין מוקד טלפוני -->
+                </div>
+
+                <form class="contact-form" id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">שם מלא *</label>
+                            <input type="text" id="name" name="name" required placeholder="השם שלכם">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">טלפון *</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="050-0000000">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="institution">שם המוסד *</label>
+                        <input type="text" id="institution" name="institution" required placeholder="שם בית הספר / הארגון">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">אימייל</label>
+                        <input type="email" id="email" name="email" placeholder="email@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">הודעה</label>
+                        <textarea id="message" name="message" rows="4" placeholder="ספרו לנו על המוסד ומה אתם מחפשים..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <i data-lucide="send" class="icon-sm"></i>
+                        שליחה
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="https://hai.tech/wp-content/uploads/2023/11/hi-tech-logo.png" alt="דרך ההייטק" width="100">
+                    <p>בית הספר למתכנתים צעירים</p>
+                    <p class="copyright">מוכרים בגפ"ן | מאושרים במשרד החינוך</p>
+                </div>
+                <div class="footer-links">
+                    <h4>קישורים</h4>
+                    <ul>
+                        <li><a href="index.html#courses">קורסים דיגיטליים</a></li>
+                        <li><a href="index.html#private">שיעורים פרטיים</a></li>
+                        <li><a href="institutions.html">למוסדות</a></li>
+                        <li><a href="blog.html">בלוג</a></li>
+                        <li><a href="index.html#about">אודות</a></li>
+                        <li><a href="accessibility.html">הצהרת נגישות</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>צרו קשר</h4>
+                    <p><i data-lucide="message-circle" class="icon-xs"></i> <a href="https://wa.me/972533009742">וואטסאפ: 053-300-9742</a></p>
+                    <p><i data-lucide="mail" class="icon-xs"></i> info@hai.tech</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 דרך ההייטק. כל הזכויות שמורות.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Tab switching
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(tabId).classList.add('active');
+            event.target.closest('.tab-btn').classList.add('active');
+        }
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Form submission (placeholder)
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('תודה! נחזור אליכם בהקדם.');
+        });
+    </script>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/972533009742" class="whatsapp-float" target="_blank" aria-label="שלחו הודעה בוואטסאפ">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <span class="whatsapp-float-text">דברו איתנו</span>
+    </a>
+
+    <!-- UserWay Accessibility Widget -->
+    <script src="https://cdn.userway.org/widget.js" data-account="zBp6yPJpzr" async></script>
+</body>
+</html>

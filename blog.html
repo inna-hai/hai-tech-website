@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>בלוג דרך ההייטק | AI בחינוך, למידה מותאמת אישית וחדשנות</title>
+    <meta name="description" content="מאמרים וכתבות על בינה מלאכותית בחינוך, למידה מותאמת אישית, טכנולוגיה חינוכית וחדשנות פדגוגית. עדכונים מעולם ה-AI והשפעתו על מערכת החינוך.">
+    <meta name="keywords" content="AI בחינוך, בינה מלאכותית לילדים, למידה מותאמת אישית, טכנולוגיה חינוכית, חדשנות בחינוך, GPT בחינוך">
+    <meta name="author" content="דרך ההייטק">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hai.tech/blog.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hai.tech/blog.html">
+    <meta property="og:title" content="בלוג דרך ההייטק | AI בחינוך וחדשנות">
+    <meta property="og:description" content="מאמרים על בינה מלאכותית בחינוך, למידה מותאמת אישית וחדשנות פדגוגית">
+    <meta property="og:locale" content="he_IL">
+    
+    <!-- Fonts & Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="https://hai.tech/wp-content/uploads/2023/11/hi-tech-logo.png">
+
+    <style>
+        /* ===== Blog Page Specific Styles ===== */
+        
+        /* Hero Section */
+        .blog-hero {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            padding: 140px 20px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .blog-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        
+        .blog-hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .blog-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 12px 24px;
+            border-radius: var(--radius-full);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.25);
+        }
+        
+        .blog-hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            color: white;
+            line-height: 1.2;
+        }
+        
+        .blog-hero-desc {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            line-height: 1.8;
+        }
+        
+        /* Blog Section */
+        .blog-section {
+            padding: 80px 0;
+            background: var(--bg-light);
+        }
+        
+        /* Blog Grid */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+        
+        /* Blog Card */
+        .blog-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--bg-alt);
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-card);
+        }
+        
+        .blog-card-header {
+            padding: 24px 28px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .blog-card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .blog-card-icon svg {
+            width: 28px;
+            height: 28px;
+            color: white;
+        }
+        
+        /* Icon Colors */
+        .blog-card-icon.purple { background: linear-gradient(135deg, #8b5cf6, #a78bfa); }
+        .blog-card-icon.blue { background: linear-gradient(135deg, #3b82f6, #60a5fa); }
+        .blog-card-icon.green { background: linear-gradient(135deg, #22c55e, #4ade80); }
+        .blog-card-icon.pink { background: linear-gradient(135deg, #ec4899, #f472b6); }
+        .blog-card-icon.orange { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
+        .blog-card-icon.teal { background: linear-gradient(135deg, #14b8a6, #2dd4bf); }
+        .blog-card-icon.red { background: linear-gradient(135deg, #ef4444, #f87171); }
+        .blog-card-icon.indigo { background: linear-gradient(135deg, #6366f1, #818cf8); }
+        
+        .blog-card-meta {
+            flex: 1;
+        }
+        
+        .blog-card-category {
+            display: inline-block;
+            background: var(--bg-light);
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+        
+        .blog-card-date {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        
+        .blog-card-body {
+            padding: 0 28px 28px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .blog-card-body h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            line-height: 1.5;
+            color: var(--text);
+        }
+        
+        .blog-card-body h3 a {
+            color: inherit;
+            transition: var(--transition);
+        }
+        
+        .blog-card-body h3 a:hover {
+            color: var(--primary);
+        }
+        
+        .blog-card-excerpt {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            flex: 1;
+            margin-bottom: 20px;
+        }
+        
+        .blog-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+        
+        .blog-card-link:hover {
+            gap: 12px;
+            color: var(--primary-dark);
+        }
+        
+        /* Featured Post */
+        .blog-card.featured {
+            grid-column: span 2;
+            flex-direction: row;
+        }
+        
+        .blog-card.featured .blog-card-header {
+            width: 40%;
+            flex-direction: column;
+            justify-content: center;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            padding: 40px;
+        }
+        
+        .blog-card.featured .blog-card-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.2);
+            margin-bottom: 16px;
+        }
+        
+        .blog-card.featured .blog-card-icon svg {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .blog-card.featured .blog-card-category {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+        
+        .blog-card.featured .blog-card-date {
+            color: rgba(255,255,255,0.85);
+        }
+        
+        .blog-card.featured .blog-card-body {
+            padding: 40px;
+            justify-content: center;
+        }
+        
+        .blog-card.featured .blog-card-body h3 {
+            font-size: 1.5rem;
+        }
+        
+        /* Newsletter Section */
+        .newsletter-section {
+            padding: 60px 0;
+            background: white;
+        }
+        
+        .newsletter-box {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 50px;
+            background: var(--gradient);
+            border-radius: var(--radius-lg);
+            color: white;
+        }
+        
+        .newsletter-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .newsletter-box p {
+            opacity: 0.95;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 900px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .blog-card.featured {
+                grid-column: span 1;
+                flex-direction: column;
+            }
+            
+            .blog-card.featured .blog-card-header {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .blog-card-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .blog-card-body {
+                text-align: center;
+            }
+            
+            .blog-card-link {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to main content -->
+    <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
+
+    <!-- Student Banner -->
+    <div class="student-banner">
+        <div class="container">
+            <span><i data-lucide="graduation-cap" class="icon-sm"></i> תלמידים רשומים? </span>
+            <a href="https://haitechdigitalcourses.hai.tech" target="_blank">לחצו כאן לכניסה לקורסים שלכם <i data-lucide="arrow-left" class="icon-xs"></i></a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="https://hai.tech/wp-content/uploads/2023/11/hi-tech-logo.png" alt="דרך ההייטק" width="120" height="80">
+            </a>
+            <button class="mobile-menu-btn" aria-label="תפריט">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html#courses">קורסים דיגיטליים</a></li>
+                <li><a href="index.html#private">שיעורים פרטיים</a></li>
+                <li><a href="institutions.html"><i data-lucide="school" class="nav-icon"></i> למוסדות</a></li>
+                <li><a href="blog.html"><i data-lucide="newspaper" class="nav-icon"></i> בלוג</a></li>
+                <li><a href="index.html#about">אודות</a></li>
+                <li><a href="https://haitechdigitalcourses.hai.tech" class="btn btn-student" target="_blank"><i data-lucide="log-in" class="nav-icon"></i> כניסה לתלמידים</a></li>
+                <li><a href="index.html#contact" class="btn btn-nav">התחילו עכשיו</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="main-content" class="blog-hero">
+        <div class="container">
+            <div class="blog-hero-content">
+                <div class="blog-badge"><i data-lucide="sparkles" class="icon-sm"></i> תובנות מעולם ה-AI והחינוך</div>
+                <h1>בלוג דרך ההייטק</h1>
+                <p class="blog-hero-desc">מאמרים, מחקרים וחדשות על בינה מלאכותית בחינוך, למידה מותאמת אישית וטכנולוגיות שמשנות את הדרך שבה ילדים לומדים.</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Blog Section -->
+    <section class="blog-section">
+        <div class="container">
+            <div class="blog-grid">
+                
+                <!-- 1. Featured Post - AI בחינוך מיוחד: אבחון דיסלקסיה -->
+                <article class="blog-card featured">
+                    <div class="blog-card-header">
+                        <div class="blog-card-icon">
+                            <i data-lucide="brain"></i>
+                        </div>
+                        <div class="blog-card-meta">
+                            <span class="blog-card-category">AI בחינוך מיוחד</span>
+                            <span class="blog-card-date">מאמר מומלץ</span>
+                        </div>
+                    </div>
+                    <div class="blog-card-body">
+                        <h3><a href="blog/ai-dyslexia.html">AI בחינוך מיוחד: אבחון דיסלקסיה ב-94% דיוק</a></h3>
+                        <p class="blog-card-excerpt">דמיינו עולם שבו ילד עם דיסלקסיה מקבל אבחון מדויק תוך שבועיים במקום חודשים ארוכים של ממתנה. זה כבר לא חלום – זו המציאות החדשה של AI בחינוך המיוחד. מחקר חדשני שפורסם באוניברסיטת סטנפורד מראה כיצד אלגוריתמי למידת מכונה מצליחים לזהות קשיי קריאה עם דיוק של 94% – כמעט כמו מומחה בעל שנים של ניסיון.</p>
+                        <a href="blog/ai-dyslexia.html" class="blog-card-link">
+                            קראו עוד
+                            <i data-lucide="arrow-left" class="icon-sm"></i>
+                        </a>
+                    </div>
+                </article>
+                
+                <!-- 2. AI בהערכת הלמידה -->
+                <article class="blog-card">
+                    <div class="blog-card-header">
+                        <div class="blog-card-icon blue">
+                            <i data-lucide="clipboard-check"></i>
+                        </div>
+                        <div class="blog-card-meta">
+                            <span class="blog-card-category">הערכה ומבחנים</span>
+                        </div>
+                    </div>
+                    <div class="blog-card-body">
+                        <h3><a href="blog/ai-exam-evaluation.html">AI בהערכת הלמידה: מהפכה בבדיקת מבחנים</a></h3>
+                        <p class="blog-card-excerpt">אם אתם חושבים שבינה מלאכותית בחינוך זה רק ChatGPT שעוזר לתלמידים לכתוב חיבורים, הכינו את עצמכם להפתעה. בשבועות האחרונים מתגלה מהפכה אמיתית בתחום הערכת הלמידה — הלב הפועם של החינוך.</p>
+                        <a href="blog/ai-exam-evaluation.html" class="blog-card-link">
+                            קראו עוד
+                            <i data-lucide="arrow-left" class="icon-sm"></i>
+                        </a>
+                    </div>
+                </article>
+                
+                <!-- 3. מערכות AI לימוד אוטונומיות -->
+                <article class="blog-card">
+                    <div class="blog-card-header">
+                        <div class="blog-card-icon green">
+                            <i data-lucide="bot"></i>
+                        </div>
+                        <div class="blog-card-meta">
+                            <span class="blog-card-category">מערכות לימוד</span>
+                        </div>
+                    </div>
+                    <div class="blog-card-body">
+                        <h3><a href="blog/autonomous-ai-learning.html">מערכות AI לימוד אוטונומיות: 40% מהמוסדות כבר משתמשים</a></h3>
+                        <p class="blog-card-excerpt">איך זה נראה כשמחשב לוקח את מקום המורה? מחקר חדש בכתב העת "Nature Education" חושף כי למעלה מ-40% ממוסדות החינוך בעולם המערבי כבר מיישמים מערכות AI לימוד אוטונומיות.</p>
+                        <a href="blog/autonomous-ai-learning.html" class="blog-card-link">
+                            קראו עוד
+                            <i data-lucide="arrow-left" class="icon-sm"></i>
+                        </a>
+                    </div>
+                </article>
+                
+                <!-- 4. GPT-4 Vision בחינוך -->
+                <article class="blog-card">
+                    <div class="blog-card-header">
+                        <div class="blog-card-icon orange">
+                            <i data-lucide="eye"></i>
+                        </div>
+                        <div class="blog-card-meta">
+                            <span class="blog-card-category">GPT-4 Vision</span>
+                        </div>
+                    </div>
+                    <div class="blog-card-body">
+                        <h3><a href="blog/gpt4-vision-education.html">GPT-4 Turbo with Vision בחינוך: ניתוח תמונות וגרפים</a></h3>
+                        <p class="blog-card-excerpt">OpenAI הציגה יכולות חדשות ב-ChatGPT שמעוררות סערה בקהילת החינוך. הכלי החדש יכול לא רק לקרוא טקסט, אלא גם לנתח תמונות, גרפים ודיאגרמות — יכולת שפותחת אפשרויות חינוכיות מהפכניות.</p>
+                        <a href="blog/gpt4-vision-education.html" class="blog-card-link">
+                            קראו עוד
+                            <i data-lucide="arrow-left" class="icon-sm"></i>
+                        </a>
+                    </div>
+                </article>
+                
+                <!-- 5. למידה מותאמת אישית -->
+                <article class="blog-card">
+                    <div class="blog-card-header">
+                        <div class="blog-card-icon pink">
+                            <i data-lucide="user-cog"></i>
+                        </div>
+                        <div class="blog-card-meta">
+                            <span class="blog-card-category">למידה מותאמת</span>
+                        </div>
+                    </div>
+                    <div class="blog-card-body">
+                        <h3><a href="blog/personalized-learning-ai.html">למידה מותאמת אישית עם AI</a></h3>
+                        <p class="blog-card-excerpt">תארו לעצמכם עולם שבו כל ילד זוכה למורה פרטי שמכיר את קצב הלמידה שלו, את התחומים שמעניינים אותו, ואת הדרכים הטובות ביותר להעביר לו מידע. זה כבר לא חזון עתידני – זו המציאות של היום.</p>
+                        <a href="blog/personalized-learning-ai.html" class="blog-card-link">
+                            קראו עוד
+                            <i data-lucide="arrow-left" class="icon-sm"></i>
+                        </a>
+                    </div>
+                </article>
+                
+                <!-- 6. שיפור 34% בהישגים -->
+                <article class="blog-card">
+                    <div class="blog-card-header">
+                        <div class="blog-card-icon teal">
+                            <i data-lucide="trending-up"></i>
+                        </div>
+                        <div class="blog-card-meta">
+                            <span class="blog-card-category">מחקר</span>
+                        </div>
+                    </div>
+                    <div class="blog-card-body">
+                        <h3><a href="blog/stanford-34-improvement.html">שיפור 34% בהישגים עם AI מותאם אישית</a></h3>
+                        <p class="blog-card-excerpt">מחקר פורץ דרך מאוניברסיטת סטנפורד חושף: בתי ספר ברחבי ארצות הברית מדווחים על שיפור של עד 34% בהישגים האישיים של תלמידים שלומדים בעזרת מערכות AI מותאמות אישית.</p>
+                        <a href="blog/stanford-34-improvement.html" class="blog-card-link">
+                            קראו עוד
+                            <i data-lucide="arrow-left" class="icon-sm"></i>
+                        </a>
+                    </div>
+                </article>
+                
+                <!-- 7. זיהוי סגנון למידה -->
+                <article class="blog-card">
+                    <div class="blog-card-header">
+                        <div class="blog-card-icon indigo">
+                            <i data-lucide="scan-face"></i>
+                        </div>
+                        <div class="blog-card-meta">
+                            <span class="blog-card-category">זיהוי סגנון למידה</span>
+                        </div>
+                    </div>
+                    <div class="blog-card-body">
+                        <h3><a href="blog/learning-style-detection.html">זיהוי סגנון למידה ב-89% דיוק</a></h3>
+                        <p class="blog-card-excerpt">מחקר מרתק מאוניברסיטת סטנפורד מראה כיצד מערכות AI מצליחות לזהות בדיוק של 89% את סגנון הלמידה הייחודי של כל תלמיד תוך פחות משעתיים של אינטראקציה.</p>
+                        <a href="blog/learning-style-detection.html" class="blog-card-link">
+                            קראו עוד
+                            <i data-lucide="arrow-left" class="icon-sm"></i>
+                        </a>
+                    </div>
+                </article>
+                
+                <!-- 8. עלמה: דיסלקסיה וקוד -->
+                <article class="blog-card">
+                    <div class="blog-card-header">
+                        <div class="blog-card-icon purple">
+                            <i data-lucide="heart"></i>
+                        </div>
+                        <div class="blog-card-meta">
+                            <span class="blog-card-category">סיפור השראה</span>
+                        </div>
+                    </div>
+                    <div class="blog-card-body">
+                        <h3><a href="blog/alma-dyslexia-coding.html">עלמה: ילדה עם דיסלקסיה כותבת קוד עם AI</a></h3>
+                        <p class="blog-card-excerpt">עלמה, תלמידה בת 12 עם דיסלקסיה, ישבה מול המחשב ובפעם הראשונה הצליחה לכתוב קוד שעבד. לא באמצעות הקלדה מייגעת, אלא דרך כלי AI חדשני שתרגם את הוראותיה המילוליות לקוד פייתון אמיתי.</p>
+                        <a href="blog/alma-dyslexia-coding.html" class="blog-card-link">
+                            קראו עוד
+                            <i data-lucide="arrow-left" class="icon-sm"></i>
+                        </a>
+                    </div>
+                </article>
+                
+                <!-- 9. פלטפורמות AI בעברית -->
+                <article class="blog-card">
+                    <div class="blog-card-header">
+                        <div class="blog-card-icon blue">
+                            <i data-lucide="languages"></i>
+                        </div>
+                        <div class="blog-card-meta">
+                            <span class="blog-card-category">AI בעברית</span>
+                        </div>
+                    </div>
+                    <div class="blog-card-body">
+                        <h3><a href="blog/hebrew-ai-platforms.html">פלטפורמות AI בעברית לחינוך ישראלי</a></h3>
+                        <p class="blog-card-excerpt">מפנה משמעותי בעולם הבינה המלאכותית החינוכית: חברות טכנולוגיה ישראליות השיקו פלטפורמות AI המותאמות ספציפית לשפה העברית ולמערכת החינוך הישראלית.</p>
+                        <a href="blog/hebrew-ai-platforms.html" class="blog-card-link">
+                            קראו עוד
+                            <i data-lucide="arrow-left" class="icon-sm"></i>
+                        </a>
+                    </div>
+                </article>
+                
+                <!-- 10. הערכה דינמית -->
+                <article class="blog-card">
+                    <div class="blog-card-header">
+                        <div class="blog-card-icon red">
+                            <i data-lucide="activity"></i>
+                        </div>
+                        <div class="blog-card-meta">
+                            <span class="blog-card-category">הערכה דינמית</span>
+                        </div>
+                    </div>
+                    <div class="blog-card-body">
+                        <h3><a href="blog/dynamic-assessment.html">הערכה דינמית עם AI: מהפכה במבחנים</a></h3>
+                        <p class="blog-card-excerpt">מחקר פורץ דרך מאוניברסיטת סטנפורד חושף מהפכה בעולם ההערכה החינוכית. במקום בחינות סטנדרטיות נוקשות, מערכות AI מתקדמות מציעות הערכה דינמית המתאימה את עצמה בזמן אמת.</p>
+                        <a href="blog/dynamic-assessment.html" class="blog-card-link">
+                            קראו עוד
+                            <i data-lucide="arrow-left" class="icon-sm"></i>
+                        </a>
+                    </div>
+                </article>
+                
+                <!-- 11. AI במתמטיקה -->
+                <article class="blog-card">
+                    <div class="blog-card-header">
+                        <div class="blog-card-icon green">
+                            <i data-lucide="calculator"></i>
+                        </div>
+                        <div class="blog-card-meta">
+                            <span class="blog-card-category">מתמטיקה</span>
+                        </div>
+                    </div>
+                    <div class="blog-card-body">
+                        <h3><a href="blog/ai-math-improvement.html">AI במתמטיקה: שיפור דרמטי בהישגים</a></h3>
+                        <p class="blog-card-excerpt">מחקרים חדשים מראים כיצד כלי AI מותאמים אישית משפרים באופן משמעותי את הישגי התלמידים במתמטיקה, עם התאמה לקצב הלמידה האישי של כל ילד.</p>
+                        <a href="blog/ai-math-improvement.html" class="blog-card-link">
+                            קראו עוד
+                            <i data-lucide="arrow-left" class="icon-sm"></i>
+                        </a>
+                    </div>
+                </article>
+                
+                <!-- 12. ילד מפתח אפליקציה -->
+                <article class="blog-card">
+                    <div class="blog-card-header">
+                        <div class="blog-card-icon orange">
+                            <i data-lucide="smartphone"></i>
+                        </div>
+                        <div class="blog-card-meta">
+                            <span class="blog-card-category">סיפור השראה</span>
+                        </div>
+                    </div>
+                    <div class="blog-card-body">
+                        <h3><a href="blog/kid-builds-app.html">ילד בן 10 מפתח אפליקציה עם AI</a></h3>
+                        <p class="blog-card-excerpt">סיפור מעורר השראה על ילד צעיר שהצליח לפתח אפליקציה שלמה בעזרת כלי AI, ומראה כיצד טכנולוגיה יכולה להנגיש את עולם התכנות לכולם.</p>
+                        <a href="blog/kid-builds-app.html" class="blog-card-link">
+                            קראו עוד
+                            <i data-lucide="arrow-left" class="icon-sm"></i>
+                        </a>
+                    </div>
+                </article>
+                
+                <!-- 13. רובוטים חינוכיים -->
+                <article class="blog-card">
+                    <div class="blog-card-header">
+                        <div class="blog-card-icon teal">
+                            <i data-lucide="cpu"></i>
+                        </div>
+                        <div class="blog-card-meta">
+                            <span class="blog-card-category">רובוטיקה</span>
+                        </div>
+                    </div>
+                    <div class="blog-card-body">
+                        <h3><a href="blog/educational-robots.html">רובוטים חינוכיים: העתיד כבר כאן</a></h3>
+                        <p class="blog-card-excerpt">רובוטים חינוכיים המשלבים AI הופכים לכלי למידה פופולריים בבתי ספר ברחבי העולם. כיצד הם משנים את חוויית הלמידה של התלמידים?</p>
+                        <a href="blog/educational-robots.html" class="blog-card-link">
+                            קראו עוד
+                            <i data-lucide="arrow-left" class="icon-sm"></i>
+                        </a>
+                    </div>
+                </article>
+                
+                <!-- 14. Khanmigo Video Tutor -->
+                <article class="blog-card">
+                    <div class="blog-card-header">
+                        <div class="blog-card-icon pink">
+                            <i data-lucide="video"></i>
+                        </div>
+                        <div class="blog-card-meta">
+                            <span class="blog-card-category">כלי AI</span>
+                        </div>
+                    </div>
+                    <div class="blog-card-body">
+                        <h3><a href="blog/khanmigo-video-tutor.html">Khanmigo Video Tutor: מורה פרטי וירטואלי</a></h3>
+                        <p class="blog-card-excerpt">Khan Academy משיקה כלי AI חדשני שמשלב וידאו עם מורה וירטואלי חכם. כיצד הכלי החדש משנה את הדרך שבה תלמידים לומדים מסרטונים?</p>
+                        <a href="blog/khanmigo-video-tutor.html" class="blog-card-link">
+                            קראו עוד
+                            <i data-lucide="arrow-left" class="icon-sm"></i>
+                        </a>
+                    </div>
+                </article>
+                
+                <!-- 15. מבחנים אדפטיביים -->
+                <article class="blog-card">
+                    <div class="blog-card-header">
+                        <div class="blog-card-icon indigo">
+                            <i data-lucide="target"></i>
+                        </div>
+                        <div class="blog-card-meta">
+                            <span class="blog-card-category">הערכה</span>
+                        </div>
+                    </div>
+                    <div class="blog-card-body">
+                        <h3><a href="blog/adaptive-testing.html">מבחנים אדפטיביים: הערכה חכמה יותר</a></h3>
+                        <p class="blog-card-excerpt">מבחנים אדפטיביים מבוססי AI מתאימים את רמת הקושי בזמן אמת לרמת התלמיד, ומספקים הערכה מדויקת ופחות מלחיצה.</p>
+                        <a href="blog/adaptive-testing.html" class="blog-card-link">
+                            קראו עוד
+                            <i data-lucide="arrow-left" class="icon-sm"></i>
+                        </a>
+                    </div>
+                </article>
+                
+                <!-- 16. 78% מורים ב-AI -->
+                <article class="blog-card">
+                    <div class="blog-card-header">
+                        <div class="blog-card-icon blue">
+                            <i data-lucide="users"></i>
+                        </div>
+                        <div class="blog-card-meta">
+                            <span class="blog-card-category">מחקר ישראלי</span>
+                        </div>
+                    </div>
+                    <div class="blog-card-body">
+                        <h3><a href="blog/israeli-teachers-ai.html">78% מהמורים בישראל משתמשים ב-AI</a></h3>
+                        <p class="blog-card-excerpt">סקר חדש חושף: רוב המורים בישראל כבר משלבים כלי AI בעבודתם היומיומית. מה הם הכלים הפופולריים ואיך הם משפרים את ההוראה?</p>
+                        <a href="blog/israeli-teachers-ai.html" class="blog-card-link">
+                            קראו עוד
+                            <i data-lucide="arrow-left" class="icon-sm"></i>
+                        </a>
+                    </div>
+                </article>
+                
+                <!-- 17. ChatGPT וכתיבה -->
+                <article class="blog-card">
+                    <div class="blog-card-header">
+                        <div class="blog-card-icon purple">
+                            <i data-lucide="pen-tool"></i>
+                        </div>
+                        <div class="blog-card-meta">
+                            <span class="blog-card-category">כתיבה</span>
+                        </div>
+                    </div>
+                    <div class="blog-card-body">
+                        <h3><a href="blog/chatgpt-writing.html">ChatGPT וכתיבה: כלי או איום?</a></h3>
+                        <p class="blog-card-excerpt">האם ChatGPT הורס את יכולות הכתיבה של תלמידים או שהוא דווקא יכול לשמש ככלי לשיפור? מבט מאוזן על השימוש ב-AI בהוראת הכתיבה.</p>
+                        <a href="blog/chatgpt-writing.html" class="blog-card-link">
+                            קראו עוד
+                            <i data-lucide="arrow-left" class="icon-sm"></i>
+                        </a>
+                    </div>
+                </article>
+                
+                <!-- 18. AI רגשי -->
+                <article class="blog-card">
+                    <div class="blog-card-header">
+                        <div class="blog-card-icon red">
+                            <i data-lucide="smile"></i>
+                        </div>
+                        <div class="blog-card-meta">
+                            <span class="blog-card-category">רגש ולמידה</span>
+                        </div>
+                    </div>
+                    <div class="blog-card-body">
+                        <h3><a href="blog/emotional-ai.html">AI רגשי: זיהוי מצב רוח התלמיד</a></h3>
+                        <p class="blog-card-excerpt">מערכות AI חדשות מסוגלות לזהות את המצב הרגשי של התלמיד ולהתאים את חוויית הלמידה בהתאם. מה ההשלכות החינוכיות והאתיות?</p>
+                        <a href="blog/emotional-ai.html" class="blog-card-link">
+                            קראו עוד
+                            <i data-lucide="arrow-left" class="icon-sm"></i>
+                        </a>
+                    </div>
+                </article>
+                
+                <!-- 19. מיינקראפט בחינוך -->
+                <article class="blog-card">
+                    <div class="blog-card-header">
+                        <div class="blog-card-icon green">
+                            <i data-lucide="gamepad-2"></i>
+                        </div>
+                        <div class="blog-card-meta">
+                            <span class="blog-card-category">למידה מבוססת משחק</span>
+                        </div>
+                    </div>
+                    <div class="blog-card-body">
+                        <h3><a href="blog/minecraft-education-sites.html">מיינקראפט בחינוך: למידה דרך משחק</a></h3>
+                        <p class="blog-card-excerpt">Minecraft Education Edition משלב AI ומשחק כדי ליצור חוויות למידה מרתקות. כיצד בתי ספר משתמשים במשחק הפופולרי להוראת מקצועות מגוונים?</p>
+                        <a href="blog/minecraft-education-sites.html" class="blog-card-link">
+                            קראו עוד
+                            <i data-lucide="arrow-left" class="icon-sm"></i>
+                        </a>
+                    </div>
+                </article>
+                
+                <!-- 20. Tech School ומאנדיי -->
+                <article class="blog-card">
+                    <div class="blog-card-header">
+                        <div class="blog-card-icon orange">
+                            <i data-lucide="building-2"></i>
+                        </div>
+                        <div class="blog-card-meta">
+                            <span class="blog-card-category">שיתופי פעולה</span>
+                        </div>
+                    </div>
+                    <div class="blog-card-body">
+                        <h3><a href="blog/tech-school-monday.html">Tech School ומאנדיי: שיתוף פעולה חדשני</a></h3>
+                        <p class="blog-card-excerpt">שיתוף פעולה חדש בין Tech School לחברת Monday.com מביא כלי AI מתקדמים לתלמידי תיכון בישראל. מה כולל התוכנית ומה ההזדמנויות?</p>
+                        <a href="blog/tech-school-monday.html" class="blog-card-link">
+                            קראו עוד
+                            <i data-lucide="arrow-left" class="icon-sm"></i>
+                        </a>
+                    </div>
+                </article>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-box">
+                <h3><i data-lucide="mail" class="icon-sm"></i> רוצים לשמוע עוד?</h3>
+                <p>הצטרפו לשיחה איתנו ותקבלו עדכונים על חידושים בעולם ה-AI והחינוך</p>
+                <a href="https://wa.me/972533009742?text=היי, אשמח לשמוע עדכונים על AI בחינוך" class="btn btn-whatsapp btn-lg" target="_blank">
+                    <i data-lucide="message-circle" class="icon-sm"></i>
+                    דברו איתנו בוואטסאפ
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>רוצים שהילד שלכם יכיר את עולם ה-AI?</h2>
+                <p>הצטרפו לקורסים שלנו ותנו להם את הכלים לעתיד</p>
+                <div class="cta-buttons">
+                    <a href="index.html#courses" class="btn btn-whatsapp btn-lg">
+                        <i data-lucide="monitor-play" class="icon-sm"></i>
+                        לכל הקורסים
+                    </a>
+                    <a href="https://wa.me/972533009742" class="btn btn-outline btn-lg" target="_blank">
+                        <i data-lucide="message-circle" class="icon-sm"></i>
+                        ייעוץ חינם
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="https://hai.tech/wp-content/uploads/2023/11/hi-tech-logo.png" alt="דרך ההייטק" width="100">
+                    <p>בית הספר למתכנתים צעירים</p>
+                    <p class="copyright">מלמדים את הדור הבא לתכנת מאז 2019</p>
+                </div>
+                <div class="footer-links">
+                    <h4>קישורים</h4>
+                    <ul>
+                        <li><a href="index.html#courses">קורסים דיגיטליים</a></li>
+                        <li><a href="index.html#private">שיעורים פרטיים</a></li>
+                        <li><a href="institutions.html">למוסדות</a></li>
+                        <li><a href="blog.html">בלוג</a></li>
+                        <li><a href="index.html#about">אודות</a></li>
+                        <li><a href="accessibility.html">הצהרת נגישות</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>צרו קשר</h4>
+                    <p><i data-lucide="message-circle" class="icon-xs"></i> <a href="https://wa.me/972533009742">וואטסאפ: 053-300-9742</a></p>
+                    <p><i data-lucide="mail" class="icon-xs"></i> info@hai.tech</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 דרך ההייטק. כל הזכויות שמורות.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/972533009742" class="whatsapp-float" target="_blank" aria-label="שלחו הודעה בוואטסאפ">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <span class="whatsapp-float-text">דברו איתנו</span>
+    </a>
+
+    <!-- UserWay Accessibility Widget -->
+    <script src="https://cdn.userway.org/widget.js" data-account="zBp6yPJpzr" async></script>
+</body>
+</html>
