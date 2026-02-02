@@ -56,6 +56,7 @@ class HaiTechChatbotV2 {
     // ============================================
     
     init() {
+        console.log('Chatbot V2: Initializing...');
         this.createUI();
         this.bindEvents();
         this.restoreConversation();
@@ -66,6 +67,7 @@ class HaiTechChatbotV2 {
                 this.addBotMessage(this.getWelcomeMessage());
             }, 500);
         }
+        console.log('Chatbot V2: Ready!');
     }
     
     getOrCreateSession() {
@@ -579,20 +581,41 @@ class HaiTechChatbotV2 {
     }
     
     bindEvents() {
-        // Toggle
-        document.getElementById('chatbot-toggle').addEventListener('click', () => this.toggle());
-        document.getElementById('chatbot-close').addEventListener('click', () => this.close());
+        const toggle = document.getElementById('chatbot-toggle');
+        const close = document.getElementById('chatbot-close');
+        const send = document.getElementById('chatbot-send');
+        const input = document.getElementById('chatbot-input');
+        
+        if (!toggle || !close || !send || !input) {
+            console.error('Chatbot: Missing required elements');
+            return;
+        }
+        
+        // Toggle - use onclick for better compatibility
+        toggle.onclick = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            this.toggle();
+        };
+        
+        close.onclick = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            this.close();
+        };
         
         // Send
-        document.getElementById('chatbot-send').addEventListener('click', () => this.sendMessage());
-        document.getElementById('chatbot-input').addEventListener('keypress', (e) => {
+        send.onclick = () => this.sendMessage();
+        input.onkeypress = (e) => {
             if (e.key === 'Enter') this.sendMessage();
-        });
+        };
         
         // Quick actions
         document.querySelectorAll('.quick-action').forEach(btn => {
-            btn.addEventListener('click', () => this.handleQuickAction(btn.dataset.action));
+            btn.onclick = () => this.handleQuickAction(btn.dataset.action);
         });
+        
+        console.log('Chatbot: Events bound successfully');
     }
     
     toggle() {
