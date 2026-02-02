@@ -2325,3 +2325,30 @@ a.hero-badge-top:hover {
         text-align: center;
     }
 }
+
+/* ===== POPULAR COURSE RIBBON ===== */
+.popular-course {
+    position: relative;
+    border: 3px solid #f97316 !important;
+    box-shadow: 0 8px 30px rgba(249, 115, 22, 0.25) !important;
+}
+
+.popular-ribbon {
+    position: absolute;
+    top: -12px;
+    right: 15px;
+    background: linear-gradient(135deg, #f97316, #ea580c);
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4);
+    animation: pulse-popular 2s infinite;
+}
+
+@keyframes pulse-popular {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
