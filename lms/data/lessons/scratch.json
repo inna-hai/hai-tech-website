@@ -1,0 +1,227 @@
+{
+  "courseId": "scratch",
+  "courseTitle": "קורס תכנות בסקראץ'",
+  "lessonsCount": 20,
+  "lessons": [
+    {
+      "id": 1,
+      "title": "מבוא לסקראץ'",
+      "titleEn": "Introduction to Scratch",
+      "description": "הכרות עם סביבת Scratch והממשק הגרפי",
+      "duration": "15:00",
+      "videoUrl": "placeholder",
+      "order": 1,
+      "free": true,
+      "resources": []
+    },
+    {
+      "id": 2,
+      "title": "יצירת דמות ראשונה",
+      "titleEn": "Creating Your First Sprite",
+      "description": "בחירת ויצירת דמויות (sprites) למשחק",
+      "duration": "12:00",
+      "videoUrl": "placeholder",
+      "order": 2,
+      "free": true,
+      "resources": []
+    },
+    {
+      "id": 3,
+      "title": "תנועה בסיסית",
+      "titleEn": "Basic Movement",
+      "description": "הזזת דמויות על המסך עם בלוקים",
+      "duration": "15:00",
+      "videoUrl": "placeholder",
+      "order": 3,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 4,
+      "title": "אנימציות פשוטות",
+      "titleEn": "Simple Animations",
+      "description": "יצירת אנימציות עם החלפת תלבושות",
+      "duration": "18:00",
+      "videoUrl": "placeholder",
+      "order": 4,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 5,
+      "title": "צלילים ומוזיקה",
+      "titleEn": "Sounds and Music",
+      "description": "הוספת אפקטים קוליים ומוזיקת רקע",
+      "duration": "12:00",
+      "videoUrl": "placeholder",
+      "order": 5,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 6,
+      "title": "לולאות - חזרה על פעולות",
+      "titleEn": "Loops - Repeating Actions",
+      "description": "שימוש בבלוקי לולאה לחזרה על פעולות",
+      "duration": "20:00",
+      "videoUrl": "placeholder",
+      "order": 6,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 7,
+      "title": "תנאים - If/Else",
+      "titleEn": "Conditions - If/Else",
+      "description": "קבלת החלטות בקוד עם בלוקי תנאי",
+      "duration": "20:00",
+      "videoUrl": "placeholder",
+      "order": 7,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 8,
+      "title": "משתנים - שמירת מידע",
+      "titleEn": "Variables - Storing Data",
+      "description": "יצירת משתנים לשמירת ניקוד, חיים ומידע אחר",
+      "duration": "18:00",
+      "videoUrl": "placeholder",
+      "order": 8,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 9,
+      "title": "משחק ניקוד ראשון",
+      "titleEn": "First Scoring Game",
+      "description": "בניית משחק פשוט עם מערכת ניקוד",
+      "duration": "25:00",
+      "videoUrl": "placeholder",
+      "order": 9,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 10,
+      "title": "זיהוי התנגשויות",
+      "titleEn": "Collision Detection",
+      "description": "זיהוי מגע בין דמויות ואובייקטים",
+      "duration": "18:00",
+      "videoUrl": "placeholder",
+      "order": 10,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 11,
+      "title": "שליטה עם מקלדת",
+      "titleEn": "Keyboard Controls",
+      "description": "שליטה בדמויות באמצעות מקשים",
+      "duration": "15:00",
+      "videoUrl": "placeholder",
+      "order": 11,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 12,
+      "title": "שליטה עם עכבר",
+      "titleEn": "Mouse Controls",
+      "description": "שליטה בדמויות עם העכבר ולחיצות",
+      "duration": "15:00",
+      "videoUrl": "placeholder",
+      "order": 12,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 13,
+      "title": "רקעים ושלבים",
+      "titleEn": "Backgrounds and Levels",
+      "description": "החלפת רקעים ויצירת שלבים למשחק",
+      "duration": "18:00",
+      "videoUrl": "placeholder",
+      "order": 13,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 14,
+      "title": "שכפול דמויות (Clones)",
+      "titleEn": "Cloning Sprites",
+      "description": "יצירת עותקים של דמויות בזמן ריצה",
+      "duration": "20:00",
+      "videoUrl": "placeholder",
+      "order": 14,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 15,
+      "title": "הודעות בין דמויות",
+      "titleEn": "Broadcasting Messages",
+      "description": "תקשורת בין דמויות עם הודעות",
+      "duration": "15:00",
+      "videoUrl": "placeholder",
+      "order": 15,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 16,
+      "title": "משחק מרדף",
+      "titleEn": "Chase Game",
+      "description": "בניית משחק מרדף עם AI פשוט",
+      "duration": "25:00",
+      "videoUrl": "placeholder",
+      "order": 16,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 17,
+      "title": "משחק יריות",
+      "titleEn": "Shooting Game",
+      "description": "יצירת משחק יריות עם קליעים ומטרות",
+      "duration": "25:00",
+      "videoUrl": "placeholder",
+      "order": 17,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 18,
+      "title": "משחק פלטפורמה",
+      "titleEn": "Platform Game",
+      "description": "בניית משחק פלטפורמה עם קפיצות ומכשולים",
+      "duration": "30:00",
+      "videoUrl": "placeholder",
+      "order": 18,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 19,
+      "title": "פרויקט אישי - תכנון",
+      "titleEn": "Personal Project - Planning",
+      "description": "תכנון הפרויקט האישי ובחירת רעיון",
+      "duration": "15:00",
+      "videoUrl": "placeholder",
+      "order": 19,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 20,
+      "title": "פרויקט אישי - מימוש ושיתוף",
+      "titleEn": "Personal Project - Implementation and Sharing",
+      "description": "מימוש הפרויקט האישי ושיתוף בקהילת Scratch",
+      "duration": "30:00",
+      "videoUrl": "placeholder",
+      "order": 20,
+      "free": false,
+      "resources": []
+    }
+  ]
+}

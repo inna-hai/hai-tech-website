@@ -1,0 +1,139 @@
+{
+  "courseId": "roblox-lua",
+  "courseTitle": "קורס רובלוקס - פיתוח משחקים עם Lua",
+  "lessonsCount": 12,
+  "lessons": [
+    {
+      "id": 1,
+      "title": "מבוא לרובלוקס ו-Roblox Studio",
+      "titleEn": "Introduction to Roblox and Roblox Studio",
+      "description": "הכרות עם פלטפורמת רובלוקס וסביבת הפיתוח Roblox Studio",
+      "duration": "20:00",
+      "videoUrl": "placeholder",
+      "order": 1,
+      "free": true,
+      "resources": []
+    },
+    {
+      "id": 2,
+      "title": "התקנה והגדרת סביבת העבודה",
+      "titleEn": "Installation and Setup",
+      "description": "התקנת Roblox Studio והגדרת סביבת העבודה הראשונה",
+      "duration": "15:00",
+      "videoUrl": "placeholder",
+      "order": 2,
+      "free": true,
+      "resources": []
+    },
+    {
+      "id": 3,
+      "title": "יסודות שפת Lua",
+      "titleEn": "Lua Basics",
+      "description": "הכרות עם שפת התכנות Lua - משתנים, טיפוסים ותחביר בסיסי",
+      "duration": "25:00",
+      "videoUrl": "placeholder",
+      "order": 3,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 4,
+      "title": "יצירת עולם משחק בסיסי",
+      "titleEn": "Creating a Basic Game World",
+      "description": "בניית עולם משחק ראשון עם קרקע, שמיים ואובייקטים בסיסיים",
+      "duration": "30:00",
+      "videoUrl": "placeholder",
+      "order": 4,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 5,
+      "title": "עבודה עם דמויות ושחקנים",
+      "titleEn": "Working with Characters and Players",
+      "description": "הוספת דמויות, שליטה בשחקן ותנועה",
+      "duration": "25:00",
+      "videoUrl": "placeholder",
+      "order": 5,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 6,
+      "title": "לולאות ותנאים ב-Lua",
+      "titleEn": "Loops and Conditions in Lua",
+      "description": "שימוש בלולאות for, while ותנאים if-else",
+      "duration": "30:00",
+      "videoUrl": "placeholder",
+      "order": 6,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 7,
+      "title": "יצירת מכניקות משחק",
+      "titleEn": "Creating Game Mechanics",
+      "description": "בניית מכניקות משחק כמו איסוף פריטים, ניקוד וחיים",
+      "duration": "35:00",
+      "videoUrl": "placeholder",
+      "order": 7,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 8,
+      "title": "ממשק משתמש (GUI)",
+      "titleEn": "User Interface (GUI)",
+      "description": "יצירת ממשק משתמש - כפתורים, תפריטים ותצוגת מידע",
+      "duration": "25:00",
+      "videoUrl": "placeholder",
+      "order": 8,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 9,
+      "title": "אפקטים קוליים וחזותיים",
+      "titleEn": "Sound and Visual Effects",
+      "description": "הוספת צלילים, מוזיקה ואפקטים חזותיים למשחק",
+      "duration": "20:00",
+      "videoUrl": "placeholder",
+      "order": 9,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 10,
+      "title": "משחק מרובה שחקנים",
+      "titleEn": "Multiplayer Game",
+      "description": "הוספת תמיכה במספר שחקנים ותקשורת ביניהם",
+      "duration": "35:00",
+      "videoUrl": "placeholder",
+      "order": 10,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 11,
+      "title": "תיקון באגים ובדיקות",
+      "titleEn": "Debugging and Testing",
+      "description": "איתור ותיקון שגיאות, בדיקות משחק",
+      "duration": "20:00",
+      "videoUrl": "placeholder",
+      "order": 11,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 12,
+      "title": "פרסום המשחק בחנות Roblox",
+      "titleEn": "Publishing to Roblox Store",
+      "description": "איך לפרסם את המשחק בחנות רובלוקס ולשתף עם חברים",
+      "duration": "15:00",
+      "videoUrl": "placeholder",
+      "order": 12,
+      "free": false,
+      "resources": []
+    }
+  ]
+}

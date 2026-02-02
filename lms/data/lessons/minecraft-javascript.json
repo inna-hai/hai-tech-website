@@ -1,0 +1,183 @@
+{
+  "courseId": "minecraft-javascript",
+  "courseTitle": "קורס מיינקראפט + JavaScript",
+  "lessonsCount": 16,
+  "lessons": [
+    {
+      "id": 1,
+      "title": "מבוא לקורס ולמיינקראפט",
+      "titleEn": "Introduction to the Course and Minecraft",
+      "description": "הכרות עם הקורס, מיינקראפט וחיבור התכנות למשחק",
+      "duration": "15:00",
+      "videoUrl": "placeholder",
+      "order": 1,
+      "free": true,
+      "resources": []
+    },
+    {
+      "id": 2,
+      "title": "התקנת סביבת העבודה",
+      "titleEn": "Setting Up the Environment",
+      "description": "התקנת הכלים הנדרשים והגדרת סביבת הפיתוח",
+      "duration": "18:00",
+      "videoUrl": "placeholder",
+      "order": 2,
+      "free": true,
+      "resources": []
+    },
+    {
+      "id": 3,
+      "title": "יסודות JavaScript - משתנים",
+      "titleEn": "JavaScript Basics - Variables",
+      "description": "הכרות עם משתנים וטיפוסי נתונים ב-JavaScript",
+      "duration": "20:00",
+      "videoUrl": "placeholder",
+      "order": 3,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 4,
+      "title": "פונקציות בסיסיות",
+      "titleEn": "Basic Functions",
+      "description": "יצירת פונקציות וקריאה להן",
+      "duration": "22:00",
+      "videoUrl": "placeholder",
+      "order": 4,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 5,
+      "title": "לולאות - For Loop",
+      "titleEn": "Loops - For Loop",
+      "description": "שימוש בלולאות לחזרה על פעולות",
+      "duration": "25:00",
+      "videoUrl": "placeholder",
+      "order": 5,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 6,
+      "title": "תנאים - If/Else",
+      "titleEn": "Conditions - If/Else",
+      "description": "קבלת החלטות בקוד עם תנאים",
+      "duration": "22:00",
+      "videoUrl": "placeholder",
+      "order": 6,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 7,
+      "title": "בניית מבנים פשוטים",
+      "titleEn": "Building Simple Structures",
+      "description": "בניית קירות ומבנים פשוטים עם קוד",
+      "duration": "25:00",
+      "videoUrl": "placeholder",
+      "order": 7,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 8,
+      "title": "בניית מבנים מורכבים",
+      "titleEn": "Building Complex Structures",
+      "description": "בניית בתים, מגדלים ומבנים מורכבים",
+      "duration": "30:00",
+      "videoUrl": "placeholder",
+      "order": 8,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 9,
+      "title": "משחק הזומבים - חלק א",
+      "titleEn": "Zombie Game - Part 1",
+      "description": "תכנון והתחלת בניית משחק הזומבים",
+      "duration": "28:00",
+      "videoUrl": "placeholder",
+      "order": 9,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 10,
+      "title": "משחק הזומבים - חלק ב",
+      "titleEn": "Zombie Game - Part 2",
+      "description": "השלמת משחק הזומבים והוספת מכניקות",
+      "duration": "30:00",
+      "videoUrl": "placeholder",
+      "order": 10,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 11,
+      "title": "משחק החץ וקשת - חלק א",
+      "titleEn": "Bow and Arrow Game - Part 1",
+      "description": "תכנון והתחלת בניית משחק החץ וקשת",
+      "duration": "28:00",
+      "videoUrl": "placeholder",
+      "order": 11,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 12,
+      "title": "משחק החץ וקשת - חלק ב",
+      "titleEn": "Bow and Arrow Game - Part 2",
+      "description": "השלמת משחק החץ וקשת",
+      "duration": "28:00",
+      "videoUrl": "placeholder",
+      "order": 12,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 13,
+      "title": "משחק הלבה",
+      "titleEn": "Lava Game",
+      "description": "בניית משחק הימנעות מלבה",
+      "duration": "30:00",
+      "videoUrl": "placeholder",
+      "order": 13,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 14,
+      "title": "פרויקט עצמאי - תכנון",
+      "titleEn": "Independent Project - Planning",
+      "description": "תכנון פרויקט עצמאי במיינקראפט",
+      "duration": "20:00",
+      "videoUrl": "placeholder",
+      "order": 14,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 15,
+      "title": "פרויקט עצמאי - מימוש",
+      "titleEn": "Independent Project - Implementation",
+      "description": "מימוש הפרויקט העצמאי",
+      "duration": "35:00",
+      "videoUrl": "placeholder",
+      "order": 15,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 16,
+      "title": "סיכום והמשך הדרך",
+      "titleEn": "Summary and Next Steps",
+      "description": "סיכום הקורס והכוונה להמשך הלמידה",
+      "duration": "15:00",
+      "videoUrl": "placeholder",
+      "order": 16,
+      "free": false,
+      "resources": []
+    }
+  ]
+}
