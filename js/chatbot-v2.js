@@ -555,42 +555,132 @@ class HaiTechChatbotV2 {
                 </svg>
             </button>
             
-            <div class="chatbot-window hidden" id="chatbot-window" dir="rtl">
-                <div class="chatbot-header">
-                    <div class="chatbot-header-info">
-                        <div class="chatbot-avatar">🤖</div>
-                        <div class="chatbot-header-text">
-                            <h3>דרך ההייטק</h3>
-                            <span class="chatbot-status">יועץ קורסים</span>
+            <div class="chatbot-window" id="chatbot-window" dir="rtl" style="
+                display: none;
+                position: fixed;
+                bottom: 230px;
+                left: 20px;
+                width: 350px;
+                max-width: calc(100vw - 40px);
+                height: 500px;
+                max-height: calc(100vh - 260px);
+                background: white;
+                border-radius: 16px;
+                box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+                flex-direction: column;
+                overflow: hidden;
+                z-index: 10000;
+                font-family: 'Heebo', sans-serif;
+            ">
+                <div class="chatbot-header" style="
+                    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+                    color: white;
+                    padding: 16px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                ">
+                    <div style="display:flex;align-items:center;gap:12px;">
+                        <div style="font-size:24px;">🤖</div>
+                        <div>
+                            <h3 style="margin:0;font-size:1rem;">דרך ההייטק</h3>
+                            <span style="font-size:0.8rem;opacity:0.9;">יועץ קורסים</span>
                         </div>
                     </div>
-                    <button class="chatbot-close" id="chatbot-close" aria-label="סגור">×</button>
+                    <button id="chatbot-close" style="
+                        background: none;
+                        border: none;
+                        color: white;
+                        font-size: 24px;
+                        cursor: pointer;
+                        padding: 4px 8px;
+                    ">×</button>
                 </div>
                 
-                <div class="chatbot-messages" id="chatbot-messages"></div>
+                <div id="chatbot-messages" style="
+                    flex: 1;
+                    overflow-y: auto;
+                    padding: 16px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+                "></div>
                 
-                <div class="chatbot-typing hidden" id="chatbot-typing">
-                    <div class="typing-indicator">
-                        <span></span><span></span><span></span>
+                <div id="chatbot-typing" style="display:none;padding:8px 16px;">
+                    <div style="display:flex;gap:4px;">
+                        <span style="width:8px;height:8px;background:#6366f1;border-radius:50%;animation:bounce 1s infinite;"></span>
+                        <span style="width:8px;height:8px;background:#6366f1;border-radius:50%;animation:bounce 1s infinite 0.2s;"></span>
+                        <span style="width:8px;height:8px;background:#6366f1;border-radius:50%;animation:bounce 1s infinite 0.4s;"></span>
                     </div>
                 </div>
                 
-                <div class="chatbot-quick-actions" id="chatbot-quick-actions">
-                    <button class="quick-action" data-action="courses">📚 הקורסים שלנו</button>
-                    <button class="quick-action" data-action="age">👶 גילאים מתאימים</button>
-                    <button class="quick-action" data-action="contact">📞 צור קשר</button>
+                <div style="padding:8px 16px;display:flex;flex-wrap:wrap;gap:8px;border-top:1px solid #eee;">
+                    <button class="quick-action" data-action="courses" style="
+                        padding: 8px 12px;
+                        border: 1px solid #e5e7eb;
+                        border-radius: 20px;
+                        background: white;
+                        cursor: pointer;
+                        font-size: 0.85rem;
+                    ">📚 הקורסים שלנו</button>
+                    <button class="quick-action" data-action="age" style="
+                        padding: 8px 12px;
+                        border: 1px solid #e5e7eb;
+                        border-radius: 20px;
+                        background: white;
+                        cursor: pointer;
+                        font-size: 0.85rem;
+                    ">👶 גילאים</button>
+                    <button class="quick-action" data-action="contact" style="
+                        padding: 8px 12px;
+                        border: 1px solid #e5e7eb;
+                        border-radius: 20px;
+                        background: white;
+                        cursor: pointer;
+                        font-size: 0.85rem;
+                    ">📞 צור קשר</button>
                 </div>
                 
-                <div class="chatbot-input-area">
-                    <input type="text" id="chatbot-input" placeholder="הקלידו את שאלתכם כאן..." autocomplete="off">
-                    <button id="chatbot-send" aria-label="שלח">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <div style="padding:12px 16px;border-top:1px solid #eee;display:flex;gap:8px;">
+                    <input type="text" id="chatbot-input" placeholder="הקלידו את שאלתכם כאן..." autocomplete="off" style="
+                        flex: 1;
+                        padding: 12px 16px;
+                        border: 1px solid #e5e7eb;
+                        border-radius: 24px;
+                        font-size: 1rem;
+                        outline: none;
+                    ">
+                    <button id="chatbot-send" style="
+                        width: 44px;
+                        height: 44px;
+                        border-radius: 50%;
+                        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+                        border: none;
+                        cursor: pointer;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    ">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" style="width:20px;height:20px;">
                             <line x1="22" y1="2" x2="11" y2="13"></line>
                             <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                         </svg>
                     </button>
                 </div>
             </div>
+            <style>
+                @keyframes bounce {
+                    0%, 100% { transform: translateY(0); }
+                    50% { transform: translateY(-5px); }
+                }
+                .message { max-width: 85%; }
+                .user-message { align-self: flex-start; }
+                .user-message .message-content { background: #6366f1; color: white; padding: 10px 14px; border-radius: 16px 16px 4px 16px; }
+                .bot-message { align-self: flex-end; display: flex; gap: 8px; flex-direction: row-reverse; }
+                .bot-message .message-content { background: #f3f4f6; color: #1f2937; padding: 10px 14px; border-radius: 16px 16px 16px 4px; }
+                .message-content p { margin: 0; line-height: 1.5; }
+                .message-avatar { font-size: 20px; }
+            </style>
         `;
         document.body.appendChild(container);
     }
@@ -644,25 +734,28 @@ class HaiTechChatbotV2 {
     
     open() {
         this.isOpen = true;
-        document.getElementById('chatbot-window').style.display = 'flex';
-        document.getElementById('chatbot-window').classList.remove('hidden');
+        const win = document.getElementById('chatbot-window');
+        win.style.display = 'flex';
         const chatIcon = document.getElementById('chatbot-toggle').querySelector('.chat-icon');
         const closeIcon = document.getElementById('chatbot-toggle').querySelector('.close-icon');
-        chatIcon.style.display = 'none';
-        closeIcon.style.display = 'block';
-        document.getElementById('chatbot-input').focus();
+        if (chatIcon) chatIcon.style.display = 'none';
+        if (closeIcon) closeIcon.style.display = 'block';
+        setTimeout(() => {
+            const input = document.getElementById('chatbot-input');
+            if (input) input.focus();
+        }, 100);
         this.resetInactivityTimer();
         console.log('Chatbot opened');
     }
     
     close() {
         this.isOpen = false;
-        document.getElementById('chatbot-window').style.display = 'none';
-        document.getElementById('chatbot-window').classList.add('hidden');
+        const win = document.getElementById('chatbot-window');
+        win.style.display = 'none';
         const chatIcon = document.getElementById('chatbot-toggle').querySelector('.chat-icon');
         const closeIcon = document.getElementById('chatbot-toggle').querySelector('.close-icon');
-        chatIcon.style.display = 'block';
-        closeIcon.style.display = 'none';
+        if (chatIcon) chatIcon.style.display = 'block';
+        if (closeIcon) closeIcon.style.display = 'none';
         console.log('Chatbot closed');
     }
     
@@ -691,13 +784,15 @@ class HaiTechChatbotV2 {
     
     showTyping() {
         this.isTyping = true;
-        document.getElementById('chatbot-typing').classList.remove('hidden');
+        const typing = document.getElementById('chatbot-typing');
+        if (typing) typing.style.display = 'block';
         this.scrollToBottom();
     }
     
     hideTyping() {
         this.isTyping = false;
-        document.getElementById('chatbot-typing').classList.add('hidden');
+        const typing = document.getElementById('chatbot-typing');
+        if (typing) typing.style.display = 'none';
     }
     
     scrollToBottom() {
