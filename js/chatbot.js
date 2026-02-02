@@ -10,6 +10,8 @@ class HaiTechChatbot {
         this.messages = [];
         this.isTyping = false;
         this.knowledgeBase = null;
+        this.sessionId = 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+        this.leadNotified = false;
         
         this.init();
     }
@@ -200,7 +202,7 @@ class HaiTechChatbot {
         toggle.querySelector('.close-icon').classList.add('hidden');
     }
 
-    sendMessage() {
+    async sendMessage() {
         const input = document.getElementById('chatbot-input');
         const message = input.value.trim();
         
@@ -213,12 +215,43 @@ class HaiTechChatbot {
         // Show typing indicator
         this.showTyping();
         
-        // Process and respond
-        setTimeout(() => {
+        try {
+            // Send to AI backend
+            const response = await fetch('/api/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    message: message,
+                    sessionId: this.sessionId
+                })
+            });
+            
+            const data = await response.json();
             this.hideTyping();
-            const response = this.getResponse(message);
-            this.addBotMessage(response);
-        }, 1000 + Math.random() * 500);
+            
+            if (data.response) {
+                this.addBotMessage(data.response);
+                
+                // Show success if lead was collected
+                if (data.leadCollected && !this.leadNotified) {
+                    this.leadNotified = true;
+                }
+            } else {
+                // Fallback to local response
+                const localResponse = this.getResponse(message);
+                if (localResponse) {
+                    this.addBotMessage(localResponse);
+                }
+            }
+        } catch (error) {
+            console.error('Chat API error:', error);
+            this.hideTyping();
+            // Fallback to local response
+            const localResponse = this.getResponse(message);
+            if (localResponse) {
+                this.addBotMessage(localResponse);
+            }
+        }
     }
 
     addUserMessage(text) {
