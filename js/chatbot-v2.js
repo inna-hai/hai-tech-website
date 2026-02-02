@@ -558,19 +558,19 @@ class HaiTechChatbotV2 {
             <div class="chatbot-window" id="chatbot-window" dir="rtl" style="
                 display: none;
                 position: fixed;
-                bottom: 230px;
-                left: 20px;
-                width: 350px;
-                max-width: calc(100vw - 40px);
-                height: 500px;
-                max-height: calc(100vh - 260px);
+                bottom: 80px;
+                right: 10px;
+                left: 10px;
+                width: auto;
+                height: 70vh;
                 background: white;
                 border-radius: 16px;
-                box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+                box-shadow: 0 10px 40px rgba(0,0,0,0.3);
                 flex-direction: column;
                 overflow: hidden;
-                z-index: 10000;
+                z-index: 99999;
                 font-family: 'Heebo', sans-serif;
+                border: 3px solid #6366f1;
             ">
                 <div class="chatbot-header" style="
                     background: linear-gradient(135deg, #6366f1, #8b5cf6);
@@ -700,7 +700,6 @@ class HaiTechChatbotV2 {
         const handleToggle = (e) => {
             e.preventDefault();
             e.stopPropagation();
-            alert('כפתור נלחץ!');
             this.toggle();
         };
         toggle.addEventListener('click', handleToggle);
@@ -729,38 +728,26 @@ class HaiTechChatbotV2 {
     }
     
     toggle() {
-        alert('Toggle: isOpen=' + this.isOpen);
         this.isOpen ? this.close() : this.open();
     }
     
     open() {
         this.isOpen = true;
         const win = document.getElementById('chatbot-window');
-        alert('Window element: ' + (win ? 'found' : 'NOT FOUND'));
         if (win) {
             win.style.display = 'flex';
-            alert('Window should be visible now');
         }
-        const chatIcon = document.getElementById('chatbot-toggle').querySelector('.chat-icon');
-        const closeIcon = document.getElementById('chatbot-toggle').querySelector('.close-icon');
-        if (chatIcon) chatIcon.style.display = 'none';
-        if (closeIcon) closeIcon.style.display = 'block';
-        setTimeout(() => {
-            const input = document.getElementById('chatbot-input');
-            if (input) input.focus();
-        }, 100);
+        const toggle = document.getElementById('chatbot-toggle');
+        if (toggle) toggle.style.display = 'none';
         this.resetInactivityTimer();
     }
     
     close() {
         this.isOpen = false;
         const win = document.getElementById('chatbot-window');
-        win.style.display = 'none';
-        const chatIcon = document.getElementById('chatbot-toggle').querySelector('.chat-icon');
-        const closeIcon = document.getElementById('chatbot-toggle').querySelector('.close-icon');
-        if (chatIcon) chatIcon.style.display = 'block';
-        if (closeIcon) closeIcon.style.display = 'none';
-        console.log('Chatbot closed');
+        if (win) win.style.display = 'none';
+        const toggle = document.getElementById('chatbot-toggle');
+        if (toggle) toggle.style.display = 'flex';
     }
     
     addUserMessage(text) {
