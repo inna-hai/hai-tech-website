@@ -874,6 +874,10 @@
         </div>
     </footer>
 
+    <!-- Lead Automation & Analytics Scripts -->
+    <script src="js/analytics.js"></script>
+    <script src="js/lead-automation.js"></script>
+    
     <script>
         // Initialize Lucide icons
         lucide.createIcons();
@@ -897,12 +901,69 @@
             });
         });
 
-        // Form submission (placeholder)
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('תודה! נחזור אליכם בהקדם.');
+        // Re-initialize Lucide icons after popup is shown (for dynamic content)
+        document.addEventListener('click', function() {
+            setTimeout(() => lucide.createIcons(), 100);
         });
     </script>
+    
+    <!-- Exit Intent Popup -->
+    <div id="exitPopup" class="popup-overlay" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+        <div class="popup-container">
+            <button class="popup-close" aria-label="סגור חלון">&times;</button>
+            
+            <div class="popup-content">
+                <div class="popup-icon">
+                    <i data-lucide="gift"></i>
+                </div>
+                
+                <h2 id="popupTitle" class="popup-title">רגע! 🎁</h2>
+                <p class="popup-subtitle">לפני שעוזבים...</p>
+                
+                <div class="popup-offer">
+                    <span class="offer-badge">🎯 הזדמנות מיוחדת</span>
+                    <h3>שיעור ניסיון חינם!</h3>
+                    <p>השאירו פרטים ונציג יחזור אליכם<br>לתאם שיעור היכרות ללא התחייבות</p>
+                </div>
+
+                <form id="popupForm" class="popup-form">
+                    <div class="popup-form-group">
+                        <input 
+                            type="text" 
+                            name="popup-name" 
+                            placeholder="שם ההורה" 
+                            required
+                            autocomplete="name"
+                        >
+                    </div>
+                    <div class="popup-form-group">
+                        <input 
+                            type="tel" 
+                            name="popup-phone" 
+                            placeholder="טלפון נייד" 
+                            required
+                            autocomplete="tel"
+                            dir="ltr"
+                        >
+                    </div>
+                    <button type="submit" class="popup-submit-btn">
+                        <i data-lucide="send"></i>
+                        שלחו לי פרטים
+                    </button>
+                </form>
+
+                <div class="popup-trust">
+                    <span><i data-lucide="shield-check"></i> ללא התחייבות</span>
+                    <span><i data-lucide="lock"></i> פרטיות מובטחת</span>
+                </div>
+
+                <a href="https://wa.me/972533009742?text=היי, מעוניינים בשיעור ניסיון חינם" class="popup-whatsapp" target="_blank">
+                    <i data-lucide="message-circle"></i>
+                    או דברו איתנו ישירות בוואטסאפ
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- Floating WhatsApp Button -->
     <a href="https://wa.me/972533009742" class="whatsapp-float" target="_blank" aria-label="שלחו הודעה בוואטסאפ">
