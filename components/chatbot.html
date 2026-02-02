@@ -1,0 +1,173 @@
+<!--
+  AI Chatbot Widget HTML Component
+  דרך ההייטק - Chatbot Widget
+  
+  This file can be included via JavaScript injection or server-side includes.
+  The main chatbot.js file creates this structure dynamically,
+  but this serves as a reference and for static integration.
+-->
+
+<!-- Chatbot Container -->
+<div id="chatbot-container">
+    
+    <!-- Floating Chat Button -->
+    <button class="chatbot-toggle" id="chatbot-toggle" aria-label="פתח צ'אט" aria-haspopup="dialog">
+        <!-- Chat Icon (default state) -->
+        <svg class="chat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        
+        <!-- Close Icon (when chat is open) -->
+        <svg class="close-icon hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+        
+        <!-- Notification Badge -->
+        <span class="chatbot-badge" aria-hidden="true">💬</span>
+    </button>
+
+    <!-- Chat Window -->
+    <div class="chatbot-window hidden" id="chatbot-window" role="dialog" aria-labelledby="chatbot-title" dir="rtl">
+        
+        <!-- Header -->
+        <div class="chatbot-header">
+            <div class="chatbot-header-info">
+                <div class="chatbot-avatar" aria-hidden="true">🤖</div>
+                <div class="chatbot-header-text">
+                    <h3 id="chatbot-title">דרך ההייטק</h3>
+                    <span class="chatbot-status">מוכן לעזור</span>
+                </div>
+            </div>
+            <button class="chatbot-close" id="chatbot-close" aria-label="סגור צ'אט">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Messages Container -->
+        <div class="chatbot-messages" id="chatbot-messages" role="log" aria-live="polite" aria-label="היסטוריית הודעות">
+            
+            <!-- Welcome Message (example) -->
+            <div class="message bot-message">
+                <div class="message-avatar" aria-hidden="true">🤖</div>
+                <div class="message-content">
+                    <p>שלום! 👋 אני הצ'אטבוט של דרך ההייטק. איך אוכל לעזור לכם היום?</p>
+                </div>
+            </div>
+            
+            <!-- User Message Example -->
+            <!--
+            <div class="message user-message">
+                <div class="message-content">
+                    <p>מה הקורסים שלכם?</p>
+                </div>
+            </div>
+            -->
+            
+            <!-- Bot Message with Course Cards Example -->
+            <!--
+            <div class="message bot-message">
+                <div class="message-avatar">🤖</div>
+                <div class="message-content">
+                    <p>🎮 יש לנו 12 קורסים מגניבים! הנה כמה מהם:</p>
+                    <div class="chatbot-courses">
+                        <div class="chatbot-course-card">
+                            <span class="course-emoji">⛏️</span>
+                            <div class="course-info">
+                                <strong>JavaScript במיינקראפט</strong>
+                                <small>גיל 10-13 | JavaScript</small>
+                            </div>
+                        </div>
+                        <div class="chatbot-course-card">
+                            <span class="course-emoji">🎮</span>
+                            <div class="course-info">
+                                <strong>רובלוקס עם Lua</strong>
+                                <small>גיל 10+ | Lua</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chatbot-buttons">
+                        <a href="#courses" class="chatbot-btn">לכל הקורסים ←</a>
+                    </div>
+                </div>
+            </div>
+            -->
+            
+        </div>
+
+        <!-- Typing Indicator -->
+        <div class="chatbot-typing hidden" id="chatbot-typing" aria-label="הבוט מקליד">
+            <div class="typing-indicator">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <!-- Quick Action Buttons -->
+        <div class="chatbot-quick-actions" id="chatbot-quick-actions">
+            <button class="quick-action-btn" data-action="courses" type="button">
+                📚 הקורסים שלנו
+            </button>
+            <button class="quick-action-btn" data-action="prices" type="button">
+                💰 מחירים
+            </button>
+            <button class="quick-action-btn" data-action="ages" type="button">
+                👶 גילאים מתאימים
+            </button>
+            <button class="quick-action-btn" data-action="contact" type="button">
+                📞 צור קשר
+            </button>
+        </div>
+
+        <!-- Input Area -->
+        <div class="chatbot-input-area">
+            <label for="chatbot-input" class="visually-hidden">הקלידו את שאלתכם</label>
+            <input 
+                type="text" 
+                id="chatbot-input" 
+                class="chatbot-input" 
+                placeholder="הקלידו את שאלתכם כאן..."
+                autocomplete="off"
+                aria-label="הקלידו את שאלתכם כאן"
+            >
+            <button class="chatbot-send" id="chatbot-send" type="button" aria-label="שלח הודעה">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Footer -->
+        <div class="chatbot-footer">
+            <span>לשירות אישי: </span>
+            <a href="https://wa.me/972533009742" target="_blank" rel="noopener noreferrer">
+                דברו איתנו בוואטסאפ
+            </a>
+        </div>
+        
+    </div>
+    
+</div>
+
+<!-- 
+  Visually Hidden Class for Accessibility 
+  (Add to main CSS if not present)
+-->
+<style>
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+</style>
