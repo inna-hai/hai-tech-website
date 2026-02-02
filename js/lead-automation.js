@@ -11,8 +11,8 @@ const LeadAutomation = {
         formId: 'contactForm',
         popupDelay: 5000, // 5 seconds
         exitIntentEnabled: true,
-        // CRM API Configuration
-        apiEndpoint: 'https://18f95599f0b7.ngrok-free.app/api/webhook/leads',
+        // CRM API Configuration (via proxy to bypass CORS)
+        apiEndpoint: 'http://129.159.135.204:8081/lead',
         apiKey: 'haitech-crm-api-key-2026'
     },
 
@@ -52,7 +52,7 @@ const LeadAutomation = {
         return `https://wa.me/${this.config.whatsappNumber}?text=${message}`;
     },
 
-    // Send lead to CRM API
+    // Send lead to CRM API (via proxy server)
     async sendToCRM(lead) {
         try {
             const crmData = {
@@ -61,20 +61,14 @@ const LeadAutomation = {
                 email: lead.email || '',
                 notes: lead.message || lead.subject || '',
                 source: 'website',
-                city: '',
-                apiKey: this.config.apiKey // Include API key in body as backup
+                city: ''
             };
 
-            // Add API key as query parameter for CORS compatibility
-            const url = `${this.config.apiEndpoint}?apiKey=${encodeURIComponent(this.config.apiKey)}`;
-
-            const response = await fetch(url, {
+            const response = await fetch(this.config.apiEndpoint, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
-                    'X-API-Key': this.config.apiKey
+                    'Content-Type': 'application/json'
                 },
-                mode: 'cors',
                 body: JSON.stringify(crmData)
             });
 
