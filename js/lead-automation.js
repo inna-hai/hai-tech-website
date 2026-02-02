@@ -55,13 +55,24 @@ const LeadAutomation = {
     // Send lead to CRM API (via proxy server)
     async sendToCRM(lead) {
         try {
+            // Build notes with all relevant info
+            let notes = [];
+            if (lead.subject) notes.push(`מתעניינים ב: ${lead.subject}`);
+            if (lead.message) notes.push(`הודעה: ${lead.message}`);
+            
             const crmData = {
                 name: lead.name,
                 phone: lead.phone || '',
                 email: lead.email || '',
-                notes: lead.message || lead.subject || '',
+                notes: notes.join('\n'),
                 source: 'website',
-                city: ''
+                city: '',
+                // Add student info
+                students: lead.childName ? [{
+                    name: lead.childName,
+                    birthDate: lead.childAge ? this.calculateBirthYear(lead.childAge) : '',
+                    grade: ''
+                }] : []
             };
 
             const response = await fetch(this.config.apiEndpoint, {
@@ -84,6 +95,13 @@ const LeadAutomation = {
             console.error('Error sending to CRM:', error);
             return false;
         }
+    },
+
+    // Calculate approximate birth year from age
+    calculateBirthYear(age) {
+        const currentYear = new Date().getFullYear();
+        const birthYear = currentYear - parseInt(age);
+        return `${birthYear}-01-01`;
     },
 
     // Save lead to localStorage and CRM
@@ -176,13 +194,15 @@ const LeadAutomation = {
                 name: formData.get('name')?.trim(),
                 phone: formData.get('phone')?.trim(),
                 email: formData.get('email')?.trim(),
+                childName: formData.get('childName')?.trim(),
+                childAge: formData.get('childAge'),
                 subject: formData.get('subject'),
                 message: formData.get('message')?.trim()
             };
 
             // Validation
             if (!lead.name) {
-                this.showError('נא להזין שם מלא', form.querySelector('#name'));
+                this.showError('נא להזין שם ההורה', form.querySelector('#name'));
                 return;
             }
 
@@ -193,6 +213,11 @@ const LeadAutomation = {
 
             if (!this.validatePhone(lead.phone)) {
                 this.showError('מספר הטלפון אינו תקין', form.querySelector('#phone'));
+                return;
+            }
+
+            if (!lead.email) {
+                this.showError('נא להזין אימייל', form.querySelector('#email'));
                 return;
             }
 

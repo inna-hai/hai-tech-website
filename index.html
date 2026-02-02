@@ -809,7 +809,7 @@
                 <form class="contact-form" id="contactForm">
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="name">שם מלא *</label>
+                            <label for="name">שם ההורה *</label>
                             <input type="text" id="name" name="name" required placeholder="השם שלכם">
                         </div>
                         <div class="form-group">
@@ -818,8 +818,32 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="email">אימייל</label>
-                        <input type="email" id="email" name="email" placeholder="email@example.com">
+                        <label for="email">אימייל *</label>
+                        <input type="email" id="email" name="email" required placeholder="email@example.com">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="childName">שם הילד/ה *</label>
+                            <input type="text" id="childName" name="childName" required placeholder="שם הילד/ה">
+                        </div>
+                        <div class="form-group">
+                            <label for="childAge">גיל הילד/ה *</label>
+                            <select id="childAge" name="childAge" required>
+                                <option value="">בחרו גיל</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="subject">מתעניינים ב:</label>
@@ -833,7 +857,7 @@
                     </div>
                     <div class="form-group">
                         <label for="message">הודעה</label>
-                        <textarea id="message" name="message" rows="4" placeholder="ספרו לנו קצת על הילד/ה ומה מחפשים..."></textarea>
+                        <textarea id="message" name="message" rows="3" placeholder="שאלות או הערות נוספות..."></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary btn-full">
                         <i data-lucide="send" class="icon-sm"></i>
