@@ -17,7 +17,7 @@
     <style>
         .locations-hero {
             background: linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%);
-            padding: 140px 20px 80px;
+            padding: 120px 20px 80px;
             text-align: center;
             color: white;
         }
@@ -272,14 +272,6 @@
     </style>
 </head>
 <body>
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <div class="container">
-            <span><i data-lucide="graduation-cap" class="icon-sm"></i> תלמידים רשומים? </span>
-            <a href="https://haitechdigitalcourses.hai.tech" target="_blank">לחצו כאן לכניסה לקורסים שלכם <i data-lucide="arrow-left" class="icon-xs"></i></a>
-        </div>
-    </div>
-
     <!-- Navigation -->
     <nav class="navbar" role="navigation" aria-label="תפריט ראשי">
         <div class="container">
@@ -486,6 +478,19 @@
 
     <script>
         lucide.createIcons();
+        
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (mobileMenuBtn && navLinks) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                mobileMenuBtn.classList.toggle('active');
+                const isExpanded = navLinks.classList.contains('active');
+                mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
+            });
+        }
     </script>
 </body>
 </html>
