@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>קטלוג קורסים | HAI Tech Academy</title>
+    <link rel="stylesheet" href="css/lms.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="catalog-page">
+    <nav class="lms-navbar">
+        <div class="navbar-brand">
+            <a href="../index.html">
+                <img src="../images/logo.png" alt="HAI Tech Academy" class="navbar-logo">
+            </a>
+        </div>
+        <div class="navbar-menu">
+            <a href="index.html" class="nav-link">הקורסים שלי</a>
+            <a href="catalog.html" class="nav-link active">קטלוג קורסים</a>
+            <a href="profile.html#certificates" class="nav-link">תעודות</a>
+        </div>
+        <div class="navbar-user">
+            <div class="user-dropdown">
+                <button class="user-btn" id="userDropdownBtn">
+                    <div class="user-avatar" id="userAvatar">א</div>
+                    <span class="user-name" id="userName">אורח</span>
+                </button>
+                <div class="dropdown-menu">
+                    <a href="profile.html" class="dropdown-item">הפרופיל שלי</a>
+                    <a href="profile.html#settings" class="dropdown-item">הגדרות</a>
+                    <hr>
+                    <button class="dropdown-item" onclick="LMS.logout()">התנתק</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <main class="catalog-main">
+        <section class="catalog-hero">
+            <div class="hero-content">
+                <h1>גלה את הקורסים שלנו</h1>
+                <p>למעלה מ-50 קורסים מקצועיים בתחומי AI, Data Science ו-Machine Learning</p>
+                
+                <div class="search-container">
+                    <div class="search-box">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        <input type="text" id="searchInput" placeholder="חפש קורס..." aria-label="חיפוש קורסים">
+                        <button class="search-clear" id="searchClear" style="display:none" aria-label="נקה חיפוש">×</button>
+                    </div>
+                </div>
+                
+                <div class="quick-filters">
+                    <button class="quick-filter active" data-filter="all">הכל</button>
+                    <button class="quick-filter" data-filter="new">חדש 🆕</button>
+                    <button class="quick-filter" data-filter="popular">פופולרי 🔥</button>
+                    <button class="quick-filter" data-filter="free">חינם</button>
+                </div>
+            </div>
+        </section>
+        
+        <div class="catalog-content">
+            <aside class="filters-sidebar" id="filtersSidebar">
+                <div class="filters-header">
+                    <h2>סינון</h2>
+                    <button class="clear-filters" id="clearFilters">נקה הכל</button>
+                </div>
+                
+                <div class="filter-group">
+                    <h3 class="filter-title">קטגוריה</h3>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <input type="checkbox" name="category" value="ai">
+                            <span class="checkbox-custom"></span>
+                            <span class="option-label">בינה מלאכותית (AI)</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="category" value="ml">
+                            <span class="checkbox-custom"></span>
+                            <span class="option-label">Machine Learning</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="category" value="data-science">
+                            <span class="checkbox-custom"></span>
+                            <span class="option-label">Data Science</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="category" value="python">
+                            <span class="checkbox-custom"></span>
+                            <span class="option-label">Python</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <h3 class="filter-title">רמת קושי</h3>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <input type="checkbox" name="level" value="beginner">
+                            <span class="checkbox-custom"></span>
+                            <span class="option-label">מתחיל</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="level" value="intermediate">
+                            <span class="checkbox-custom"></span>
+                            <span class="option-label">בינוני</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="level" value="advanced">
+                            <span class="checkbox-custom"></span>
+                            <span class="option-label">מתקדם</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <h3 class="filter-title">מחיר</h3>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <input type="checkbox" name="price" value="free">
+                            <span class="checkbox-custom"></span>
+                            <span class="option-label">חינם</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="price" value="paid">
+                            <span class="checkbox-custom"></span>
+                            <span class="option-label">בתשלום</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary apply-filters" id="applyFilters">החל סינון</button>
+            </aside>
+            
+            <button class="mobile-filter-btn" id="mobileFilterBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                </svg>
+                סינון
+            </button>
+            
+            <section class="courses-section">
+                <div class="courses-header">
+                    <span id="resultsCount">12 קורסים</span>
+                    <div class="sort-container">
+                        <label for="sortSelect">מיון:</label>
+                        <select id="sortSelect">
+                            <option value="popular">פופולריות</option>
+                            <option value="newest">חדש ביותר</option>
+                            <option value="rating">דירוג</option>
+                            <option value="price-low">מחיר: נמוך לגבוה</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="no-results" id="noResults" style="display:none">
+                    <h3>לא נמצאו תוצאות</h3>
+                    <p>נסה לשנות את מונחי החיפוש או הסרת סינונים</p>
+                    <button class="btn btn-outline" id="clearSearch">נקה חיפוש</button>
+                </div>
+                
+                <div class="courses-grid" id="coursesGrid"></div>
+                
+                <div class="load-more-container" id="loadMoreContainer">
+                    <button class="btn btn-outline" id="loadMoreBtn">טען עוד קורסים</button>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <div class="filter-overlay" id="filterOverlay"></div>
+    
+    <script src="js/lms.js"></script>
+    <script>
+        const Catalog = {
+            courses: [
+                { id: 'course_1', title: 'מבוא ל-Machine Learning', description: 'למד את היסודות של למידת מכונה', image: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', category: 'ml', level: 'beginner', price: 199, duration: 6, lessons: 12, rating: 4.8, students: 1234, badge: 'חדש', isNew: true, isPopular: true },
+                { id: 'course_2', title: 'Python למתחילים', description: 'שפת התכנות הפופולרית ביותר ל-AI', image: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)', category: 'python', level: 'beginner', price: 149, duration: 10, lessons: 20, rating: 4.9, students: 2567, badge: 'פופולרי', isNew: false, isPopular: true },
+                { id: 'course_3', title: 'Deep Learning מתקדם', description: 'רשתות נוירונים ו-Transformers', image: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)', category: 'ai', level: 'advanced', price: 349, duration: 15, lessons: 25, rating: 4.7, students: 876, badge: null, isNew: false, isPopular: false },
+                { id: 'course_4', title: 'Data Science עם Pandas', description: 'ניתוח נתונים מקצועי', image: 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)', category: 'data-science', level: 'intermediate', price: 0, duration: 4, lessons: 8, rating: 4.6, students: 3421, badge: 'חינם', isNew: false, isPopular: true },
+                { id: 'course_5', title: 'AI לילדים', description: 'למידת בינה מלאכותית בדרך כיפית', image: 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)', category: 'ai', level: 'beginner', price: 99, duration: 3, lessons: 10, rating: 4.9, students: 567, badge: 'לילדים', isNew: true, isPopular: false },
+                { id: 'course_6', title: 'NLP - עיבוד שפה טבעית', description: 'בנה צ\'אטבוטים ומערכות הבנת טקסט', image: 'linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)', category: 'ai', level: 'intermediate', price: 249, duration: 8, lessons: 16, rating: 4.5, students: 432, badge: 'חדש', isNew: true, isPopular: false }
+            ],
+            filteredCourses: [],
+            filters: { search: '', categories: [], levels: [], prices: [], quickFilter: 'all' },
+            
+            init() {
+                this.filteredCourses = [...this.courses];
+                this.renderCourses();
+                this.setupSearch();
+                this.setupFilters();
+                this.setupSort();
+                this.updateUserInfo();
+            },
+            
+            setupSearch() {
+                const searchInput = document.getElementById('searchInput');
+                const searchClear = document.getElementById('searchClear');
+                
+                searchInput?.addEventListener('input', (e) => {
+                    const query = e.target.value.trim();
+                    searchClear.style.display = query ? 'block' : 'none';
+                    this.filters.search = query;
+                    this.applyFilters();
+                });
+                
+                searchClear?.addEventListener('click', () => {
+                    searchInput.value = '';
+                    searchClear.style.display = 'none';
+                    this.filters.search = '';
+                    this.applyFilters();
+                });
+            },
+            
+            setupFilters() {
+                document.querySelectorAll('.quick-filter').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        document.querySelectorAll('.quick-filter').forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        this.filters.quickFilter = btn.dataset.filter;
+                        this.applyFilters();
+                    });
+                });
+                
+                document.querySelectorAll('input[type="checkbox"][name]').forEach(checkbox => {
+                    checkbox.addEventListener('change', () => {
+                        this.updateFiltersFromInputs();
+                        this.applyFilters();
+                    });
+                });
+                
+                document.getElementById('clearFilters')?.addEventListener('click', () => {
+                    document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+                    this.filters = { search: '', categories: [], levels: [], prices: [], quickFilter: 'all' };
+                    document.querySelectorAll('.quick-filter').forEach(b => b.classList.remove('active'));
+                    document.querySelector('.quick-filter[data-filter="all"]')?.classList.add('active');
+                    this.applyFilters();
+                });
+                
+                document.getElementById('mobileFilterBtn')?.addEventListener('click', () => {
+                    document.getElementById('filtersSidebar').classList.add('visible');
+                    document.getElementById('filterOverlay').classList.add('visible');
+                });
+                
+                document.getElementById('filterOverlay')?.addEventListener('click', () => {
+                    document.getElementById('filtersSidebar').classList.remove('visible');
+                    document.getElementById('filterOverlay').classList.remove('visible');
+                });
+                
+                document.getElementById('applyFilters')?.addEventListener('click', () => {
+                    document.getElementById('filtersSidebar').classList.remove('visible');
+                    document.getElementById('filterOverlay').classList.remove('visible');
+                });
+            },
+            
+            updateFiltersFromInputs() {
+                this.filters.categories = Array.from(document.querySelectorAll('input[name="category"]:checked')).map(i => i.value);
+                this.filters.levels = Array.from(document.querySelectorAll('input[name="level"]:checked')).map(i => i.value);
+                this.filters.prices = Array.from(document.querySelectorAll('input[name="price"]:checked')).map(i => i.value);
+            },
+            
+            applyFilters() {
+                let results = [...this.courses];
+                
+                if (this.filters.search) {
+                    const query = this.filters.search.toLowerCase();
+                    results = results.filter(c => c.title.toLowerCase().includes(query) || c.description.toLowerCase().includes(query));
+                }
+                
+                if (this.filters.quickFilter !== 'all') {
+                    switch (this.filters.quickFilter) {
+                        case 'new': results = results.filter(c => c.isNew); break;
+                        case 'popular': results = results.filter(c => c.isPopular); break;
+                        case 'free': results = results.filter(c => c.price === 0); break;
+                    }
+                }
+                
+                if (this.filters.categories.length > 0) results = results.filter(c => this.filters.categories.includes(c.category));
+                if (this.filters.levels.length > 0) results = results.filter(c => this.filters.levels.includes(c.level));
+                if (this.filters.prices.length > 0) {
+                    results = results.filter(c => {
+                        if (this.filters.prices.includes('free') && c.price === 0) return true;
+                        if (this.filters.prices.includes('paid') && c.price > 0) return true;
+                        return false;
+                    });
+                }
+                
+                this.filteredCourses = results;
+                this.renderCourses();
+            },
+            
+            setupSort() {
+                document.getElementById('sortSelect')?.addEventListener('change', (e) => {
+                    const sortBy = e.target.value;
+                    switch (sortBy) {
+                        case 'popular': this.filteredCourses.sort((a, b) => b.students - a.students); break;
+                        case 'newest': this.filteredCourses.sort((a, b) => (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0)); break;
+                        case 'rating': this.filteredCourses.sort((a, b) => b.rating - a.rating); break;
+                        case 'price-low': this.filteredCourses.sort((a, b) => a.price - b.price); break;
+                    }
+                    this.renderCourses();
+                });
+            },
+            
+            renderCourses() {
+                const grid = document.getElementById('coursesGrid');
+                const noResults = document.getElementById('noResults');
+                
+                document.getElementById('resultsCount').textContent = `${this.filteredCourses.length} קורסים`;
+                
+                if (this.filteredCourses.length === 0) {
+                    grid.innerHTML = '';
+                    noResults.style.display = 'flex';
+                    return;
+                }
+                
+                noResults.style.display = 'none';
+                grid.innerHTML = this.filteredCourses.map(course => {
+                    const levelLabels = { beginner: 'מתחיל', intermediate: 'בינוני', advanced: 'מתקדם' };
+                    return `
+                        <div class="course-card" data-course-id="${course.id}">
+                            <div class="course-image" style="background: ${course.image};">
+                                ${course.badge ? `<span class="course-badge">${course.badge}</span>` : ''}
+                            </div>
+                            <div class="course-content">
+                                <div class="course-level">${levelLabels[course.level] || course.level}</div>
+                                <h3 class="course-title">${course.title}</h3>
+                                <p class="course-description">${course.description}</p>
+                                <div class="course-stats">
+                                    <span class="rating">⭐ ${course.rating}</span>
+                                    <span class="students">(${course.students.toLocaleString('he-IL')})</span>
+                                </div>
+                                <div class="course-meta">
+                                    <span>${course.lessons} שיעורים</span>
+                                    <span>${course.duration} שעות</span>
+                                </div>
+                                <div class="course-footer">
+                                    <div class="course-price">
+                                        <span class="price">${course.price === 0 ? 'חינם' : `₪${course.price}`}</span>
+                                    </div>
+                                    <a href="course.html?id=${course.id}" class="btn btn-primary btn-sm">לפרטים</a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            },
+            
+            updateUserInfo() {
+                const user = LMS.getCurrentUser();
+                document.getElementById('userName').textContent = user.name || 'אורח';
+                document.getElementById('userAvatar').textContent = user.avatar || user.name?.charAt(0) || 'א';
+            }
+        };
+        
+        document.addEventListener('DOMContentLoaded', () => Catalog.init());
+    </script>
+</body>
+</html>

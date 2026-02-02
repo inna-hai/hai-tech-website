@@ -10,46 +10,103 @@
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="dashboard-page">
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    
     <nav class="lms-navbar">
         <div class="navbar-brand">
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="תפריט">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
             <a href="../index.html">
                 <img src="../images/logo.png" alt="HAI Tech Academy" class="navbar-logo">
             </a>
         </div>
-        <div class="navbar-menu">
+        <div class="navbar-menu" id="navbarMenu">
             <a href="index.html" class="nav-link active">הקורסים שלי</a>
-            <a href="#" class="nav-link">קטלוג קורסים</a>
-            <a href="#" class="nav-link">תעודות</a>
+            <a href="catalog.html" class="nav-link">קטלוג קורסים</a>
+            <a href="profile.html#certificates" class="nav-link">תעודות</a>
         </div>
         <div class="navbar-user">
-            <button class="notification-btn" aria-label="התראות">
+            <button class="notification-btn" id="notificationBtn" aria-label="התראות" aria-expanded="false">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
                     <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
                 </svg>
-                <span class="notification-badge">2</span>
+                <span class="notification-badge" id="notificationBadge" style="display:none">0</span>
             </button>
+            
+            <!-- Notifications Panel -->
+            <div class="notifications-panel" id="notificationsPanel" role="dialog" aria-label="התראות">
+                <div class="notifications-header">
+                    <h3>התראות</h3>
+                    <button class="mark-all-read" id="markAllRead">סמן הכל כנקרא</button>
+                </div>
+                <div class="notifications-list" id="notificationsList">
+                    <div class="notification-empty">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                        </svg>
+                        <p>אין התראות חדשות</p>
+                    </div>
+                </div>
+            </div>
+            
             <div class="user-dropdown">
-                <button class="user-btn">
+                <button class="user-btn" id="userDropdownBtn" aria-expanded="false">
                     <div class="user-avatar" id="userAvatar">א</div>
                     <span class="user-name" id="userName">אורח</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
                 </button>
-                <div class="dropdown-menu">
-                    <a href="#" class="dropdown-item">הפרופיל שלי</a>
-                    <a href="#" class="dropdown-item">הגדרות</a>
+                <div class="dropdown-menu" id="userDropdownMenu">
+                    <a href="profile.html" class="dropdown-item">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        הפרופיל שלי
+                    </a>
+                    <a href="profile.html#settings" class="dropdown-item">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                        </svg>
+                        הגדרות
+                    </a>
                     <hr>
-                    <a href="#" class="dropdown-item" onclick="LMS.logout()">התנתק</a>
+                    <button class="dropdown-item logout-btn" onclick="LMS.logout()">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                        התנתק
+                    </button>
                 </div>
             </div>
         </div>
     </nav>
     
     <main class="dashboard-main">
-        <aside class="dashboard-sidebar">
+        <aside class="dashboard-sidebar" id="dashboardSidebar">
+            <button class="close-sidebar" id="closeSidebar" aria-label="סגור תפריט">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            
             <div class="profile-card">
                 <div class="profile-avatar" id="profileAvatar">א</div>
                 <h3 class="profile-name" id="profileName">אורח</h3>
-                <p class="profile-level">רמת מתחיל</p>
+                <p class="profile-level" id="profileLevel">רמת מתחיל</p>
                 <div class="profile-stats">
                     <div class="stat">
                         <span class="stat-value" id="coursesCount">0</span>
@@ -72,117 +129,148 @@
                     <span class="streak-count" id="streakCount">0</span>
                     <span class="streak-label">ימים רצופים</span>
                 </div>
+                <div class="streak-calendar" id="streakCalendar">
+                    <!-- Filled by JS -->
+                </div>
             </div>
             
-            <nav class="sidebar-nav">
-                <a href="#" class="sidebar-link active">
+            <nav class="sidebar-nav" aria-label="ניווט ראשי">
+                <a href="index.html" class="sidebar-link active" aria-current="page">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                     </svg>
                     דף הבית
                 </a>
-                <a href="#" class="sidebar-link">
+                <a href="catalog.html" class="sidebar-link">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
                         <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
                     </svg>
                     כל הקורסים
                 </a>
-                <a href="#" class="sidebar-link">
+                <a href="#" class="sidebar-link" id="historyLink">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="12" r="10"></circle>
                         <polyline points="12 6 12 12 16 14"></polyline>
                     </svg>
                     היסטוריה
                 </a>
-                <a href="#" class="sidebar-link">
+                <a href="#" class="sidebar-link" id="savedLink">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
                     </svg>
                     שמורים
                 </a>
+                <a href="profile.html#certificates" class="sidebar-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="8" r="7"></circle>
+                        <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                    </svg>
+                    התעודות שלי
+                </a>
             </nav>
+            
+            <!-- Recent Activity -->
+            <div class="recent-activity">
+                <h4>פעילות אחרונה</h4>
+                <div class="activity-list" id="activityList">
+                    <div class="activity-empty">
+                        <p>עדיין אין פעילות</p>
+                    </div>
+                </div>
+            </div>
         </aside>
         
         <section class="dashboard-content">
-            <header class="content-header">
-                <h1>הקורסים שלי</h1>
-                <p>המשך מאיפה שהפסקת</p>
-            </header>
-            
-            <div class="continue-learning" id="continueSection" style="display: none;">
-                <h2>המשך ללמוד</h2>
-                <div class="continue-card" id="continueCard">
-                    <!-- Populated by JS -->
-                </div>
+            <!-- Loading State -->
+            <div class="dashboard-loading" id="dashboardLoading">
+                <div class="loading-spinner"></div>
+                <p>טוען את הקורסים שלך...</p>
             </div>
             
-            <div class="courses-section">
-                <div class="section-header">
-                    <h2>הקורסים שלי</h2>
-                    <div class="filter-tabs">
-                        <button class="filter-tab active" data-filter="all">הכל</button>
-                        <button class="filter-tab" data-filter="in-progress">בתהליך</button>
-                        <button class="filter-tab" data-filter="completed">הושלמו</button>
+            <!-- Main Content (hidden while loading) -->
+            <div id="dashboardContent" style="display:none">
+                <header class="content-header">
+                    <div class="header-text">
+                        <h1 id="welcomeMessage">שלום, אורח!</h1>
+                        <p id="welcomeSubtext">המשך מאיפה שהפסקת</p>
+                    </div>
+                    <div class="header-actions">
+                        <a href="catalog.html" class="btn btn-primary">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                            הוסף קורס חדש
+                        </a>
+                    </div>
+                </header>
+                
+                <!-- Continue Learning Section -->
+                <div class="continue-learning" id="continueSection" style="display: none;">
+                    <h2>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                        המשך ללמוד
+                    </h2>
+                    <div class="continue-card" id="continueCard">
+                        <!-- Populated by JS -->
                     </div>
                 </div>
                 
-                <div class="courses-grid" id="coursesGrid">
-                    <!-- Course cards populated by JS -->
-                    <div class="empty-state" id="emptyState">
-                        <div class="empty-icon">📚</div>
-                        <h3>עדיין אין לך קורסים</h3>
-                        <p>התחל ללמוד עכשיו ובנה את הקריירה שלך ב-AI</p>
-                        <a href="#" class="btn btn-primary">גלה קורסים</a>
+                <!-- My Courses Section -->
+                <div class="courses-section">
+                    <div class="section-header">
+                        <h2>הקורסים שלי</h2>
+                        <div class="filter-tabs" role="tablist">
+                            <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">הכל</button>
+                            <button class="filter-tab" data-filter="in-progress" role="tab" aria-selected="false">בתהליך</button>
+                            <button class="filter-tab" data-filter="completed" role="tab" aria-selected="false">הושלמו</button>
+                        </div>
+                    </div>
+                    
+                    <div class="courses-grid" id="coursesGrid">
+                        <!-- Course cards populated by JS -->
+                        <div class="empty-state" id="emptyState" style="display:none">
+                            <div class="empty-icon">📚</div>
+                            <h3>עדיין אין לך קורסים</h3>
+                            <p>התחל ללמוד עכשיו ובנה את הקריירה שלך ב-AI</p>
+                            <a href="catalog.html" class="btn btn-primary">גלה קורסים</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="recommended-section">
-                <h2>מומלץ עבורך</h2>
-                <div class="recommended-grid">
-                    <div class="course-card recommended">
-                        <div class="course-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                            <span class="course-badge">חדש</span>
-                        </div>
-                        <div class="course-content">
-                            <h3>מבוא ל-Machine Learning</h3>
-                            <p>למד את היסודות של למידת מכונה</p>
-                            <div class="course-meta">
-                                <span>12 שיעורים</span>
-                                <span>6 שעות</span>
-                            </div>
-                            <a href="#" class="btn btn-outline">התחל עכשיו</a>
-                        </div>
+                
+                <!-- Recommended Courses Section -->
+                <div class="recommended-section" id="recommendedSection">
+                    <div class="section-header">
+                        <h2>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                            </svg>
+                            מומלץ עבורך
+                        </h2>
+                        <a href="catalog.html" class="view-all-link">לכל הקורסים →</a>
                     </div>
-                    
-                    <div class="course-card recommended">
-                        <div class="course-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
-                            <span class="course-badge">פופולרי</span>
-                        </div>
-                        <div class="course-content">
-                            <h3>Python למתחילים</h3>
-                            <p>שפת התכנות הפופולרית ביותר ל-AI</p>
-                            <div class="course-meta">
-                                <span>20 שיעורים</span>
-                                <span>10 שעות</span>
-                            </div>
-                            <a href="#" class="btn btn-outline">התחל עכשיו</a>
-                        </div>
+                    <div class="recommended-grid" id="recommendedGrid">
+                        <!-- Populated by JS -->
                     </div>
-                    
-                    <div class="course-card recommended">
-                        <div class="course-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-                        </div>
-                        <div class="course-content">
-                            <h3>Deep Learning מתקדם</h3>
-                            <p>רשתות נוירונים ו-Transformers</p>
-                            <div class="course-meta">
-                                <span>15 שיעורים</span>
-                                <span>8 שעות</span>
-                            </div>
-                            <a href="#" class="btn btn-outline">התחל עכשיו</a>
-                        </div>
+                </div>
+                
+                <!-- Learning Path Section -->
+                <div class="learning-path-section" id="learningPathSection">
+                    <div class="section-header">
+                        <h2>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="20" x2="12" y2="10"></line>
+                                <line x1="18" y1="20" x2="18" y2="4"></line>
+                                <line x1="6" y1="20" x2="6" y2="16"></line>
+                            </svg>
+                            מסלול הלמידה שלך
+                        </h2>
+                    </div>
+                    <div class="learning-path" id="learningPath">
+                        <!-- Populated by JS -->
                     </div>
                 </div>
             </div>
@@ -191,8 +279,465 @@
     
     <script src="js/lms.js"></script>
     <script>
-        // Initialize dashboard
-        LMS.initDashboard();
+        // Extended LMS Dashboard functionality
+        const Dashboard = {
+            // API Base URL (mock for now)
+            apiBase: '/api',
+            
+            // Initialize dashboard
+            async init() {
+                // Check auth
+                if (!LMS.isLoggedIn()) {
+                    // Allow viewing but with limited features
+                    // window.location.href = 'login.html';
+                    // return;
+                }
+                
+                // Setup UI interactions
+                this.setupMobileMenu();
+                this.setupNotifications();
+                this.setupDropdowns();
+                
+                // Load data
+                await this.loadDashboard();
+                
+                // Update streak
+                this.updateStreak();
+                
+                // Load activity feed
+                this.loadActivityFeed();
+                
+                // Load notifications
+                this.loadNotifications();
+            },
+            
+            setupMobileMenu() {
+                const menuBtn = document.getElementById('mobileMenuBtn');
+                const sidebar = document.getElementById('dashboardSidebar');
+                const overlay = document.getElementById('mobileOverlay');
+                const closeBtn = document.getElementById('closeSidebar');
+                
+                const toggleMenu = (show) => {
+                    sidebar.classList.toggle('visible', show);
+                    overlay.classList.toggle('visible', show);
+                    document.body.classList.toggle('menu-open', show);
+                };
+                
+                menuBtn?.addEventListener('click', () => toggleMenu(true));
+                closeBtn?.addEventListener('click', () => toggleMenu(false));
+                overlay?.addEventListener('click', () => toggleMenu(false));
+            },
+            
+            setupNotifications() {
+                const btn = document.getElementById('notificationBtn');
+                const panel = document.getElementById('notificationsPanel');
+                
+                btn?.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const isOpen = panel.classList.toggle('visible');
+                    btn.setAttribute('aria-expanded', isOpen);
+                });
+                
+                document.addEventListener('click', (e) => {
+                    if (!panel?.contains(e.target) && !btn?.contains(e.target)) {
+                        panel?.classList.remove('visible');
+                        btn?.setAttribute('aria-expanded', 'false');
+                    }
+                });
+                
+                document.getElementById('markAllRead')?.addEventListener('click', () => {
+                    this.markAllNotificationsRead();
+                });
+            },
+            
+            setupDropdowns() {
+                const userBtn = document.getElementById('userDropdownBtn');
+                const userMenu = document.getElementById('userDropdownMenu');
+                
+                userBtn?.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const isOpen = userMenu.classList.toggle('visible');
+                    userBtn.setAttribute('aria-expanded', isOpen);
+                });
+                
+                document.addEventListener('click', () => {
+                    userMenu?.classList.remove('visible');
+                    userBtn?.setAttribute('aria-expanded', 'false');
+                });
+            },
+            
+            async loadDashboard() {
+                const loading = document.getElementById('dashboardLoading');
+                const content = document.getElementById('dashboardContent');
+                
+                try {
+                    // Simulate API call
+                    await this.sleep(500);
+                    
+                    // Update user info
+                    const user = LMS.getCurrentUser();
+                    this.updateUserInfo(user);
+                    
+                    // Load courses (try API first, fallback to mock)
+                    let courses;
+                    try {
+                        courses = await this.fetchCourses();
+                    } catch (e) {
+                        courses = LMS.config.mockCourses;
+                    }
+                    
+                    // Update stats
+                    this.updateStats(courses);
+                    
+                    // Render courses
+                    LMS.loadCourses('all');
+                    
+                    // Load continue learning
+                    LMS.loadContinueLearning();
+                    
+                    // Load recommended courses
+                    this.loadRecommendedCourses();
+                    
+                    // Load learning path
+                    this.loadLearningPath();
+                    
+                    // Show content
+                    loading.style.display = 'none';
+                    content.style.display = 'block';
+                    
+                } catch (error) {
+                    console.error('Dashboard load error:', error);
+                    loading.innerHTML = `
+                        <div class="error-state">
+                            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--error)" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="15" y1="9" x2="9" y2="15"></line>
+                                <line x1="9" y1="9" x2="15" y2="15"></line>
+                            </svg>
+                            <h3>שגיאה בטעינת הדף</h3>
+                            <p>אנא נסה שוב מאוחר יותר</p>
+                            <button class="btn btn-primary" onclick="location.reload()">נסה שוב</button>
+                        </div>
+                    `;
+                }
+            },
+            
+            async fetchCourses() {
+                // Try to fetch from real API
+                const response = await fetch(`${this.apiBase}/courses/my`, {
+                    headers: {
+                        'Authorization': `Bearer ${LMS.storage.get('token') || ''}`
+                    }
+                });
+                
+                if (!response.ok) throw new Error('API not available');
+                return response.json();
+            },
+            
+            updateUserInfo(user) {
+                const elements = {
+                    userName: document.getElementById('userName'),
+                    userAvatar: document.getElementById('userAvatar'),
+                    profileName: document.getElementById('profileName'),
+                    profileAvatar: document.getElementById('profileAvatar'),
+                    welcomeMessage: document.getElementById('welcomeMessage')
+                };
+                
+                const avatar = user.avatar || user.name?.charAt(0) || 'א';
+                const name = user.name || 'אורח';
+                
+                if (elements.userName) elements.userName.textContent = name;
+                if (elements.userAvatar) elements.userAvatar.textContent = avatar;
+                if (elements.profileName) elements.profileName.textContent = name;
+                if (elements.profileAvatar) elements.profileAvatar.textContent = avatar;
+                
+                // Personalized welcome
+                const hour = new Date().getHours();
+                let greeting = 'שלום';
+                if (hour >= 5 && hour < 12) greeting = 'בוקר טוב';
+                else if (hour >= 12 && hour < 17) greeting = 'צהריים טובים';
+                else if (hour >= 17 && hour < 21) greeting = 'ערב טוב';
+                else greeting = 'לילה טוב';
+                
+                if (elements.welcomeMessage) {
+                    elements.welcomeMessage.textContent = `${greeting}, ${name}!`;
+                }
+                
+                // Update level
+                const progress = LMS.storage.get('progress') || {};
+                const completedCourses = Object.values(progress).filter(p => p.completed?.length >= 12).length;
+                const levels = ['מתחיל', 'מתקדם', 'מומחה', 'מאסטר'];
+                const level = levels[Math.min(completedCourses, levels.length - 1)];
+                
+                const profileLevel = document.getElementById('profileLevel');
+                if (profileLevel) profileLevel.textContent = `רמת ${level}`;
+            },
+            
+            updateStats(courses) {
+                const progress = LMS.storage.get('progress') || {};
+                
+                const completedCourses = courses.filter(c => c.progress === 100).length;
+                const totalHours = courses.reduce((acc, c) => {
+                    const hours = parseInt(c.duration) || 0;
+                    return acc + (hours * (c.progress / 100));
+                }, 0);
+                
+                document.getElementById('coursesCount').textContent = courses.length;
+                document.getElementById('hoursCount').textContent = Math.round(totalHours);
+                document.getElementById('certificatesCount').textContent = completedCourses;
+            },
+            
+            updateStreak() {
+                const streakData = LMS.storage.get('streakData') || { count: 0, dates: [] };
+                const today = new Date().toISOString().split('T')[0];
+                
+                // Check if already logged today
+                if (!streakData.dates.includes(today)) {
+                    const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
+                    
+                    if (streakData.dates.includes(yesterday)) {
+                        // Continue streak
+                        streakData.count++;
+                    } else {
+                        // Reset streak
+                        streakData.count = 1;
+                    }
+                    
+                    streakData.dates.push(today);
+                    // Keep only last 30 days
+                    streakData.dates = streakData.dates.slice(-30);
+                    LMS.storage.set('streakData', streakData);
+                }
+                
+                document.getElementById('streakCount').textContent = streakData.count;
+                
+                // Render streak calendar
+                const calendar = document.getElementById('streakCalendar');
+                if (calendar) {
+                    const last7Days = [];
+                    for (let i = 6; i >= 0; i--) {
+                        const date = new Date(Date.now() - i * 86400000).toISOString().split('T')[0];
+                        const dayName = new Date(date).toLocaleDateString('he-IL', { weekday: 'narrow' });
+                        const isActive = streakData.dates.includes(date);
+                        last7Days.push(`
+                            <div class="streak-day ${isActive ? 'active' : ''}" title="${date}">
+                                <span class="day-label">${dayName}</span>
+                                <span class="day-dot"></span>
+                            </div>
+                        `);
+                    }
+                    calendar.innerHTML = last7Days.join('');
+                }
+            },
+            
+            loadRecommendedCourses() {
+                const grid = document.getElementById('recommendedGrid');
+                if (!grid) return;
+                
+                const recommended = [
+                    {
+                        id: 'rec_1',
+                        title: 'מבוא ל-Machine Learning',
+                        description: 'למד את היסודות של למידת מכונה',
+                        image: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                        lessons: 12,
+                        duration: '6 שעות',
+                        badge: 'חדש',
+                        rating: 4.8,
+                        students: 1234
+                    },
+                    {
+                        id: 'rec_2',
+                        title: 'Python למתחילים',
+                        description: 'שפת התכנות הפופולרית ביותר ל-AI',
+                        image: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+                        lessons: 20,
+                        duration: '10 שעות',
+                        badge: 'פופולרי',
+                        rating: 4.9,
+                        students: 2567
+                    },
+                    {
+                        id: 'rec_3',
+                        title: 'Deep Learning מתקדם',
+                        description: 'רשתות נוירונים ו-Transformers',
+                        image: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+                        lessons: 15,
+                        duration: '8 שעות',
+                        badge: null,
+                        rating: 4.7,
+                        students: 876
+                    }
+                ];
+                
+                grid.innerHTML = recommended.map(course => `
+                    <div class="course-card recommended" data-course-id="${course.id}">
+                        <div class="course-image" style="background: ${course.image};">
+                            ${course.badge ? `<span class="course-badge">${course.badge}</span>` : ''}
+                        </div>
+                        <div class="course-content">
+                            <h3>${course.title}</h3>
+                            <p>${course.description}</p>
+                            <div class="course-rating">
+                                <span class="stars">⭐ ${course.rating}</span>
+                                <span class="students">(${course.students.toLocaleString('he-IL')} תלמידים)</span>
+                            </div>
+                            <div class="course-meta">
+                                <span>${course.lessons} שיעורים</span>
+                                <span>${course.duration}</span>
+                            </div>
+                            <a href="course.html?id=${course.id}" class="btn btn-outline">התחל עכשיו</a>
+                        </div>
+                    </div>
+                `).join('');
+            },
+            
+            loadLearningPath() {
+                const container = document.getElementById('learningPath');
+                if (!container) return;
+                
+                const path = [
+                    { title: 'Python בסיסי', status: 'completed', icon: '🐍' },
+                    { title: 'מבוא ל-Data Science', status: 'current', icon: '📊' },
+                    { title: 'Machine Learning', status: 'locked', icon: '🤖' },
+                    { title: 'Deep Learning', status: 'locked', icon: '🧠' },
+                    { title: 'פרויקט גמר', status: 'locked', icon: '🎓' }
+                ];
+                
+                container.innerHTML = path.map((step, i) => `
+                    <div class="path-step ${step.status}">
+                        <div class="step-icon">${step.icon}</div>
+                        <div class="step-content">
+                            <span class="step-number">שלב ${i + 1}</span>
+                            <span class="step-title">${step.title}</span>
+                        </div>
+                        <div class="step-status">
+                            ${step.status === 'completed' ? '✓' : step.status === 'current' ? '▶' : '🔒'}
+                        </div>
+                        ${i < path.length - 1 ? '<div class="step-connector"></div>' : ''}
+                    </div>
+                `).join('');
+            },
+            
+            loadActivityFeed() {
+                const list = document.getElementById('activityList');
+                if (!list) return;
+                
+                const activities = LMS.storage.get('activities') || [];
+                
+                // Add default activities if empty
+                if (activities.length === 0) {
+                    activities.push(
+                        { type: 'lesson', text: 'השלמת שיעור: מה זה ML?', time: Date.now() - 3600000 },
+                        { type: 'course', text: 'התחלת קורס: Python', time: Date.now() - 86400000 },
+                        { type: 'achievement', text: 'הישג חדש: 🔥 7 ימים רצופים!', time: Date.now() - 172800000 }
+                    );
+                }
+                
+                if (activities.length === 0) {
+                    return;
+                }
+                
+                list.innerHTML = activities.slice(0, 5).map(activity => {
+                    const timeAgo = this.formatTimeAgo(activity.time);
+                    const icons = {
+                        lesson: '📖',
+                        course: '📚',
+                        achievement: '🏆',
+                        certificate: '📜'
+                    };
+                    
+                    return `
+                        <div class="activity-item">
+                            <span class="activity-icon">${icons[activity.type] || '📝'}</span>
+                            <div class="activity-content">
+                                <span class="activity-text">${activity.text}</span>
+                                <span class="activity-time">${timeAgo}</span>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            },
+            
+            loadNotifications() {
+                const list = document.getElementById('notificationsList');
+                const badge = document.getElementById('notificationBadge');
+                
+                const notifications = LMS.storage.get('notifications') || [
+                    { id: 1, title: 'קורס חדש!', text: 'קורס ChatGPT למתקדמים עכשיו זמין', time: Date.now() - 3600000, read: false },
+                    { id: 2, title: 'הישג חדש', text: 'השלמת 10 שיעורים! 🎉', time: Date.now() - 86400000, read: false }
+                ];
+                
+                const unread = notifications.filter(n => !n.read).length;
+                
+                if (unread > 0) {
+                    badge.textContent = unread > 9 ? '9+' : unread;
+                    badge.style.display = 'flex';
+                } else {
+                    badge.style.display = 'none';
+                }
+                
+                if (notifications.length === 0) {
+                    return;
+                }
+                
+                list.innerHTML = notifications.map(notif => `
+                    <div class="notification-item ${notif.read ? 'read' : 'unread'}" data-id="${notif.id}">
+                        <div class="notification-content">
+                            <strong>${notif.title}</strong>
+                            <p>${notif.text}</p>
+                            <span class="notification-time">${this.formatTimeAgo(notif.time)}</span>
+                        </div>
+                    </div>
+                `).join('');
+                
+                // Click to mark as read
+                list.querySelectorAll('.notification-item.unread').forEach(item => {
+                    item.addEventListener('click', () => {
+                        const id = parseInt(item.dataset.id);
+                        this.markNotificationRead(id);
+                    });
+                });
+            },
+            
+            markNotificationRead(id) {
+                const notifications = LMS.storage.get('notifications') || [];
+                const notif = notifications.find(n => n.id === id);
+                if (notif) {
+                    notif.read = true;
+                    LMS.storage.set('notifications', notifications);
+                    this.loadNotifications();
+                }
+            },
+            
+            markAllNotificationsRead() {
+                const notifications = LMS.storage.get('notifications') || [];
+                notifications.forEach(n => n.read = true);
+                LMS.storage.set('notifications', notifications);
+                this.loadNotifications();
+                LMS.showNotification('כל ההתראות סומנו כנקראו', 'success');
+            },
+            
+            formatTimeAgo(timestamp) {
+                const seconds = Math.floor((Date.now() - timestamp) / 1000);
+                
+                if (seconds < 60) return 'הרגע';
+                if (seconds < 3600) return `לפני ${Math.floor(seconds / 60)} דקות`;
+                if (seconds < 86400) return `לפני ${Math.floor(seconds / 3600)} שעות`;
+                if (seconds < 604800) return `לפני ${Math.floor(seconds / 86400)} ימים`;
+                
+                return new Date(timestamp).toLocaleDateString('he-IL');
+            },
+            
+            sleep(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+        };
+        
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', () => {
+            Dashboard.init();
+        });
     </script>
 </body>
 </html>
