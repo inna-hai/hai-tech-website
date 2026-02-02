@@ -10,7 +10,10 @@ const LeadAutomation = {
         storageKey: 'haitech_leads',
         formId: 'contactForm',
         popupDelay: 5000, // 5 seconds
-        exitIntentEnabled: true
+        exitIntentEnabled: true,
+        // CRM API Configuration
+        apiEndpoint: 'https://18f95599f0b7.ngrok-free.app/api/webhook/leads',
+        apiKey: 'haitech-crm-api-key-2026'
     },
 
     // Initialize the system
@@ -49,7 +52,42 @@ const LeadAutomation = {
         return `https://wa.me/${this.config.whatsappNumber}?text=${message}`;
     },
 
-    // Save lead to localStorage
+    // Send lead to CRM API
+    async sendToCRM(lead) {
+        try {
+            const crmData = {
+                name: lead.name,
+                phone: lead.phone || '',
+                email: lead.email || '',
+                notes: lead.message || lead.subject || '',
+                source: 'website',
+                city: ''
+            };
+
+            const response = await fetch(this.config.apiEndpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-API-Key': this.config.apiKey
+                },
+                body: JSON.stringify(crmData)
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                console.log('Lead sent to CRM:', result);
+                return true;
+            } else {
+                console.error('CRM API error:', response.status);
+                return false;
+            }
+        } catch (error) {
+            console.error('Error sending to CRM:', error);
+            return false;
+        }
+    },
+
+    // Save lead to localStorage and CRM
     saveLead(lead) {
         try {
             const leads = this.getStoredLeads();
@@ -58,7 +96,11 @@ const LeadAutomation = {
             lead.source = window.location.pathname;
             leads.push(lead);
             localStorage.setItem(this.config.storageKey, JSON.stringify(leads));
-            console.log('Lead saved:', lead);
+            console.log('Lead saved locally:', lead);
+            
+            // Also send to CRM API
+            this.sendToCRM(lead);
+            
             return true;
         } catch (error) {
             console.error('Error saving lead:', error);
