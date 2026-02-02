@@ -61,15 +61,20 @@ const LeadAutomation = {
                 email: lead.email || '',
                 notes: lead.message || lead.subject || '',
                 source: 'website',
-                city: ''
+                city: '',
+                apiKey: this.config.apiKey // Include API key in body as backup
             };
 
-            const response = await fetch(this.config.apiEndpoint, {
+            // Add API key as query parameter for CORS compatibility
+            const url = `${this.config.apiEndpoint}?apiKey=${encodeURIComponent(this.config.apiKey)}`;
+
+            const response = await fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'X-API-Key': this.config.apiKey
                 },
+                mode: 'cors',
                 body: JSON.stringify(crmData)
             });
 
