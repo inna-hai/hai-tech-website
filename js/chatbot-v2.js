@@ -700,11 +700,11 @@ class HaiTechChatbotV2 {
         const handleToggle = (e) => {
             e.preventDefault();
             e.stopPropagation();
-            console.log('Toggle clicked!');
+            alert('כפתור נלחץ!');
             this.toggle();
         };
         toggle.addEventListener('click', handleToggle);
-        toggle.addEventListener('touchend', handleToggle);
+        toggle.addEventListener('touchstart', handleToggle);
         
         const handleClose = (e) => {
             e.preventDefault();
