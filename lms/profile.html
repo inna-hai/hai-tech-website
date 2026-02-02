@@ -27,7 +27,7 @@
                     <div class="user-avatar" id="userAvatar">א</div>
                     <span class="user-name" id="userName">אורח</span>
                 </button>
-                <div class="dropdown-menu" id="userDropdownMenu">
+                <div class="dropdown-menu">
                     <a href="profile.html" class="dropdown-item active">הפרופיל שלי</a>
                     <a href="profile.html#settings" class="dropdown-item">הגדרות</a>
                     <hr>
@@ -38,18 +38,12 @@
     </nav>
     
     <main class="profile-main">
-        <!-- Profile Header -->
         <div class="profile-header">
             <div class="profile-header-bg"></div>
             <div class="profile-header-content">
                 <div class="profile-avatar-container">
                     <div class="profile-avatar-large" id="profileAvatarLarge">א</div>
-                    <button class="avatar-edit-btn" id="editAvatarBtn" aria-label="שנה תמונת פרופיל">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
-                            <circle cx="12" cy="13" r="4"></circle>
-                        </svg>
-                    </button>
+                    <button class="avatar-edit-btn" id="editAvatarBtn" aria-label="שנה תמונת פרופיל">📷</button>
                     <input type="file" id="avatarInput" accept="image/*" style="display:none">
                 </div>
                 <div class="profile-header-info">
@@ -78,45 +72,14 @@
         </div>
         
         <div class="profile-content">
-            <!-- Profile Navigation -->
             <nav class="profile-nav" aria-label="ניווט פרופיל">
-                <a href="#profile" class="profile-nav-link active" data-section="profile">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="12" cy="7" r="4"></circle>
-                    </svg>
-                    פרופיל
-                </a>
-                <a href="#certificates" class="profile-nav-link" data-section="certificates">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="8" r="7"></circle>
-                        <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-                    </svg>
-                    תעודות
-                </a>
-                <a href="#achievements" class="profile-nav-link" data-section="achievements">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                    </svg>
-                    הישגים
-                </a>
-                <a href="#settings" class="profile-nav-link" data-section="settings">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="3"></circle>
-                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-                    </svg>
-                    הגדרות
-                </a>
-                <a href="#security" class="profile-nav-link" data-section="security">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                    </svg>
-                    אבטחה
-                </a>
+                <a href="#profile" class="profile-nav-link active" data-section="profile">👤 פרופיל</a>
+                <a href="#certificates" class="profile-nav-link" data-section="certificates">🎓 תעודות</a>
+                <a href="#achievements" class="profile-nav-link" data-section="achievements">🏆 הישגים</a>
+                <a href="#settings" class="profile-nav-link" data-section="settings">⚙️ הגדרות</a>
+                <a href="#security" class="profile-nav-link" data-section="security">🔐 אבטחה</a>
             </nav>
             
-            <!-- Profile Sections -->
             <div class="profile-sections">
                 <!-- Profile Section -->
                 <section class="profile-section active" id="profile">
@@ -136,13 +99,11 @@
                         <div class="form-group">
                             <label for="displayName">שם תצוגה</label>
                             <input type="text" id="displayName" name="displayName" placeholder="איך לקרוא לך?">
-                            <span class="form-hint">השם שיוצג בפרופיל ובתעודות</span>
                         </div>
                         
                         <div class="form-group">
                             <label for="email">אימייל</label>
-                            <input type="email" id="email" name="email" placeholder="your@email.com" disabled>
-                            <span class="form-hint">לשינוי אימייל פנה לתמיכה</span>
+                            <input type="email" id="email" name="email" disabled>
                         </div>
                         
                         <div class="form-group">
@@ -153,42 +114,6 @@
                         <div class="form-group">
                             <label for="bio">קצת עליי</label>
                             <textarea id="bio" name="bio" placeholder="ספר/י לנו קצת על עצמך..." rows="4"></textarea>
-                            <span class="form-hint char-count"><span id="bioCount">0</span>/500</span>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="birthDate">תאריך לידה</label>
-                                <input type="date" id="birthDate" name="birthDate">
-                            </div>
-                            <div class="form-group">
-                                <label for="country">מדינה</label>
-                                <select id="country" name="country">
-                                    <option value="">בחר מדינה</option>
-                                    <option value="IL" selected>ישראל</option>
-                                    <option value="US">ארצות הברית</option>
-                                    <option value="UK">בריטניה</option>
-                                    <option value="other">אחר</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>קישורים חברתיים</label>
-                            <div class="social-inputs">
-                                <div class="social-input">
-                                    <span class="social-icon">🔗</span>
-                                    <input type="url" id="linkedin" name="linkedin" placeholder="LinkedIn URL">
-                                </div>
-                                <div class="social-input">
-                                    <span class="social-icon">🐦</span>
-                                    <input type="url" id="twitter" name="twitter" placeholder="Twitter URL">
-                                </div>
-                                <div class="social-input">
-                                    <span class="social-icon">🌐</span>
-                                    <input type="url" id="website" name="website" placeholder="אתר אישי">
-                                </div>
-                            </div>
                         </div>
                         
                         <div class="form-actions">
@@ -201,15 +126,9 @@
                 <!-- Certificates Section -->
                 <section class="profile-section" id="certificates">
                     <h2>התעודות שלי</h2>
-                    <div class="certificates-grid" id="certificatesGrid">
-                        <!-- Populated by JS -->
-                    </div>
-                    <div class="certificates-empty" id="certificatesEmpty" style="display:none">
-                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5">
-                            <circle cx="12" cy="8" r="7"></circle>
-                            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-                        </svg>
-                        <h3>עדיין אין לך תעודות</h3>
+                    <div class="certificates-grid" id="certificatesGrid"></div>
+                    <div class="certificates-empty" id="certificatesEmpty">
+                        <h3>🎓 עדיין אין לך תעודות</h3>
                         <p>סיים קורס כדי לקבל תעודה</p>
                         <a href="catalog.html" class="btn btn-primary">גלה קורסים</a>
                     </div>
@@ -232,13 +151,7 @@
                             <span class="achievement-label">דרגה</span>
                         </div>
                     </div>
-                    
-                    <div class="achievements-categories">
-                        <h3>הישגי למידה</h3>
-                        <div class="achievements-grid" id="achievementsGrid">
-                            <!-- Populated by JS -->
-                        </div>
-                    </div>
+                    <div class="achievements-grid" id="achievementsGrid"></div>
                 </section>
                 
                 <!-- Settings Section -->
@@ -272,90 +185,11 @@
                             
                             <label class="setting-option">
                                 <div class="setting-info">
-                                    <span class="setting-title">עדכוני מבצעים</span>
-                                    <span class="setting-desc">קבל הודעות על הנחות ומבצעים</span>
-                                </div>
-                                <label class="toggle-switch">
-                                    <input type="checkbox" id="promoNotifications">
-                                    <span class="toggle-slider"></span>
-                                </label>
-                            </label>
-                            
-                            <label class="setting-option">
-                                <div class="setting-info">
-                                    <span class="setting-title">התראות Push</span>
-                                    <span class="setting-desc">התראות בדפדפן</span>
-                                </div>
-                                <label class="toggle-switch">
-                                    <input type="checkbox" id="pushNotifications">
-                                    <span class="toggle-slider"></span>
-                                </label>
-                            </label>
-                        </div>
-                    </div>
-                    
-                    <div class="settings-group">
-                        <h3>העדפות תצוגה</h3>
-                        <div class="settings-options">
-                            <label class="setting-option">
-                                <div class="setting-info">
                                     <span class="setting-title">מצב כהה</span>
                                     <span class="setting-desc">עבור לתצוגה כהה</span>
                                 </div>
                                 <label class="toggle-switch">
                                     <input type="checkbox" id="darkMode">
-                                    <span class="toggle-slider"></span>
-                                </label>
-                            </label>
-                            
-                            <div class="setting-option">
-                                <div class="setting-info">
-                                    <span class="setting-title">שפת ממשק</span>
-                                    <span class="setting-desc">בחר את שפת התצוגה</span>
-                                </div>
-                                <select id="language" class="setting-select">
-                                    <option value="he" selected>עברית</option>
-                                    <option value="en">English</option>
-                                </select>
-                            </div>
-                            
-                            <div class="setting-option">
-                                <div class="setting-info">
-                                    <span class="setting-title">מהירות וידאו ברירת מחדל</span>
-                                    <span class="setting-desc">מהירות הנגינה הרגילה</span>
-                                </div>
-                                <select id="videoSpeed" class="setting-select">
-                                    <option value="0.75">0.75x</option>
-                                    <option value="1" selected>רגיל (1x)</option>
-                                    <option value="1.25">1.25x</option>
-                                    <option value="1.5">1.5x</option>
-                                    <option value="2">2x</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="settings-group">
-                        <h3>פרטיות</h3>
-                        <div class="settings-options">
-                            <label class="setting-option">
-                                <div class="setting-info">
-                                    <span class="setting-title">פרופיל ציבורי</span>
-                                    <span class="setting-desc">אחרים יכולים לראות את הפרופיל שלך</span>
-                                </div>
-                                <label class="toggle-switch">
-                                    <input type="checkbox" id="publicProfile" checked>
-                                    <span class="toggle-slider"></span>
-                                </label>
-                            </label>
-                            
-                            <label class="setting-option">
-                                <div class="setting-info">
-                                    <span class="setting-title">הצג התקדמות</span>
-                                    <span class="setting-desc">הצג את התקדמותך לאחרים</span>
-                                </div>
-                                <label class="toggle-switch">
-                                    <input type="checkbox" id="showProgress">
                                     <span class="toggle-slider"></span>
                                 </label>
                             </label>
@@ -372,82 +206,22 @@
                     <h2>אבטחה וסיסמה</h2>
                     
                     <div class="security-card">
-                        <div class="security-header">
-                            <h3>שינוי סיסמה</h3>
-                            <span class="security-badge">🔐</span>
-                        </div>
+                        <h3>שינוי סיסמה</h3>
                         <form id="passwordForm" class="password-form">
                             <div class="form-group">
                                 <label for="currentPassword">סיסמה נוכחית</label>
-                                <div class="password-input-wrapper">
-                                    <input type="password" id="currentPassword" name="currentPassword" required>
-                                    <button type="button" class="toggle-password" data-target="currentPassword">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                                            <circle cx="12" cy="12" r="3"></circle>
-                                        </svg>
-                                    </button>
-                                </div>
+                                <input type="password" id="currentPassword" name="currentPassword" required>
                             </div>
-                            
                             <div class="form-group">
                                 <label for="newPassword">סיסמה חדשה</label>
-                                <div class="password-input-wrapper">
-                                    <input type="password" id="newPassword" name="newPassword" required minlength="8">
-                                    <button type="button" class="toggle-password" data-target="newPassword">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                                            <circle cx="12" cy="12" r="3"></circle>
-                                        </svg>
-                                    </button>
-                                </div>
-                                <div class="password-strength" id="passwordStrength">
-                                    <div class="strength-bar"><span></span></div>
-                                    <span class="strength-text">חוזק סיסמה</span>
-                                </div>
+                                <input type="password" id="newPassword" name="newPassword" required minlength="8">
                             </div>
-                            
                             <div class="form-group">
                                 <label for="confirmNewPassword">אימות סיסמה חדשה</label>
-                                <div class="password-input-wrapper">
-                                    <input type="password" id="confirmNewPassword" name="confirmNewPassword" required>
-                                    <button type="button" class="toggle-password" data-target="confirmNewPassword">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                                            <circle cx="12" cy="12" r="3"></circle>
-                                        </svg>
-                                    </button>
-                                </div>
+                                <input type="password" id="confirmNewPassword" name="confirmNewPassword" required>
                             </div>
-                            
                             <button type="submit" class="btn btn-primary">עדכן סיסמה</button>
                         </form>
-                    </div>
-                    
-                    <div class="security-card">
-                        <div class="security-header">
-                            <h3>אימות דו-שלבי</h3>
-                            <span class="security-badge badge-inactive" id="2faBadge">לא פעיל</span>
-                        </div>
-                        <p>הוסף שכבת אבטחה נוספת לחשבון שלך</p>
-                        <button class="btn btn-outline" id="enable2fa">הפעל אימות דו-שלבי</button>
-                    </div>
-                    
-                    <div class="security-card">
-                        <div class="security-header">
-                            <h3>התקנים מחוברים</h3>
-                        </div>
-                        <div class="devices-list" id="devicesList">
-                            <div class="device-item current">
-                                <div class="device-icon">💻</div>
-                                <div class="device-info">
-                                    <span class="device-name">המכשיר הנוכחי</span>
-                                    <span class="device-details">Chrome • Israel • עכשיו</span>
-                                </div>
-                                <span class="device-badge">פעיל</span>
-                            </div>
-                        </div>
-                        <button class="btn btn-outline btn-danger" id="logoutAll">התנתק מכל המכשירים</button>
                     </div>
                     
                     <div class="danger-zone">
@@ -455,7 +229,7 @@
                         <div class="danger-option">
                             <div class="danger-info">
                                 <span class="danger-title">מחק חשבון</span>
-                                <span class="danger-desc">מחיקת החשבון היא לצמיתות ולא ניתנת לביטול</span>
+                                <span class="danger-desc">מחיקת החשבון היא לצמיתות</span>
                             </div>
                             <button class="btn btn-danger" id="deleteAccount">מחק חשבון</button>
                         </div>
@@ -465,107 +239,16 @@
         </div>
     </main>
     
-    <!-- Avatar Upload Modal -->
-    <div class="modal" id="avatarModal" role="dialog" aria-modal="true">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>שנה תמונת פרופיל</h3>
-                <button class="modal-close" id="closeAvatarModal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="avatar-preview" id="avatarPreview">
-                    <div class="avatar-placeholder">בחר תמונה</div>
-                </div>
-                <div class="avatar-options">
-                    <button class="btn btn-outline" id="uploadAvatar">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="17 8 12 3 7 8"></polyline>
-                            <line x1="12" y1="3" x2="12" y2="15"></line>
-                        </svg>
-                        העלה תמונה
-                    </button>
-                    <p class="avatar-hint">או בחר אימוג'י:</p>
-                    <div class="emoji-avatars" id="emojiAvatars">
-                        <button class="emoji-avatar" data-emoji="😀">😀</button>
-                        <button class="emoji-avatar" data-emoji="😎">😎</button>
-                        <button class="emoji-avatar" data-emoji="🧑‍💻">🧑‍💻</button>
-                        <button class="emoji-avatar" data-emoji="👨‍🎓">👨‍🎓</button>
-                        <button class="emoji-avatar" data-emoji="👩‍🎓">👩‍🎓</button>
-                        <button class="emoji-avatar" data-emoji="🤖">🤖</button>
-                        <button class="emoji-avatar" data-emoji="🦊">🦊</button>
-                        <button class="emoji-avatar" data-emoji="🐱">🐱</button>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-outline" id="cancelAvatar">ביטול</button>
-                <button class="btn btn-primary" id="saveAvatar">שמור</button>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Certificate Modal -->
-    <div class="modal" id="certificateModal" role="dialog" aria-modal="true">
-        <div class="modal-content modal-large">
-            <div class="modal-header">
-                <h3>תעודה</h3>
-                <button class="modal-close" id="closeCertificateModal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="certificate-view" id="certificateView">
-                    <div class="certificate-frame">
-                        <div class="certificate-inner">
-                            <div class="cert-logo">🎓 HAI Tech Academy</div>
-                            <h2>תעודת סיום</h2>
-                            <p class="cert-recipient" id="certRecipient">שם המשתתף</p>
-                            <p class="cert-text">סיים/ה בהצלחה את הקורס</p>
-                            <h3 class="cert-course" id="certCourse">שם הקורס</h3>
-                            <p class="cert-date" id="certDate">תאריך</p>
-                            <div class="cert-signature">
-                                <div class="signature">חתימה</div>
-                                <p>ד"ר דני כהן, מנהל אקדמי</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-outline" id="shareCertificate">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="18" cy="5" r="3"></circle>
-                        <circle cx="6" cy="12" r="3"></circle>
-                        <circle cx="18" cy="19" r="3"></circle>
-                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-                        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-                    </svg>
-                    שתף
-                </button>
-                <button class="btn btn-primary" id="downloadCertificate">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                        <polyline points="7 10 12 15 17 10"></polyline>
-                        <line x1="12" y1="15" x2="12" y2="3"></line>
-                    </svg>
-                    הורד PDF
-                </button>
-            </div>
-        </div>
-    </div>
-    
     <script src="js/lms.js"></script>
     <script>
-        // Profile functionality
         const Profile = {
             user: null,
-            selectedSection: 'profile',
             
             init() {
                 this.user = LMS.getCurrentUser();
                 this.loadUserData();
                 this.setupNavigation();
                 this.setupProfileForm();
-                this.setupAvatarUpload();
                 this.setupPasswordForm();
                 this.setupSettings();
                 this.loadCertificates();
@@ -577,40 +260,27 @@
                 const user = this.user;
                 const profile = LMS.storage.get('userProfile') || {};
                 
-                // Header info
                 document.getElementById('profileDisplayName').textContent = profile.displayName || user.name || 'אורח';
                 document.getElementById('profileEmail').textContent = user.email || 'guest@example.com';
                 document.getElementById('profileAvatarLarge').textContent = profile.avatar || user.avatar || user.name?.charAt(0) || 'א';
-                document.getElementById('userAvatar').textContent = profile.avatar || user.avatar || user.name?.charAt(0) || 'א';
+                document.getElementById('userAvatar').textContent = profile.avatar || user.avatar || 'א';
                 document.getElementById('userName').textContent = profile.displayName || user.name || 'אורח';
                 
-                // Stats
                 const progress = LMS.storage.get('progress') || {};
                 const certificates = LMS.storage.get('certificates') || [];
                 const streakData = LMS.storage.get('streakData') || { count: 0 };
                 
-                const coursesCount = Object.keys(progress).length;
-                const completedCount = certificates.length;
-                const hoursCount = coursesCount * 5; // Estimate
-                
-                document.getElementById('statCourses').textContent = coursesCount;
-                document.getElementById('statHours').textContent = hoursCount;
-                document.getElementById('statCertificates').textContent = completedCount;
+                document.getElementById('statCourses').textContent = Object.keys(progress).length;
+                document.getElementById('statHours').textContent = Object.keys(progress).length * 5;
+                document.getElementById('statCertificates').textContent = certificates.length;
                 document.getElementById('profileStreak').textContent = `🔥 ${streakData.count} ימים רצופים`;
                 
-                // Profile level
-                const levels = ['מתחיל', 'מתקדם', 'מומחה', 'מאסטר'];
-                const level = levels[Math.min(completedCount, levels.length - 1)];
-                document.getElementById('profileLevel').textContent = level;
-                
-                // Form fields
                 document.getElementById('firstName').value = profile.firstName || '';
                 document.getElementById('lastName').value = profile.lastName || '';
                 document.getElementById('displayName').value = profile.displayName || user.name || '';
                 document.getElementById('email').value = user.email || '';
                 document.getElementById('phone').value = profile.phone || '';
                 document.getElementById('bio').value = profile.bio || '';
-                document.getElementById('bioCount').textContent = (profile.bio || '').length;
             },
             
             setupNavigation() {
@@ -627,7 +297,6 @@
                         
                         link.classList.add('active');
                         document.getElementById(section)?.classList.add('active');
-                        
                         history.pushState(null, '', `#${section}`);
                     });
                 });
@@ -636,157 +305,48 @@
             handleHashNavigation() {
                 const hash = window.location.hash.slice(1) || 'profile';
                 const link = document.querySelector(`[data-section="${hash}"]`);
-                if (link) {
-                    link.click();
-                }
+                if (link) link.click();
             },
             
             setupProfileForm() {
-                const form = document.getElementById('profileForm');
-                const bio = document.getElementById('bio');
-                const bioCount = document.getElementById('bioCount');
-                
-                bio?.addEventListener('input', () => {
-                    bioCount.textContent = bio.value.length;
-                });
-                
-                form?.addEventListener('submit', (e) => {
+                document.getElementById('profileForm')?.addEventListener('submit', (e) => {
                     e.preventDefault();
-                    this.saveProfile();
+                    const profile = {
+                        firstName: document.getElementById('firstName').value,
+                        lastName: document.getElementById('lastName').value,
+                        displayName: document.getElementById('displayName').value,
+                        phone: document.getElementById('phone').value,
+                        bio: document.getElementById('bio').value,
+                        avatar: LMS.storage.get('userProfile')?.avatar || this.user.avatar
+                    };
+                    
+                    LMS.storage.set('userProfile', profile);
+                    this.user.name = profile.displayName;
+                    LMS.storage.set('user', this.user);
+                    this.loadUserData();
+                    LMS.showNotification('הפרופיל עודכן בהצלחה! ✅', 'success');
                 });
                 
                 document.getElementById('cancelProfile')?.addEventListener('click', () => {
                     this.loadUserData();
                     LMS.showNotification('השינויים בוטלו', 'info');
                 });
-            },
-            
-            saveProfile() {
-                const profile = {
-                    firstName: document.getElementById('firstName').value,
-                    lastName: document.getElementById('lastName').value,
-                    displayName: document.getElementById('displayName').value,
-                    phone: document.getElementById('phone').value,
-                    bio: document.getElementById('bio').value,
-                    avatar: LMS.storage.get('userProfile')?.avatar || this.user.avatar
-                };
                 
-                LMS.storage.set('userProfile', profile);
-                
-                // Update user object
-                this.user.name = profile.displayName;
-                LMS.storage.set('user', this.user);
-                
-                this.loadUserData();
-                LMS.showNotification('הפרופיל עודכן בהצלחה! ✅', 'success');
-            },
-            
-            setupAvatarUpload() {
-                const modal = document.getElementById('avatarModal');
-                const editBtn = document.getElementById('editAvatarBtn');
-                const closeBtn = document.getElementById('closeAvatarModal');
-                const cancelBtn = document.getElementById('cancelAvatar');
-                const saveBtn = document.getElementById('saveAvatar');
-                const uploadBtn = document.getElementById('uploadAvatar');
-                const avatarInput = document.getElementById('avatarInput');
-                const preview = document.getElementById('avatarPreview');
-                const emojiButtons = document.querySelectorAll('.emoji-avatar');
-                
-                let selectedAvatar = null;
-                
-                editBtn?.addEventListener('click', () => {
-                    modal.classList.add('visible');
-                });
-                
-                const closeModal = () => {
-                    modal.classList.remove('visible');
-                    selectedAvatar = null;
-                };
-                
-                closeBtn?.addEventListener('click', closeModal);
-                cancelBtn?.addEventListener('click', closeModal);
-                
-                uploadBtn?.addEventListener('click', () => {
-                    avatarInput.click();
-                });
-                
-                avatarInput?.addEventListener('change', (e) => {
-                    const file = e.target.files[0];
-                    if (file) {
-                        const reader = new FileReader();
-                        reader.onload = (e) => {
-                            preview.innerHTML = `<img src="${e.target.result}" alt="Preview">`;
-                            selectedAvatar = { type: 'image', data: e.target.result };
-                        };
-                        reader.readAsDataURL(file);
-                    }
-                });
-                
-                emojiButtons.forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        emojiButtons.forEach(b => b.classList.remove('selected'));
-                        btn.classList.add('selected');
-                        const emoji = btn.dataset.emoji;
-                        preview.innerHTML = `<span class="emoji-preview">${emoji}</span>`;
-                        selectedAvatar = { type: 'emoji', data: emoji };
-                    });
-                });
-                
-                saveBtn?.addEventListener('click', () => {
-                    if (selectedAvatar) {
+                document.getElementById('editAvatarBtn')?.addEventListener('click', () => {
+                    const emoji = prompt('בחר אימוג\'י לאווטאר:', '😀');
+                    if (emoji) {
                         const profile = LMS.storage.get('userProfile') || {};
-                        profile.avatar = selectedAvatar.data;
+                        profile.avatar = emoji;
                         LMS.storage.set('userProfile', profile);
-                        
                         this.loadUserData();
-                        closeModal();
-                        LMS.showNotification('תמונת הפרופיל עודכנה! ✅', 'success');
+                        LMS.showNotification('האווטאר עודכן!', 'success');
                     }
                 });
             },
             
             setupPasswordForm() {
-                const form = document.getElementById('passwordForm');
-                const newPassword = document.getElementById('newPassword');
-                const strengthBar = document.querySelector('#passwordStrength .strength-bar span');
-                const strengthText = document.querySelector('#passwordStrength .strength-text');
-                
-                // Password strength indicator
-                newPassword?.addEventListener('input', () => {
-                    const password = newPassword.value;
-                    let strength = 0;
-                    
-                    if (password.length >= 8) strength++;
-                    if (password.match(/[a-z]/)) strength++;
-                    if (password.match(/[A-Z]/)) strength++;
-                    if (password.match(/[0-9]/)) strength++;
-                    if (password.match(/[^a-zA-Z0-9]/)) strength++;
-                    
-                    const strengthLabels = ['', 'חלשה מאוד', 'חלשה', 'בינונית', 'טובה', 'מצוינת'];
-                    const strengthColors = ['', '#ef4444', '#f59e0b', '#eab308', '#84cc16', '#22c55e'];
-                    
-                    if (strengthBar) {
-                        strengthBar.style.width = (strength * 20) + '%';
-                        strengthBar.style.backgroundColor = strengthColors[strength];
-                    }
-                    if (strengthText) {
-                        strengthText.textContent = strengthLabels[strength] || 'חוזק סיסמה';
-                        strengthText.style.color = strengthColors[strength];
-                    }
-                });
-                
-                // Toggle password visibility
-                document.querySelectorAll('.toggle-password').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        const input = document.getElementById(btn.dataset.target);
-                        input.type = input.type === 'password' ? 'text' : 'password';
-                    });
-                });
-                
-                form?.addEventListener('submit', (e) => {
+                document.getElementById('passwordForm')?.addEventListener('submit', (e) => {
                     e.preventDefault();
-                    
-                    const current = document.getElementById('currentPassword').value;
                     const newPass = document.getElementById('newPassword').value;
                     const confirm = document.getElementById('confirmNewPassword').value;
                     
@@ -794,77 +354,40 @@
                         LMS.showNotification('הסיסמאות אינן תואמות', 'error');
                         return;
                     }
-                    
                     if (newPass.length < 8) {
                         LMS.showNotification('הסיסמה חייבת להכיל לפחות 8 תווים', 'error');
                         return;
                     }
                     
-                    // Simulate password change
-                    setTimeout(() => {
-                        form.reset();
-                        LMS.showNotification('הסיסמה שונתה בהצלחה! 🔐', 'success');
-                    }, 500);
+                    e.target.reset();
+                    LMS.showNotification('הסיסמה שונתה בהצלחה! 🔐', 'success');
                 });
                 
-                // 2FA button
-                document.getElementById('enable2fa')?.addEventListener('click', () => {
-                    LMS.showNotification('אימות דו-שלבי יהיה זמין בקרוב', 'info');
-                });
-                
-                // Logout all devices
-                document.getElementById('logoutAll')?.addEventListener('click', () => {
-                    if (confirm('האם אתה בטוח שברצונך להתנתק מכל המכשירים?')) {
-                        LMS.logout();
-                    }
-                });
-                
-                // Delete account
                 document.getElementById('deleteAccount')?.addEventListener('click', () => {
                     if (confirm('האם אתה בטוח? פעולה זו לא ניתנת לביטול!')) {
                         LMS.storage.clear();
                         LMS.showNotification('החשבון נמחק', 'info');
-                        setTimeout(() => {
-                            window.location.href = 'login.html';
-                        }, 1500);
+                        setTimeout(() => window.location.href = 'login.html', 1500);
                     }
                 });
             },
             
             setupSettings() {
-                // Load saved settings
                 const settings = LMS.storage.get('settings') || {};
-                
                 document.getElementById('emailNotifications').checked = settings.emailNotifications !== false;
                 document.getElementById('learningReminders').checked = settings.learningReminders !== false;
-                document.getElementById('promoNotifications').checked = settings.promoNotifications === true;
-                document.getElementById('pushNotifications').checked = settings.pushNotifications === true;
                 document.getElementById('darkMode').checked = settings.darkMode === true;
-                document.getElementById('publicProfile').checked = settings.publicProfile !== false;
-                document.getElementById('showProgress').checked = settings.showProgress === true;
                 
-                if (settings.language) document.getElementById('language').value = settings.language;
-                if (settings.videoSpeed) document.getElementById('videoSpeed').value = settings.videoSpeed;
-                
-                // Dark mode toggle
                 document.getElementById('darkMode')?.addEventListener('change', (e) => {
                     document.body.classList.toggle('dark-mode', e.target.checked);
                 });
                 
-                // Save settings button
                 document.getElementById('saveSettings')?.addEventListener('click', () => {
                     const newSettings = {
                         emailNotifications: document.getElementById('emailNotifications').checked,
                         learningReminders: document.getElementById('learningReminders').checked,
-                        promoNotifications: document.getElementById('promoNotifications').checked,
-                        pushNotifications: document.getElementById('pushNotifications').checked,
-                        darkMode: document.getElementById('darkMode').checked,
-                        publicProfile: document.getElementById('publicProfile').checked,
-                        showProgress: document.getElementById('showProgress').checked,
-                        language: document.getElementById('language').value,
-                        videoSpeed: document.getElementById('videoSpeed').value
+                        darkMode: document.getElementById('darkMode').checked
                     };
-                    
                     LMS.storage.set('settings', newSettings);
                     LMS.showNotification('ההגדרות נשמרו! ✅', 'success');
                 });
@@ -885,74 +408,24 @@
                 empty.style.display = 'none';
                 
                 grid.innerHTML = certificates.map(cert => `
-                    <div class="certificate-card" data-cert-id="${cert.courseId}">
+                    <div class="certificate-card">
                         <div class="cert-card-icon">🎓</div>
                         <h4>${cert.title}</h4>
                         <p>הושלם ב-${new Date(cert.completedAt).toLocaleDateString('he-IL')}</p>
-                        <button class="btn btn-outline btn-sm view-cert" data-cert='${JSON.stringify(cert)}'>צפה בתעודה</button>
+                        <button class="btn btn-outline btn-sm">צפה בתעודה</button>
                     </div>
                 `).join('');
-                
-                // View certificate button
-                grid.querySelectorAll('.view-cert').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        const cert = JSON.parse(btn.dataset.cert);
-                        this.showCertificate(cert);
-                    });
-                });
-            },
-            
-            showCertificate(cert) {
-                const modal = document.getElementById('certificateModal');
-                const profile = LMS.storage.get('userProfile') || {};
-                const user = this.user;
-                
-                document.getElementById('certRecipient').textContent = profile.displayName || user.name || 'אורח';
-                document.getElementById('certCourse').textContent = cert.title;
-                document.getElementById('certDate').textContent = new Date(cert.completedAt).toLocaleDateString('he-IL', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                });
-                
-                modal.classList.add('visible');
-                
-                // Close modal
-                document.getElementById('closeCertificateModal')?.addEventListener('click', () => {
-                    modal.classList.remove('visible');
-                });
-                
-                // Share certificate
-                document.getElementById('shareCertificate')?.addEventListener('click', () => {
-                    if (navigator.share) {
-                        navigator.share({
-                            title: `תעודת ${cert.title}`,
-                            text: `סיימתי את הקורס ${cert.title} ב-HAI Tech Academy! 🎓`,
-                            url: window.location.href
-                        });
-                    } else {
-                        navigator.clipboard.writeText(window.location.href);
-                        LMS.showNotification('הקישור הועתק!', 'success');
-                    }
-                });
-                
-                // Download certificate (mock)
-                document.getElementById('downloadCertificate')?.addEventListener('click', () => {
-                    LMS.showNotification('הורדת תעודה תהיה זמינה בקרוב', 'info');
-                });
             },
             
             loadAchievements() {
                 const grid = document.getElementById('achievementsGrid');
                 const achievements = [
-                    { id: 1, icon: '🎯', title: 'שיעור ראשון', desc: 'השלמת את השיעור הראשון', unlocked: true, points: 10 },
-                    { id: 2, icon: '🔥', title: 'רצף 7 ימים', desc: 'למדת 7 ימים רצופים', unlocked: true, points: 50 },
-                    { id: 3, icon: '🏆', title: 'קורס ראשון', desc: 'סיימת קורס שלם', unlocked: false, points: 100 },
-                    { id: 4, icon: '⭐', title: 'סטודנט מצטיין', desc: 'קיבלת 100% בבוחן', unlocked: false, points: 75 },
-                    { id: 5, icon: '📚', title: 'חובב ספרים', desc: 'השלמת 5 קורסים', unlocked: false, points: 200 },
-                    { id: 6, icon: '🚀', title: 'מתקדם מהיר', desc: 'סיימת קורס ביומיים', unlocked: false, points: 100 },
-                    { id: 7, icon: '💡', title: 'סקרן', desc: 'צפית ב-10 וידאו הסברים', unlocked: true, points: 30 },
-                    { id: 8, icon: '🌟', title: 'מאסטר AI', desc: 'סיימת את כל קורסי ה-AI', unlocked: false, points: 500 }
+                    { icon: '🎯', title: 'שיעור ראשון', desc: 'השלמת את השיעור הראשון', unlocked: true, points: 10 },
+                    { icon: '🔥', title: 'רצף 7 ימים', desc: 'למדת 7 ימים רצופים', unlocked: true, points: 50 },
+                    { icon: '🏆', title: 'קורס ראשון', desc: 'סיימת קורס שלם', unlocked: false, points: 100 },
+                    { icon: '⭐', title: 'סטודנט מצטיין', desc: 'קיבלת 100% בבוחן', unlocked: false, points: 75 },
+                    { icon: '💡', title: 'סקרן', desc: 'צפית ב-10 שיעורים', unlocked: true, points: 30 },
+                    { icon: '🌟', title: 'מאסטר AI', desc: 'סיימת את כל קורסי ה-AI', unlocked: false, points: 500 }
                 ];
                 
                 const unlocked = achievements.filter(a => a.unlocked);
@@ -961,14 +434,7 @@
                 document.getElementById('achievementCount').textContent = unlocked.length;
                 document.getElementById('pointsCount').textContent = totalPoints;
                 
-                // Determine rank
-                const ranks = [
-                    { min: 0, name: 'מתחיל' },
-                    { min: 50, name: 'מתקדם' },
-                    { min: 150, name: 'מומחה' },
-                    { min: 300, name: 'מאסטר' },
-                    { min: 500, name: 'אגדה' }
-                ];
+                const ranks = [{ min: 0, name: 'מתחיל' }, { min: 50, name: 'מתקדם' }, { min: 150, name: 'מומחה' }, { min: 300, name: 'מאסטר' }];
                 const rank = ranks.reverse().find(r => totalPoints >= r.min)?.name || 'מתחיל';
                 document.getElementById('rankText').textContent = rank;
                 
@@ -986,15 +452,8 @@
             }
         };
         
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            Profile.init();
-        });
-        
-        // Handle hash changes
-        window.addEventListener('hashchange', () => {
-            Profile.handleHashNavigation();
-        });
+        document.addEventListener('DOMContentLoaded', () => Profile.init());
+        window.addEventListener('hashchange', () => Profile.handleHashNavigation());
     </script>
 </body>
 </html>

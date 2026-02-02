@@ -12,13 +12,6 @@
 <body class="catalog-page">
     <nav class="lms-navbar">
         <div class="navbar-brand">
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="תפריט">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="3" y1="12" x2="21" y2="12"></line>
-                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                    <line x1="3" y1="18" x2="21" y2="18"></line>
-                </svg>
-            </button>
             <a href="../index.html">
                 <img src="../images/logo.png" alt="HAI Tech Academy" class="navbar-logo">
             </a>
@@ -34,7 +27,7 @@
                     <div class="user-avatar" id="userAvatar">א</div>
                     <span class="user-name" id="userName">אורח</span>
                 </button>
-                <div class="dropdown-menu" id="userDropdownMenu">
+                <div class="dropdown-menu">
                     <a href="profile.html" class="dropdown-item">הפרופיל שלי</a>
                     <a href="profile.html#settings" class="dropdown-item">הגדרות</a>
                     <hr>
@@ -45,7 +38,6 @@
     </nav>
     
     <main class="catalog-main">
-        <!-- Hero Section -->
         <section class="catalog-hero">
             <div class="hero-content">
                 <h1>גלה את הקורסים שלנו</h1>
@@ -58,12 +50,7 @@
                             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                         </svg>
                         <input type="text" id="searchInput" placeholder="חפש קורס..." aria-label="חיפוש קורסים">
-                        <button class="search-clear" id="searchClear" style="display:none" aria-label="נקה חיפוש">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="18" y1="6" x2="6" y2="18"></line>
-                                <line x1="6" y1="6" x2="18" y2="18"></line>
-                            </svg>
-                        </button>
+                        <button class="search-clear" id="searchClear" style="display:none" aria-label="נקה חיפוש">×</button>
                     </div>
                 </div>
                 
@@ -77,210 +64,71 @@
         </section>
         
         <div class="catalog-content">
-            <!-- Filters Sidebar -->
             <aside class="filters-sidebar" id="filtersSidebar">
                 <div class="filters-header">
                     <h2>סינון</h2>
                     <button class="clear-filters" id="clearFilters">נקה הכל</button>
                 </div>
                 
-                <!-- Category Filter -->
                 <div class="filter-group">
-                    <h3 class="filter-title" aria-expanded="true">
-                        <span>קטגוריה</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </h3>
+                    <h3 class="filter-title">קטגוריה</h3>
                     <div class="filter-options">
                         <label class="filter-option">
                             <input type="checkbox" name="category" value="ai">
                             <span class="checkbox-custom"></span>
                             <span class="option-label">בינה מלאכותית (AI)</span>
-                            <span class="option-count">12</span>
                         </label>
                         <label class="filter-option">
                             <input type="checkbox" name="category" value="ml">
                             <span class="checkbox-custom"></span>
                             <span class="option-label">Machine Learning</span>
-                            <span class="option-count">8</span>
                         </label>
                         <label class="filter-option">
                             <input type="checkbox" name="category" value="data-science">
                             <span class="checkbox-custom"></span>
                             <span class="option-label">Data Science</span>
-                            <span class="option-count">10</span>
                         </label>
                         <label class="filter-option">
                             <input type="checkbox" name="category" value="python">
                             <span class="checkbox-custom"></span>
                             <span class="option-label">Python</span>
-                            <span class="option-count">6</span>
-                        </label>
-                        <label class="filter-option">
-                            <input type="checkbox" name="category" value="deep-learning">
-                            <span class="checkbox-custom"></span>
-                            <span class="option-label">Deep Learning</span>
-                            <span class="option-count">5</span>
-                        </label>
-                        <label class="filter-option">
-                            <input type="checkbox" name="category" value="nlp">
-                            <span class="checkbox-custom"></span>
-                            <span class="option-label">NLP</span>
-                            <span class="option-count">4</span>
                         </label>
                     </div>
                 </div>
                 
-                <!-- Level Filter -->
                 <div class="filter-group">
-                    <h3 class="filter-title" aria-expanded="true">
-                        <span>רמת קושי</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </h3>
+                    <h3 class="filter-title">רמת קושי</h3>
                     <div class="filter-options">
                         <label class="filter-option">
                             <input type="checkbox" name="level" value="beginner">
                             <span class="checkbox-custom"></span>
                             <span class="option-label">מתחיל</span>
-                            <span class="option-count">15</span>
                         </label>
                         <label class="filter-option">
                             <input type="checkbox" name="level" value="intermediate">
                             <span class="checkbox-custom"></span>
                             <span class="option-label">בינוני</span>
-                            <span class="option-count">20</span>
                         </label>
                         <label class="filter-option">
                             <input type="checkbox" name="level" value="advanced">
                             <span class="checkbox-custom"></span>
                             <span class="option-label">מתקדם</span>
-                            <span class="option-count">10</span>
                         </label>
                     </div>
                 </div>
                 
-                <!-- Age Group Filter -->
                 <div class="filter-group">
-                    <h3 class="filter-title" aria-expanded="true">
-                        <span>קבוצת גיל</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </h3>
-                    <div class="filter-options">
-                        <label class="filter-option">
-                            <input type="checkbox" name="age" value="kids">
-                            <span class="checkbox-custom"></span>
-                            <span class="option-label">ילדים (8-12)</span>
-                            <span class="option-count">5</span>
-                        </label>
-                        <label class="filter-option">
-                            <input type="checkbox" name="age" value="teens">
-                            <span class="checkbox-custom"></span>
-                            <span class="option-label">נוער (13-18)</span>
-                            <span class="option-count">12</span>
-                        </label>
-                        <label class="filter-option">
-                            <input type="checkbox" name="age" value="adults">
-                            <span class="checkbox-custom"></span>
-                            <span class="option-label">מבוגרים (18+)</span>
-                            <span class="option-count">30</span>
-                        </label>
-                    </div>
-                </div>
-                
-                <!-- Price Filter -->
-                <div class="filter-group">
-                    <h3 class="filter-title" aria-expanded="true">
-                        <span>מחיר</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </h3>
+                    <h3 class="filter-title">מחיר</h3>
                     <div class="filter-options">
                         <label class="filter-option">
                             <input type="checkbox" name="price" value="free">
                             <span class="checkbox-custom"></span>
                             <span class="option-label">חינם</span>
-                            <span class="option-count">8</span>
                         </label>
                         <label class="filter-option">
                             <input type="checkbox" name="price" value="paid">
                             <span class="checkbox-custom"></span>
                             <span class="option-label">בתשלום</span>
-                            <span class="option-count">37</span>
-                        </label>
-                    </div>
-                    
-                    <div class="price-range">
-                        <label>טווח מחירים</label>
-                        <div class="range-inputs">
-                            <input type="number" id="priceMin" placeholder="מ-" min="0" aria-label="מחיר מינימלי">
-                            <span>-</span>
-                            <input type="number" id="priceMax" placeholder="עד" min="0" aria-label="מחיר מקסימלי">
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Duration Filter -->
-                <div class="filter-group">
-                    <h3 class="filter-title" aria-expanded="true">
-                        <span>משך הקורס</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </h3>
-                    <div class="filter-options">
-                        <label class="filter-option">
-                            <input type="checkbox" name="duration" value="short">
-                            <span class="checkbox-custom"></span>
-                            <span class="option-label">קצר (עד 3 שעות)</span>
-                            <span class="option-count">10</span>
-                        </label>
-                        <label class="filter-option">
-                            <input type="checkbox" name="duration" value="medium">
-                            <span class="checkbox-custom"></span>
-                            <span class="option-label">בינוני (3-10 שעות)</span>
-                            <span class="option-count">20</span>
-                        </label>
-                        <label class="filter-option">
-                            <input type="checkbox" name="duration" value="long">
-                            <span class="checkbox-custom"></span>
-                            <span class="option-label">ארוך (10+ שעות)</span>
-                            <span class="option-count">15</span>
-                        </label>
-                    </div>
-                </div>
-                
-                <!-- Rating Filter -->
-                <div class="filter-group">
-                    <h3 class="filter-title" aria-expanded="true">
-                        <span>דירוג</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </h3>
-                    <div class="filter-options rating-options">
-                        <label class="filter-option">
-                            <input type="radio" name="rating" value="4.5">
-                            <span class="radio-custom"></span>
-                            <span class="stars">⭐⭐⭐⭐⭐</span>
-                            <span class="option-label">4.5 ומעלה</span>
-                        </label>
-                        <label class="filter-option">
-                            <input type="radio" name="rating" value="4">
-                            <span class="radio-custom"></span>
-                            <span class="stars">⭐⭐⭐⭐</span>
-                            <span class="option-label">4.0 ומעלה</span>
-                        </label>
-                        <label class="filter-option">
-                            <input type="radio" name="rating" value="3.5">
-                            <span class="radio-custom"></span>
-                            <span class="stars">⭐⭐⭐</span>
-                            <span class="option-label">3.5 ומעלה</span>
                         </label>
                     </div>
                 </div>
@@ -288,445 +136,76 @@
                 <button class="btn btn-primary apply-filters" id="applyFilters">החל סינון</button>
             </aside>
             
-            <!-- Mobile Filter Toggle -->
             <button class="mobile-filter-btn" id="mobileFilterBtn">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
                 </svg>
                 סינון
-                <span class="filter-count" id="filterCount" style="display:none">0</span>
             </button>
             
-            <!-- Courses Section -->
             <section class="courses-section">
                 <div class="courses-header">
-                    <div class="results-info">
-                        <span id="resultsCount">45 קורסים</span>
-                        <div class="active-filters" id="activeFilters"></div>
-                    </div>
-                    
+                    <span id="resultsCount">12 קורסים</span>
                     <div class="sort-container">
                         <label for="sortSelect">מיון:</label>
-                        <select id="sortSelect" aria-label="מיון קורסים">
+                        <select id="sortSelect">
                             <option value="popular">פופולריות</option>
                             <option value="newest">חדש ביותר</option>
                             <option value="rating">דירוג</option>
                             <option value="price-low">מחיר: נמוך לגבוה</option>
-                            <option value="price-high">מחיר: גבוה לנמוך</option>
-                            <option value="duration">משך זמן</option>
                         </select>
                     </div>
-                    
-                    <div class="view-toggle">
-                        <button class="view-btn active" data-view="grid" aria-label="תצוגת רשת">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="3" y="3" width="7" height="7"></rect>
-                                <rect x="14" y="3" width="7" height="7"></rect>
-                                <rect x="14" y="14" width="7" height="7"></rect>
-                                <rect x="3" y="14" width="7" height="7"></rect>
-                            </svg>
-                        </button>
-                        <button class="view-btn" data-view="list" aria-label="תצוגת רשימה">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="8" y1="6" x2="21" y2="6"></line>
-                                <line x1="8" y1="12" x2="21" y2="12"></line>
-                                <line x1="8" y1="18" x2="21" y2="18"></line>
-                                <line x1="3" y1="6" x2="3.01" y2="6"></line>
-                                <line x1="3" y1="12" x2="3.01" y2="12"></line>
-                                <line x1="3" y1="18" x2="3.01" y2="18"></line>
-                            </svg>
-                        </button>
-                    </div>
                 </div>
                 
-                <!-- Loading State -->
-                <div class="courses-loading" id="coursesLoading" style="display:none">
-                    <div class="loading-spinner"></div>
-                    <p>טוען קורסים...</p>
-                </div>
-                
-                <!-- No Results State -->
                 <div class="no-results" id="noResults" style="display:none">
-                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                        <line x1="8" y1="11" x2="14" y2="11"></line>
-                    </svg>
                     <h3>לא נמצאו תוצאות</h3>
                     <p>נסה לשנות את מונחי החיפוש או הסרת סינונים</p>
                     <button class="btn btn-outline" id="clearSearch">נקה חיפוש</button>
                 </div>
                 
-                <!-- Courses Grid -->
-                <div class="courses-grid" id="coursesGrid">
-                    <!-- Populated by JS -->
-                </div>
+                <div class="courses-grid" id="coursesGrid"></div>
                 
-                <!-- Load More -->
                 <div class="load-more-container" id="loadMoreContainer">
                     <button class="btn btn-outline" id="loadMoreBtn">טען עוד קורסים</button>
-                    <p class="load-more-info">מציג <span id="showingCount">12</span> מתוך <span id="totalCourses">45</span> קורסים</p>
                 </div>
             </section>
         </div>
     </main>
     
-    <!-- Course Preview Modal -->
-    <div class="course-preview-modal" id="coursePreviewModal" role="dialog" aria-modal="true">
-        <div class="preview-content">
-            <button class="close-preview" id="closePreview" aria-label="סגור">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-            </button>
-            
-            <div class="preview-video">
-                <div class="video-placeholder">
-                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                    </svg>
-                    <p>צפה בתצוגה מקדימה</p>
-                </div>
-            </div>
-            
-            <div class="preview-details">
-                <h2 id="previewTitle">שם הקורס</h2>
-                <p id="previewDescription">תיאור הקורס יופיע כאן...</p>
-                
-                <div class="preview-meta">
-                    <span class="preview-rating">⭐ <span id="previewRating">4.8</span></span>
-                    <span class="preview-students"><span id="previewStudents">1,234</span> תלמידים</span>
-                    <span class="preview-duration"><span id="previewDuration">6</span> שעות</span>
-                </div>
-                
-                <div class="preview-instructor">
-                    <div class="instructor-avatar" id="instructorAvatar">מ</div>
-                    <div class="instructor-info">
-                        <span class="instructor-name" id="instructorName">מרצה</span>
-                        <span class="instructor-title" id="instructorTitle">מומחה AI</span>
-                    </div>
-                </div>
-                
-                <div class="preview-curriculum">
-                    <h3>מה תלמד</h3>
-                    <ul id="previewCurriculum">
-                        <li>נושא ראשון</li>
-                        <li>נושא שני</li>
-                        <li>נושא שלישי</li>
-                    </ul>
-                </div>
-                
-                <div class="preview-actions">
-                    <div class="preview-price">
-                        <span class="price-value" id="previewPrice">₪199</span>
-                        <span class="price-original" id="previewOriginalPrice">₪299</span>
-                    </div>
-                    <a href="#" class="btn btn-primary" id="previewEnroll">הרשם לקורס</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Mobile Filter Overlay -->
     <div class="filter-overlay" id="filterOverlay"></div>
     
     <script src="js/lms.js"></script>
     <script>
-        // Catalog functionality
         const Catalog = {
-            courses: [],
+            courses: [
+                { id: 'course_1', title: 'מבוא ל-Machine Learning', description: 'למד את היסודות של למידת מכונה', image: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', category: 'ml', level: 'beginner', price: 199, duration: 6, lessons: 12, rating: 4.8, students: 1234, badge: 'חדש', isNew: true, isPopular: true },
+                { id: 'course_2', title: 'Python למתחילים', description: 'שפת התכנות הפופולרית ביותר ל-AI', image: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)', category: 'python', level: 'beginner', price: 149, duration: 10, lessons: 20, rating: 4.9, students: 2567, badge: 'פופולרי', isNew: false, isPopular: true },
+                { id: 'course_3', title: 'Deep Learning מתקדם', description: 'רשתות נוירונים ו-Transformers', image: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)', category: 'ai', level: 'advanced', price: 349, duration: 15, lessons: 25, rating: 4.7, students: 876, badge: null, isNew: false, isPopular: false },
+                { id: 'course_4', title: 'Data Science עם Pandas', description: 'ניתוח נתונים מקצועי', image: 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)', category: 'data-science', level: 'intermediate', price: 0, duration: 4, lessons: 8, rating: 4.6, students: 3421, badge: 'חינם', isNew: false, isPopular: true },
+                { id: 'course_5', title: 'AI לילדים', description: 'למידת בינה מלאכותית בדרך כיפית', image: 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)', category: 'ai', level: 'beginner', price: 99, duration: 3, lessons: 10, rating: 4.9, students: 567, badge: 'לילדים', isNew: true, isPopular: false },
+                { id: 'course_6', title: 'NLP - עיבוד שפה טבעית', description: 'בנה צ\'אטבוטים ומערכות הבנת טקסט', image: 'linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)', category: 'ai', level: 'intermediate', price: 249, duration: 8, lessons: 16, rating: 4.5, students: 432, badge: 'חדש', isNew: true, isPopular: false }
+            ],
             filteredCourses: [],
-            currentPage: 1,
-            perPage: 12,
-            filters: {
-                search: '',
-                categories: [],
-                levels: [],
-                ages: [],
-                prices: [],
-                durations: [],
-                rating: null,
-                quickFilter: 'all'
-            },
+            filters: { search: '', categories: [], levels: [], prices: [], quickFilter: 'all' },
             
             init() {
-                this.loadCourses();
+                this.filteredCourses = [...this.courses];
+                this.renderCourses();
                 this.setupSearch();
                 this.setupFilters();
                 this.setupSort();
-                this.setupViewToggle();
-                this.setupPreviewModal();
-                this.setupMobileFilters();
                 this.updateUserInfo();
-            },
-            
-            loadCourses() {
-                // Mock courses data
-                this.courses = [
-                    {
-                        id: 'course_1',
-                        title: 'מבוא ל-Machine Learning',
-                        description: 'למד את היסודות של למידת מכונה עם Python ו-Scikit-learn',
-                        image: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                        category: 'ml',
-                        level: 'beginner',
-                        age: 'adults',
-                        price: 199,
-                        originalPrice: 299,
-                        duration: 6,
-                        lessons: 12,
-                        rating: 4.8,
-                        students: 1234,
-                        instructor: { name: 'ד"ר דני כהן', title: 'מומחה ML', avatar: 'ד' },
-                        badge: 'חדש',
-                        isNew: true,
-                        isPopular: true,
-                        curriculum: ['מה זה ML?', 'Supervised vs Unsupervised', 'אלגוריתמים בסיסיים', 'פרויקט מעשי']
-                    },
-                    {
-                        id: 'course_2',
-                        title: 'Python למתחילים',
-                        description: 'שפת התכנות הפופולרית ביותר ל-AI ו-Data Science',
-                        image: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-                        category: 'python',
-                        level: 'beginner',
-                        age: 'teens',
-                        price: 149,
-                        originalPrice: null,
-                        duration: 10,
-                        lessons: 20,
-                        rating: 4.9,
-                        students: 2567,
-                        instructor: { name: 'שרה לוי', title: 'מפתחת Python', avatar: 'ש' },
-                        badge: 'פופולרי',
-                        isNew: false,
-                        isPopular: true,
-                        curriculum: ['הכרת Python', 'משתנים וטיפוסים', 'לולאות ותנאים', 'פונקציות', 'מחלקות']
-                    },
-                    {
-                        id: 'course_3',
-                        title: 'Deep Learning מתקדם',
-                        description: 'רשתות נוירונים עמוקות, CNN, RNN ו-Transformers',
-                        image: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-                        category: 'deep-learning',
-                        level: 'advanced',
-                        age: 'adults',
-                        price: 349,
-                        originalPrice: 499,
-                        duration: 15,
-                        lessons: 25,
-                        rating: 4.7,
-                        students: 876,
-                        instructor: { name: 'פרופ\' יוסי מזרחי', title: 'חוקר AI', avatar: 'י' },
-                        badge: null,
-                        isNew: false,
-                        isPopular: false,
-                        curriculum: ['יסודות DL', 'CNNים', 'RNNים', 'Transformers', 'GPT']
-                    },
-                    {
-                        id: 'course_4',
-                        title: 'Data Science עם Pandas',
-                        description: 'ניתוח נתונים מקצועי עם Python ו-Pandas',
-                        image: 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)',
-                        category: 'data-science',
-                        level: 'intermediate',
-                        age: 'adults',
-                        price: 0,
-                        originalPrice: null,
-                        duration: 4,
-                        lessons: 8,
-                        rating: 4.6,
-                        students: 3421,
-                        instructor: { name: 'מיכל אברהם', title: 'Data Scientist', avatar: 'מ' },
-                        badge: 'חינם',
-                        isNew: false,
-                        isPopular: true,
-                        isFree: true,
-                        curriculum: ['הכרת Pandas', 'DataFrames', 'ניקוי נתונים', 'ויזואליזציה']
-                    },
-                    {
-                        id: 'course_5',
-                        title: 'AI לילדים',
-                        description: 'למידת בינה מלאכותית בדרך כיפית ונגישה',
-                        image: 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)',
-                        category: 'ai',
-                        level: 'beginner',
-                        age: 'kids',
-                        price: 99,
-                        originalPrice: null,
-                        duration: 3,
-                        lessons: 10,
-                        rating: 4.9,
-                        students: 567,
-                        instructor: { name: 'נועה שמש', title: 'מחנכת AI', avatar: 'נ' },
-                        badge: 'לילדים',
-                        isNew: true,
-                        isPopular: false,
-                        curriculum: ['מה זה AI?', 'רובוטים חכמים', 'משחקים עם AI', 'בניית בוט']
-                    },
-                    {
-                        id: 'course_6',
-                        title: 'NLP - עיבוד שפה טבעית',
-                        description: 'למד לבנות צ\'אטבוטים ומערכות הבנת טקסט',
-                        image: 'linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)',
-                        category: 'nlp',
-                        level: 'intermediate',
-                        age: 'adults',
-                        price: 249,
-                        originalPrice: 349,
-                        duration: 8,
-                        lessons: 16,
-                        rating: 4.5,
-                        students: 432,
-                        instructor: { name: 'אורי גולן', title: 'מומחה NLP', avatar: 'א' },
-                        badge: 'חדש',
-                        isNew: true,
-                        isPopular: false,
-                        curriculum: ['יסודות NLP', 'Tokenization', 'Word Embeddings', 'BERT', 'ChatGPT']
-                    },
-                    {
-                        id: 'course_7',
-                        title: 'TensorFlow למתקדמים',
-                        description: 'בניית מודלים מורכבים עם TensorFlow 2.0',
-                        image: 'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)',
-                        category: 'deep-learning',
-                        level: 'advanced',
-                        age: 'adults',
-                        price: 299,
-                        originalPrice: null,
-                        duration: 12,
-                        lessons: 20,
-                        rating: 4.8,
-                        students: 654,
-                        instructor: { name: 'ד"ר רון שפירא', title: 'מפתח TensorFlow', avatar: 'ר' },
-                        badge: null,
-                        isNew: false,
-                        isPopular: true,
-                        curriculum: ['Keras API', 'Custom Layers', 'TPU Training', 'Deployment']
-                    },
-                    {
-                        id: 'course_8',
-                        title: 'Computer Vision',
-                        description: 'זיהוי תמונות, פנים ואובייקטים עם AI',
-                        image: 'linear-gradient(135deg, #d299c2 0%, #fef9d7 100%)',
-                        category: 'ai',
-                        level: 'intermediate',
-                        age: 'adults',
-                        price: 229,
-                        originalPrice: 329,
-                        duration: 10,
-                        lessons: 18,
-                        rating: 4.7,
-                        students: 789,
-                        instructor: { name: 'טל ברק', title: 'מומחה CV', avatar: 'ט' },
-                        badge: 'פופולרי',
-                        isNew: false,
-                        isPopular: true,
-                        curriculum: ['עיבוד תמונה', 'CNNים', 'זיהוי פנים', 'YOLO', 'פרויקט מעשי']
-                    },
-                    {
-                        id: 'course_9',
-                        title: 'מבוא ל-AI לנוער',
-                        description: 'צעד ראשון לעולם הבינה המלאכותית',
-                        image: 'linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%)',
-                        category: 'ai',
-                        level: 'beginner',
-                        age: 'teens',
-                        price: 129,
-                        originalPrice: null,
-                        duration: 5,
-                        lessons: 12,
-                        rating: 4.8,
-                        students: 1234,
-                        instructor: { name: 'גיל רוזן', title: 'מדריך AI', avatar: 'ג' },
-                        badge: 'לנוער',
-                        isNew: true,
-                        isPopular: false,
-                        curriculum: ['מה זה AI?', 'היסטוריה של AI', 'AI בחיי היומיום', 'בניית פרויקט']
-                    },
-                    {
-                        id: 'course_10',
-                        title: 'Reinforcement Learning',
-                        description: 'למד לבנות סוכנים חכמים שלומדים מניסיון',
-                        image: 'linear-gradient(135deg, #96fbc4 0%, #f9f586 100%)',
-                        category: 'ml',
-                        level: 'advanced',
-                        age: 'adults',
-                        price: 399,
-                        originalPrice: 549,
-                        duration: 14,
-                        lessons: 22,
-                        rating: 4.6,
-                        students: 321,
-                        instructor: { name: 'ד"ר עמית לוי', title: 'חוקר RL', avatar: 'ע' },
-                        badge: null,
-                        isNew: false,
-                        isPopular: false,
-                        curriculum: ['יסודות RL', 'Q-Learning', 'Policy Gradient', 'AlphaGo', 'פרויקט']
-                    },
-                    {
-                        id: 'course_11',
-                        title: 'SQL ו-Databases',
-                        description: 'ניהול מסדי נתונים וכתיבת שאילתות',
-                        image: 'linear-gradient(135deg, #c1dfc4 0%, #deecdd 100%)',
-                        category: 'data-science',
-                        level: 'beginner',
-                        age: 'adults',
-                        price: 0,
-                        originalPrice: null,
-                        duration: 4,
-                        lessons: 10,
-                        rating: 4.5,
-                        students: 2100,
-                        instructor: { name: 'יעל כהן', title: 'DBA', avatar: 'י' },
-                        badge: 'חינם',
-                        isNew: false,
-                        isPopular: true,
-                        isFree: true,
-                        curriculum: ['מה זה DB?', 'SQL בסיסי', 'JOINs', 'אופטימיזציה']
-                    },
-                    {
-                        id: 'course_12',
-                        title: 'Prompt Engineering',
-                        description: 'אמנות כתיבת פרומפטים ל-ChatGPT ו-AI גנרטיבי',
-                        image: 'linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)',
-                        category: 'ai',
-                        level: 'beginner',
-                        age: 'adults',
-                        price: 79,
-                        originalPrice: 149,
-                        duration: 2,
-                        lessons: 6,
-                        rating: 4.9,
-                        students: 4500,
-                        instructor: { name: 'דנה מור', title: 'מומחית AI', avatar: 'ד' },
-                        badge: 'חדש 🔥',
-                        isNew: true,
-                        isPopular: true,
-                        curriculum: ['יסודות Prompting', 'טכניקות מתקדמות', 'Chain of Thought', 'פרקטיקות']
-                    }
-                ];
-                
-                this.filteredCourses = [...this.courses];
-                this.renderCourses();
             },
             
             setupSearch() {
                 const searchInput = document.getElementById('searchInput');
                 const searchClear = document.getElementById('searchClear');
                 
-                let searchTimeout;
                 searchInput?.addEventListener('input', (e) => {
-                    clearTimeout(searchTimeout);
                     const query = e.target.value.trim();
-                    
-                    searchClear.style.display = query ? 'flex' : 'none';
-                    
-                    searchTimeout = setTimeout(() => {
-                        this.filters.search = query;
-                        this.applyFilters();
-                    }, 300);
+                    searchClear.style.display = query ? 'block' : 'none';
+                    this.filters.search = query;
+                    this.applyFilters();
                 });
                 
                 searchClear?.addEventListener('click', () => {
@@ -735,16 +214,9 @@
                     this.filters.search = '';
                     this.applyFilters();
                 });
-                
-                document.getElementById('clearSearch')?.addEventListener('click', () => {
-                    searchInput.value = '';
-                    this.filters.search = '';
-                    this.clearAllFilters();
-                });
             },
             
             setupFilters() {
-                // Quick filters
                 document.querySelectorAll('.quick-filter').forEach(btn => {
                     btn.addEventListener('click', () => {
                         document.querySelectorAll('.quick-filter').forEach(b => b.classList.remove('active'));
@@ -754,17 +226,6 @@
                     });
                 });
                 
-                // Filter group toggles
-                document.querySelectorAll('.filter-title').forEach(title => {
-                    title.addEventListener('click', () => {
-                        const options = title.nextElementSibling;
-                        const isExpanded = title.getAttribute('aria-expanded') === 'true';
-                        title.setAttribute('aria-expanded', !isExpanded);
-                        options.style.display = isExpanded ? 'none' : 'block';
-                    });
-                });
-                
-                // Checkbox filters
                 document.querySelectorAll('input[type="checkbox"][name]').forEach(checkbox => {
                     checkbox.addEventListener('change', () => {
                         this.updateFiltersFromInputs();
@@ -772,104 +233,54 @@
                     });
                 });
                 
-                // Rating filter
-                document.querySelectorAll('input[name="rating"]').forEach(radio => {
-                    radio.addEventListener('change', (e) => {
-                        this.filters.rating = parseFloat(e.target.value);
-                        this.applyFilters();
-                    });
-                });
-                
-                // Clear filters
                 document.getElementById('clearFilters')?.addEventListener('click', () => {
-                    this.clearAllFilters();
+                    document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+                    this.filters = { search: '', categories: [], levels: [], prices: [], quickFilter: 'all' };
+                    document.querySelectorAll('.quick-filter').forEach(b => b.classList.remove('active'));
+                    document.querySelector('.quick-filter[data-filter="all"]')?.classList.add('active');
+                    this.applyFilters();
                 });
                 
-                // Apply filters button (mobile)
+                document.getElementById('mobileFilterBtn')?.addEventListener('click', () => {
+                    document.getElementById('filtersSidebar').classList.add('visible');
+                    document.getElementById('filterOverlay').classList.add('visible');
+                });
+                
+                document.getElementById('filterOverlay')?.addEventListener('click', () => {
+                    document.getElementById('filtersSidebar').classList.remove('visible');
+                    document.getElementById('filterOverlay').classList.remove('visible');
+                });
+                
                 document.getElementById('applyFilters')?.addEventListener('click', () => {
-                    this.closeMobileFilters();
+                    document.getElementById('filtersSidebar').classList.remove('visible');
+                    document.getElementById('filterOverlay').classList.remove('visible');
                 });
             },
             
             updateFiltersFromInputs() {
                 this.filters.categories = Array.from(document.querySelectorAll('input[name="category"]:checked')).map(i => i.value);
                 this.filters.levels = Array.from(document.querySelectorAll('input[name="level"]:checked')).map(i => i.value);
-                this.filters.ages = Array.from(document.querySelectorAll('input[name="age"]:checked')).map(i => i.value);
                 this.filters.prices = Array.from(document.querySelectorAll('input[name="price"]:checked')).map(i => i.value);
-                this.filters.durations = Array.from(document.querySelectorAll('input[name="duration"]:checked')).map(i => i.value);
-            },
-            
-            clearAllFilters() {
-                // Clear checkboxes
-                document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
-                document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
-                
-                // Reset filters object
-                this.filters = {
-                    search: '',
-                    categories: [],
-                    levels: [],
-                    ages: [],
-                    prices: [],
-                    durations: [],
-                    rating: null,
-                    quickFilter: 'all'
-                };
-                
-                // Reset quick filters
-                document.querySelectorAll('.quick-filter').forEach(b => b.classList.remove('active'));
-                document.querySelector('.quick-filter[data-filter="all"]')?.classList.add('active');
-                
-                // Clear search
-                const searchInput = document.getElementById('searchInput');
-                if (searchInput) searchInput.value = '';
-                
-                this.applyFilters();
             },
             
             applyFilters() {
                 let results = [...this.courses];
                 
-                // Search filter
                 if (this.filters.search) {
                     const query = this.filters.search.toLowerCase();
-                    results = results.filter(c => 
-                        c.title.toLowerCase().includes(query) ||
-                        c.description.toLowerCase().includes(query)
-                    );
+                    results = results.filter(c => c.title.toLowerCase().includes(query) || c.description.toLowerCase().includes(query));
                 }
                 
-                // Quick filters
                 if (this.filters.quickFilter !== 'all') {
                     switch (this.filters.quickFilter) {
-                        case 'new':
-                            results = results.filter(c => c.isNew);
-                            break;
-                        case 'popular':
-                            results = results.filter(c => c.isPopular);
-                            break;
-                        case 'free':
-                            results = results.filter(c => c.price === 0);
-                            break;
+                        case 'new': results = results.filter(c => c.isNew); break;
+                        case 'popular': results = results.filter(c => c.isPopular); break;
+                        case 'free': results = results.filter(c => c.price === 0); break;
                     }
                 }
                 
-                // Category filter
-                if (this.filters.categories.length > 0) {
-                    results = results.filter(c => this.filters.categories.includes(c.category));
-                }
-                
-                // Level filter
-                if (this.filters.levels.length > 0) {
-                    results = results.filter(c => this.filters.levels.includes(c.level));
-                }
-                
-                // Age filter
-                if (this.filters.ages.length > 0) {
-                    results = results.filter(c => this.filters.ages.includes(c.age));
-                }
-                
-                // Price filter
+                if (this.filters.categories.length > 0) results = results.filter(c => this.filters.categories.includes(c.category));
+                if (this.filters.levels.length > 0) results = results.filter(c => this.filters.levels.includes(c.level));
                 if (this.filters.prices.length > 0) {
                     results = results.filter(c => {
                         if (this.filters.prices.includes('free') && c.price === 0) return true;
@@ -878,330 +289,75 @@
                     });
                 }
                 
-                // Duration filter
-                if (this.filters.durations.length > 0) {
-                    results = results.filter(c => {
-                        if (this.filters.durations.includes('short') && c.duration <= 3) return true;
-                        if (this.filters.durations.includes('medium') && c.duration > 3 && c.duration <= 10) return true;
-                        if (this.filters.durations.includes('long') && c.duration > 10) return true;
-                        return false;
-                    });
-                }
-                
-                // Rating filter
-                if (this.filters.rating) {
-                    results = results.filter(c => c.rating >= this.filters.rating);
-                }
-                
                 this.filteredCourses = results;
-                this.currentPage = 1;
                 this.renderCourses();
-                this.updateFilterCount();
-                this.updateActiveFilters();
             },
             
             setupSort() {
                 document.getElementById('sortSelect')?.addEventListener('change', (e) => {
-                    this.sortCourses(e.target.value);
-                });
-            },
-            
-            sortCourses(sortBy) {
-                switch (sortBy) {
-                    case 'popular':
-                        this.filteredCourses.sort((a, b) => b.students - a.students);
-                        break;
-                    case 'newest':
-                        this.filteredCourses.sort((a, b) => (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0));
-                        break;
-                    case 'rating':
-                        this.filteredCourses.sort((a, b) => b.rating - a.rating);
-                        break;
-                    case 'price-low':
-                        this.filteredCourses.sort((a, b) => a.price - b.price);
-                        break;
-                    case 'price-high':
-                        this.filteredCourses.sort((a, b) => b.price - a.price);
-                        break;
-                    case 'duration':
-                        this.filteredCourses.sort((a, b) => a.duration - b.duration);
-                        break;
-                }
-                this.renderCourses();
-            },
-            
-            setupViewToggle() {
-                document.querySelectorAll('.view-btn').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
-                        btn.classList.add('active');
-                        
-                        const grid = document.getElementById('coursesGrid');
-                        grid.className = `courses-grid ${btn.dataset.view}-view`;
-                    });
+                    const sortBy = e.target.value;
+                    switch (sortBy) {
+                        case 'popular': this.filteredCourses.sort((a, b) => b.students - a.students); break;
+                        case 'newest': this.filteredCourses.sort((a, b) => (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0)); break;
+                        case 'rating': this.filteredCourses.sort((a, b) => b.rating - a.rating); break;
+                        case 'price-low': this.filteredCourses.sort((a, b) => a.price - b.price); break;
+                    }
+                    this.renderCourses();
                 });
             },
             
             renderCourses() {
                 const grid = document.getElementById('coursesGrid');
                 const noResults = document.getElementById('noResults');
-                const loadMoreContainer = document.getElementById('loadMoreContainer');
+                
+                document.getElementById('resultsCount').textContent = `${this.filteredCourses.length} קורסים`;
                 
                 if (this.filteredCourses.length === 0) {
                     grid.innerHTML = '';
                     noResults.style.display = 'flex';
-                    loadMoreContainer.style.display = 'none';
-                    document.getElementById('resultsCount').textContent = '0 קורסים';
                     return;
                 }
                 
                 noResults.style.display = 'none';
-                
-                const start = 0;
-                const end = this.currentPage * this.perPage;
-                const coursesToShow = this.filteredCourses.slice(start, end);
-                
-                grid.innerHTML = coursesToShow.map(course => this.createCourseCard(course)).join('');
-                
-                // Update counts
-                document.getElementById('resultsCount').textContent = `${this.filteredCourses.length} קורסים`;
-                document.getElementById('showingCount').textContent = coursesToShow.length;
-                document.getElementById('totalCourses').textContent = this.filteredCourses.length;
-                
-                // Show/hide load more
-                loadMoreContainer.style.display = end >= this.filteredCourses.length ? 'none' : 'block';
-                
-                // Setup card interactions
-                this.setupCardInteractions();
-            },
-            
-            createCourseCard(course) {
-                const priceDisplay = course.price === 0 ? 'חינם' : `₪${course.price}`;
-                const originalPriceDisplay = course.originalPrice ? `<span class="original-price">₪${course.originalPrice}</span>` : '';
-                const levelLabels = { beginner: 'מתחיל', intermediate: 'בינוני', advanced: 'מתקדם' };
-                
-                return `
-                    <div class="course-card" data-course-id="${course.id}">
-                        <div class="course-image" style="background: ${course.image};">
-                            ${course.badge ? `<span class="course-badge">${course.badge}</span>` : ''}
-                            <button class="preview-btn" data-course="${course.id}" aria-label="תצוגה מקדימה">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                                </svg>
-                            </button>
-                            <button class="wishlist-btn" data-course="${course.id}" aria-label="הוסף למועדפים">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="course-content">
-                            <div class="course-level">${levelLabels[course.level] || course.level}</div>
-                            <h3 class="course-title">${course.title}</h3>
-                            <p class="course-description">${course.description}</p>
-                            
-                            <div class="course-instructor">
-                                <div class="instructor-avatar">${course.instructor.avatar}</div>
-                                <span>${course.instructor.name}</span>
+                grid.innerHTML = this.filteredCourses.map(course => {
+                    const levelLabels = { beginner: 'מתחיל', intermediate: 'בינוני', advanced: 'מתקדם' };
+                    return `
+                        <div class="course-card" data-course-id="${course.id}">
+                            <div class="course-image" style="background: ${course.image};">
+                                ${course.badge ? `<span class="course-badge">${course.badge}</span>` : ''}
                             </div>
-                            
-                            <div class="course-stats">
-                                <span class="rating">⭐ ${course.rating}</span>
-                                <span class="students">(${course.students.toLocaleString('he-IL')})</span>
-                            </div>
-                            
-                            <div class="course-meta">
-                                <span>${course.lessons} שיעורים</span>
-                                <span>${course.duration} שעות</span>
-                            </div>
-                            
-                            <div class="course-footer">
-                                <div class="course-price">
-                                    <span class="price">${priceDisplay}</span>
-                                    ${originalPriceDisplay}
+                            <div class="course-content">
+                                <div class="course-level">${levelLabels[course.level] || course.level}</div>
+                                <h3 class="course-title">${course.title}</h3>
+                                <p class="course-description">${course.description}</p>
+                                <div class="course-stats">
+                                    <span class="rating">⭐ ${course.rating}</span>
+                                    <span class="students">(${course.students.toLocaleString('he-IL')})</span>
                                 </div>
-                                <a href="course.html?id=${course.id}" class="btn btn-primary btn-sm">לפרטים</a>
+                                <div class="course-meta">
+                                    <span>${course.lessons} שיעורים</span>
+                                    <span>${course.duration} שעות</span>
+                                </div>
+                                <div class="course-footer">
+                                    <div class="course-price">
+                                        <span class="price">${course.price === 0 ? 'חינם' : `₪${course.price}`}</span>
+                                    </div>
+                                    <a href="course.html?id=${course.id}" class="btn btn-primary btn-sm">לפרטים</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                `;
-            },
-            
-            setupCardInteractions() {
-                // Preview buttons
-                document.querySelectorAll('.preview-btn').forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        const courseId = btn.dataset.course;
-                        this.showPreview(courseId);
-                    });
-                });
-                
-                // Wishlist buttons
-                document.querySelectorAll('.wishlist-btn').forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        btn.classList.toggle('active');
-                        const courseId = btn.dataset.course;
-                        this.toggleWishlist(courseId);
-                    });
-                });
-                
-                // Load more
-                document.getElementById('loadMoreBtn')?.addEventListener('click', () => {
-                    this.currentPage++;
-                    this.renderCourses();
-                });
-            },
-            
-            setupPreviewModal() {
-                const modal = document.getElementById('coursePreviewModal');
-                const closeBtn = document.getElementById('closePreview');
-                
-                closeBtn?.addEventListener('click', () => {
-                    modal.classList.remove('visible');
-                });
-                
-                modal?.addEventListener('click', (e) => {
-                    if (e.target === modal) {
-                        modal.classList.remove('visible');
-                    }
-                });
-            },
-            
-            showPreview(courseId) {
-                const course = this.courses.find(c => c.id === courseId);
-                if (!course) return;
-                
-                const modal = document.getElementById('coursePreviewModal');
-                
-                document.getElementById('previewTitle').textContent = course.title;
-                document.getElementById('previewDescription').textContent = course.description;
-                document.getElementById('previewRating').textContent = course.rating;
-                document.getElementById('previewStudents').textContent = course.students.toLocaleString('he-IL');
-                document.getElementById('previewDuration').textContent = course.duration;
-                document.getElementById('instructorAvatar').textContent = course.instructor.avatar;
-                document.getElementById('instructorName').textContent = course.instructor.name;
-                document.getElementById('instructorTitle').textContent = course.instructor.title;
-                document.getElementById('previewPrice').textContent = course.price === 0 ? 'חינם' : `₪${course.price}`;
-                document.getElementById('previewOriginalPrice').textContent = course.originalPrice ? `₪${course.originalPrice}` : '';
-                document.getElementById('previewOriginalPrice').style.display = course.originalPrice ? 'inline' : 'none';
-                document.getElementById('previewEnroll').href = `course.html?id=${course.id}`;
-                
-                const curriculum = document.getElementById('previewCurriculum');
-                curriculum.innerHTML = course.curriculum.map(item => `<li>${item}</li>`).join('');
-                
-                modal.classList.add('visible');
-            },
-            
-            toggleWishlist(courseId) {
-                const wishlist = LMS.storage.get('wishlist') || [];
-                const index = wishlist.indexOf(courseId);
-                
-                if (index === -1) {
-                    wishlist.push(courseId);
-                    LMS.showNotification('נוסף למועדפים ❤️', 'success');
-                } else {
-                    wishlist.splice(index, 1);
-                    LMS.showNotification('הוסר מהמועדפים', 'info');
-                }
-                
-                LMS.storage.set('wishlist', wishlist);
-            },
-            
-            setupMobileFilters() {
-                const filterBtn = document.getElementById('mobileFilterBtn');
-                const sidebar = document.getElementById('filtersSidebar');
-                const overlay = document.getElementById('filterOverlay');
-                
-                filterBtn?.addEventListener('click', () => {
-                    sidebar.classList.add('visible');
-                    overlay.classList.add('visible');
-                });
-                
-                overlay?.addEventListener('click', () => {
-                    this.closeMobileFilters();
-                });
-            },
-            
-            closeMobileFilters() {
-                document.getElementById('filtersSidebar').classList.remove('visible');
-                document.getElementById('filterOverlay').classList.remove('visible');
-            },
-            
-            updateFilterCount() {
-                const count = this.filters.categories.length + 
-                              this.filters.levels.length + 
-                              this.filters.ages.length + 
-                              this.filters.prices.length + 
-                              this.filters.durations.length +
-                              (this.filters.rating ? 1 : 0);
-                
-                const badge = document.getElementById('filterCount');
-                if (count > 0) {
-                    badge.textContent = count;
-                    badge.style.display = 'flex';
-                } else {
-                    badge.style.display = 'none';
-                }
-            },
-            
-            updateActiveFilters() {
-                const container = document.getElementById('activeFilters');
-                const labels = {
-                    ai: 'AI', ml: 'ML', 'data-science': 'Data Science', python: 'Python',
-                    'deep-learning': 'Deep Learning', nlp: 'NLP',
-                    beginner: 'מתחיל', intermediate: 'בינוני', advanced: 'מתקדם',
-                    kids: 'ילדים', teens: 'נוער', adults: 'מבוגרים',
-                    free: 'חינם', paid: 'בתשלום',
-                    short: 'קצר', medium: 'בינוני', long: 'ארוך'
-                };
-                
-                const activeFilters = [
-                    ...this.filters.categories,
-                    ...this.filters.levels,
-                    ...this.filters.ages,
-                    ...this.filters.prices,
-                    ...this.filters.durations
-                ];
-                
-                container.innerHTML = activeFilters.map(filter => `
-                    <span class="active-filter" data-filter="${filter}">
-                        ${labels[filter] || filter}
-                        <button aria-label="הסר סינון">&times;</button>
-                    </span>
-                `).join('');
-                
-                // Remove filter on click
-                container.querySelectorAll('.active-filter button').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        const filterValue = btn.parentElement.dataset.filter;
-                        const checkbox = document.querySelector(`input[value="${filterValue}"]`);
-                        if (checkbox) {
-                            checkbox.checked = false;
-                            this.updateFiltersFromInputs();
-                            this.applyFilters();
-                        }
-                    });
-                });
+                    `;
+                }).join('');
             },
             
             updateUserInfo() {
                 const user = LMS.getCurrentUser();
-                const userName = document.getElementById('userName');
-                const userAvatar = document.getElementById('userAvatar');
-                
-                if (userName) userName.textContent = user.name || 'אורח';
-                if (userAvatar) userAvatar.textContent = user.avatar || user.name?.charAt(0) || 'א';
+                document.getElementById('userName').textContent = user.name || 'אורח';
+                document.getElementById('userAvatar').textContent = user.avatar || user.name?.charAt(0) || 'א';
             }
         };
         
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            Catalog.init();
-        });
+        document.addEventListener('DOMContentLoaded', () => Catalog.init());
     </script>
 </body>
 </html>
