@@ -78,15 +78,17 @@
             #haitech-chat-window {
                 left: 10px !important;
                 right: 10px !important;
-                bottom: 80px !important;
+                bottom: 90px !important;
                 width: auto !important;
-                height: calc(100vh - 160px) !important;
-                max-height: none !important;
+                height: 450px !important;
+                max-height: 60vh !important;
                 border-radius: 16px !important;
             }
             #haitech-chat-btn {
-                bottom: 20px !important;
+                bottom: 24px !important;
                 left: 20px !important;
+                width: 56px !important;
+                height: 56px !important;
             }
         }
         
