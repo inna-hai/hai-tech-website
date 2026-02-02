@@ -729,13 +729,18 @@ class HaiTechChatbotV2 {
     }
     
     toggle() {
+        alert('Toggle: isOpen=' + this.isOpen);
         this.isOpen ? this.close() : this.open();
     }
     
     open() {
         this.isOpen = true;
         const win = document.getElementById('chatbot-window');
-        win.style.display = 'flex';
+        alert('Window element: ' + (win ? 'found' : 'NOT FOUND'));
+        if (win) {
+            win.style.display = 'flex';
+            alert('Window should be visible now');
+        }
         const chatIcon = document.getElementById('chatbot-toggle').querySelector('.chat-icon');
         const closeIcon = document.getElementById('chatbot-toggle').querySelector('.close-icon');
         if (chatIcon) chatIcon.style.display = 'none';
@@ -745,7 +750,6 @@ class HaiTechChatbotV2 {
             if (input) input.focus();
         }, 100);
         this.resetInactivityTimer();
-        console.log('Chatbot opened');
     }
     
     close() {
