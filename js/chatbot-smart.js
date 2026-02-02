@@ -1,12 +1,14 @@
 /**
  * Smart Chatbot - דרך ההייטק
- * Features:
- * - Persistent conversation memory (localStorage)
- * - Rolling summaries for long conversations
- * - Inactivity follow-up mechanism
- * - Soft lead collection (one question at a time)
- * - Intent detection
- * - Human-like behavior
+ * State Machine Flow with Persistent Memory
+ * 
+ * States:
+ * 1. GREETING - Initial welcome
+ * 2. DISCOVERY - Clarify need (who, age, interest)
+ * 3. RECOMMENDATION - Show 1-2 relevant courses
+ * 4. INTEREST_CHECK - Confirm interest
+ * 5. LEAD_COLLECTION - Collect contact details (soft, one by one)
+ * 6. COMPLETED - Lead collected, conversation done
  */
 
 (function() {
@@ -14,11 +16,22 @@
     
     // ==================== CONFIGURATION ====================
     const CONFIG = {
-        STORAGE_KEY: 'haitech_chat_session',
-        INACTIVITY_FOLLOWUP_MS: 2 * 60 * 1000,  // 2 minutes
-        INACTIVITY_LEAD_ASK_MS: 3 * 60 * 1000,  // 3 minutes
-        MAX_MESSAGES_BEFORE_SUMMARY: 20,
-        API_ENDPOINT: '/api/chat'
+        STORAGE_KEY: 'haitech_chat_v3',
+        INACTIVITY_FOLLOWUP_MS: 2 * 60 * 1000,
+        INACTIVITY_LEAD_ASK_MS: 3 * 60 * 1000
+    };
+
+    // ==================== COURSE DATA ====================
+    const COURSES = {
+        'scratch': { name: 'סקראץ\'', ages: '7-10', emoji: '🐱', desc: 'מבוא מושלם לתכנות לילדים צעירים' },
+        'minecraft-worlds': { name: 'מיינקראפט בניית עולמות', ages: '8-11', emoji: '🏗️', desc: 'יצירת עולמות ומפות במיינקראפט' },
+        'minecraft-js': { name: 'JavaScript במיינקראפט', ages: '10-13', emoji: '⛏️', desc: 'תכנות אמיתי בתוך מיינקראפט - הכי פופולרי!' },
+        'minecraft-java': { name: 'Java Plugins למיינקראפט', ages: '12+', emoji: '☕', desc: 'בניית שרת מיינקראפט משלך עם פלאגינים' },
+        'roblox': { name: 'רובלוקס עם Lua', ages: '10+', emoji: '🎮', desc: 'יצירת משחקים ברובלוקס' },
+        'python': { name: 'Python פיתוח משחקים', ages: '10+', emoji: '🐍', desc: 'השפה הכי מבוקשת בהייטק' },
+        'web': { name: 'פיתוח אתרים', ages: '12+', emoji: '🌐', desc: 'HTML, CSS, JavaScript' },
+        'discord-bots': { name: 'בוטים לדיסקורד', ages: '12+', emoji: '🤖', desc: 'בניית בוטים חכמים' },
+        'ai': { name: 'בינה מלאכותית', ages: '12+', emoji: '🧠', desc: 'עולם ה-AI והפרומפטים' }
     };
 
     // ==================== STYLES ====================
@@ -114,9 +127,7 @@
             }
         }
         
-        #haitech-chat-window.open {
-            display: flex !important;
-        }
+        #haitech-chat-window.open { display: flex !important; }
         
         .haitech-header {
             background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
@@ -181,9 +192,7 @@
             transition: background 0.2s !important;
         }
         
-        .haitech-close:hover {
-            background: rgba(255,255,255,0.3) !important;
-        }
+        .haitech-close:hover { background: rgba(255,255,255,0.3) !important; }
         
         .haitech-messages {
             flex: 1 !important;
@@ -196,14 +205,8 @@
             background: #f9fafb !important;
         }
         
-        .haitech-messages::-webkit-scrollbar {
-            width: 6px;
-        }
-        
-        .haitech-messages::-webkit-scrollbar-thumb {
-            background: #d1d5db;
-            border-radius: 3px;
-        }
+        .haitech-messages::-webkit-scrollbar { width: 6px; }
+        .haitech-messages::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
         
         .haitech-msg {
             max-width: 85%;
@@ -215,9 +218,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
-        .haitech-msg.user {
-            align-self: flex-start;
-        }
+        .haitech-msg.user { align-self: flex-start; }
         
         .haitech-msg.user .msg-content {
             background: linear-gradient(135deg, #6366f1, #8b5cf6);
@@ -257,33 +258,6 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         }
         
-        .haitech-quick {
-            padding: 12px 20px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            background: white;
-            border-top: 1px solid #f3f4f6;
-        }
-        
-        .haitech-quick-btn {
-            padding: 8px 14px;
-            border: 1px solid #e5e7eb;
-            border-radius: 20px;
-            background: white;
-            cursor: pointer;
-            font-size: 0.85rem;
-            color: #4b5563;
-            transition: all 0.2s;
-            font-family: inherit;
-        }
-        
-        .haitech-quick-btn:hover {
-            border-color: #6366f1;
-            color: #6366f1;
-            background: #f5f3ff;
-        }
-        
         .haitech-input-area {
             padding: 16px 20px !important;
             background: white !important;
@@ -305,13 +279,8 @@
             font-family: inherit !important;
         }
         
-        .haitech-input:focus {
-            border-color: #6366f1 !important;
-        }
-        
-        .haitech-input::placeholder {
-            color: #9ca3af;
-        }
+        .haitech-input:focus { border-color: #6366f1 !important; }
+        .haitech-input::placeholder { color: #9ca3af; }
         
         .haitech-send {
             width: 48px !important;
@@ -366,8 +335,18 @@
     `;
     document.head.appendChild(style);
 
-    // ==================== SESSION MEMORY CLASS ====================
-    class SessionMemory {
+    // ==================== STATE MACHINE ====================
+    const STATES = {
+        GREETING: 'greeting',
+        DISCOVERY: 'discovery',
+        RECOMMENDATION: 'recommendation',
+        INTEREST_CHECK: 'interest_check',
+        LEAD_COLLECTION: 'lead_collection',
+        COMPLETED: 'completed'
+    };
+
+    // ==================== SESSION CLASS ====================
+    class ChatSession {
         constructor() {
             this.load();
         }
@@ -377,13 +356,16 @@
                 const data = localStorage.getItem(CONFIG.STORAGE_KEY);
                 if (data) {
                     const parsed = JSON.parse(data);
-                    this.sessionId = parsed.sessionId;
+                    this.state = parsed.state || STATES.GREETING;
+                    this.childAge = parsed.childAge || null;
+                    this.interest = parsed.interest || null;
+                    this.recommendedCourse = parsed.recommendedCourse || null;
+                    this.lead = parsed.lead || {};
+                    this.leadStep = parsed.leadStep || null;
+                    this.leadRefused = parsed.leadRefused || false;
                     this.messages = parsed.messages || [];
-                    this.summary = parsed.summary || '';
-                    this.userProfile = parsed.userProfile || {};
-                    this.collectedLead = parsed.collectedLead || {};
-                    this.leadAsked = parsed.leadAsked || false;
                     this.lastActivity = parsed.lastActivity || Date.now();
+                    this.followUpSent = parsed.followUpSent || false;
                 } else {
                     this.reset();
                 }
@@ -393,26 +375,32 @@
         }
         
         reset() {
-            this.sessionId = 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+            this.state = STATES.GREETING;
+            this.childAge = null;
+            this.interest = null;
+            this.recommendedCourse = null;
+            this.lead = {};
+            this.leadStep = null;
+            this.leadRefused = false;
             this.messages = [];
-            this.summary = '';
-            this.userProfile = {};
-            this.collectedLead = {};
-            this.leadAsked = false;
             this.lastActivity = Date.now();
+            this.followUpSent = false;
             this.save();
         }
         
         save() {
             try {
                 localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify({
-                    sessionId: this.sessionId,
-                    messages: this.messages,
-                    summary: this.summary,
-                    userProfile: this.userProfile,
-                    collectedLead: this.collectedLead,
-                    leadAsked: this.leadAsked,
-                    lastActivity: this.lastActivity
+                    state: this.state,
+                    childAge: this.childAge,
+                    interest: this.interest,
+                    recommendedCourse: this.recommendedCourse,
+                    lead: this.lead,
+                    leadStep: this.leadStep,
+                    leadRefused: this.leadRefused,
+                    messages: this.messages.slice(-30), // Keep last 30 messages
+                    lastActivity: this.lastActivity,
+                    followUpSent: this.followUpSent
                 }));
             } catch (e) {
                 console.warn('Failed to save session:', e);
@@ -420,493 +408,428 @@
         }
         
         addMessage(role, content) {
-            this.messages.push({
-                role: role,
-                content: content,
-                timestamp: Date.now()
-            });
+            this.messages.push({ role, content, ts: Date.now() });
             this.lastActivity = Date.now();
-            
-            // Check if we need to create a rolling summary
-            if (this.messages.length > CONFIG.MAX_MESSAGES_BEFORE_SUMMARY) {
-                this.createRollingSummary();
-            }
-            
             this.save();
         }
         
-        createRollingSummary() {
-            // Keep last 10 messages, summarize the rest
-            const toSummarize = this.messages.slice(0, -10);
-            const toKeep = this.messages.slice(-10);
+        setState(newState) {
+            this.state = newState;
+            this.save();
+        }
+        
+        hasAllDiscoveryInfo() {
+            return this.childAge !== null && this.interest !== null;
+        }
+    }
+
+    // ==================== CHATBOT BRAIN ====================
+    class ChatBrain {
+        constructor(session) {
+            this.session = session;
+        }
+        
+        // Extract info from user message
+        extractInfo(message) {
+            const lower = message.toLowerCase();
             
-            // Create a simple summary
-            const topics = new Set();
-            const mentions = [];
-            
-            toSummarize.forEach(msg => {
-                const text = msg.content.toLowerCase();
-                if (/מיינקראפט/.test(text)) topics.add('מיינקראפט');
-                if (/רובלוקס/.test(text)) topics.add('רובלוקס');
-                if (/פייתון|python/.test(text)) topics.add('Python');
-                if (/גיל|בן |בת /.test(text)) {
-                    const ageMatch = text.match(/(\d+)/);
-                    if (ageMatch) mentions.push('גיל הילד: ' + ageMatch[1]);
+            // Extract age
+            const agePatterns = [
+                /בן\s*(\d+)/,
+                /בת\s*(\d+)/,
+                /גיל\s*(\d+)/,
+                /(\d+)\s*שנים/,
+                /^(\d+)$/
+            ];
+            for (const pattern of agePatterns) {
+                const match = message.match(pattern);
+                if (match) {
+                    const age = parseInt(match[1]);
+                    if (age >= 5 && age <= 20) {
+                        this.session.childAge = age;
+                    }
                 }
-                if (/מחיר|עלות/.test(text)) topics.add('שאל על מחירים');
-            });
-            
-            if (topics.size > 0 || mentions.length > 0) {
-                this.summary = 'סיכום שיחה קודמת: ';
-                if (topics.size > 0) this.summary += 'נושאים: ' + Array.from(topics).join(', ') + '. ';
-                if (mentions.length > 0) this.summary += mentions.join(', ') + '.';
             }
             
-            this.messages = toKeep;
-        }
-        
-        updateUserProfile(key, value) {
-            this.userProfile[key] = value;
-            this.save();
-        }
-        
-        updateLead(field, value) {
-            this.collectedLead[field] = value;
-            this.save();
-        }
-        
-        hasLead(field) {
-            return !!this.collectedLead[field];
-        }
-        
-        getContext() {
-            let context = '';
-            if (this.summary) {
-                context += this.summary + '\n\n';
-            }
-            if (Object.keys(this.userProfile).length > 0) {
-                context += 'פרופיל משתמש: ' + JSON.stringify(this.userProfile) + '\n\n';
-            }
-            if (Object.keys(this.collectedLead).length > 0) {
-                context += 'פרטים שנאספו: ' + JSON.stringify(this.collectedLead) + '\n\n';
-            }
-            return context;
-        }
-    }
-
-    // ==================== INTENT DETECTION ====================
-    function detectIntent(message) {
-        const lower = message.toLowerCase();
-        
-        // Lead-triggering intents
-        if (/הצעת מחיר|הצעה|מחיר מיוחד|הנחה/.test(lower)) {
-            return { type: 'quote_request', shouldCollectLead: true };
-        }
-        if (/נציג|מישהו|אדם|לדבר עם/.test(lower)) {
-            return { type: 'human_request', shouldCollectLead: true };
-        }
-        if (/הרשמה|להירשם|להצטרף|רוצה להתחיל/.test(lower)) {
-            return { type: 'registration', shouldCollectLead: true };
-        }
-        if (/מתי מתחיל|איך נרשמים|תהליך/.test(lower)) {
-            return { type: 'operational', shouldCollectLead: true };
-        }
-        
-        // Information intents
-        if (/קורס|קורסים|מה יש|מה מציעים/.test(lower)) {
-            return { type: 'courses_info', shouldCollectLead: false };
-        }
-        if (/גיל|גילאים|מתאים ל/.test(lower)) {
-            return { type: 'age_info', shouldCollectLead: false };
-        }
-        if (/מחיר|עלות|כמה עולה/.test(lower)) {
-            return { type: 'price_info', shouldCollectLead: false };
-        }
-        if (/מיינקראפט|minecraft/.test(lower)) {
-            return { type: 'minecraft', shouldCollectLead: false };
-        }
-        if (/רובלוקס|roblox/.test(lower)) {
-            return { type: 'roblox', shouldCollectLead: false };
-        }
-        if (/פייתון|python/.test(lower)) {
-            return { type: 'python', shouldCollectLead: false };
-        }
-        
-        return { type: 'general', shouldCollectLead: false };
-    }
-
-    // ==================== EXTRACT INFO FROM MESSAGE ====================
-    function extractInfo(message, memory) {
-        const lower = message.toLowerCase();
-        
-        // Extract age
-        const ageMatch = message.match(/בן\s*(\d+)|בת\s*(\d+)|גיל\s*(\d+)|(\d+)\s*שנים/);
-        if (ageMatch) {
-            const age = ageMatch[1] || ageMatch[2] || ageMatch[3] || ageMatch[4];
-            memory.updateUserProfile('childAge', parseInt(age));
-        }
-        
-        // Extract name if given
-        const nameMatch = message.match(/(?:קוראים לי|שמי|אני)\s+([א-ת]+)/);
-        if (nameMatch) {
-            memory.updateLead('name', nameMatch[1]);
-        }
-        
-        // Extract phone if given
-        const phoneMatch = message.match(/0\d{1,2}[-\s]?\d{3}[-\s]?\d{4}/);
-        if (phoneMatch) {
-            memory.updateLead('phone', phoneMatch[0].replace(/[-\s]/g, ''));
-        }
-        
-        // Extract email if given
-        const emailMatch = message.match(/[\w.-]+@[\w.-]+\.\w+/);
-        if (emailMatch) {
-            memory.updateLead('email', emailMatch[0]);
-        }
-        
-        // Extract interest
-        if (/מיינקראפט/.test(lower)) memory.updateUserProfile('interest', 'מיינקראפט');
-        if (/רובלוקס/.test(lower)) memory.updateUserProfile('interest', 'רובלוקס');
-        if (/פייתון|python/.test(lower)) memory.updateUserProfile('interest', 'Python');
-    }
-
-    // ==================== BOT RESPONSES ====================
-    function getBotResponse(message, memory, intent) {
-        const lower = message.toLowerCase();
-        const profile = memory.userProfile;
-        const lead = memory.collectedLead;
-        
-        // Handle lead collection flow
-        if (memory.collectingLead) {
-            return handleLeadCollection(message, memory);
-        }
-        
-        // Check if should trigger lead collection
-        if (intent.shouldCollectLead && !memory.leadAsked) {
-            memory.collectingLead = true;
-            memory.collectingStep = 'name';
-            memory.save();
-            
-            let response = '';
-            if (intent.type === 'quote_request') {
-                response = 'בשמחה אשלח לך הצעת מחיר מותאמת! 📋\n\n';
-            } else if (intent.type === 'human_request') {
-                response = 'אשמח לחבר אותך עם נציג שלנו! 👋\n\n';
-            } else if (intent.type === 'registration') {
-                response = 'מעולה שאתם רוצים להצטרף! 🎉\n\n';
-            } else {
-                response = 'אשמח לעזור לך בצורה מסודרת! 📞\n\n';
+            // Extract interest
+            if (/מיינקראפט|minecraft/i.test(lower)) {
+                this.session.interest = 'minecraft';
+            } else if (/רובלוקס|roblox/i.test(lower)) {
+                this.session.interest = 'roblox';
+            } else if (/פייתון|python/i.test(lower)) {
+                this.session.interest = 'python';
+            } else if (/אתרים|web|html/i.test(lower)) {
+                this.session.interest = 'web';
+            } else if (/דיסקורד|discord|בוט/i.test(lower)) {
+                this.session.interest = 'discord';
+            } else if (/סקראץ|scratch/i.test(lower)) {
+                this.session.interest = 'scratch';
+            } else if (/בינה|ai|אי\.איי/i.test(lower)) {
+                this.session.interest = 'ai';
             }
             
-            response += 'כדי שאוכל לחזור אליך — איך קוראים לך?';
+            // Extract lead info if in lead collection
+            if (this.session.leadStep === 'name') {
+                const name = message.trim().replace(/^(קוראים לי|שמי|אני)\s*/i, '');
+                if (name.length >= 2 && !/^\d+$/.test(name)) {
+                    this.session.lead.name = name;
+                }
+            } else if (this.session.leadStep === 'phone') {
+                const phoneMatch = message.match(/0\d{1,2}[-\s]?\d{3}[-\s]?\d{4}/);
+                if (phoneMatch) {
+                    this.session.lead.phone = phoneMatch[0].replace(/[-\s]/g, '');
+                }
+            } else if (this.session.leadStep === 'email') {
+                if (/דלג|אין|לא|skip/i.test(lower)) {
+                    this.session.lead.email = 'skipped';
+                } else {
+                    const emailMatch = message.match(/[\w.-]+@[\w.-]+\.\w+/);
+                    if (emailMatch) {
+                        this.session.lead.email = emailMatch[0];
+                    }
+                }
+            }
+            
+            this.session.save();
+        }
+        
+        // Detect user intent
+        detectIntent(message) {
+            const lower = message.toLowerCase();
+            
+            if (/^(שלום|היי|הי|בוקר טוב|ערב טוב|מה קורה)/i.test(lower)) {
+                return 'greeting';
+            }
+            if (/לא רוצה|לא מעוניין|לא צריך|בלי פרטים|לא כרגע/i.test(lower)) {
+                return 'refuse';
+            }
+            if (/כן|בטח|רוצה|מעוניין|ספר|פרטים|עוד/i.test(lower)) {
+                return 'interested';
+            }
+            if (/הרשמה|להירשם|איך נרשמים|רוצה להתחיל/i.test(lower)) {
+                return 'register';
+            }
+            if (/מחיר|עלות|כמה עולה|עולה/i.test(lower)) {
+                return 'price';
+            }
+            if (/קשר|טלפון|וואטסאפ|whatsapp/i.test(lower)) {
+                return 'contact';
+            }
+            if (/תודה|אחלה|מעולה|יופי|תודה רבה/i.test(lower)) {
+                return 'thanks';
+            }
+            
+            return 'info';
+        }
+        
+        // Get recommended course based on age and interest
+        getRecommendation() {
+            const age = this.session.childAge;
+            const interest = this.session.interest;
+            
+            // Interest-based recommendations
+            if (interest === 'minecraft') {
+                if (age && age < 10) return ['minecraft-worlds'];
+                if (age && age < 13) return ['minecraft-js'];
+                return ['minecraft-java', 'minecraft-js'];
+            }
+            if (interest === 'roblox') return ['roblox'];
+            if (interest === 'python') return ['python'];
+            if (interest === 'web') return ['web'];
+            if (interest === 'discord') return ['discord-bots'];
+            if (interest === 'scratch') return ['scratch'];
+            if (interest === 'ai') return ['ai'];
+            
+            // Age-based recommendations (no specific interest)
+            if (age) {
+                if (age <= 9) return ['scratch', 'minecraft-worlds'];
+                if (age <= 12) return ['minecraft-js', 'roblox'];
+                return ['minecraft-java', 'python'];
+            }
+            
+            return ['minecraft-js']; // Default popular course
+        }
+        
+        // Process message and generate response
+        process(message) {
+            this.extractInfo(message);
+            const intent = this.detectIntent(message);
+            const state = this.session.state;
+            
+            // Handle refusal at any point
+            if (intent === 'refuse') {
+                if (this.session.leadStep) {
+                    this.session.leadStep = null;
+                    this.session.leadRefused = true;
+                    this.session.save();
+                    return 'בסדר גמור, אין בעיה! 😊\n\nאם תצטרך עזרה נוספת, אני כאן.';
+                }
+            }
+            
+            // Handle contact request at any point
+            if (intent === 'contact') {
+                return '📞 אפשר ליצור קשר בוואטסאפ: 053-300-9742\n\nזמינים בימים א\'-ה\' לכל שאלה!';
+            }
+            
+            // Handle thanks
+            if (intent === 'thanks') {
+                return 'בשמחה! 😊 אם תצטרך משהו נוסף — אני כאן.';
+            }
+            
+            // State machine logic
+            switch (state) {
+                case STATES.GREETING:
+                    return this.handleGreeting(intent);
+                    
+                case STATES.DISCOVERY:
+                    return this.handleDiscovery(intent, message);
+                    
+                case STATES.RECOMMENDATION:
+                    return this.handleRecommendation(intent);
+                    
+                case STATES.INTEREST_CHECK:
+                    return this.handleInterestCheck(intent);
+                    
+                case STATES.LEAD_COLLECTION:
+                    return this.handleLeadCollection(intent, message);
+                    
+                case STATES.COMPLETED:
+                    return this.handleCompleted(intent);
+                    
+                default:
+                    return this.handleGreeting(intent);
+            }
+        }
+        
+        handleGreeting(intent) {
+            this.session.setState(STATES.DISCOVERY);
+            
+            if (this.session.childAge && this.session.interest) {
+                // Returning user with info - skip to recommendation
+                this.session.setState(STATES.RECOMMENDATION);
+                return this.showRecommendation();
+            }
+            
+            return 'שלום! 👋 אני העוזר הדיגיטלי של דרך ההייטק.\n\nבן/בת כמה הילד/ה, ומה מעניין אותו/ה? (מיינקראפט, רובלוקס, Python...)';
+        }
+        
+        handleDiscovery(intent, message) {
+            // Check if we now have all info
+            if (this.session.hasAllDiscoveryInfo()) {
+                this.session.setState(STATES.RECOMMENDATION);
+                return this.showRecommendation();
+            }
+            
+            // Ask for missing info
+            if (!this.session.childAge && !this.session.interest) {
+                return 'בן/בת כמה הילד/ה, ומה מעניין אותו/ה?';
+            }
+            
+            if (!this.session.childAge) {
+                const interestName = this.getInterestName(this.session.interest);
+                return `${interestName} - בחירה מעולה! 🎮\n\nבן/בת כמה הילד/ה?`;
+            }
+            
+            if (!this.session.interest) {
+                return `מעולה, גיל ${this.session.childAge}! 👍\n\nמה מעניין אותו/ה? מיינקראפט? רובלוקס? Python? משהו אחר?`;
+            }
+            
+            // If we somehow got here with all info, move on
+            this.session.setState(STATES.RECOMMENDATION);
+            return this.showRecommendation();
+        }
+        
+        showRecommendation() {
+            const recommendations = this.getRecommendation();
+            this.session.recommendedCourse = recommendations[0];
+            this.session.setState(STATES.INTEREST_CHECK);
+            this.session.save();
+            
+            const age = this.session.childAge;
+            const course = COURSES[recommendations[0]];
+            
+            let response = `לגיל ${age} עם עניין ב${this.getInterestName(this.session.interest)}, `;
+            response += `אני ממליץ על:\n\n`;
+            response += `${course.emoji} **${course.name}**\n`;
+            response += `${course.desc}\n`;
+            response += `גילאים: ${course.ages}\n\n`;
+            
+            if (recommendations.length > 1) {
+                const course2 = COURSES[recommendations[1]];
+                response += `אפשרות נוספת: ${course2.emoji} ${course2.name}\n\n`;
+            }
+            
+            response += 'רוצה לשמוע עוד פרטים או להירשם?';
+            
             return response;
         }
         
-        // Greeting
-        if (/^(שלום|היי|הי|בוקר טוב|ערב טוב)/.test(lower)) {
-            let response = 'שלום! 😊 ';
-            if (profile.childAge) {
-                response += `כיף לראות אותך שוב! דיברנו על קורסים לגיל ${profile.childAge}, נכון?\n\n`;
-                response += 'רוצה להמשיך משם או לשמוע על משהו אחר?';
-            } else {
-                response += 'אני היועץ הדיגיטלי של דרך ההייטק.\n\n';
-                response += 'איך אפשר לעזור היום? מחפשים קורס תכנות לילד/ה?';
-            }
-            return response;
+        handleRecommendation(intent) {
+            // This state shouldn't really be hit, but just in case
+            return this.showRecommendation();
         }
         
-        // Courses info
-        if (intent.type === 'courses_info') {
-            let response = '🎮 יש לנו 12 קורסים מדהימים!\n\n';
-            response += '• מיינקראפט (JavaScript/Java)\n';
-            response += '• רובלוקס עם Lua\n';
-            response += '• Python פיתוח משחקים\n';
-            response += '• פיתוח אתרים + AI\n';
-            response += '• בוטים לדיסקורד\n';
-            response += '• ועוד!\n\n';
+        handleInterestCheck(intent) {
+            if (intent === 'interested' || intent === 'register' || intent === 'price') {
+                // User is interested - move to lead collection
+                if (!this.session.leadRefused && !this.session.lead.phone) {
+                    this.session.setState(STATES.LEAD_COLLECTION);
+                    this.session.leadStep = 'name';
+                    this.session.save();
+                    
+                    let response = '';
+                    if (intent === 'price') {
+                        response = 'המחירים משתנים לפי הקורס, מ-199₪.\n\n';
+                    }
+                    response += 'כדי שאוכל לשלוח לך פרטים מסודרים — איך קוראים לך?';
+                    return response;
+                } else {
+                    // Already refused or has phone - give info
+                    const course = COURSES[this.session.recommendedCourse];
+                    return `${course.emoji} ${course.name}\n\n` +
+                        `המחיר: החל מ-199₪\n` +
+                        `גישה לנצח + תמיכה מקצועית\n\n` +
+                        `ליצירת קשר: וואטסאפ 053-300-9742`;
+                }
+            }
             
-            if (profile.childAge) {
-                response += `לגיל ${profile.childAge} הייתי ממליץ על `;
-                if (profile.childAge < 10) response += 'סקראץ\' או מיינקראפט בניית עולמות!';
-                else if (profile.childAge < 13) response += 'JavaScript במיינקראפט או Python!';
-                else response += 'Java Plugins או בוטים לדיסקורד!';
-            } else {
-                response += 'בן/בת כמה הילד/ה? אמליץ על הקורס המתאים 😊';
-            }
-            return response;
+            // User wants more info
+            const course = COURSES[this.session.recommendedCourse];
+            return `${course.emoji} **${course.name}**\n\n` +
+                `${course.desc}\n` +
+                `גילאים: ${course.ages}\n` +
+                `המחיר: החל מ-199₪\n\n` +
+                `רוצה להירשם? אשמח לקחת פרטים.`;
         }
         
-        // Minecraft
-        if (intent.type === 'minecraft') {
-            let response = '⛏️ קורסי מיינקראפט שלנו:\n\n';
-            response += '• בניית עולמות (גיל 8-11)\n';
-            response += '• JavaScript במיינקראפט (גיל 10-13)\n';
-            response += '• Java Plugins - שרת משלך! (גיל 12+)\n\n';
+        handleLeadCollection(intent, message) {
+            const step = this.session.leadStep;
             
-            if (profile.childAge) {
-                const age = profile.childAge;
-                if (age < 10) response += `לגיל ${age} ממליץ על בניית עולמות — בסיס מושלם!`;
-                else if (age < 13) response += `לגיל ${age} ממליץ על JavaScript במיינקראפט — הכי פופולרי!`;
-                else response += `לגיל ${age} ממליץ על Java Plugins — ליצור שרת משלך!`;
-            } else {
-                response += 'הילד/ה אוהב/ת מיינקראפט? בן/בת כמה?';
+            if (intent === 'refuse') {
+                this.session.leadStep = null;
+                this.session.leadRefused = true;
+                this.session.setState(STATES.INTEREST_CHECK);
+                this.session.save();
+                return 'בסדר, אין בעיה! 😊\n\nאפשר ליצור קשר ישירות בוואטסאפ: 053-300-9742';
             }
-            return response;
-        }
-        
-        // Roblox
-        if (intent.type === 'roblox') {
-            return '🎮 קורס רובלוקס עם Lua!\n\n' +
-                '14 שיעורים | גיל 10+\n\n' +
-                'לומדים לבנות משחקים אמיתיים ברובלוקס ולשתף עם חברים!\n\n' +
-                'רוצה לשמוע עוד פרטים?';
-        }
-        
-        // Python
-        if (intent.type === 'python') {
-            return '🐍 Python - השפה הכי מבוקשת!\n\n' +
-                'קורס פיתוח משחקים עם pygame\n' +
-                '20 שיעורים | גיל 10+\n\n' +
-                'מתחילים עם משחקים ובונים בסיס חזק לעתיד בהייטק!';
-        }
-        
-        // Age info
-        if (intent.type === 'age_info') {
-            const ageMatch = lower.match(/(\d+)/);
-            if (ageMatch) {
-                const age = parseInt(ageMatch[1]);
-                memory.updateUserProfile('childAge', age);
+            
+            if (step === 'name') {
+                if (this.session.lead.name) {
+                    this.session.leadStep = 'phone';
+                    this.session.save();
+                    return `נעים להכיר, ${this.session.lead.name}! 😊\n\nמה מספר הטלפון?`;
+                }
+                return 'לא תפסתי — איך קוראים לך?';
+            }
+            
+            if (step === 'phone') {
+                if (this.session.lead.phone) {
+                    this.session.leadStep = 'email';
+                    this.session.save();
+                    return 'מעולה! 📱\n\nאימייל? (לא חובה — אפשר "דלג")';
+                }
+                return 'לא זיהיתי מספר טלפון — אפשר לנסות שוב?\n\nלדוגמה: 053-300-9742';
+            }
+            
+            if (step === 'email') {
+                // Email is optional, move to completion
+                this.session.leadStep = null;
+                this.session.setState(STATES.COMPLETED);
+                this.session.save();
                 
-                if (age >= 7 && age <= 9) {
-                    return `לגיל ${age} מומלץ:\n\n` +
-                        '🐱 סקראץ\' - מבוא מושלם לתכנות\n' +
-                        '🏗️ מיינקראפט בניית עולמות\n\n' +
-                        'הילד/ה אוהב/ת מיינקראפט?';
-                }
-                if (age >= 10 && age <= 12) {
-                    return `מעולה! לגיל ${age} יש אפשרויות נהדרות:\n\n` +
-                        '⛏️ JavaScript במיינקראפט - הכי פופולרי!\n' +
-                        '🎮 רובלוקס עם Lua\n' +
-                        '🐍 Python - פיתוח משחקים\n\n' +
-                        'מה יותר מעניין?';
-                }
-                if (age >= 13) {
-                    return `לגיל ${age} יש קורסים מתקדמים:\n\n` +
-                        '☕ Java Plugins - שרת מיינקראפט\n' +
-                        '🤖 בוטים לדיסקורד\n' +
-                        '🐍 Python\n' +
-                        '🌐 פיתוח אתרים + AI\n\n' +
-                        'מה מעניין יותר?';
-                }
-            }
-            return '👶 הקורסים מתאימים לגילאי 7-18:\n\n' +
-                '• גיל 7-10: סקראץ\', מיינקראפט בסיסי\n' +
-                '• גיל 10-13: JavaScript, Python, רובלוקס\n' +
-                '• גיל 12+: Java, בוטים, פיתוח מתקדם\n\n' +
-                'בן/בת כמה הילד/ה?';
-        }
-        
-        // Price info
-        if (intent.type === 'price_info') {
-            return '💰 המחירים משתנים לפי הקורס:\n\n' +
-                '• קורסים דיגיטליים: החל מ-199₪\n' +
-                '• גישה לנצח + תמיכה מקצועית\n\n' +
-                'רוצה הצעת מחיר מותאמת? 📋';
-        }
-        
-        // Contact
-        if (/קשר|טלפון|וואטסאפ|whatsapp/.test(lower)) {
-            return '📞 דרכי התקשרות:\n\n' +
-                '• וואטסאפ: 053-300-9742\n' +
-                '• מייל: info@hai.tech\n\n' +
-                'זמינים בימים א\'-ה\' לכל שאלה! 💬';
-        }
-        
-        // Thanks
-        if (/תודה|אחלה|מעולה|יופי|מגניב/.test(lower)) {
-            return 'בשמחה! 😊\n\nאם יש עוד שאלות, אני כאן.\n\nאפשר גם לדבר בוואטסאפ: 053-300-9742';
-        }
-        
-        // Refusal to give details
-        if (/לא רוצה|לא מעוניין|לא צריך|בלי פרטים/.test(lower)) {
-            memory.leadAsked = true;
-            memory.save();
-            return 'בסדר גמור! 😊\n\nאפשר להמשיך לשאול שאלות בלי לתת פרטים.\n\nאיך אפשר לעזור?';
-        }
-        
-        // Default with context
-        let response = 'אשמח לעזור! 😊\n\n';
-        if (profile.childAge) {
-            response += `דיברנו על קורסים לגיל ${profile.childAge}. `;
-        }
-        if (profile.interest) {
-            response += `התעניינת ב${profile.interest}. `;
-        }
-        response += '\n\nמה תרצה לדעת עוד?';
-        return response;
-    }
-
-    // ==================== LEAD COLLECTION FLOW ====================
-    function handleLeadCollection(message, memory) {
-        const lower = message.toLowerCase();
-        
-        // Check for refusal
-        if (/לא רוצה|לא מעוניין|לא צריך|בלי|לא כרגע|אולי אחר כך/.test(lower)) {
-            memory.collectingLead = false;
-            memory.leadAsked = true;
-            memory.save();
-            return 'בסדר גמור, אין בעיה! 😊\n\nנמשיך בשיחה — איך אפשר לעזור?';
-        }
-        
-        const step = memory.collectingStep;
-        
-        if (step === 'name') {
-            // Extract name from response
-            const name = message.trim().replace(/^(קוראים לי|שמי|אני)\s*/i, '');
-            if (name.length > 1) {
-                memory.updateLead('name', name);
-                memory.collectingStep = 'phone';
-                memory.save();
-                return `נעים להכיר, ${name}! 😊\n\nמה מספר הטלפון שלך? (כדי שנציג יוכל לחזור אליך)`;
-            }
-            return 'לא תפסתי את השם — אפשר לחזור עליו? 🙏';
-        }
-        
-        if (step === 'phone') {
-            const phoneMatch = message.match(/0\d{1,2}[-\s]?\d{3}[-\s]?\d{4}/);
-            if (phoneMatch) {
-                memory.updateLead('phone', phoneMatch[0].replace(/[-\s]/g, ''));
-                memory.collectingStep = 'email';
-                memory.save();
-                return 'מעולה! 📱\n\nאימייל? (לא חובה — אפשר להקליד "דלג")';
-            }
-            return 'לא זיהיתי מספר טלפון תקין — אפשר לנסות שוב?\n\nלדוגמה: 053-300-9742';
-        }
-        
-        if (step === 'email') {
-            if (/דלג|אין|לא|skip/.test(lower)) {
-                memory.collectingStep = 'interest';
-                memory.save();
-                return 'בסדר! 👍\n\nבמה הילד/ה מתעניין/ת? (מיינקראפט, רובלוקס, Python...)';
-            }
-            const emailMatch = message.match(/[\w.-]+@[\w.-]+\.\w+/);
-            if (emailMatch) {
-                memory.updateLead('email', emailMatch[0]);
-                memory.collectingStep = 'interest';
-                memory.save();
-                return 'תודה! 📧\n\nבמה הילד/ה מתעניין/ת? (מיינקראפט, רובלוקס, Python...)';
-            }
-            return 'לא נראה כמו אימייל תקין — אפשר לנסות שוב או להקליד "דלג"';
-        }
-        
-        if (step === 'interest') {
-            memory.updateLead('interest', message.trim());
-            memory.collectingLead = false;
-            memory.collectingStep = null;
-            memory.leadAsked = true;
-            memory.save();
-            
-            // Send lead to server
-            sendLeadToServer(memory.collectedLead);
-            
-            const name = memory.collectedLead.name || '';
-            return `תודה רבה${name ? ' ' + name : ''}! 🎉\n\n` +
-                'קיבלתי את הפרטים ונציג יחזור אליך בהקדם.\n\n' +
-                'בינתיים, רוצה לשאול עוד משהו על הקורסים?';
-        }
-        
-        return 'איך אפשר לעזור?';
-    }
-
-    // ==================== SEND LEAD TO SERVER ====================
-    async function sendLeadToServer(lead) {
-        try {
-            const response = await fetch('/api/lead', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    name: lead.name || '',
-                    phone: lead.phone || '',
-                    email: lead.email || '',
-                    subject: lead.interest || 'צ\'אטבוט',
-                    message: 'ליד מהצ\'אטבוט',
-                    source: 'chatbot'
-                })
-            });
-            console.log('Lead sent:', await response.json());
-        } catch (e) {
-            console.warn('Failed to send lead:', e);
-        }
-    }
-
-    // ==================== INACTIVITY HANDLER ====================
-    class InactivityHandler {
-        constructor(memory, addBotMessage) {
-            this.memory = memory;
-            this.addBotMessage = addBotMessage;
-            this.followUpSent = false;
-            this.leadAskSent = false;
-            this.timer = null;
-        }
-        
-        reset() {
-            this.followUpSent = false;
-            this.leadAskSent = false;
-            this.clearTimer();
-            this.startTimer();
-        }
-        
-        clearTimer() {
-            if (this.timer) {
-                clearTimeout(this.timer);
-                this.timer = null;
-            }
-        }
-        
-        startTimer() {
-            this.clearTimer();
-            
-            const checkInactivity = () => {
-                const now = Date.now();
-                const timeSinceLastActivity = now - this.memory.lastActivity;
+                // Send lead to server
+                this.sendLead();
                 
-                if (!this.followUpSent && timeSinceLastActivity >= CONFIG.INACTIVITY_FOLLOWUP_MS) {
-                    this.sendFollowUp();
-                    this.followUpSent = true;
-                    // Schedule next check for lead ask
-                    this.timer = setTimeout(checkInactivity, CONFIG.INACTIVITY_LEAD_ASK_MS - CONFIG.INACTIVITY_FOLLOWUP_MS);
-                } else if (this.followUpSent && !this.leadAskSent && 
-                           timeSinceLastActivity >= CONFIG.INACTIVITY_LEAD_ASK_MS &&
-                           !this.memory.leadAsked && !this.memory.collectingLead) {
-                    this.sendLeadAsk();
-                    this.leadAskSent = true;
-                } else if (!this.followUpSent) {
-                    // Check again later
-                    this.timer = setTimeout(checkInactivity, 30000); // Check every 30 seconds
-                }
+                const name = this.session.lead.name;
+                return `מעולה ${name}, קיבלתי הכל! 🙌\n\nנציג יחזור אליך בהקדם.\n\nאם תצטרך משהו נוסף — אני כאן.`;
+            }
+            
+            return 'איך אפשר לעזור?';
+        }
+        
+        handleCompleted(intent) {
+            // Conversation is done - don't restart flow
+            if (intent === 'greeting') {
+                return 'שלום שוב! 😊 הפרטים שלך אצלנו, נציג יחזור אליך.\n\nיש משהו נוסף שאוכל לעזור בו?';
+            }
+            
+            return 'הפרטים שלך אצלנו ונציג יחזור אליך בקרוב.\n\nאם יש שאלה נוספת, אני כאן!';
+        }
+        
+        getInterestName(interest) {
+            const names = {
+                'minecraft': 'מיינקראפט',
+                'roblox': 'רובלוקס',
+                'python': 'Python',
+                'web': 'פיתוח אתרים',
+                'discord': 'דיסקורד',
+                'scratch': 'סקראץ\'',
+                'ai': 'בינה מלאכותית'
             };
-            
-            this.timer = setTimeout(checkInactivity, 30000);
+            return names[interest] || interest || 'תכנות';
         }
         
-        sendFollowUp() {
-            this.addBotMessage('נראה שנעצרנו באמצע 🙂\n\nרוצה שאמשיך לעזור?');
-            this.memory.addMessage('bot', 'Follow-up message sent');
+        async sendLead() {
+            try {
+                const lead = this.session.lead;
+                const course = COURSES[this.session.recommendedCourse];
+                
+                await fetch('/api/lead', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name: lead.name || '',
+                        phone: lead.phone || '',
+                        email: lead.email === 'skipped' ? '' : (lead.email || ''),
+                        childAge: this.session.childAge,
+                        subject: course ? course.name : 'צ\'אטבוט',
+                        message: `ליד מהצ\'אטבוט. גיל: ${this.session.childAge}, תחום: ${this.getInterestName(this.session.interest)}`,
+                        source: 'chatbot'
+                    })
+                });
+                console.log('Lead sent successfully');
+            } catch (e) {
+                console.warn('Failed to send lead:', e);
+            }
         }
         
-        sendLeadAsk() {
-            this.memory.collectingLead = true;
-            this.memory.collectingStep = 'name';
-            this.memory.save();
+        // Get welcome message for returning users
+        getWelcomeMessage() {
+            if (this.session.state === STATES.COMPLETED) {
+                return 'שלום שוב! 😊 הפרטים שלך אצלנו.\n\nיש משהו שאוכל לעזור בו?';
+            }
             
-            this.addBotMessage('כדי שאוכל לחזור אליך עם מידע מסודר — אשמח אם תשאיר כמה פרטים.\n\nאיך קוראים לך? 📝');
-            this.memory.addMessage('bot', 'Lead collection initiated');
+            if (this.session.childAge && this.session.interest) {
+                const interestName = this.getInterestName(this.session.interest);
+                return `שלום שוב! 👋\n\nדיברנו על ${interestName} לגיל ${this.session.childAge}.\n\nרוצה להמשיך משם?`;
+            }
+            
+            return 'שלום! 👋 אני העוזר הדיגיטלי של דרך ההייטק.\n\nבן/בת כמה הילד/ה, ומה מעניין אותו/ה?';
+        }
+        
+        // Handle inactivity
+        getFollowUpMessage() {
+            return 'נראה שנעצרנו באמצע 🙂\n\nרוצה שאמשיך לעזור?';
+        }
+        
+        getLeadAskMessage() {
+            if (this.session.leadRefused || this.session.lead.phone) {
+                return null; // Don't ask again
+            }
+            
+            this.session.setState(STATES.LEAD_COLLECTION);
+            this.session.leadStep = 'name';
+            this.session.save();
+            
+            return 'האם תרצה להשאיר פרטים כדי שנוכל לחזור אליך?\n\nאיך קוראים לך?';
         }
     }
 
-    // ==================== MAIN CHATBOT ====================
-    const memory = new SessionMemory();
-    let inactivityHandler = null;
+    // ==================== UI ====================
+    const session = new ChatSession();
+    const brain = new ChatBrain(session);
+    let inactivityTimer = null;
+    let followUpSent = false;
     
     // Create button
     const btn = document.createElement('button');
@@ -928,18 +851,12 @@
                 <div class="haitech-header-avatar">🤖</div>
                 <div class="haitech-header-text">
                     <h3>דרך ההייטק</h3>
-                    <span>יועץ קורסים מקוון</span>
+                    <span>יועץ קורסים</span>
                 </div>
             </div>
             <button class="haitech-close">✕</button>
         </div>
         <div class="haitech-messages" id="haitech-messages"></div>
-        <div class="haitech-quick" id="haitech-quick">
-            <button class="haitech-quick-btn" data-msg="מה הקורסים שלכם?">📚 הקורסים</button>
-            <button class="haitech-quick-btn" data-msg="לאיזה גילאים מתאים?">👶 גילאים</button>
-            <button class="haitech-quick-btn" data-msg="כמה עולה?">💰 מחירים</button>
-            <button class="haitech-quick-btn" data-msg="איך יוצרים קשר?">📞 קשר</button>
-        </div>
         <div class="haitech-input-area">
             <input type="text" class="haitech-input" id="haitech-input" placeholder="הקלידו הודעה...">
             <button class="haitech-send" id="haitech-send">
@@ -952,7 +869,7 @@
     `;
     document.body.appendChild(win);
 
-    // UI Helper functions
+    // UI Helpers
     function addUserMessage(text) {
         const messages = document.getElementById('haitech-messages');
         const msg = document.createElement('div');
@@ -966,7 +883,8 @@
         const messages = document.getElementById('haitech-messages');
         const msg = document.createElement('div');
         msg.className = 'haitech-msg bot';
-        msg.innerHTML = '<div class="msg-avatar">🤖</div><div class="msg-content">' + text.replace(/\n/g, '<br>') + '</div>';
+        msg.innerHTML = '<div class="msg-avatar">🤖</div><div class="msg-content">' + 
+            text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>') + '</div>';
         messages.appendChild(msg);
         messages.scrollTop = messages.scrollHeight;
     }
@@ -992,74 +910,69 @@
         return div.innerHTML;
     }
 
-    // Initialize with welcome or restore history
-    function initialize() {
-        const messages = document.getElementById('haitech-messages');
+    function resetInactivityTimer() {
+        clearTimeout(inactivityTimer);
+        followUpSent = false;
         
-        // Restore previous messages
-        if (memory.messages.length > 0) {
-            memory.messages.forEach(msg => {
-                if (msg.role === 'user') {
-                    addUserMessage(msg.content);
-                } else if (msg.role === 'bot' && !msg.content.includes('Follow-up') && !msg.content.includes('Lead collection')) {
-                    addBotMessage(msg.content);
-                }
-            });
-            
-            // Add welcome back message
-            setTimeout(() => {
-                const profile = memory.userProfile;
-                let welcome = 'שמח לראות אותך שוב! 👋\n\n';
-                if (profile.childAge || profile.interest) {
-                    welcome += 'המשכנו לדבר על ';
-                    if (profile.interest) welcome += profile.interest;
-                    if (profile.childAge) welcome += ` (גיל ${profile.childAge})`;
-                    welcome += '.\n\n';
-                }
-                welcome += 'איך אפשר לעזור?';
-                addBotMessage(welcome);
-                memory.addMessage('bot', welcome);
-            }, 300);
-        } else {
-            // New session welcome
-            setTimeout(() => {
-                const welcome = 'שלום! 👋 אני היועץ הדיגיטלי של דרך ההייטק.\n\nאיך אפשר לעזור היום?';
-                addBotMessage(welcome);
-                memory.addMessage('bot', welcome);
-            }, 300);
-        }
+        inactivityTimer = setTimeout(() => {
+            if (!followUpSent && session.state !== STATES.COMPLETED) {
+                addBotMessage(brain.getFollowUpMessage());
+                session.addMessage('bot', 'follow-up');
+                followUpSent = true;
+                
+                // Set another timer for lead ask
+                inactivityTimer = setTimeout(() => {
+                    const leadMsg = brain.getLeadAskMessage();
+                    if (leadMsg) {
+                        addBotMessage(leadMsg);
+                        session.addMessage('bot', 'lead-ask');
+                    }
+                }, CONFIG.INACTIVITY_LEAD_ASK_MS - CONFIG.INACTIVITY_FOLLOWUP_MS);
+            }
+        }, CONFIG.INACTIVITY_FOLLOWUP_MS);
     }
 
-    // Send message
     function sendMessage() {
         const input = document.getElementById('haitech-input');
         const msg = input.value.trim();
         if (!msg) return;
 
         addUserMessage(msg);
-        memory.addMessage('user', msg);
+        session.addMessage('user', msg);
         input.value = '';
         
-        // Reset inactivity timer
-        if (inactivityHandler) {
-            inactivityHandler.reset();
-        }
-        
+        resetInactivityTimer();
         showTyping();
 
-        // Extract info from message
-        extractInfo(msg, memory);
-        
-        // Detect intent
-        const intent = detectIntent(msg);
-        
-        // Get response
         setTimeout(() => {
             hideTyping();
-            const response = getBotResponse(msg, memory, intent);
+            const response = brain.process(msg);
             addBotMessage(response);
-            memory.addMessage('bot', response);
-        }, 800 + Math.random() * 500);
+            session.addMessage('bot', response);
+        }, 600 + Math.random() * 400);
+    }
+
+    // Initialize
+    function initialize() {
+        // Restore previous messages (just last few for context)
+        const recentMessages = session.messages.slice(-6);
+        recentMessages.forEach(msg => {
+            if (msg.content === 'follow-up' || msg.content === 'lead-ask') return;
+            if (msg.role === 'user') {
+                addUserMessage(msg.content);
+            } else {
+                addBotMessage(msg.content);
+            }
+        });
+        
+        // Add welcome/continuation message if no recent messages shown
+        if (recentMessages.length === 0) {
+            setTimeout(() => {
+                const welcome = brain.getWelcomeMessage();
+                addBotMessage(welcome);
+                session.addMessage('bot', welcome);
+            }, 300);
+        }
     }
 
     // Events
@@ -1067,19 +980,12 @@
         win.classList.add('open');
         btn.querySelector('.badge').style.display = 'none';
         document.getElementById('haitech-input').focus();
-        
-        // Start inactivity handler
-        if (!inactivityHandler) {
-            inactivityHandler = new InactivityHandler(memory, addBotMessage);
-        }
-        inactivityHandler.reset();
+        resetInactivityTimer();
     };
 
     win.querySelector('.haitech-close').onclick = function() {
         win.classList.remove('open');
-        if (inactivityHandler) {
-            inactivityHandler.clearTimer();
-        }
+        clearTimeout(inactivityTimer);
     };
 
     document.getElementById('haitech-send').onclick = sendMessage;
@@ -1087,15 +993,5 @@
         if (e.key === 'Enter') sendMessage();
     };
 
-    // Quick buttons
-    document.querySelectorAll('.haitech-quick-btn').forEach(function(b) {
-        b.onclick = function() {
-            var msg = b.getAttribute('data-msg');
-            document.getElementById('haitech-input').value = msg;
-            sendMessage();
-        };
-    });
-
-    // Initialize
     initialize();
 })();
