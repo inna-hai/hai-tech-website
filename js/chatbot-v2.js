@@ -735,7 +735,20 @@ class HaiTechChatbotV2 {
         this.isOpen = true;
         const win = document.getElementById('chatbot-window');
         if (win) {
-            win.style.display = 'flex';
+            win.style.cssText = `
+                display: flex !important;
+                position: fixed !important;
+                bottom: 0 !important;
+                right: 0 !important;
+                left: 0 !important;
+                top: 100px !important;
+                width: 100% !important;
+                height: auto !important;
+                background: white !important;
+                flex-direction: column !important;
+                z-index: 999999 !important;
+                border-top: 4px solid #6366f1 !important;
+            `;
         }
         const toggle = document.getElementById('chatbot-toggle');
         if (toggle) toggle.style.display = 'none';
