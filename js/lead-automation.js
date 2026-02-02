@@ -11,8 +11,8 @@ const LeadAutomation = {
         formId: 'contactForm',
         popupDelay: 5000, // 5 seconds
         exitIntentEnabled: true,
-        // CRM API Configuration (via proxy to bypass CORS)
-        apiEndpoint: 'http://129.159.135.204:8081/lead',
+        // CRM API Configuration (same-origin, no CORS issues)
+        apiEndpoint: '/api/lead',
         apiKey: 'haitech-crm-api-key-2026'
     },
 
