@@ -529,15 +529,30 @@ class HaiTechChatbotV2 {
         const container = document.createElement('div');
         container.id = 'chatbot-container';
         container.innerHTML = `
-            <button class="chatbot-toggle" id="chatbot-toggle" aria-label="פתח צ'אט">
-                <svg class="chat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <button class="chatbot-toggle" id="chatbot-toggle" aria-label="פתח צ'אט" style="
+                position: fixed;
+                bottom: 160px;
+                left: 20px;
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                background: linear-gradient(135deg, #6366f1, #8b5cf6);
+                border: none;
+                cursor: pointer;
+                box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 10000;
+                -webkit-tap-highlight-color: transparent;
+            ">
+                <svg class="chat-icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" style="width:28px;height:28px;">
                     <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                 </svg>
-                <svg class="close-icon hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg class="close-icon hidden" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" style="width:28px;height:28px;display:none;">
                     <line x1="18" y1="6" x2="6" y2="18"></line>
                     <line x1="6" y1="6" x2="18" y2="18"></line>
                 </svg>
-                <span class="chatbot-badge">💬</span>
             </button>
             
             <div class="chatbot-window hidden" id="chatbot-window" dir="rtl">
@@ -591,18 +606,23 @@ class HaiTechChatbotV2 {
             return;
         }
         
-        // Toggle - use onclick for better compatibility
-        toggle.onclick = (e) => {
+        // Toggle - support both click and touch
+        const handleToggle = (e) => {
             e.preventDefault();
             e.stopPropagation();
+            console.log('Toggle clicked!');
             this.toggle();
         };
+        toggle.addEventListener('click', handleToggle);
+        toggle.addEventListener('touchend', handleToggle);
         
-        close.onclick = (e) => {
+        const handleClose = (e) => {
             e.preventDefault();
             e.stopPropagation();
             this.close();
         };
+        close.addEventListener('click', handleClose);
+        close.addEventListener('touchend', handleClose);
         
         // Send
         send.onclick = () => this.sendMessage();
@@ -624,18 +644,26 @@ class HaiTechChatbotV2 {
     
     open() {
         this.isOpen = true;
+        document.getElementById('chatbot-window').style.display = 'flex';
         document.getElementById('chatbot-window').classList.remove('hidden');
-        document.getElementById('chatbot-toggle').querySelector('.chat-icon').classList.add('hidden');
-        document.getElementById('chatbot-toggle').querySelector('.close-icon').classList.remove('hidden');
+        const chatIcon = document.getElementById('chatbot-toggle').querySelector('.chat-icon');
+        const closeIcon = document.getElementById('chatbot-toggle').querySelector('.close-icon');
+        chatIcon.style.display = 'none';
+        closeIcon.style.display = 'block';
         document.getElementById('chatbot-input').focus();
         this.resetInactivityTimer();
+        console.log('Chatbot opened');
     }
     
     close() {
         this.isOpen = false;
+        document.getElementById('chatbot-window').style.display = 'none';
         document.getElementById('chatbot-window').classList.add('hidden');
-        document.getElementById('chatbot-toggle').querySelector('.chat-icon').classList.remove('hidden');
-        document.getElementById('chatbot-toggle').querySelector('.close-icon').classList.add('hidden');
+        const chatIcon = document.getElementById('chatbot-toggle').querySelector('.chat-icon');
+        const closeIcon = document.getElementById('chatbot-toggle').querySelector('.close-icon');
+        chatIcon.style.display = 'block';
+        closeIcon.style.display = 'none';
+        console.log('Chatbot closed');
     }
     
     addUserMessage(text) {
