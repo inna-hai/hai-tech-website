@@ -41,7 +41,7 @@
         <section class="catalog-hero">
             <div class="hero-content">
                 <h1>גלה את הקורסים שלנו</h1>
-                <p>למעלה מ-50 קורסים מקצועיים בתחומי AI, Data Science ו-Machine Learning</p>
+                <p>11 קורסי תכנות לילדים ונוער - מסקראץ' ועד Python ו-AI</p>
                 
                 <div class="search-container">
                     <div class="search-box">
@@ -74,24 +74,24 @@
                     <h3 class="filter-title">קטגוריה</h3>
                     <div class="filter-options">
                         <label class="filter-option">
-                            <input type="checkbox" name="category" value="ai">
+                            <input type="checkbox" name="category" value="gaming">
                             <span class="checkbox-custom"></span>
-                            <span class="option-label">בינה מלאכותית (AI)</span>
-                        </label>
-                        <label class="filter-option">
-                            <input type="checkbox" name="category" value="ml">
-                            <span class="checkbox-custom"></span>
-                            <span class="option-label">Machine Learning</span>
-                        </label>
-                        <label class="filter-option">
-                            <input type="checkbox" name="category" value="data-science">
-                            <span class="checkbox-custom"></span>
-                            <span class="option-label">Data Science</span>
+                            <span class="option-label">🎮 משחקים (Roblox, Minecraft, Scratch)</span>
                         </label>
                         <label class="filter-option">
                             <input type="checkbox" name="category" value="python">
                             <span class="checkbox-custom"></span>
-                            <span class="option-label">Python</span>
+                            <span class="option-label">🐍 Python</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="category" value="ai">
+                            <span class="checkbox-custom"></span>
+                            <span class="option-label">🤖 בינה מלאכותית (AI)</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="category" value="web">
+                            <span class="checkbox-custom"></span>
+                            <span class="option-label">🌐 פיתוח אתרים</span>
                         </label>
                     </div>
                 </div>
@@ -177,24 +177,76 @@
     <script src="js/lms.js"></script>
     <script>
         const Catalog = {
-            courses: [
-                { id: 'course_1', title: 'מבוא ל-Machine Learning', description: 'למד את היסודות של למידת מכונה', image: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', category: 'ml', level: 'beginner', price: 199, duration: 6, lessons: 12, rating: 4.8, students: 1234, badge: 'חדש', isNew: true, isPopular: true },
-                { id: 'course_2', title: 'Python למתחילים', description: 'שפת התכנות הפופולרית ביותר ל-AI', image: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)', category: 'python', level: 'beginner', price: 149, duration: 10, lessons: 20, rating: 4.9, students: 2567, badge: 'פופולרי', isNew: false, isPopular: true },
-                { id: 'course_3', title: 'Deep Learning מתקדם', description: 'רשתות נוירונים ו-Transformers', image: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)', category: 'ai', level: 'advanced', price: 349, duration: 15, lessons: 25, rating: 4.7, students: 876, badge: null, isNew: false, isPopular: false },
-                { id: 'course_4', title: 'Data Science עם Pandas', description: 'ניתוח נתונים מקצועי', image: 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)', category: 'data-science', level: 'intermediate', price: 0, duration: 4, lessons: 8, rating: 4.6, students: 3421, badge: 'חינם', isNew: false, isPopular: true },
-                { id: 'course_5', title: 'AI לילדים', description: 'למידת בינה מלאכותית בדרך כיפית', image: 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)', category: 'ai', level: 'beginner', price: 99, duration: 3, lessons: 10, rating: 4.9, students: 567, badge: 'לילדים', isNew: true, isPopular: false },
-                { id: 'course_6', title: 'NLP - עיבוד שפה טבעית', description: 'בנה צ\'אטבוטים ומערכות הבנת טקסט', image: 'linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)', category: 'ai', level: 'intermediate', price: 249, duration: 8, lessons: 16, rating: 4.5, students: 432, badge: 'חדש', isNew: true, isPopular: false }
-            ],
+            courses: [],
             filteredCourses: [],
             filters: { search: '', categories: [], levels: [], prices: [], quickFilter: 'all' },
             
-            init() {
+            // Color gradients for courses
+            gradients: [
+                'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+                'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+                'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)',
+                'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)',
+                'linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)',
+                'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)',
+                'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+                'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+                'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)'
+            ],
+            
+            async init() {
+                await this.loadCourses();
                 this.filteredCourses = [...this.courses];
                 this.renderCourses();
                 this.setupSearch();
                 this.setupFilters();
                 this.setupSort();
                 this.updateUserInfo();
+            },
+            
+            async loadCourses() {
+                try {
+                    const response = await fetch('data/courses.json');
+                    const data = await response.json();
+                    this.courses = data.courses.map((course, index) => ({
+                        id: course.id,
+                        title: course.title,
+                        description: course.shortDescription || course.description.substring(0, 100) + '...',
+                        image: this.gradients[index % this.gradients.length],
+                        category: this.detectCategory(course),
+                        level: this.mapLevel(course.level),
+                        price: course.price,
+                        duration: Math.ceil(course.lessonsCount * 0.5),
+                        lessons: course.lessonsCount,
+                        rating: 4.8,
+                        students: Math.floor(Math.random() * 500) + 100,
+                        badge: course.popular ? 'פופולרי 🔥' : (course.featured ? 'מומלץ' : null),
+                        isNew: course.featured,
+                        isPopular: course.popular || false,
+                        ageRange: course.ageRange
+                    }));
+                } catch (error) {
+                    console.error('Error loading courses:', error);
+                }
+            },
+            
+            detectCategory(course) {
+                const title = course.title.toLowerCase();
+                if (title.includes('python') || title.includes('פייתון')) return 'python';
+                if (title.includes('roblox') || title.includes('רובלוקס')) return 'gaming';
+                if (title.includes('minecraft') || title.includes('מיינקראפט')) return 'gaming';
+                if (title.includes('scratch') || title.includes('סקראץ')) return 'gaming';
+                if (title.includes('ai') || title.includes('בינה')) return 'ai';
+                if (title.includes('web') || title.includes('אתר')) return 'web';
+                return 'programming';
+            },
+            
+            mapLevel(level) {
+                if (level.includes('מתחיל')) return 'beginner';
+                if (level.includes('מתקדם')) return 'advanced';
+                return 'intermediate';
             },
             
             setupSearch() {
@@ -336,7 +388,7 @@
                                 </div>
                                 <div class="course-meta">
                                     <span>${course.lessons} שיעורים</span>
-                                    <span>${course.duration} שעות</span>
+                                    <span>גיל ${course.ageRange || '10+'}</span>
                                 </div>
                                 <div class="course-footer">
                                     <div class="course-price">
