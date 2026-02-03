@@ -42,7 +42,11 @@ const mimeTypes = {
     '.woff2': 'font/woff2',
     '.ttf': 'font/ttf',
     '.pdf': 'application/pdf',
-    '.xml': 'application/xml'
+    '.xml': 'application/xml',
+    '.mp4': 'video/mp4',
+    '.webm': 'video/webm',
+    '.mp3': 'audio/mpeg',
+    '.wav': 'audio/wav'
 };
 
 // ============================================

@@ -89,6 +89,15 @@
                         <span>סמן כהושלם</span>
                     </button>
                     
+                    <a href="#" class="video-nav-btn quiz-btn" id="takeQuizBtn" style="display: none;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
+                        <span>חידון 🎯</span>
+                    </a>
+                    
                     <button class="video-nav-btn" id="nextLesson">
                         <span>שיעור הבא</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -568,10 +577,57 @@
                 // Load notes for this lesson
                 this.loadNotes();
                 
+                // Check if there's a quiz for this lesson
+                this.checkForQuiz(lessonId);
+                
                 // Update URL
                 window.history.replaceState({}, '', `?course=${this.courseId}&lesson=${lessonId}`);
                 
                 this.lessonId = lessonId;
+            },
+            
+            async checkForQuiz(lessonId) {
+                const quizBtn = document.getElementById('takeQuizBtn');
+                if (!quizBtn) return;
+                
+                try {
+                    const response = await fetch(`/api/quiz/${lessonId}`);
+                    const data = await response.json();
+                    
+                    if (data.success && data.quiz) {
+                        // Show quiz button
+                        quizBtn.style.display = 'inline-flex';
+                        quizBtn.href = `quiz.html?lesson=${lessonId}&course=${this.courseId}`;
+                        
+                        // Update button text based on previous result
+                        if (data.previousResult) {
+                            if (data.previousResult.passed) {
+                                quizBtn.innerHTML = `
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                    </svg>
+                                    <span>חידון ✅ ${data.previousResult.score}/${data.previousResult.maxScore}</span>
+                                `;
+                            } else {
+                                quizBtn.innerHTML = `
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                                    </svg>
+                                    <span>נסה שוב 🔄</span>
+                                `;
+                            }
+                        }
+                    } else {
+                        // Hide quiz button if no quiz
+                        quizBtn.style.display = 'none';
+                    }
+                } catch (err) {
+                    // API not available, hide button
+                    quizBtn.style.display = 'none';
+                }
             },
             
             updateLessonStatus(lessonId) {

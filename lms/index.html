@@ -371,29 +371,28 @@
                 const content = document.getElementById('dashboardContent');
                 
                 try {
-                    // Simulate API call
-                    await this.sleep(500);
-                    
                     // Update user info
                     const user = LMS.getCurrentUser();
                     this.updateUserInfo(user);
                     
-                    // Load courses (try API first, fallback to mock)
-                    let courses;
+                    // Load real courses from JSON
+                    let courses = [];
                     try {
-                        courses = await this.fetchCourses();
+                        const response = await fetch('data/courses.json');
+                        const data = await response.json();
+                        courses = data.courses || [];
                     } catch (e) {
-                        courses = LMS.config.mockCourses;
+                        console.error('Error loading courses:', e);
                     }
                     
                     // Update stats
                     this.updateStats(courses);
                     
-                    // Render courses
-                    LMS.loadCourses('all');
+                    // Render courses (use real courses)
+                    this.renderMyCourses(courses);
                     
                     // Load continue learning
-                    LMS.loadContinueLearning();
+                    this.renderContinueLearning(courses);
                     
                     // Load recommended courses
                     this.loadRecommendedCourses();
@@ -476,10 +475,17 @@
             updateStats(courses) {
                 const progress = LMS.storage.get('progress') || {};
                 
-                const completedCourses = courses.filter(c => c.progress === 100).length;
+                // Count completed courses
+                const completedCourses = courses.filter(c => {
+                    const p = progress[c.id]?.percentage || 0;
+                    return p === 100;
+                }).length;
+                
+                // Calculate total learning hours
                 const totalHours = courses.reduce((acc, c) => {
-                    const hours = parseInt(c.duration) || 0;
-                    return acc + (hours * (c.progress / 100));
+                    const p = progress[c.id]?.percentage || 0;
+                    const hours = c.lessonsCount * 0.5; // Estimate 30 min per lesson
+                    return acc + (hours * (p / 100));
                 }, 0);
                 
                 document.getElementById('coursesCount').textContent = courses.length;
@@ -530,93 +536,167 @@
                 }
             },
             
-            loadRecommendedCourses() {
-                const grid = document.getElementById('recommendedGrid');
+            renderMyCourses(courses) {
+                const grid = document.getElementById('coursesGrid');
+                const emptyState = document.getElementById('emptyState');
                 if (!grid) return;
                 
-                const recommended = [
-                    {
-                        id: 'rec_1',
-                        title: 'מבוא ל-Machine Learning',
-                        description: 'למד את היסודות של למידת מכונה',
-                        image: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                        lessons: 12,
-                        duration: '6 שעות',
-                        badge: 'חדש',
-                        rating: 4.8,
-                        students: 1234
-                    },
-                    {
-                        id: 'rec_2',
-                        title: 'Python למתחילים',
-                        description: 'שפת התכנות הפופולרית ביותר ל-AI',
-                        image: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-                        lessons: 20,
-                        duration: '10 שעות',
-                        badge: 'פופולרי',
-                        rating: 4.9,
-                        students: 2567
-                    },
-                    {
-                        id: 'rec_3',
-                        title: 'Deep Learning מתקדם',
-                        description: 'רשתות נוירונים ו-Transformers',
-                        image: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-                        lessons: 15,
-                        duration: '8 שעות',
-                        badge: null,
-                        rating: 4.7,
-                        students: 876
-                    }
+                // Color gradients
+                const gradients = [
+                    'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                    'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+                    'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+                    'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
+                    'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+                    'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)'
                 ];
                 
-                grid.innerHTML = recommended.map(course => `
-                    <div class="course-card recommended" data-course-id="${course.id}">
-                        <div class="course-image" style="background: ${course.image};">
-                            ${course.badge ? `<span class="course-badge">${course.badge}</span>` : ''}
+                // Clear existing
+                grid.querySelectorAll('.course-card').forEach(c => c.remove());
+                
+                if (courses.length === 0) {
+                    if (emptyState) emptyState.style.display = 'block';
+                    return;
+                }
+                
+                if (emptyState) emptyState.style.display = 'none';
+                
+                courses.forEach((course, i) => {
+                    const progress = LMS.storage.get('progress')?.[course.id]?.percentage || 0;
+                    const card = document.createElement('div');
+                    card.className = 'course-card';
+                    card.innerHTML = `
+                        <div class="course-image" style="background: ${gradients[i % gradients.length]};">
+                            ${progress === 100 ? '<span class="course-badge">הושלם ✓</span>' : ''}
                         </div>
                         <div class="course-content">
                             <h3>${course.title}</h3>
-                            <p>${course.description}</p>
-                            <div class="course-rating">
-                                <span class="stars">⭐ ${course.rating}</span>
-                                <span class="students">(${course.students.toLocaleString('he-IL')} תלמידים)</span>
-                            </div>
+                            <p>${course.shortDescription || ''}</p>
                             <div class="course-meta">
-                                <span>${course.lessons} שיעורים</span>
-                                <span>${course.duration}</span>
+                                <span>👶 גילאי ${course.ageRange}</span>
+                                <span>📚 ${course.lessonsCount} שיעורים</span>
                             </div>
-                            <a href="course.html?id=${course.id}" class="btn btn-outline">התחל עכשיו</a>
+                            <div class="course-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: ${progress}%"></div>
+                                </div>
+                                <div class="progress-text">
+                                    <span>${progress}% הושלם</span>
+                                </div>
+                            </div>
+                            <a href="course.html?id=${course.id}" class="btn btn-primary" style="width: 100%; margin-top: 12px;">
+                                ${progress === 0 ? 'התחל ללמוד' : progress === 100 ? 'צפה שוב' : 'המשך ללמוד'}
+                            </a>
                         </div>
-                    </div>
-                `).join('');
+                    `;
+                    grid.insertBefore(card, emptyState);
+                });
             },
             
-            loadLearningPath() {
+            renderContinueLearning(courses) {
+                const section = document.getElementById('continueSection');
+                const card = document.getElementById('continueCard');
+                if (!section || !card) return;
+                
+                // Find course with progress
+                const progress = LMS.storage.get('progress') || {};
+                const inProgress = courses.filter(c => {
+                    const p = progress[c.id]?.percentage || 0;
+                    return p > 0 && p < 100;
+                });
+                
+                if (inProgress.length === 0) {
+                    section.style.display = 'none';
+                    return;
+                }
+                
+                section.style.display = 'block';
+                const course = inProgress[0];
+                const p = progress[course.id]?.percentage || 0;
+                
+                card.innerHTML = `
+                    <div class="course-thumb" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+                    <div class="continue-info">
+                        <h3>${course.title}</h3>
+                        <p>${p}% הושלם</p>
+                        <a href="course.html?id=${course.id}" class="btn btn-primary">המשך ללמוד</a>
+                    </div>
+                `;
+            },
+            
+            async loadRecommendedCourses() {
+                const grid = document.getElementById('recommendedGrid');
+                if (!grid) return;
+                
+                // Load real courses from JSON
+                try {
+                    const response = await fetch('data/courses.json');
+                    const data = await response.json();
+                    const courses = data.courses || [];
+                    
+                    // Color gradients for courses
+                    const gradients = [
+                        'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                        'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+                        'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+                        'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
+                        'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+                        'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)'
+                    ];
+                    
+                    grid.innerHTML = courses.map((course, i) => `
+                        <div class="course-card recommended" data-course-id="${course.id}">
+                            <div class="course-image" style="background: ${gradients[i % gradients.length]};">
+                                ${course.featured ? '<span class="course-badge">פופולרי</span>' : ''}
+                            </div>
+                            <div class="course-content">
+                                <h3>${course.title}</h3>
+                                <p>${course.shortDescription || course.description.substring(0, 80) + '...'}</p>
+                                <div class="course-meta">
+                                    <span>👶 גילאי ${course.ageRange}</span>
+                                    <span>📚 ${course.lessonsCount} שיעורים</span>
+                                </div>
+                                <div class="course-price">
+                                    <span class="price">₪${course.price}</span>
+                                </div>
+                                <a href="course.html?id=${course.id}" class="btn btn-outline">התחל עכשיו</a>
+                            </div>
+                        </div>
+                    `).join('');
+                } catch (error) {
+                    console.error('Error loading courses:', error);
+                    grid.innerHTML = '<p>שגיאה בטעינת הקורסים</p>';
+                }
+            },
+            
+            async loadLearningPath() {
                 const container = document.getElementById('learningPath');
                 if (!container) return;
                 
-                const path = [
-                    { title: 'Python בסיסי', status: 'completed', icon: '🐍' },
-                    { title: 'מבוא ל-Data Science', status: 'current', icon: '📊' },
-                    { title: 'Machine Learning', status: 'locked', icon: '🤖' },
-                    { title: 'Deep Learning', status: 'locked', icon: '🧠' },
-                    { title: 'פרויקט גמר', status: 'locked', icon: '🎓' }
-                ];
-                
-                container.innerHTML = path.map((step, i) => `
-                    <div class="path-step ${step.status}">
-                        <div class="step-icon">${step.icon}</div>
-                        <div class="step-content">
-                            <span class="step-number">שלב ${i + 1}</span>
-                            <span class="step-title">${step.title}</span>
+                // Load real courses for learning path
+                try {
+                    const response = await fetch('data/courses.json');
+                    const data = await response.json();
+                    const courses = data.courses || [];
+                    
+                    const icons = ['🎮', '⛏️', '🎯', '🌐', '🤖', '📱'];
+                    
+                    container.innerHTML = courses.slice(0, 5).map((course, i) => `
+                        <div class="path-step ${i === 0 ? 'current' : 'locked'}">
+                            <div class="step-icon">${icons[i % icons.length]}</div>
+                            <div class="step-content">
+                                <span class="step-number">קורס ${i + 1}</span>
+                                <span class="step-title">${course.title}</span>
+                            </div>
+                            <div class="step-status">
+                                ${i === 0 ? '▶' : '🔒'}
+                            </div>
+                            ${i < Math.min(courses.length, 5) - 1 ? '<div class="step-connector"></div>' : ''}
                         </div>
-                        <div class="step-status">
-                            ${step.status === 'completed' ? '✓' : step.status === 'current' ? '▶' : '🔒'}
-                        </div>
-                        ${i < path.length - 1 ? '<div class="step-connector"></div>' : ''}
-                    </div>
-                `).join('');
+                    `).join('');
+                } catch (error) {
+                    console.error('Error loading learning path:', error);
+                }
             },
             
             loadActivityFeed() {

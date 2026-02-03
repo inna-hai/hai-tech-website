@@ -1,6 +1,18 @@
 /* ===========================================
    HAI Tech Academy - Video Player Styles
+   Modern LMS Design v2.0
    =========================================== */
+
+:root {
+    --player-bg: #0f172a;
+    --player-surface: #1e293b;
+    --player-border: #334155;
+    --player-primary: #6366f1;
+    --player-primary-light: #818cf8;
+    --player-success: #22c55e;
+    --player-text: #f8fafc;
+    --player-text-muted: #94a3b8;
+}
 
 /* ===========================================
    Video Player Component
@@ -9,10 +21,17 @@
 .video-player-wrapper {
     position: relative;
     width: 100%;
+    max-width: 100%;
     background: #000;
-    border-radius: var(--radius-lg);
+    border-radius: 12px;
     overflow: hidden;
     aspect-ratio: 16 / 9;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Ensure video stays within bounds */
+.video-player-wrapper * {
+    max-width: 100%;
 }
 
 .video-player-wrapper.controls-hidden {
@@ -119,7 +138,7 @@
 .overlay-play-btn svg {
     width: 35px;
     height: 35px;
-    color: var(--primary);
+    color: var(--player-primary);
     margin-right: -4px;
 }
 
@@ -205,7 +224,7 @@
     top: 0;
     right: 0;
     height: 100%;
-    background: var(--primary);
+    background: var(--player-primary);
     border-radius: 3px;
     pointer-events: none;
 }
@@ -395,16 +414,17 @@
 }
 
 .speed-option.active {
-    color: var(--primary-light);
+    color: var(--player-primary-light);
 }
 
 /* ===========================================
-   Lesson Page Layout
+   Lesson Page Layout - Modern Design
    =========================================== */
 
 .lesson-page {
-    background: var(--background);
+    background: var(--player-bg);
     min-height: 100vh;
+    color: var(--player-text);
 }
 
 /* Lesson Navbar */
@@ -412,12 +432,13 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 12px 20px;
+    background: var(--player-surface);
+    border-bottom: 1px solid var(--player-border);
+    padding: 12px 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    backdrop-filter: blur(10px);
 }
 
 .navbar-right {
@@ -430,20 +451,23 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    color: var(--text-secondary);
+    color: var(--player-text-muted);
     text-decoration: none;
     font-size: 0.9rem;
-    transition: color 0.2s;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: all 0.2s;
 }
 
 .back-btn:hover {
-    color: var(--primary);
+    color: var(--player-text);
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .course-info h1 {
     font-size: 1.1rem;
     font-weight: 600;
-    color: var(--text-primary);
+    color: var(--player-text);
 }
 
 .navbar-center {
@@ -455,30 +479,31 @@
     display: flex;
     align-items: center;
     gap: 15px;
-    background: var(--background);
-    padding: 6px 12px;
-    border-radius: var(--radius);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px 16px;
+    border-radius: 50px;
+    border: 1px solid var(--player-border);
 }
 
 .nav-btn {
     background: none;
     border: none;
-    color: var(--text-secondary);
+    color: var(--player-text-muted);
     cursor: pointer;
     padding: 6px;
-    border-radius: 6px;
+    border-radius: 50%;
     transition: all 0.2s;
 }
 
 .nav-btn:hover {
-    background: var(--border-light);
-    color: var(--primary);
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--player-text);
 }
 
 .lesson-indicator {
     font-size: 0.9rem;
     font-weight: 500;
-    color: var(--text-primary);
+    color: var(--player-text);
 }
 
 .navbar-left {
@@ -492,20 +517,20 @@
     align-items: center;
     gap: 10px;
     font-size: 0.85rem;
-    color: var(--text-secondary);
+    color: var(--player-text-muted);
 }
 
 .progress-bar-mini {
     width: 100px;
     height: 6px;
-    background: var(--border);
+    background: var(--player-border);
     border-radius: 3px;
     overflow: hidden;
 }
 
 .progress-bar-mini .progress-fill {
     height: 100%;
-    background: var(--primary);
+    background: linear-gradient(90deg, var(--player-primary), var(--player-primary-light));
     border-radius: 3px;
     transition: width 0.3s ease;
 }
@@ -513,111 +538,135 @@
 .toggle-sidebar-btn {
     background: none;
     border: none;
-    color: var(--text-secondary);
+    color: var(--player-text-muted);
     cursor: pointer;
     padding: 8px;
-    border-radius: var(--radius);
+    border-radius: 8px;
     transition: all 0.2s;
 }
 
 .toggle-sidebar-btn:hover {
-    background: var(--border-light);
-    color: var(--primary);
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--player-text);
 }
 
-/* Lesson Main */
+/* ===========================================
+   Main Layout - Fixed Sidebar + Content
+   =========================================== */
+
 .lesson-main {
-    display: flex;
+    display: grid;
+    grid-template-columns: 320px 1fr;
     height: calc(100vh - 65px);
     overflow: hidden;
 }
 
-/* Lesson Content */
+/* Lesson Content - Center Area */
 .lesson-content {
-    flex: 1;
     overflow-y: auto;
-    padding: 30px;
+    padding: 32px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
 
-/* Video Section */
+/* Video Section - Contained Size */
 .video-section {
-    max-width: 1200px;
-    margin: 0 auto 30px;
+    width: 100%;
+    max-width: 800px;
 }
 
 .video-player-container {
-    border-radius: var(--radius-lg);
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: var(--shadow-lg);
+    background: #000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Ensure video doesn't overflow */
+.video-player-container iframe,
+.video-player-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
 }
 
 /* Video Navigation */
 .video-nav {
     display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-top: 16px;
+    flex-wrap: wrap;
 }
 
 .video-nav-btn {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 12px 24px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    color: var(--text-secondary);
-    font-size: 0.95rem;
+    gap: 6px;
+    padding: 10px 18px;
+    background: var(--player-surface);
+    border: 1px solid var(--player-border);
+    border-radius: 8px;
+    color: var(--player-text-muted);
+    font-size: 0.9rem;
     cursor: pointer;
     transition: all 0.2s;
+    text-decoration: none;
 }
 
 .video-nav-btn:hover {
-    border-color: var(--primary);
-    color: var(--primary);
+    border-color: var(--player-primary);
+    color: var(--player-primary);
+    background: rgba(99, 102, 241, 0.1);
 }
 
 .video-nav-btn.primary {
-    background: var(--primary);
-    border-color: var(--primary);
+    background: var(--player-primary);
+    border-color: transparent;
     color: white;
 }
 
 .video-nav-btn.primary:hover {
-    background: var(--primary-dark);
+    background: var(--player-primary-light);
 }
 
 .video-nav-btn.primary.completed {
-    background: var(--success);
-    border-color: var(--success);
+    background: var(--player-success);
 }
 
 /* Lesson Info Section */
 .lesson-info-section {
-    max-width: 900px;
-    margin: 0 auto;
+    max-width: 800px;
+    width: 100%;
 }
 
 .lesson-header {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .lesson-badge {
     display: inline-block;
     padding: 4px 12px;
-    background: var(--primary-light);
+    background: var(--player-primary);
     color: white;
-    font-size: 0.8rem;
-    font-weight: 500;
-    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 4px;
     margin-bottom: 10px;
 }
 
 .lesson-header h2 {
-    font-size: 1.75rem;
-    margin-bottom: 12px;
-    color: var(--text-primary);
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+    color: var(--player-text);
+    font-weight: 600;
 }
 
 .lesson-meta {
@@ -629,7 +678,7 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    color: var(--text-secondary);
+    color: var(--player-text-muted);
     font-size: 0.9rem;
 }
 
@@ -637,7 +686,7 @@
 .lesson-tabs {
     display: flex;
     gap: 5px;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--player-border);
     margin-bottom: 25px;
 }
 
@@ -646,19 +695,19 @@
     background: none;
     border: none;
     border-bottom: 2px solid transparent;
-    color: var(--text-secondary);
+    color: var(--player-text-muted);
     font-size: 0.95rem;
     cursor: pointer;
     transition: all 0.2s;
 }
 
 .lesson-tab:hover {
-    color: var(--primary);
+    color: var(--player-primary);
 }
 
 .lesson-tab.active {
-    color: var(--primary);
-    border-bottom-color: var(--primary);
+    color: var(--player-primary);
+    border-bottom-color: var(--player-primary);
 }
 
 /* Tab Content */
@@ -677,11 +726,11 @@
 /* Description */
 .lesson-description {
     line-height: 1.8;
-    color: var(--text-secondary);
+    color: var(--player-text-muted);
 }
 
 .lesson-description h3 {
-    color: var(--text-primary);
+    color: var(--player-text);
     margin: 25px 0 15px;
     font-size: 1.1rem;
 }
@@ -698,7 +747,7 @@
 /* Notes Section */
 .notes-section h3 {
     margin-bottom: 15px;
-    color: var(--text-primary);
+    color: var(--player-text);
 }
 
 .notes-header {
@@ -712,7 +761,7 @@
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    color: var(--success);
+    color: var(--player-success);
     font-size: 0.85rem;
 }
 
@@ -720,18 +769,24 @@
     width: 100%;
     min-height: 200px;
     padding: 15px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
+    border: 1px solid var(--player-border);
+    border-radius: 12px;
     font-family: inherit;
     font-size: 0.95rem;
     line-height: 1.6;
     resize: vertical;
     transition: border-color 0.2s;
+    background: var(--player-surface);
+    color: var(--player-text);
 }
 
 .notes-textarea:focus {
     outline: none;
-    border-color: var(--primary);
+    border-color: var(--player-primary);
+}
+
+.notes-textarea::placeholder {
+    color: var(--player-text-muted);
 }
 
 .notes-actions {
@@ -751,14 +806,16 @@
     display: flex;
     align-items: center;
     gap: 15px;
-    padding: 15px;
-    background: var(--background);
-    border-radius: var(--radius);
-    transition: background 0.2s;
+    padding: 16px;
+    background: var(--player-surface);
+    border: 1px solid var(--player-border);
+    border-radius: 12px;
+    transition: all 0.2s;
 }
 
 .resource-item:hover {
-    background: var(--border-light);
+    border-color: var(--player-primary);
+    background: rgba(99, 102, 241, 0.05);
 }
 
 .resource-icon {
@@ -772,76 +829,83 @@
 .resource-title {
     display: block;
     font-weight: 500;
-    color: var(--text-primary);
+    color: var(--player-text);
     margin-bottom: 4px;
 }
 
 .resource-meta {
     font-size: 0.85rem;
-    color: var(--text-muted);
+    color: var(--player-text-muted);
 }
 
 .resource-download,
 .resource-link {
-    color: var(--text-secondary);
+    color: var(--player-text-muted);
     padding: 8px;
-    border-radius: 6px;
+    border-radius: 8px;
     transition: all 0.2s;
 }
 
 .resource-download:hover,
 .resource-link:hover {
-    background: var(--primary);
+    background: var(--player-primary);
     color: white;
 }
 
 /* ===========================================
-   Lessons Sidebar
+   Lessons Sidebar - Course Content (Fixed Left)
    =========================================== */
 
 .lessons-sidebar {
-    width: 350px;
-    background: var(--surface);
-    border-right: 1px solid var(--border);
+    order: -1; /* Move to left side in RTL */
+    width: 320px;
+    background: var(--player-surface);
+    border-left: 1px solid var(--player-border);
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    transition: transform 0.3s ease;
+    height: calc(100vh - 65px);
 }
 
 @media (max-width: 1024px) {
+    .lesson-main {
+        grid-template-columns: 1fr;
+    }
+    
     .lessons-sidebar {
         position: fixed;
         top: 65px;
-        right: -350px;
-        height: calc(100vh - 65px);
+        left: 0;
+        width: 300px;
         z-index: 50;
-        box-shadow: var(--shadow-lg);
+        box-shadow: 5px 0 30px rgba(0, 0, 0, 0.3);
+        transform: translateX(-100%);
     }
     
     .lessons-sidebar.open {
-        transform: translateX(-350px);
+        transform: translateX(0);
     }
 }
 
 .sidebar-header {
-    padding: 20px;
-    border-bottom: 1px solid var(--border);
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--player-border);
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .sidebar-header h3 {
-    font-size: 1.1rem;
-    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--player-text);
 }
 
 .close-sidebar {
     display: none;
     background: none;
     border: none;
-    color: var(--text-secondary);
+    color: var(--player-text-muted);
     cursor: pointer;
     padding: 6px;
 }
@@ -853,29 +917,30 @@
 }
 
 .sidebar-progress {
-    padding: 15px 20px;
-    background: var(--background);
+    padding: 16px 20px;
+    background: rgba(99, 102, 241, 0.1);
+    border-bottom: 1px solid var(--player-border);
 }
 
 .sidebar-progress .progress-info {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     font-size: 0.85rem;
-    color: var(--text-secondary);
+    color: var(--player-text-muted);
 }
 
 .sidebar-progress .progress-bar {
-    height: 6px;
-    background: var(--border);
-    border-radius: 3px;
+    height: 8px;
+    background: var(--player-border);
+    border-radius: 4px;
     overflow: hidden;
 }
 
 .sidebar-progress .progress-fill {
     height: 100%;
-    background: var(--primary);
-    border-radius: 3px;
+    background: linear-gradient(90deg, var(--player-primary), var(--player-primary-light));
+    border-radius: 4px;
     transition: width 0.3s ease;
 }
 
@@ -902,10 +967,11 @@
     cursor: pointer;
     text-align: right;
     transition: background 0.2s;
+    color: var(--player-text);
 }
 
 .module-header:hover {
-    background: var(--background);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .module-icon {
@@ -919,16 +985,17 @@
 .module-title {
     display: block;
     font-weight: 600;
-    color: var(--text-primary);
+    color: var(--player-text);
     margin-bottom: 4px;
 }
 
 .module-progress {
     font-size: 0.8rem;
-    color: var(--text-muted);
+    color: var(--player-text-muted);
 }
 
 .module-arrow {
+    color: var(--player-text-muted);
     transition: transform 0.2s;
 }
 
@@ -954,15 +1021,17 @@
     gap: 12px;
     padding: 12px 20px 12px 35px;
     text-decoration: none;
-    transition: background 0.2s;
+    transition: all 0.2s;
+    border-right: 3px solid transparent;
 }
 
 .lesson-item:hover {
-    background: var(--background);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .lesson-item.active {
-    background: rgba(99, 102, 241, 0.1);
+    background: rgba(99, 102, 241, 0.15);
+    border-right-color: var(--player-primary);
 }
 
 .lesson-status {
@@ -971,11 +1040,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-muted);
+    color: var(--player-text-muted);
 }
 
 .lesson-status.completed svg {
-    color: var(--success);
+    color: var(--player-success);
 }
 
 .lesson-info {
@@ -985,18 +1054,18 @@
 .lesson-name {
     display: block;
     font-size: 0.9rem;
-    color: var(--text-primary);
+    color: var(--player-text);
     margin-bottom: 3px;
 }
 
 .lesson-item.active .lesson-name {
-    color: var(--primary);
+    color: var(--player-primary-light);
     font-weight: 500;
 }
 
 .lesson-time {
     font-size: 0.8rem;
-    color: var(--text-muted);
+    color: var(--player-text-muted);
 }
 
 /* ===========================================
@@ -1021,28 +1090,30 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
 }
 
 .modal-content {
     position: relative;
-    background: var(--surface);
-    border-radius: var(--radius-xl);
+    background: var(--player-surface);
+    border-radius: 20px;
     padding: 40px;
     max-width: 500px;
     width: 90%;
     text-align: center;
     animation: modalSlide 0.3s ease;
+    border: 1px solid var(--player-border);
 }
 
 @keyframes modalSlide {
     from {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateY(-20px) scale(0.95);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
     }
 }
 
@@ -1055,11 +1126,11 @@
 .completion-modal h2 {
     font-size: 1.75rem;
     margin-bottom: 10px;
-    color: var(--text-primary);
+    color: var(--player-text);
 }
 
 .completion-modal p {
-    color: var(--text-secondary);
+    color: var(--player-text-muted);
     margin-bottom: 25px;
 }
 
@@ -1078,12 +1149,12 @@
     display: block;
     font-size: 2rem;
     font-weight: 700;
-    color: var(--primary);
+    color: var(--player-primary);
 }
 
 .completion-stats .stat-label {
     font-size: 0.85rem;
-    color: var(--text-muted);
+    color: var(--player-text-muted);
 }
 
 .modal-actions {
@@ -1093,8 +1164,67 @@
 }
 
 /* ===========================================
+   Buttons
+   =========================================== */
+
+.btn {
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--player-primary), var(--player-primary-light));
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+}
+
+.btn-secondary {
+    background: var(--player-surface);
+    border: 1px solid var(--player-border);
+    color: var(--player-text);
+}
+
+.btn-secondary:hover {
+    border-color: var(--player-primary);
+    color: var(--player-primary);
+}
+
+/* ===========================================
    Responsive
    =========================================== */
+
+@media (max-width: 1200px) {
+    .lesson-content {
+        padding: 24px 32px;
+    }
+    
+    .video-section {
+        max-width: 700px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .lesson-main {
+        grid-template-columns: 1fr;
+    }
+    
+    .lesson-content {
+        padding: 20px;
+    }
+    
+    .video-section {
+        max-width: 100%;
+    }
+}
 
 @media (max-width: 768px) {
     .lesson-navbar {
@@ -1118,16 +1248,15 @@
     }
     
     .lesson-content {
-        padding: 20px 15px;
+        padding: 16px;
     }
     
     .video-nav {
-        flex-wrap: wrap;
+        flex-direction: column;
     }
     
     .video-nav-btn {
-        flex: 1;
-        min-width: 120px;
+        width: 100%;
         justify-content: center;
     }
     
@@ -1150,6 +1279,11 @@
         flex-wrap: wrap;
         gap: 10px;
     }
+    
+    .lesson-info-section,
+    .video-section {
+        max-width: 100%;
+    }
 }
 
 /* ===========================================
@@ -1166,13 +1300,34 @@
 }
 
 #ytPlayer iframe,
-#vimeoPlayer iframe {
+#vimeoPlayer iframe,
+.video-player-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    border: none !important;
+}
+
+/* Vimeo specific fixes */
+.video-player-wrapper iframe[src*="vimeo"],
+.video-element-container iframe {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Ensure no overflow */
+.video-element-container {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    border: none;
+    overflow: hidden;
 }
 
 /* ===========================================
@@ -1193,4 +1348,112 @@
 
 .video-player-wrapper:-moz-full-screen {
     border-radius: 0;
+}
+
+/* ===========================================
+   Quiz Button Styles
+   =========================================== */
+
+.quiz-btn {
+    background: linear-gradient(135deg, #f59e0b, #f97316) !important;
+    color: white !important;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+    border-color: transparent !important;
+}
+
+.quiz-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    100% {
+        left: 100%;
+    }
+}
+
+.quiz-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+}
+
+/* Quiz result badge in lesson list */
+.quiz-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.quiz-badge.passed {
+    background: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+}
+
+.quiz-badge.failed {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+}
+
+.quiz-badge.pending {
+    background: rgba(245, 158, 11, 0.2);
+    color: #f59e0b;
+}
+
+/* ===========================================
+   Dark Theme Variables (already dark)
+   =========================================== */
+
+:root {
+    --background: var(--player-bg);
+    --surface: var(--player-surface);
+    --border: var(--player-border);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --text-primary: var(--player-text);
+    --text-secondary: var(--player-text-muted);
+    --text-muted: #64748b;
+    --primary: var(--player-primary);
+    --primary-light: var(--player-primary-light);
+    --primary-dark: #4f46e5;
+    --success: var(--player-success);
+    --radius: 8px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* ===========================================
+   Scrollbar Styling
+   =========================================== */
+
+.lessons-list::-webkit-scrollbar,
+.lesson-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.lessons-list::-webkit-scrollbar-track,
+.lesson-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.lessons-list::-webkit-scrollbar-thumb,
+.lesson-content::-webkit-scrollbar-thumb {
+    background: var(--player-border);
+    border-radius: 3px;
+}
+
+.lessons-list::-webkit-scrollbar-thumb:hover,
+.lesson-content::-webkit-scrollbar-thumb:hover {
+    background: var(--player-text-muted);
 }

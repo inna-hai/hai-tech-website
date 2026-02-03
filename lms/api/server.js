@@ -41,6 +41,7 @@ const authRoutes = require('./routes/auth');
 const coursesRoutes = require('./routes/courses');
 const progressRoutes = require('./routes/progress');
 const certificatesRoutes = require('./routes/certificates');
+const quizRoutes = require('./routes/quiz');
 
 const app = express();
 const PORT = process.env.LMS_PORT || 3001;
@@ -80,6 +81,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/courses', coursesRoutes);
 app.use('/api/progress', progressRoutes);
 app.use('/api/certificates', certificatesRoutes);
+app.use('/api/quiz', quizRoutes);
 
 // 404 handler
 app.use('/api/*', (req, res) => {
