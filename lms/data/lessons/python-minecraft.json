@@ -1,0 +1,183 @@
+{
+  "courseId": "python-minecraft",
+  "courseTitle": "קורס בניית עולמות Minecraft באמצעות תכנות",
+  "lessonsCount": 16,
+  "lessons": [
+    {
+      "id": 1,
+      "title": "סרטון פתיחה",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/495994415",
+      "order": 1,
+      "free": true,
+      "resources": []
+    },
+    {
+      "id": 2,
+      "title": "שיעור 0 – התקנות והתחברות",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1104384543",
+      "order": 2,
+      "free": true,
+      "resources": []
+    },
+    {
+      "id": 3,
+      "title": "הורדת עולם מיינקראפט",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "placeholder",
+      "order": 3,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 4,
+      "title": "סרטון הדרכה – איך מייבאים את קובץ העולם למיינקראפט",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/893607836",
+      "order": 4,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 5,
+      "title": "שיעור 1 – הכרות עם הפלטפורמה776",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/464482409",
+      "order": 5,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 6,
+      "title": "שיעור 2 – סוכנות חלק א׳",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/464482541",
+      "order": 6,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 7,
+      "title": "שיעור 3 – סוכנות חלק ב׳",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/464482656",
+      "order": 7,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 8,
+      "title": "שיעור 4 – בניית כבישים חלק א׳",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/464482702",
+      "order": 8,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 9,
+      "title": "תרגול בבניית כבישים",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "placeholder",
+      "order": 9,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 10,
+      "title": "שיעור 5 – בנית כבישים חלק ב׳ ותחילת בית",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/464482804",
+      "order": 10,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 11,
+      "title": "תרגול בבניית בית",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "placeholder",
+      "order": 11,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 12,
+      "title": "שיעור 6 – המשך בניית בית",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/464482881",
+      "order": 12,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 13,
+      "title": "שיעור 7 – בניית גדרות בפארק",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/464482963",
+      "order": 13,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 14,
+      "title": "גדרות תרגול",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "placeholder",
+      "order": 14,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 15,
+      "title": "שיעור 8 – בניית מזרקה בפארק",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/464483034",
+      "order": 15,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 16,
+      "title": "מזרקה תרגול",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "placeholder",
+      "order": 16,
+      "free": false,
+      "resources": []
+    }
+  ]
+}

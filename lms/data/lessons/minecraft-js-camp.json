@@ -1,0 +1,73 @@
+{
+  "courseId": "minecraft-js-camp",
+  "courseTitle": "קורס JavaScript במיינקראפט - מחנה קיץ",
+  "lessonsCount": 6,
+  "lessons": [
+    {
+      "id": 1,
+      "title": "התקנות ורשיון מיינקראפט",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1104384543",
+      "order": 1,
+      "free": true,
+      "resources": []
+    },
+    {
+      "id": 2,
+      "title": "שיעור 1 – יצירת עולם והכרות עם שפת javascript",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/570868690",
+      "order": 2,
+      "free": true,
+      "resources": []
+    },
+    {
+      "id": 3,
+      "title": "שיעור 2 – לולאות ובניית בית בעזרת קוד",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/571126097",
+      "order": 3,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 4,
+      "title": "שיעור 3 – סיום בניית הבית ותחילת בניית המשחק חפש את המטמון",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/571539766",
+      "order": 4,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 5,
+      "title": "שיעור 4 – המשך יצירת המשחק חפש את המטמון + משימה",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/572044566",
+      "order": 5,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 6,
+      "title": "שיעור 5 – יצירת משתנים ומשפטי תנאי – סיום המשחק ובונוס",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/572588401",
+      "order": 6,
+      "free": false,
+      "resources": []
+    }
+  ]
+}

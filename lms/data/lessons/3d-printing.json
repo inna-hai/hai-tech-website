@@ -1,0 +1,139 @@
+{
+  "courseId": "3d-printing",
+  "courseTitle": "קורס מידול תלת מימד - Tinkercad",
+  "lessonsCount": 12,
+  "lessons": [
+    {
+      "id": 1,
+      "title": "שיעור 1 – מחזיק מפתחות",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1149810540",
+      "order": 1,
+      "free": true,
+      "resources": []
+    },
+    {
+      "id": 2,
+      "title": "שיעור 2 – שימוש חכם בשכבות",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1149809815",
+      "order": 2,
+      "free": true,
+      "resources": []
+    },
+    {
+      "id": 3,
+      "title": "שיעור 3 – הדפסת קופסא",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1151312926",
+      "order": 3,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 4,
+      "title": "שיעור 4 – הדפסת מעמד לקונסולת משחקים",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1153316692",
+      "order": 4,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 5,
+      "title": "שיעור 5 – הדפסת סטנד מעוצב לנייד",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1157101488",
+      "order": 5,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 6,
+      "title": "שיעור 6 –",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "placeholder",
+      "order": 6,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 7,
+      "title": "שיעור 7 –",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "placeholder",
+      "order": 7,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 8,
+      "title": "שיעור 8 –",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "placeholder",
+      "order": 8,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 9,
+      "title": "שיעור 9 –",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "placeholder",
+      "order": 9,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 10,
+      "title": "שיעור 10 –",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "placeholder",
+      "order": 10,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 11,
+      "title": "שיעור 11 –",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "placeholder",
+      "order": 11,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 12,
+      "title": "שיעור 12 –",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "placeholder",
+      "order": 12,
+      "free": false,
+      "resources": []
+    }
+  ]
+}
