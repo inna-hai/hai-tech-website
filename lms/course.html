@@ -592,17 +592,25 @@
         // Enhanced Course Viewer
         const CourseViewer = {
             courseId: null,
+            courseData: null,
+            lessonsData: null,
             currentLesson: null,
             completedLessons: [],
             totalLessons: 12,
             
-            init() {
+            async init() {
                 // Get course ID from URL
                 const urlParams = new URLSearchParams(window.location.search);
-                this.courseId = urlParams.get('id') || 'course_1';
+                this.courseId = urlParams.get('id') || 'scratch';
+                
+                // Load course data
+                await this.loadCourseData();
                 
                 // Load progress
                 this.loadProgress();
+                
+                // Render lessons
+                this.renderLessons();
                 
                 // Setup UI
                 this.setupModules();
@@ -617,6 +625,86 @@
                 // Update UI
                 this.updateProgress();
                 this.updateLessonStates();
+            },
+            
+            async loadCourseData() {
+                try {
+                    // Load course info
+                    const coursesResponse = await fetch('data/courses.json');
+                    const coursesData = await coursesResponse.json();
+                    this.courseData = coursesData.courses.find(c => c.id === this.courseId);
+                    
+                    if (this.courseData) {
+                        document.getElementById('courseTitle').textContent = this.courseData.title;
+                        document.title = `${this.courseData.title} | HAI Tech Academy`;
+                        this.totalLessons = this.courseData.lessonsCount;
+                        document.getElementById('totalCount').textContent = this.totalLessons;
+                    }
+                    
+                    // Load lessons
+                    try {
+                        const lessonsResponse = await fetch(`data/lessons/${this.courseId}.json`);
+                        this.lessonsData = await lessonsResponse.json();
+                    } catch (e) {
+                        console.log('No specific lessons file, using default');
+                        this.lessonsData = null;
+                    }
+                } catch (error) {
+                    console.error('Error loading course:', error);
+                }
+            },
+            
+            renderLessons() {
+                const lessonsList = document.getElementById('lessonsList');
+                if (!this.lessonsData || !this.lessonsData.lessons) return;
+                
+                // Clear existing content
+                lessonsList.innerHTML = '';
+                
+                // Group lessons into modules of 4
+                const lessons = this.lessonsData.lessons;
+                const modulesCount = Math.ceil(lessons.length / 4);
+                
+                for (let m = 0; m < modulesCount; m++) {
+                    const moduleNum = m + 1;
+                    const moduleLessons = lessons.slice(m * 4, (m + 1) * 4);
+                    const moduleNames = ['מבוא ויסודות', 'התקדמות', 'מתקדם', 'פרויקט גמר'];
+                    
+                    const moduleHtml = `
+                        <div class="lesson-module" data-module="${moduleNum}">
+                            <button class="module-header" aria-expanded="true">
+                                <span class="module-icon">📖</span>
+                                <div class="module-info">
+                                    <span class="module-title">${moduleNames[m] || 'מודול ' + moduleNum}</span>
+                                    <span class="module-meta">${moduleLessons.length} שיעורים</span>
+                                </div>
+                                <div class="module-progress">
+                                    <div class="mini-progress-bar">
+                                        <div class="mini-progress-fill" data-progress="0"></div>
+                                    </div>
+                                </div>
+                                <svg class="module-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </button>
+                            <div class="module-lessons">
+                                ${moduleLessons.map((lesson, idx) => `
+                                    <a href="#" class="lesson-item ${idx === 0 && m === 0 ? 'active' : ''}" data-lesson="${lesson.id}" data-video="${lesson.videoUrl}">
+                                        <span class="lesson-status ${idx === 0 && m === 0 ? 'current' : ''}">
+                                            ${idx === 0 && m === 0 ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>' : ''}
+                                        </span>
+                                        <div class="lesson-info">
+                                            <span class="lesson-title">${lesson.title}</span>
+                                            <span class="lesson-duration">${lesson.duration || '10:00'}</span>
+                                        </div>
+                                        <span class="lesson-type" title="וידאו">🎬</span>
+                                    </a>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                    lessonsList.insertAdjacentHTML('beforeend', moduleHtml);
+                }
             },
             
             loadProgress() {
