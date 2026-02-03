@@ -9,12 +9,9 @@ const LMS = {
     // ==========================================
     config: {
         storagePrefix: 'hai_lms_',
-        mockUser: {
-            id: 'user_1',
-            name: 'סטודנט דמו',
-            email: 'demo@haitech.co.il',
-            avatar: 'ס'
-        },
+        apiUrl: window.location.hostname === 'localhost' 
+            ? 'http://localhost:3001/api' 
+            : '/lms/api',
         mockCourses: [
             {
                 id: 'course_1',
@@ -90,25 +87,38 @@ const LMS = {
     // ==========================================
     // Authentication
     // ==========================================
-    login(email, password) {
-        // Mock login - in production, this would call an API
+    
+    /**
+     * Login with email and password
+     * Calls the real API and stores JWT token
+     */
+    async login(email, password) {
         if (!email || !password) {
             LMS.showNotification('אנא מלא את כל השדות', 'error');
             return false;
         }
         
-        // Simulate API call delay
         LMS.showNotification('מתחבר...', 'info');
         
-        setTimeout(() => {
-            // Store user session
-            const user = {
-                ...LMS.config.mockUser,
-                email: email,
-                loggedInAt: new Date().toISOString()
-            };
+        try {
+            const response = await fetch(`${LMS.config.apiUrl}/auth/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, password })
+            });
             
-            LMS.storage.set('user', user);
+            const data = await response.json();
+            
+            if (!response.ok || !data.success) {
+                LMS.showNotification(data.error || 'שגיאה בהתחברות', 'error');
+                return false;
+            }
+            
+            // Store JWT token and user data
+            LMS.storage.set('token', data.token);
+            LMS.storage.set('user', data.user);
             LMS.storage.set('isLoggedIn', true);
             
             // Initialize progress if not exists
@@ -122,25 +132,142 @@ const LMS = {
             setTimeout(() => {
                 window.location.href = 'index.html';
             }, 500);
-        }, 800);
-        
-        return true;
+            
+            return true;
+            
+        } catch (err) {
+            console.error('Login error:', err);
+            LMS.showNotification('שגיאה בהתחברות, אנא נסה שוב', 'error');
+            return false;
+        }
     },
     
+    /**
+     * Register a new user
+     */
+    async register(name, email, password, phone = null) {
+        if (!name || !email || !password) {
+            LMS.showNotification('אנא מלא את כל השדות הנדרשים', 'error');
+            return false;
+        }
+        
+        if (password.length < 6) {
+            LMS.showNotification('הסיסמה חייבת להכיל לפחות 6 תווים', 'error');
+            return false;
+        }
+        
+        LMS.showNotification('נרשם...', 'info');
+        
+        try {
+            const response = await fetch(`${LMS.config.apiUrl}/auth/register`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name, email, password, phone })
+            });
+            
+            const data = await response.json();
+            
+            if (!response.ok || !data.success) {
+                LMS.showNotification(data.error || 'שגיאה בהרשמה', 'error');
+                return false;
+            }
+            
+            // Store JWT token and user data
+            LMS.storage.set('token', data.token);
+            LMS.storage.set('user', data.user);
+            LMS.storage.set('isLoggedIn', true);
+            
+            LMS.showNotification('נרשמת בהצלחה! ברוכים הבאים', 'success');
+            
+            // Redirect to dashboard
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 500);
+            
+            return true;
+            
+        } catch (err) {
+            console.error('Register error:', err);
+            LMS.showNotification('שגיאה בהרשמה, אנא נסה שוב', 'error');
+            return false;
+        }
+    },
+    
+    /**
+     * Logout - clear all auth data
+     */
     logout() {
+        LMS.storage.remove('token');
         LMS.storage.remove('user');
         LMS.storage.set('isLoggedIn', false);
         window.location.href = 'login.html';
     },
     
+    /**
+     * Check if user is logged in
+     */
     isLoggedIn() {
-        return LMS.storage.get('isLoggedIn') === true;
+        return LMS.storage.get('isLoggedIn') === true && LMS.storage.get('token') !== null;
     },
     
+    /**
+     * Get JWT token for API calls
+     */
+    getToken() {
+        return LMS.storage.get('token');
+    },
+    
+    /**
+     * Get current user from storage
+     */
     getCurrentUser() {
-        return LMS.storage.get('user') || LMS.config.mockUser;
+        return LMS.storage.get('user') || null;
     },
     
+    /**
+     * Verify token and load fresh user data from server
+     */
+    async checkAuth() {
+        const token = LMS.getToken();
+        if (!token) {
+            return false;
+        }
+        
+        try {
+            const response = await fetch(`${LMS.config.apiUrl}/auth/me`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            
+            if (!response.ok) {
+                // Token is invalid, clear auth
+                LMS.storage.remove('token');
+                LMS.storage.remove('user');
+                LMS.storage.set('isLoggedIn', false);
+                return false;
+            }
+            
+            const data = await response.json();
+            if (data.success && data.user) {
+                // Update stored user with fresh data
+                LMS.storage.set('user', data.user);
+                return true;
+            }
+            
+            return false;
+            
+        } catch (err) {
+            console.error('Auth check error:', err);
+            return false;
+        }
+    },
+    
+    /**
+     * Require authentication - redirect to login if not logged in
+     */
     requireAuth() {
         if (!LMS.isLoggedIn()) {
             window.location.href = 'login.html';
@@ -148,22 +275,54 @@ const LMS = {
         }
         return true;
     },
+    
+    /**
+     * Make authenticated API request
+     */
+    async apiRequest(endpoint, options = {}) {
+        const token = LMS.getToken();
+        const headers = {
+            'Content-Type': 'application/json',
+            ...(token ? { 'Authorization': `Bearer ${token}` } : {}),
+            ...options.headers
+        };
+        
+        const response = await fetch(`${LMS.config.apiUrl}${endpoint}`, {
+            ...options,
+            headers
+        });
+        
+        return response.json();
+    },
 
     // ==========================================
     // Dashboard Functions
     // ==========================================
-    initDashboard() {
-        // Update user info
+    async initDashboard() {
+        // Verify auth and load fresh user data
+        const isValid = await LMS.checkAuth();
+        if (!isValid) {
+            // Token invalid, redirect to login
+            window.location.href = 'login.html';
+            return;
+        }
+        
+        // Update user info from verified data
         const user = LMS.getCurrentUser();
+        if (!user) {
+            window.location.href = 'login.html';
+            return;
+        }
+        
         const userName = document.getElementById('userName');
         const userAvatar = document.getElementById('userAvatar');
         const profileName = document.getElementById('profileName');
         const profileAvatar = document.getElementById('profileAvatar');
         
         if (userName) userName.textContent = user.name;
-        if (userAvatar) userAvatar.textContent = user.avatar || user.name.charAt(0);
+        if (userAvatar) userAvatar.textContent = user.name ? user.name.charAt(0) : '?';
         if (profileName) profileName.textContent = user.name;
-        if (profileAvatar) profileAvatar.textContent = user.avatar || user.name.charAt(0);
+        if (profileAvatar) profileAvatar.textContent = user.name ? user.name.charAt(0) : '?';
         
         // Load user stats
         LMS.loadStats();

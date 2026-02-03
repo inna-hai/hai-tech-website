@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>חידון | HAI Tech Academy</title>
     <link rel="stylesheet" href="css/lms.css">
+    <link rel="stylesheet" href="css/gamification.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -1093,6 +1094,19 @@
                     this.showConfetti();
                     this.showFeedback(result.percentage === 100 ? '🏆' : '🎉', 'מעולה!', 'correct');
                 }
+                
+                // Notify gamification system
+                document.dispatchEvent(new CustomEvent('quizComplete', {
+                    detail: {
+                        quizId: this.quiz.id,
+                        lessonId: this.lessonId,
+                        courseId: this.courseId,
+                        score: result.score,
+                        maxScore: result.maxScore,
+                        percentage: result.percentage,
+                        passed: result.passed
+                    }
+                }));
 
                 const container = document.getElementById('quizContainer');
                 const passedClass = result.passed ? 'passed' : 'failed';
@@ -1202,5 +1216,6 @@
             QuizPage.init();
         });
     </script>
+    <script src="js/gamification.js"></script>
 </body>
 </html>

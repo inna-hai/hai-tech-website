@@ -1,0 +1,682 @@
+/**
+ * Gamification Styles - HAI Tech Academy
+ * XP bars, levels, badges, streaks, rewards
+ */
+
+/* ==========================================
+   XP Bar
+   ========================================== */
+.xp-bar-wrapper {
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+    border-radius: 16px;
+    padding: 20px;
+    color: white;
+}
+
+.xp-bar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.level-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+}
+
+.level-icon {
+    font-size: 1.5rem;
+}
+
+.level-name {
+    font-size: 1.1rem;
+}
+
+.xp-count {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fbbf24;
+}
+
+.xp-bar {
+    height: 12px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+}
+
+.xp-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #fbbf24, #f59e0b);
+    border-radius: 6px;
+    transition: width 0.5s ease;
+    position: relative;
+}
+
+.xp-bar-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+    border-radius: 6px 6px 0 0;
+}
+
+.xp-bar-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+    font-size: 0.85rem;
+    opacity: 0.9;
+}
+
+.next-level {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.max-level {
+    color: #fbbf24;
+}
+
+/* ==========================================
+   Level Badge
+   ========================================== */
+.level-badge {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 16px;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    border-radius: 12px;
+    color: white;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.level-badge .badge-icon {
+    font-size: 2rem;
+    margin-bottom: 4px;
+}
+
+.level-badge .badge-level {
+    font-size: 0.85rem;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 2px 8px;
+    border-radius: 10px;
+}
+
+/* Level colors */
+.level-badge.level-1 { background: linear-gradient(135deg, #10b981, #34d399); }
+.level-badge.level-2 { background: linear-gradient(135deg, #3b82f6, #60a5fa); }
+.level-badge.level-3 { background: linear-gradient(135deg, #8b5cf6, #a78bfa); }
+.level-badge.level-4 { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
+.level-badge.level-5 { background: linear-gradient(135deg, #ef4444, #f87171); }
+.level-badge.level-6 { background: linear-gradient(135deg, #ec4899, #f472b6); }
+
+/* ==========================================
+   Streak Widget
+   ========================================== */
+.streak-widget {
+    background: var(--surface, #1e293b);
+    border: 1px solid var(--border, #334155);
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.streak-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.streak-fire {
+    font-size: 2rem;
+}
+
+.streak-count {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #f59e0b;
+}
+
+.streak-label {
+    font-size: 0.9rem;
+    color: var(--text-muted, #94a3b8);
+}
+
+.streak-calendar {
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.streak-day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 8px;
+    border-radius: 8px;
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.streak-day.today {
+    background: rgba(99, 102, 241, 0.2);
+    border: 2px solid #6366f1;
+}
+
+.streak-day.active {
+    background: rgba(245, 158, 11, 0.2);
+}
+
+.streak-day .day-name {
+    font-size: 0.75rem;
+    color: var(--text-muted, #94a3b8);
+}
+
+.streak-day .day-dot {
+    font-size: 1.25rem;
+}
+
+.streak-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: var(--text-muted, #94a3b8);
+}
+
+.streak-shields {
+    background: rgba(99, 102, 241, 0.2);
+    padding: 4px 10px;
+    border-radius: 12px;
+    color: #818cf8;
+}
+
+/* ==========================================
+   Daily Challenges
+   ========================================== */
+.daily-challenges {
+    background: var(--surface, #1e293b);
+    border: 1px solid var(--border, #334155);
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.challenges-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--text-primary, #f8fafc);
+}
+
+.challenges-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.challenge-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.2s;
+}
+
+.challenge-item:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.challenge-item.completed {
+    background: rgba(34, 197, 94, 0.1);
+    border-color: rgba(34, 197, 94, 0.3);
+}
+
+.challenge-status {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.challenge-item.completed .challenge-status {
+    background: #22c55e;
+    font-size: 1.25rem;
+}
+
+.challenge-info {
+    flex: 1;
+}
+
+.challenge-name {
+    display: block;
+    font-weight: 500;
+    color: var(--text-primary, #f8fafc);
+    margin-bottom: 2px;
+}
+
+.challenge-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted, #94a3b8);
+}
+
+.challenge-reward {
+    text-align: left;
+}
+
+.xp-reward {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
+.challenge-item.completed .xp-reward {
+    opacity: 0.5;
+}
+
+/* ==========================================
+   Badges Preview
+   ========================================== */
+.badges-preview {
+    background: var(--surface, #1e293b);
+    border: 1px solid var(--border, #334155);
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.badges-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.badges-header h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary, #f8fafc);
+}
+
+.badges-header .view-all {
+    font-size: 0.85rem;
+    color: #6366f1;
+    text-decoration: none;
+}
+
+.badges-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.badge-item {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.badge-item.earned {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
+    border: 2px solid #6366f1;
+}
+
+.badge-item.earned:hover {
+    transform: scale(1.1);
+}
+
+.badge-item.locked {
+    opacity: 0.4;
+}
+
+.badge-item.locked .badge-icon {
+    font-size: 1.5rem;
+}
+
+/* ==========================================
+   Reward Popup
+   ========================================== */
+.reward-popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.reward-popup.visible {
+    opacity: 1;
+}
+
+.reward-popup-content {
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+    border-radius: 24px;
+    padding: 40px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    color: white;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.reward-popup.visible .reward-popup-content {
+    transform: scale(1);
+}
+
+.reward-header {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 24px;
+}
+
+.rewards-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.reward-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: right;
+}
+
+.reward-item .reward-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.reward-item .reward-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    display: block;
+}
+
+.reward-item .reward-reason {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.reward-xp .reward-value {
+    color: #fbbf24;
+}
+
+.reward-level .reward-value {
+    color: #a78bfa;
+}
+
+.reward-badge .reward-value {
+    color: #60a5fa;
+}
+
+.reward-close-btn {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    border: none;
+    padding: 14px 40px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.reward-close-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+}
+
+/* ==========================================
+   XP Gain Animation
+   ========================================== */
+.xp-gain-popup {
+    position: fixed;
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-size: 1.5rem;
+    font-weight: 800;
+    z-index: 9999;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+    pointer-events: none;
+}
+
+.xp-gain-popup.animate {
+    animation: xpGain 1.5s ease forwards;
+}
+
+@keyframes xpGain {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+    20% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+    40% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    80% {
+        opacity: 1;
+        transform: translate(-50%, -100%) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -150%) scale(0.8);
+    }
+}
+
+/* ==========================================
+   Confetti
+   ========================================== */
+.confetti-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 10001;
+    overflow: hidden;
+}
+
+.confetti-piece {
+    position: absolute;
+    top: -20px;
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    animation: confettiFall 2s ease forwards;
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* ==========================================
+   Leaderboard
+   ========================================== */
+.leaderboard {
+    background: var(--surface, #1e293b);
+    border: 1px solid var(--border, #334155);
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.leaderboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.leaderboard-header h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.leaderboard-tabs {
+    display: flex;
+    gap: 8px;
+}
+
+.leaderboard-tab {
+    padding: 6px 12px;
+    background: none;
+    border: 1px solid var(--border, #334155);
+    border-radius: 8px;
+    color: var(--text-muted, #94a3b8);
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.leaderboard-tab.active {
+    background: #6366f1;
+    border-color: #6366f1;
+    color: white;
+}
+
+.leaderboard-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.leaderboard-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+}
+
+.leaderboard-item.current-user {
+    background: rgba(99, 102, 241, 0.15);
+    border: 1px solid #6366f1;
+}
+
+.leaderboard-rank {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.leaderboard-item:nth-child(1) .leaderboard-rank {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    color: white;
+}
+
+.leaderboard-item:nth-child(2) .leaderboard-rank {
+    background: linear-gradient(135deg, #94a3b8, #cbd5e1);
+    color: #334155;
+}
+
+.leaderboard-item:nth-child(3) .leaderboard-rank {
+    background: linear-gradient(135deg, #b45309, #d97706);
+    color: white;
+}
+
+.leaderboard-user {
+    flex: 1;
+}
+
+.leaderboard-name {
+    display: block;
+    font-weight: 500;
+}
+
+.leaderboard-level {
+    font-size: 0.8rem;
+    color: var(--text-muted, #94a3b8);
+}
+
+.leaderboard-xp {
+    font-weight: 700;
+    color: #fbbf24;
+}
+
+.leaderboard-streak {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.85rem;
+    color: #f59e0b;
+}
+
+/* ==========================================
+   Responsive
+   ========================================== */
+@media (max-width: 768px) {
+    .badges-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+    }
+    
+    .badge-item {
+        font-size: 1.5rem;
+    }
+    
+    .streak-calendar {
+        gap: 4px;
+    }
+    
+    .streak-day {
+        padding: 6px;
+    }
+    
+    .reward-popup-content {
+        padding: 24px;
+    }
+}

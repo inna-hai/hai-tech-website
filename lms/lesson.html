@@ -6,6 +6,7 @@
     <title>שיעור | HAI Tech Academy</title>
     <link rel="stylesheet" href="css/lms.css">
     <link rel="stylesheet" href="css/player.css">
+    <link rel="stylesheet" href="css/gamification.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -693,6 +694,15 @@
                 this.updateLessonStatus(this.lessonId);
                 this.updateProgressDisplay();
                 
+                // Notify gamification system
+                document.dispatchEvent(new CustomEvent('lessonComplete', {
+                    detail: {
+                        lessonId: this.lessonId,
+                        courseId: this.courseId,
+                        watchTime: this.videoPlayer ? this.videoPlayer.currentTime : 0
+                    }
+                }));
+                
                 // Show notification
                 LMS.showNotification('השיעור סומן כהושלם! 🎉', 'success');
                 
@@ -889,5 +899,6 @@
             LessonPage.init();
         });
     </script>
+    <script src="js/gamification.js"></script>
 </body>
 </html>

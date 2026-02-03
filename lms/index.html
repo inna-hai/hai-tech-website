@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>הקורסים שלי | HAI Tech Academy</title>
     <link rel="stylesheet" href="css/lms.css">
+    <link rel="stylesheet" href="css/gamification.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -103,10 +104,17 @@
                 </svg>
             </button>
             
+            <!-- Profile Card with Gamification -->
             <div class="profile-card">
-                <div class="profile-avatar" id="profileAvatar">א</div>
+                <div class="profile-header">
+                    <div class="profile-avatar" id="profileAvatar">א</div>
+                    <div id="levelBadgeContainer"></div>
+                </div>
                 <h3 class="profile-name" id="profileName">אורח</h3>
-                <p class="profile-level" id="profileLevel">רמת מתחיל</p>
+                
+                <!-- XP Progress Bar -->
+                <div id="xpBarContainer"></div>
+                
                 <div class="profile-stats">
                     <div class="stat">
                         <span class="stat-value" id="coursesCount">0</span>
@@ -123,16 +131,14 @@
                 </div>
             </div>
             
-            <div class="streak-card">
-                <div class="streak-icon">🔥</div>
-                <div class="streak-info">
-                    <span class="streak-count" id="streakCount">0</span>
-                    <span class="streak-label">ימים רצופים</span>
-                </div>
-                <div class="streak-calendar" id="streakCalendar">
-                    <!-- Filled by JS -->
-                </div>
-            </div>
+            <!-- Streak Widget -->
+            <div id="streakContainer"></div>
+            
+            <!-- Daily Challenges -->
+            <div id="dailyChallengesContainer"></div>
+            
+            <!-- Badges Preview -->
+            <div id="badgesPreviewContainer"></div>
             
             <nav class="sidebar-nav" aria-label="ניווט ראשי">
                 <a href="index.html" class="sidebar-link active" aria-current="page">
@@ -278,6 +284,7 @@
     </main>
     
     <script src="js/lms.js"></script>
+    <script src="js/gamification.js"></script>
     <script>
         // Extended LMS Dashboard functionality
         const Dashboard = {
@@ -286,11 +293,15 @@
             
             // Initialize dashboard
             async init() {
-                // Check auth
+                // If user has token, verify it and load fresh user data
+                if (LMS.getToken()) {
+                    await LMS.checkAuth();
+                }
+                
+                // Check auth - redirect if not logged in
                 if (!LMS.isLoggedIn()) {
-                    // Allow viewing but with limited features
-                    // window.location.href = 'login.html';
-                    // return;
+                    window.location.href = 'login.html';
+                    return;
                 }
                 
                 // Setup UI interactions

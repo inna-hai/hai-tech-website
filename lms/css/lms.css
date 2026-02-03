@@ -4081,3 +4081,94 @@ body.dark-mode {
         flex-wrap: wrap;
     }
 }
+
+/* ============================================
+   Gamification Integration Styles
+============================================ */
+
+/* Profile Card Header with Level Badge */
+.profile-card .profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.profile-card .profile-avatar {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+}
+
+/* Sidebar Gamification Widgets */
+.dashboard-sidebar #xpBarContainer {
+    margin: 16px 0;
+}
+
+.dashboard-sidebar #xpBarContainer .xp-bar-wrapper {
+    padding: 16px;
+    border-radius: 12px;
+}
+
+.dashboard-sidebar #streakContainer,
+.dashboard-sidebar #dailyChallengesContainer,
+.dashboard-sidebar #badgesPreviewContainer {
+    margin-bottom: 16px;
+}
+
+.dashboard-sidebar .daily-challenges {
+    padding: 16px;
+}
+
+.dashboard-sidebar .challenges-title {
+    font-size: 1rem;
+    margin-bottom: 12px;
+}
+
+.dashboard-sidebar .challenge-item {
+    padding: 10px;
+    gap: 10px;
+}
+
+.dashboard-sidebar .challenge-status {
+    width: 32px;
+    height: 32px;
+    font-size: 0.75rem;
+}
+
+.dashboard-sidebar .badges-preview {
+    padding: 16px;
+}
+
+/* Level Badge in Profile */
+.profile-card #levelBadgeContainer .level-badge {
+    padding: 8px 12px;
+}
+
+.profile-card #levelBadgeContainer .badge-icon {
+    font-size: 1.5rem;
+    margin-bottom: 2px;
+}
+
+.profile-card #levelBadgeContainer .badge-level {
+    font-size: 0.7rem;
+}
+
+/* Mobile adjustments for gamification */
+@media (max-width: 768px) {
+    .dashboard-sidebar #xpBarContainer,
+    .dashboard-sidebar #streakContainer,
+    .dashboard-sidebar #dailyChallengesContainer,
+    .dashboard-sidebar #badgesPreviewContainer {
+        margin-bottom: 12px;
+    }
+    
+    .dashboard-sidebar .streak-calendar {
+        gap: 4px;
+    }
+    
+    .dashboard-sidebar .badges-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+    }
+}

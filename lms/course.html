@@ -367,6 +367,26 @@
             totalLessons: 12,
             
             async init() {
+                // If user has token, verify it and load fresh user data
+                if (LMS.getToken()) {
+                    await LMS.checkAuth();
+                }
+                
+                // Check auth - redirect if not logged in
+                if (!LMS.isLoggedIn()) {
+                    window.location.href = 'login.html';
+                    return;
+                }
+                
+                // Update user info in navbar
+                const user = LMS.getCurrentUser();
+                if (user) {
+                    const userName = document.getElementById('userName');
+                    const userAvatar = document.getElementById('userAvatar');
+                    if (userName) userName.textContent = user.name;
+                    if (userAvatar) userAvatar.textContent = user.name ? user.name.charAt(0) : '?';
+                }
+                
                 // Get course ID from URL
                 const urlParams = new URLSearchParams(window.location.search);
                 this.courseId = urlParams.get('id') || 'scratch';
