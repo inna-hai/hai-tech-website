@@ -1,11 +1,11 @@
 {
   "courseId": "minecraft-mods",
   "courseTitle": "קורס בניית מודים למיינקראפט",
-  "lessonsCount": 7,
+  "lessonsCount": 2,
   "lessons": [
     {
       "id": 1,
-      "title": "הורדות והתקנות11:10",
+      "title": "הורדות והתקנות",
       "titleEn": "",
       "description": "",
       "duration": "15:00",
@@ -16,68 +16,13 @@
     },
     {
       "id": 2,
-      "title": "התקנת תוסף עברית למיינקראפט02:24",
+      "title": "התקנת תוסף עברית למיינקראפט",
       "titleEn": "",
       "description": "",
       "duration": "15:00",
       "videoUrl": "https://player.vimeo.com/video/594233602",
       "order": 2,
       "free": true,
-      "resources": []
-    },
-    {
-      "id": 3,
-      "title": "בניית פירמידה – לולאות",
-      "titleEn": "",
-      "description": "",
-      "duration": "15:00",
-      "videoUrl": "placeholder",
-      "order": 3,
-      "free": false,
-      "resources": []
-    },
-    {
-      "id": 4,
-      "title": "המשך בניית הפירמידה – תנאים ומשתנים27:35",
-      "titleEn": "",
-      "description": "",
-      "duration": "15:00",
-      "videoUrl": "placeholder",
-      "order": 4,
-      "free": false,
-      "resources": []
-    },
-    {
-      "id": 5,
-      "title": "רדסטון ליצירת דלת כניסה לפירמידה",
-      "titleEn": "",
-      "description": "",
-      "duration": "15:00",
-      "videoUrl": "placeholder",
-      "order": 5,
-      "free": false,
-      "resources": []
-    },
-    {
-      "id": 6,
-      "title": "יצירת חדר בריחה07:52",
-      "titleEn": "",
-      "description": "",
-      "duration": "15:00",
-      "videoUrl": "placeholder",
-      "order": 6,
-      "free": false,
-      "resources": []
-    },
-    {
-      "id": 7,
-      "title": "סיכום כל השלבים ופרסום הפירמידה33:42",
-      "titleEn": "",
-      "description": "",
-      "duration": "15:00",
-      "videoUrl": "placeholder",
-      "order": 7,
-      "free": false,
       "resources": []
     }
   ]

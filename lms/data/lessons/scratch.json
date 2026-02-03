@@ -5,7 +5,7 @@
   "lessons": [
     {
       "id": 1,
-      "title": "שיעור 1 –  התחברות  וחתול אומן21:13",
+      "title": "שיעור 1 –  התחברות  וחתול אומן",
       "titleEn": "Introduction to Scratch",
       "description": "הכרות עם סביבת Scratch והממשק הגרפי",
       "duration": "15:00",
@@ -16,7 +16,7 @@
     },
     {
       "id": 2,
-      "title": "שיעור 2 – דרקונים18:44",
+      "title": "שיעור 2 – דרקונים",
       "titleEn": "Creating Your First Sprite",
       "description": "בחירת ויצירת דמויות (sprites) למשחק",
       "duration": "12:00",
@@ -27,7 +27,7 @@
     },
     {
       "id": 3,
-      "title": "שיעור 3 –  משחק הכדור14:00",
+      "title": "שיעור 3 –  משחק הכדור",
       "titleEn": "Basic Movement",
       "description": "הזזת דמויות על המסך עם בלוקים",
       "duration": "15:00",
@@ -38,7 +38,7 @@
     },
     {
       "id": 4,
-      "title": "שיעור 4 – דרקון וחתול25:53",
+      "title": "שיעור 4 – דרקון וחתול",
       "titleEn": "Simple Animations",
       "description": "יצירת אנימציות עם החלפת תלבושות",
       "duration": "18:00",
@@ -49,7 +49,7 @@
     },
     {
       "id": 5,
-      "title": "שיעור 5 – אם-אז14:06",
+      "title": "שיעור 5 – אם-אז",
       "titleEn": "Sounds and Music",
       "description": "הוספת אפקטים קוליים ומוזיקת רקע",
       "duration": "12:00",
@@ -60,7 +60,7 @@
     },
     {
       "id": 6,
-      "title": "שיעור 6 – משחק המבוך 115:26",
+      "title": "שיעור 6 – משחק המבוך 1",
       "titleEn": "Loops - Repeating Actions",
       "description": "שימוש בבלוקי לולאה לחזרה על פעולות",
       "duration": "20:00",
@@ -71,7 +71,7 @@
     },
     {
       "id": 7,
-      "title": "שיעור 7 – משחק המבוך 206:58",
+      "title": "שיעור 7 – משחק המבוך 2",
       "titleEn": "Conditions - If/Else",
       "description": "קבלת החלטות בקוד עם בלוקי תנאי",
       "duration": "20:00",
@@ -82,7 +82,7 @@
     },
     {
       "id": 8,
-      "title": "שיעור 8 – משחק זכרון חיות18:33",
+      "title": "שיעור 8 – משחק זכרון חיות",
       "titleEn": "Variables - Storing Data",
       "description": "יצירת משתנים לשמירת ניקוד, חיים ומידע אחר",
       "duration": "18:00",
@@ -93,7 +93,7 @@
     },
     {
       "id": 9,
-      "title": "שיעור 9 – מתנות קופצות – חלק א׳12:58",
+      "title": "שיעור 9 – מתנות קופצות – חלק א׳",
       "titleEn": "First Scoring Game",
       "description": "בניית משחק פשוט עם מערכת ניקוד",
       "duration": "25:00",
@@ -104,7 +104,7 @@
     },
     {
       "id": 10,
-      "title": "שיעור 10 – מתנות קופצות – חלק ב׳12:21",
+      "title": "שיעור 10 – מתנות קופצות – חלק ב׳",
       "titleEn": "Collision Detection",
       "description": "זיהוי מגע בין דמויות ואובייקטים",
       "duration": "18:00",
@@ -115,7 +115,7 @@
     },
     {
       "id": 11,
-      "title": "שיעור 11 – פעולות חשבון – חלק א׳16:24",
+      "title": "שיעור 11 – פעולות חשבון – חלק א׳",
       "titleEn": "Keyboard Controls",
       "description": "שליטה בדמויות באמצעות מקשים",
       "duration": "15:00",
@@ -126,7 +126,7 @@
     },
     {
       "id": 12,
-      "title": "שיעור 12 – פעולות חשבון -חלק ב׳15:16",
+      "title": "שיעור 12 – פעולות חשבון -חלק ב׳",
       "titleEn": "Mouse Controls",
       "description": "שליטה בדמויות עם העכבר ולחיצות",
       "duration": "15:00",
@@ -137,7 +137,7 @@
     },
     {
       "id": 13,
-      "title": "שיעור 13 – פעולות חשבון – חלק ג׳16:07",
+      "title": "שיעור 13 – פעולות חשבון – חלק ג׳",
       "titleEn": "Backgrounds and Levels",
       "description": "החלפת רקעים ויצירת שלבים למשחק",
       "duration": "18:00",
@@ -148,7 +148,7 @@
     },
     {
       "id": 14,
-      "title": "שיעור 14 – משחק המחשבון – חלק א׳18:06",
+      "title": "שיעור 14 – משחק המחשבון – חלק א׳",
       "titleEn": "Cloning Sprites",
       "description": "יצירת עותקים של דמויות בזמן ריצה",
       "duration": "20:00",
@@ -159,7 +159,7 @@
     },
     {
       "id": 15,
-      "title": "שיעור 15 – משחק המחשבון – חלק ב׳21:19",
+      "title": "שיעור 15 – משחק המחשבון – חלק ב׳",
       "titleEn": "Broadcasting Messages",
       "description": "תקשורת בין דמויות עם הודעות",
       "duration": "15:00",
@@ -170,7 +170,7 @@
     },
     {
       "id": 16,
-      "title": "שיעור 16 – סנייק – חלק א׳13:38",
+      "title": "שיעור 16 – סנייק – חלק א׳",
       "titleEn": "Chase Game",
       "description": "בניית משחק מרדף עם AI פשוט",
       "duration": "25:00",
@@ -181,7 +181,7 @@
     },
     {
       "id": 17,
-      "title": "שיעור 17 – סנייק – חלק ב׳03:30",
+      "title": "שיעור 17 – סנייק – חלק ב׳",
       "titleEn": "Shooting Game",
       "description": "יצירת משחק יריות עם קליעים ומטרות",
       "duration": "25:00",
@@ -192,7 +192,7 @@
     },
     {
       "id": 18,
-      "title": "שיעור 18 – סנייק – חלק ג׳08:53",
+      "title": "שיעור 18 – סנייק – חלק ג׳",
       "titleEn": "Platform Game",
       "description": "בניית משחק פלטפורמה עם קפיצות ומכשולים",
       "duration": "30:00",
@@ -203,7 +203,7 @@
     },
     {
       "id": 19,
-      "title": "שיעור 19 – יצירת גיף16:07",
+      "title": "שיעור 19 – יצירת גיף",
       "titleEn": "Personal Project - Planning",
       "description": "תכנון הפרויקט האישי ובחירת רעיון",
       "duration": "15:00",
@@ -214,7 +214,7 @@
     },
     {
       "id": 20,
-      "title": "שיעור 20 – יצירת מוזיקה10:32",
+      "title": "שיעור 20 – יצירת מוזיקה",
       "titleEn": "Personal Project - Implementation and Sharing",
       "description": "מימוש הפרויקט האישי ושיתוף בקהילת Scratch",
       "duration": "30:00",

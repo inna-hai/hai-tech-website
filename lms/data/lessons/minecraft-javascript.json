@@ -1,7 +1,7 @@
 {
   "courseId": "minecraft-javascript",
   "courseTitle": "קורס מיינקראפט + JavaScript",
-  "lessonsCount": 16,
+  "lessonsCount": 15,
   "lessons": [
     {
       "id": 1,
@@ -165,17 +165,6 @@
       "duration": "35:00",
       "videoUrl": "https://player.vimeo.com/video/482558962",
       "order": 15,
-      "free": false,
-      "resources": []
-    },
-    {
-      "id": 16,
-      "title": "סיכום והמשך הדרך",
-      "titleEn": "Summary and Next Steps",
-      "description": "סיכום הקורס והכוונה להמשך הלמידה",
-      "duration": "15:00",
-      "videoUrl": "placeholder",
-      "order": 16,
       "free": false,
       "resources": []
     }

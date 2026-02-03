@@ -1,7 +1,7 @@
 {
   "courseId": "3d-printing",
   "courseTitle": "קורס מידול תלת מימד - Tinkercad",
-  "lessonsCount": 12,
+  "lessonsCount": 5,
   "lessons": [
     {
       "id": 1,
@@ -55,83 +55,6 @@
       "duration": "15:00",
       "videoUrl": "https://player.vimeo.com/video/1157101488",
       "order": 5,
-      "free": false,
-      "resources": []
-    },
-    {
-      "id": 6,
-      "title": "שיעור 6 –",
-      "titleEn": "",
-      "description": "",
-      "duration": "15:00",
-      "videoUrl": "placeholder",
-      "order": 6,
-      "free": false,
-      "resources": []
-    },
-    {
-      "id": 7,
-      "title": "שיעור 7 –",
-      "titleEn": "",
-      "description": "",
-      "duration": "15:00",
-      "videoUrl": "placeholder",
-      "order": 7,
-      "free": false,
-      "resources": []
-    },
-    {
-      "id": 8,
-      "title": "שיעור 8 –",
-      "titleEn": "",
-      "description": "",
-      "duration": "15:00",
-      "videoUrl": "placeholder",
-      "order": 8,
-      "free": false,
-      "resources": []
-    },
-    {
-      "id": 9,
-      "title": "שיעור 9 –",
-      "titleEn": "",
-      "description": "",
-      "duration": "15:00",
-      "videoUrl": "placeholder",
-      "order": 9,
-      "free": false,
-      "resources": []
-    },
-    {
-      "id": 10,
-      "title": "שיעור 10 –",
-      "titleEn": "",
-      "description": "",
-      "duration": "15:00",
-      "videoUrl": "placeholder",
-      "order": 10,
-      "free": false,
-      "resources": []
-    },
-    {
-      "id": 11,
-      "title": "שיעור 11 –",
-      "titleEn": "",
-      "description": "",
-      "duration": "15:00",
-      "videoUrl": "placeholder",
-      "order": 11,
-      "free": false,
-      "resources": []
-    },
-    {
-      "id": 12,
-      "title": "שיעור 12 –",
-      "titleEn": "",
-      "description": "",
-      "duration": "15:00",
-      "videoUrl": "placeholder",
-      "order": 12,
       "free": false,
       "resources": []
     }
