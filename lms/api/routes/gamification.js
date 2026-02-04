@@ -817,4 +817,14 @@ router.get('/config', (req, res) => {
     });
 });
 
+// Export functions for use in other routes
 module.exports = router;
+module.exports.helpers = {
+    getUserStats,
+    getLevelInfo,
+    addXP,
+    awardBadge,
+    updateStreak,
+    checkTimeBadges,
+    CONFIG
+};

@@ -44,6 +44,8 @@ const certificatesRoutes = require('./routes/certificates');
 const quizRoutes = require('./routes/quiz');
 const gamificationRoutes = require('./routes/gamification');
 const parentRoutes = require('./routes/parent');
+const adminRoutes = require('./routes/admin');
+const testRoutes = require('./routes/test');
 
 const app = express();
 const PORT = process.env.LMS_PORT || 3001;
@@ -81,6 +83,8 @@ app.use('/api/certificates', certificatesRoutes);
 app.use('/api/quiz', quizRoutes);
 app.use('/api/gamification', gamificationRoutes);
 app.use('/api/parent', parentRoutes);
+app.use('/api/admin', adminRoutes);
+app.use('/api/test', testRoutes);
 
 // 404 handler
 app.use('/api/*', (req, res) => {

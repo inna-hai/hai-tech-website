@@ -420,8 +420,38 @@ const server = http.createServer((req, res) => {
         return;
     }
     
+    // Proxy LMS API requests to port 3001
+    if (pathname.startsWith('/api/') && 
+        !pathname.startsWith('/api/chat') && 
+        !pathname.startsWith('/api/lead') && 
+        !pathname.startsWith('/api/health')) {
+        
+        const proxyOptions = {
+            hostname: 'localhost',
+            port: 3001,
+            path: req.url,
+            method: req.method,
+            headers: { ...req.headers, host: 'localhost:3001' }
+        };
+        
+        const proxyReq = http.request(proxyOptions, (proxyRes) => {
+            res.writeHead(proxyRes.statusCode, proxyRes.headers);
+            proxyRes.pipe(res);
+        });
+        
+        proxyReq.on('error', (err) => {
+            console.error('[PROXY] LMS API error:', err.message);
+            res.writeHead(502, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ success: false, error: 'LMS API unavailable' }));
+        });
+        
+        req.pipe(proxyReq);
+        return;
+    }
+    
     // Static file serving
     if (pathname === '/') pathname = '/index.html';
+    if (pathname.endsWith('/')) pathname += 'index.html';
     
     const filePath = path.join(CONFIG.staticDir, pathname);
     const ext = path.extname(filePath).toLowerCase();

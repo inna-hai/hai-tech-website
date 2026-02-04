@@ -4,11 +4,11 @@ After=network.target
 
 [Service]
 Type=simple
-User=ameidar
 WorkingDirectory=/home/ameidar/.openclaw/workspace/projects/hai-tech-website
-ExecStart=/usr/bin/python3 -m http.server 8080 --bind 0.0.0.0
+ExecStart=/home/ameidar/.nvm/versions/node/v22.22.0/bin/node server.js
 Restart=always
 RestartSec=3
+Environment=NODE_ENV=production
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target

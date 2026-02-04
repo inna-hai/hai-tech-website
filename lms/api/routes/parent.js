@@ -145,7 +145,6 @@ router.get('/children', authenticateToken, (req, res) => {
                 u.id,
                 u.name,
                 u.email,
-                u.avatar,
                 pcl.linked_at,
                 pcl.status
             FROM parent_child_links pcl
@@ -161,6 +160,7 @@ router.get('/children', authenticateToken, (req, res) => {
             
             return {
                 ...child,
+                avatar: null, // Avatar not implemented yet
                 totalXp: stats.total_xp,
                 level: stats.current_level,
                 streak: stats.current_streak,
@@ -206,7 +206,7 @@ router.get('/child/:id/progress', authenticateToken, (req, res) => {
 
         // Get child info
         const child = db.prepare(`
-            SELECT id, name, email, avatar FROM users WHERE id = ?
+            SELECT id, name, email FROM users WHERE id = ?
         `).get(childId);
 
         if (!child) {

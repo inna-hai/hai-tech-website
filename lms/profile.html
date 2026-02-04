@@ -245,6 +245,9 @@
             user: null,
             
             init() {
+                // Require authentication
+                if (!LMS.requireAuth()) return;
+                
                 this.user = LMS.getCurrentUser();
                 this.loadUserData();
                 this.setupNavigation();

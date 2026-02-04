@@ -8,6 +8,15 @@ const { v4: uuidv4 } = require('uuid');
 const db = require('../db');
 const { authenticateToken } = require('../middleware/auth');
 
+// Import gamification helpers
+let gamification = null;
+try {
+    gamification = require('./gamification').helpers;
+    console.log('✅ Gamification integration loaded');
+} catch (e) {
+    console.warn('⚠️ Gamification not available:', e.message);
+}
+
 const router = express.Router();
 
 /**
@@ -125,6 +134,53 @@ router.post('/', authenticateToken, (req, res) => {
         // Check if course is now complete
         const courseComplete = courseProgress.completed_lessons === courseProgress.total_lessons;
 
+        // ===== GAMIFICATION =====
+        let gamificationResult = null;
+        if (gamification && isCompleted && (!existingProgress || !existingProgress.completed)) {
+            try {
+                // Update streak
+                const streakResult = gamification.updateStreak(req.user.id);
+                
+                // Add XP for completing lesson
+                const xpResult = gamification.addXP(
+                    req.user.id, 
+                    gamification.CONFIG.XP.COMPLETE_LESSON, 
+                    'lesson_complete', 
+                    lessonId
+                );
+                
+                // Check for first lesson badge
+                const completedCount = db.prepare(
+                    'SELECT COUNT(*) as count FROM progress WHERE user_id = ? AND completed = 1'
+                ).get(req.user.id).count;
+                
+                if (completedCount === 1) {
+                    gamification.awardBadge(req.user.id, 'FIRST_LESSON');
+                }
+                
+                // Check time-based badges
+                gamification.checkTimeBadges(req.user.id);
+                
+                // Check for course completion badge
+                if (courseComplete) {
+                    const firstCourse = gamification.awardBadge(req.user.id, 'FIRST_COURSE');
+                    gamification.addXP(req.user.id, 100, 'course_complete', courseId);
+                }
+                
+                gamificationResult = {
+                    xpEarned: gamification.CONFIG.XP.COMPLETE_LESSON,
+                    newStreak: streakResult.streak,
+                    leveledUp: xpResult.leveledUp,
+                    newLevel: xpResult.newLevel
+                };
+                
+                console.log(`🎮 Gamification: User ${req.user.id} earned ${gamification.CONFIG.XP.COMPLETE_LESSON} XP`);
+            } catch (gamErr) {
+                console.error('Gamification error:', gamErr);
+            }
+        }
+        // ===== END GAMIFICATION =====
+
         res.json({
             success: true,
             message: isCompleted ? 'סיימת את השיעור! 🎉' : 'ההתקדמות נשמרה',
@@ -134,7 +190,8 @@ router.post('/', authenticateToken, (req, res) => {
                 totalLessons: courseProgress.total_lessons,
                 percent: progressPercent,
                 courseComplete
-            }
+            },
+            gamification: gamificationResult
         });
 
     } catch (err) {

@@ -9,15 +9,22 @@
     "test": "jest --coverage --forceExit --detectOpenHandles",
     "test:api": "jest tests/api --forceExit",
     "test:frontend": "jest tests/frontend",
-    "test:e2e": "jest tests/e2e --forceExit",
+    "test:e2e:jest": "jest tests/e2e --forceExit",
+    "test:e2e": "npx playwright test --config=tests/e2e/playwright.config.js",
+    "test:e2e:headed": "npx playwright test --config=tests/e2e/playwright.config.js --headed",
+    "test:e2e:debug": "npx playwright test --config=tests/e2e/playwright.config.js --debug",
+    "test:e2e:report": "npx playwright show-report tests/e2e/playwright-report",
     "test:watch": "jest --watch",
     "test:ci": "jest --ci --coverage --forceExit",
-    "precommit": "npm run test:ci"
+    "test:all": "npm run test && npm run test:e2e",
+    "precommit": "npm run test:ci",
+    "playwright:install": "npx playwright install chromium"
   },
   "devDependencies": {
     "jest": "^29.0.0",
     "supertest": "^6.0.0",
-    "husky": "^8.0.0"
+    "husky": "^8.0.0",
+    "@playwright/test": "^1.40.0"
   },
   "engines": {
     "node": ">=18.0.0"

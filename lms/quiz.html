@@ -762,10 +762,10 @@
             timeRemaining: 0,
 
             async init() {
-                // Get lesson ID from URL
+                // Get lesson ID from URL (accept both 'lesson' and 'lessonId')
                 const urlParams = new URLSearchParams(window.location.search);
-                this.lessonId = urlParams.get('lesson');
-                this.courseId = urlParams.get('course');
+                this.lessonId = urlParams.get('lesson') || urlParams.get('lessonId');
+                this.courseId = urlParams.get('course') || urlParams.get('courseId');
 
                 if (!this.lessonId) {
                     this.showError('לא צוין מזהה שיעור');

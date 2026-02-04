@@ -8,6 +8,15 @@ const { v4: uuidv4 } = require('uuid');
 const db = require('../db');
 const { authenticateToken, optionalAuth } = require('../middleware/auth');
 
+// Import gamification helpers
+let gamification = null;
+try {
+    gamification = require('./gamification').helpers;
+    console.log('✅ Quiz gamification integration loaded');
+} catch (e) {
+    console.warn('⚠️ Gamification not available for quiz:', e.message);
+}
+
 const router = express.Router();
 
 /**
@@ -221,6 +230,46 @@ router.post('/:lessonId/submit', authenticateToken, (req, res) => {
             emoji = '📖';
         }
 
+        // ===== GAMIFICATION =====
+        let gamificationResult = null;
+        if (gamification && passed) {
+            try {
+                // Update streak
+                gamification.updateStreak(req.user.id);
+                
+                // Add XP based on score
+                let xpEarned = 0;
+                if (percentage === 100) {
+                    xpEarned = gamification.CONFIG.XP.QUIZ_PERFECT;
+                    gamification.awardBadge(req.user.id, 'PERFECT_QUIZ');
+                    
+                    // Check for 5 perfect quizzes badge
+                    const perfectCount = db.prepare(
+                        'SELECT COUNT(*) as count FROM quiz_results WHERE user_id = ? AND percentage = 100'
+                    ).get(req.user.id).count;
+                    if (perfectCount >= 5) {
+                        gamification.awardBadge(req.user.id, 'FIVE_PERFECT');
+                    }
+                } else {
+                    xpEarned = gamification.CONFIG.XP.QUIZ_PASS;
+                }
+                
+                const xpResult = gamification.addXP(req.user.id, xpEarned, 'quiz_complete', `${percentage}%`);
+                
+                gamificationResult = {
+                    xpEarned,
+                    leveledUp: xpResult.leveledUp,
+                    newLevel: xpResult.newLevel,
+                    perfectScore: percentage === 100
+                };
+                
+                console.log(`🎮 Quiz: User ${req.user.id} earned ${xpEarned} XP (${percentage}%)`);
+            } catch (gamErr) {
+                console.error('Quiz gamification error:', gamErr);
+            }
+        }
+        // ===== END GAMIFICATION =====
+
         res.json({
             success: true,
             result: {
@@ -233,7 +282,8 @@ router.post('/:lessonId/submit', authenticateToken, (req, res) => {
                 emoji,
                 timeTaken
             },
-            details: results
+            details: results,
+            gamification: gamificationResult
         });
 
     } catch (err) {
