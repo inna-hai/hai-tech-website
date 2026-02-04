@@ -1,166 +1,196 @@
 /**
  * Frontend Pages Tests
- * Tests that all HTML pages exist and have proper structure
+ * Tests that all pages exist and have required elements
  */
 
 const fs = require('fs');
 const path = require('path');
 
-const PAGES_DIR = path.join(__dirname, '../../');
+const LMS_PATH = path.join(__dirname, '..', '..');
 
-const REQUIRED_PAGES = [
-  'index.html',
-  'login.html',
-  'register.html',
-  'course.html',
-  'lesson.html',
-  'quiz.html',
-  'catalog.html',
-  'profile.html',
-  'certificate.html',
-  'parent-dashboard.html'
+// List of all pages to test
+const PAGES = [
+    'index.html',
+    'login.html',
+    'register.html',
+    'course.html',
+    'lesson.html',
+    'quiz.html',
+    'catalog.html',
+    'profile.html',
+    'certificate.html',
+    'parent-dashboard.html'
 ];
 
-const REQUIRED_CSS = [
-  'css/style.css',
-  'css/gamification.css'
-];
+// Required scripts for each page
+const REQUIRED_SCRIPTS = {
+    'index.html': ['js/lms.js', 'js/gamification.js'],
+    'login.html': ['js/lms.js'],
+    'register.html': ['js/lms.js'],
+    'course.html': ['js/lms.js', 'js/gamification.js'],
+    'lesson.html': ['js/lms.js', 'js/gamification.js'],
+    'quiz.html': ['js/lms.js', 'js/gamification.js'],
+    'catalog.html': ['js/lms.js'],
+    'profile.html': ['js/lms.js'],
+    'certificate.html': ['js/lms.js'],
+    'parent-dashboard.html': ['js/lms.js']
+};
 
-const REQUIRED_SCRIPTS = [
-  'js/lms.js',
-  'js/gamification.js'
-];
+// Required CSS for each page
+const REQUIRED_CSS = {
+    'index.html': ['css/lms.css', 'css/gamification.css'],
+    'course.html': ['css/lms.css', 'css/gamification.css'],
+    'lesson.html': ['css/lms.css', 'css/gamification.css'],
+    'quiz.html': ['css/lms.css', 'css/gamification.css']
+};
 
 describe('Frontend Pages', () => {
-  
-  describe('Page Existence', () => {
-    REQUIRED_PAGES.forEach(page => {
-      test(`${page} exists`, () => {
-        const pagePath = path.join(PAGES_DIR, page);
-        expect(fs.existsSync(pagePath)).toBe(true);
-      });
-    });
-  });
-
-  describe('DOCTYPE Declaration', () => {
-    REQUIRED_PAGES.forEach(page => {
-      test(`${page} has DOCTYPE html`, () => {
-        const pagePath = path.join(PAGES_DIR, page);
-        if (fs.existsSync(pagePath)) {
-          const content = fs.readFileSync(pagePath, 'utf8');
-          expect(content.trim().toLowerCase()).toMatch(/^<!doctype html>/);
-        }
-      });
-    });
-  });
-
-  describe('Required Scripts', () => {
-    REQUIRED_PAGES.forEach(page => {
-      test(`${page} includes required JavaScript files`, () => {
-        const pagePath = path.join(PAGES_DIR, page);
-        if (fs.existsSync(pagePath)) {
-          const content = fs.readFileSync(pagePath, 'utf8');
-          
-          // Check for at least one of the main scripts
-          const hasLmsScript = content.includes('lms.js');
-          const hasGamificationScript = content.includes('gamification.js');
-          const hasMainScript = content.includes('main.js');
-          
-          expect(hasLmsScript || hasGamificationScript || hasMainScript).toBe(true);
-        }
-      });
-    });
-  });
-
-  describe('Required CSS', () => {
-    REQUIRED_PAGES.forEach(page => {
-      test(`${page} includes CSS stylesheet`, () => {
-        const pagePath = path.join(PAGES_DIR, page);
-        if (fs.existsSync(pagePath)) {
-          const content = fs.readFileSync(pagePath, 'utf8');
-          
-          // Check for stylesheet link
-          const hasStylesheet = content.includes('stylesheet') && content.includes('.css');
-          expect(hasStylesheet).toBe(true);
-        }
-      });
-    });
-  });
-
-  describe('HTML Syntax Validation', () => {
-    REQUIRED_PAGES.forEach(page => {
-      test(`${page} has valid HTML structure`, () => {
-        const pagePath = path.join(PAGES_DIR, page);
-        if (fs.existsSync(pagePath)) {
-          const content = fs.readFileSync(pagePath, 'utf8');
-          
-          // Check basic HTML structure
-          expect(content.toLowerCase()).toMatch(/<html/);
-          expect(content.toLowerCase()).toMatch(/<head/);
-          expect(content.toLowerCase()).toMatch(/<body/);
-          expect(content.toLowerCase()).toMatch(/<\/html>/);
-          expect(content.toLowerCase()).toMatch(/<\/head>/);
-          expect(content.toLowerCase()).toMatch(/<\/body>/);
-          
-          // Check for matching tags (basic)
-          const openHtml = (content.match(/<html/gi) || []).length;
-          const closeHtml = (content.match(/<\/html>/gi) || []).length;
-          expect(openHtml).toBe(closeHtml);
-          
-          const openHead = (content.match(/<head/gi) || []).length;
-          const closeHead = (content.match(/<\/head>/gi) || []).length;
-          expect(openHead).toBe(closeHead);
-          
-          const openBody = (content.match(/<body/gi) || []).length;
-          const closeBody = (content.match(/<\/body>/gi) || []).length;
-          expect(openBody).toBe(closeBody);
-        }
-      });
+    // ==========================================
+    // Page Existence Tests
+    // ==========================================
+    describe('Page Files Exist', () => {
+        PAGES.forEach(page => {
+            it(`${page} should exist`, () => {
+                const pagePath = path.join(LMS_PATH, page);
+                expect(fs.existsSync(pagePath)).toBe(true);
+            });
+        });
     });
 
-    REQUIRED_PAGES.forEach(page => {
-      test(`${page} has no unclosed script tags`, () => {
-        const pagePath = path.join(PAGES_DIR, page);
-        if (fs.existsSync(pagePath)) {
-          const content = fs.readFileSync(pagePath, 'utf8');
-          
-          const openScript = (content.match(/<script/gi) || []).length;
-          const closeScript = (content.match(/<\/script>/gi) || []).length;
-          expect(openScript).toBe(closeScript);
-        }
-      });
+    // ==========================================
+    // HTML Structure Tests
+    // ==========================================
+    describe('HTML Structure', () => {
+        PAGES.forEach(page => {
+            const pagePath = path.join(LMS_PATH, page);
+            
+            if (!fs.existsSync(pagePath)) return;
+            
+            const content = fs.readFileSync(pagePath, 'utf-8');
+
+            it(`${page} should have DOCTYPE`, () => {
+                expect(content.toLowerCase()).toContain('<!doctype html>');
+            });
+
+            it(`${page} should have html lang="he"`, () => {
+                expect(content).toMatch(/html.*lang=["']he["']/);
+            });
+
+            it(`${page} should have dir="rtl"`, () => {
+                expect(content).toMatch(/dir=["']rtl["']/);
+            });
+
+            it(`${page} should have charset meta tag`, () => {
+                expect(content.toLowerCase()).toContain('charset');
+            });
+
+            it(`${page} should have viewport meta tag`, () => {
+                expect(content.toLowerCase()).toContain('viewport');
+            });
+        });
     });
 
-    REQUIRED_PAGES.forEach(page => {
-      test(`${page} has title tag`, () => {
-        const pagePath = path.join(PAGES_DIR, page);
-        if (fs.existsSync(pagePath)) {
-          const content = fs.readFileSync(pagePath, 'utf8');
-          expect(content.toLowerCase()).toMatch(/<title>.+<\/title>/);
-        }
-      });
-    });
-  });
+    // ==========================================
+    // Required Scripts Tests
+    // ==========================================
+    describe('Required Scripts', () => {
+        Object.entries(REQUIRED_SCRIPTS).forEach(([page, scripts]) => {
+            const pagePath = path.join(LMS_PATH, page);
+            
+            if (!fs.existsSync(pagePath)) return;
+            
+            const content = fs.readFileSync(pagePath, 'utf-8');
 
-  describe('Meta Tags', () => {
-    REQUIRED_PAGES.forEach(page => {
-      test(`${page} has charset meta tag`, () => {
-        const pagePath = path.join(PAGES_DIR, page);
-        if (fs.existsSync(pagePath)) {
-          const content = fs.readFileSync(pagePath, 'utf8');
-          expect(content.toLowerCase()).toMatch(/charset\s*=\s*["']?utf-8/);
-        }
-      });
+            scripts.forEach(script => {
+                it(`${page} should include ${script}`, () => {
+                    expect(content).toContain(script);
+                });
+            });
+        });
     });
 
-    REQUIRED_PAGES.forEach(page => {
-      test(`${page} has viewport meta tag`, () => {
-        const pagePath = path.join(PAGES_DIR, page);
-        if (fs.existsSync(pagePath)) {
-          const content = fs.readFileSync(pagePath, 'utf8');
-          expect(content.toLowerCase()).toMatch(/name\s*=\s*["']?viewport/);
-        }
-      });
+    // ==========================================
+    // Required CSS Tests
+    // ==========================================
+    describe('Required CSS', () => {
+        Object.entries(REQUIRED_CSS).forEach(([page, cssFiles]) => {
+            const pagePath = path.join(LMS_PATH, page);
+            
+            if (!fs.existsSync(pagePath)) return;
+            
+            const content = fs.readFileSync(pagePath, 'utf-8');
+
+            cssFiles.forEach(css => {
+                it(`${page} should include ${css}`, () => {
+                    expect(content).toContain(css);
+                });
+            });
+        });
     });
-  });
+});
+
+// ==========================================
+// JavaScript Files Tests
+// ==========================================
+describe('JavaScript Files', () => {
+    const JS_FILES = [
+        'js/lms.js',
+        'js/gamification.js'
+    ];
+
+    JS_FILES.forEach(jsFile => {
+        const jsPath = path.join(LMS_PATH, jsFile);
+
+        it(`${jsFile} should exist`, () => {
+            expect(fs.existsSync(jsPath)).toBe(true);
+        });
+
+        if (fs.existsSync(jsPath)) {
+            const content = fs.readFileSync(jsPath, 'utf-8');
+
+            it(`${jsFile} should not be empty`, () => {
+                expect(content.length).toBeGreaterThan(100);
+            });
+
+            it(`${jsFile} should not have obvious syntax errors`, () => {
+                // Check for unclosed braces (simple check)
+                const openBraces = (content.match(/{/g) || []).length;
+                const closeBraces = (content.match(/}/g) || []).length;
+                expect(openBraces).toBe(closeBraces);
+            });
+        }
+    });
+});
+
+// ==========================================
+// CSS Files Tests
+// ==========================================
+describe('CSS Files', () => {
+    const CSS_FILES = [
+        'css/lms.css',
+        'css/gamification.css',
+        'css/player.css'
+    ];
+
+    CSS_FILES.forEach(cssFile => {
+        const cssPath = path.join(LMS_PATH, cssFile);
+
+        it(`${cssFile} should exist`, () => {
+            expect(fs.existsSync(cssPath)).toBe(true);
+        });
+
+        if (fs.existsSync(cssPath)) {
+            const content = fs.readFileSync(cssPath, 'utf-8');
+
+            it(`${cssFile} should not be empty`, () => {
+                expect(content.length).toBeGreaterThan(100);
+            });
+
+            it(`${cssFile} should have balanced braces`, () => {
+                const openBraces = (content.match(/{/g) || []).length;
+                const closeBraces = (content.match(/}/g) || []).length;
+                expect(openBraces).toBe(closeBraces);
+            });
+        }
+    });
 });

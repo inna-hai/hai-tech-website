@@ -4,7 +4,9 @@
  */
 
 const Gamification = {
-    apiBase: '/api/gamification',
+    apiBase: window.location.hostname === 'localhost' 
+        ? 'http://localhost:3001/api/gamification'
+        : `http://${window.location.hostname}:3001/api/gamification`,
     stats: null,
     
     // ==========================================
@@ -448,10 +450,15 @@ const Gamification = {
     }
 };
 
-// Initialize on page load
-document.addEventListener('DOMContentLoaded', () => {
+// Initialize on page load (or immediately if DOM already loaded)
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        Gamification.init();
+    });
+} else {
+    // DOM already loaded, init immediately
     Gamification.init();
-});
+}
 
 // Export for use in other scripts
 window.Gamification = Gamification;

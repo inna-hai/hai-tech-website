@@ -6,7 +6,7 @@
 const express = require('express');
 const { v4: uuidv4 } = require('uuid');
 const db = require('../db');
-const { authenticateToken } = require('../middleware/auth');
+const { authenticateToken, optionalAuth } = require('../middleware/auth');
 
 const router = express.Router();
 
@@ -396,8 +396,35 @@ function getTodaysChallenges(userId) {
  * GET /api/gamification/stats
  * Get user's gamification stats
  */
-router.get('/stats', authenticateToken, (req, res) => {
+router.get('/stats', optionalAuth, (req, res) => {
     try {
+        // If not logged in, return demo stats
+        if (!req.user) {
+            return res.json({
+                success: true,
+                stats: {
+                    totalXP: 150,
+                    level: CONFIG.LEVELS[0],
+                    nextLevel: CONFIG.LEVELS[1],
+                    levelProgress: 30,
+                    xpToNextLevel: 350,
+                    currentStreak: 3,
+                    longestStreak: 7,
+                    streakShields: 1,
+                    totalLessonsCompleted: 5,
+                    totalQuizzesCompleted: 2,
+                    totalPerfectQuizzes: 1,
+                    totalStudyTimeMinutes: 45
+                },
+                badges: {
+                    earned: [{ id: 'first_lesson', name: 'צעד ראשון', description: 'השלמת שיעור ראשון', icon: '👶' }],
+                    available: Object.values(CONFIG.BADGES).slice(1, 5)
+                },
+                dailyChallenges: CONFIG.DAILY_CHALLENGES.slice(0, 3).map(c => ({ ...c, progress: 0, completed: false })),
+                recentXP: []
+            });
+        }
+        
         const userId = req.user.id;
         const stats = getUserStats(userId);
         const levelInfo = getLevelInfo(stats.total_xp);

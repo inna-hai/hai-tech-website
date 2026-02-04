@@ -50,12 +50,7 @@ const PORT = process.env.LMS_PORT || 3001;
 
 // Middleware
 app.use(cors({
-    origin: [
-        'http://localhost:8080',
-        'http://localhost:3000',
-        'https://hai.tech',
-        'https://www.hai.tech'
-    ],
+    origin: true,
     credentials: true
 }));
 app.use(express.json());

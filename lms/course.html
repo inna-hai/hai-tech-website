@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>צפייה בקורס | HAI Tech Academy</title>
     <link rel="stylesheet" href="css/lms.css">
+    <link rel="stylesheet" href="css/gamification.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -737,6 +738,15 @@
                     
                     // Log activity
                     this.logActivity('lesson', `השלמת שיעור: ${activeLesson.querySelector('.lesson-title').textContent}`);
+                    
+                    // Notify gamification system
+                    document.dispatchEvent(new CustomEvent('lessonComplete', {
+                        detail: {
+                            lessonId: lessonId,
+                            courseId: this.courseId,
+                            watchTime: 0
+                        }
+                    }));
                 }
             },
             
@@ -1053,5 +1063,6 @@
             CourseViewer.init();
         });
     </script>
+    <script src="js/gamification.js"></script>
 </body>
 </html>
