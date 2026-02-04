@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>מוקדי לימוד פרונטליים | דרך ההייטק</title>
+    <meta name="description" content="מוקדי לימוד תכנות לילדים ונוער - באר שבע, עומר וחולון. שיעורי תכנות פרונטליים בקבוצות קטנות.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="https://hai.tech/wp-content/uploads/2023/11/hi-tech-logo.png">
+    
+    <style>
+        .locations-hero {
+            background: linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%);
+            padding: 120px 20px 80px;
+            text-align: center;
+            color: white;
+        }
+        
+        .locations-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .locations-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .locations-section {
+            padding: 5rem 2rem;
+            background: #f9fafb;
+        }
+        
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .location-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .location-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+        }
+        
+        .location-header {
+            padding: 2rem;
+            color: white;
+            position: relative;
+        }
+        
+        .location-header.beer-sheva {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        }
+        
+        .location-header.omer {
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+        }
+        
+        .location-header.holon {
+            background: linear-gradient(135deg, #ec4899, #f43f5e);
+        }
+        
+        .location-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .location-header p {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+        
+        .location-body {
+            padding: 2rem;
+        }
+        
+        .location-info {
+            margin-bottom: 1.5rem;
+        }
+        
+        .location-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: #4b5563;
+        }
+        
+        .location-info-item i {
+            color: #6366f1;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .location-info-item strong {
+            color: #1f2937;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+        
+        .location-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn-location {
+            flex: 1;
+            min-width: 140px;
+            padding: 0.8rem 1.2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-location.primary {
+            background: #25D366;
+            color: white;
+        }
+        
+        .btn-location.primary:hover {
+            background: #1ebe5d;
+            transform: scale(1.02);
+        }
+        
+        .btn-location.secondary {
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+        
+        .btn-location.secondary:hover {
+            background: #e5e7eb;
+        }
+        
+        .partner-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.2);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+        
+        .why-frontal {
+            padding: 5rem 2rem;
+            background: white;
+        }
+        
+        .why-frontal h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: #1f2937;
+            margin-bottom: 3rem;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .benefit-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+        
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+        
+        .benefit-icon i {
+            color: #059669;
+            width: 28px;
+            height: 28px;
+        }
+        
+        .benefit-item h3 {
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+        
+        .benefit-item p {
+            color: #6b7280;
+            font-size: 0.95rem;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #059669, #10b981);
+            padding: 4rem 2rem;
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section p {
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        
+        .btn-cta-white {
+            background: white;
+            color: #059669;
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.2s;
+        }
+        
+        .btn-cta-white:hover {
+            transform: scale(1.05);
+        }
+        
+        @media (max-width: 768px) {
+            .locations-hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .locations-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .location-cta {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="תפריט ראשי">
+        <div class="container">
+            <a href="index.html" class="logo" aria-label="דרך ההייטק - דף הבית">
+                <img src="https://hai.tech/wp-content/uploads/2023/11/hi-tech-logo.png" alt="לוגו דרך ההייטק" width="120" height="80">
+            </a>
+            <button class="mobile-menu-btn" aria-label="פתח תפריט" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">ראשי</a></li>
+                <li><a href="index.html#courses">קורסים דיגיטליים</a></li>
+                <li><a href="index.html#private">שיעורים פרטיים</a></li>
+                <li><a href="pricing.html">מחירון</a></li>
+                <li><a href="locations.html" class="active">מוקדים פרונטליים</a></li>
+                <li><a href="institutions.html">למוסדות</a></li>
+                <li><a href="blog.html">בלוג</a></li>
+                <li><a href="index.html#contact" class="btn btn-nav">צור קשר</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="locations-hero">
+        <h1>📍 מוקדי לימוד פרונטליים</h1>
+        <p>שיעורי תכנות פנים אל פנים בקבוצות קטנות, באווירה חברתית ומעוררת השראה</p>
+    </section>
+
+    <!-- Locations Grid -->
+    <section class="locations-section">
+        <div class="locations-grid">
+            
+            <!-- באר שבע -->
+            <article class="location-card">
+                <div class="location-header beer-sheva">
+                    <h2><i data-lucide="map-pin" style="width:28px;height:28px;"></i> באר שבע</h2>
+                    <p>דרום הארץ</p>
+                    <div class="partner-badge">
+                        <i data-lucide="handshake" style="width:16px;height:16px;"></i>
+                        בשיתוף חברת כיוונים
+                    </div>
+                </div>
+                <div class="location-body">
+                    <div class="location-info">
+                        <div class="location-info-item">
+                            <i data-lucide="building-2"></i>
+                            <div>
+                                <strong>מיקום</strong>
+                                באר שבע, בשיתוף חברת כיוונים
+                            </div>
+                        </div>
+                        <div class="location-info-item">
+                            <i data-lucide="graduation-cap"></i>
+                            <div>
+                                <strong>קורסים</strong>
+                                מיינקראפט, רובלוקס, פיתוח אתרים, בינה מלאכותית
+                            </div>
+                        </div>
+                    </div>
+                    <div class="location-cta">
+                        <a href="https://wa.me/972533009742?text=היי, מעוניינים בקורס פרונטלי בבאר שבע" class="btn-location primary">
+                            <i data-lucide="message-circle" style="width:18px;height:18px;"></i>
+                            להרשמה
+                        </a>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- עומר -->
+            <article class="location-card">
+                <div class="location-header omer">
+                    <h2><i data-lucide="map-pin" style="width:28px;height:28px;"></i> עומר</h2>
+                    <p>דרום הארץ</p>
+                </div>
+                <div class="location-body">
+                    <div class="location-info">
+                        <div class="location-info-item">
+                            <i data-lucide="calendar"></i>
+                            <div>
+                                <strong>ימי פעילות</strong>
+                                ראשון וחמישי
+                            </div>
+                        </div>
+                        <div class="location-info-item">
+                            <i data-lucide="clock"></i>
+                            <div>
+                                <strong>שעות</strong>
+                                16:40 - 19:30
+                            </div>
+                        </div>
+                        <div class="location-info-item">
+                            <i data-lucide="graduation-cap"></i>
+                            <div>
+                                <strong>קורסים</strong>
+                                מיינקראפט, רובלוקס, פיתוח אתרים, בינה מלאכותית
+                            </div>
+                        </div>
+                    </div>
+                    <div class="location-cta">
+                        <a href="https://wa.me/972533009742?text=היי, מעוניינים בקורס פרונטלי בעומר" class="btn-location primary">
+                            <i data-lucide="message-circle" style="width:18px;height:18px;"></i>
+                            וואטסאפ
+                        </a>
+                        <a href="index.html#contact" class="btn-location secondary">
+                            <i data-lucide="file-text" style="width:18px;height:18px;"></i>
+                            טופס יצירת קשר
+                        </a>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- חולון -->
+            <article class="location-card">
+                <div class="location-header holon">
+                    <h2><i data-lucide="map-pin" style="width:28px;height:28px;"></i> חולון</h2>
+                    <p>מרכז הארץ</p>
+                    <div class="partner-badge">
+                        <i data-lucide="handshake" style="width:16px;height:16px;"></i>
+                        במרכז סקו״פ
+                    </div>
+                </div>
+                <div class="location-body">
+                    <div class="location-info">
+                        <div class="location-info-item">
+                            <i data-lucide="calendar"></i>
+                            <div>
+                                <strong>ימי פעילות</strong>
+                                שני, רביעי וחמישי
+                            </div>
+                        </div>
+                        <div class="location-info-item">
+                            <i data-lucide="building-2"></i>
+                            <div>
+                                <strong>מיקום</strong>
+                                מרכז סקו״פ, חולון
+                            </div>
+                        </div>
+                        <div class="location-info-item">
+                            <i data-lucide="graduation-cap"></i>
+                            <div>
+                                <strong>קורסים</strong>
+                                מיינקראפט, רובלוקס, פיתוח אתרים, בינה מלאכותית
+                            </div>
+                        </div>
+                    </div>
+                    <div class="location-cta">
+                        <a href="https://wa.me/972533009742?text=היי, מעוניינים בקורס פרונטלי בחולון (סקו״פ)" class="btn-location primary">
+                            <i data-lucide="message-circle" style="width:18px;height:18px;"></i>
+                            להרשמה
+                        </a>
+                    </div>
+                </div>
+            </article>
+            
+        </div>
+    </section>
+
+    <!-- Why Frontal -->
+    <section class="why-frontal">
+        <h2>🎯 למה לימוד פרונטלי?</h2>
+        <div class="benefits-grid">
+            <div class="benefit-item">
+                <div class="benefit-icon">
+                    <i data-lucide="users"></i>
+                </div>
+                <h3>אווירה חברתית</h3>
+                <p>ללמוד עם חברים, לשתף רעיונות ולעבוד על פרויקטים משותפים</p>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">
+                    <i data-lucide="hand-helping"></i>
+                </div>
+                <h3>עזרה מיידית</h3>
+                <p>מדריך צמוד שעוזר בזמן אמת ומתאים את הקצב לכל תלמיד</p>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">
+                    <i data-lucide="focus"></i>
+                </div>
+                <h3>ריכוז מלא</h3>
+                <p>סביבת לימוד ייעודית, בלי הסחות דעת של הבית</p>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">
+                    <i data-lucide="trophy"></i>
+                </div>
+                <h3>תחרויות ופרויקטים</h3>
+                <p>אירועים, האקתונים ותצוגות פרויקטים לסיום כל קורס</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2>🚀 רוצים להצטרף?</h2>
+        <p>צרו קשר ונעזור לכם למצוא את הקורס והמוקד המתאימים</p>
+        <a href="https://wa.me/972533009742" class="btn-cta-white">
+            <i data-lucide="message-circle" style="width:20px;height:20px;"></i>
+            דברו איתנו בוואטסאפ
+        </a>
+    </section>
+
+    <script>
+        lucide.createIcons();
+        
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (mobileMenuBtn && navLinks) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                mobileMenuBtn.classList.toggle('active');
+                const isExpanded = navLinks.classList.contains('active');
+                mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
+            });
+        }
+    </script>
+</body>
+</html>

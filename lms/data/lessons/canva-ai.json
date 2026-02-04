@@ -1,0 +1,183 @@
+{
+  "courseId": "canva-ai",
+  "courseTitle": "קורס קנבה עם בינה מלאכותית",
+  "lessonsCount": 16,
+  "lessons": [
+    {
+      "id": 1,
+      "title": "מה זה קאנבה וכיצד בוחרים תבנית",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1137162941",
+      "order": 1,
+      "free": true,
+      "resources": []
+    },
+    {
+      "id": 2,
+      "title": "תמונה ושימוש בסרגל עריכה",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1137165104",
+      "order": 2,
+      "free": true,
+      "resources": []
+    },
+    {
+      "id": 3,
+      "title": "עריכת טקסט+ קובץ גופנים",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1137163743",
+      "order": 3,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 4,
+      "title": "טקסט וכתיבת קסם",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1137163807",
+      "order": 4,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 5,
+      "title": "אלמנטים והנפשות",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1137161995",
+      "order": 5,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 6,
+      "title": "אפשרויות האלמנטים",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1137162494",
+      "order": 6,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 7,
+      "title": "הכנת סרטון שלב ראשון",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1137163038",
+      "order": 7,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 8,
+      "title": "עריכת קסם",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1137163766",
+      "order": 8,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 9,
+      "title": "הוספת שמע לסרטון",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1137163023",
+      "order": 9,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 10,
+      "title": "יצירת תבנית משחקים וחידונים מתוך תבנית",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1137163698",
+      "order": 10,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 11,
+      "title": "יצירת משחק באמצעות AI",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1137163083",
+      "order": 11,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 12,
+      "title": "יצירת לוגו",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1137163729",
+      "order": 12,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 13,
+      "title": "יצירת באנר",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1137163059",
+      "order": 13,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 14,
+      "title": "כריכה לספר",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1137163716",
+      "order": 14,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 15,
+      "title": "צד אחורי של ספר אפשרות ראשונה",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1137163777",
+      "order": 15,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 16,
+      "title": "צד אחורי של ספר אפשרות נוספת",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1137163798",
+      "order": 16,
+      "free": false,
+      "resources": []
+    }
+  ]
+}

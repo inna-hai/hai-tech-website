@@ -1,0 +1,205 @@
+{
+  "courseId": "minecraft-java-plugins",
+  "courseTitle": "קורס יצירת Minecraft Plugins ב-Java",
+  "lessonsCount": 18,
+  "lessons": [
+    {
+      "id": 1,
+      "title": "1- הכרות עם סביבת העבודה והתקנות",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/494106379",
+      "order": 1,
+      "free": true,
+      "resources": []
+    },
+    {
+      "id": 2,
+      "title": "פלאגין ראשון בפעולה",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/494110267",
+      "order": 2,
+      "free": true,
+      "resources": []
+    },
+    {
+      "id": 3,
+      "title": "פלאגין שני – נביא לשחקן חפצים ל-inventory",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/494115880",
+      "order": 3,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 4,
+      "title": "פלאגין שלישי – פלאגיגים גיבורים",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/494119043",
+      "order": 4,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 5,
+      "title": "שיפור הקוד – מערכים",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/494121736",
+      "order": 5,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 6,
+      "title": "עוד קצת תרגול של מערכים7:10",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/494121937",
+      "order": 6,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 7,
+      "title": "מה זה מאזין? – Listener",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/494123980",
+      "order": 7,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 8,
+      "title": "יצירת פלאגין עם שעון9:32",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/494124591",
+      "order": 8,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 9,
+      "title": "יצירת אנימציה במשחק",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/494939500",
+      "order": 9,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 10,
+      "title": "יצירת פלאגין מאפס7:48",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/504153918",
+      "order": 10,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 11,
+      "title": "המשך עבודה על פלאגין השרדות – גיבורי על",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/504155570",
+      "order": 11,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 12,
+      "title": "סיום פלאגין גיבורי על",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/504156669",
+      "order": 12,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 13,
+      "title": "מה זה תכנות מונחה עצמים???",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/504157212",
+      "order": 13,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 14,
+      "title": "שימוש בתכנות מונחה עצמים בפלאגינים",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/523787842",
+      "order": 14,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 15,
+      "title": "שימוש בתכנות מונחה עצמים בפלאגינים – חלק",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/523789729",
+      "order": 15,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 16,
+      "title": "פלאגין חנות – תכנון",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/523812340",
+      "order": 16,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 17,
+      "title": "פלאגיו חנות – כתיבת קוד",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/523818754",
+      "order": 17,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 18,
+      "title": "פלאגין חנות – סיום",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/523823111",
+      "order": 18,
+      "free": false,
+      "resources": []
+    }
+  ]
+}

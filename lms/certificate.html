@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>תעודת סיום | HAI Tech Academy</title>
+    <link rel="stylesheet" href="css/lms.css">
+    <link rel="stylesheet" href="css/player.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- QR Code library -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <!-- html2canvas for PDF generation -->
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <!-- jsPDF for PDF generation -->
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+    <style>
+        /* Certificate Page Specific Styles */
+        .certificate-page {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .certificate-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .certificate-header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        
+        .certificate-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .certificate-header p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.1rem;
+        }
+        
+        /* Certificate Card */
+        .certificate-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+        
+        /* Certificate Design */
+        .certificate {
+            padding: 60px;
+            background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Decorative elements */
+        .certificate::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6, #a855f7);
+        }
+        
+        .certificate::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6, #a855f7);
+        }
+        
+        .certificate-border {
+            border: 3px solid #d4af37;
+            border-radius: 15px;
+            padding: 50px;
+            position: relative;
+            background: white;
+        }
+        
+        /* Corner decorations */
+        .corner-decoration {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border: 3px solid #d4af37;
+        }
+        
+        .corner-tl { top: 15px; right: 15px; border-bottom: none; border-left: none; }
+        .corner-tr { top: 15px; left: 15px; border-bottom: none; border-right: none; }
+        .corner-bl { bottom: 15px; right: 15px; border-top: none; border-left: none; }
+        .corner-br { bottom: 15px; left: 15px; border-top: none; border-right: none; }
+        
+        /* Certificate Content */
+        .certificate-logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .certificate-logo img {
+            height: 60px;
+        }
+        
+        .certificate-logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #6366f1;
+            margin-top: 10px;
+        }
+        
+        .certificate-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .certificate-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: #1a1a2e;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        
+        .certificate-title p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        .certificate-recipient {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .certificate-recipient .label {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        
+        .certificate-recipient .name {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #1a1a2e;
+            border-bottom: 2px solid #d4af37;
+            display: inline-block;
+            padding: 10px 40px;
+        }
+        
+        .certificate-course {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .certificate-course .label {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        
+        .certificate-course .course-name {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #6366f1;
+            margin-bottom: 15px;
+        }
+        
+        .certificate-course .course-details {
+            color: #888;
+            font-size: 0.95rem;
+        }
+        
+        .certificate-details {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+        
+        .detail-item {
+            text-align: center;
+        }
+        
+        .detail-item .label {
+            color: #666;
+            font-size: 0.85rem;
+            margin-bottom: 5px;
+        }
+        
+        .detail-item .value {
+            font-weight: 600;
+            color: #1a1a2e;
+            font-size: 1.1rem;
+        }
+        
+        .certificate-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: 50px;
+        }
+        
+        .signature {
+            text-align: center;
+        }
+        
+        .signature-line {
+            width: 200px;
+            height: 2px;
+            background: #1a1a2e;
+            margin-bottom: 10px;
+        }
+        
+        .signature-name {
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+        
+        .signature-title {
+            color: #666;
+            font-size: 0.85rem;
+        }
+        
+        .qr-section {
+            text-align: center;
+        }
+        
+        .qr-code {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 5px;
+        }
+        
+        .qr-text {
+            color: #888;
+            font-size: 0.75rem;
+        }
+        
+        /* Badge */
+        .certificate-badge {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            width: 100px;
+            height: 100px;
+        }
+        
+        .badge-inner {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 50%, #d4af37 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+        
+        .badge-inner svg {
+            width: 50px;
+            height: 50px;
+            color: white;
+        }
+        
+        /* Actions */
+        .certificate-actions {
+            padding: 30px;
+            background: #f8fafc;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+        
+        .action-btn.primary {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            border: none;
+        }
+        
+        .action-btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+        
+        .action-btn.secondary {
+            background: white;
+            color: #1a1a2e;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .action-btn.secondary:hover {
+            border-color: #6366f1;
+            color: #6366f1;
+        }
+        
+        .action-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        /* Social Share */
+        .share-section {
+            margin-top: 40px;
+            text-align: center;
+            color: white;
+        }
+        
+        .share-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .share-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.2s ease;
+        }
+        
+        .share-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .share-btn.linkedin { background: #0077b5; }
+        .share-btn.twitter { background: #1da1f2; }
+        .share-btn.facebook { background: #4267B2; }
+        .share-btn.whatsapp { background: #25D366; }
+        
+        /* Back link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 30px;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+        
+        .back-link:hover {
+            opacity: 1;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .certificate {
+                padding: 30px 15px;
+            }
+            
+            .certificate-border {
+                padding: 30px 20px;
+            }
+            
+            .certificate-title h2 {
+                font-size: 2rem;
+            }
+            
+            .certificate-recipient .name {
+                font-size: 1.8rem;
+                padding: 10px 20px;
+            }
+            
+            .certificate-details {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .certificate-footer {
+                flex-direction: column;
+                gap: 30px;
+                align-items: center;
+            }
+            
+            .certificate-badge {
+                width: 70px;
+                height: 70px;
+                top: 20px;
+                left: 20px;
+            }
+            
+            .corner-decoration {
+                width: 50px;
+                height: 50px;
+            }
+        }
+        
+        /* Print styles */
+        @media print {
+            .certificate-page {
+                background: white;
+                padding: 0;
+            }
+            
+            .certificate-header,
+            .certificate-actions,
+            .share-section,
+            .back-link {
+                display: none !important;
+            }
+            
+            .certificate-card {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body class="certificate-page">
+    <div class="certificate-container">
+        <a href="index.html" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            חזרה לדף הבית
+        </a>
+        
+        <header class="certificate-header">
+            <h1>🎓 תעודת סיום</h1>
+            <p>מזל טוב! סיימת את הקורס בהצלחה</p>
+        </header>
+        
+        <div class="certificate-card">
+            <div class="certificate" id="certificateContent">
+                <div class="certificate-border">
+                    <!-- Corner decorations -->
+                    <div class="corner-decoration corner-tl"></div>
+                    <div class="corner-decoration corner-tr"></div>
+                    <div class="corner-decoration corner-bl"></div>
+                    <div class="corner-decoration corner-br"></div>
+                    
+                    <!-- Badge -->
+                    <div class="certificate-badge">
+                        <div class="badge-inner">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <!-- Logo -->
+                    <div class="certificate-logo">
+                        <img src="../images/logo.png" alt="HAI Tech Academy" onerror="this.style.display='none'">
+                        <div class="certificate-logo-text">HAI Tech Academy</div>
+                    </div>
+                    
+                    <!-- Title -->
+                    <div class="certificate-title">
+                        <h2>תעודת הצטיינות</h2>
+                        <p>Certificate of Completion</p>
+                    </div>
+                    
+                    <!-- Recipient -->
+                    <div class="certificate-recipient">
+                        <p class="label">מוענק בזאת ל:</p>
+                        <h3 class="name" id="recipientName">שם הסטודנט</h3>
+                    </div>
+                    
+                    <!-- Course -->
+                    <div class="certificate-course">
+                        <p class="label">בגין סיום בהצלחה של הקורס:</p>
+                        <h4 class="course-name" id="courseName">מבוא ל-Machine Learning</h4>
+                        <p class="course-details">
+                            <span id="courseLessons">12</span> שיעורים • 
+                            <span id="courseDuration">6</span> שעות למידה
+                        </p>
+                    </div>
+                    
+                    <!-- Details -->
+                    <div class="certificate-details">
+                        <div class="detail-item">
+                            <p class="label">תאריך הנפקה</p>
+                            <p class="value" id="issueDate">1 בינואר 2024</p>
+                        </div>
+                        <div class="detail-item">
+                            <p class="label">מספר תעודה</p>
+                            <p class="value" id="certificateId">HAI-2024-00001</p>
+                        </div>
+                        <div class="detail-item">
+                            <p class="label">ציון</p>
+                            <p class="value" id="grade">עבר בהצלחה</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Footer -->
+                    <div class="certificate-footer">
+                        <div class="signature">
+                            <div class="signature-line"></div>
+                            <p class="signature-name">יואב כהן</p>
+                            <p class="signature-title">מנכ"ל HAI Tech Academy</p>
+                        </div>
+                        
+                        <div class="qr-section">
+                            <canvas id="qrCode" class="qr-code"></canvas>
+                            <p class="qr-text">סרוק לאימות</p>
+                        </div>
+                        
+                        <div class="signature">
+                            <div class="signature-line"></div>
+                            <p class="signature-name">ד"ר שרה לוי</p>
+                            <p class="signature-title">ראש תוכנית הלימודים</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Actions -->
+            <div class="certificate-actions">
+                <button class="action-btn primary" id="downloadPdf">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    הורד כ-PDF
+                </button>
+                
+                <button class="action-btn secondary" id="printCertificate">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                        <rect x="6" y="14" width="12" height="8"></rect>
+                    </svg>
+                    הדפס
+                </button>
+                
+                <button class="action-btn secondary" id="copyLink">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                    </svg>
+                    העתק קישור
+                </button>
+            </div>
+        </div>
+        
+        <!-- Social Share -->
+        <div class="share-section">
+            <h3>שתף את ההישג שלך</h3>
+            <div class="share-buttons">
+                <a href="#" class="share-btn linkedin" id="shareLinkedIn" title="שתף ב-LinkedIn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                </a>
+                <a href="#" class="share-btn twitter" id="shareTwitter" title="שתף ב-Twitter">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                    </svg>
+                </a>
+                <a href="#" class="share-btn facebook" id="shareFacebook" title="שתף ב-Facebook">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </a>
+                <a href="#" class="share-btn whatsapp" id="shareWhatsApp" title="שתף ב-WhatsApp">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/lms.js"></script>
+    <script src="js/progress.js"></script>
+    <script>
+        // Certificate Page Logic
+        const CertificatePage = {
+            certificateData: null,
+            
+            init() {
+                // Get course ID from URL
+                const urlParams = new URLSearchParams(window.location.search);
+                const courseId = urlParams.get('course') || 'course_1';
+                
+                // Load certificate data
+                this.loadCertificateData(courseId);
+                
+                // Generate QR code
+                this.generateQRCode();
+                
+                // Setup actions
+                this.setupActions();
+            },
+            
+            loadCertificateData(courseId) {
+                // Get user info
+                const user = LMS.getCurrentUser();
+                
+                // Get course info (mock data - in production, fetch from API)
+                const courses = {
+                    'course_1': {
+                        title: 'מבוא ל-Machine Learning',
+                        lessons: 12,
+                        duration: 6
+                    },
+                    'course_2': {
+                        title: 'Python למתחילים',
+                        lessons: 20,
+                        duration: 10
+                    },
+                    'course_3': {
+                        title: 'יסודות Data Science',
+                        lessons: 15,
+                        duration: 8
+                    }
+                };
+                
+                const course = courses[courseId] || courses['course_1'];
+                
+                // Generate certificate ID
+                const certId = this.generateCertificateId(user.id, courseId);
+                
+                // Format date in Hebrew
+                const date = new Date();
+                const hebrewDate = this.formatHebrewDate(date);
+                
+                // Store certificate data
+                this.certificateData = {
+                    userId: user.id,
+                    userName: user.name,
+                    courseId: courseId,
+                    courseName: course.title,
+                    courseLessons: course.lessons,
+                    courseDuration: course.duration,
+                    certificateId: certId,
+                    issueDate: hebrewDate,
+                    issueDateISO: date.toISOString()
+                };
+                
+                // Update UI
+                document.getElementById('recipientName').textContent = user.name;
+                document.getElementById('courseName').textContent = course.title;
+                document.getElementById('courseLessons').textContent = course.lessons;
+                document.getElementById('courseDuration').textContent = course.duration;
+                document.getElementById('issueDate').textContent = hebrewDate;
+                document.getElementById('certificateId').textContent = certId;
+            },
+            
+            generateCertificateId(userId, courseId) {
+                const year = new Date().getFullYear();
+                const hash = this.hashCode(userId + courseId + year);
+                const num = Math.abs(hash % 100000).toString().padStart(5, '0');
+                return `HAI-${year}-${num}`;
+            },
+            
+            hashCode(str) {
+                let hash = 0;
+                for (let i = 0; i < str.length; i++) {
+                    const char = str.charCodeAt(i);
+                    hash = ((hash << 5) - hash) + char;
+                    hash = hash & hash;
+                }
+                return hash;
+            },
+            
+            formatHebrewDate(date) {
+                const months = [
+                    'ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני',
+                    'יולי', 'אוגוסט', 'ספטמבר', 'אוקטובר', 'נובמבר', 'דצמבר'
+                ];
+                return `${date.getDate()} ב${months[date.getMonth()]} ${date.getFullYear()}`;
+            },
+            
+            generateQRCode() {
+                const canvas = document.getElementById('qrCode');
+                const verifyUrl = `${window.location.origin}/verify?cert=${this.certificateData?.certificateId || 'HAI-2024-00001'}`;
+                
+                if (typeof QRCode !== 'undefined') {
+                    QRCode.toCanvas(canvas, verifyUrl, {
+                        width: 100,
+                        margin: 1,
+                        color: {
+                            dark: '#1a1a2e',
+                            light: '#ffffff'
+                        }
+                    }, (error) => {
+                        if (error) console.error('QR Error:', error);
+                    });
+                }
+            },
+            
+            setupActions() {
+                // Download PDF
+                document.getElementById('downloadPdf').addEventListener('click', () => {
+                    this.downloadPDF();
+                });
+                
+                // Print
+                document.getElementById('printCertificate').addEventListener('click', () => {
+                    window.print();
+                });
+                
+                // Copy link
+                document.getElementById('copyLink').addEventListener('click', () => {
+                    const url = window.location.href;
+                    navigator.clipboard.writeText(url).then(() => {
+                        LMS.showNotification('הקישור הועתק!', 'success');
+                    });
+                });
+                
+                // Social sharing
+                this.setupSocialSharing();
+            },
+            
+            async downloadPDF() {
+                const { jsPDF } = window.jspdf;
+                
+                try {
+                    // Show loading
+                    LMS.showNotification('מכין את ה-PDF...', 'info');
+                    
+                    // Capture the certificate
+                    const element = document.getElementById('certificateContent');
+                    const canvas = await html2canvas(element, {
+                        scale: 2,
+                        useCORS: true,
+                        backgroundColor: '#ffffff'
+                    });
+                    
+                    // Create PDF
+                    const imgData = canvas.toDataURL('image/png');
+                    const pdf = new jsPDF({
+                        orientation: 'landscape',
+                        unit: 'mm',
+                        format: 'a4'
+                    });
+                    
+                    const pdfWidth = pdf.internal.pageSize.getWidth();
+                    const pdfHeight = pdf.internal.pageSize.getHeight();
+                    const imgWidth = canvas.width;
+                    const imgHeight = canvas.height;
+                    const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+                    
+                    const imgX = (pdfWidth - imgWidth * ratio) / 2;
+                    const imgY = (pdfHeight - imgHeight * ratio) / 2;
+                    
+                    pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
+                    
+                    // Download
+                    const fileName = `certificate-${this.certificateData?.certificateId || 'hai-tech'}.pdf`;
+                    pdf.save(fileName);
+                    
+                    LMS.showNotification('ה-PDF הורד בהצלחה!', 'success');
+                } catch (error) {
+                    console.error('PDF Error:', error);
+                    LMS.showNotification('שגיאה ביצירת ה-PDF', 'error');
+                }
+            },
+            
+            setupSocialSharing() {
+                const shareText = `סיימתי את הקורס "${this.certificateData?.courseName}" ב-HAI Tech Academy! 🎓`;
+                const shareUrl = window.location.href;
+                
+                // LinkedIn
+                document.getElementById('shareLinkedIn').href = 
+                    `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
+                
+                // Twitter
+                document.getElementById('shareTwitter').href = 
+                    `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+                
+                // Facebook
+                document.getElementById('shareFacebook').href = 
+                    `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+                
+                // WhatsApp
+                document.getElementById('shareWhatsApp').href = 
+                    `https://wa.me/?text=${encodeURIComponent(shareText + ' ' + shareUrl)}`;
+                
+                // Open in new window
+                document.querySelectorAll('.share-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        window.open(btn.href, 'share', 'width=600,height=400');
+                    });
+                });
+            }
+        };
+        
+        // Initialize when DOM ready
+        document.addEventListener('DOMContentLoaded', () => {
+            CertificatePage.init();
+        });
+    </script>
+</body>
+</html>

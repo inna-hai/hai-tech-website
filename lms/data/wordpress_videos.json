@@ -1,0 +1,1118 @@
+{
+  "39285": {
+    "title": "למידה עצמית של JavaScript באמצעות מיינקראפט מחנה קיץ &#8211; מיינקראפט",
+    "lessons": [
+      {
+        "id": 39475,
+        "title": "התקנות ורשיון מיינקראפט",
+        "vimeo_id": "1104384543",
+        "vimeo_url": "https://player.vimeo.com/video/1104384543"
+      },
+      {
+        "id": 39286,
+        "title": "שיעור 1 &#8211; יצירת עולם והכרות עם שפת javascript",
+        "vimeo_id": "570868690",
+        "vimeo_url": "https://player.vimeo.com/video/570868690"
+      },
+      {
+        "id": 39288,
+        "title": "שיעור 2 &#8211; לולאות ובניית בית בעזרת קוד",
+        "vimeo_id": "571126097",
+        "vimeo_url": "https://player.vimeo.com/video/571126097"
+      },
+      {
+        "id": 39290,
+        "title": "שיעור 3 &#8211; סיום בניית הבית ותחילת בניית המשחק חפש את המטמון",
+        "vimeo_id": "571539766",
+        "vimeo_url": "https://player.vimeo.com/video/571539766"
+      },
+      {
+        "id": 39292,
+        "title": "שיעור 4 &#8211; המשך יצירת המשחק חפש את המטמון + משימה",
+        "vimeo_id": "572044566",
+        "vimeo_url": "https://player.vimeo.com/video/572044566"
+      },
+      {
+        "id": 39294,
+        "title": "שיעור 5 &#8211; יצירת משתנים ומשפטי תנאי &#8211; סיום המשחק ובונוס",
+        "vimeo_id": "572588401",
+        "vimeo_url": "https://player.vimeo.com/video/572588401"
+      }
+    ]
+  },
+  "35940": {
+    "title": "קורס ללמידה עצמית- פיתוח אתרים ומשחקים בשילוב בינה מלאכותית",
+    "lessons": [
+      {
+        "id": 36004,
+        "title": "שיעור מספר 0 &#8211; הקדמה ויצירת חשבון gmail",
+        "vimeo_id": "1031018828",
+        "vimeo_url": "https://player.vimeo.com/video/1031018828"
+      },
+      {
+        "id": 35941,
+        "title": "שיעור מספר 1",
+        "vimeo_id": "1030462447",
+        "vimeo_url": "https://player.vimeo.com/video/1030462447"
+      },
+      {
+        "id": 35946,
+        "title": "שיעור מספר 2",
+        "vimeo_id": "1030462495",
+        "vimeo_url": "https://player.vimeo.com/video/1030462495"
+      },
+      {
+        "id": 35951,
+        "title": "שיעור מספר 3",
+        "vimeo_id": "1030462520",
+        "vimeo_url": "https://player.vimeo.com/video/1030462520"
+      },
+      {
+        "id": 35962,
+        "title": "שיעור מספר 4",
+        "vimeo_id": "1030462569",
+        "vimeo_url": "https://player.vimeo.com/video/1030462569"
+      },
+      {
+        "id": 35954,
+        "title": "שיעור מספר 5",
+        "vimeo_id": "1030462630",
+        "vimeo_url": "https://player.vimeo.com/video/1030462630"
+      },
+      {
+        "id": 35959,
+        "title": "שיעור מספר 6",
+        "vimeo_id": "1030462704",
+        "vimeo_url": "https://player.vimeo.com/video/1030462704"
+      },
+      {
+        "id": 35964,
+        "title": "שיעור מספר 7",
+        "vimeo_id": "1030462755",
+        "vimeo_url": "https://player.vimeo.com/video/1030462755"
+      },
+      {
+        "id": 36007,
+        "title": "שיעור מספר 8",
+        "vimeo_id": "1031019973",
+        "vimeo_url": "https://player.vimeo.com/video/1031019973"
+      },
+      {
+        "id": 35967,
+        "title": "שיעור מספר 9",
+        "vimeo_id": "1030462821",
+        "vimeo_url": "https://player.vimeo.com/video/1030462821"
+      },
+      {
+        "id": 35970,
+        "title": "שיעור מספר 10",
+        "vimeo_id": "1030462903",
+        "vimeo_url": "https://player.vimeo.com/video/1030462903"
+      },
+      {
+        "id": 35973,
+        "title": "שיעור מספר 11",
+        "vimeo_id": "1030462976",
+        "vimeo_url": "https://player.vimeo.com/video/1030462976"
+      }
+    ]
+  },
+  "30300": {
+    "title": "קורס למידה עצמית &#8211; פיתוח משחקים בשפת Python",
+    "lessons": [
+      {
+        "id": 30775,
+        "title": "Pygame &#8211; פיתוח משחקים בפייתון",
+        "vimeo_id": null,
+        "vimeo_url": null
+      },
+      {
+        "id": 30777,
+        "title": "שיעור 1 &#8211; התקנות<span class=\"course-step-duration\">03:04</span>",
+        "vimeo_id": "510609493",
+        "vimeo_url": "https://player.vimeo.com/video/510609493"
+      },
+      {
+        "id": 30779,
+        "title": "שיעור 2 &#8211; משתנים<span class=\"course-step-duration\">23:16</span>",
+        "vimeo_id": "486418604",
+        "vimeo_url": "https://player.vimeo.com/video/486418604"
+      },
+      {
+        "id": 30781,
+        "title": "שיעור 3 &#8211; בוליאנים ותנאים<span class=\"course-step-duration\">22:05</span>",
+        "vimeo_id": "486530850",
+        "vimeo_url": "https://player.vimeo.com/video/486530850"
+      },
+      {
+        "id": 30783,
+        "title": "שיעור 4 &#8211; לולאות<span class=\"course-step-duration\">23:13</span>",
+        "vimeo_id": "486531549",
+        "vimeo_url": "https://player.vimeo.com/video/486531549"
+      },
+      {
+        "id": 30785,
+        "title": "שיעור 5 &#8211; רשימות וטאפלטים<span class=\"course-step-duration\">21:56</span>",
+        "vimeo_id": "486534092",
+        "vimeo_url": "https://player.vimeo.com/video/486534092"
+      },
+      {
+        "id": 30787,
+        "title": "שיעור 6 &#8211; מבוא ל-Pygame<span class=\"course-step-duration\">14:57</span>",
+        "vimeo_id": "486535970",
+        "vimeo_url": "https://player.vimeo.com/video/486535970"
+      },
+      {
+        "id": 30789,
+        "title": "שיעור 7 &#8211; דמויות וצורות<span class=\"course-step-duration\">10:38</span>",
+        "vimeo_id": "486541606",
+        "vimeo_url": "https://player.vimeo.com/video/486541606"
+      },
+      {
+        "id": 30791,
+        "title": "שיעור 8 &#8211; עבודה עם אירועים<span class=\"course-step-duration\">26:45</span>",
+        "vimeo_id": "486542651",
+        "vimeo_url": "https://player.vimeo.com/video/486542651"
+      },
+      {
+        "id": 30793,
+        "title": "שיעור 9 &#8211; פונקציות<span class=\"course-step-duration\">21:08</span>",
+        "vimeo_id": "486819568",
+        "vimeo_url": "https://player.vimeo.com/video/486819568"
+      },
+      {
+        "id": 30795,
+        "title": "שיעור 11 &#8211; אינטרקציה בין דמויות<span class=\"course-step-duration\">11:16</span>",
+        "vimeo_id": "486831162",
+        "vimeo_url": "https://player.vimeo.com/video/486831162"
+      },
+      {
+        "id": 30797,
+        "title": "שיעור 12 &#8211; דמויות מורכבות<span class=\"course-step-duration\">23:18</span>",
+        "vimeo_id": "486826471",
+        "vimeo_url": "https://player.vimeo.com/video/486826471"
+      },
+      {
+        "id": 30799,
+        "title": "שיעור 13 &#8211; בניית משחק פונג חלק א׳<span class=\"course-step-duration\">11:16</span>",
+        "vimeo_id": "486831162",
+        "vimeo_url": "https://player.vimeo.com/video/486831162"
+      },
+      {
+        "id": 30801,
+        "title": "שיעור 14 -בניית משחק פונג חלק ב׳<span class=\"course-step-duration\">24:37</span>",
+        "vimeo_id": "486834201",
+        "vimeo_url": "https://player.vimeo.com/video/486834201"
+      },
+      {
+        "id": 30803,
+        "title": "שיעור 15 &#8211; בניית משחק פונג סיום<span class=\"course-step-duration\">27:22</span>",
+        "vimeo_id": "499267820",
+        "vimeo_url": "https://player.vimeo.com/video/499267820"
+      },
+      {
+        "id": 30805,
+        "title": "שיעור 16 &#8211; אירועי העכבר<span class=\"course-step-duration\">24:43</span>",
+        "vimeo_id": "510611956",
+        "vimeo_url": "https://player.vimeo.com/video/510611956"
+      },
+      {
+        "id": 30807,
+        "title": "שיעור 17 &#8211; אירועים וזמנים<span class=\"course-step-duration\">21:39</span>",
+        "vimeo_id": "510614492",
+        "vimeo_url": "https://player.vimeo.com/video/510614492"
+      },
+      {
+        "id": 30809,
+        "title": "שיעור 18 &#8211; משחק סיימון חלק א׳<span class=\"course-step-duration\">22:43</span>",
+        "vimeo_id": "510616446",
+        "vimeo_url": "https://player.vimeo.com/video/510616446"
+      },
+      {
+        "id": 30811,
+        "title": "שיעור 19 &#8211; משחק סיימון חלק ב׳<span class=\"course-step-duration\">18:56</span>",
+        "vimeo_id": "510667323",
+        "vimeo_url": "https://player.vimeo.com/video/510667323"
+      },
+      {
+        "id": 30813,
+        "title": "שיעור 20 &#8211; משחק סיימון סיום<span class=\"course-step-duration\">21:36</span>",
+        "vimeo_id": "510669758",
+        "vimeo_url": "https://player.vimeo.com/video/510669758"
+      }
+    ]
+  },
+  "31040": {
+    "title": "קורס למידה עצמית במיינקראפט &#8211; תכנות ועיצוב  חדר בריחה ויצירת פירמידה",
+    "lessons": [
+      {
+        "id": 31010,
+        "title": "הורדות והתקנות<span class=\"course-step-duration\">11:10</span>",
+        "vimeo_id": "1104384543",
+        "vimeo_url": "https://player.vimeo.com/video/1104384543"
+      },
+      {
+        "id": 31012,
+        "title": "התקנת תוסף עברית למיינקראפט<span class=\"course-step-duration\">02:24</span>",
+        "vimeo_id": "594233602",
+        "vimeo_url": "https://player.vimeo.com/video/594233602"
+      },
+      {
+        "id": 31014,
+        "title": "בניית פירמידה &#8211; לולאות",
+        "vimeo_id": null,
+        "vimeo_url": null
+      },
+      {
+        "id": 31016,
+        "title": "המשך בניית הפירמידה &#8211; תנאים ומשתנים<span class=\"course-step-duration\">27:35</span>",
+        "vimeo_id": null,
+        "vimeo_url": null
+      },
+      {
+        "id": 31018,
+        "title": "רדסטון ליצירת דלת כניסה לפירמידה",
+        "vimeo_id": null,
+        "vimeo_url": null
+      },
+      {
+        "id": 31020,
+        "title": "יצירת חדר בריחה<span class=\"course-step-duration\">07:52</span>",
+        "vimeo_id": null,
+        "vimeo_url": null
+      },
+      {
+        "id": 31022,
+        "title": "סיכום כל השלבים ופרסום הפירמידה<span class=\"course-step-duration\">33:42</span>",
+        "vimeo_id": null,
+        "vimeo_url": null
+      }
+    ]
+  },
+  "28380": {
+    "title": "קורס למידה עצמית בניית עולמות Minecraft באמצעות תכנות",
+    "lessons": [
+      {
+        "id": 30306,
+        "title": "סרטון פתיחה",
+        "vimeo_id": "495994415",
+        "vimeo_url": "https://player.vimeo.com/video/495994415"
+      },
+      {
+        "id": 30308,
+        "title": "שיעור 0 &#8211; התקנות והתחברות",
+        "vimeo_id": "1104384543",
+        "vimeo_url": "https://player.vimeo.com/video/1104384543"
+      },
+      {
+        "id": 30310,
+        "title": "הורדת עולם מיינקראפט",
+        "vimeo_id": null,
+        "vimeo_url": null
+      },
+      {
+        "id": 30312,
+        "title": "סרטון הדרכה &#8211; איך מייבאים את קובץ העולם למיינקראפט",
+        "vimeo_id": "893607836",
+        "vimeo_url": "https://player.vimeo.com/video/893607836"
+      },
+      {
+        "id": 30622,
+        "title": "שיעור 1 &#8211; הכרות עם הפלטפורמה<span class=\"course-step-duration\">776</span>",
+        "vimeo_id": "464482409",
+        "vimeo_url": "https://player.vimeo.com/video/464482409"
+      },
+      {
+        "id": 30625,
+        "title": "שיעור 2 &#8211; סוכנות חלק א׳",
+        "vimeo_id": "464482541",
+        "vimeo_url": "https://player.vimeo.com/video/464482541"
+      },
+      {
+        "id": 30627,
+        "title": "שיעור 3 &#8211; סוכנות חלק ב׳",
+        "vimeo_id": "464482656",
+        "vimeo_url": "https://player.vimeo.com/video/464482656"
+      },
+      {
+        "id": 30629,
+        "title": "שיעור 4 &#8211; בניית כבישים חלק א׳",
+        "vimeo_id": "464482702",
+        "vimeo_url": "https://player.vimeo.com/video/464482702"
+      },
+      {
+        "id": 30322,
+        "title": "תרגול בבניית כבישים",
+        "vimeo_id": null,
+        "vimeo_url": null
+      },
+      {
+        "id": 30631,
+        "title": "שיעור 5 &#8211; בנית כבישים חלק ב׳ ותחילת בית",
+        "vimeo_id": "464482804",
+        "vimeo_url": "https://player.vimeo.com/video/464482804"
+      },
+      {
+        "id": 30326,
+        "title": "תרגול בבניית בית",
+        "vimeo_id": null,
+        "vimeo_url": null
+      },
+      {
+        "id": 30633,
+        "title": "שיעור 6 &#8211; המשך בניית בית",
+        "vimeo_id": "464482881",
+        "vimeo_url": "https://player.vimeo.com/video/464482881"
+      },
+      {
+        "id": 30635,
+        "title": "שיעור 7 &#8211; בניית גדרות בפארק",
+        "vimeo_id": "464482963",
+        "vimeo_url": "https://player.vimeo.com/video/464482963"
+      },
+      {
+        "id": 30333,
+        "title": "גדרות תרגול",
+        "vimeo_id": null,
+        "vimeo_url": null
+      },
+      {
+        "id": 30637,
+        "title": "שיעור 8 &#8211; בניית מזרקה בפארק",
+        "vimeo_id": "464483034",
+        "vimeo_url": "https://player.vimeo.com/video/464483034"
+      },
+      {
+        "id": 30337,
+        "title": "מזרקה תרגול",
+        "vimeo_id": null,
+        "vimeo_url": null
+      }
+    ]
+  },
+  "30294": {
+    "title": "קורס למידה עצמית ליצירת Mincecraft Plugins ב-Java",
+    "lessons": [
+      {
+        "id": 30389,
+        "title": "0 &#8211; הקדמה לקורס &#8211; introduction<span class=\"course-step-duration\">5:37</span>",
+        "vimeo_id": null,
+        "vimeo_url": null
+      },
+      {
+        "id": 30391,
+        "title": "קישורים לקבצי ההתקנות",
+        "vimeo_id": null,
+        "vimeo_url": null
+      },
+      {
+        "id": 30393,
+        "title": "1- הכרות עם סביבת העבודה והתקנות<span class=\"course-step-duration\">12:27</span>",
+        "vimeo_id": "494106379",
+        "vimeo_url": "https://player.vimeo.com/video/494106379"
+      },
+      {
+        "id": 30395,
+        "title": "פלאגין ראשון בפעולה<span class=\"course-step-duration\">12:33</span>",
+        "vimeo_id": "494110267",
+        "vimeo_url": "https://player.vimeo.com/video/494110267"
+      },
+      {
+        "id": 30397,
+        "title": "פלאגין שני &#8211; נביא לשחקן חפצים ל-inventory<span class=\"course-step-duration\">11:51</span>",
+        "vimeo_id": "494115880",
+        "vimeo_url": "https://player.vimeo.com/video/494115880"
+      },
+      {
+        "id": 30399,
+        "title": "פלאגין שלישי &#8211; פלאגיגים גיבורים<span class=\"course-step-duration\">10:49</span>",
+        "vimeo_id": "494119043",
+        "vimeo_url": "https://player.vimeo.com/video/494119043"
+      },
+      {
+        "id": 30401,
+        "title": "שיפור הקוד &#8211; מערכים<span class=\"course-step-duration\">12:11</span>",
+        "vimeo_id": "494121736",
+        "vimeo_url": "https://player.vimeo.com/video/494121736"
+      },
+      {
+        "id": 30403,
+        "title": "עוד קצת תרגול של מערכים<span class=\"course-step-duration\">7:10</span>",
+        "vimeo_id": "494121937",
+        "vimeo_url": "https://player.vimeo.com/video/494121937"
+      },
+      {
+        "id": 30405,
+        "title": "מה זה מאזין? &#8211; Listener<span class=\"course-step-duration\">11:37</span>",
+        "vimeo_id": "494123980",
+        "vimeo_url": "https://player.vimeo.com/video/494123980"
+      },
+      {
+        "id": 30407,
+        "title": "יצירת פלאגין עם שעון<span class=\"course-step-duration\">9:32</span>",
+        "vimeo_id": "494124591",
+        "vimeo_url": "https://player.vimeo.com/video/494124591"
+      },
+      {
+        "id": 30409,
+        "title": "יצירת אנימציה במשחק<span class=\"course-step-duration\">18:32</span>",
+        "vimeo_id": "494939500",
+        "vimeo_url": "https://player.vimeo.com/video/494939500"
+      },
+      {
+        "id": 30411,
+        "title": "יצירת פלאגין מאפס<span class=\"course-step-duration\">7:48</span>",
+        "vimeo_id": "504153918",
+        "vimeo_url": "https://player.vimeo.com/video/504153918"
+      },
+      {
+        "id": 30413,
+        "title": "המשך עבודה על פלאגין השרדות &#8211; גיבורי על<span class=\"course-step-duration\">12:51</span>",
+        "vimeo_id": "504155570",
+        "vimeo_url": "https://player.vimeo.com/video/504155570"
+      },
+      {
+        "id": 30415,
+        "title": "סיום פלאגין גיבורי על<span class=\"course-step-duration\">15:56</span>",
+        "vimeo_id": "504156669",
+        "vimeo_url": "https://player.vimeo.com/video/504156669"
+      },
+      {
+        "id": 30417,
+        "title": "מה זה תכנות מונחה עצמים???<span class=\"course-step-duration\">24:03</span>",
+        "vimeo_id": "504157212",
+        "vimeo_url": "https://player.vimeo.com/video/504157212"
+      },
+      {
+        "id": 30419,
+        "title": "שימוש בתכנות מונחה עצמים בפלאגינים<span class=\"course-step-duration\">12:18</span>",
+        "vimeo_id": "523787842",
+        "vimeo_url": "https://player.vimeo.com/video/523787842"
+      },
+      {
+        "id": 30421,
+        "title": "שימוש בתכנות מונחה עצמים בפלאגינים &#8211; חלק 2<span class=\"course-step-duration\">9:18</span>",
+        "vimeo_id": "523789729",
+        "vimeo_url": "https://player.vimeo.com/video/523789729"
+      },
+      {
+        "id": 30423,
+        "title": "פלאגין חנות &#8211; תכנון<span class=\"course-step-duration\">15:54</span>",
+        "vimeo_id": "523812340",
+        "vimeo_url": "https://player.vimeo.com/video/523812340"
+      },
+      {
+        "id": 30425,
+        "title": "פלאגיו חנות &#8211; כתיבת קוד<span class=\"course-step-duration\">17:41</span>",
+        "vimeo_id": "523818754",
+        "vimeo_url": "https://player.vimeo.com/video/523818754"
+      },
+      {
+        "id": 30427,
+        "title": "פלאגין חנות &#8211; סיום<span class=\"course-step-duration\">21:22</span>",
+        "vimeo_id": "523823111",
+        "vimeo_url": "https://player.vimeo.com/video/523823111"
+      }
+    ]
+  },
+  "30291": {
+    "title": "קורס למידה עצמית של JavaScript באמצעות מיינקראפט",
+    "lessons": [
+      {
+        "id": 30639,
+        "title": "התקנות והתחברות",
+        "vimeo_id": "1104384543",
+        "vimeo_url": "https://player.vimeo.com/video/1104384543"
+      },
+      {
+        "id": 30644,
+        "title": "שיעור 1 &#8211; הכרות עם הסוכנות",
+        "vimeo_id": "496442629",
+        "vimeo_url": "https://player.vimeo.com/video/496442629"
+      },
+      {
+        "id": 30646,
+        "title": "שיעור 2 &#8211; משתנים",
+        "vimeo_id": "482505950",
+        "vimeo_url": "https://player.vimeo.com/video/482505950"
+      },
+      {
+        "id": 30648,
+        "title": "שיעור 3 &#8211; ארועים",
+        "vimeo_id": "482506966",
+        "vimeo_url": "https://player.vimeo.com/video/482506966"
+      },
+      {
+        "id": 30650,
+        "title": "שיעור 4 &#8211; פרמטרים",
+        "vimeo_id": "482508060",
+        "vimeo_url": "https://player.vimeo.com/video/482508060"
+      },
+      {
+        "id": 30652,
+        "title": "שיעור 5 &#8211; לולאות",
+        "vimeo_id": "482508687",
+        "vimeo_url": "https://player.vimeo.com/video/482508687"
+      },
+      {
+        "id": 30654,
+        "title": "שיעור 6 &#8211; תנאים",
+        "vimeo_id": "482510972",
+        "vimeo_url": "https://player.vimeo.com/video/482510972"
+      },
+      {
+        "id": 30656,
+        "title": "שיעור 7 &#8211; משחק חיות",
+        "vimeo_id": "482512130",
+        "vimeo_url": "https://player.vimeo.com/video/482512130"
+      },
+      {
+        "id": 30658,
+        "title": "שיעור 8 &#8211; משחק זומבים",
+        "vimeo_id": "482513851",
+        "vimeo_url": "https://player.vimeo.com/video/482513851"
+      },
+      {
+        "id": 30660,
+        "title": "שיעור 9 &#8211; משחק מסלול השאלות",
+        "vimeo_id": "482543266",
+        "vimeo_url": "https://player.vimeo.com/video/482543266"
+      },
+      {
+        "id": 30662,
+        "title": "שיעור 10 &#8211; משחק מסלול השאלות חלק ב׳",
+        "vimeo_id": "482544769",
+        "vimeo_url": "https://player.vimeo.com/video/482544769"
+      },
+      {
+        "id": 30664,
+        "title": "שיעור 11 &#8211; משחק המשימות",
+        "vimeo_id": "482546813",
+        "vimeo_url": "https://player.vimeo.com/video/482546813"
+      },
+      {
+        "id": 30666,
+        "title": "שיעור 12 &#8211; פונקציות",
+        "vimeo_id": "521562061",
+        "vimeo_url": "https://player.vimeo.com/video/521562061"
+      },
+      {
+        "id": 30668,
+        "title": "שיעור 13 &#8211; משחק קירות נסגרים",
+        "vimeo_id": "482558133",
+        "vimeo_url": "https://player.vimeo.com/video/482558133"
+      },
+      {
+        "id": 30670,
+        "title": "שיעור 14 &#8211; חץ וקשת",
+        "vimeo_id": "482558962",
+        "vimeo_url": "https://player.vimeo.com/video/482558962"
+      }
+    ]
+  },
+  "30288": {
+    "title": "קורס למידה עצמית תכנות בסקראץ&#8217;- קורס תכנות לילדים בגילאי 7-10 תכנות משחקים בעזרת בלוקים",
+    "lessons": [
+      {
+        "id": 30859,
+        "title": "שיעור 1 &#8211;  התחברות  וחתול אומן<span class=\"course-step-duration\">21:13</span>",
+        "vimeo_id": "484188593",
+        "vimeo_url": "https://player.vimeo.com/video/484188593"
+      },
+      {
+        "id": 30861,
+        "title": "שיעור 2 &#8211; דרקונים<span class=\"course-step-duration\">18:44</span>",
+        "vimeo_id": "497257011",
+        "vimeo_url": "https://player.vimeo.com/video/497257011"
+      },
+      {
+        "id": 30863,
+        "title": "שיעור 3 &#8211;  משחק הכדור<span class=\"course-step-duration\">14:00</span>",
+        "vimeo_id": "500805504",
+        "vimeo_url": "https://player.vimeo.com/video/500805504"
+      },
+      {
+        "id": 30865,
+        "title": "שיעור 4 &#8211; דרקון וחתול<span class=\"course-step-duration\">25:53</span>",
+        "vimeo_id": "497261053",
+        "vimeo_url": "https://player.vimeo.com/video/497261053"
+      },
+      {
+        "id": 30867,
+        "title": "שיעור 5 &#8211; אם-אז<span class=\"course-step-duration\">14:06</span>",
+        "vimeo_id": "497265051",
+        "vimeo_url": "https://player.vimeo.com/video/497265051"
+      },
+      {
+        "id": 30869,
+        "title": "שיעור 6 &#8211; משחק המבוך 1<span class=\"course-step-duration\">15:26</span>",
+        "vimeo_id": "497269851",
+        "vimeo_url": "https://player.vimeo.com/video/497269851"
+      },
+      {
+        "id": 30871,
+        "title": "שיעור 7 &#8211; משחק המבוך 2<span class=\"course-step-duration\">06:58</span>",
+        "vimeo_id": "497270009",
+        "vimeo_url": "https://player.vimeo.com/video/497270009"
+      },
+      {
+        "id": 30873,
+        "title": "שיעור 8 &#8211; משחק זכרון חיות<span class=\"course-step-duration\">18:33</span>",
+        "vimeo_id": "497274565",
+        "vimeo_url": "https://player.vimeo.com/video/497274565"
+      },
+      {
+        "id": 30875,
+        "title": "שיעור 9 &#8211; מתנות קופצות &#8211; חלק א׳<span class=\"course-step-duration\">12:58</span>",
+        "vimeo_id": "484188177",
+        "vimeo_url": "https://player.vimeo.com/video/484188177"
+      },
+      {
+        "id": 30877,
+        "title": "שיעור 10 &#8211; מתנות קופצות &#8211; חלק ב׳<span class=\"course-step-duration\">12:21</span>",
+        "vimeo_id": "484188146",
+        "vimeo_url": "https://player.vimeo.com/video/484188146"
+      },
+      {
+        "id": 30879,
+        "title": "שיעור 11 &#8211; פעולות חשבון &#8211; חלק א׳<span class=\"course-step-duration\">16:24</span>",
+        "vimeo_id": "484187815",
+        "vimeo_url": "https://player.vimeo.com/video/484187815"
+      },
+      {
+        "id": 30881,
+        "title": "שיעור 12 &#8211; פעולות חשבון -חלק ב׳<span class=\"course-step-duration\">15:16</span>",
+        "vimeo_id": "484187499",
+        "vimeo_url": "https://player.vimeo.com/video/484187499"
+      },
+      {
+        "id": 30883,
+        "title": "שיעור 13 &#8211; פעולות חשבון &#8211; חלק ג׳<span class=\"course-step-duration\">16:07</span>",
+        "vimeo_id": "484187060",
+        "vimeo_url": "https://player.vimeo.com/video/484187060"
+      },
+      {
+        "id": 30885,
+        "title": "שיעור 14 &#8211; משחק המחשבון &#8211; חלק א׳<span class=\"course-step-duration\">18:06</span>",
+        "vimeo_id": "484187021",
+        "vimeo_url": "https://player.vimeo.com/video/484187021"
+      },
+      {
+        "id": 30887,
+        "title": "שיעור 15 &#8211; משחק המחשבון &#8211; חלק ב׳<span class=\"course-step-duration\">21:19</span>",
+        "vimeo_id": "484186978",
+        "vimeo_url": "https://player.vimeo.com/video/484186978"
+      },
+      {
+        "id": 30889,
+        "title": "שיעור 16 &#8211; סנייק &#8211; חלק א׳<span class=\"course-step-duration\">13:38</span>",
+        "vimeo_id": "484186977",
+        "vimeo_url": "https://player.vimeo.com/video/484186977"
+      },
+      {
+        "id": 30891,
+        "title": "שיעור 17 &#8211; סנייק &#8211; חלק ב׳<span class=\"course-step-duration\">03:30</span>",
+        "vimeo_id": "484186912",
+        "vimeo_url": "https://player.vimeo.com/video/484186912"
+      },
+      {
+        "id": 30893,
+        "title": "שיעור 18 &#8211; סנייק &#8211; חלק ג׳<span class=\"course-step-duration\">08:53</span>",
+        "vimeo_id": "484186911",
+        "vimeo_url": "https://player.vimeo.com/video/484186911"
+      },
+      {
+        "id": 30895,
+        "title": "שיעור 19 &#8211; יצירת גיף<span class=\"course-step-duration\">16:07</span>",
+        "vimeo_id": "484186858",
+        "vimeo_url": "https://player.vimeo.com/video/484186858"
+      },
+      {
+        "id": 30897,
+        "title": "שיעור 20 &#8211; יצירת מוזיקה<span class=\"course-step-duration\">10:32</span>",
+        "vimeo_id": "497277846",
+        "vimeo_url": "https://player.vimeo.com/video/497277846"
+      }
+    ]
+  },
+  "30297": {
+    "title": "קורס למידה עצמית תכנות ועיצוב משחקים מקצועיים ברובלוקס עם Lua",
+    "lessons": [
+      {
+        "id": 30339,
+        "title": "מבוא לקורס",
+        "vimeo_id": "501762982",
+        "vimeo_url": "https://player.vimeo.com/video/501762982"
+      },
+      {
+        "id": 30342,
+        "title": " התקנות והתחברות",
+        "vimeo_id": "501767758",
+        "vimeo_url": "https://player.vimeo.com/video/501767758"
+      },
+      {
+        "id": 30344,
+        "title": "שיעור 1 &#8211; המדרגות המעופפות &#8211; עיצוב המשחק",
+        "vimeo_id": "501776116",
+        "vimeo_url": "https://player.vimeo.com/video/501776116"
+      },
+      {
+        "id": 30346,
+        "title": "שיעור 2 &#8211; יצירת שלט כניסה למשחק",
+        "vimeo_id": "501810876",
+        "vimeo_url": "https://player.vimeo.com/video/501810876"
+      },
+      {
+        "id": 30348,
+        "title": "שיעור 3 &#8211; קוד והפניות",
+        "vimeo_id": "501809993",
+        "vimeo_url": "https://player.vimeo.com/video/501809993"
+      },
+      {
+        "id": 30350,
+        "title": "שיעור 4 &#8211; משתנים ותנאים",
+        "vimeo_id": "501910786",
+        "vimeo_url": "https://player.vimeo.com/video/501910786"
+      },
+      {
+        "id": 30352,
+        "title": "שיעור 5 &#8211; שימוש בפונקציות",
+        "vimeo_id": "501911366",
+        "vimeo_url": "https://player.vimeo.com/video/501911366"
+      },
+      {
+        "id": 30354,
+        "title": "שיעור 6 &#8211;  סיום המשחק &#8211; המדרגות המעופפות",
+        "vimeo_id": "501911553",
+        "vimeo_url": "https://player.vimeo.com/video/501911553"
+      },
+      {
+        "id": 30356,
+        "title": "שיעור 7 &#8211; סימולציה של מדורה",
+        "vimeo_id": "501911698",
+        "vimeo_url": "https://player.vimeo.com/video/501911698"
+      },
+      {
+        "id": 30358,
+        "title": "שיעור 8 &#8211; פונקציה גלובאלית",
+        "vimeo_id": "501911866",
+        "vimeo_url": "https://player.vimeo.com/video/501911866"
+      },
+      {
+        "id": 30360,
+        "title": "שיעור 9 &#8211; יצירת טבלת התוצאות",
+        "vimeo_id": "501912177",
+        "vimeo_url": "https://player.vimeo.com/video/501912177"
+      },
+      {
+        "id": 30362,
+        "title": "שיעור 10 &#8211; עדכון הטבלה",
+        "vimeo_id": "501912336",
+        "vimeo_url": "https://player.vimeo.com/video/501912336"
+      },
+      {
+        "id": 30364,
+        "title": "שיעור 11 &#8211; בנייה הדלקת המנורה",
+        "vimeo_id": "501912933",
+        "vimeo_url": "https://player.vimeo.com/video/501912933"
+      },
+      {
+        "id": 30366,
+        "title": "שיעור 12 &#8211; שיגור חפצים למיקום אקראי &#8211; סיום משחק המדורה",
+        "vimeo_id": "501913077",
+        "vimeo_url": "https://player.vimeo.com/video/501913077"
+      }
+    ]
+  },
+  "39806": {
+    "title": "קורס מדפסות תלת מימד",
+    "lessons": [
+      {
+        "id": 39807,
+        "title": "שיעור 1 &#8211; מחזיק מפתחות",
+        "vimeo_id": "1149810540",
+        "vimeo_url": "https://player.vimeo.com/video/1149810540"
+      },
+      {
+        "id": 39811,
+        "title": "שיעור 2 &#8211; שימוש חכם בשכבות",
+        "vimeo_id": "1149809815",
+        "vimeo_url": "https://player.vimeo.com/video/1149809815"
+      },
+      {
+        "id": 39844,
+        "title": "שיעור 3 &#8211; הדפסת קופסא",
+        "vimeo_id": "1151312926",
+        "vimeo_url": "https://player.vimeo.com/video/1151312926"
+      },
+      {
+        "id": 39853,
+        "title": "שיעור 4 &#8211; הדפסת מעמד לקונסולת משחקים",
+        "vimeo_id": "1153316692",
+        "vimeo_url": "https://player.vimeo.com/video/1153316692"
+      },
+      {
+        "id": 39855,
+        "title": "שיעור 5 &#8211; הדפסת סטנד מעוצב לנייד",
+        "vimeo_id": "1157101488",
+        "vimeo_url": "https://player.vimeo.com/video/1157101488"
+      },
+      {
+        "id": 39857,
+        "title": "שיעור 6 &#8211;",
+        "vimeo_id": null,
+        "vimeo_url": null
+      },
+      {
+        "id": 39859,
+        "title": "שיעור 7 &#8211;",
+        "vimeo_id": null,
+        "vimeo_url": null
+      },
+      {
+        "id": 39861,
+        "title": "שיעור 8 &#8211;",
+        "vimeo_id": null,
+        "vimeo_url": null
+      },
+      {
+        "id": 39863,
+        "title": "שיעור 9 &#8211;",
+        "vimeo_id": null,
+        "vimeo_url": null
+      },
+      {
+        "id": 39865,
+        "title": "שיעור 10 &#8211;",
+        "vimeo_id": null,
+        "vimeo_url": null
+      },
+      {
+        "id": 39867,
+        "title": "שיעור 11 &#8211;",
+        "vimeo_id": null,
+        "vimeo_url": null
+      },
+      {
+        "id": 39869,
+        "title": "שיעור 12 &#8211;",
+        "vimeo_id": null,
+        "vimeo_url": null
+      }
+    ]
+  },
+  "30284": {
+    "title": "קורס פיתוח בוטים לשרת דיסקורד &#8211; JavaScript, Node.js",
+    "lessons": [
+      {
+        "id": 30691,
+        "title": "סרטון פתיחה",
+        "vimeo_id": null,
+        "vimeo_url": null
+      },
+      {
+        "id": 30693,
+        "title": "התקנות לקורס<span class=\"course-step-duration\">6:08</span>",
+        "vimeo_id": "493620949",
+        "vimeo_url": "https://player.vimeo.com/video/493620949"
+      },
+      {
+        "id": 30697,
+        "title": "שיעור 1 &#8211; Hello World<span class=\"course-step-duration\">20:29</span>",
+        "vimeo_id": "480705199",
+        "vimeo_url": "https://player.vimeo.com/video/480705199"
+      },
+      {
+        "id": 30699,
+        "title": "שיעור 2 &#8211;  משתנים<span class=\"course-step-duration\">20:57</span>",
+        "vimeo_id": "480705475",
+        "vimeo_url": "https://player.vimeo.com/video/480705475"
+      },
+      {
+        "id": 30701,
+        "title": "שיעור 3 &#8211; מחרוזות<span class=\"course-step-duration\">21:05</span>",
+        "vimeo_id": "480704559",
+        "vimeo_url": "https://player.vimeo.com/video/480704559"
+      },
+      {
+        "id": 30703,
+        "title": "שיעור 4 &#8211; תנאים<span class=\"course-step-duration\">22:33</span>",
+        "vimeo_id": "481663767",
+        "vimeo_url": "https://player.vimeo.com/video/481663767"
+      },
+      {
+        "id": 30705,
+        "title": "שיעור 5 &#8211; לולאות<span class=\"course-step-duration\">13:12</span>",
+        "vimeo_id": "482698840",
+        "vimeo_url": "https://player.vimeo.com/video/482698840"
+      },
+      {
+        "id": 30707,
+        "title": "שיעור 6 &#8211; מערכים<span class=\"course-step-duration\">20:23</span>",
+        "vimeo_id": "482702941",
+        "vimeo_url": "https://player.vimeo.com/video/482702941"
+      },
+      {
+        "id": 30709,
+        "title": "שיעור 7 &#8211;  פונקציות חלק א׳<span class=\"course-step-duration\">17:29</span>",
+        "vimeo_id": "484005921",
+        "vimeo_url": "https://player.vimeo.com/video/484005921"
+      },
+      {
+        "id": 30711,
+        "title": "שיעור 8 &#8211; פונקציות חלק ב׳<span class=\"course-step-duration\">20:58</span>",
+        "vimeo_id": "485810867",
+        "vimeo_url": "https://player.vimeo.com/video/485810867"
+      },
+      {
+        "id": 30713,
+        "title": "שיעור 9 &#8211; הרשאות",
+        "vimeo_id": "485811037",
+        "vimeo_url": "https://player.vimeo.com/video/485811037"
+      },
+      {
+        "id": 30715,
+        "title": "שיעור 10 &#8211; Delay<span class=\"course-step-duration\">21:55</span>",
+        "vimeo_id": "486708281",
+        "vimeo_url": "https://player.vimeo.com/video/486708281"
+      },
+      {
+        "id": 30717,
+        "title": "שיעור 11 &#8211; אובייקטים חלק א׳<span class=\"course-step-duration\">22:31</span>",
+        "vimeo_id": "486710686",
+        "vimeo_url": "https://player.vimeo.com/video/486710686"
+      },
+      {
+        "id": 30719,
+        "title": "שיעור 12 &#8211; אובייקטים חלק ב׳<span class=\"course-step-duration\">25:32</span>",
+        "vimeo_id": "488062389",
+        "vimeo_url": "https://player.vimeo.com/video/488062389"
+      },
+      {
+        "id": 30721,
+        "title": "שיעור 13 &#8211;  הודעות פרטיות<span class=\"course-step-duration\">22:48</span>",
+        "vimeo_id": "488062602",
+        "vimeo_url": "https://player.vimeo.com/video/488062602"
+      },
+      {
+        "id": 30723,
+        "title": "שיעור 14 &#8211; bot reactions<span class=\"course-step-duration\">25:39</span>",
+        "vimeo_id": "493237026",
+        "vimeo_url": "https://player.vimeo.com/video/493237026"
+      },
+      {
+        "id": 30725,
+        "title": "שיעור 15 &#8211;  איך להמשיך מכאן?<span class=\"course-step-duration\">19:48</span>",
+        "vimeo_id": "498712714",
+        "vimeo_url": "https://player.vimeo.com/video/498712714"
+      }
+    ]
+  },
+  "39648": {
+    "title": "קורס קאנבה ובינה מלאכותית",
+    "lessons": [
+      {
+        "id": 39653,
+        "title": "ברוכים הבאים לקנבה",
+        "vimeo_id": null,
+        "vimeo_url": null
+      },
+      {
+        "id": 39665,
+        "title": "מה זה קאנבה וכיצד בוחרים תבנית",
+        "vimeo_id": "1137162941",
+        "vimeo_url": "https://player.vimeo.com/video/1137162941"
+      },
+      {
+        "id": 39669,
+        "title": "תמונה ושימוש בסרגל עריכה",
+        "vimeo_id": "1137165104",
+        "vimeo_url": "https://player.vimeo.com/video/1137165104"
+      },
+      {
+        "id": 39671,
+        "title": "עריכת טקסט+ קובץ גופנים",
+        "vimeo_id": "1137163743",
+        "vimeo_url": "https://player.vimeo.com/video/1137163743"
+      },
+      {
+        "id": 39673,
+        "title": "טקסט וכתיבת קסם",
+        "vimeo_id": "1137163807",
+        "vimeo_url": "https://player.vimeo.com/video/1137163807"
+      },
+      {
+        "id": 39675,
+        "title": "אלמנטים והנפשות",
+        "vimeo_id": "1137161995",
+        "vimeo_url": "https://player.vimeo.com/video/1137161995"
+      },
+      {
+        "id": 39677,
+        "title": "אפשרויות האלמנטים",
+        "vimeo_id": "1137162494",
+        "vimeo_url": "https://player.vimeo.com/video/1137162494"
+      },
+      {
+        "id": 39679,
+        "title": "הכנת סרטון שלב ראשון",
+        "vimeo_id": "1137163038",
+        "vimeo_url": "https://player.vimeo.com/video/1137163038"
+      },
+      {
+        "id": 39681,
+        "title": "עריכת קסם",
+        "vimeo_id": "1137163766",
+        "vimeo_url": "https://player.vimeo.com/video/1137163766"
+      },
+      {
+        "id": 39683,
+        "title": "הוספת שמע לסרטון",
+        "vimeo_id": "1137163023",
+        "vimeo_url": "https://player.vimeo.com/video/1137163023"
+      },
+      {
+        "id": 39685,
+        "title": "יצירת תבנית משחקים וחידונים מתוך תבנית",
+        "vimeo_id": "1137163698",
+        "vimeo_url": "https://player.vimeo.com/video/1137163698"
+      },
+      {
+        "id": 39658,
+        "title": "יצירת משחק באמצעות AI",
+        "vimeo_id": "1137163083",
+        "vimeo_url": "https://player.vimeo.com/video/1137163083"
+      },
+      {
+        "id": 39687,
+        "title": "יצירת לוגו",
+        "vimeo_id": "1137163729",
+        "vimeo_url": "https://player.vimeo.com/video/1137163729"
+      },
+      {
+        "id": 39689,
+        "title": "יצירת באנר",
+        "vimeo_id": "1137163059",
+        "vimeo_url": "https://player.vimeo.com/video/1137163059"
+      },
+      {
+        "id": 39691,
+        "title": "כריכה לספר",
+        "vimeo_id": "1137163716",
+        "vimeo_url": "https://player.vimeo.com/video/1137163716"
+      },
+      {
+        "id": 39693,
+        "title": "צד אחורי של ספר אפשרות ראשונה",
+        "vimeo_id": "1137163777",
+        "vimeo_url": "https://player.vimeo.com/video/1137163777"
+      },
+      {
+        "id": 39695,
+        "title": "צד אחורי של ספר אפשרות נוספת",
+        "vimeo_id": "1137163798",
+        "vimeo_url": "https://player.vimeo.com/video/1137163798"
+      }
+    ]
+  }
+}

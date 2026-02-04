@@ -1,0 +1,8 @@
+lms/videos/
+lms/node_modules/
+lms/package-lock.json
+*.db
+*.log
+*.mp4
+*.webm
+*.mov
