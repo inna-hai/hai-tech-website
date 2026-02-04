@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הרשמה | HAI Tech Academy</title>
+    <link rel="stylesheet" href="css/lms.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="login-page">
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <img src="../images/logo.png" alt="HAI Tech Academy" class="login-logo">
+                <h1>הצטרפו אלינו</h1>
+                <p>צרו חשבון והתחילו ללמוד</p>
+            </div>
+            
+            <form id="registerForm" class="login-form">
+                <div class="form-group">
+                    <label for="name">שם מלא *</label>
+                    <input type="text" id="name" name="name" placeholder="השם שלך" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">אימייל *</label>
+                    <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">טלפון (אופציונלי)</label>
+                    <input type="tel" id="phone" name="phone" placeholder="050-0000000">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">סיסמה *</label>
+                    <input type="password" id="password" name="password" placeholder="לפחות 6 תווים" required minlength="6">
+                    <button type="button" class="toggle-password" aria-label="הצג סיסמה">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmPassword">אימות סיסמה *</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="הקלד שוב את הסיסמה" required>
+                </div>
+                
+                <div class="form-options">
+                    <label class="remember-me">
+                        <input type="checkbox" name="terms" required>
+                        <span>אני מסכים/ה ל<a href="../terms.html" target="_blank">תנאי השימוש</a></span>
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-login">הרשמה</button>
+            </form>
+            
+            <div class="login-divider">
+                <span>או</span>
+            </div>
+            
+            <button type="button" class="btn btn-google" id="googleRegister">
+                <svg width="20" height="20" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                </svg>
+                הרשמה עם Google
+            </button>
+            
+            <p class="register-link">
+                יש לך כבר חשבון? <a href="login.html">התחבר</a>
+            </p>
+        </div>
+        
+        <div class="login-illustration">
+            <div class="illustration-content">
+                <h2>למד AI בקצב שלך</h2>
+                <p>קורסים מעשיים, פרויקטים אמיתיים, ותמיכה של AI מתקדם</p>
+                <div class="features-list">
+                    <div class="feature-item">
+                        <span class="feature-icon">🎯</span>
+                        <span>למידה מותאמת אישית</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🤖</span>
+                        <span>עוזר AI חכם</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">📜</span>
+                        <span>תעודות מוכרות</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/lms.js"></script>
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim() || null;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            // Validate passwords match
+            if (password !== confirmPassword) {
+                LMS.showNotification('הסיסמאות לא תואמות', 'error');
+                return;
+            }
+            
+            await LMS.register(name, email, password, phone);
+        });
+        
+        document.getElementById('googleRegister').addEventListener('click', function() {
+            alert('הרשמה עם Google תהיה זמינה בקרוב!');
+        });
+        
+        document.querySelector('.toggle-password').addEventListener('click', function() {
+            const passwordInput = document.getElementById('password');
+            const confirmInput = document.getElementById('confirmPassword');
+            const newType = passwordInput.type === 'password' ? 'text' : 'password';
+            passwordInput.type = newType;
+            confirmInput.type = newType;
+        });
+    </script>
+</body>
+</html>

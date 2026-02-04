@@ -1,0 +1,139 @@
+{
+  "courseId": "web-dev-ai",
+  "courseTitle": "קורס פיתוח אתרים ומשחקים בשילוב בינה מלאכותית",
+  "lessonsCount": 12,
+  "lessons": [
+    {
+      "id": 1,
+      "title": "שיעור מספר 0 – הקדמה ויצירת חשבון gmail",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1031018828",
+      "order": 1,
+      "free": true,
+      "resources": []
+    },
+    {
+      "id": 2,
+      "title": "שיעור מספר 1",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1030462447",
+      "order": 2,
+      "free": true,
+      "resources": []
+    },
+    {
+      "id": 3,
+      "title": "שיעור מספר 2",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1030462495",
+      "order": 3,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 4,
+      "title": "שיעור מספר 3",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1030462520",
+      "order": 4,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 5,
+      "title": "שיעור מספר 4",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1030462569",
+      "order": 5,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 6,
+      "title": "שיעור מספר 5",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1030462630",
+      "order": 6,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 7,
+      "title": "שיעור מספר 6",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1030462704",
+      "order": 7,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 8,
+      "title": "שיעור מספר 7",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1030462755",
+      "order": 8,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 9,
+      "title": "שיעור מספר 8",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1031019973",
+      "order": 9,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 10,
+      "title": "שיעור מספר 9",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1030462821",
+      "order": 10,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 11,
+      "title": "שיעור מספר 10",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1030462903",
+      "order": 11,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 12,
+      "title": "שיעור מספר 11",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1030462976",
+      "order": 12,
+      "free": false,
+      "resources": []
+    }
+  ]
+}

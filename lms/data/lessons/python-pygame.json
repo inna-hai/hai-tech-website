@@ -1,0 +1,216 @@
+{
+  "courseId": "python-pygame",
+  "courseTitle": "קורס פיתוח משחקים בשפת Python",
+  "lessonsCount": 19,
+  "lessons": [
+    {
+      "id": 1,
+      "title": "שיעור 1 – התקנות",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/510609493",
+      "order": 1,
+      "free": true,
+      "resources": []
+    },
+    {
+      "id": 2,
+      "title": "שיעור 2 – משתנים",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/486418604",
+      "order": 2,
+      "free": true,
+      "resources": []
+    },
+    {
+      "id": 3,
+      "title": "שיעור 3 – בוליאנים ותנאים",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/486530850",
+      "order": 3,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 4,
+      "title": "שיעור 4 – לולאות",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/486531549",
+      "order": 4,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 5,
+      "title": "שיעור 5 – רשימות וטאפלטים",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/486534092",
+      "order": 5,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 6,
+      "title": "שיעור 6 – מבוא ל-Pygame",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/486535970",
+      "order": 6,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 7,
+      "title": "שיעור 7 – דמויות וצורות",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/486541606",
+      "order": 7,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 8,
+      "title": "שיעור 8 – עבודה עם אירועים",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/486542651",
+      "order": 8,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 9,
+      "title": "שיעור 9 – פונקציות",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/486819568",
+      "order": 9,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 10,
+      "title": "שיעור 11 – אינטרקציה בין דמויות",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/486831162",
+      "order": 10,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 11,
+      "title": "שיעור 12 – דמויות מורכבות",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/486826471",
+      "order": 11,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 12,
+      "title": "שיעור 13 – בניית משחק פונג חלק א׳",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/486831162",
+      "order": 12,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 13,
+      "title": "שיעור 14 -בניית משחק פונג חלק ב׳",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/486834201",
+      "order": 13,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 14,
+      "title": "שיעור 15 – בניית משחק פונג סיום",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/499267820",
+      "order": 14,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 15,
+      "title": "שיעור 16 – אירועי העכבר",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/510611956",
+      "order": 15,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 16,
+      "title": "שיעור 17 – אירועים וזמנים",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/510614492",
+      "order": 16,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 17,
+      "title": "שיעור 18 – משחק סיימון חלק א׳",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/510616446",
+      "order": 17,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 18,
+      "title": "שיעור 19 – משחק סיימון חלק ב׳",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/510667323",
+      "order": 18,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 19,
+      "title": "שיעור 20 – משחק סיימון סיום",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/510669758",
+      "order": 19,
+      "free": false,
+      "resources": []
+    }
+  ]
+}

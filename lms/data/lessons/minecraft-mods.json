@@ -1,0 +1,29 @@
+{
+  "courseId": "minecraft-mods",
+  "courseTitle": "קורס בניית מודים למיינקראפט",
+  "lessonsCount": 2,
+  "lessons": [
+    {
+      "id": 1,
+      "title": "הורדות והתקנות",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1104384543",
+      "order": 1,
+      "free": true,
+      "resources": []
+    },
+    {
+      "id": 2,
+      "title": "התקנת תוסף עברית למיינקראפט",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/594233602",
+      "order": 2,
+      "free": true,
+      "resources": []
+    }
+  ]
+}

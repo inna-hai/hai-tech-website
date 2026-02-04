@@ -1,0 +1,28 @@
+{
+  "name": "hai-tech-lms",
+  "version": "1.0.0",
+  "description": "HAI Tech Academy - Learning Management System",
+  "main": "api/server.js",
+  "scripts": {
+    "start": "node api/server.js",
+    "dev": "node api/server.js",
+    "test": "jest --coverage --forceExit --detectOpenHandles",
+    "test:api": "jest tests/api --forceExit",
+    "test:frontend": "jest tests/frontend",
+    "test:e2e": "jest tests/e2e --forceExit",
+    "test:watch": "jest --watch",
+    "test:ci": "jest --ci --coverage --forceExit",
+    "precommit": "npm run test:ci"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0",
+    "supertest": "^6.0.0",
+    "husky": "^8.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": ["lms", "education", "hebrew", "gamification"],
+  "author": "HAI Tech Academy",
+  "license": "MIT"
+}

@@ -1,0 +1,18 @@
+[Unit]
+Description=Hai Tech Lead Proxy Server
+After=network.target
+
+[Service]
+Type=simple
+User=ameidar
+WorkingDirectory=/home/ameidar/.openclaw/workspace/projects/hai-tech-website/api
+ExecStart=/home/ameidar/.nvm/versions/node/v22.22.0/bin/node proxy.js
+Restart=always
+RestartSec=10
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=lead-proxy
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target
