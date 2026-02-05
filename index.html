@@ -106,11 +106,18 @@
 
     <!-- Hero Section -->
     <header id="main-content" class="hero">
+        <!-- Background Video -->
+        <div class="hero-video-bg">
+            <video autoplay muted loop playsinline webkit-playsinline preload="auto" poster="images/hero-poster.jpg">
+                <source src="videos/minecraft-showcase.mp4" type="video/mp4">
+            </video>
+            <div class="hero-video-overlay"></div>
+        </div>
         <div class="container">
             <div class="hero-content">
                 <a href="#about" class="hero-badge-top"><i data-lucide="award" class="icon-sm"></i> כפי שנראה בערוץ 12, TheMarker והארץ</a>
-                <h1>הילדים שלכם ישחקו.<br><span class="highlight">ויבנו עתיד בהייטק.</span></h1>
-                <p class="hero-description">הפכו את זמן המסך להשקעה אמיתית בעתיד.<br>קורסי תכנות במיינקראפט, רובלוקס ו-AI — מיומנויות שוק העבודה, מגיל 7.</p>
+                <h1>הילדים שלכם ישחקו<br><span class="highlight">ויבנו עתיד בהייטק</span></h1>
+                <p class="hero-description">זמן מסך שבונה עתיד 💡</p>
                 <div class="hero-buttons">
                     <a href="#contact" class="btn btn-cta btn-xl pulse-animation">
                         <i data-lucide="gift" class="icon-md"></i>
@@ -168,7 +175,7 @@
                         <li>רוצים שילמד משהו שימושי</li>
                     </ul>
                 </div>
-                <div class="arrow-icon"><i data-lucide="arrow-left" class="icon-lg"></i></div>
+                <div class="arrow-icon"><i data-lucide="arrow-down" class="icon-lg"></i></div>
                 <div class="solution-card">
                     <div class="card-icon"><i data-lucide="target" class="icon-lg"></i></div>
                     <h3>הפתרון שלנו</h3>
@@ -906,6 +913,11 @@
             </div>
             <div class="footer-bottom">
                 <p>© 2025 דרך ההייטק. כל הזכויות שמורות.</p>
+                <div class="footer-legal">
+                    <a href="terms.html">תנאי שימוש</a>
+                    <span>|</span>
+                    <a href="privacy.html">מדיניות פרטיות</a>
+                </div>
             </div>
         </div>
     </footer>
@@ -917,6 +929,18 @@
     <script>
         // Initialize Lucide icons
         lucide.createIcons();
+        
+        // Force video play on mobile
+        const heroVideo = document.querySelector('.hero-video-bg video');
+        if (heroVideo) {
+            heroVideo.play().catch(function() {
+                // If autoplay blocked, play on first interaction
+                document.addEventListener('touchstart', function playVideo() {
+                    heroVideo.play();
+                    document.removeEventListener('touchstart', playVideo);
+                }, { once: true });
+            });
+        }
         
         // Mobile menu toggle
         document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
@@ -1007,8 +1031,19 @@
         <span class="whatsapp-float-text">דברו איתנו</span>
     </a>
 
-    <!-- UserWay Accessibility Widget -->
-    <script src="https://cdn.userway.org/widget.js" data-account="zBp6yPJpzr" async></script>
+    <!-- UserWay Accessibility Widget - positioned bottom-right -->
+    <script src="https://cdn.userway.org/widget.js" data-account="zBp6yPJpzr" data-position="4" async></script>
+    <style>
+        /* Force UserWay to bottom-right, inside viewport */
+        .userway_buttons_wrapper,
+        div[data-userway-widget] {
+            right: 20px !important;
+            left: auto !important;
+            bottom: 100px !important;
+            top: auto !important;
+            position: fixed !important;
+        }
+    </style>
     
     <!-- AI Chatbot Widget -->
     <script src="js/chatbot-smart.js"></script>
