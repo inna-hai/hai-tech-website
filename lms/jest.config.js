@@ -51,6 +51,11 @@ module.exports = {
             displayName: 'e2e',
             testMatch: ['<rootDir>/tests/e2e/**/*.test.js'],
             testEnvironment: 'node'
+        },
+        {
+            displayName: 'release',
+            testMatch: ['<rootDir>/tests/release.test.js'],
+            testEnvironment: 'node'
         }
     ]
 };

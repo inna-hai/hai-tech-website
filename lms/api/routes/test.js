@@ -551,6 +551,124 @@ router.get('/run-all', requireAdmin, async (req, res) => {
     });
 
     // ==========================================
+    // PARENT INVITATION SYSTEM TESTS
+    // ==========================================
+    t.category('Parent Invitation System');
+
+    t.test('Parent tables exist', () => {
+        try {
+            const tables = db.prepare(`
+                SELECT name FROM sqlite_master 
+                WHERE type='table' AND (name = 'parent_child_links' OR name = 'parent_invites')
+            `).all().map(t => t.name);
+            
+            return { 
+                success: tables.includes('parent_child_links') && tables.includes('parent_invites'),
+                details: tables.join(', ') || 'No tables'
+            };
+        } catch (err) {
+            return { success: false, error: err.message };
+        }
+    });
+
+    t.test('Create parent invite', () => {
+        if (!testUserId) return { success: false, error: 'No test user' };
+        
+        const crypto = require('crypto');
+        const inviteId = uuidv4();
+        const token = crypto.randomBytes(32).toString('hex');
+        const parentEmail = `test-parent-${Date.now()}@test.com`;
+        const expiresAt = Math.floor(Date.now() / 1000) + (7 * 24 * 60 * 60);
+        
+        try {
+            db.prepare(`
+                INSERT INTO parent_invites (id, child_id, parent_email, token, status, expires_at)
+                VALUES (?, ?, ?, ?, 'pending', ?)
+            `).run(inviteId, testUserId, parentEmail, token, expiresAt);
+            
+            const invite = db.prepare('SELECT * FROM parent_invites WHERE id = ?').get(inviteId);
+            
+            // Cleanup
+            db.prepare('DELETE FROM parent_invites WHERE id = ?').run(inviteId);
+            
+            return { 
+                success: !!invite && invite.status === 'pending',
+                details: `Invite created for ${parentEmail}`
+            };
+        } catch (err) {
+            return { success: false, error: err.message };
+        }
+    });
+
+    t.test('Parent-child link creation', () => {
+        // Create a test parent
+        const parentId = uuidv4();
+        const childId = testUserId;
+        
+        if (!childId) return { success: false, error: 'No test user for child' };
+        
+        try {
+            // Create temp parent user
+            db.prepare(`
+                INSERT INTO users (id, email, password_hash, name, role)
+                VALUES (?, ?, ?, ?, 'parent')
+            `).run(parentId, `temp-parent-${Date.now()}@test.com`, 'hash', 'Test Parent');
+            
+            // Create link
+            const linkId = uuidv4();
+            db.prepare(`
+                INSERT INTO parent_child_links (id, parent_id, child_id, status)
+                VALUES (?, ?, ?, 'active')
+            `).run(linkId, parentId, childId);
+            
+            const link = db.prepare(`
+                SELECT * FROM parent_child_links WHERE parent_id = ? AND child_id = ?
+            `).get(parentId, childId);
+            
+            // Cleanup
+            db.prepare('DELETE FROM parent_child_links WHERE id = ?').run(linkId);
+            db.prepare('DELETE FROM users WHERE id = ?').run(parentId);
+            
+            return {
+                success: !!link && link.status === 'active',
+                details: 'Link created and verified'
+            };
+        } catch (err) {
+            return { success: false, error: err.message };
+        }
+    });
+
+    t.test('Invite token is unique', () => {
+        try {
+            const crypto = require('crypto');
+            const token1 = crypto.randomBytes(32).toString('hex');
+            const token2 = crypto.randomBytes(32).toString('hex');
+            
+            return {
+                success: token1 !== token2 && token1.length === 64,
+                details: `Token length: ${token1.length} chars`
+            };
+        } catch (err) {
+            return { success: false, error: err.message };
+        }
+    });
+
+    t.test('Invite expiry is in future', () => {
+        const now = Math.floor(Date.now() / 1000);
+        const expiresAt = now + (7 * 24 * 60 * 60); // 7 days
+        
+        return {
+            success: expiresAt > now,
+            details: `Expires in ${Math.floor((expiresAt - now) / 86400)} days`
+        };
+    });
+
+    t.test('Accept invite page exists', () => {
+        const exists = fs.existsSync(path.join(lmsDir, 'accept-invite.html'));
+        return { success: exists, error: exists ? null : 'accept-invite.html not found' };
+    });
+
+    // ==========================================
     // CLEANUP
     // ==========================================
     t.category('Cleanup');

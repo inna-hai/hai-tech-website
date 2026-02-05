@@ -105,9 +105,10 @@ app.use((err, req, res, next) => {
     });
 });
 
-// Start server
-app.listen(PORT, () => {
-    console.log(`
+// Start server only when run directly (not imported for tests)
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`
 ╔════════════════════════════════════════════════════════╗
 ║                                                        ║
 ║   🎓 LMS API Server - דרך ההייטק                       ║
@@ -116,8 +117,9 @@ app.listen(PORT, () => {
 ║   Health: http://localhost:${PORT}/api/health             ║
 ║                                                        ║
 ╚════════════════════════════════════════════════════════╝
-    `);
-});
+        `);
+    });
+}
 
 // Export for testing
 module.exports = app;

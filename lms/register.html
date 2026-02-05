@@ -50,9 +50,27 @@
                     <input type="password" id="confirmPassword" name="confirmPassword" placeholder="הקלד שוב את הסיסמה" required>
                 </div>
                 
+                <!-- Parent Emails Section -->
+                <div class="parent-section">
+                    <div class="section-divider">
+                        <span>👨‍👩‍👧 הזמנת הורים (אופציונלי)</span>
+                    </div>
+                    <p class="section-desc">ההורים יוכלו לעקוב אחר ההתקדמות שלך</p>
+                    
+                    <div class="form-group">
+                        <label for="parentEmail1">אימייל הורה 1</label>
+                        <input type="email" id="parentEmail1" name="parentEmail1" placeholder="parent@email.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="parentEmail2">אימייל הורה 2</label>
+                        <input type="email" id="parentEmail2" name="parentEmail2" placeholder="parent2@email.com">
+                    </div>
+                </div>
+                
                 <div class="form-options">
                     <label class="remember-me">
-                        <input type="checkbox" name="terms" required>
+                        <input type="checkbox" name="terms" id="termsCheckbox" required>
                         <span>אני מסכים/ה ל<a href="../terms.html" target="_blank">תנאי השימוש</a></span>
                     </label>
                 </div>
@@ -101,6 +119,28 @@
         </div>
     </div>
     
+    <style>
+        .parent-section {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+        }
+        
+        .section-divider {
+            text-align: center;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+        
+        .section-desc {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+    </style>
+    
     <script src="js/lms.js"></script>
     <script>
         document.getElementById('registerForm').addEventListener('submit', async function(e) {
@@ -111,6 +151,8 @@
             const phone = document.getElementById('phone').value.trim() || null;
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirmPassword').value;
+            const parentEmail1 = document.getElementById('parentEmail1').value.trim() || null;
+            const parentEmail2 = document.getElementById('parentEmail2').value.trim() || null;
             
             // Validate passwords match
             if (password !== confirmPassword) {
@@ -118,7 +160,46 @@
                 return;
             }
             
-            await LMS.register(name, email, password, phone);
+            // Register with parent emails
+            try {
+                const response = await fetch('/api/auth/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name,
+                        email,
+                        password,
+                        phone,
+                        parentEmail1,
+                        parentEmail2
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Save token
+                    localStorage.setItem('hai_lms_token', data.token);
+                    localStorage.setItem('hai_lms_user', JSON.stringify(data.user));
+                    
+                    // Show success message
+                    let message = 'נרשמת בהצלחה!';
+                    if (data.parentInvites && data.parentInvites.length > 0) {
+                        message += ` הזמנות נשלחו ל-${data.parentInvites.length} הורים.`;
+                    }
+                    LMS.showNotification(message, 'success');
+                    
+                    // Redirect
+                    setTimeout(() => {
+                        window.location.href = '/lms/index.html';
+                    }, 1000);
+                } else {
+                    LMS.showNotification(data.error || 'שגיאה בהרשמה', 'error');
+                }
+            } catch (err) {
+                console.error('Registration error:', err);
+                LMS.showNotification('שגיאה בהרשמה', 'error');
+            }
         });
         
         document.getElementById('googleRegister').addEventListener('click', function() {

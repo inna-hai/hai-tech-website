@@ -17,6 +17,7 @@
     "test:watch": "jest --watch",
     "test:ci": "jest --ci --coverage --forceExit",
     "test:all": "npm run test && npm run test:e2e",
+    "test:release": "jest --selectProjects release --forceExit --verbose --no-coverage",
     "precommit": "npm run test:ci",
     "playwright:install": "npx playwright install chromium"
   },

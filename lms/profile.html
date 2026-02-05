@@ -8,6 +8,101 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Parent Section Styles */
+        .parent-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .parent-card h3 {
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+        }
+        
+        .section-desc {
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+        
+        .invite-form {
+            display: flex;
+            gap: 12px;
+            align-items: flex-end;
+        }
+        
+        .invite-form .form-group {
+            flex: 1;
+            margin-bottom: 0;
+        }
+        
+        .parent-item, .invite-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            margin-bottom: 8px;
+        }
+        
+        .parent-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        
+        .parent-info, .invite-info {
+            flex: 1;
+        }
+        
+        .parent-name, .invite-email {
+            display: block;
+            font-weight: 500;
+        }
+        
+        .parent-email, .invite-date {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        
+        .parent-status {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        
+        .status-active {
+            background: rgba(34, 197, 94, 0.1);
+            color: var(--success);
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 768px) {
+            .invite-form {
+                flex-direction: column;
+            }
+            
+            .invite-form button {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body class="profile-page">
     <nav class="lms-navbar">
@@ -76,6 +171,7 @@
                 <a href="#profile" class="profile-nav-link active" data-section="profile">👤 פרופיל</a>
                 <a href="#certificates" class="profile-nav-link" data-section="certificates">🎓 תעודות</a>
                 <a href="#achievements" class="profile-nav-link" data-section="achievements">🏆 הישגים</a>
+                <a href="#parents" class="profile-nav-link" data-section="parents">👨‍👩‍👧 הורים</a>
                 <a href="#settings" class="profile-nav-link" data-section="settings">⚙️ הגדרות</a>
                 <a href="#security" class="profile-nav-link" data-section="security">🔐 אבטחה</a>
             </nav>
@@ -152,6 +248,44 @@
                         </div>
                     </div>
                     <div class="achievements-grid" id="achievementsGrid"></div>
+                </section>
+                
+                <!-- Parents Section -->
+                <section class="profile-section" id="parents">
+                    <h2>ניהול הורים</h2>
+                    <p class="section-desc">הזמן הורים לעקוב אחר ההתקדמות שלך בלמידה.</p>
+                    
+                    <!-- Linked Parents -->
+                    <div class="parent-card" id="linkedParentsCard">
+                        <h3>הורים מקושרים</h3>
+                        <div id="linkedParentsList" class="linked-parents-list">
+                            <div class="empty-state">
+                                <p>אין הורים מקושרים עדיין</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Invite Form -->
+                    <div class="parent-card">
+                        <h3>הזמן הורה חדש</h3>
+                        <form id="inviteParentForm" class="invite-form">
+                            <div class="form-group">
+                                <label for="parentEmail">אימייל ההורה</label>
+                                <input type="email" id="parentEmail" name="parentEmail" placeholder="parent@email.com" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">שלח הזמנה</button>
+                        </form>
+                    </div>
+                    
+                    <!-- Pending Invites -->
+                    <div class="parent-card" id="pendingInvitesCard">
+                        <h3>הזמנות ממתינות</h3>
+                        <div id="pendingInvitesList" class="invites-list">
+                            <div class="empty-state">
+                                <p>אין הזמנות ממתינות</p>
+                            </div>
+                        </div>
+                    </div>
                 </section>
                 
                 <!-- Settings Section -->
@@ -254,6 +388,7 @@
                 this.setupProfileForm();
                 this.setupPasswordForm();
                 this.setupSettings();
+                this.setupParentsSection();
                 this.loadCertificates();
                 this.loadAchievements();
                 this.handleHashNavigation();
@@ -452,6 +587,154 @@
                         ${!a.unlocked ? '<div class="locked-overlay">🔒</div>' : ''}
                     </div>
                 `).join('');
+            },
+            
+            // ==========================================
+            // Parents Section
+            // ==========================================
+            
+            setupParentsSection() {
+                this.loadParentData();
+                
+                // Setup invite form
+                document.getElementById('inviteParentForm')?.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    await this.sendParentInvite();
+                });
+            },
+            
+            async loadParentData() {
+                try {
+                    const token = localStorage.getItem('hai_lms_token');
+                    if (!token) return;
+                    
+                    const response = await fetch('/api/parent/invites', {
+                        headers: { 'Authorization': `Bearer ${token}` }
+                    });
+                    
+                    const data = await response.json();
+                    if (!data.success) return;
+                    
+                    // Render linked parents
+                    this.renderLinkedParents(data.linkedParents || []);
+                    
+                    // Render pending invites
+                    this.renderPendingInvites(data.invites || []);
+                    
+                } catch (err) {
+                    console.error('Failed to load parent data:', err);
+                }
+            },
+            
+            renderLinkedParents(parents) {
+                const container = document.getElementById('linkedParentsList');
+                if (!container) return;
+                
+                if (parents.length === 0) {
+                    container.innerHTML = '<div class="empty-state"><p>אין הורים מקושרים עדיין</p></div>';
+                    return;
+                }
+                
+                container.innerHTML = parents.map(p => `
+                    <div class="parent-item">
+                        <div class="parent-avatar">👤</div>
+                        <div class="parent-info">
+                            <span class="parent-name">${p.name || 'הורה'}</span>
+                            <span class="parent-email">${p.email}</span>
+                        </div>
+                        <span class="parent-status status-active">✓ מקושר</span>
+                    </div>
+                `).join('');
+            },
+            
+            renderPendingInvites(invites) {
+                const container = document.getElementById('pendingInvitesList');
+                if (!container) return;
+                
+                const pending = invites.filter(i => i.status === 'pending');
+                
+                if (pending.length === 0) {
+                    container.innerHTML = '<div class="empty-state"><p>אין הזמנות ממתינות</p></div>';
+                    return;
+                }
+                
+                container.innerHTML = pending.map(inv => {
+                    const createdAt = new Date(inv.createdAt * 1000).toLocaleDateString('he-IL');
+                    const expiresAt = new Date(inv.expiresAt * 1000).toLocaleDateString('he-IL');
+                    
+                    return `
+                        <div class="invite-item">
+                            <div class="invite-info">
+                                <span class="invite-email">${inv.email}</span>
+                                <span class="invite-date">נשלח: ${createdAt} | פג: ${expiresAt}</span>
+                            </div>
+                            <button class="btn btn-sm btn-outline" onclick="Profile.resendInvite('${inv.id}')">
+                                שלח שוב
+                            </button>
+                        </div>
+                    `;
+                }).join('');
+            },
+            
+            async sendParentInvite() {
+                const emailInput = document.getElementById('parentEmail');
+                const email = emailInput?.value.trim();
+                
+                if (!email) {
+                    LMS.showNotification('אנא הכנס כתובת אימייל', 'error');
+                    return;
+                }
+                
+                try {
+                    const token = localStorage.getItem('hai_lms_token');
+                    const response = await fetch('/api/parent/invite', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        },
+                        body: JSON.stringify({ parentEmail: email })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        LMS.showNotification('ההזמנה נשלחה בהצלחה! 📧', 'success');
+                        emailInput.value = '';
+                        this.loadParentData();
+                    } else {
+                        LMS.showNotification(data.error || 'שגיאה בשליחת ההזמנה', 'error');
+                    }
+                } catch (err) {
+                    console.error('Send invite error:', err);
+                    LMS.showNotification('שגיאה בשליחת ההזמנה', 'error');
+                }
+            },
+            
+            async resendInvite(inviteId) {
+                try {
+                    const token = localStorage.getItem('hai_lms_token');
+                    const response = await fetch('/api/parent/resend-invite', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        },
+                        body: JSON.stringify({ inviteId })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        LMS.showNotification('ההזמנה נשלחה מחדש! 📧', 'success');
+                        this.loadParentData();
+                    } else {
+                        LMS.showNotification(data.error || 'שגיאה בשליחה מחדש', 'error');
+                    }
+                } catch (err) {
+                    console.error('Resend invite error:', err);
+                    LMS.showNotification('שגיאה בשליחה מחדש', 'error');
+                }
             }
         };
         

@@ -1,6 +1,6 @@
 # 🎓 דרך ההייטק - סיכום פרויקט מלא
 
-**תאריך עדכון:** 2026-02-04
+**תאריך עדכון:** 2026-02-05
 **גרסה:** 1.0.0
 **URL:** http://129.159.135.204:8080
 
@@ -87,6 +87,7 @@ http://129.159.135.204:8080/lms/
 | פרופיל | `profile.html` | פרטי משתמש והגדרות |
 | תעודה | `certificate.html` | תעודת סיום קורס |
 | הורים | `parent-dashboard.html` | דשבורד מעקב להורים |
+| אישור הזמנה | `accept-invite.html` | קבלת הזמנת הורה ויצירת חשבון |
 
 ### קורסים קיימים (4)
 
@@ -161,13 +162,18 @@ http://129.159.135.204:8080/lms/
 | `/api/gamification/leaderboard` | GET | לוח מובילים |
 | `/api/gamification/log-activity` | POST | רישום פעילות |
 
-#### Parent Dashboard
+#### Parent Dashboard & Invitations
 | Endpoint | Method | תיאור |
 |----------|--------|-------|
-| `/api/parent/link-child` | POST | קישור ילד |
-| `/api/parent/children` | GET | רשימת ילדים |
-| `/api/parent/child/:id/progress` | GET | התקדמות ילד |
-| `/api/parent/child/:id/activity` | GET | פעילות ילד |
+| `/api/parent/invite` | POST | שליחת הזמנה להורה (תלמיד) |
+| `/api/parent/invites` | GET | רשימת הזמנות ששלחתי (תלמיד) |
+| `/api/parent/resend-invite` | POST | שליחה מחדש של הזמנה |
+| `/api/parent/invite/:token` | GET | פרטי הזמנה (ציבורי) |
+| `/api/parent/accept-invite` | POST | אישור הזמנה ויצירת חשבון |
+| `/api/parent/children` | GET | רשימת ילדים מקושרים (הורה) |
+| `/api/parent/child/:id/progress` | GET | התקדמות ילד (הורה) |
+| `/api/parent/child/:id/activity` | GET | פעילות אחרונה של ילד (הורה) |
+| `/api/parent/unlink-child/:id` | DELETE | ניתוק קישור הורה-ילד |
 
 #### Certificates
 | Endpoint | Method | תיאור |
@@ -223,7 +229,8 @@ http://129.159.135.204:8080/lms/
 | `xp_transactions` | עסקאות XP | id, user_id, amount, reason |
 | `daily_challenges` | אתגרים יומיים | id, user_id, challenge_id, completed |
 | `activity_log` | לוג פעילות | id, user_id, action, timestamp |
-| `parent_links` | קישורי הורים | id, parent_id, child_id |
+| `parent_child_links` | קישורי הורים | id, parent_id, child_id, status, linked_at |
+| `parent_invites` | הזמנות הורים | id, child_id, parent_email, token, status, expires_at |
 
 ---
 
@@ -287,11 +294,11 @@ http://129.159.135.204:8080/lms/
 | `progress.test.js` | התקדמות | ~12 |
 | `quiz.test.js` | קוויזים | ~15 |
 | `gamification.test.js` | גיימיפיקציה | ~15 |
-| `parent.test.js` | דשבורד הורים | ~8 |
+| `parent.test.js` | הזמנות ודשבורד הורים | 21 ✅ |
 | `files.test.js` | קבצי Frontend | ~25 |
 | `userflow.test.js` | E2E מלא | ~20 |
 
-**סה"כ: ~137 בדיקות Jest**
+**סה"כ: 327 בדיקות Jest**
 
 ### API Tests (HTTP)
 
@@ -321,8 +328,10 @@ npm test -- --coverage
 
 ### תוצאות אחרונות
 ```
-✅ 53/53 בדיקות עברו (100%)
-📅 2026-02-04 18:18 GMT
+✅ 305/327 בדיקות עברו (93%)
+📅 2026-02-05 06:48 GMT
+
+Parent Invitation Tests: 21/21 ✅ (100%)
 ```
 
 ---
@@ -463,8 +472,8 @@ hai-tech-website/
 | קורסים | 4 |
 | שיעורים | 15 |
 | קוויזים | 3 |
-| בדיקות | ~137 |
-| אחוז הצלחה | 100% |
+| בדיקות | 327 |
+| אחוז הצלחה | 93% |
 
 ---
 
@@ -487,4 +496,4 @@ hai-tech-website/
 
 ---
 
-*נוצר ע"י קלודי 🤖 | עודכן: 2026-02-04*
+*נוצר ע"י קלודי 🤖 | עודכן: 2026-02-05*

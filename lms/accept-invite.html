@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>אישור הזמנה | HAI Tech Academy</title>
+    <link rel="stylesheet" href="css/lms.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="login-page">
+    <div class="login-container" style="max-width: 500px; grid-template-columns: 1fr;">
+        <div class="login-card">
+            <div class="login-header">
+                <a href="../index.html">
+                    <img src="../images/logo.png" alt="HAI Tech Academy" class="login-logo">
+                </a>
+                <h1 id="pageTitle">אישור הזמנת הורה</h1>
+                <p id="pageSubtitle">טוען...</p>
+            </div>
+            
+            <!-- Loading State -->
+            <div id="loadingState" class="loading-state">
+                <div class="spinner"></div>
+                <p>טוען את פרטי ההזמנה...</p>
+            </div>
+            
+            <!-- Error State -->
+            <div id="errorState" class="error-state" style="display: none;">
+                <div class="error-icon">❌</div>
+                <p id="errorMessage">שגיאה בטעינת ההזמנה</p>
+                <a href="login.html" class="btn btn-primary">חזרה להתחברות</a>
+            </div>
+            
+            <!-- Invite Form -->
+            <form id="acceptForm" class="login-form" style="display: none;">
+                <div class="invite-info">
+                    <p>הוזמנת להיות הורה/אפוטרופוס של:</p>
+                    <div class="child-name" id="childName">-</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">אימייל</label>
+                    <input type="email" id="email" name="email" readonly>
+                </div>
+                
+                <div id="passwordFields">
+                    <p class="info-text">צור חשבון הורה חדש:</p>
+                    
+                    <div class="form-group">
+                        <label for="name">שם מלא</label>
+                        <input type="text" id="name" name="name" placeholder="השם שלך">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">סיסמה</label>
+                        <input type="password" id="password" name="password" placeholder="לפחות 6 תווים" minlength="6" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirmPassword">אישור סיסמה</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="הקלד שוב את הסיסמה" required>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-login">
+                    אשר הזמנה והתחבר
+                </button>
+            </form>
+            
+            <!-- Success State -->
+            <div id="successState" class="success-state" style="display: none;">
+                <div class="success-icon">✅</div>
+                <h2>ההזמנה אושרה!</h2>
+                <p>החשבון שלך מוכן. מעביר אותך ללוח הבקרה...</p>
+            </div>
+        </div>
+    </div>
+    
+    <style>
+        .loading-state, .error-state, .success-state {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        .error-icon, .success-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+        
+        .invite-info {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        
+        .invite-info p {
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+        
+        .child-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .info-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 16px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+    
+    <script src="js/lms.js"></script>
+    <script>
+        const AcceptInvite = {
+            token: null,
+            inviteData: null,
+            
+            async init() {
+                // Get token from URL
+                const params = new URLSearchParams(window.location.search);
+                this.token = params.get('token');
+                
+                if (!this.token) {
+                    this.showError('קישור לא תקין - חסר קוד הזמנה');
+                    return;
+                }
+                
+                // Load invite details
+                await this.loadInvite();
+            },
+            
+            async loadInvite() {
+                try {
+                    const response = await fetch(`/api/parent/invite/${this.token}`);
+                    const data = await response.json();
+                    
+                    if (!data.success) {
+                        this.showError(data.error || 'ההזמנה לא נמצאה או פגה תוקף');
+                        return;
+                    }
+                    
+                    this.inviteData = data.invite;
+                    this.showForm();
+                    
+                } catch (err) {
+                    console.error('Load invite error:', err);
+                    this.showError('שגיאה בטעינת ההזמנה');
+                }
+            },
+            
+            showForm() {
+                document.getElementById('loadingState').style.display = 'none';
+                document.getElementById('acceptForm').style.display = 'flex';
+                
+                document.getElementById('pageSubtitle').textContent = 'מלא את הפרטים כדי לאשר את ההזמנה';
+                document.getElementById('childName').textContent = this.inviteData.childName;
+                document.getElementById('email').value = this.inviteData.parentEmail;
+            },
+            
+            showError(message) {
+                document.getElementById('loadingState').style.display = 'none';
+                document.getElementById('errorState').style.display = 'block';
+                document.getElementById('errorMessage').textContent = message;
+                document.getElementById('pageSubtitle').textContent = '';
+            },
+            
+            showSuccess() {
+                document.getElementById('acceptForm').style.display = 'none';
+                document.getElementById('successState').style.display = 'block';
+            },
+            
+            async handleSubmit(e) {
+                e.preventDefault();
+                
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                const name = document.getElementById('name').value;
+                
+                // Validate
+                if (password.length < 6) {
+                    LMS.showNotification('הסיסמה חייבת להכיל לפחות 6 תווים', 'error');
+                    return;
+                }
+                
+                if (password !== confirmPassword) {
+                    LMS.showNotification('הסיסמאות לא תואמות', 'error');
+                    return;
+                }
+                
+                const submitBtn = e.target.querySelector('button[type="submit"]');
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'מאשר...';
+                
+                try {
+                    const response = await fetch('/api/parent/accept-invite', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            token: this.token,
+                            password,
+                            name
+                        })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (!data.success) {
+                        LMS.showNotification(data.error || 'שגיאה באישור ההזמנה', 'error');
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'אשר הזמנה והתחבר';
+                        return;
+                    }
+                    
+                    // Save token and redirect
+                    localStorage.setItem('hai_lms_token', data.token);
+                    localStorage.setItem('hai_lms_user', JSON.stringify(data.user));
+                    
+                    this.showSuccess();
+                    
+                    setTimeout(() => {
+                        window.location.href = data.redirect || '/lms/parent-dashboard.html';
+                    }, 1500);
+                    
+                } catch (err) {
+                    console.error('Accept invite error:', err);
+                    LMS.showNotification('שגיאה באישור ההזמנה', 'error');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'אשר הזמנה והתחבר';
+                }
+            }
+        };
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            AcceptInvite.init();
+            
+            document.getElementById('acceptForm').addEventListener('submit', (e) => {
+                AcceptInvite.handleSubmit(e);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+
+> hai-tech-lms@1.0.0 test:release
+> jest --selectProjects release --forceExit --verbose --no-coverage
+
+Running one project: release
+  console.log
+    ✅ Gamification tables initialized
+
+      at log (api/routes/gamification.js:213:13)
+
+  console.log
+    ✅ Gamification integration loaded
+
+      at Object.log (api/routes/progress.js:15:13)
+
+  console.log
+    ✅ Quiz gamification integration loaded
+
+      at Object.log (api/routes/quiz.js:15:13)
+
+  console.log
+    ✅ Parent dashboard tables initialized
+
+      at log (api/routes/parent.js:71:13)
+
+  console.log
+    2026-02-05T11:10:08.458Z POST /api/auth/register
+
+      at log (api/server.js:63:17)
+
+  console.log
+    2026-02-05T11:10:08.580Z POST /api/auth/login
+
+      at log (api/server.js:63:17)
+
+  console.log
+    2026-02-05T11:10:08.670Z GET /api/auth/me
+
+      at log (api/server.js:63:17)
+
+  console.log
+    2026-02-05T11:10:08.687Z GET /api/auth/me
+
+      at log (api/server.js:63:17)
+
+  console.log
+    2026-02-05T11:10:08.704Z GET /api/courses
+
+      at log (api/server.js:63:17)
+
+  console.log
+    2026-02-05T11:10:08.734Z GET /api/courses/roblox-lua
+
+      at log (api/server.js:63:17)
+
+  console.log
+    2026-02-05T11:10:08.745Z POST /api/courses/roblox-lua/enroll
+
+      at log (api/server.js:63:17)
+
+  console.log
+    2026-02-05T11:10:08.758Z GET /api/courses/enrolled
+
+      at log (api/server.js:63:17)
+
+  console.log
+    2026-02-05T11:10:08.770Z POST /api/progress
+
+      at log (api/server.js:63:17)
+
+  console.log
+    2026-02-05T11:10:08.780Z GET /api/progress/roblox-lua
+
+      at log (api/server.js:63:17)
+
+  console.log
+    2026-02-05T11:10:08.792Z POST /api/progress
+
+      at log (api/server.js:63:17)
+
+  console.log
+    🎮 Gamification: User 3b7f1df4-c642-412a-ba20-42935cabbadd earned 50 XP
+
+      at log (api/routes/progress.js:177:25)
+
+  console.log
+    2026-02-05T11:10:08.802Z GET /api/quiz/roblox-lua-lesson-1
+
+      at log (api/server.js:63:17)
+
+  console.log
+    2026-02-05T11:10:08.814Z POST /api/quiz/roblox-lua-lesson-1/submit
+
+      at log (api/server.js:63:17)
+
+  console.log
+    🎮 Quiz: User 3b7f1df4-c642-412a-ba20-42935cabbadd earned 200 XP (100%)
+
+      at log (api/routes/quiz.js:266:25)
+
+  console.log
+    2026-02-05T11:10:08.831Z GET /api/health
+
+      at log (api/server.js:63:17)
+
+  console.log
+    2026-02-05T11:10:08.840Z GET /api/gamification/stats
+
+      at log (api/server.js:63:17)
+
+  console.log
+    2026-02-05T11:10:08.857Z GET /api/gamification/config
+
+      at log (api/server.js:63:17)
+
+  console.log
+
+
+      at Object.log (tests/release.test.js:399:13)
+
+  console.log
+    ╔══════════════════════════════════════════════════════╗
+
+      at Object.log (tests/release.test.js:400:13)
+
+  console.log
+    ║           🚀 RELEASE SUITE COMPLETE                  ║
+
+      at Object.log (tests/release.test.js:401:13)
+
+  console.log
+    ╠══════════════════════════════════════════════════════╣
+
+      at Object.log (tests/release.test.js:402:13)
+
+  console.log
+    ║  P0 Categories Tested:                               ║
+
+      at Object.log (tests/release.test.js:403:13)
+
+  console.log
+    ║  ✓ Website (Home, CTA, LMS entry)                    ║
+
+      at Object.log (tests/release.test.js:404:13)
+
+  console.log
+    ║  ✓ LMS Auth (Register, Login, JWT)                   ║
+
+      at Object.log (tests/release.test.js:405:13)
+
+  console.log
+    ║  ✓ LMS Courses (Catalog, Details, Enroll)            ║
+
+      at Object.log (tests/release.test.js:406:13)
+
+  console.log
+    ║  ✓ LMS Progress (Save, Get, Complete)                ║
+
+      at Object.log (tests/release.test.js:407:13)
+
+  console.log
+    ║  ✓ LMS Quiz (Load, Submit)                           ║
+
+      at Object.log (tests/release.test.js:408:13)
+
+  console.log
+    ║  ✓ API Core (Health, Gamification)                   ║
+
+      at Object.log (tests/release.test.js:409:13)
+
+  console.log
+    ║  ✓ Infrastructure (DB, Tables, Data)                 ║
+
+      at Object.log (tests/release.test.js:410:13)
+
+  console.log
+    ╚══════════════════════════════════════════════════════╝
+
+      at Object.log (tests/release.test.js:411:13)
+
+  console.log
+
+
+      at Object.log (tests/release.test.js:412:13)
+
+PASS release tests/release.test.js
+  🌐 P0: Website
+    ✓ Home page (index.html) exists and has content (4 ms)
+    ✓ Home page has CTA buttons (2 ms)
+    ✓ LMS entry point exists (1 ms)
+    ✓ Main CSS loads (1 ms)
+  🔐 P0: LMS Authentication
+    ✓ Register new user (190 ms)
+    ✓ Login with registered user (92 ms)
+    ✓ Get current user with token (12 ms)
+    ✓ Reject invalid token (20 ms)
+  📚 P0: LMS Courses
+    ✓ Catalog returns courses (20 ms)
+    ✓ Course details returns data (23 ms)
+    ✓ Enroll in course (11 ms)
+    ✓ Enrolled courses returns enrollment (11 ms)
+  📊 P0: LMS Progress
+    ✓ Save progress (10 ms)
+    ✓ Get progress (11 ms)
+    ✓ Complete lesson (12 ms)
+  📝 P0: LMS Quiz
+    ✓ Load quiz (9 ms)
+    ✓ Submit quiz (16 ms)
+  🔌 P0: API Core
+    ✓ /api/health returns OK (13 ms)
+    ✓ Gamification stats endpoint works (9 ms)
+    ✓ Config endpoint works (14 ms)
+  🗄️ P0: Infrastructure
+    ✓ Database connection works (1 ms)
+    ✓ Users table exists (1 ms)
+    ✓ Courses table has data (1 ms)
+    ✓ Lessons table has data (2 ms)
+    ✓ Quizzes table has data (1 ms)
+  🧹 Cleanup
+    ✓ Delete test user (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       26 passed, 26 total
+Snapshots:   0 total
+Time:        1.243 s, estimated 2 s
+Ran all test suites.

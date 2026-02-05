@@ -158,28 +158,47 @@
                         </button>
                     </div>
                 </div>
-                
-                <div class="video-controls">
-                    <button class="control-btn" id="prevLesson" aria-label="שיעור קודם">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polygon points="19 20 9 12 19 4 19 20"></polygon>
-                            <line x1="5" y1="19" x2="5" y2="5"></line>
+            </div>
+            
+            <!-- Video Controls - OUTSIDE video-container -->
+            <div class="video-controls">
+                <button class="control-btn" id="prevLesson" aria-label="שיעור קודם">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="19 20 9 12 19 4 19 20"></polygon>
+                        <line x1="5" y1="19" x2="5" y2="5"></line>
+                    </svg>
+                    <span class="btn-text">שיעור קודם</span>
+                </button>
+                <button class="control-btn primary" id="markComplete" aria-label="סמן כהושלם">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span class="btn-text">סמן כהושלם</span>
+                </button>
+                <button class="control-btn" id="nextLesson" aria-label="שיעור הבא">
+                    <span class="btn-text">שיעור הבא</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="5 4 15 12 5 20 5 4"></polygon>
+                        <line x1="19" y1="5" x2="19" y2="19"></line>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Quiz Button - Shows when lesson has a quiz -->
+            <div class="quiz-cta" id="quizCta" style="display: none;">
+                <div class="quiz-cta-content">
+                    <span class="quiz-icon">📝</span>
+                    <div class="quiz-cta-text">
+                        <strong>בדוק את עצמך!</strong>
+                        <span>יש קוויז לשיעור הזה</span>
+                    </div>
+                    <a href="#" class="btn btn-primary" id="goToQuizBtn">
+                        עבור לקוויז
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
                         </svg>
-                        <span class="btn-text">שיעור קודם</span>
-                    </button>
-                    <button class="control-btn primary" id="markComplete" aria-label="סמן כהושלם">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                        <span class="btn-text">סמן כהושלם</span>
-                    </button>
-                    <button class="control-btn" id="nextLesson" aria-label="שיעור הבא">
-                        <span class="btn-text">שיעור הבא</span>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polygon points="5 4 15 12 5 20 5 4"></polygon>
-                            <line x1="19" y1="5" x2="19" y2="19"></line>
-                        </svg>
-                    </button>
+                    </a>
                 </div>
             </div>
             
@@ -414,6 +433,15 @@
                 // Update UI
                 this.updateProgress();
                 this.updateLessonStates();
+                
+                // Show quiz button for first lesson on initial load
+                this.updateQuizButton(1);
+                
+                // Auto-select first lesson if none active
+                const firstLesson = document.querySelector('.lesson-item');
+                if (firstLesson && !document.querySelector('.lesson-item.active')) {
+                    this.navigateToLesson(firstLesson);
+                }
             },
             
             async loadCourseData() {
@@ -536,6 +564,37 @@
                     vimeoPlayer.style.display = 'none';
                     placeholder.style.display = 'flex';
                 }
+                
+                // Check if lesson has a quiz and show/hide quiz CTA
+                this.updateQuizButton(lesson.id);
+            },
+            
+            updateQuizButton(lessonId) {
+                const quizCta = document.getElementById('quizCta');
+                const goToQuizBtn = document.getElementById('goToQuizBtn');
+                
+                if (!quizCta || !goToQuizBtn) {
+                    console.log('Quiz CTA elements not found');
+                    return;
+                }
+                
+                const lessonNum = parseInt(lessonId) || 1;
+                
+                // For now: first lesson of each course has a quiz
+                // Later can expand to more lessons
+                const hasQuiz = (lessonNum === 1);
+                
+                console.log('Quiz check:', { lessonId, lessonNum, courseId: this.courseId, hasQuiz });
+                
+                if (hasQuiz) {
+                    quizCta.style.display = 'block';
+                    // Build quiz URL
+                    const courseBase = this.courseId.replace('course-', '');
+                    goToQuizBtn.href = `quiz.html?lessonId=lesson-${courseBase}-1`;
+                    console.log('Quiz URL:', goToQuizBtn.href);
+                } else {
+                    quizCta.style.display = 'none';
+                }
             },
             
             loadProgress() {
@@ -643,6 +702,9 @@
                 
                 this.currentLesson = lessonId;
                 this.saveProgress();
+                
+                // Update quiz button for this lesson
+                this.updateQuizButton(lessonId);
                 
                 // Scroll lesson into view on mobile
                 if (window.innerWidth <= 768) {

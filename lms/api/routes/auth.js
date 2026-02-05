@@ -19,11 +19,12 @@ const RESET_TOKEN_EXPIRES = 3600; // 1 hour in seconds
 
 /**
  * POST /api/auth/register
- * Register a new user
+ * Register a new user (student)
+ * Optionally send invites to parent emails
  */
 router.post('/register', async (req, res) => {
     try {
-        const { email, password, name, phone } = req.body;
+        const { email, password, name, phone, parentEmail1, parentEmail2 } = req.body;
 
         // Validation
         if (!email || !password || !name) {
@@ -63,12 +64,49 @@ router.post('/register', async (req, res) => {
         const salt = await bcrypt.genSalt(10);
         const passwordHash = await bcrypt.hash(password, salt);
 
-        // Create user
+        // Create user (role defaults to 'student')
         const userId = uuidv4();
         db.prepare(`
-            INSERT INTO users (id, email, password_hash, name, phone)
-            VALUES (?, ?, ?, ?, ?)
+            INSERT INTO users (id, email, password_hash, name, phone, role)
+            VALUES (?, ?, ?, ?, ?, 'student')
         `).run(userId, email.toLowerCase(), passwordHash, name, phone || null);
+
+        // Create parent invites if emails provided
+        const parentInvites = [];
+        const INVITE_EXPIRY_DAYS = 7;
+        const expiresAt = Math.floor(Date.now() / 1000) + (INVITE_EXPIRY_DAYS * 24 * 60 * 60);
+
+        const createInvite = (parentEmail) => {
+            if (!parentEmail || !emailRegex.test(parentEmail)) return;
+            
+            const normalizedEmail = parentEmail.toLowerCase().trim();
+            
+            // Don't create invite if same as student email
+            if (normalizedEmail === email.toLowerCase()) return;
+            
+            const inviteId = uuidv4();
+            const token = crypto.randomBytes(32).toString('hex');
+            
+            try {
+                db.prepare(`
+                    INSERT INTO parent_invites (id, child_id, parent_email, token, status, expires_at)
+                    VALUES (?, ?, ?, ?, 'pending', ?)
+                `).run(inviteId, userId, normalizedEmail, token, expiresAt);
+                
+                parentInvites.push({
+                    email: normalizedEmail,
+                    token,
+                    inviteUrl: `/lms/accept-invite.html?token=${token}`
+                });
+                
+                // TODO: Send email to parent
+            } catch (e) {
+                console.error('Failed to create parent invite:', e);
+            }
+        };
+
+        createInvite(parentEmail1);
+        createInvite(parentEmail2);
 
         // Generate JWT token
         const token = jwt.sign({ userId }, JWT_SECRET, { expiresIn: ACCESS_TOKEN_EXPIRES });
@@ -80,8 +118,10 @@ router.post('/register', async (req, res) => {
             user: {
                 id: userId,
                 email: email.toLowerCase(),
-                name
-            }
+                name,
+                role: 'student'
+            },
+            parentInvites: parentInvites.length > 0 ? parentInvites : undefined
         });
 
     } catch (err) {
