@@ -468,20 +468,31 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <nav class="nav">
-            <a href="index.html" class="logo">
-                <img src="https://hai.tech/wp-content/uploads/2023/11/hi-tech-logo.png" alt="דרך ההייטק">
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="תפריט ראשי">
+        <div class="container">
+            <a href="index.html" class="logo" aria-label="דרך ההייטק - דף הבית">
+                <img src="images/brand/logo-haitech-transparent.png" alt="דרך ההייטק - HAi.TECH" height="60">
             </a>
-            <ul class="nav-menu">
-                <li><a href="index.html">🏠 ראשי</a></li>
-                <li><a href="index.html#courses">💻 קורסים</a></li>
-                <li><a href="index.html#private">👨‍🏫 שיעורים פרטיים</a></li>
-                <li><a href="index.html#contact">📞 צור קשר</a></li>
+            <button class="mobile-menu-btn" aria-label="פתח תפריט" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html#courses">קורסים דיגיטליים</a></li>
+                <li><a href="index.html#private">שיעורים פרטיים</a></li>
+                <li><a href="pricing.html" class="active">מחירון</a></li>
+                <li><a href="locations.html">מוקדים פרונטליים</a></li>
+                <li><a href="institutions.html">למוסדות</a></li>
+                <li><a href="blog.html">בלוג</a></li>
+                <li><a href="index.html#about">אודות</a></li>
+                <li><a href="index.html#faq">שאלות נפוצות</a></li>
+                <li><a href="/lms/login.html" class="nav-link-secondary">כניסה לתלמידים</a></li>
+                <li><a href="index.html#contact" class="btn btn-nav">התחילו עכשיו</a></li>
             </ul>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
     <!-- Hero -->
     <section class="pricing-hero">
