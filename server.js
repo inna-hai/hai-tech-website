@@ -12,8 +12,8 @@ const url = require('url');
 const CONFIG = {
     port: 8080,
     staticDir: __dirname,
-    crmEndpoint: 'https://18f95599f0b7.ngrok-free.app/api/webhook/leads',
-    apiKey: 'haitech-crm-api-key-2026',
+    crmEndpoint: 'https://18f95599f0b7.ngrok-free.app/api/v1/customers',
+    apiKey: 'haitech_0057e908d625dfe4c9e4b61250f0576556aa8c1585c5b85bffea61b42014c566',
     // OpenAI API (optional - set to enable AI responses)
     openaiKey: process.env.OPENAI_API_KEY || null
 };
@@ -363,15 +363,34 @@ const server = http.createServer((req, res) => {
         return handleChat(req, res);
     }
     
-    // API: Lead submission
+    // API: Lead submission - sends to HaiTech CRM
     if (req.method === 'POST' && pathname === '/api/lead') {
         let body = '';
         req.on('data', chunk => body += chunk.toString());
         req.on('end', () => {
             try {
-                const leadData = JSON.parse(body);
+                const formData = JSON.parse(body);
+                
+                // Build notes from form data
+                const noteParts = [];
+                if (formData.childName) noteParts.push(`ילד/ה: ${formData.childName}`);
+                if (formData.childAge) noteParts.push(`גיל: ${formData.childAge}`);
+                if (formData.subject) noteParts.push(`תחום עניין: ${formData.subject}`);
+                if (formData.message) noteParts.push(`הודעה: ${formData.message}`);
+                noteParts.push(`מקור: אתר האינטרנט`);
+                noteParts.push(`תאריך: ${new Date().toLocaleString('he-IL')}`);
+                
+                // Format for CRM API (POST /customers)
+                const crmData = {
+                    name: formData.name,
+                    phone: formData.phone.replace(/[-\s]/g, ''), // Clean phone
+                    email: formData.email || '',
+                    notes: noteParts.join('\n')
+                };
                 
                 const crmUrl = new URL(CONFIG.crmEndpoint);
+                const postData = JSON.stringify(crmData);
+                
                 const options = {
                     hostname: crmUrl.hostname,
                     port: 443,
@@ -379,7 +398,8 @@ const server = http.createServer((req, res) => {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'X-API-Key': CONFIG.apiKey
+                        'X-API-Key': CONFIG.apiKey,
+                        'Content-Length': Buffer.byteLength(postData)
                     }
                 };
                 
@@ -387,23 +407,32 @@ const server = http.createServer((req, res) => {
                     let crmBody = '';
                     crmRes.on('data', chunk => crmBody += chunk);
                     crmRes.on('end', () => {
-                        res.writeHead(crmRes.statusCode, { 'Content-Type': 'application/json' });
-                        res.end(crmBody);
-                        console.log(`[LEAD] ${leadData.name} - Status: ${crmRes.statusCode}`);
+                        console.log(`[LEAD] ${formData.name} (${formData.phone}) - CRM Status: ${crmRes.statusCode}`);
+                        
+                        if (crmRes.statusCode >= 200 && crmRes.statusCode < 300) {
+                            res.writeHead(200, { 'Content-Type': 'application/json' });
+                            res.end(JSON.stringify({ success: true, message: 'Lead sent to CRM' }));
+                        } else {
+                            console.error('[LEAD] CRM Error:', crmBody);
+                            res.writeHead(crmRes.statusCode, { 'Content-Type': 'application/json' });
+                            res.end(JSON.stringify({ success: false, error: 'CRM rejected lead' }));
+                        }
                     });
                 });
                 
                 crmReq.on('error', (error) => {
+                    console.error('[LEAD] CRM Connection Error:', error.message);
                     res.writeHead(500, { 'Content-Type': 'application/json' });
-                    res.end(JSON.stringify({ error: 'CRM connection failed' }));
+                    res.end(JSON.stringify({ success: false, error: 'CRM connection failed' }));
                 });
                 
-                crmReq.write(JSON.stringify(leadData));
+                crmReq.write(postData);
                 crmReq.end();
                 
             } catch (error) {
+                console.error('[LEAD] Parse Error:', error.message);
                 res.writeHead(400, { 'Content-Type': 'application/json' });
-                res.end(JSON.stringify({ error: 'Invalid JSON' }));
+                res.end(JSON.stringify({ success: false, error: 'Invalid JSON' }));
             }
         });
         return;
