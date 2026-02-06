@@ -2103,6 +2103,23 @@ section {
     color: var(--primary-dark);
 }
 
+/* Clickable WhatsApp card */
+.clickable-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.clickable-card:hover {
+    background: var(--bg-alt);
+}
+
+.clickable-card h4,
+.clickable-card p {
+    color: inherit;
+}
+
 .social-links {
     margin-top: 1rem;
 }
@@ -2127,6 +2144,25 @@ section {
     background: var(--bg-light);
     padding: 40px;
     border-radius: var(--radius-lg);
+}
+
+.required-note {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+.form-trust-badges {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+}
+
+.form-trust-badges span {
+    font-size: 0.85rem;
+    color: var(--text-light);
 }
 
 .form-row {
