@@ -2217,23 +2217,29 @@ section {
 }
 
 .footer-brand img {
-    height: 50px;
+    height: auto;
+    max-width: 280px;
     margin-bottom: 1rem;
 }
 
-.footer-brand p {
-    color: rgba(255,255,255,0.7);
-    margin-bottom: 0.5rem;
+.footer-tagline {
+    color: rgba(255,255,255,0.85);
+    font-size: 1.05rem;
+    font-weight: 500;
+    margin-top: 0.5rem;
 }
 
-.footer-brand .copyright {
-    font-size: 0.9rem;
+.footer-links,
+.footer-contact {
+    text-align: right;
 }
 
 .footer-links h4,
 .footer-contact h4 {
     margin-bottom: 1.5rem;
     font-size: 1.1rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.95);
 }
 
 .footer-links ul {
@@ -2244,20 +2250,35 @@ section {
     margin-bottom: 0.75rem;
 }
 
-.footer-links a,
-.footer-contact a {
+.footer-links a {
     color: rgba(255,255,255,0.7);
     transition: var(--transition);
 }
 
-.footer-links a:hover,
-.footer-contact a:hover {
+.footer-links a:hover {
     color: white;
 }
 
-.footer-contact p {
+.footer-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     color: rgba(255,255,255,0.7);
     margin-bottom: 0.75rem;
+    transition: var(--transition);
+    justify-content: flex-end;
+}
+
+.footer-contact-item:hover {
+    color: white;
+}
+
+.footer-contact-item i {
+    order: 1;
+}
+
+.footer-contact-item span {
+    order: 0;
 }
 
 .footer-bottom {
