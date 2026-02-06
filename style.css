@@ -3454,48 +3454,48 @@ a.hero-badge-top:hover {
 /* Pixel section transition */
 .pixel-transition {
     width: 100%;
-    height: 120px;
-    background-size: 100% 100%;
-    background-position: center;
+    height: 80px;
+    background-size: 100% auto;
+    background-position: top center;
     background-repeat: no-repeat;
     margin: 0;
     padding: 0;
 }
 
 .pixel-transition-green {
-    background-image: url('images/brand/bg-dissolve-green.jpg');
+    background-image: url('images/brand/bg-dissolve-green.png');
 }
 
 .pixel-transition-bw {
-    background-image: url('images/brand/bg-dissolve-bw.jpg');
+    background-image: url('images/brand/bg-dissolve-bw.png');
 }
 
 .pixel-transition-purple {
-    background-image: url('images/brand/bg-dissolve-purple.jpg');
+    background-image: url('images/brand/bg-dissolve-purple.png');
 }
 
 .pixel-transition-cyan {
-    background-image: url('images/brand/bg-dissolve-cyan.jpg');
+    background-image: url('images/brand/bg-dissolve-cyan.png');
 }
 
 .pixel-transition-yellow {
-    background-image: url('images/brand/bg-dissolve-yellow.jpg');
+    background-image: url('images/brand/bg-dissolve-yellow.png');
 }
 
 .pixel-transition-pink {
-    background-image: url('images/brand/bg-dissolve-pink.jpg');
+    background-image: url('images/brand/bg-dissolve-pink.png');
 }
 
 .pixel-transition-orange {
-    background-image: url('images/brand/bg-dissolve-orange.jpg');
+    background-image: url('images/brand/bg-dissolve-orange.png');
 }
 
 .pixel-transition-red {
-    background-image: url('images/brand/bg-dissolve-red.jpg');
+    background-image: url('images/brand/bg-dissolve-red.png');
 }
 
 .pixel-transition-gray {
-    background-image: url('images/brand/bg-dissolve-gray.jpg');
+    background-image: url('images/brand/bg-dissolve-gray.png');
 }
 
 /* Matrix code background section */
