@@ -1,6 +1,7 @@
 /**
  * HAI Tech Academy - LMS JavaScript
  * Learning Management System core functionality
+ * Includes: Course management, lesson progress, quiz navigation, authentication
  */
 
 const LMS = {
@@ -867,6 +868,23 @@ const LMS = {
             clearTimeout(timeout);
             timeout = setTimeout(later, wait);
         };
+    },
+
+    // ==========================================
+    // Quiz Navigation
+    // ==========================================
+    
+    /**
+     * Navigate to quiz for a specific lesson
+     * Handles quiz display and answer submission
+     */
+    goToQuiz(lessonId, courseId) {
+        if (!lessonId) {
+            console.error('No lessonId provided for quiz');
+            return;
+        }
+        const quizUrl = `quiz.html?lesson=${lessonId}` + (courseId ? `&course=${courseId}` : '');
+        window.location.href = quizUrl;
     }
 };
 

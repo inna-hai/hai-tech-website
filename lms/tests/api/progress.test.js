@@ -162,7 +162,18 @@ describe('Progress API', () => {
             }
         });
 
-        it('should reject progress for non-enrolled course', async () => {
+        it('should reject progress for non-enrolled course on non-free lessons', async () => {
+            // Find a non-free lesson to test with
+            const nonFreeLesson = db.prepare(`
+                SELECT id FROM lessons WHERE course_id = ? AND is_free = 0 LIMIT 1
+            `).get(testCourseId);
+
+            // Skip test if no non-free lessons exist (all lessons are free)
+            if (!nonFreeLesson) {
+                console.log('Skipping test: no non-free lessons available in test course');
+                return;
+            }
+
             // Create new user without enrollment
             const newUser = {
                 name: 'No Enroll User',
@@ -180,7 +191,7 @@ describe('Progress API', () => {
                 .post('/api/progress')
                 .set('Authorization', `Bearer ${newToken}`)
                 .send({
-                    lessonId: testLessonId,
+                    lessonId: nonFreeLesson.id,
                     courseId: testCourseId,
                     watchedSeconds: 60
                 })

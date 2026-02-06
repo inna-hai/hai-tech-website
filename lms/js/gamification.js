@@ -1,6 +1,7 @@
 /**
  * Gamification UI Component - HAI Tech Academy
- * Displays XP, levels, badges, streaks, and rewards
+ * Displays XP (points), levels, badges, streaks, and rewards
+ * Points System: Users earn points/XP for completing lessons and quizzes
  */
 
 const Gamification = {

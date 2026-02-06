@@ -78,6 +78,41 @@ router.get('/', optionalAuth, (req, res) => {
 });
 
 /**
+ * GET /api/courses/enrolled
+ * Get user's enrolled courses (must be before /:id route)
+ */
+router.get('/enrolled', authenticateToken, (req, res) => {
+    try {
+        const courses = db.prepare(`
+            SELECT 
+                c.*,
+                e.enrolled_at,
+                e.expires_at,
+                e.status as enrollment_status,
+                (SELECT COUNT(*) FROM lessons WHERE course_id = c.id) as total_lessons,
+                (SELECT COUNT(*) FROM progress 
+                 WHERE user_id = ? AND course_id = c.id AND completed = 1) as completed_lessons
+            FROM courses c
+            INNER JOIN enrollments e ON e.course_id = c.id
+            WHERE e.user_id = ? AND e.status = 'active'
+            ORDER BY e.enrolled_at DESC
+        `).all(req.user.id, req.user.id);
+
+        res.json({
+            success: true,
+            courses: courses.map(formatCourse)
+        });
+
+    } catch (err) {
+        console.error('Get enrolled courses error:', err);
+        res.status(500).json({
+            success: false,
+            error: 'שגיאה בטעינת הקורסים'
+        });
+    }
+});
+
+/**
  * GET /api/courses/:id
  * Get course details with lessons
  */
@@ -173,9 +208,10 @@ router.get('/:id', optionalAuth, (req, res) => {
                 isEnrolled,
                 enrollmentStatus: enrollment?.status || null,
                 enrolledAt: enrollment?.enrolled_at || null,
-                expiresAt: enrollment?.expires_at || null
+                expiresAt: enrollment?.expires_at || null,
+                lessons: formattedLessons  // Include lessons inside course object
             },
-            lessons: formattedLessons,
+            lessons: formattedLessons,  // Keep for backward compatibility
             progress: {
                 completedLessons,
                 totalLessons,
@@ -343,13 +379,25 @@ router.get('/:id/lesson/:lessonId', optionalAuth, (req, res) => {
 
 // Helper function to format course object
 function formatCourse(course) {
+    // Get lesson count dynamically if not provided
+    let lessonCount = course.lessons_count || course.total_lessons || 0;
+    if (!lessonCount && course.id) {
+        try {
+            const result = db.prepare('SELECT COUNT(*) as count FROM lessons WHERE course_id = ?').get(course.id);
+            lessonCount = result?.count || 0;
+        } catch (e) {
+            lessonCount = 0;
+        }
+    }
+    
     return {
         id: course.id,
         title: course.title,
         description: course.description,
         image: course.image,
         price: course.price,
-        lessonsCount: course.lessons_count,
+        lessonCount: lessonCount,  // Test expects lessonCount (not lessonsCount)
+        lessonsCount: lessonCount, // Keep for backward compatibility
         durationHours: course.duration_hours,
         level: course.level,
         category: course.category,
