@@ -241,12 +241,15 @@ h4 {
 }
 
 .btn-primary {
-    background: url('images/brand/button-green.png') center/100% 100% no-repeat;
+    background: url('images/brand/button-green.png') center/contain no-repeat;
     color: white;
     box-shadow: 0 4px 20px rgba(34, 197, 94, 0.4);
     border-radius: 0;
     text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
     font-weight: 700;
+    min-height: 55px;
+    padding: 16px 45px;
+    image-rendering: pixelated;
 }
 
 .btn-primary:hover {
@@ -290,14 +293,16 @@ h4 {
 }
 
 .btn-cta {
-    background: url('images/brand/button-green.png') center/100% 100% no-repeat;
+    background: url('images/brand/button-green.png') center/contain no-repeat;
     color: white;
     font-size: 1.1rem;
-    padding: 20px 40px;
+    padding: 18px 50px;
+    min-height: 60px;
     box-shadow: 0 4px 20px rgba(34, 197, 94, 0.4);
     border-radius: 0;
     text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
     font-weight: 700;
+    image-rendering: pixelated;
 }
 
 .btn-cta:hover {
@@ -3546,15 +3551,17 @@ a.hero-badge-top:hover {
 
 /* Pixel button style - uses brand image */
 .btn-pixel {
-    background: url('images/brand/button-green.png') center/100% 100% no-repeat;
+    background: url('images/brand/button-green.png') center/contain no-repeat;
     border: none;
-    padding: 20px 40px;
+    padding: 18px 50px;
+    min-height: 60px;
     color: white;
     font-weight: 700;
     text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
     box-shadow: 0 4px 20px rgba(34, 197, 94, 0.4);
     transition: all 0.2s;
     border-radius: 0;
+    image-rendering: pixelated;
 }
 
 .btn-pixel:hover {
@@ -3569,10 +3576,12 @@ a.hero-badge-top:hover {
 
 /* Gray pixel button */
 .btn-pixel-gray {
-    background: url('images/brand/button-gray.png') center/100% 100% no-repeat;
+    background: url('images/brand/button-gray.png') center/contain no-repeat;
     border: none;
-    padding: 20px 40px;
+    padding: 18px 50px;
+    min-height: 60px;
     color: white;
+    image-rendering: pixelated;
     font-weight: 700;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
     image-rendering: pixelated;
