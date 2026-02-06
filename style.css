@@ -3493,40 +3493,71 @@ a.hero-badge-top:hover {
 /* ===== Pixel Art Brand Elements ===== */
 
 /* Pixel background sections - dissolve edges */
+/* Large padding keeps content in center, away from pixel edges */
+
 .pixel-bg-green {
     background: url('images/brand/bg-dissolve-green.png') center/cover no-repeat;
-    padding: 80px 0;
+    padding: 120px 0;
+    color: white;
 }
+.pixel-bg-green h2, .pixel-bg-green h3 { color: white; }
+.pixel-bg-green p { color: rgba(255,255,255,0.9); }
 
 .pixel-bg-purple {
     background: url('images/brand/bg-dissolve-purple.png') center/cover no-repeat;
-    padding: 80px 0;
+    padding: 120px 0;
+    color: white;
 }
+.pixel-bg-purple h2, .pixel-bg-purple h3 { color: white; }
+.pixel-bg-purple p { color: rgba(255,255,255,0.9); }
 
 .pixel-bg-cyan {
     background: url('images/brand/bg-dissolve-cyan.png') center/cover no-repeat;
-    padding: 80px 0;
+    padding: 120px 0;
+    color: white;
 }
+.pixel-bg-cyan h2, .pixel-bg-cyan h3 { color: white; }
+.pixel-bg-cyan p { color: rgba(255,255,255,0.9); }
 
 .pixel-bg-yellow {
     background: url('images/brand/bg-dissolve-yellow.png') center/cover no-repeat;
-    padding: 80px 0;
+    padding: 120px 0;
+    color: #1a1a2e;
 }
+.pixel-bg-yellow h2, .pixel-bg-yellow h3 { color: #1a1a2e; }
+.pixel-bg-yellow p { color: #333; }
 
 .pixel-bg-orange {
     background: url('images/brand/bg-dissolve-orange.png') center/cover no-repeat;
-    padding: 80px 0;
+    padding: 120px 0;
+    color: white;
 }
+.pixel-bg-orange h2, .pixel-bg-orange h3 { color: white; }
+.pixel-bg-orange p { color: rgba(255,255,255,0.9); }
 
 .pixel-bg-pink {
     background: url('images/brand/bg-dissolve-pink.png') center/cover no-repeat;
-    padding: 80px 0;
+    padding: 120px 0;
+    color: white;
 }
+.pixel-bg-pink h2, .pixel-bg-pink h3 { color: white; }
+.pixel-bg-pink p { color: rgba(255,255,255,0.9); }
+
+.pixel-bg-red {
+    background: url('images/brand/bg-dissolve-red.png') center/cover no-repeat;
+    padding: 120px 0;
+    color: white;
+}
+.pixel-bg-red h2, .pixel-bg-red h3 { color: white; }
+.pixel-bg-red p { color: rgba(255,255,255,0.9); }
 
 .pixel-bg-gray {
     background: url('images/brand/bg-dissolve-gray.png') center/cover no-repeat;
-    padding: 80px 0;
+    padding: 120px 0;
+    color: white;
 }
+.pixel-bg-gray h2, .pixel-bg-gray h3 { color: white; }
+.pixel-bg-gray p { color: rgba(255,255,255,0.9); }
 
 /* Old pixel transition - keeping for backwards compatibility */
 .pixel-transition {
