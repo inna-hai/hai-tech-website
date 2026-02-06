@@ -3273,6 +3273,88 @@ a.hero-badge-top:hover {
     color: var(--text-secondary, #94a3b8);
 }
 
+/* ===== ANIMATED WHATSAPP ICON ===== */
+.whatsapp-icon-animated {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 1rem;
+    animation: whatsapp-pulse 2s ease-in-out infinite;
+}
+
+.whatsapp-icon-animated svg {
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes whatsapp-pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+/* ===== FORM RTL & STYLING FIXES ===== */
+.required-star {
+    color: #ef4444;
+    font-weight: 700;
+    margin-left: 4px;
+}
+
+.ltr-input {
+    direction: ltr;
+    text-align: right;
+}
+
+.ltr-input::placeholder {
+    text-align: right;
+}
+
+.form-trust-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+.form-trust-line i {
+    width: 14px;
+    height: 14px;
+    color: var(--accent);
+}
+
+.form-trust-line span {
+    color: #d1d5db;
+}
+
+.social-links-secondary {
+    margin-top: 24px;
+    text-align: center;
+}
+
+.social-link-small {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.social-link-small:hover {
+    color: #1877f2;
+}
+
+.social-link-small i {
+    width: 16px;
+    height: 16px;
+}
+
 /* ===== FLOATING ACTION BUTTONS ===== */
 .floating-buttons {
     position: fixed;

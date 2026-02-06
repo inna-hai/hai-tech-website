@@ -290,29 +290,31 @@
         }
         
         .program-image {
-            height: 150px;
+            height: 180px;
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            background-size: cover;
+            background-position: center;
         }
         
         .program-image::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: inherit;
-            filter: brightness(1.1);
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.3) 100%);
+        }
+        
+        .program-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         .program-icon {
-            width: 60px;
-            height: 60px;
-            color: white;
-            position: relative;
-            z-index: 1;
-            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.2));
+            display: none;
         }
         
         .program-grade {
@@ -642,8 +644,8 @@
                     
                     <!-- CodeStart -->
                     <article class="program-card">
-                        <div class="program-image scratch">
-                            <i data-lucide="cat" class="program-icon"></i>
+                        <div class="program-image">
+                            <img src="images/institutions/codestart.jpg" alt="ילדים לומדים סקראץ' בכיתה">
                             <span class="program-grade">א'-ד'</span>
                         </div>
                         <div class="program-body">
@@ -662,8 +664,8 @@
                     
                     <!-- AI Creators -->
                     <article class="program-card">
-                        <div class="program-image ai-creators">
-                            <i data-lucide="palette" class="program-icon"></i>
+                        <div class="program-image">
+                            <img src="images/institutions/ai-creators.jpg" alt="ילדים יוצרים עם בינה מלאכותית">
                             <span class="program-grade">ג'-ו'</span>
                         </div>
                         <div class="program-body">
@@ -681,8 +683,8 @@
                     
                     <!-- STEM ומיינקראפט -->
                     <article class="program-card">
-                        <div class="program-image stem">
-                            <i data-lucide="zap" class="program-icon"></i>
+                        <div class="program-image">
+                            <img src="images/institutions/stem-minecraft.jpg" alt="ילדים לומדים STEM עם מיינקראפט">
                             <span class="program-grade">ג'-ו'</span>
                         </div>
                         <div class="program-body">
@@ -701,8 +703,8 @@
                     
                     <!-- יזמות ובינה מלאכותית -->
                     <article class="program-card">
-                        <div class="program-image entrepreneurship">
-                            <i data-lucide="lightbulb" class="program-icon"></i>
+                        <div class="program-image">
+                            <img src="images/institutions/entrepreneurship.jpg" alt="ילדים עובדים על פרויקטי יזמות">
                             <span class="program-grade">ה'-ו'</span>
                         </div>
                         <div class="program-body">
@@ -720,8 +722,8 @@
                     
                     <!-- העולם החכם סביבנו -->
                     <article class="program-card">
-                        <div class="program-image ai-world">
-                            <i data-lucide="globe" class="program-icon"></i>
+                        <div class="program-image">
+                            <img src="images/institutions/ai-world.jpg" alt="ילדים לומדים על בינה מלאכותית">
                             <span class="program-grade">ה'-ו'</span>
                         </div>
                         <div class="program-body">
@@ -740,8 +742,8 @@
                     
                     <!-- האקתונים ה'-ו' -->
                     <article class="program-card">
-                        <div class="program-image hackathon">
-                            <i data-lucide="rocket" class="program-icon"></i>
+                        <div class="program-image">
+                            <img src="images/institutions/hackathon-elementary.jpg" alt="האקתון לילדים">
                             <span class="program-grade">ה'-ו'</span>
                         </div>
                         <div class="program-body">
@@ -759,8 +761,8 @@
                     
                     <!-- פיתוח מוצר בתלת-ממד -->
                     <article class="program-card">
-                        <div class="program-image print3d">
-                            <i data-lucide="printer" class="program-icon"></i>
+                        <div class="program-image">
+                            <img src="images/institutions/3d-printing.jpg" alt="ילדים לומדים הדפסה תלת מימדית">
                             <span class="program-grade">ד'-ז'</span>
                         </div>
                         <div class="program-body">
@@ -779,8 +781,8 @@
                     
                     <!-- FutureMakers -->
                     <article class="program-card">
-                        <div class="program-image futuremakers">
-                            <i data-lucide="sparkles" class="program-icon"></i>
+                        <div class="program-image">
+                            <img src="images/institutions/futuremakers.jpg" alt="נוער מפתח אפליקציות">
                             <span class="program-grade">ז'-י"ב</span>
                         </div>
                         <div class="program-body">
@@ -799,8 +801,8 @@
                     
                     <!-- האקתונים ז'-י"ב -->
                     <article class="program-card">
-                        <div class="program-image hackathon">
-                            <i data-lucide="trophy" class="program-icon"></i>
+                        <div class="program-image">
+                            <img src="images/institutions/hackathon-highschool.jpg" alt="האקתון לתיכוניסטים">
                             <span class="program-grade">ז'-י"ב</span>
                         </div>
                         <div class="program-body">
@@ -818,8 +820,8 @@
                     
                     <!-- פיתוח אפליקציות ובינה מלאכותית -->
                     <article class="program-card">
-                        <div class="program-image apps">
-                            <i data-lucide="smartphone" class="program-icon"></i>
+                        <div class="program-image">
+                            <img src="images/institutions/app-development.jpg" alt="תלמידים מפתחים אפליקציות">
                             <span class="program-grade">ז'-ט'</span>
                         </div>
                         <div class="program-body">
@@ -838,8 +840,8 @@
                     
                     <!-- תכנות, בינה מלאכותית וסייבר -->
                     <article class="program-card">
-                        <div class="program-image cyber">
-                            <i data-lucide="shield" class="program-icon"></i>
+                        <div class="program-image">
+                            <img src="images/institutions/cyber-programming.jpg" alt="תלמידים לומדים סייבר ותכנות">
                             <span class="program-grade">ז'-ט'</span>
                         </div>
                         <div class="program-body">
@@ -858,8 +860,8 @@
                     
                     <!-- תכנית מצוינות -->
                     <article class="program-card">
-                        <div class="program-image excellence">
-                            <i data-lucide="star" class="program-icon"></i>
+                        <div class="program-image">
+                            <img src="images/institutions/excellence.jpg" alt="תכנית מצוינות יזמית">
                             <span class="program-grade">ז'-ח'</span>
                         </div>
                         <div class="program-body">
@@ -889,8 +891,8 @@
                     
                     <!-- קורס בינה מלאכותית למורים -->
                     <article class="program-card">
-                        <div class="program-image teachers">
-                            <i data-lucide="cpu" class="program-icon"></i>
+                        <div class="program-image">
+                            <img src="images/institutions/teachers-ai.jpg" alt="מורים לומדים בינה מלאכותית">
                             <span class="program-grade">צוותי חינוך</span>
                         </div>
                         <div class="program-body">
@@ -909,8 +911,8 @@
                     
                     <!-- קורס פדגוגיה מבוססת פרויקטים -->
                     <article class="program-card">
-                        <div class="program-image teachers">
-                            <i data-lucide="book-open" class="program-icon"></i>
+                        <div class="program-image">
+                            <img src="images/institutions/teachers-pbl.jpg" alt="מורים בסדנת PBL">
                             <span class="program-grade">צוותי חינוך</span>
                         </div>
                         <div class="program-body">
@@ -929,8 +931,8 @@
                     
                     <!-- הכשרה להוראה טכנולוגית -->
                     <article class="program-card">
-                        <div class="program-image teachers">
-                            <i data-lucide="user-check" class="program-icon"></i>
+                        <div class="program-image">
+                            <img src="images/institutions/teachers-tech.jpg" alt="הכשרת מורים בטכנולוגיה">
                             <span class="program-grade">צוותי חינוך</span>
                         </div>
                         <div class="program-body">
