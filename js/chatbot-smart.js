@@ -109,21 +109,10 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
-        @media (max-width: 480px) {
+        @media (max-width: 768px) {
+            #haitech-chat-btn,
             #haitech-chat-window {
-                left: 10px !important;
-                right: 10px !important;
-                bottom: 90px !important;
-                width: auto !important;
-                height: 450px !important;
-                max-height: 60vh !important;
-                border-radius: 16px !important;
-            }
-            #haitech-chat-btn {
-                bottom: 24px !important;
-                left: 20px !important;
-                width: 56px !important;
-                height: 56px !important;
+                display: none !important;
             }
         }
         
