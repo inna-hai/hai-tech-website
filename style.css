@@ -3474,6 +3474,30 @@ a.hero-badge-top:hover {
     background-image: url('images/brand/bg-dissolve-purple.jpg');
 }
 
+.pixel-transition-cyan {
+    background-image: url('images/brand/bg-dissolve-cyan.jpg');
+}
+
+.pixel-transition-yellow {
+    background-image: url('images/brand/bg-dissolve-yellow.jpg');
+}
+
+.pixel-transition-pink {
+    background-image: url('images/brand/bg-dissolve-pink.jpg');
+}
+
+.pixel-transition-orange {
+    background-image: url('images/brand/bg-dissolve-orange.jpg');
+}
+
+.pixel-transition-red {
+    background-image: url('images/brand/bg-dissolve-red.jpg');
+}
+
+.pixel-transition-gray {
+    background-image: url('images/brand/bg-dissolve-gray.jpg');
+}
+
 /* Matrix code background section */
 .matrix-section {
     background: url('images/brand/bg-matrix-green.jpg') center/cover;
