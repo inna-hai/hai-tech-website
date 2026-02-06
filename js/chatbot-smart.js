@@ -43,20 +43,20 @@
             left: 20px !important;
             width: 60px !important;
             height: 60px !important;
-            border-radius: 50% !important;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
-            border: none !important;
+            border-radius: 12px !important;
+            background: linear-gradient(135deg, #22c55e, #16a34a) !important;
+            border: 3px solid #15803d !important;
             cursor: pointer !important;
             z-index: 99998 !important;
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
-            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4) !important;
+            box-shadow: 0 4px 20px rgba(34, 197, 94, 0.4) !important;
             transition: transform 0.3s, box-shadow 0.3s !important;
         }
         #haitech-chat-btn:hover {
             transform: scale(1.1) !important;
-            box-shadow: 0 6px 30px rgba(99, 102, 241, 0.5) !important;
+            box-shadow: 0 6px 30px rgba(34, 197, 94, 0.5) !important;
         }
         #haitech-chat-btn svg {
             width: 28px;
@@ -835,9 +835,7 @@
     const btn = document.createElement('button');
     btn.id = 'haitech-chat-btn';
     btn.innerHTML = `
-        <svg viewBox="0 0 24 24" stroke-width="2">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-        </svg>
+        <img src="images/brand/icon-chat.jpg" alt="צ'אט" style="width: 40px; height: 40px; image-rendering: pixelated; border-radius: 8px;">
         <span class="badge">1</span>
     `;
     document.body.appendChild(btn);
