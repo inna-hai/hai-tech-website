@@ -718,7 +718,7 @@ section {
 .transform-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    gap: 45px;
     align-items: center;
     max-width: 1000px;
     margin: 0 auto;
@@ -730,13 +730,13 @@ section {
 }
 
 .quote-icon {
-    width: 48px;
-    height: 48px;
+    width: 36px;
+    height: 36px;
     color: var(--primary);
-    opacity: 0.3;
+    opacity: 0.2;
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 30px;
+    right: 30px;
 }
 
 .parent-quote blockquote {
@@ -750,7 +750,8 @@ section {
 }
 
 .parent-quote blockquote strong {
-    color: var(--primary);
+    color: var(--accent);
+    cursor: default;
 }
 
 .parent-quote cite {
@@ -768,8 +769,9 @@ section {
 }
 
 .transform-benefits h3 {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 24px;
     color: var(--text);
 }
 
@@ -783,14 +785,13 @@ section {
     display: flex;
     align-items: flex-start;
     gap: 12px;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--bg-alt);
+    padding: 14px 0;
     font-size: 1rem;
     color: var(--text);
 }
 
-.transform-benefits li:last-child {
-    border-bottom: none;
+.transform-benefits li:first-child {
+    padding-top: 0;
 }
 
 .transform-benefits li i {
