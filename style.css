@@ -3448,3 +3448,98 @@ a.hero-badge-top:hover {
     flex-wrap: wrap;
     justify-content: center;
 }
+
+/* ===== Pixel Art Brand Elements ===== */
+
+/* Pixel section transition */
+.pixel-transition {
+    width: 100%;
+    height: 80px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+}
+
+.pixel-transition-green {
+    background-image: url('images/brand/bg-dissolve-green.jpg');
+}
+
+.pixel-transition-bw {
+    background-image: url('images/brand/bg-dissolve-bw.jpg');
+}
+
+.pixel-transition-purple {
+    background-image: url('images/brand/bg-dissolve-purple.jpg');
+}
+
+/* Matrix code background section */
+.matrix-section {
+    background: url('images/brand/bg-matrix-green.jpg') center/cover;
+    padding: 4rem 0;
+    position: relative;
+}
+
+.matrix-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.matrix-section .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Pixel mascot decoration */
+.pixel-mascot {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+
+/* Pixel chat icon for contact */
+.pixel-chat-icon {
+    width: 40px;
+    height: 40px;
+    image-rendering: pixelated;
+}
+
+/* Footer logo with slogan */
+.footer-logo-full {
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+/* Pixel frame wrapper */
+.pixel-frame {
+    background: url('images/brand/frame-green.jpg') center/contain no-repeat;
+    padding: 2rem;
+}
+
+/* Retro gaming style headings */
+.pixel-heading {
+    font-family: 'Heebo', sans-serif;
+    text-shadow: 3px 3px 0 rgba(139, 195, 74, 0.5);
+}
+
+/* Pixel button style */
+.btn-pixel {
+    background: url('images/brand/button-green.jpg') center/cover;
+    border: none;
+    padding: 1rem 2rem;
+    color: white;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    image-rendering: pixelated;
+    transition: transform 0.2s, filter 0.2s;
+}
+
+.btn-pixel:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
