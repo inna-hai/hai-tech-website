@@ -835,7 +835,7 @@
     const btn = document.createElement('button');
     btn.id = 'haitech-chat-btn';
     btn.innerHTML = `
-        <img src="images/brand/icon-chat.jpg" alt="צ'אט" style="width: 40px; height: 40px; image-rendering: pixelated; border-radius: 8px;">
+        <img src="images/brand/icon-chat.png" alt="צ'אט" style="width: 40px; height: 40px; image-rendering: pixelated;">
         <span class="badge">1</span>
     `;
     document.body.appendChild(btn);
