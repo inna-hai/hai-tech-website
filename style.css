@@ -241,31 +241,18 @@ h4 {
 }
 
 .btn-primary {
-    background: var(--gradient);
+    background: url('images/brand/button-green.png') center/100% 100% no-repeat;
     color: white;
-    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-primary::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    transition: 0.5s;
-}
-
-.btn-primary:hover::before {
-    left: 100%;
+    box-shadow: 0 4px 20px rgba(34, 197, 94, 0.4);
+    border-radius: 0;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+    font-weight: 700;
 }
 
 .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(99, 102, 241, 0.6);
+    transform: scale(1.05);
+    box-shadow: 0 8px 30px rgba(34, 197, 94, 0.5);
+    filter: brightness(1.1);
 }
 
 .btn-secondary {
@@ -303,16 +290,20 @@ h4 {
 }
 
 .btn-cta {
-    background: linear-gradient(135deg, var(--gaming-green) 0%, var(--accent) 100%);
+    background: url('images/brand/button-green.png') center/100% 100% no-repeat;
     color: white;
     font-size: 1.1rem;
-    padding: 16px 32px;
-    box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
+    padding: 20px 40px;
+    box-shadow: 0 4px 20px rgba(34, 197, 94, 0.4);
+    border-radius: 0;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+    font-weight: 700;
 }
 
 .btn-cta:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(16, 185, 129, 0.5);
+    transform: scale(1.05);
+    box-shadow: 0 8px 30px rgba(34, 197, 94, 0.5);
+    filter: brightness(1.1);
 }
 
 /* ===== UserWay Accessibility Widget Position Fix ===== */
@@ -3553,43 +3544,34 @@ a.hero-badge-top:hover {
     text-shadow: 3px 3px 0 rgba(139, 195, 74, 0.5);
 }
 
-/* Pixel button style - Minecraft-inspired */
+/* Pixel button style - uses brand image */
 .btn-pixel {
-    background: linear-gradient(180deg, #5cb85c 0%, #4cae4c 50%, #398439 100%);
-    border: 4px solid;
-    border-color: #6bd46b #2d6d2d #2d6d2d #6bd46b;
-    padding: 1rem 2rem;
+    background: url('images/brand/button-green.png') center/100% 100% no-repeat;
+    border: none;
+    padding: 20px 40px;
     color: white;
     font-weight: 700;
     text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
-    box-shadow: 
-        inset 0 -4px 0 rgba(0,0,0,0.2),
-        inset 0 4px 0 rgba(255,255,255,0.2),
-        4px 4px 0 rgba(0,0,0,0.3);
-    transition: all 0.1s;
-    image-rendering: pixelated;
+    box-shadow: 0 4px 20px rgba(34, 197, 94, 0.4);
+    transition: all 0.2s;
+    border-radius: 0;
 }
 
 .btn-pixel:hover {
-    transform: translate(2px, 2px);
-    box-shadow: 
-        inset 0 -4px 0 rgba(0,0,0,0.2),
-        inset 0 4px 0 rgba(255,255,255,0.2),
-        2px 2px 0 rgba(0,0,0,0.3);
+    transform: scale(1.05);
+    filter: brightness(1.1);
+    box-shadow: 0 8px 30px rgba(34, 197, 94, 0.5);
 }
 
 .btn-pixel:active {
-    transform: translate(4px, 4px);
-    box-shadow: 
-        inset 0 -4px 0 rgba(0,0,0,0.2),
-        inset 0 4px 0 rgba(255,255,255,0.2);
+    transform: scale(0.98);
 }
 
-/* Legacy pixel button with image */
-.btn-pixel-img {
-    background: url('images/brand/button-green.jpg') center/cover;
+/* Gray pixel button */
+.btn-pixel-gray {
+    background: url('images/brand/button-gray.png') center/100% 100% no-repeat;
     border: none;
-    padding: 1rem 2rem;
+    padding: 20px 40px;
     color: white;
     font-weight: 700;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
