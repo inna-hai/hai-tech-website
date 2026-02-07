@@ -590,11 +590,19 @@
         const navLinks = document.querySelector('.nav-links');
         
         if (mobileMenuBtn && navLinks) {
-            mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.addEventListener('click', function() {
                 navLinks.classList.toggle('active');
-                mobileMenuBtn.classList.toggle('active');
-                const isExpanded = navLinks.classList.contains('active');
-                mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
+                this.setAttribute('aria-expanded', 
+                    this.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'
+                );
+            });
+            
+            // Close mobile menu when clicking a link
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function() {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                });
             });
         }
     </script>
