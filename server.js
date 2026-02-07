@@ -13,18 +13,10 @@ const CONFIG = {
     port: 8080,
     staticDir: __dirname,
     // HaiTech CRM Configuration
-    crmBaseUrl: 'https://18f95599f0b7.ngrok-free.app/api',
-    crmEmail: 'admin@haitech.co.il',
-    crmPassword: 'admin123',
+    crmWebhookUrl: 'https://18f95599f0b7.ngrok-free.app/api/webhook/leads',
+    crmApiKey: 'haitech_b8e9c53a0ac8ef31b18ed988dfbd37d0d7e8a60f1c40f1e14458ab25e2496234',
     // OpenAI API (optional - set to enable AI responses)
     openaiKey: process.env.OPENAI_API_KEY || null
-};
-
-// CRM Authentication State
-let crmAuth = {
-    accessToken: null,
-    refreshToken: null,
-    expiresAt: 0
 };
 
 // Load chatbot knowledge
@@ -57,71 +49,6 @@ const mimeTypes = {
     '.mp3': 'audio/mpeg',
     '.wav': 'audio/wav'
 };
-
-// ============================================
-// CRM AUTHENTICATION
-// ============================================
-
-async function getCrmToken() {
-    // Return cached token if still valid (with 5 min buffer)
-    if (crmAuth.accessToken && Date.now() < crmAuth.expiresAt - 300000) {
-        return crmAuth.accessToken;
-    }
-    
-    console.log('[CRM] Getting new authentication token...');
-    
-    return new Promise((resolve) => {
-        const loginData = JSON.stringify({
-            email: CONFIG.crmEmail,
-            password: CONFIG.crmPassword
-        });
-        
-        const loginUrl = new URL(CONFIG.crmBaseUrl + '/auth/login');
-        
-        const options = {
-            hostname: loginUrl.hostname,
-            port: 443,
-            path: loginUrl.pathname,
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Content-Length': Buffer.byteLength(loginData)
-            }
-        };
-        
-        const req = https.request(options, (res) => {
-            let body = '';
-            res.on('data', chunk => body += chunk);
-            res.on('end', () => {
-                try {
-                    const data = JSON.parse(body);
-                    if (data.accessToken) {
-                        crmAuth.accessToken = data.accessToken;
-                        crmAuth.refreshToken = data.refreshToken;
-                        // Token expires in ~24h, we'll refresh earlier
-                        crmAuth.expiresAt = Date.now() + (23 * 60 * 60 * 1000);
-                        console.log('[CRM] Authentication successful');
-                        resolve(data.accessToken);
-                    } else {
-                        console.error('[CRM] Login failed:', body);
-                        resolve(null);
-                    }
-                } catch (e) {
-                    console.error('[CRM] Login parse error:', e.message);
-                    resolve(null);
-                }
-            });
-        });
-        
-        req.on('error', (error) => {
-            console.error('[CRM] Login connection error:', error.message);
-            resolve(null);
-        });
-        
-        req.write(loginData);
-        req.end();
-    });
-}
 
 // ============================================
 // AI CHATBOT SYSTEM
@@ -437,11 +364,11 @@ const server = http.createServer((req, res) => {
         return handleChat(req, res);
     }
     
-    // API: Lead submission - sends to HaiTech CRM
+    // API: Lead submission - sends to HaiTech CRM via webhook
     if (req.method === 'POST' && pathname === '/api/lead') {
         let body = '';
         req.on('data', chunk => body += chunk.toString());
-        req.on('end', async () => {
+        req.on('end', () => {
             try {
                 const formData = JSON.parse(body);
                 
@@ -451,27 +378,18 @@ const server = http.createServer((req, res) => {
                 if (formData.childAge) noteParts.push(`גיל: ${formData.childAge}`);
                 if (formData.subject) noteParts.push(`תחום עניין: ${formData.subject}`);
                 if (formData.message) noteParts.push(`הודעה: ${formData.message}`);
-                noteParts.push(`מקור: אתר האינטרנט`);
                 noteParts.push(`תאריך: ${new Date().toLocaleString('he-IL')}`);
                 
-                // Format for CRM API (POST /customers)
+                // Format for CRM webhook
                 const crmData = {
                     name: formData.name,
-                    phone: formData.phone.replace(/[-\s]/g, ''), // Clean phone
+                    phone: formData.phone ? formData.phone.replace(/[-\s]/g, '') : '',
                     email: formData.email || '',
-                    notes: noteParts.join('\n')
+                    notes: noteParts.join('\n'),
+                    source: formData.source || 'website'
                 };
                 
-                // Get valid CRM token
-                const token = await getCrmToken();
-                if (!token) {
-                    console.error('[LEAD] Failed to get CRM token');
-                    res.writeHead(500, { 'Content-Type': 'application/json' });
-                    res.end(JSON.stringify({ success: false, error: 'CRM auth failed' }));
-                    return;
-                }
-                
-                const crmUrl = new URL(CONFIG.crmBaseUrl + '/customers');
+                const crmUrl = new URL(CONFIG.crmWebhookUrl);
                 const postData = JSON.stringify(crmData);
                 
                 const options = {
@@ -481,7 +399,7 @@ const server = http.createServer((req, res) => {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`,
+                        'X-API-Key': CONFIG.crmApiKey,
                         'Content-Length': Buffer.byteLength(postData)
                     }
                 };
@@ -490,7 +408,7 @@ const server = http.createServer((req, res) => {
                     let crmBody = '';
                     crmRes.on('data', chunk => crmBody += chunk);
                     crmRes.on('end', () => {
-                        console.log(`[LEAD] ${formData.name} (${formData.phone}) - CRM Status: ${crmRes.statusCode}`);
+                        console.log(`[LEAD] ${formData.name} (${formData.phone || formData.email}) - CRM Status: ${crmRes.statusCode}`);
                         
                         if (crmRes.statusCode >= 200 && crmRes.statusCode < 300) {
                             res.writeHead(200, { 'Content-Type': 'application/json' });
