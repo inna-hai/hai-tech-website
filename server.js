@@ -12,10 +12,19 @@ const url = require('url');
 const CONFIG = {
     port: 8080,
     staticDir: __dirname,
-    crmEndpoint: 'https://18f95599f0b7.ngrok-free.app/api/v1/customers',
-    apiKey: 'haitech_0057e908d625dfe4c9e4b61250f0576556aa8c1585c5b85bffea61b42014c566',
+    // HaiTech CRM Configuration
+    crmBaseUrl: 'https://18f95599f0b7.ngrok-free.app/api',
+    crmEmail: 'admin@haitech.co.il',
+    crmPassword: 'admin123',
     // OpenAI API (optional - set to enable AI responses)
     openaiKey: process.env.OPENAI_API_KEY || null
+};
+
+// CRM Authentication State
+let crmAuth = {
+    accessToken: null,
+    refreshToken: null,
+    expiresAt: 0
 };
 
 // Load chatbot knowledge
@@ -48,6 +57,71 @@ const mimeTypes = {
     '.mp3': 'audio/mpeg',
     '.wav': 'audio/wav'
 };
+
+// ============================================
+// CRM AUTHENTICATION
+// ============================================
+
+async function getCrmToken() {
+    // Return cached token if still valid (with 5 min buffer)
+    if (crmAuth.accessToken && Date.now() < crmAuth.expiresAt - 300000) {
+        return crmAuth.accessToken;
+    }
+    
+    console.log('[CRM] Getting new authentication token...');
+    
+    return new Promise((resolve) => {
+        const loginData = JSON.stringify({
+            email: CONFIG.crmEmail,
+            password: CONFIG.crmPassword
+        });
+        
+        const loginUrl = new URL(CONFIG.crmBaseUrl + '/auth/login');
+        
+        const options = {
+            hostname: loginUrl.hostname,
+            port: 443,
+            path: loginUrl.pathname,
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Content-Length': Buffer.byteLength(loginData)
+            }
+        };
+        
+        const req = https.request(options, (res) => {
+            let body = '';
+            res.on('data', chunk => body += chunk);
+            res.on('end', () => {
+                try {
+                    const data = JSON.parse(body);
+                    if (data.accessToken) {
+                        crmAuth.accessToken = data.accessToken;
+                        crmAuth.refreshToken = data.refreshToken;
+                        // Token expires in ~24h, we'll refresh earlier
+                        crmAuth.expiresAt = Date.now() + (23 * 60 * 60 * 1000);
+                        console.log('[CRM] Authentication successful');
+                        resolve(data.accessToken);
+                    } else {
+                        console.error('[CRM] Login failed:', body);
+                        resolve(null);
+                    }
+                } catch (e) {
+                    console.error('[CRM] Login parse error:', e.message);
+                    resolve(null);
+                }
+            });
+        });
+        
+        req.on('error', (error) => {
+            console.error('[CRM] Login connection error:', error.message);
+            resolve(null);
+        });
+        
+        req.write(loginData);
+        req.end();
+    });
+}
 
 // ============================================
 // AI CHATBOT SYSTEM
@@ -367,7 +441,7 @@ const server = http.createServer((req, res) => {
     if (req.method === 'POST' && pathname === '/api/lead') {
         let body = '';
         req.on('data', chunk => body += chunk.toString());
-        req.on('end', () => {
+        req.on('end', async () => {
             try {
                 const formData = JSON.parse(body);
                 
@@ -388,7 +462,16 @@ const server = http.createServer((req, res) => {
                     notes: noteParts.join('\n')
                 };
                 
-                const crmUrl = new URL(CONFIG.crmEndpoint);
+                // Get valid CRM token
+                const token = await getCrmToken();
+                if (!token) {
+                    console.error('[LEAD] Failed to get CRM token');
+                    res.writeHead(500, { 'Content-Type': 'application/json' });
+                    res.end(JSON.stringify({ success: false, error: 'CRM auth failed' }));
+                    return;
+                }
+                
+                const crmUrl = new URL(CONFIG.crmBaseUrl + '/customers');
                 const postData = JSON.stringify(crmData);
                 
                 const options = {
@@ -398,7 +481,7 @@ const server = http.createServer((req, res) => {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'X-API-Key': CONFIG.apiKey,
+                        'Authorization': `Bearer ${token}`,
                         'Content-Length': Buffer.byteLength(postData)
                     }
                 };
