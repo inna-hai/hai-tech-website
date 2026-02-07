@@ -372,20 +372,15 @@ const server = http.createServer((req, res) => {
             try {
                 const formData = JSON.parse(body);
                 
-                // Build notes from form data
-                const noteParts = [];
-                if (formData.childName) noteParts.push(`ילד/ה: ${formData.childName}`);
-                if (formData.childAge) noteParts.push(`גיל: ${formData.childAge}`);
-                if (formData.subject) noteParts.push(`תחום עניין: ${formData.subject}`);
-                if (formData.message) noteParts.push(`הודעה: ${formData.message}`);
-                noteParts.push(`תאריך: ${new Date().toLocaleString('he-IL')}`);
-                
-                // Format for CRM webhook
+                // Format for CRM webhook - send all fields separately
                 const crmData = {
-                    name: formData.name,
+                    name: formData.name || '',
                     phone: formData.phone ? formData.phone.replace(/[-\s]/g, '') : '',
                     email: formData.email || '',
-                    notes: noteParts.join('\n'),
+                    childName: formData.childName || '',
+                    childAge: formData.childAge ? parseInt(formData.childAge) : null,
+                    interest: formData.subject || formData.interest || '',
+                    message: formData.message || '',
                     source: formData.source || 'website'
                 };
                 
