@@ -737,91 +737,100 @@
     </section>
     
 
-    <!-- Testimonials Section -->
+    <!-- Testimonials Section - Carousel -->
     <section id="testimonials" class="testimonials">
         <div class="container">
             <h2>מה ההורים אומרים?</h2>
             <p class="section-subtitle">אל תסמכו רק עלינו — שמעו מהורים שכבר עברו את הדרך</p>
             
-            <div class="testimonials-slider">
-                <div class="testimonial-card">
-                    <div class="stars">
-                        <i data-lucide="star" class="star-icon filled"></i>
-                        <i data-lucide="star" class="star-icon filled"></i>
-                        <i data-lucide="star" class="star-icon filled"></i>
-                        <i data-lucide="star" class="star-icon filled"></i>
-                        <i data-lucide="star" class="star-icon filled"></i>
+            <div class="carousel-container" style="position: relative; overflow: hidden; max-width: 900px; margin: 0 auto;">
+                <div class="carousel-track" style="display: flex; transition: transform 0.5s ease-in-out;">
+                    <!-- Card 1 -->
+                    <div class="carousel-slide" style="min-width: 100%; padding: 0 1rem; box-sizing: border-box;">
+                        <div class="testimonial-card" style="background: white; border-radius: 16px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: center;">
+                            <div class="stars" style="color: #fbbf24; margin-bottom: 1rem;">★★★★★</div>
+                            <blockquote style="font-size: 1.1rem; color: #334155; line-height: 1.8; margin-bottom: 1.5rem;">
+                                "בהנהלת מרכז חוסידמן לנוער שוחר מדע, באוניברסיטת בן גוריון, אנחנו עובדים עם דרך ההייטק. <strong style="color: #22c55e;">התרשמנו מאוד מאיכות ורמת ההדרכה.</strong>"
+                            </blockquote>
+                            <div class="author-name" style="font-weight: 700; color: #1e293b;">איילת אסיסקוביץ</div>
+                            <div class="author-role" style="color: #64748b; font-size: 0.9rem;">אוניברסיטת בן גוריון</div>
+                        </div>
                     </div>
-                    <blockquote>
-                        "בהנהלת מרכז חוסידמן לנוער שוחר מדע, באוניברסיטת בן גוריון, אנחנו עובדים עם דרך ההייטק. <strong>התרשמנו מאוד מאיכות ורמת ההדרכה.</strong>"
-                    </blockquote>
-                    <div class="testimonial-author">
-                        <div class="author-info">
-                            <span class="author-name">איילת אסיסקוביץ</span>
-                            <span class="author-role">אוניברסיטת בן גוריון</span>
+                    <!-- Card 2 -->
+                    <div class="carousel-slide" style="min-width: 100%; padding: 0 1rem; box-sizing: border-box;">
+                        <div class="testimonial-card" style="background: white; border-radius: 16px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: center;">
+                            <div class="stars" style="color: #fbbf24; margin-bottom: 1rem;">★★★★★</div>
+                            <blockquote style="font-size: 1.1rem; color: #334155; line-height: 1.8; margin-bottom: 1.5rem;">
+                                "עדי מאוד נהנית לשחק במיינקראפט. הקורס הזה חיבר בין המשחק לבין עולם התכנות. <strong style="color: #22c55e;">היא כל הזמן מראה לנו את המשחקים שהיא בונה.</strong>"
+                            </blockquote>
+                            <div class="author-name" style="font-weight: 700; color: #1e293b;">אמא של עדי</div>
+                            <div class="author-role" style="color: #64748b; font-size: 0.9rem;">באר-שבע</div>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="carousel-slide" style="min-width: 100%; padding: 0 1rem; box-sizing: border-box;">
+                        <div class="testimonial-card" style="background: white; border-radius: 16px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: center;">
+                            <div class="stars" style="color: #fbbf24; margin-bottom: 1rem;">★★★★★</div>
+                            <blockquote style="font-size: 1.1rem; color: #334155; line-height: 1.8; margin-bottom: 1.5rem;">
+                                "לא היה קל להוציא את אביב מהמחשב, אבל עכשיו אני מרגיש ש<strong style="color: #22c55e;">הזמן מול המסך גם מלמד אותו דברים חדשים.</strong> הוא פיתח משחקים משלו!"
+                            </blockquote>
+                            <div class="author-name" style="font-weight: 700; color: #1e293b;">אמא של אביב</div>
+                            <div class="author-role" style="color: #64748b; font-size: 0.9rem;">באר-שבע</div>
+                        </div>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="carousel-slide" style="min-width: 100%; padding: 0 1rem; box-sizing: border-box;">
+                        <div class="testimonial-card" style="background: white; border-radius: 16px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: center;">
+                            <div class="stars" style="color: #fbbf24; margin-bottom: 1rem;">★★★★★</div>
+                            <blockquote style="font-size: 1.1rem; color: #334155; line-height: 1.8; margin-bottom: 1.5rem;">
+                                "איתן פשוט עף על הקורס! הוא תמיד אהב לשחק Roblox, אבל עכשיו <strong style="color: #22c55e;">הוא כבר יוצר משחקים בעצמו</strong> ומשתף אותם עם החברים."
+                            </blockquote>
+                            <div class="author-name" style="font-weight: 700; color: #1e293b;">אמא של איתן</div>
+                            <div class="author-role" style="color: #64748b; font-size: 0.9rem;">באר-שבע</div>
                         </div>
                     </div>
                 </div>
-
-                <div class="testimonial-card">
-                    <div class="stars">
-                        <i data-lucide="star" class="star-icon filled"></i>
-                        <i data-lucide="star" class="star-icon filled"></i>
-                        <i data-lucide="star" class="star-icon filled"></i>
-                        <i data-lucide="star" class="star-icon filled"></i>
-                        <i data-lucide="star" class="star-icon filled"></i>
-                    </div>
-                    <blockquote>
-                        "עדי מאוד נהנית לשחק במיינקראפט. הקורס הזה חיבר בין המשחק לבין עולם התכנות. <strong>היא כל הזמן מראה לנו את המשחקים שהיא בונה.</strong>"
-                    </blockquote>
-                    <div class="testimonial-author">
-                        <div class="author-info">
-                            <span class="author-name">אמא של עדי</span>
-                            <span class="author-role">באר-שבע</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="stars">
-                        <i data-lucide="star" class="star-icon filled"></i>
-                        <i data-lucide="star" class="star-icon filled"></i>
-                        <i data-lucide="star" class="star-icon filled"></i>
-                        <i data-lucide="star" class="star-icon filled"></i>
-                        <i data-lucide="star" class="star-icon filled"></i>
-                    </div>
-                    <blockquote>
-                        "לא היה קל להוציא את אביב מהמחשב, אבל עכשיו אני מרגיש ש<strong>הזמן מול המסך גם מלמד אותו דברים חדשים.</strong> הוא פיתח משחקים משלו!"
-                    </blockquote>
-                    <div class="testimonial-author">
-                        <div class="author-info">
-                            <span class="author-name">אמא של אביב</span>
-                            <span class="author-role">באר-שבע</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="stars">
-                        <i data-lucide="star" class="star-icon filled"></i>
-                        <i data-lucide="star" class="star-icon filled"></i>
-                        <i data-lucide="star" class="star-icon filled"></i>
-                        <i data-lucide="star" class="star-icon filled"></i>
-                        <i data-lucide="star" class="star-icon filled"></i>
-                    </div>
-                    <blockquote>
-                        "איתן פשוט עף על הקורס! הוא תמיד אהב לשחק Roblox, אבל עכשיו <strong>הוא כבר יוצר משחקים בעצמו</strong> ומשתף אותם עם החברים."
-                    </blockquote>
-                    <div class="testimonial-author">
-                        <div class="author-info">
-                            <span class="author-name">אמא של איתן</span>
-                            <span class="author-role">באר-שבע</span>
-                        </div>
-                    </div>
+                <!-- Navigation Arrows -->
+                <button class="carousel-btn carousel-prev" style="position: absolute; top: 50%; right: -20px; transform: translateY(-50%); background: white; border: none; width: 44px; height: 44px; border-radius: 50%; box-shadow: 0 2px 10px rgba(0,0,0,0.15); cursor: pointer; font-size: 1.2rem; color: #334155;">→</button>
+                <button class="carousel-btn carousel-next" style="position: absolute; top: 50%; left: -20px; transform: translateY(-50%); background: white; border: none; width: 44px; height: 44px; border-radius: 50%; box-shadow: 0 2px 10px rgba(0,0,0,0.15); cursor: pointer; font-size: 1.2rem; color: #334155;">←</button>
+                <!-- Dots -->
+                <div class="carousel-dots" style="display: flex; justify-content: center; gap: 0.5rem; margin-top: 1.5rem;">
+                    <span class="dot active" style="width: 10px; height: 10px; border-radius: 50%; background: #22c55e; cursor: pointer;"></span>
+                    <span class="dot" style="width: 10px; height: 10px; border-radius: 50%; background: #cbd5e1; cursor: pointer;"></span>
+                    <span class="dot" style="width: 10px; height: 10px; border-radius: 50%; background: #cbd5e1; cursor: pointer;"></span>
+                    <span class="dot" style="width: 10px; height: 10px; border-radius: 50%; background: #cbd5e1; cursor: pointer;"></span>
                 </div>
             </div>
         </div>
     </section>
+    <script>
+    (function() {
+        const track = document.querySelector('.carousel-track');
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.carousel-dots .dot');
+        const prevBtn = document.querySelector('.carousel-prev');
+        const nextBtn = document.querySelector('.carousel-next');
+        let currentIndex = 0;
+        const totalSlides = slides.length;
+
+        function goToSlide(index) {
+            if (index < 0) index = totalSlides - 1;
+            if (index >= totalSlides) index = 0;
+            currentIndex = index;
+            track.style.transform = `translateX(${currentIndex * 100}%)`;
+            dots.forEach((dot, i) => {
+                dot.style.background = i === currentIndex ? '#22c55e' : '#cbd5e1';
+            });
+        }
+
+        prevBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+        nextBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+        dots.forEach((dot, i) => dot.addEventListener('click', () => goToSlide(i)));
+
+        // Auto-slide every 5 seconds
+        setInterval(() => goToSlide(currentIndex + 1), 5000);
+    })();
+    </script>
 
     <!-- About Section -->
     <section id="about" class="about">
