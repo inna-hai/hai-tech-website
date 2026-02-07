@@ -14,7 +14,7 @@ const CONFIG = {
     staticDir: __dirname,
     // HaiTech CRM Configuration
     crmWebhookUrl: 'https://18f95599f0b7.ngrok-free.app/api/webhook/leads',
-    crmApiKey: 'haitech_b8e9c53a0ac8ef31b18ed988dfbd37d0d7e8a60f1c40f1e14458ab25e2496234',
+    crmApiKey: 'haitech-crm-api-key-2026',
     // OpenAI API (optional - set to enable AI responses)
     openaiKey: process.env.OPENAI_API_KEY || null
 };
