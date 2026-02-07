@@ -22,7 +22,7 @@
 - **טלפון:** 053-302-7763
 - **טלפון נוסף:** 073-274-55-99
 - **אימייל:** info@hai.tech
-- **פייסבוק:** https://www.facebook.com/Hai.tech.beersheva
+- **פייסבוק:** https://www.facebook.com/share/1SpwZhTKPx/
 - **לוגו:** https://hai.tech/wp-content/uploads/2023/11/hi-tech-logo.png
 
 ---
@@ -293,7 +293,7 @@
 **טלפון:** 053-302-7763
 **טלפון נוסף:** 073-274-55-99
 **אימייל:** info@hai.tech
-**פייסבוק:** https://www.facebook.com/Hai.tech.beersheva
+**פייסבוק:** https://www.facebook.com/share/1SpwZhTKPx/
 **אינסטגרם:** @hai.tech
 **וואטסאפ:** זמין
 
