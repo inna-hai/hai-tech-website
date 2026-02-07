@@ -359,6 +359,24 @@ const server = http.createServer((req, res) => {
         return;
     }
     
+    // API: GitHub Webhook - Auto deploy on push
+    if (req.method === 'POST' && pathname === '/api/deploy') {
+        console.log('[DEPLOY] Webhook received, pulling latest code...');
+        const { exec } = require('child_process');
+        exec('cd /home/ameidar/.openclaw/workspace/projects/hai-tech-website && git pull', (error, stdout, stderr) => {
+            if (error) {
+                console.error('[DEPLOY] Error:', error.message);
+                res.writeHead(500, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({ success: false, error: error.message }));
+                return;
+            }
+            console.log('[DEPLOY] Success:', stdout);
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ success: true, output: stdout }));
+        });
+        return;
+    }
+    
     // API: Chat (AI)
     if (req.method === 'POST' && pathname === '/api/chat') {
         return handleChat(req, res);
