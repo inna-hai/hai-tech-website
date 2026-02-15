@@ -13,8 +13,10 @@ const CONFIG = {
     port: 8080,
     staticDir: __dirname,
     // HaiTech CRM Configuration
-    crmWebhookUrl: 'https://18f95599f0b7.ngrok-free.app/api/webhook/leads',
+    crmEndpoint: 'http://129.159.133.209:3002/api/webhook/leads',
+    crmWebhookUrl: 'http://129.159.133.209:3002/api/webhook/leads',
     crmApiKey: 'haitech-crm-api-key-2026',
+    apiKey: 'haitech-crm-api-key-2026',
     // OpenAI API (optional - set to enable AI responses)
     openaiKey: process.env.OPENAI_API_KEY || null
 };
@@ -137,28 +139,33 @@ async function saveLead(leadInfo, notes) {
     
     return new Promise((resolve) => {
         const crmUrl = new URL(CONFIG.crmEndpoint);
+        const postData = JSON.stringify(leadData);
         const options = {
             hostname: crmUrl.hostname,
-            port: 443,
+            port: crmUrl.port || 3002,
             path: crmUrl.pathname,
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'X-API-Key': CONFIG.apiKey
+                'x-api-key': CONFIG.apiKey,
+                'Content-Length': Buffer.byteLength(postData)
             }
         };
         
-        const req = https.request(options, (res) => {
+        const req = http.request(options, (res) => {
             let body = '';
             res.on('data', chunk => body += chunk);
             res.on('end', () => {
-                console.log(`[CHATBOT] Lead saved: ${leadInfo.name || leadInfo.phone}`);
-                resolve(true);
+                console.log(`[CHATBOT] Lead saved: ${leadInfo.name || leadInfo.phone} - Status: ${res.statusCode}`);
+                resolve(res.statusCode >= 200 && res.statusCode < 300);
             });
         });
         
-        req.on('error', () => resolve(false));
-        req.write(JSON.stringify(leadData));
+        req.on('error', (err) => {
+            console.error('[CHATBOT] CRM Error:', err.message);
+            resolve(false);
+        });
+        req.write(postData);
         req.end();
     });
 }
@@ -407,17 +414,17 @@ const server = http.createServer((req, res) => {
                 
                 const options = {
                     hostname: crmUrl.hostname,
-                    port: 443,
+                    port: crmUrl.port || 3002,
                     path: crmUrl.pathname,
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'X-API-Key': CONFIG.crmApiKey,
+                        'x-api-key': CONFIG.crmApiKey,
                         'Content-Length': Buffer.byteLength(postData)
                     }
                 };
                 
-                const crmReq = https.request(options, (crmRes) => {
+                const crmReq = http.request(options, (crmRes) => {
                     let crmBody = '';
                     crmRes.on('data', chunk => crmBody += chunk);
                     crmRes.on('end', () => {
