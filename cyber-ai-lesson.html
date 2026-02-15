@@ -601,35 +601,51 @@
             .nav-hint {
                 display: none;
             }
+
             .slide {
-                padding: 30px 20px;
+                padding: 20px 15px 100px 15px;
+                overflow-y: auto;
+            }
+
+            .slide-content {
+                justify-content: flex-start;
             }
 
             h1 {
-                font-size: 2.2rem;
+                font-size: 1.8rem;
+                margin-bottom: 15px;
             }
 
             h2 {
-                font-size: 1.8rem;
-                margin-bottom: 25px;
+                font-size: 1.4rem;
+                margin-bottom: 15px;
             }
 
             h3 {
-                font-size: 1.3rem;
+                font-size: 1.1rem;
+                margin-bottom: 10px;
             }
 
             p, li {
-                font-size: 1.1rem;
-                line-height: 1.6;
+                font-size: 0.95rem;
+                line-height: 1.5;
+                margin-bottom: 10px;
             }
 
             .subtitle {
-                font-size: 1.2rem;
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+
+            .emoji {
+                font-size: 1em;
+                margin-left: 8px;
             }
 
             .cards-grid {
                 grid-template-columns: 1fr;
-                gap: 15px;
+                gap: 10px;
+                margin-top: 15px;
             }
 
             .cards-grid-3 {
@@ -637,52 +653,93 @@
             }
 
             .card {
-                padding: 20px;
+                padding: 15px;
+            }
+
+            .card h3 {
+                font-size: 1rem;
+                margin-bottom: 8px;
+            }
+
+            .card p, .card li {
+                font-size: 0.85rem;
+                margin-bottom: 5px;
             }
 
             .comparison {
                 grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 10px;
             }
 
             .vs {
-                font-size: 2rem;
+                font-size: 1.5rem;
                 text-align: center;
+                padding: 5px 0;
             }
 
             .phishing-example {
-                font-size: 0.9rem;
-                padding: 15px;
+                font-size: 0.75rem;
+                padding: 12px;
+                line-height: 1.4;
+            }
+
+            .phishing-label {
+                font-size: 1rem;
+                margin-bottom: 8px;
             }
 
             .activity-box {
-                padding: 20px;
+                padding: 15px;
+                margin-top: 15px;
             }
 
             .activity-box h3 {
-                font-size: 1.2rem;
+                font-size: 1rem;
+                margin-bottom: 10px;
+            }
+
+            .activity-box p {
+                font-size: 0.9rem;
+            }
+
+            .activity-steps li {
+                padding-right: 40px;
+                margin-bottom: 10px;
+                font-size: 0.9rem;
+            }
+
+            .activity-steps li::before {
+                width: 28px;
+                height: 28px;
+                font-size: 0.9rem;
             }
 
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
+                gap: 10px;
+                margin-top: 20px;
+            }
+
+            .stat-card {
+                padding: 15px;
             }
 
             .stat-card .number {
-                font-size: 2rem;
+                font-size: 1.5rem;
             }
 
             .stat-card .label {
-                font-size: 0.85rem;
+                font-size: 0.7rem;
             }
 
             .big-number {
-                font-size: 3rem;
+                font-size: 2rem;
             }
 
             .timeline {
                 flex-direction: column;
-                gap: 20px;
+                gap: 10px;
+                margin-top: 20px;
             }
 
             .timeline::before {
@@ -693,79 +750,131 @@
                 text-align: right;
                 display: flex;
                 align-items: center;
-                gap: 15px;
+                gap: 10px;
             }
 
             .timeline-dot {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
                 margin: 0;
+                flex-shrink: 0;
+            }
+
+            .timeline-label {
+                font-size: 0.85rem;
+            }
+
+            .timeline-time {
+                font-size: 0.9rem;
             }
 
             .deepfake-examples {
                 grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .deepfake-card {
+                padding: 15px;
+            }
+
+            .deepfake-card .icon {
+                font-size: 2.5rem;
+                margin-bottom: 10px;
             }
 
             .demo-area {
-                padding: 20px;
+                padding: 15px;
             }
 
             .demo-input {
-                font-size: 1rem;
+                font-size: 0.9rem;
+                padding: 10px;
             }
 
             .demo-button {
                 width: 100%;
-                padding: 12px 20px;
+                padding: 10px 15px;
+                font-size: 1rem;
             }
 
-            .code-demo {
-                font-size: 0.85rem;
+            .demo-result {
+                font-size: 0.9rem;
                 padding: 15px;
             }
 
-            .time-badge {
-                font-size: 0.85rem;
-                padding: 8px 15px;
+            .code-demo {
+                font-size: 0.75rem;
+                padding: 12px;
             }
 
-            .nav-hint {
-                font-size: 0.8rem;
+            .time-badge {
+                font-size: 0.75rem;
+                padding: 6px 12px;
+                top: 10px;
+                left: 10px;
             }
 
             .slide-number {
-                font-size: 0.85rem;
-            }
-
-            .title-slide h1 {
-                font-size: 2.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .slide {
-                padding: 20px 15px;
-            }
-
-            h1 {
-                font-size: 1.8rem;
-            }
-
-            h2 {
-                font-size: 1.5rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
+                font-size: 0.8rem;
+                bottom: 20px;
+                right: 20px;
             }
 
             .title-slide h1 {
                 font-size: 2rem;
             }
 
+            .logo-container img {
+                height: 40px;
+            }
+
+            .logo-container {
+                top: 15px;
+                right: 15px;
+            }
+
+            ul li {
+                padding-right: 25px;
+                margin-bottom: 8px;
+            }
+
+            .section-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.2rem;
+            }
+
+            .title-slide h1 {
+                font-size: 1.6rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .stat-card .number {
+                font-size: 1.3rem;
+            }
+
             .phishing-example {
-                font-size: 0.8rem;
+                font-size: 0.7rem;
+            }
+
+            .nav-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
             }
         }
     </style>
