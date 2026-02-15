@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מדריך למדריכים: איך ללמד את השיעור "AI וסייבר" | דרך ההייטק</title>
+    <meta name="description" content="מדריך מפורט למדריכים לשיעור AI וסייבר - כולל כל הנושאים, פעילויות, ודוגמאות מעשיות. 75 דקות של תוכן אינטראקטיבי לבני נוער.">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .blog-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: #fff;
+            min-height: 100vh;
+        }
+        
+        .blog-header {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .blog-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+        
+        .blog-meta {
+            color: #666;
+            font-size: 1rem;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .blog-content {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #333;
+        }
+        
+        .blog-content h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin: 50px 0 25px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #7c3aed;
+        }
+        
+        .blog-content h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #2d2d44;
+            margin: 35px 0 15px;
+        }
+        
+        .blog-content h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #4a4a6a;
+            margin: 25px 0 10px;
+        }
+        
+        .blog-content p {
+            margin-bottom: 20px;
+        }
+        
+        .blog-content ul, .blog-content ol {
+            margin: 20px 0;
+            padding-right: 25px;
+        }
+        
+        .blog-content li {
+            margin-bottom: 12px;
+        }
+        
+        .info-box {
+            background: linear-gradient(135deg, #f8f4ff 0%, #f0f7ff 100%);
+            border-right: 4px solid #7c3aed;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+        
+        .info-box h4 {
+            color: #7c3aed;
+            margin-top: 0;
+        }
+        
+        .warning-box {
+            background: #fff8e6;
+            border-right: 4px solid #f59e0b;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+        
+        .warning-box h4 {
+            color: #d97706;
+            margin-top: 0;
+        }
+        
+        .example-box {
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            direction: ltr;
+            text-align: left;
+        }
+        
+        .activity-box {
+            background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%);
+            border-right: 4px solid #22c55e;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+        
+        .activity-box h4 {
+            color: #16a34a;
+            margin-top: 0;
+        }
+        
+        .timeline {
+            margin: 30px 0;
+            padding: 0;
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: flex-start;
+        }
+        
+        .timeline-time {
+            min-width: 100px;
+            font-weight: 600;
+            color: #7c3aed;
+        }
+        
+        .timeline-content {
+            flex: 1;
+        }
+        
+        .stat-highlight {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #7c3aed;
+        }
+        
+        .code-block {
+            background: #1a1a2e;
+            color: #e0e0e0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+            direction: ltr;
+            text-align: left;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #7c3aed;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 30px;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        .table-of-contents {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        
+        .table-of-contents h4 {
+            margin-top: 0;
+            color: #1a1a2e;
+        }
+        
+        .table-of-contents ul {
+            margin: 0;
+            padding-right: 20px;
+        }
+        
+        .table-of-contents a {
+            color: #7c3aed;
+            text-decoration: none;
+        }
+        
+        .table-of-contents a:hover {
+            text-decoration: underline;
+        }
+        
+        .cta-box {
+            background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+            color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .cta-box h3 {
+            color: #fff;
+            margin-top: 0;
+        }
+        
+        .cta-box a {
+            display: inline-block;
+            background: #fff;
+            color: #7c3aed;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 15px;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+        }
+        
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #e0e0e0;
+            padding: 15px;
+            text-align: right;
+        }
+        
+        .comparison-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background: #fafafa;
+        }
+    </style>
+</head>
+<body>
+    <div class="blog-container">
+        <a href="../blog.html" class="back-link">← חזרה לבלוג</a>
+        
+        <header class="blog-header">
+            <h1 class="blog-title">🎓 מדריך למדריכים: איך ללמד את השיעור "AI וסייבר — כלי הגנה או נשק?"</h1>
+            <div class="blog-meta">
+                <span>📅 פברואר 2026</span>
+                <span>⏱️ זמן קריאה: 15 דקות</span>
+                <span>👨‍🏫 למדריכי סייבר</span>
+            </div>
+        </header>
+        
+        <article class="blog-content">
+            <p>
+                שיעור זה מיועד לבני נוער בקורס סייבר ועוסק בנושא אחד החשובים והעכשוויים ביותר בתחום: <strong>השימוש בבינה מלאכותית בעולם הסייבר</strong> — הן בצד ההתקפה והן בצד ההגנה. 
+            </p>
+            <p>
+                השיעור אינטראקטיבי, כולל דוגמאות אמיתיות, פעילויות מעשיות, ובניית כלי בסיסי לזיהוי הודעות פישינג. משך השיעור: 75 דקות.
+            </p>
+            
+            <div class="table-of-contents">
+                <h4>📑 תוכן עניינים</h4>
+                <ul>
+                    <li><a href="#overview">סקירה כללית ומטרות</a></li>
+                    <li><a href="#schedule">לוח זמנים מפורט</a></li>
+                    <li><a href="#ai-phishing">חלק 1: AI בשירות התוקפים — פישינג</a></li>
+                    <li><a href="#ai-defense">חלק 2: AI בשירות ההגנה</a></li>
+                    <li><a href="#deepfake">חלק 3: Deepfake</a></li>
+                    <li><a href="#tool">חלק 4: בניית כלי מעשי</a></li>
+                    <li><a href="#discussion">דיון ומסקנות</a></li>
+                    <li><a href="#resources">חומרים נוספים</a></li>
+                </ul>
+            </div>
+            
+            <h2 id="overview">🎯 סקירה כללית ומטרות השיעור</h2>
+            
+            <h3>מטרות למידה</h3>
+            <p>בסיום השיעור, התלמידים יוכלו:</p>
+            <ol>
+                <li><strong>להבין</strong> כיצד תוקפי סייבר משתמשים ב-AI ליצירת פישינג משוכלל יותר</li>
+                <li><strong>לזהות</strong> סימני אזהרה בהודעות פישינג מודרניות</li>
+                <li><strong>להסביר</strong> כיצד ארגונים משתמשים ב-AI לצורכי הגנה</li>
+                <li><strong>להגדיר</strong> מהו Deepfake ולמה הוא מסוכן</li>
+                <li><strong>לבנות</strong> כלי בסיסי לזיהוי הודעות חשודות</li>
+                <li><strong>לנתח</strong> את השאלה האם AI מעצים תוקפים או מגינים</li>
+            </ol>
+            
+            <h3>קהל יעד</h3>
+            <p>בני נוער בגילאי 14-18 בקורס סייבר. ידע מוקדם נדרש: היכרות בסיסית עם מושגי סייבר ו-ChatGPT.</p>
+            
+            <h3>חומרים נדרשים</h3>
+            <ul>
+                <li>מצגת השיעור: <a href="../cyber-ai-lesson.html">cyber-ai-lesson.html</a></li>
+                <li>מחשב עם מקרן</li>
+                <li>גישת התלמידים למחשבים (לחלק הפרקטי)</li>
+                <li>גישה ל-Base44 (לפעילות הבנייה)</li>
+            </ul>
+            
+            <h2 id="schedule">🕐 לוח זמנים מפורט</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-time">0:00 - 0:10</span>
+                    <span class="timeline-content"><strong>פתיחה:</strong> השאלה הגדולה + סטטיסטיקות</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-time">0:10 - 0:30</span>
+                    <span class="timeline-content"><strong>AI בפישינג:</strong> השוואה ישן vs חדש + דיון</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-time">0:30 - 0:45</span>
+                    <span class="timeline-content"><strong>AI בהגנה:</strong> איך ארגונים מתגוננים</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-time">0:45 - 1:00</span>
+                    <span class="timeline-content"><strong>Deepfake:</strong> מה זה ולמה מסוכן</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-time">1:00 - 1:15</span>
+                    <span class="timeline-content"><strong>בונים כלי:</strong> בודק אמינות + אתגר Base44</span>
+                </div>
+            </div>
+            
+            <h2 id="ai-phishing">🎣 חלק 1: AI בשירות התוקפים — פישינג (20 דקות)</h2>
+            
+            <h3>רקע למדריך</h3>
+            <p>
+                פישינג הוא אחד מווקטורי התקיפה הנפוצים ביותר. עד לאחרונה, היה קל יחסית לזהות הודעות פישינג בגלל שגיאות כתיב, דקדוק גרוע, וניסוח מוזר. אבל AI שינה את המשחק.
+            </p>
+            
+            <div class="info-box">
+                <h4>📊 נתון מפתח להציג לתלמידים</h4>
+                <p class="stat-highlight">1,265%</p>
+                <p>עלייה בהתקפות פישינג מבוססות AI מאז השקת ChatGPT (מקור: SlashNext 2024)</p>
+            </div>
+            
+            <h3>הפעילות המרכזית: השוואת פישינג</h3>
+            <p>הציגו לתלמידים שתי הודעות פישינג — אחת מ-2015 ואחת מ-2024:</p>
+            
+            <h4>דוגמה 1: פישינג "קלאסי" (2015)</h4>
+            <div class="example-box">
+Subject: URGENT!!! Your acount is HACKED!!!<br><br>
+Dear valued costumer,<br><br>
+We have detected suspicous activity in you're acount. 
+Please click hear to verify you're informations imediately 
+or youre acount will be permanantly deleted.<br><br>
+Click: http://bank-security-12345.xyz/verify<br><br>
+Thanks you,<br>
+Bank Securty Team
+            </div>
+            
+            <h4>דוגמה 2: פישינג AI (2024)</h4>
+            <div class="example-box">
+Subject: Security Alert: Unusual sign-in detected<br><br>
+Dear Customer,<br><br>
+We noticed a sign-in attempt to your account from a new 
+device in Tel Aviv, Israel at 2:34 AM.<br><br>
+If this was you, no action is needed. If not, please 
+secure your account immediately.<br><br>
+Review Activity →<br><br>
+Best regards,<br>
+Bank Security Team
+            </div>
+            
+            <div class="activity-box">
+                <h4>🎯 פעילות: דיון בכיתה (5 דקות)</h4>
+                <p>שאלו את התלמידים:</p>
+                <ol>
+                    <li>מה ההבדלים שאתם רואים בין שתי ההודעות?</li>
+                    <li>למה ההודעה החדשה מסוכנת יותר?</li>
+                    <li>איך בכל זאת הייתם יודעים שזו הודעה מזויפת?</li>
+                </ol>
+                <p><strong>תשובות צפויות:</strong></p>
+                <ul>
+                    <li>הישנה: שגיאות כתיב, דחיפות מוגזמת, קישור חשוד ברור</li>
+                    <li>החדשה: דקדוק מושלם, פרטים אישיים (מיקום, שעה), טון מקצועי, נראית לגיטימית</li>
+                </ul>
+            </div>
+            
+            <h3>מה AI שיפר בפישינג?</h3>
+            <table class="comparison-table">
+                <tr>
+                    <th>תכונה</th>
+                    <th>פישינג קלאסי</th>
+                    <th>פישינג AI</th>
+                </tr>
+                <tr>
+                    <td>שפה</td>
+                    <td>שגיאות כתיב ודקדוק</td>
+                    <td>מושלם בכל שפה</td>
+                </tr>
+                <tr>
+                    <td>התאמה אישית</td>
+                    <td>גנרית ("Dear Customer")</td>
+                    <td>מותאמת (שם, מיקום, שעה)</td>
+                </tr>
+                <tr>
+                    <td>טון</td>
+                    <td>דחוף ומאיים</td>
+                    <td>מקצועי ומרגיע</td>
+                </tr>
+                <tr>
+                    <td>כמות</td>
+                    <td>עשרות ידנית</td>
+                    <td>אלפים אוטומטית</td>
+                </tr>
+            </table>
+            
+            <h3>שימושי AI נוספים בהתקפות</h3>
+            <ul>
+                <li><strong>יצירת תוכן:</strong> מיילים, SMS, פוסטים ברשתות — בכל שפה, בלי שגיאות</li>
+                <li><strong>התאמה אישית:</strong> AI אוסף מידע מרשתות חברתיות ויוצר הודעה "אישית"</li>
+                <li><strong>אוטומציה:</strong> שליחת אלפי הודעות מותאמות במקום עבודה ידנית</li>
+                <li><strong>התחזות:</strong> חיקוי סגנון כתיבה של אנשים אמיתיים</li>
+                <li><strong>פיצוח סיסמאות:</strong> AI מנחש סיסמאות על בסיס דפוסים</li>
+                <li><strong>מודיעין:</strong> ניתוח רשתות חברתיות למציאת חולשות</li>
+            </ul>
+            
+            <h2 id="ai-defense">🛡️ חלק 2: AI בשירות ההגנה (15 דקות)</h2>
+            
+            <h3>רקע למדריך</h3>
+            <p>
+                אם AI עוזר לתוקפים, הוא גם עוזר למגינים. ארגונים גדולים משתמשים ב-AI כדי לזהות ולחסום מתקפות בקנה מידה שבלתי אפשרי לבן אדם.
+            </p>
+            
+            <h3>שימושי AI בהגנה</h3>
+            
+            <h4>1. זיהוי אנומליות (Anomaly Detection)</h4>
+            <p>
+                AI לומד מה ההתנהגות "הרגילה" של משתמש או רשת, ומזהה חריגות. 
+                לדוגמה: אם משתמש שתמיד מתחבר מתל אביב בשעות העבודה פתאום מתחבר מרוסיה ב-3 בלילה — זו אנומליה.
+            </p>
+            
+            <h4>2. סינון מיילים</h4>
+            <p>
+                Gmail, Outlook ושירותי מייל אחרים משתמשים ב-AI כדי לחסום 99.9% מהודעות הפישינג לפני שהן מגיעות לתיבת הדואר.
+            </p>
+            
+            <h4>3. זיהוי Malware</h4>
+            <p>
+                במקום לחפש "חתימות" ידועות של וירוסים (שתוקפים יכולים לשנות), AI מזהה התנהגות חשודה של קבצים — למשל קובץ שמנסה להצפין הרבה קבצים בזמן קצר.
+            </p>
+            
+            <h4>4. תגובה אוטומטית</h4>
+            <p>
+                AI יכול לזהות מתקפה ולהגיב תוך שניות — לנתק מחשב נגוע מהרשת, לחסום משתמש חשוד, או להתריע לצוות אבטחה.
+            </p>
+            
+            <div class="info-box">
+                <h4>💡 דוגמה אמיתית: Microsoft Defender</h4>
+                <ul>
+                    <li>מנתח <strong>65 טריליון</strong> סיגנלים ביום</li>
+                    <li>מזהה מתקפות חדשות תוך <strong>שניות</strong></li>
+                    <li>חוסם <strong>4,000</strong> התקפות סיסמה בשנייה</li>
+                </ul>
+                <p>בלי AI — בלתי אפשרי לעבד את כמות המידע הזו.</p>
+            </div>
+            
+            <h2 id="deepfake">🎭 חלק 3: Deepfake (15 דקות)</h2>
+            
+            <h3>מהו Deepfake?</h3>
+            <p>
+                Deepfake הוא תוכן מזויף (וידאו, תמונה, או קול) שנוצר באמצעות AI ונראה אמיתי לחלוטין. הטכנולוגיה מאפשרת:
+            </p>
+            <ul>
+                <li><strong>וידאו:</strong> החלפת פנים בסרטון, גרימה למישהו "לומר" דברים שלא אמר</li>
+                <li><strong>קול:</strong> שכפול קול של אדם מתוך 3 שניות בלבד של הקלטה</li>
+                <li><strong>תמונה:</strong> יצירת תמונות של אנשים שלא קיימים</li>
+            </ul>
+            
+            <div class="warning-box">
+                <h4>⚠️ מקרה אמיתי: הונאת $25 מיליון</h4>
+                <p>
+                    בינואר 2024, עובד בחברה בהונג קונג קיבל שיחת וידאו מה"מנכ"ל" שביקש העברת כספים דחופה. 
+                    העובד ביצע את ההעברה — אבל ה"מנכ"ל" היה Deepfake. 
+                    <strong>25 מיליון דולר נגנבו.</strong>
+                </p>
+            </div>
+            
+            <h3>למה Deepfake מסוכן?</h3>
+            <ol>
+                <li><strong>הונאות כספיות:</strong> מנכ"ל/בוס "מתקשר" ומבקש העברת כסף</li>
+                <li><strong>חדשות מזויפות:</strong> וידאו של מנהיג "מכריז מלחמה"</li>
+                <li><strong>פגיעה אישית:</strong> יצירת תוכן מביך או פוגעני של אנשים אמיתיים</li>
+                <li><strong>השפעה על בחירות:</strong> וידאו מזויף של פוליטיקאי</li>
+            </ol>
+            
+            <h3>איך מזהים Deepfake?</h3>
+            <p>סימנים שכדאי לחפש:</p>
+            <ul>
+                <li><strong>העיניים:</strong> מצמוץ לא טבעי, אישונים לא מגיבים לאור</li>
+                <li><strong>האוזניים:</strong> צורה לא עקבית, תנועה מוזרה</li>
+                <li><strong>השיער:</strong> קווי שיער מטושטשים, תנועה לא טבעית</li>
+                <li><strong>הסנכרון:</strong> שפתיים לא מסונכרנות עם הקול</li>
+            </ul>
+            
+            <div class="info-box">
+                <h4>💡 הכלל הכי חשוב</h4>
+                <p>
+                    אם משהו נראה מוזר או "טוב מדי להיות אמיתי" — <strong>תחקרו לפני שמאמינים!</strong>
+                    וודאו ישירות עם האדם (התקשרו בעצמכם, לא דרך הקישור שקיבלתם).
+                </p>
+            </div>
+            
+            <h2 id="tool">🔧 חלק 4: בניית כלי מעשי (15 דקות)</h2>
+            
+            <h3>הרעיון</h3>
+            <p>
+                בחלק זה התלמידים יכירו את הלוגיקה מאחורי בניית כלי לזיהוי הודעות פישינג, ויקבלו אתגר לבנות גרסה משלהם ב-Base44.
+            </p>
+            
+            <h3>הסבר הלוגיקה</h3>
+            <p>כלי בסיסי לזיהוי פישינג בודק סימנים מחשידים ומחשב "ציון סיכון":</p>
+            
+            <div class="code-block">
+function checkMessage(text) {
+    let riskScore = 0;
+    
+    // בדיקת מילים דחופות
+    if (text.includes("דחוף") || text.includes("URGENT")) 
+        riskScore += 20;
+    
+    // בדיקת בקשת סיסמה
+    if (text.includes("סיסמה") || text.includes("password")) 
+        riskScore += 30;
+    
+    // בדיקת קריאה ללחיצה
+    if (text.includes("לחץ כאן") || text.includes("click here")) 
+        riskScore += 25;
+    
+    // בדיקת קישורים מקוצרים
+    if (text.includes("bit.ly") || text.includes("tinyurl")) 
+        riskScore += 30;
+    
+    return riskScore; // 0-100
+}
+            </div>
+            
+            <h3>הדגמה חיה</h3>
+            <p>במצגת יש כלי אינטראקטיבי. הדגימו לתלמידים:</p>
+            <ol>
+                <li>הדביקו הודעת פישינג לדוגמה</li>
+                <li>לחצו "בדוק הודעה"</li>
+                <li>הציגו את הציון והסיבות</li>
+            </ol>
+            
+            <div class="activity-box">
+                <h4>🚀 אתגר: בנו ב-Base44!</h4>
+                <p>עכשיו תור התלמידים לבנות גרסה משלהם. הנחיות:</p>
+                <ul>
+                    <li><strong>ממשק:</strong> שדה טקסט + כפתור בדיקה</li>
+                    <li><strong>לוגיקה:</strong> בדיקת סימנים מחשידים</li>
+                    <li><strong>תצוגה:</strong> הצגת ציון ויזואלית (צבעים, אחוזים)</li>
+                </ul>
+                <p><strong>רעיונות לבדיקות נוספות:</strong></p>
+                <ul>
+                    <li>בדיקת שגיאות כתיב (סימן לפישינג ישן)</li>
+                    <li>זיהוי בקשות לפרטים אישיים</li>
+                    <li>בדיקת דומיינים מוזרים בקישורים</li>
+                    <li>זיהוי לחץ זמן ("תוך 24 שעות!")</li>
+                </ul>
+            </div>
+            
+            <h2 id="discussion">⚖️ דיון ומסקנות</h2>
+            
+            <h3>השאלה הגדולה</h3>
+            <p>
+                חזרו לשאלה מתחילת השיעור: <strong>האם AI יחליף האקרים או יגביר אותם?</strong>
+            </p>
+            
+            <p><strong>התשובה:</strong> AI מגביר גם תוקפים וגם מגינים. זה "מרוץ חימוש" טכנולוגי — הצד שישתמש ב-AI טוב יותר, ינצח.</p>
+            
+            <h3>מסרים מרכזיים לסיכום</h3>
+            <ol>
+                <li><strong>פישינג השתדרג:</strong> AI יוצר הודעות משכנעות בלי שגיאות — צריך להיות יותר זהירים</li>
+                <li><strong>AI מגן עלינו:</strong> ארגונים משתמשים ב-AI לזהות ולחסום מתקפות</li>
+                <li><strong>Deepfake מסוכן:</strong> אי אפשר להאמין לכל מה שרואים ושומעים</li>
+            </ol>
+            
+            <div class="info-box">
+                <h4>🎯 המסר החשוב ביותר</h4>
+                <p style="font-size: 1.3rem;">
+                    <strong>הטכנולוגיה ניטרלית — השימוש שלנו בה קובע אם היא טובה או רעה.</strong>
+                </p>
+                <p>התלמידים שלכם הם הדור שיגן על העולם הדיגיטלי. הם צריכים להכיר את הטכנולוגיה כדי להשתמש בה לטובה.</p>
+            </div>
+            
+            <h2 id="resources">📚 חומרים נוספים</h2>
+            
+            <h3>קישורים מומלצים</h3>
+            <ul>
+                <li><a href="../cyber-ai-lesson.html" target="_blank">🎬 המצגת המלאה</a></li>
+                <li><a href="https://www.base44.ai" target="_blank">🔧 Base44 — פלטפורמת הבנייה</a></li>
+                <li><a href="https://thispersondoesnotexist.com" target="_blank">👤 This Person Does Not Exist — הדגמת תמונות AI</a></li>
+            </ul>
+            
+            <h3>מקורות לסטטיסטיקות</h3>
+            <ul>
+                <li>SlashNext State of Phishing Report 2024</li>
+                <li>MIT Media Lab — Deepfake Detection Studies</li>
+                <li>Microsoft Digital Defense Report 2024</li>
+                <li>CNN — Hong Kong Deepfake Fraud Case</li>
+            </ul>
+            
+            <div class="cta-box">
+                <h3>🚀 מוכנים ללמד?</h3>
+                <p>פתחו את המצגת והתחילו!</p>
+                <a href="../cyber-ai-lesson.html">פתח מצגת</a>
+            </div>
+            
+            <hr style="margin: 50px 0; border: none; border-top: 1px solid #e0e0e0;">
+            
+            <p style="text-align: center; color: #666;">
+                נכתב על ידי צוות דרך ההייטק | <a href="https://hai.tech">hai.tech</a>
+            </p>
+        </article>
+    </div>
+</body>
+</html>
