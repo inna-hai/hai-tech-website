@@ -1068,7 +1068,7 @@ Bank Security Team
     </div>
 
     <!-- Navigation Hint -->
-    <div class="nav-hint">← → לניווט | רווח להמשך</div>
+    <div class="nav-hint">← → לניווט</div>
     <div class="slide-number" id="slideNumber">1 / 21</div>
 
     <script>
@@ -1109,7 +1109,7 @@ Bank Security Team
         // Keyboard navigation - RTL friendly
         document.addEventListener('keydown', (e) => {
             // RTL: Left arrow = next, Right arrow = previous
-            if (e.key === 'ArrowLeft' || e.key === ' ' || e.key === 'Enter') {
+            if (e.key === 'ArrowLeft' || e.key === 'Enter') {
                 e.preventDefault();
                 nextSlide();
             } else if (e.key === 'ArrowRight') {
