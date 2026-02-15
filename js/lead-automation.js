@@ -12,7 +12,7 @@ const LeadAutomation = {
         popupDelay: 5000, // 5 seconds
         exitIntentEnabled: true,
         // CRM API Configuration - HaiTech CRM Webhook
-        apiEndpoint: 'http://129.159.133.209:3002/api/webhook/leads',
+        apiEndpoint: 'https://dev-crm.orma-ai.com/api/webhook/leads',
         apiKey: 'haitech-crm-api-key-2026'
     },
 

@@ -13,8 +13,8 @@ const CONFIG = {
     port: 8080,
     staticDir: __dirname,
     // HaiTech CRM Configuration
-    crmEndpoint: 'http://129.159.133.209:3002/api/webhook/leads',
-    crmWebhookUrl: 'http://129.159.133.209:3002/api/webhook/leads',
+    crmEndpoint: 'https://dev-crm.orma-ai.com/api/webhook/leads',
+    crmWebhookUrl: 'https://dev-crm.orma-ai.com/api/webhook/leads',
     crmApiKey: 'haitech-crm-api-key-2026',
     apiKey: 'haitech-crm-api-key-2026',
     // OpenAI API (optional - set to enable AI responses)
@@ -142,7 +142,7 @@ async function saveLead(leadInfo, notes) {
         const postData = JSON.stringify(leadData);
         const options = {
             hostname: crmUrl.hostname,
-            port: crmUrl.port || 3002,
+            port: crmUrl.port || 443,
             path: crmUrl.pathname,
             method: 'POST',
             headers: {
@@ -152,7 +152,7 @@ async function saveLead(leadInfo, notes) {
             }
         };
         
-        const req = http.request(options, (res) => {
+        const req = https.request(options, (res) => {
             let body = '';
             res.on('data', chunk => body += chunk);
             res.on('end', () => {
@@ -414,7 +414,7 @@ const server = http.createServer((req, res) => {
                 
                 const options = {
                     hostname: crmUrl.hostname,
-                    port: crmUrl.port || 3002,
+                    port: crmUrl.port || 443,
                     path: crmUrl.pathname,
                     method: 'POST',
                     headers: {
@@ -424,7 +424,7 @@ const server = http.createServer((req, res) => {
                     }
                 };
                 
-                const crmReq = http.request(options, (crmRes) => {
+                const crmReq = https.request(options, (crmRes) => {
                     let crmBody = '';
                     crmRes.on('data', chunk => crmBody += chunk);
                     crmRes.on('end', () => {

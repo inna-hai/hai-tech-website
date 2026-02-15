@@ -774,7 +774,7 @@
                 const lead = this.session.lead;
                 const course = COURSES[this.session.recommendedCourse];
                 
-                await fetch('http://129.159.133.209:3002/api/webhook/leads', {
+                await fetch('https://dev-crm.orma-ai.com/api/webhook/leads', {
                     method: 'POST',
                     headers: { 
                         'Content-Type': 'application/json',
