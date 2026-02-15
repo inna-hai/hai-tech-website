@@ -774,15 +774,18 @@
                 const lead = this.session.lead;
                 const course = COURSES[this.session.recommendedCourse];
                 
-                await fetch('/api/lead', {
+                await fetch('http://129.159.133.209:3002/api/webhook/leads', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'x-api-key': 'haitech-crm-api-key-2026'
+                    },
                     body: JSON.stringify({
                         name: lead.name || '',
                         phone: lead.phone || '',
                         email: lead.email === 'skipped' ? '' : (lead.email || ''),
-                        childAge: this.session.childAge,
-                        subject: course ? course.name : 'צ\'אטבוט',
+                        childAge: this.session.childAge ? String(this.session.childAge) : '',
+                        interest: course ? course.name : this.getInterestName(this.session.interest),
                         message: `ליד מהצ\'אטבוט. גיל: ${this.session.childAge}, תחום: ${this.getInterestName(this.session.interest)}`,
                         source: 'chatbot'
                     })

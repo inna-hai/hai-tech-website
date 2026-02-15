@@ -11,8 +11,8 @@ const LeadAutomation = {
         formId: 'contactForm',
         popupDelay: 5000, // 5 seconds
         exitIntentEnabled: true,
-        // CRM API Configuration (same-origin, no CORS issues)
-        apiEndpoint: '/api/lead',
+        // CRM API Configuration - HaiTech CRM Webhook
+        apiEndpoint: 'http://129.159.133.209:3002/api/webhook/leads',
         apiKey: 'haitech-crm-api-key-2026'
     },
 
@@ -52,33 +52,27 @@ const LeadAutomation = {
         return `https://wa.me/${this.config.whatsappNumber}?text=${message}`;
     },
 
-    // Send lead to CRM API (via proxy server)
+    // Send lead to CRM API (HaiTech CRM Webhook)
     async sendToCRM(lead) {
         try {
-            // Build notes with all relevant info
-            let notes = [];
-            if (lead.subject) notes.push(`מתעניינים ב: ${lead.subject}`);
-            if (lead.message) notes.push(`הודעה: ${lead.message}`);
-            
+            // Build the webhook payload
             const crmData = {
                 name: lead.name,
                 phone: lead.phone || '',
                 email: lead.email || '',
-                notes: notes.join('\n'),
-                source: 'website',
-                city: '',
-                // Add student info
-                students: lead.childName ? [{
-                    name: lead.childName,
-                    birthDate: lead.childAge ? this.calculateBirthYear(lead.childAge) : '',
-                    grade: ''
-                }] : []
+                city: lead.city || '',
+                childName: lead.childName || '',
+                childAge: lead.childAge || '',
+                interest: lead.subject || lead.interest || '',
+                message: lead.message || '',
+                source: 'website'
             };
 
             const response = await fetch(this.config.apiEndpoint, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'x-api-key': this.config.apiKey
                 },
                 body: JSON.stringify(crmData)
             });
