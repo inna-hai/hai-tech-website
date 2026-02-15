@@ -54,7 +54,6 @@ const LeadAutomation = {
 
     // Send lead to CRM API (HaiTech CRM Webhook)
     async sendToCRM(lead) {
-        console.log('[CRM] Sending lead to CRM...', lead);
         try {
             // Build the webhook payload
             const crmData = {
@@ -87,7 +86,7 @@ const LeadAutomation = {
                 return false;
             }
         } catch (error) {
-            console.error('[CRM] Error sending to CRM:', error);
+            console.error('Error sending to CRM:', error);
             return false;
         }
     },
@@ -101,7 +100,6 @@ const LeadAutomation = {
 
     // Save lead to localStorage and CRM
     saveLead(lead) {
-        console.log('[LEAD] Saving lead...', lead);
         try {
             const leads = this.getStoredLeads();
             lead.id = Date.now();
