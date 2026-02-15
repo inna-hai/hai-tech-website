@@ -563,8 +563,44 @@
             margin-top: 5px;
         }
 
+        /* Mobile Navigation Buttons */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 200;
+            gap: 20px;
+        }
+
+        .nav-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(124, 58, 237, 0.9);
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.2s;
+        }
+
+        .nav-btn:active {
+            transform: scale(0.95);
+            background: #5b21b6;
+        }
+
         /* Mobile Responsive */
         @media (max-width: 768px) {
+            .mobile-nav {
+                display: flex;
+            }
+
+            .nav-hint {
+                display: none;
+            }
             .slide {
                 padding: 30px 20px;
             }
@@ -1277,6 +1313,12 @@ Bank Security Team
     <!-- Navigation Hint -->
     <div class="nav-hint">→ ← לניווט</div>
     <div class="slide-number" id="slideNumber">1 / 22</div>
+
+    <!-- Mobile Navigation Buttons -->
+    <div class="mobile-nav">
+        <button class="nav-btn nav-prev" onclick="prevSlide()">→</button>
+        <button class="nav-btn nav-next" onclick="nextSlide()">←</button>
+    </div>
 
     <script>
         let currentSlide = 1;
