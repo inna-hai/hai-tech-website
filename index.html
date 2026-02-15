@@ -45,7 +45,7 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "EducationalOrganization",
+        "@type": ["EducationalOrganization", "LocalBusiness"],
         "name": "דרך ההייטק",
         "alternateName": "Hai Tech",
         "url": "https://hai.tech",
@@ -81,7 +81,16 @@
             "https://www.facebook.com/share/1SpwZhTKPx/",
             "https://www.linkedin.com/company/hai-tech-way/",
             "https://youtube.com/channel/UCbBmDyoE0oy0yXuVAoXNp2Q"
-        ]
+        ],
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+                "opens": "09:00",
+                "closes": "19:00"
+            }
+        ],
+        "priceRange": "₪₪"
     }
     </script>
     
