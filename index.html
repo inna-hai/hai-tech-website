@@ -90,7 +90,97 @@
                 "closes": "19:00"
             }
         ],
-        "priceRange": "₪₪"
+        "priceRange": "₪₪",
+        "hasCredential": [
+            {
+                "@type": "EducationalOccupationalCredential",
+                "name": "שותפות עם אוניברסיטת בן גוריון",
+                "credentialCategory": "partnership"
+            }
+        ],
+        "founder": [
+            {
+                "@type": "Person",
+                "name": "אינה גרוייס",
+                "jobTitle": "מייסדת ומנכ\"לית",
+                "description": "מהנדסת תוכנה עם ניסיון רב בתעשיית ההייטק"
+            },
+            {
+                "@type": "Person",
+                "name": "עמי מידר",
+                "jobTitle": "מייסד ושותף",
+                "description": "מהנדס תוכנה עם ניסיון רב בתעשיית ההייטק"
+            }
+        ]
+    }
+    </script>
+    
+    <!-- Courses Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "קורסי תכנות לילדים ונוער",
+        "description": "קורסים דיגיטליים ללימוד תכנות לילדים מגיל 7 עד 18",
+        "itemListElement": [
+            {
+                "@type": "Course",
+                "position": 1,
+                "name": "מיינקראפט + JavaScript",
+                "description": "לומדים JavaScript דרך בניית מודים במיינקראפט. הילדים בונים עולמות ולומדים שפת תכנות אמיתית.",
+                "provider": {
+                    "@type": "Organization",
+                    "name": "דרך ההייטק"
+                },
+                "educationalLevel": "מתחילים ומתקדמים",
+                "audience": {
+                    "@type": "EducationalAudience",
+                    "educationalRole": "student",
+                    "audienceType": "ילדים ונוער בגילאי 9-16"
+                },
+                "teaches": ["JavaScript", "תכנות", "חשיבה לוגית", "פיתוח משחקים"],
+                "inLanguage": "he",
+                "url": "https://hai.tech/courses/minecraft-javascript.html"
+            },
+            {
+                "@type": "Course",
+                "position": 2,
+                "name": "רובלוקס + Lua",
+                "description": "לומדים Lua דרך פיתוח משחקים ברובלוקס. הילדים בונים משחקים משלהם ומפרסמים לקהילה.",
+                "provider": {
+                    "@type": "Organization",
+                    "name": "דרך ההייטק"
+                },
+                "educationalLevel": "מתחילים ומתקדמים",
+                "audience": {
+                    "@type": "EducationalAudience",
+                    "educationalRole": "student",
+                    "audienceType": "ילדים ונוער בגילאי 9-16"
+                },
+                "teaches": ["Lua", "תכנות", "עיצוב משחקים", "פיתוח משחקים"],
+                "inLanguage": "he",
+                "url": "https://hai.tech/courses/roblox-lua.html"
+            },
+            {
+                "@type": "Course",
+                "position": 3,
+                "name": "פיתוח אתרים + AI",
+                "description": "לומדים HTML, CSS, JavaScript ובינה מלאכותית. הילדים בונים אתרים אמיתיים עם כלי AI מתקדמים.",
+                "provider": {
+                    "@type": "Organization",
+                    "name": "דרך ההייטק"
+                },
+                "educationalLevel": "מתקדמים",
+                "audience": {
+                    "@type": "EducationalAudience",
+                    "educationalRole": "student",
+                    "audienceType": "נוער בגילאי 12-18"
+                },
+                "teaches": ["HTML", "CSS", "JavaScript", "בינה מלאכותית", "פיתוח אתרים"],
+                "inLanguage": "he",
+                "url": "https://hai.tech/courses/web-development-ai.html"
+            }
+        ]
     }
     </script>
     
