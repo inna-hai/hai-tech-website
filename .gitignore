@@ -1,0 +1,11 @@
+lms/videos/
+lms/node_modules/
+lms/package-lock.json
+*.db
+*.log
+
+# Test outputs
+lms/test-results/
+lms/tests/e2e/playwright-report/
+lms/tests/e2e/test-results.json
+

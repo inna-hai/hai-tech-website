@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מפגש 2 — הכשרת דרג בכיר | עיריית דימונה</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap');
+    
+    :root {
+      --bg: #0a0f1a;
+      --bg-card: rgba(16, 26, 51, 0.85);
+      --text: #eaf0ff;
+      --muted: #94a3b8;
+      --accent: #7dd3fc;
+      --accent2: #a7f3d0;
+      --warn: #fbbf24;
+      --danger: #fb7185;
+      --line: rgba(255,255,255,0.12);
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Heebo', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow: hidden;
+      height: 100vh;
+    }
+    
+    .presentation {
+      height: 100vh;
+      width: 100vw;
+      position: relative;
+    }
+    
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 60px;
+      background: radial-gradient(ellipse at 70% 20%, rgba(125,211,252,0.08), transparent 50%),
+                  radial-gradient(ellipse at 30% 80%, rgba(167,243,208,0.06), transparent 50%),
+                  var(--bg);
+      animation: fadeIn 0.4s ease;
+    }
+    
+    .slide.active { display: flex; }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .slide-content {
+      max-width: 1100px;
+      width: 100%;
+      text-align: right;
+    }
+    
+    /* Title Slide */
+    .title-slide {
+      text-align: center;
+    }
+    
+    .title-slide .logo {
+      font-size: 1.8rem;
+      font-weight: 300;
+      letter-spacing: 4px;
+      color: var(--accent);
+      margin-bottom: 40px;
+    }
+    
+    .title-slide .logo-img {
+      max-width: 400px;
+      height: auto;
+      margin-bottom: 40px;
+      filter: drop-shadow(0 4px 20px rgba(125,211,252,0.3));
+    }
+    
+    .title-slide h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, var(--text), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .title-slide .subtitle {
+      font-size: 1.6rem;
+      color: var(--accent2);
+      margin-bottom: 30px;
+    }
+    
+    .title-slide .meta {
+      font-size: 1.2rem;
+      color: var(--muted);
+    }
+    
+    /* Regular Slides */
+    h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      margin-bottom: 30px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    h2 .emoji { font-size: 2rem; }
+    
+    h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin: 25px 0 15px;
+    }
+    
+    p {
+      font-size: 1.3rem;
+      line-height: 1.8;
+      color: var(--text);
+      margin-bottom: 15px;
+    }
+    
+    ul, ol {
+      font-size: 1.25rem;
+      line-height: 2;
+      margin-right: 30px;
+    }
+    
+    li {
+      margin-bottom: 10px;
+    }
+    
+    li strong {
+      color: var(--accent2);
+    }
+    
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 25px 30px;
+      margin: 20px 0;
+    }
+    
+    .highlight {
+      background: rgba(125,211,252,0.1);
+      border-right: 4px solid var(--accent);
+      padding: 20px 25px;
+      border-radius: 12px;
+      margin: 20px 0;
+    }
+    
+    .warn-box {
+      background: rgba(251,191,36,0.1);
+      border-right: 4px solid var(--warn);
+      padding: 20px 25px;
+      border-radius: 12px;
+      margin: 20px 0;
+    }
+    
+    .danger-box {
+      background: rgba(251,113,133,0.1);
+      border-right: 4px solid var(--danger);
+      padding: 20px 25px;
+      border-radius: 12px;
+      margin: 20px 0;
+    }
+    
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+      margin: 20px 0;
+    }
+    
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+      margin: 20px 0;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 1.1rem;
+    }
+    
+    th, td {
+      padding: 15px 20px;
+      text-align: right;
+      border-bottom: 1px solid var(--line);
+    }
+    
+    th {
+      background: rgba(125,211,252,0.1);
+      color: var(--accent);
+      font-weight: 600;
+    }
+    
+    .pill {
+      display: inline-block;
+      padding: 6px 14px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin: 5px;
+    }
+    
+    .pill.accent {
+      background: rgba(125,211,252,0.15);
+      border-color: rgba(125,211,252,0.3);
+      color: var(--accent);
+    }
+    
+    .big-number {
+      font-size: 4rem;
+      font-weight: 800;
+      color: var(--accent);
+      text-align: center;
+    }
+    
+    code, pre {
+      font-family: 'Heebo', system-ui, sans-serif;
+    }
+    
+    pre {
+      background: rgba(0,0,0,0.4);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 20px;
+      overflow-x: auto;
+      font-size: 1.1rem;
+      margin: 15px 0;
+      direction: rtl;
+      text-align: right;
+      line-height: 1.9;
+      white-space: pre-wrap;
+    }
+    
+    /* Navigation */
+    .nav {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      z-index: 100;
+    }
+    
+    .nav button {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      color: var(--text);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: all 0.3s;
+    }
+    
+    .nav button:hover {
+      background: rgba(125,211,252,0.2);
+      border-color: var(--accent);
+    }
+    
+    .progress {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transition: width 0.3s;
+    }
+    
+    .slide-counter {
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      font-size: 1rem;
+      color: var(--muted);
+    }
+    
+    /* Section divider */
+    .section-slide {
+      text-align: center;
+    }
+    
+    .section-slide h2 {
+      font-size: 3rem;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    
+    .section-slide .time {
+      font-size: 1.5rem;
+      color: var(--accent);
+    }
+    
+    /* Checklist */
+    .checklist {
+      list-style: none;
+      margin: 0;
+    }
+    
+    .checklist li {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    
+    .checklist li::before {
+      content: '☐';
+      font-size: 1.4rem;
+      color: var(--accent);
+    }
+    
+    /* Flowchart */
+    .flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 30px 0;
+    }
+    
+    .flow-item {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      padding: 20px 25px;
+      border-radius: 12px;
+      text-align: center;
+      min-width: 150px;
+    }
+    
+    .flow-arrow {
+      font-size: 2rem;
+      color: var(--accent);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .slide { padding: 30px; }
+      h2 { font-size: 1.8rem; }
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .title-slide h1 { font-size: 2.5rem; }
+    }
+    
+    @media print {
+      .slide { 
+        display: block !important; 
+        page-break-after: always;
+        position: relative;
+        height: auto;
+        min-height: 100vh;
+      }
+      .nav, .progress, .slide-counter { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="presentation">
+    
+    <!-- Slide 1: Title -->
+    <div class="slide active" data-slide="1">
+      <div class="slide-content title-slide">
+        <img src="institute-logo.png" alt="THE:INSTITUTE" class="logo-img">
+        <h1>הכשרת דרג בכיר — מפגש 2</h1>
+        <div class="subtitle">GPT מותאם אישית + ניהול ידע עם NotebookLM</div>
+        <div class="meta">עיריית דימונה | 09:00–15:00</div>
+      </div>
+    </div>
+    
+    <!-- Slide 2: מטרות היום -->
+    <div class="slide" data-slide="2">
+      <div class="slide-content">
+        <h2><span class="emoji">🎯</span> מטרות היום</h2>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Base44</h3>
+            <p>סגירת פערים: בדיקת סטטוס, תיקונים ושיפורים</p>
+          </div>
+          <div class="card">
+            <h3>GPT מותאם</h3>
+            <p>הדרכה, בנייה, בדיקה ושדרוג</p>
+          </div>
+          <div class="card">
+            <h3>NotebookLM</h3>
+            <p>הצגה, תרגול מונחה והמשך עבודה פרטנית</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Slide 3: לו"ז היום -->
+    <div class="slide" data-slide="3">
+      <div class="slide-content">
+        <h2><span class="emoji">🕐</span> לו״ז היום</h2>
+        <table>
+          <tr><th>שעה</th><th>מה עושים</th></tr>
+          <tr><td>09:00–09:20</td><td>פתיחה + רענון מפגש 1</td></tr>
+          <tr><td>09:20–10:20</td><td>Base44 — סטטוס ושיפורים</td></tr>
+          <tr><td>10:20–11:30</td><td>GPT מותאם — בנייה ובדיקות</td></tr>
+          <tr><td>11:30–13:00</td><td>NotebookLM — הצגה + Case Study</td></tr>
+          <tr><td>13:00–13:45</td><td>ארוחת צהריים</td></tr>
+          <tr><td>14:00–15:00</td><td>עבודה פרטנית + סיכום</td></tr>
+        </table>
+      </div>
+    </div>
+    
+    <!-- Slide 4: תוצרים נדרשים -->
+    <div class="slide" data-slide="4">
+      <div class="slide-content">
+        <h2><span class="emoji">📦</span> תוצרים נדרשים בסוף היום</h2>
+        <div class="grid-3">
+          <div class="card">
+            <div class="big-number">1</div>
+            <h3>Base44</h3>
+            <p>כלי ניהולי עובד + רשימת "תיקוני חובה" (עד 5)</p>
+          </div>
+          <div class="card">
+            <div class="big-number">2</div>
+            <h3>GPT מותאם</h3>
+            <p>Stage 0 פעיל שמחזיר תשובות עקביות ל-3 תרחישים</p>
+          </div>
+          <div class="card">
+            <div class="big-number">3</div>
+            <h3>NotebookLM</h3>
+            <p>סט מסמכים ראשון + תוצר מסכם אחד</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Slide 5: Section - רענון -->
+    <div class="slide section-slide" data-slide="5">
+      <div class="slide-content">
+        <h2><span class="emoji">🔄</span> רענון מפגש 1</h2>
+        <div class="time">09:10–09:20</div>
+      </div>
+    </div>
+    
+    <!-- Slide 6: רענון תוכן -->
+    <div class="slide" data-slide="6">
+      <div class="slide-content">
+        <h2><span class="emoji">📝</span> מה עשינו במפגש 1?</h2>
+        <ul>
+          <li><strong>מגמות והזדמנויות</strong> — AI למנהל: מה זה נותן לנו?</li>
+          <li><strong>שימוש אחראי</strong> — בטיחות מידע, מה מותר/אסור</li>
+          <li><strong>בדיקת דיוק</strong> — איך מזהים "הזיה" ומה עושים?</li>
+          <li><strong>מטלת בית</strong> — זיהוי צוואר בקבוק/תהליך חוזר במחלקה</li>
+        </ul>
+        <div class="highlight">
+          <strong>שאלה לקהל:</strong> מה הכי עבד? מה היה הכי מתסכל?
+        </div>
+      </div>
+    </div>
+    
+    <!-- Slide 7: כלים ומושגים -->
+    <div class="slide" data-slide="7">
+      <div class="slide-content">
+        <h2><span class="emoji">🧰</span> הכלים שנעבוד איתם היום</h2>
+        <div style="text-align: center; margin: 30px 0;">
+          <span class="pill accent">ChatGPT</span>
+          <span class="pill accent">Claude</span>
+          <span class="pill accent">Gemini</span>
+          <span class="pill accent">GPT מותאם</span>
+          <span class="pill accent">NotebookLM</span>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <h3>פרומפט</h3>
+            <p>מה מבקשים + הקשר + מגבלות + פורמט תשובה</p>
+          </div>
+          <div class="card">
+            <h3>מסמך איפיון</h3>
+            <p>מה הבעיה? מה התוצר? למי? מה המדדים? מה אסור?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Slide 8: Section - Base44 -->
+    <div class="slide section-slide" data-slide="8">
+      <div class="slide-content">
+        <h2><span class="emoji">🔧</span> Base44 — בדיקת מטלות</h2>
+        <div class="time">09:20–10:20</div>
+      </div>
+    </div>
+    
+    <!-- Slide 9: Base44 סטטוס -->
+    <div class="slide" data-slide="9">
+      <div class="slide-content">
+        <h2><span class="emoji">📊</span> Base44 — דו״ח מצב</h2>
+        <h3>מה בודקים עכשיו:</h3>
+        <ul>
+          <li>מי סיים? מי באמצע? מה תקוע?</li>
+          <li>איסוף תקלות חוזרות</li>
+          <li>מה עובד בפועל מול תרחישים אמיתיים?</li>
+        </ul>
+        <div class="warn-box">
+          <strong>תוצאה רצויה:</strong> רשימת "תיקוני חובה" קצרה לכל אחד (עד 5)
+        </div>
+      </div>
+    </div>
+    
+    <!-- Slide 10: Base44 שיפורים -->
+    <div class="slide" data-slide="10">
+      <div class="slide-content">
+        <h2><span class="emoji">🛠️</span> שיפורים והתאמות</h2>
+        <h3>נתקן 2–3 "חולשות" נפוצות שמפריעות לכולם:</h3>
+        <div class="grid-2">
+          <div class="card">
+            <h3>בעיות נפוצות</h3>
+            <ul>
+              <li>תשובות ארוכות מדי</li>
+              <li>המצאת פרטים</li>
+              <li>חוסר עקביות</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>פתרונות</h3>
+            <ul>
+              <li>הגבלת אורך בהנחיות</li>
+              <li>"אם אין מידע — שאל"</li>
+              <li>תבניות תוצר קבועות</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Slide 11: Section - GPT -->
+    <div class="slide section-slide" data-slide="11">
+      <div class="slide-content">
+        <h2><span class="emoji">🤖</span> GPT מותאם אישית</h2>
+        <div class="time">10:20–11:30</div>
+      </div>
+    </div>
+    
+    <!-- Slide 12: מה זה GPT מותאם -->
+    <div class="slide" data-slide="12">
+      <div class="slide-content">
+        <h2><span class="emoji">💡</span> מה זה GPT מותאם?</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3>צ׳אט רגיל</h3>
+            <ul>
+              <li>מתחילים מאפס כל פעם</li>
+              <li>צריך להסביר שוב ושוב</li>
+              <li>תוצאות לא עקביות</li>
+            </ul>
+          </div>
+          <div class="card" style="border-color: var(--accent);">
+            <h3>GPT מותאם</h3>
+            <ul>
+              <li>יודע את התפקיד שלו</li>
+              <li>מכיר תבניות קבועות</li>
+              <li>תוצאות עקביות</li>
+            </ul>
+          </div>
+        </div>
+        <div class="highlight">
+          <strong>עיקרון:</strong> GPT הוא "עוזר נהלים" — לא מחליף שיקול דעת!
+        </div>
+      </div>
+    </div>
+    
+    <!-- Slide 13: למה זה קריטי -->
+    <div class="slide" data-slide="13">
+      <div class="slide-content">
+        <h2><span class="emoji">⚡</span> למה GPT מותאם קריטי למנהל?</h2>
+        <div class="grid-3">
+          <div class="card">
+            <h3>אחידות</h3>
+            <p>כל התוצרים באותו פורמט</p>
+          </div>
+          <div class="card">
+            <h3>קיצור זמן</h3>
+            <p>לא צריך להסביר מחדש</p>
+          </div>
+          <div class="card">
+            <h3>שפה מקצועית</h3>
+            <p>מותאם לתחום שלך</p>
+          </div>
+        </div>
+        <div class="grid-2" style="margin-top: 20px;">
+          <div class="card">
+            <h3>תהליך קבוע</h3>
+            <p>שאלות → תוכנית → ביצוע → בדיקה</p>
+          </div>
+          <div class="card">
+            <h3>בטיחות</h3>
+            <p>יודע מה אסור לעשות</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Slide 14: 4 שאלות מפתח -->
+    <div class="slide" data-slide="14">
+      <div class="slide-content">
+        <h2><span class="emoji">❓</span> 4 שאלות שה-GPT ישאל תמיד</h2>
+        <table>
+          <tr><th>שאלה</th><th>למה חשוב</th></tr>
+          <tr><td><strong>מה התוצר הסופי?</strong></td><td>מונע פיזור — GPT יודע מה להוציא</td></tr>
+          <tr><td><strong>למי זה מיועד ומה הטון?</strong></td><td>קובע סגנון: פורמלי/פנימי/ציבורי</td></tr>
+          <tr><td><strong>מה הנתונים שיש לך?</strong></td><td>מונע המצאות — הופך טקסט למסמך</td></tr>
+          <tr><td><strong>מה רמת הרגישות?</strong></td><td>מפעיל "מצב בטיחות מידע"</td></tr>
+        </table>
+      </div>
+    </div>
+    
+    <!-- Slide 15: נוסחת Instructions -->
+    <div class="slide" data-slide="15">
+      <div class="slide-content">
+        <h2><span class="emoji">📋</span> 5 רכיבים ל-Instructions מושלמים</h2>
+        <div class="grid-2">
+          <div>
+            <ol>
+              <li><strong>Role</strong> — מי אתה (עוזר מנהלי למחלקה X)</li>
+              <li><strong>Goal</strong> — למה אתה קיים</li>
+              <li><strong>Process</strong> — איך עובדים</li>
+              <li><strong>Output</strong> — אילו תוצרים</li>
+              <li><strong>Safety</strong> — מה עושים עם מידע רגיש</li>
+            </ol>
+          </div>
+          <div class="card">
+            <h3>תוצרים שכיחים</h3>
+            <span class="pill">דוחות סטטוס</span>
+            <span class="pill">סיכומי ישיבה</span>
+            <span class="pill">מיילים רשמיים</span>
+            <span class="pill">טבלת משימות</span>
+            <span class="pill">נוהל קצר</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Slide 16: תבנית Instructions -->
+    <div class="slide" data-slide="16">
+      <div class="slide-content">
+        <h2><span class="emoji">📝</span> תבנית Instructions — להעתקה!</h2>
+        <pre>אתה עוזר מנהלי למחלקת {שם_מחלקה} בעירייה.
+מטרה: להפחית עומס, לקצר זמן טיפול, ולהפיק תוצרים.
+
+דרך עבודה:
+1) בתחילת כל משימה שאל 4 שאלות:
+   א. מה התוצר הסופי?
+   ב. מי קהל היעד ומה הטון?
+   ג. מה הנתונים שיש כרגע?
+   ד. מה רמת הרגישות?
+2) הצע תוכנית ב-3 צעדים ואז בצע.
+3) בסוף הוסף "בדיקת איכות".
+
+כללי דיוק:
+- אל תמציא מספרים/עובדות.
+- אם חסר מידע — שאל.
+
+בטיחות: אם יש פרטים מזהים — עצור ובקש אנונימיזציה.</pre>
+      </div>
+    </div>
+    
+    <!-- Slide 17: עמוד כיול -->
+    <div class="slide" data-slide="17">
+      <div class="slide-content">
+        <h2><span class="emoji">⚙️</span> עמוד כיול GPT — תבנית למנהל</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3>1) זהות ותפקיד</h3>
+            <p>שם, תפקיד, קהל יעד, כאב מרכזי</p>
+          </div>
+          <div class="card">
+            <h3>2) מטרה ותוצר</h3>
+            <p>יעד מדיד, סוג תוצר, מדדי הצלחה</p>
+          </div>
+          <div class="card">
+            <h3>3) הקשר וגבולות</h3>
+            <p>מגבלות, מה אסור, הנחות מותרות</p>
+          </div>
+          <div class="card">
+            <h3>4) פורמט פלט</h3>
+            <p>מבנה קבוע, טון כתיבה</p>
+          </div>
+        </div>
+        <div class="highlight">
+          <strong>טיפ:</strong> ממלאים פעם אחת, מעתיקים את "בלוק הכיול" לכל שיחה חדשה
+        </div>
+      </div>
+    </div>
+    
+    <!-- Slide 18: בנייה ב-Builder -->
+    <div class="slide" data-slide="18">
+      <div class="slide-content">
+        <h2><span class="emoji">🔨</span> 8 צעדים לבנייה ב-Builder</h2>
+        <div class="grid-2">
+          <ol>
+            <li>הגדר תרחיש מרכזי (מה חוזר כל שבוע?)</li>
+            <li>תן שם ברור ("עוזר מנהלי — מחלקת ___")</li>
+            <li>מלא Description חד (משפט אחד)</li>
+            <li>הדבק Instructions</li>
+          </ol>
+          <ol start="5">
+            <li>הוסף Conversation Starters (3–5)</li>
+            <li>העלה Knowledge (תבניות/נהלים)</li>
+            <li>הגדר Capabilities</li>
+            <li>בדיקות (5–10 תרחישים)</li>
+          </ol>
+        </div>
+        <div class="warn-box">
+          <strong>המלצה:</strong> להתחיל בלי Actions. קודם "גרסה 1 עובדת" — אחר כך מחברים.
+        </div>
+      </div>
+    </div>
+    
+    <!-- Slide 19: Conversation Starters -->
+    <div class="slide" data-slide="19">
+      <div class="slide-content">
+        <h2><span class="emoji">💬</span> Conversation Starters — דוגמאות</h2>
+        <div class="card">
+          <pre>1) "סכם את הטקסט הבא ל'החלטות ומשימות' (כולל אחראים ותאריכים)"
+
+2) "נסח מייל רשמי בנושא: ____ (קהל יעד: ____ , טון: ____ )"
+
+3) "בנה דוח סטטוס שבועי למחלקה לפי הנתונים הבאים: ____"
+
+4) "הפוך את הנקודות הבאות לנוהל קצר וברור: ____"</pre>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Slide 20: תיקון מהיר -->
+    <div class="slide" data-slide="20">
+      <div class="slide-content">
+        <h2><span class="emoji">🔧</span> תיקון מהיר — כשה-GPT לא מדויק</h2>
+        <table>
+          <tr><th>בעיה</th><th>פתרון — הוסף ל-Instructions</th></tr>
+          <tr><td>ממציא פרטים</td><td>"אם אין נתונים — שאל. אל תשלים מספרים."</td></tr>
+          <tr><td>כותב ארוך מדי</td><td>"תוצר עד 180–250 מילים"</td></tr>
+          <tr><td>לא מסיים בתוצר</td><td>"אל תסיים בלי כותרת 'תוצר סופי'"</td></tr>
+          <tr><td>לא שואל שאלות</td><td>"לפני ביצוע — שאל את 4 שאלות המפתח"</td></tr>
+        </table>
+      </div>
+    </div>
+    
+    <!-- Slide 21: בדיקות -->
+    <div class="slide" data-slide="21">
+      <div class="slide-content">
+        <h2><span class="emoji">✅</span> בדיקות — 5 תרחישים קבועים</h2>
+        <table>
+          <tr><th>#</th><th>תרחיש</th><th>תוצר צפוי</th></tr>
+          <tr><td>1</td><td>סיכום טקסט ישיבה</td><td>החלטות + משימות + אחראים + תאריכים</td></tr>
+          <tr><td>2</td><td>מייל רשמי לתושב</td><td>מייל קצר, רשמי, בלי מידע עודף</td></tr>
+          <tr><td>3</td><td>דוח סטטוס שבועי</td><td>בוצע/נתקע/החלטות/סיכונים</td></tr>
+          <tr><td>4</td><td>טבלת משימות</td><td>משימה|אחראי|דדליין|סטטוס|הערה</td></tr>
+          <tr><td>5</td><td>בקשה עם מידע רגיש</td><td>עצירה + בקשת אנונימיזציה</td></tr>
+        </table>
+      </div>
+    </div>
+    
+    <!-- Slide 22: רובריקה -->
+    <div class="slide" data-slide="22">
+      <div class="slide-content">
+        <h2><span class="emoji">📊</span> רובריקה — ציון 1–5</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3>דיוק עובדתי</h3>
+            <p>לא ממציא, מציין אי-ודאות</p>
+          </div>
+          <div class="card">
+            <h3>שלמות תוצר</h3>
+            <p>כל השדות קיימים</p>
+          </div>
+          <div class="card">
+            <h3>סגנון</h3>
+            <p>מתאים לקהל יעד</p>
+          </div>
+          <div class="card">
+            <h3>בטיחות מידע</h3>
+            <p>עוצר כשצריך ומבקש אנונימיזציה</p>
+          </div>
+        </div>
+        <div class="highlight">
+          <strong>איך מתקנים:</strong> לא "מסבירים שוב". מוסיפים משפט אחד ל-Instructions!
+        </div>
+      </div>
+    </div>
+    
+    <!-- Slide 23: Section - NotebookLM -->
+    <div class="slide section-slide" data-slide="23">
+      <div class="slide-content">
+        <h2><span class="emoji">📚</span> NotebookLM</h2>
+        <div class="time">11:30–13:00</div>
+      </div>
+    </div>
+    
+    <!-- Slide 24: מה זה NotebookLM -->
+    <div class="slide" data-slide="24">
+      <div class="slide-content">
+        <h2><span class="emoji">📖</span> מה זה NotebookLM?</h2>
+        <div class="highlight">
+          <strong>הייחוד:</strong> עבודה מתוך מסמכים שלך — לא ידע כללי של האינטרנט!
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <h3>מה מעלים</h3>
+            <ul>
+              <li>נהלים ותקנונים</li>
+              <li>דוחות שבועיים</li>
+              <li>סיכומי ישיבות</li>
+              <li>מסמכי מדיניות</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>מה מקבלים</h3>
+            <ul>
+              <li>תשובות מבוססות מסמכים</li>
+              <li>סינתזה בין מקורות</li>
+              <li>זיהוי סתירות</li>
+              <li>תקצירים ודוחות</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Slide 25: תרשים זרימה -->
+    <div class="slide" data-slide="25">
+      <div class="slide-content">
+        <h2><span class="emoji">🔄</span> תהליך העבודה</h2>
+        <div class="flow">
+          <div class="flow-item">
+            <h3>GPT מחלקתי</h3>
+            <p>מייצר דוחות</p>
+          </div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-item">
+            <h3>חבילת קבצים</h3>
+            <p>תיקייה מסודרת</p>
+          </div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-item">
+            <h3>NotebookLM</h3>
+            <p>סינתזה</p>
+          </div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-item">
+            <h3>Executive Brief</h3>
+            <p>להנהלה</p>
+          </div>
+        </div>
+        <div class="highlight">
+          NotebookLM = "חדר החזרות" — מקום לתרגל ולסנתז לפני שמגישים
+        </div>
+      </div>
+    </div>
+    
+    <!-- Slide 26: פורמט דוח -->
+    <div class="slide" data-slide="26">
+      <div class="slide-content">
+        <h2><span class="emoji">📄</span> פורמט דוח מחלקתי אחיד</h2>
+        <pre># דוח שבועי — {שם_מחלקה}
+
+## 1) תקציר למנכ״ל (2–3 משפטים)
+## 2) מה בוצע השבוע (3–8 נקודות)
+## 3) מה נתקע / חסמים
+## 4) החלטות נדרשות מהנהלה (1–3)
+## 5) סיכונים (1–3)
+## 6) משימות לשבוע הבא (טבלה)
+## 7) נקודות חוצות-מחלקות
+## 8) נתונים/מספרים</pre>
+        <div class="warn-box">
+          <strong>חשוב:</strong> כל המחלקות משתמשות באותו מבנה — כדי ש-NotebookLM יוכל להשוות!
+        </div>
+      </div>
+    </div>
+    
+    <!-- Slide 27: Section - Case Study -->
+    <div class="slide section-slide" data-slide="27">
+      <div class="slide-content">
+        <h2><span class="emoji">🏥</span> Case Study: מחלקת הרווחה</h2>
+        <div class="time">תרגול מונחה</div>
+      </div>
+    </div>
+    
+    <!-- Slide 28: Case Study פרטים -->
+    <div class="slide" data-slide="28">
+      <div class="slide-content">
+        <h2><span class="emoji">📋</span> Case Study — רווחה</h2>
+        <h3>מטרה: להמחיש יכולות דרך דוגמה אמיתית</h3>
+        <div class="grid-2">
+          <div class="card">
+            <h3>שאלות לדיון</h3>
+            <ul>
+              <li>אילו מסמכים יש במחלקה?</li>
+              <li>אילו סוגי פניות חוזרים?</li>
+              <li>מה הידע שקשה לשלוף?</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>תרגול על דוגמה אנונימית</h3>
+            <ul>
+              <li>סיכום מסמכים</li>
+              <li>תובנות ושאלות המשך</li>
+              <li>תבניות מענה</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Slide 29: Section - אבטחת מידע -->
+    <div class="slide section-slide" data-slide="29">
+      <div class="slide-content">
+        <h2><span class="emoji">🔐</span> אבטחת מידע + אנונימיזציה</h2>
+        <div class="time">חובה לפני תרגול!</div>
+      </div>
+    </div>
+    
+    <!-- Slide 30: מה אסור -->
+    <div class="slide" data-slide="30">
+      <div class="slide-content">
+        <h2><span class="emoji">🚫</span> מה אסור להעלות לכלי AI?</h2>
+        <div class="danger-box">
+          <h3>אסור לחלוטין:</h3>
+          <ul>
+            <li>שמות מלאים של תושבים/עובדים</li>
+            <li>מספרי ת"ז</li>
+            <li>כתובות מלאות</li>
+            <li>מספרי טלפון</li>
+            <li>מידע רפואי/רווחה</li>
+            <li>מספרי תיק</li>
+            <li>פרטים מזהים אחרים</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Slide 31: אנונימיזציה -->
+    <div class="slide" data-slide="31">
+      <div class="slide-content">
+        <h2><span class="emoji">🔄</span> איך לעבוד עם מידע רגיש?</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3>במקום שם</h3>
+            <p>"תושב א׳" / "לקוח #123"</p>
+          </div>
+          <div class="card">
+            <h3>במקום כתובת</h3>
+            <p>"מתגורר בשכונת צפון"</p>
+          </div>
+          <div class="card">
+            <h3>במקום גיל מדויק</h3>
+            <p>"בן 30-40"</p>
+          </div>
+          <div class="card">
+            <h3>במקום מצב רפואי</h3>
+            <p>"עם מגבלה בתנועה"</p>
+          </div>
+        </div>
+        <div class="highlight">
+          <strong>עיקרון:</strong> Human-in-the-loop — בקרה אנושית לפני שימוש בתוצר!
+        </div>
+      </div>
+    </div>
+    
+    <!-- Slide 32: צ'ק ליסט להעלאה -->
+    <div class="slide" data-slide="32">
+      <div class="slide-content">
+        <h2><span class="emoji">✅</span> צ׳ק ליסט לפני העלאת מסמך</h2>
+        <ul class="checklist">
+          <li>אין שמות מלאים של אנשים</li>
+          <li>אין מספרי ת"ז / כתובות / טלפונים</li>
+          <li>אין מידע רפואי מזהה</li>
+          <li>אין מספרי תיק שניתן לזהות</li>
+          <li>פרטים רגישים הוכללו ("תושב א׳")</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Slide 33: Section - הפסקה -->
+    <div class="slide section-slide" data-slide="33">
+      <div class="slide-content">
+        <h2><span class="emoji">🍽️</span> הפסקת צהריים</h2>
+        <div class="time">13:00–13:45</div>
+        <p style="margin-top: 30px; font-size: 1.5rem;">נתראה ב-13:45!</p>
+      </div>
+    </div>
+    
+    <!-- Slide 34: Section - עבודה פרטנית -->
+    <div class="slide section-slide" data-slide="34">
+      <div class="slide-content">
+        <h2><span class="emoji">💪</span> עבודה פרטנית</h2>
+        <div class="time">14:00–15:00</div>
+      </div>
+    </div>
+    
+    <!-- Slide 35: מה בונים -->
+    <div class="slide" data-slide="35">
+      <div class="slide-content">
+        <h2><span class="emoji">🏗️</span> מה כל מנהל/ת בונה עכשיו?</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3>GPT מותאם</h3>
+            <ul>
+              <li>שם ותיאור ברור</li>
+              <li>Instructions מלאים</li>
+              <li>3–5 Conversation Starters</li>
+              <li>בדיקת 3 תרחישים</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>NotebookLM</h3>
+            <ul>
+              <li>מחברת למחלקה</li>
+              <li>סט מסמכים ראשון (אנונימי!)</li>
+              <li>תוצר מסכם אחד</li>
+            </ul>
+          </div>
+        </div>
+        <div class="warn-box">
+          <strong>דגש פרקטי:</strong> לא "ללמוד את הכלי" — לצאת עם תוצר!
+        </div>
+      </div>
+    </div>
+    
+    <!-- Slide 36: ליווי -->
+    <div class="slide" data-slide="36">
+      <div class="slide-content">
+        <h2><span class="emoji">🤝</span> אני כאן לעזור!</h2>
+        <div class="highlight">
+          <h3>תקוע/ה? קרא/י למנחה!</h3>
+          <ul>
+            <li>בעיות טכניות</li>
+            <li>לא בטוח/ה מה לכתוב</li>
+            <li>התוצאות לא טובות</li>
+            <li>שאלות על אבטחת מידע</li>
+          </ul>
+        </div>
+        <p style="text-align: center; font-size: 1.5rem; margin-top: 30px;">
+          המטרה: <strong>שכולם יצאו עם תוצר עובד!</strong>
+        </p>
+      </div>
+    </div>
+    
+    <!-- Slide 37: GPT חצי-אוטונומי -->
+    <div class="slide" data-slide="37">
+      <div class="slide-content">
+        <h2><span class="emoji">🚀</span> שלב מתקדם: GPT חצי-אוטונומי</h2>
+        <div class="highlight">
+          <strong>מה זה?</strong> GPT שמנהל תהליך קבוע: שואל → מאבחן → מציע → מבצע → מבקש אישור
+        </div>
+        <table>
+          <tr><th>מצב</th><th>מה GPT עושה</th><th>רמת אוטונומיה</th></tr>
+          <tr><td>מצב טיוטה</td><td>יוצר טיוטה, מבקש אישור</td><td>נמוכה</td></tr>
+          <tr><td>מצב ישיבה</td><td>מזהה החלטות אוטומטית</td><td>בינונית</td></tr>
+          <tr><td>מצב דוח</td><td>שואל ומייצר דוח מלא</td><td>גבוהה</td></tr>
+        </table>
+        <div class="danger-box">
+          <strong>כלל ניהולי:</strong> GPT לא מחליט — הוא מציע. ההחלטה נשארת אנושית!
+        </div>
+      </div>
+    </div>
+    
+    <!-- Slide 38: מטלת בית -->
+    <div class="slide" data-slide="38">
+      <div class="slide-content">
+        <h2><span class="emoji">📝</span> מטלת בית</h2>
+        <div class="card">
+          <h3>עד המפגש הבא:</h3>
+          <ol>
+            <li>להמשיך בנייה של ה-GPT המותאם</li>
+            <li>להוסיף מסמכים ל-NotebookLM (אנונימיים!)</li>
+            <li>להביא תוצר אחד מוגמר</li>
+            <li>לתעד: מה עבד? מה לא? מה שיפרתם?</li>
+          </ol>
+        </div>
+        <div class="highlight">
+          <strong>טיפ:</strong> בחרו מסמך אמיתי מהשבוע, הריצו על ה-GPT, ושפרו דבר אחד לפי הרובריקה
+        </div>
+      </div>
+    </div>
+    
+    <!-- Slide 39: צ'ק ליסט סיום -->
+    <div class="slide" data-slide="39">
+      <div class="slide-content">
+        <h2><span class="emoji">✅</span> צ׳ק ליסט: "גרסה 1 עובדת"</h2>
+        <ul class="checklist">
+          <li>בחרנו תרחיש מרכזי חוזר</li>
+          <li>ה-GPT שואל 4 שאלות מפתח</li>
+          <li>הגדרנו תוצר קשיח (טבלה/מבנה קבוע)</li>
+          <li>הוספנו 3–5 Conversation Starters</li>
+          <li>העלינו Knowledge אנונימי</li>
+          <li>הרצנו 5 בדיקות ושיפרנו</li>
+          <li>יש "מצב רגיש" ברור</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Slide 40: סיכום -->
+    <div class="slide" data-slide="40">
+      <div class="slide-content">
+        <h2><span class="emoji">🎯</span> סיכום היום</h2>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Base44</h3>
+            <p>✅ בדקנו סטטוס<br>✅ תיקנו בעיות</p>
+          </div>
+          <div class="card">
+            <h3>GPT מותאם</h3>
+            <p>✅ למדנו לבנות<br>✅ יצרנו גרסה 1</p>
+          </div>
+          <div class="card">
+            <h3>NotebookLM</h3>
+            <p>✅ הכרנו את הכלי<br>✅ תרגלנו Case Study</p>
+          </div>
+        </div>
+        <div class="highlight" style="text-align: center; font-size: 1.5rem;">
+          <strong>כלי = תוצר מדיד. בלי תוצר — זה נשאר ידע תיאורטי!</strong>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Slide 41: סיום -->
+    <div class="slide" data-slide="41">
+      <div class="slide-content title-slide">
+        <img src="institute-logo.png" alt="THE:INSTITUTE" class="logo-img">
+        <h1>תודה רבה!</h1>
+        <div class="subtitle">נתראה במפגש הבא</div>
+        <div class="meta">עיריית דימונה | הכשרת דרג בכיר</div>
+      </div>
+    </div>
+    
+  </div>
+  
+  <!-- Navigation -->
+  <div class="nav">
+    <button onclick="prevSlide()">→</button>
+    <button onclick="nextSlide()">←</button>
+  </div>
+  
+  <div class="progress" id="progress"></div>
+  <div class="slide-counter" id="counter">1 / 41</div>
+  
+  <script>
+    let currentSlide = 1;
+    const totalSlides = document.querySelectorAll('.slide').length;
+    
+    function showSlide(n) {
+      const slides = document.querySelectorAll('.slide');
+      
+      if (n > totalSlides) currentSlide = 1;
+      if (n < 1) currentSlide = totalSlides;
+      
+      slides.forEach(slide => slide.classList.remove('active'));
+      slides[currentSlide - 1].classList.add('active');
+      
+      document.getElementById('counter').textContent = `${currentSlide} / ${totalSlides}`;
+      document.getElementById('progress').style.width = `${(currentSlide / totalSlides) * 100}%`;
+    }
+    
+    function nextSlide() {
+      currentSlide++;
+      showSlide(currentSlide);
+    }
+    
+    function prevSlide() {
+      currentSlide--;
+      showSlide(currentSlide);
+    }
+    
+    // Keyboard navigation (RTL - left=next, right=prev)
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowDown' || e.key === ' ') {
+        nextSlide();
+      } else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
+        prevSlide();
+      }
+    });
+    
+    // Touch support
+    let touchStartX = 0;
+    document.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+    });
+    
+    document.addEventListener('touchend', (e) => {
+      const touchEndX = e.changedTouches[0].clientX;
+      const diff = touchStartX - touchEndX;
+      
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) prevSlide();  // RTL: swipe left = back
+        else nextSlide();           // RTL: swipe right = forward
+      }
+    });
+    
+    // Initialize
+    showSlide(currentSlide);
+  </script>
+</body>
+</html>

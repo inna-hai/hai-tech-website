@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>דשבורד הורים | HAI Tech Academy</title>
+    <link rel="stylesheet" href="css/lms.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Parent Dashboard Specific Styles */
+        .parent-dashboard {
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .dashboard-header {
+            margin-bottom: 2rem;
+        }
+
+        .dashboard-header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .dashboard-header p {
+            color: var(--text-secondary);
+        }
+
+        /* Children Grid */
+        .children-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .child-card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .child-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .child-card.active {
+            border-color: var(--primary);
+        }
+
+        .child-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .child-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            font-weight: 600;
+        }
+
+        .child-info h3 {
+            margin: 0;
+            font-size: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        .child-info p {
+            margin: 0;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .child-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .child-stat {
+            text-align: center;
+            padding: 0.75rem;
+            background: var(--background);
+            border-radius: var(--radius);
+        }
+
+        .child-stat-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .child-stat-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        /* Add Child Card */
+        .add-child-card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            cursor: pointer;
+            border: 2px dashed var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .add-child-card:hover {
+            border-color: var(--primary);
+            background: var(--border-light);
+        }
+
+        .add-child-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Detail Panel */
+        .detail-panel {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            display: none;
+        }
+
+        .detail-panel.active {
+            display: block;
+        }
+
+        .detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .detail-child-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .detail-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            font-weight: 600;
+        }
+
+        .detail-name {
+            font-size: 1.5rem;
+            margin: 0 0 0.25rem;
+        }
+
+        .detail-email {
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .detail-badges {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .level-badge {
+            padding: 0.25rem 0.75rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .streak-badge {
+            padding: 0.25rem 0.75rem;
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        /* Stats Overview */
+        .stats-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--background);
+            padding: 1.25rem;
+            border-radius: var(--radius);
+            text-align: center;
+        }
+
+        .stat-card-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .stat-card-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        /* Content Sections */
+        .detail-sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 900px) {
+            .detail-sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .detail-section {
+            background: var(--background);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+        }
+
+        .detail-section h3 {
+            margin: 0 0 1rem;
+            font-size: 1.125rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Weekly Chart */
+        .chart-container {
+            position: relative;
+            height: 200px;
+        }
+
+        /* Courses List */
+        .courses-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .course-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem;
+            background: var(--surface);
+            border-radius: var(--radius);
+        }
+
+        .course-thumb {
+            width: 60px;
+            height: 45px;
+            border-radius: var(--radius-sm);
+            background: var(--border);
+            object-fit: cover;
+        }
+
+        .course-info {
+            flex: 1;
+        }
+
+        .course-title {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .course-progress-bar {
+            height: 6px;
+            background: var(--border);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .course-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 3px;
+            transition: width 0.5s ease;
+        }
+
+        .course-percent {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--primary);
+            min-width: 45px;
+            text-align: left;
+        }
+
+        /* Activity List */
+        .activity-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            max-height: 350px;
+            overflow-y: auto;
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 0.75rem;
+            background: var(--surface);
+            border-radius: var(--radius);
+        }
+
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .activity-icon.lesson {
+            background: rgba(99, 102, 241, 0.15);
+        }
+
+        .activity-icon.quiz {
+            background: rgba(16, 185, 129, 0.15);
+        }
+
+        .activity-icon.xp {
+            background: rgba(245, 158, 11, 0.15);
+        }
+
+        .activity-content {
+            flex: 1;
+        }
+
+        .activity-title {
+            font-weight: 500;
+            margin-bottom: 0.125rem;
+        }
+
+        .activity-subtitle {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .activity-time {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Badges Grid */
+        .badges-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .badge-item {
+            width: 50px;
+            height: 50px;
+            background: var(--surface);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+        }
+
+        .badge-item[title] {
+            cursor: help;
+        }
+
+        /* Link Child Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .empty-state h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .empty-state p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Loading State */
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Toast Notifications */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--surface);
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: transform 0.3s ease;
+            z-index: 1001;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .toast.success {
+            border-right: 4px solid var(--success);
+        }
+
+        .toast.error {
+            border-right: 4px solid var(--error);
+        }
+    </style>
+</head>
+<body class="dark-mode">
+    <nav class="lms-navbar">
+        <div class="navbar-brand">
+            <a href="../index.html">
+                <img src="../images/logo.png" alt="HAI Tech Academy" class="navbar-logo">
+            </a>
+        </div>
+        <div class="navbar-menu">
+            <a href="index.html" class="nav-link">הקורסים שלי</a>
+            <a href="catalog.html" class="nav-link">קטלוג קורסים</a>
+            <a href="parent-dashboard.html" class="nav-link active">דשבורד הורים</a>
+        </div>
+        <div class="navbar-user">
+            <div class="user-dropdown">
+                <button class="user-btn" id="userDropdownBtn">
+                    <div class="user-avatar" id="userAvatar">א</div>
+                    <span class="user-name" id="userName">אורח</span>
+                </button>
+                <div class="dropdown-menu">
+                    <a href="profile.html" class="dropdown-item">הפרופיל שלי</a>
+                    <a href="profile.html#settings" class="dropdown-item">הגדרות</a>
+                    <hr>
+                    <button class="dropdown-item" onclick="LMS.logout()">התנתק</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="parent-dashboard">
+        <div class="dashboard-header">
+            <h1>👨‍👩‍👧‍👦 דשבורד הורים</h1>
+            <p>עקוב אחרי ההתקדמות של הילדים שלך בלמידה</p>
+        </div>
+
+        <!-- Children Grid -->
+        <div class="children-grid" id="childrenGrid">
+            <div class="loading">
+                <div class="loading-spinner"></div>
+            </div>
+        </div>
+
+        <!-- Detail Panel -->
+        <div class="detail-panel" id="detailPanel">
+            <div class="detail-header">
+                <div class="detail-child-info">
+                    <div class="detail-avatar" id="detailAvatar">א</div>
+                    <div>
+                        <h2 class="detail-name" id="detailName">שם הילד</h2>
+                        <p class="detail-email" id="detailEmail">email@example.com</p>
+                        <div class="detail-badges">
+                            <span class="level-badge" id="detailLevel">🌱 מתחיל</span>
+                            <span class="streak-badge" id="detailStreak">🔥 0 ימים</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-outline" onclick="ParentDashboard.closeDetail()">סגור</button>
+            </div>
+
+            <!-- Stats Overview -->
+            <div class="stats-overview" id="statsOverview">
+                <div class="stat-card">
+                    <div class="stat-card-icon">⭐</div>
+                    <div class="stat-card-value" id="statXp">0</div>
+                    <div class="stat-card-label">נקודות XP</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon">📚</div>
+                    <div class="stat-card-value" id="statLessons">0</div>
+                    <div class="stat-card-label">שיעורים</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon">✅</div>
+                    <div class="stat-card-value" id="statQuizzes">0</div>
+                    <div class="stat-card-label">קוויזים</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon">🏆</div>
+                    <div class="stat-card-value" id="statBadges">0</div>
+                    <div class="stat-card-label">הישגים</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon">📈</div>
+                    <div class="stat-card-value" id="statProgress">0%</div>
+                    <div class="stat-card-label">התקדמות כללית</div>
+                </div>
+            </div>
+
+            <!-- Detail Sections -->
+            <div class="detail-sections">
+                <!-- Weekly Chart -->
+                <div class="detail-section">
+                    <h3>📊 התקדמות שבועית</h3>
+                    <div class="chart-container">
+                        <canvas id="weeklyChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Courses Progress -->
+                <div class="detail-section">
+                    <h3>📖 קורסים</h3>
+                    <div class="courses-list" id="coursesList">
+                        <div class="empty-state">
+                            <p>אין קורסים פעילים</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="detail-section">
+                    <h3>🕐 פעילות אחרונה</h3>
+                    <div class="activity-list" id="activityList">
+                        <div class="loading">
+                            <div class="loading-spinner"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Badges -->
+                <div class="detail-section">
+                    <h3>🎖️ הישגים שנצברו</h3>
+                    <div class="badges-grid" id="badgesGrid">
+                        <div class="empty-state">
+                            <p>אין הישגים עדיין</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Link Child Modal -->
+    <div class="modal-overlay" id="linkModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>➕ הוסף ילד</h2>
+                <button class="modal-close" onclick="ParentDashboard.closeModal()">&times;</button>
+            </div>
+            <form id="linkChildForm">
+                <div class="form-group">
+                    <label for="childEmail">אימייל של הילד</label>
+                    <input type="email" id="childEmail" placeholder="child@example.com" required>
+                    <small style="color: var(--text-secondary)">הילד צריך להיות רשום למערכת</small>
+                </div>
+                <div class="form-actions" style="margin-top: 1.5rem;">
+                    <button type="button" class="btn btn-outline" onclick="ParentDashboard.closeModal()">ביטול</button>
+                    <button type="submit" class="btn btn-primary">קשר ילד</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <span class="toast-icon"></span>
+        <span class="toast-message"></span>
+    </div>
+
+    <script src="js/lms.js"></script>
+    <script>
+        const ParentDashboard = {
+            children: [],
+            selectedChild: null,
+            weeklyChart: null,
+
+            async init() {
+                // Check authentication
+                if (!LMS.isLoggedIn()) {
+                    window.location.href = 'login.html?redirect=parent-dashboard.html';
+                    return;
+                }
+
+                // Update user info in navbar
+                const user = LMS.getCurrentUser();
+                if (user) {
+                    document.getElementById('userName').textContent = user.name || 'אורח';
+                    document.getElementById('userAvatar').textContent = user.avatar || user.name?.charAt(0) || 'א';
+                }
+
+                // Load children
+                await this.loadChildren();
+
+                // Setup form
+                document.getElementById('linkChildForm').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.linkChild();
+                });
+            },
+
+            async loadChildren() {
+                const grid = document.getElementById('childrenGrid');
+                
+                try {
+                    const response = await LMS.api('/api/parent/children');
+                    
+                    if (response.success) {
+                        this.children = response.children;
+                        this.renderChildren();
+                    } else {
+                        this.showError(response.error || 'שגיאה בטעינת הנתונים');
+                    }
+                } catch (error) {
+                    console.error('Load children error:', error);
+                    // Show empty state for demo
+                    this.renderChildren();
+                }
+            },
+
+            renderChildren() {
+                const grid = document.getElementById('childrenGrid');
+                
+                if (this.children.length === 0) {
+                    grid.innerHTML = `
+                        <div class="empty-state" style="grid-column: 1 / -1;">
+                            <div class="empty-state-icon">👨‍👩‍👧</div>
+                            <h3>אין ילדים מקושרים</h3>
+                            <p>קשר את חשבון הילדים שלך כדי לעקוב אחרי ההתקדמות שלהם</p>
+                            <button class="btn btn-primary" onclick="ParentDashboard.openModal()">➕ הוסף ילד</button>
+                        </div>
+                    `;
+                    return;
+                }
+
+                const levelNames = ['מתחיל', 'חוקר', 'מתכנת', 'מומחה', 'מאסטר', 'אגדה'];
+                const levelIcons = ['🌱', '🔍', '💻', '🚀', '👑', '⭐'];
+
+                grid.innerHTML = this.children.map(child => `
+                    <div class="child-card" data-id="${child.id}" onclick="ParentDashboard.selectChild('${child.id}')">
+                        <div class="child-header">
+                            <div class="child-avatar">${child.avatar || child.name?.charAt(0) || '?'}</div>
+                            <div class="child-info">
+                                <h3>${child.name}</h3>
+                                <p>${levelIcons[child.level - 1] || '🌱'} ${levelNames[child.level - 1] || 'מתחיל'}</p>
+                            </div>
+                        </div>
+                        <div class="child-stats">
+                            <div class="child-stat">
+                                <div class="child-stat-value">${child.totalXp || 0}</div>
+                                <div class="child-stat-label">XP</div>
+                            </div>
+                            <div class="child-stat">
+                                <div class="child-stat-value">${child.streak || 0}</div>
+                                <div class="child-stat-label">רצף 🔥</div>
+                            </div>
+                            <div class="child-stat">
+                                <div class="child-stat-value">${child.coursesCount || 0}</div>
+                                <div class="child-stat-label">קורסים</div>
+                            </div>
+                            <div class="child-stat">
+                                <div class="child-stat-value">${child.lessonsCompleted || 0}</div>
+                                <div class="child-stat-label">שיעורים</div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('') + `
+                    <div class="add-child-card" onclick="ParentDashboard.openModal()">
+                        <div class="add-child-icon">➕</div>
+                        <p>הוסף ילד</p>
+                    </div>
+                `;
+            },
+
+            async selectChild(childId) {
+                // Update active state
+                document.querySelectorAll('.child-card').forEach(card => {
+                    card.classList.toggle('active', card.dataset.id === childId);
+                });
+
+                const panel = document.getElementById('detailPanel');
+                panel.classList.add('active');
+
+                // Load child details
+                try {
+                    const [progressRes, activityRes] = await Promise.all([
+                        LMS.api(`/api/parent/child/${childId}/progress`),
+                        LMS.api(`/api/parent/child/${childId}/activity`)
+                    ]);
+
+                    if (progressRes.success) {
+                        this.selectedChild = progressRes.child;
+                        this.renderChildDetail();
+                    }
+
+                    if (activityRes.success) {
+                        this.renderActivity(activityRes.activity);
+                    }
+                } catch (error) {
+                    console.error('Load child details error:', error);
+                    // Demo mode - show empty state
+                    this.showDemoData(childId);
+                }
+
+                // Scroll to detail panel
+                panel.scrollIntoView({ behavior: 'smooth' });
+            },
+
+            showDemoData(childId) {
+                const child = this.children.find(c => c.id === childId);
+                if (!child) return;
+
+                this.selectedChild = {
+                    ...child,
+                    stats: {
+                        totalXp: child.totalXp || 0,
+                        level: child.level || 1,
+                        streak: child.streak || 0,
+                        longestStreak: child.streak || 0,
+                        lessonsCompleted: child.lessonsCompleted || 0,
+                        quizzesCompleted: 0
+                    },
+                    badges: [],
+                    courses: [],
+                    weeklyActivity: [],
+                    totalProgress: 0
+                };
+
+                this.renderChildDetail();
+                this.renderActivity([]);
+            },
+
+            renderChildDetail() {
+                const child = this.selectedChild;
+                if (!child) return;
+
+                const levelNames = ['מתחיל', 'חוקר', 'מתכנת', 'מומחה', 'מאסטר', 'אגדה'];
+                const levelIcons = ['🌱', '🔍', '💻', '🚀', '👑', '⭐'];
+
+                // Header
+                document.getElementById('detailAvatar').textContent = child.avatar || child.name?.charAt(0) || '?';
+                document.getElementById('detailName').textContent = child.name;
+                document.getElementById('detailEmail').textContent = child.email || '';
+                document.getElementById('detailLevel').textContent = `${levelIcons[child.stats.level - 1] || '🌱'} ${levelNames[child.stats.level - 1] || 'מתחיל'}`;
+                document.getElementById('detailStreak').textContent = `🔥 ${child.stats.streak} ימים`;
+
+                // Stats
+                document.getElementById('statXp').textContent = child.stats.totalXp.toLocaleString();
+                document.getElementById('statLessons').textContent = child.stats.lessonsCompleted;
+                document.getElementById('statQuizzes').textContent = child.stats.quizzesCompleted;
+                document.getElementById('statBadges').textContent = child.badges?.length || 0;
+                document.getElementById('statProgress').textContent = `${child.totalProgress}%`;
+
+                // Courses
+                this.renderCourses(child.courses || []);
+
+                // Badges
+                this.renderBadges(child.badges || []);
+
+                // Weekly chart
+                this.renderWeeklyChart(child.weeklyActivity || []);
+            },
+
+            renderCourses(courses) {
+                const container = document.getElementById('coursesList');
+                
+                if (courses.length === 0) {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <p>אין קורסים פעילים</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                container.innerHTML = courses.map(course => `
+                    <div class="course-item">
+                        <img src="${course.thumbnail || '../images/course-placeholder.jpg'}" alt="${course.title}" class="course-thumb">
+                        <div class="course-info">
+                            <div class="course-title">${course.title}</div>
+                            <div class="course-progress-bar">
+                                <div class="course-progress-fill" style="width: ${course.progress_percent || 0}%"></div>
+                            </div>
+                        </div>
+                        <div class="course-percent">${course.progress_percent || 0}%</div>
+                    </div>
+                `).join('');
+            },
+
+            renderActivity(activities) {
+                const container = document.getElementById('activityList');
+                
+                if (activities.length === 0) {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <p>אין פעילות אחרונה</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                const activityIcons = {
+                    lesson_completed: '✅',
+                    lesson_watched: '📺',
+                    quiz_passed: '🎯',
+                    quiz_attempted: '📝',
+                    xp_earned: '⭐'
+                };
+
+                const activityTypes = {
+                    lesson_completed: 'lesson',
+                    lesson_watched: 'lesson',
+                    quiz_passed: 'quiz',
+                    quiz_attempted: 'quiz',
+                    xp_earned: 'xp'
+                };
+
+                container.innerHTML = activities.slice(0, 15).map(activity => `
+                    <div class="activity-item">
+                        <div class="activity-icon ${activityTypes[activity.type] || ''}">
+                            ${activityIcons[activity.type] || '📌'}
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-title">${activity.title}</div>
+                            <div class="activity-subtitle">${activity.subtitle || ''}</div>
+                            <div class="activity-time">${this.formatTime(activity.timestamp)}</div>
+                        </div>
+                    </div>
+                `).join('');
+            },
+
+            renderBadges(badges) {
+                const container = document.getElementById('badgesGrid');
+
+                const badgeInfo = {
+                    first_lesson: { icon: '👶', name: 'צעד ראשון' },
+                    first_course: { icon: '🎓', name: 'סיימתי קורס!' },
+                    streak_7: { icon: '🔥', name: 'שבוע רצוף' },
+                    streak_30: { icon: '🏆', name: 'חודש רצוף' },
+                    perfect_quiz: { icon: '💯', name: 'מושלם!' },
+                    five_perfect: { icon: '🎯', name: 'מדויק' },
+                    night_owl: { icon: '🦉', name: 'ינשוף לילה' },
+                    early_bird: { icon: '🌅', name: 'ציפור מוקדמת' },
+                    rising_star: { icon: '🌟', name: 'כוכב עולה' },
+                    bookworm: { icon: '📚', name: 'תולעת ספרים' },
+                    speedster: { icon: '⚡', name: 'מהיר כברק' }
+                };
+
+                if (badges.length === 0) {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <p>אין הישגים עדיין</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                container.innerHTML = badges.map(badge => {
+                    const info = badgeInfo[badge.badge_id] || { icon: '🏅', name: badge.badge_id };
+                    return `<div class="badge-item" title="${info.name}">${info.icon}</div>`;
+                }).join('');
+            },
+
+            renderWeeklyChart(weeklyData) {
+                const ctx = document.getElementById('weeklyChart').getContext('2d');
+
+                // Destroy existing chart
+                if (this.weeklyChart) {
+                    this.weeklyChart.destroy();
+                }
+
+                // Default data if none provided
+                const labels = weeklyData.length > 0 
+                    ? weeklyData.map(d => d.dayName)
+                    : ['א׳', 'ב׳', 'ג׳', 'ד׳', 'ה׳', 'ו׳', 'ש׳'];
+                
+                const lessonsData = weeklyData.length > 0
+                    ? weeklyData.map(d => d.lessonsCompleted)
+                    : [0, 0, 0, 0, 0, 0, 0];
+
+                const minutesData = weeklyData.length > 0
+                    ? weeklyData.map(d => d.minutesStudied)
+                    : [0, 0, 0, 0, 0, 0, 0];
+
+                this.weeklyChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'שיעורים',
+                            data: lessonsData,
+                            backgroundColor: 'rgba(99, 102, 241, 0.8)',
+                            borderRadius: 4
+                        }, {
+                            label: 'דקות למידה',
+                            data: minutesData,
+                            backgroundColor: 'rgba(16, 185, 129, 0.8)',
+                            borderRadius: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                grid: {
+                                    color: 'rgba(255, 255, 255, 0.1)'
+                                },
+                                ticks: {
+                                    color: '#94a3b8'
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    display: false
+                                },
+                                ticks: {
+                                    color: '#94a3b8'
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                labels: {
+                                    color: '#94a3b8'
+                                }
+                            }
+                        }
+                    }
+                });
+            },
+
+            closeDetail() {
+                document.getElementById('detailPanel').classList.remove('active');
+                document.querySelectorAll('.child-card').forEach(card => {
+                    card.classList.remove('active');
+                });
+                this.selectedChild = null;
+            },
+
+            openModal() {
+                document.getElementById('linkModal').classList.add('active');
+                document.getElementById('childEmail').focus();
+            },
+
+            closeModal() {
+                document.getElementById('linkModal').classList.remove('active');
+                document.getElementById('linkChildForm').reset();
+            },
+
+            async linkChild() {
+                const email = document.getElementById('childEmail').value.trim();
+                
+                if (!email) {
+                    this.showToast('אנא הזן אימייל', 'error');
+                    return;
+                }
+
+                try {
+                    const response = await LMS.api('/api/parent/link-child', {
+                        method: 'POST',
+                        body: JSON.stringify({ childEmail: email })
+                    });
+
+                    if (response.success) {
+                        this.showToast(response.message, 'success');
+                        this.closeModal();
+                        await this.loadChildren();
+                    } else {
+                        this.showToast(response.error || 'שגיאה בקישור', 'error');
+                    }
+                } catch (error) {
+                    console.error('Link child error:', error);
+                    this.showToast('שגיאה בקישור הילד', 'error');
+                }
+            },
+
+            formatTime(timestamp) {
+                if (!timestamp) return '';
+                const date = new Date(timestamp * 1000);
+                const now = new Date();
+                const diff = now - date;
+                
+                if (diff < 60000) return 'עכשיו';
+                if (diff < 3600000) return `לפני ${Math.floor(diff / 60000)} דקות`;
+                if (diff < 86400000) return `לפני ${Math.floor(diff / 3600000)} שעות`;
+                if (diff < 604800000) return `לפני ${Math.floor(diff / 86400000)} ימים`;
+                
+                return date.toLocaleDateString('he-IL');
+            },
+
+            showToast(message, type = 'success') {
+                const toast = document.getElementById('toast');
+                toast.querySelector('.toast-message').textContent = message;
+                toast.className = `toast ${type} show`;
+                
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            },
+
+            showError(message) {
+                const grid = document.getElementById('childrenGrid');
+                grid.innerHTML = `
+                    <div class="empty-state" style="grid-column: 1 / -1;">
+                        <div class="empty-state-icon">❌</div>
+                        <h3>שגיאה</h3>
+                        <p>${message}</p>
+                        <button class="btn btn-primary" onclick="ParentDashboard.loadChildren()">נסה שוב</button>
+                    </div>
+                `;
+            }
+        };
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', () => ParentDashboard.init());
+    </script>
+</body>
+</html>

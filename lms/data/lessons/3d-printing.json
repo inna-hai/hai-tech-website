@@ -1,0 +1,62 @@
+{
+  "courseId": "3d-printing",
+  "courseTitle": "קורס מידול תלת מימד - Tinkercad",
+  "lessonsCount": 5,
+  "lessons": [
+    {
+      "id": 1,
+      "title": "שיעור 1 – מחזיק מפתחות",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1149810540",
+      "order": 1,
+      "free": true,
+      "resources": []
+    },
+    {
+      "id": 2,
+      "title": "שיעור 2 – שימוש חכם בשכבות",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1149809815",
+      "order": 2,
+      "free": true,
+      "resources": []
+    },
+    {
+      "id": 3,
+      "title": "שיעור 3 – הדפסת קופסא",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1151312926",
+      "order": 3,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 4,
+      "title": "שיעור 4 – הדפסת מעמד לקונסולת משחקים",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1153316692",
+      "order": 4,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 5,
+      "title": "שיעור 5 – הדפסת סטנד מעוצב לנייד",
+      "titleEn": "",
+      "description": "",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1157101488",
+      "order": 5,
+      "free": false,
+      "resources": []
+    }
+  ]
+}

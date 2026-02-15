@@ -290,29 +290,31 @@
         }
         
         .program-image {
-            height: 150px;
+            height: 180px;
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            background-size: cover;
+            background-position: center;
         }
         
         .program-image::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: inherit;
-            filter: brightness(1.1);
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.3) 100%);
+        }
+        
+        .program-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         .program-icon {
-            width: 60px;
-            height: 60px;
-            color: white;
-            position: relative;
-            z-index: 1;
-            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.2));
+            display: none;
         }
         
         .program-grade {
@@ -555,12 +557,12 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="תפריט ראשי">
         <div class="container">
-            <a href="index.html" class="logo">
-                <img src="https://hai.tech/wp-content/uploads/2023/11/hi-tech-logo.png" alt="דרך ההייטק" width="120" height="80">
+            <a href="index.html" class="logo" aria-label="דרך ההייטק - דף הבית">
+                <img src="images/brand/logo-haitech-transparent.png" alt="דרך ההייטק - HAi.TECH" height="60">
             </a>
-            <button class="mobile-menu-btn" aria-label="תפריט">
+            <button class="mobile-menu-btn" aria-label="פתח תפריט" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -568,11 +570,13 @@
             <ul class="nav-links">
                 <li><a href="index.html#courses">קורסים דיגיטליים</a></li>
                 <li><a href="index.html#private">שיעורים פרטיים</a></li>
-                <li><a href="institutions.html"><i data-lucide="school" class="nav-icon"></i> למוסדות</a></li>
-                <li><a href="blog.html"><i data-lucide="newspaper" class="nav-icon"></i> בלוג</a></li>
+                <li><a href="locations.html">מוקדים פרונטליים</a></li>
+                <li><a href="institutions.html" class="active">למוסדות</a></li>
+                <li><a href="blog.html">בלוג</a></li>
                 <li><a href="index.html#about">אודות</a></li>
-                <li><a href="https://haitechdigitalcourses.hai.tech" class="btn btn-student" target="_blank"><i data-lucide="log-in" class="nav-icon"></i> כניסה לתלמידים</a></li>
-                <li><a href="#contact" class="btn btn-nav">צור קשר</a></li>
+                <li><a href="index.html#faq">שאלות נפוצות</a></li>
+                <li><a href="/lms/login.html" class="nav-link-secondary">כניסה לתלמידים</a></li>
+                <li><a href="#contact" class="btn btn-nav">התחילו עכשיו</a></li>
             </ul>
         </div>
     </nav>
@@ -642,8 +646,8 @@
                     
                     <!-- CodeStart -->
                     <article class="program-card">
-                        <div class="program-image scratch">
-                            <i data-lucide="cat" class="program-icon"></i>
+                        <div class="program-image">
+                            <img src="images/institutions/codestart.jpg" alt="ילדים לומדים סקראץ' בכיתה">
                             <span class="program-grade">א'-ד'</span>
                         </div>
                         <div class="program-body">
@@ -662,8 +666,8 @@
                     
                     <!-- AI Creators -->
                     <article class="program-card">
-                        <div class="program-image ai-creators">
-                            <i data-lucide="palette" class="program-icon"></i>
+                        <div class="program-image">
+                            <img src="images/institutions/ai-creators.jpg" alt="ילדים יוצרים עם בינה מלאכותית">
                             <span class="program-grade">ג'-ו'</span>
                         </div>
                         <div class="program-body">
@@ -681,8 +685,8 @@
                     
                     <!-- STEM ומיינקראפט -->
                     <article class="program-card">
-                        <div class="program-image stem">
-                            <i data-lucide="zap" class="program-icon"></i>
+                        <div class="program-image">
+                            <img src="images/institutions/stem-minecraft.jpg" alt="ילדים לומדים STEM עם מיינקראפט">
                             <span class="program-grade">ג'-ו'</span>
                         </div>
                         <div class="program-body">
@@ -701,8 +705,8 @@
                     
                     <!-- יזמות ובינה מלאכותית -->
                     <article class="program-card">
-                        <div class="program-image entrepreneurship">
-                            <i data-lucide="lightbulb" class="program-icon"></i>
+                        <div class="program-image">
+                            <img src="images/institutions/entrepreneurship.jpg" alt="ילדים עובדים על פרויקטי יזמות">
                             <span class="program-grade">ה'-ו'</span>
                         </div>
                         <div class="program-body">
@@ -720,8 +724,8 @@
                     
                     <!-- העולם החכם סביבנו -->
                     <article class="program-card">
-                        <div class="program-image ai-world">
-                            <i data-lucide="globe" class="program-icon"></i>
+                        <div class="program-image">
+                            <img src="images/institutions/ai-world.jpg" alt="ילדים לומדים על בינה מלאכותית">
                             <span class="program-grade">ה'-ו'</span>
                         </div>
                         <div class="program-body">
@@ -740,8 +744,8 @@
                     
                     <!-- האקתונים ה'-ו' -->
                     <article class="program-card">
-                        <div class="program-image hackathon">
-                            <i data-lucide="rocket" class="program-icon"></i>
+                        <div class="program-image">
+                            <img src="images/institutions/hackathon-elementary.jpg" alt="האקתון לילדים">
                             <span class="program-grade">ה'-ו'</span>
                         </div>
                         <div class="program-body">
@@ -759,8 +763,8 @@
                     
                     <!-- פיתוח מוצר בתלת-ממד -->
                     <article class="program-card">
-                        <div class="program-image print3d">
-                            <i data-lucide="printer" class="program-icon"></i>
+                        <div class="program-image">
+                            <img src="images/institutions/3d-printing.jpg" alt="ילדים לומדים הדפסה תלת מימדית">
                             <span class="program-grade">ד'-ז'</span>
                         </div>
                         <div class="program-body">
@@ -779,8 +783,8 @@
                     
                     <!-- FutureMakers -->
                     <article class="program-card">
-                        <div class="program-image futuremakers">
-                            <i data-lucide="sparkles" class="program-icon"></i>
+                        <div class="program-image">
+                            <img src="images/institutions/futuremakers.jpg" alt="נוער מפתח אפליקציות">
                             <span class="program-grade">ז'-י"ב</span>
                         </div>
                         <div class="program-body">
@@ -799,8 +803,8 @@
                     
                     <!-- האקתונים ז'-י"ב -->
                     <article class="program-card">
-                        <div class="program-image hackathon">
-                            <i data-lucide="trophy" class="program-icon"></i>
+                        <div class="program-image">
+                            <img src="images/institutions/hackathon-highschool.jpg" alt="האקתון לתיכוניסטים">
                             <span class="program-grade">ז'-י"ב</span>
                         </div>
                         <div class="program-body">
@@ -818,8 +822,8 @@
                     
                     <!-- פיתוח אפליקציות ובינה מלאכותית -->
                     <article class="program-card">
-                        <div class="program-image apps">
-                            <i data-lucide="smartphone" class="program-icon"></i>
+                        <div class="program-image">
+                            <img src="images/institutions/app-development.jpg" alt="תלמידים מפתחים אפליקציות">
                             <span class="program-grade">ז'-ט'</span>
                         </div>
                         <div class="program-body">
@@ -838,8 +842,8 @@
                     
                     <!-- תכנות, בינה מלאכותית וסייבר -->
                     <article class="program-card">
-                        <div class="program-image cyber">
-                            <i data-lucide="shield" class="program-icon"></i>
+                        <div class="program-image">
+                            <img src="images/institutions/cyber-programming.jpg" alt="תלמידים לומדים סייבר ותכנות">
                             <span class="program-grade">ז'-ט'</span>
                         </div>
                         <div class="program-body">
@@ -858,8 +862,8 @@
                     
                     <!-- תכנית מצוינות -->
                     <article class="program-card">
-                        <div class="program-image excellence">
-                            <i data-lucide="star" class="program-icon"></i>
+                        <div class="program-image">
+                            <img src="images/institutions/excellence.jpg" alt="תכנית מצוינות יזמית">
                             <span class="program-grade">ז'-ח'</span>
                         </div>
                         <div class="program-body">
@@ -889,8 +893,8 @@
                     
                     <!-- קורס בינה מלאכותית למורים -->
                     <article class="program-card">
-                        <div class="program-image teachers">
-                            <i data-lucide="cpu" class="program-icon"></i>
+                        <div class="program-image">
+                            <img src="images/institutions/teachers-ai.jpg" alt="מורים לומדים בינה מלאכותית">
                             <span class="program-grade">צוותי חינוך</span>
                         </div>
                         <div class="program-body">
@@ -909,8 +913,8 @@
                     
                     <!-- קורס פדגוגיה מבוססת פרויקטים -->
                     <article class="program-card">
-                        <div class="program-image teachers">
-                            <i data-lucide="book-open" class="program-icon"></i>
+                        <div class="program-image">
+                            <img src="images/institutions/teachers-pbl.jpg" alt="מורים בסדנת PBL">
                             <span class="program-grade">צוותי חינוך</span>
                         </div>
                         <div class="program-body">
@@ -929,8 +933,8 @@
                     
                     <!-- הכשרה להוראה טכנולוגית -->
                     <article class="program-card">
-                        <div class="program-image teachers">
-                            <i data-lucide="user-check" class="program-icon"></i>
+                        <div class="program-image">
+                            <img src="images/institutions/teachers-tech.jpg" alt="הכשרת מורים בטכנולוגיה">
                             <span class="program-grade">צוותי חינוך</span>
                         </div>
                         <div class="program-body">
@@ -1065,33 +1069,43 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <img src="https://hai.tech/wp-content/uploads/2023/11/hi-tech-logo.png" alt="דרך ההייטק" width="100">
-                    <p>בית הספר למתכנתים צעירים</p>
-                    <p class="copyright">מוכרים בגפ"ן | מאושרים במשרד החינוך</p>
+    <footer style="background: linear-gradient(180deg, #0f172a 0%, #020617 100%); padding: 4rem 2rem 2rem; border-top: 1px solid #1e293b;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem; text-align: right;">
+                <div>
+                    <h3 style="color: #22c55e; font-size: 1.5rem; margin-bottom: 1rem; font-weight: 700;">דרך ההייטק</h3>
+                    <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem;">מלמדים טכנולוגיה, תכנות ובינה מלאכותית לילדים ונוער מאז 2019.</p>
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="https://www.facebook.com/share/1SpwZhTKPx/" target="_blank" rel="noopener" style="width: 40px; height: 40px; background: #1e293b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #94a3b8;"><i data-lucide="facebook" style="width: 20px; height: 20px;"></i></a>
+                        <a href="https://www.linkedin.com/company/hai-tech-way/" target="_blank" rel="noopener" style="width: 40px; height: 40px; background: #1e293b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #94a3b8;"><i data-lucide="linkedin" style="width: 20px; height: 20px;"></i></a>
+                        <a href="https://youtube.com/channel/UCbBmDyoE0oy0yXuVAoXNp2Q" target="_blank" rel="noopener" style="width: 40px; height: 40px; background: #1e293b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #94a3b8;"><i data-lucide="youtube" style="width: 20px; height: 20px;"></i></a>
+                        <a href="https://wa.me/972533009742" target="_blank" rel="noopener" style="width: 40px; height: 40px; background: #1e293b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #25d366;"><i data-lucide="message-circle" style="width: 20px; height: 20px;"></i></a>
+                    </div>
                 </div>
-                <div class="footer-links">
-                    <h4>קישורים</h4>
-                    <ul>
-                        <li><a href="index.html#courses">קורסים דיגיטליים</a></li>
-                        <li><a href="index.html#private">שיעורים פרטיים</a></li>
-                        <li><a href="institutions.html">למוסדות</a></li>
-                        <li><a href="blog.html">בלוג</a></li>
-                        <li><a href="index.html#about">אודות</a></li>
-                        <li><a href="accessibility.html">הצהרת נגישות</a></li>
+                <div>
+                    <h4 style="color: white; font-size: 1.1rem; margin-bottom: 1rem; font-weight: 600;">קישורים מהירים</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 0.75rem;"><a href="index.html" style="color: #94a3b8; text-decoration: none;">דף הבית</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="index.html#courses" style="color: #94a3b8; text-decoration: none;">קורסים</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="institutions.html" style="color: #94a3b8; text-decoration: none;">למוסדות חינוך</a></li>
+                        <li><a href="blog.html" style="color: #94a3b8; text-decoration: none;">בלוג</a></li>
                     </ul>
                 </div>
-                <div class="footer-contact">
-                    <h4>צרו קשר</h4>
-                    <p><i data-lucide="message-circle" class="icon-xs"></i> <a href="https://wa.me/972533009742">וואטסאפ: 053-300-9742</a></p>
-                    <p><i data-lucide="mail" class="icon-xs"></i> info@hai.tech</p>
+                <div>
+                    <h4 style="color: white; font-size: 1.1rem; margin-bottom: 1rem; font-weight: 600;">צרו קשר</h4>
+                    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                        <a href="https://wa.me/972533009742" style="color: #94a3b8; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="phone" style="width: 18px; height: 18px;"></i>053-300-9742</a>
+                        <a href="mailto:info@hai.tech" style="color: #94a3b8; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="mail" style="width: 18px; height: 18px;"></i>info@hai.tech</a>
+                    </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>© 2025 דרך ההייטק. כל הזכויות שמורות.</p>
+            <div style="border-top: 1px solid #1e293b; padding-top: 1.5rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
+                <p style="color: #64748b; font-size: 0.85rem; margin: 0;">© 2025 דרך ההייטק. כל הזכויות שמורות.</p>
+                <div style="display: flex; gap: 1.5rem;">
+                    <a href="terms.html" style="color: #64748b; font-size: 0.85rem; text-decoration: none;">תנאי שימוש</a>
+                    <a href="privacy.html" style="color: #64748b; font-size: 0.85rem; text-decoration: none;">מדיניות פרטיות</a>
+                    <a href="accessibility.html" style="color: #64748b; font-size: 0.85rem; text-decoration: none;">נגישות</a>
+                </div>
             </div>
         </div>
     </footer>
@@ -1135,13 +1149,26 @@
         });
     </script>
 
+    <!-- Footer -->
+    <footer style="background: #0a0a15; padding: 2rem; text-align: center; border-top: 1px solid #1e293b;">
+        <p style="color: #64748b; margin-bottom: 0.5rem;">© 2025 דרך ההייטק. כל הזכויות שמורות.</p>
+        <div style="font-size: 0.9rem;">
+            <a href="terms.html" style="color: #94a3b8; text-decoration: none; margin: 0 0.5rem;">תנאי שימוש</a>
+            <span style="color: #475569;">|</span>
+            <a href="privacy.html" style="color: #94a3b8; text-decoration: none; margin: 0 0.5rem;">מדיניות פרטיות</a>
+            <span style="color: #475569;">|</span>
+            <a href="index.html" style="color: #94a3b8; text-decoration: none; margin: 0 0.5rem;">דף הבית</a>
+        </div>
+    </footer>
+
     <!-- Floating WhatsApp Button -->
     <a href="https://wa.me/972533009742" class="whatsapp-float" target="_blank" aria-label="שלחו הודעה בוואטסאפ">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         <span class="whatsapp-float-text">דברו איתנו</span>
     </a>
 
-    <!-- UserWay Accessibility Widget -->
-    <script src="https://cdn.userway.org/widget.js" data-account="zBp6yPJpzr" async></script>
+    <!-- UserWay Accessibility Widget - positioned bottom-right -->
+    <script src="https://cdn.userway.org/widget.js" data-account="zBp6yPJpzr" data-position="4" async></script>
+    <style>.userway_buttons_wrapper, div[data-userway-widget] { right: 20px !important; left: auto !important; bottom: 100px !important; position: fixed !important; }</style>
 </body>
 </html>

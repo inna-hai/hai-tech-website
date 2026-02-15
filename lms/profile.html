@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הפרופיל שלי | HAI Tech Academy</title>
+    <link rel="stylesheet" href="css/lms.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Parent Section Styles */
+        .parent-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .parent-card h3 {
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+        }
+        
+        .section-desc {
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+        
+        .invite-form {
+            display: flex;
+            gap: 12px;
+            align-items: flex-end;
+        }
+        
+        .invite-form .form-group {
+            flex: 1;
+            margin-bottom: 0;
+        }
+        
+        .parent-item, .invite-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            margin-bottom: 8px;
+        }
+        
+        .parent-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        
+        .parent-info, .invite-info {
+            flex: 1;
+        }
+        
+        .parent-name, .invite-email {
+            display: block;
+            font-weight: 500;
+        }
+        
+        .parent-email, .invite-date {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        
+        .parent-status {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        
+        .status-active {
+            background: rgba(34, 197, 94, 0.1);
+            color: var(--success);
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 768px) {
+            .invite-form {
+                flex-direction: column;
+            }
+            
+            .invite-form button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="profile-page">
+    <nav class="lms-navbar">
+        <div class="navbar-brand">
+            <a href="../index.html">
+                <img src="../images/logo.png" alt="HAI Tech Academy" class="navbar-logo">
+            </a>
+        </div>
+        <div class="navbar-menu">
+            <a href="index.html" class="nav-link">הקורסים שלי</a>
+            <a href="catalog.html" class="nav-link">קטלוג קורסים</a>
+            <a href="profile.html#certificates" class="nav-link">תעודות</a>
+        </div>
+        <div class="navbar-user">
+            <div class="user-dropdown">
+                <button class="user-btn" id="userDropdownBtn">
+                    <div class="user-avatar" id="userAvatar">א</div>
+                    <span class="user-name" id="userName">אורח</span>
+                </button>
+                <div class="dropdown-menu">
+                    <a href="profile.html" class="dropdown-item active">הפרופיל שלי</a>
+                    <a href="profile.html#settings" class="dropdown-item">הגדרות</a>
+                    <hr>
+                    <button class="dropdown-item" onclick="LMS.logout()">התנתק</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <main class="profile-main">
+        <div class="profile-header">
+            <div class="profile-header-bg"></div>
+            <div class="profile-header-content">
+                <div class="profile-avatar-container">
+                    <div class="profile-avatar-large" id="profileAvatarLarge">א</div>
+                    <button class="avatar-edit-btn" id="editAvatarBtn" aria-label="שנה תמונת פרופיל">📷</button>
+                    <input type="file" id="avatarInput" accept="image/*" style="display:none">
+                </div>
+                <div class="profile-header-info">
+                    <h1 id="profileDisplayName">אורח</h1>
+                    <p id="profileEmail">guest@example.com</p>
+                    <div class="profile-badges">
+                        <span class="badge badge-level" id="profileLevel">מתחיל</span>
+                        <span class="badge badge-streak" id="profileStreak">🔥 0 ימים רצופים</span>
+                    </div>
+                </div>
+                <div class="profile-header-stats">
+                    <div class="stat-item">
+                        <span class="stat-value" id="statCourses">0</span>
+                        <span class="stat-label">קורסים</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="statHours">0</span>
+                        <span class="stat-label">שעות למידה</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="statCertificates">0</span>
+                        <span class="stat-label">תעודות</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="profile-content">
+            <nav class="profile-nav" aria-label="ניווט פרופיל">
+                <a href="#profile" class="profile-nav-link active" data-section="profile">👤 פרופיל</a>
+                <a href="#certificates" class="profile-nav-link" data-section="certificates">🎓 תעודות</a>
+                <a href="#achievements" class="profile-nav-link" data-section="achievements">🏆 הישגים</a>
+                <a href="#parents" class="profile-nav-link" data-section="parents">👨‍👩‍👧 הורים</a>
+                <a href="#settings" class="profile-nav-link" data-section="settings">⚙️ הגדרות</a>
+                <a href="#security" class="profile-nav-link" data-section="security">🔐 אבטחה</a>
+            </nav>
+            
+            <div class="profile-sections">
+                <!-- Profile Section -->
+                <section class="profile-section active" id="profile">
+                    <h2>עריכת פרופיל</h2>
+                    <form id="profileForm" class="profile-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">שם פרטי</label>
+                                <input type="text" id="firstName" name="firstName" placeholder="ישראל">
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">שם משפחה</label>
+                                <input type="text" id="lastName" name="lastName" placeholder="ישראלי">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="displayName">שם תצוגה</label>
+                            <input type="text" id="displayName" name="displayName" placeholder="איך לקרוא לך?">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">אימייל</label>
+                            <input type="email" id="email" name="email" disabled>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">טלפון</label>
+                            <input type="tel" id="phone" name="phone" placeholder="050-1234567">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="bio">קצת עליי</label>
+                            <textarea id="bio" name="bio" placeholder="ספר/י לנו קצת על עצמך..." rows="4"></textarea>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-outline" id="cancelProfile">ביטול</button>
+                            <button type="submit" class="btn btn-primary" id="saveProfile">שמור שינויים</button>
+                        </div>
+                    </form>
+                </section>
+                
+                <!-- Certificates Section -->
+                <section class="profile-section" id="certificates">
+                    <h2>התעודות שלי</h2>
+                    <div class="certificates-grid" id="certificatesGrid"></div>
+                    <div class="certificates-empty" id="certificatesEmpty">
+                        <h3>🎓 עדיין אין לך תעודות</h3>
+                        <p>סיים קורס כדי לקבל תעודה</p>
+                        <a href="catalog.html" class="btn btn-primary">גלה קורסים</a>
+                    </div>
+                </section>
+                
+                <!-- Achievements Section -->
+                <section class="profile-section" id="achievements">
+                    <h2>ההישגים שלי</h2>
+                    <div class="achievements-summary">
+                        <div class="achievement-stat">
+                            <span class="achievement-value" id="achievementCount">0</span>
+                            <span class="achievement-label">הישגים</span>
+                        </div>
+                        <div class="achievement-stat">
+                            <span class="achievement-value" id="pointsCount">0</span>
+                            <span class="achievement-label">נקודות</span>
+                        </div>
+                        <div class="achievement-stat">
+                            <span class="achievement-value" id="rankText">מתחיל</span>
+                            <span class="achievement-label">דרגה</span>
+                        </div>
+                    </div>
+                    <div class="achievements-grid" id="achievementsGrid"></div>
+                </section>
+                
+                <!-- Parents Section -->
+                <section class="profile-section" id="parents">
+                    <h2>ניהול הורים</h2>
+                    <p class="section-desc">הזמן הורים לעקוב אחר ההתקדמות שלך בלמידה.</p>
+                    
+                    <!-- Linked Parents -->
+                    <div class="parent-card" id="linkedParentsCard">
+                        <h3>הורים מקושרים</h3>
+                        <div id="linkedParentsList" class="linked-parents-list">
+                            <div class="empty-state">
+                                <p>אין הורים מקושרים עדיין</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Invite Form -->
+                    <div class="parent-card">
+                        <h3>הזמן הורה חדש</h3>
+                        <form id="inviteParentForm" class="invite-form">
+                            <div class="form-group">
+                                <label for="parentEmail">אימייל ההורה</label>
+                                <input type="email" id="parentEmail" name="parentEmail" placeholder="parent@email.com" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">שלח הזמנה</button>
+                        </form>
+                    </div>
+                    
+                    <!-- Pending Invites -->
+                    <div class="parent-card" id="pendingInvitesCard">
+                        <h3>הזמנות ממתינות</h3>
+                        <div id="pendingInvitesList" class="invites-list">
+                            <div class="empty-state">
+                                <p>אין הזמנות ממתינות</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Settings Section -->
+                <section class="profile-section" id="settings">
+                    <h2>הגדרות</h2>
+                    
+                    <div class="settings-group">
+                        <h3>העדפות התראות</h3>
+                        <div class="settings-options">
+                            <label class="setting-option">
+                                <div class="setting-info">
+                                    <span class="setting-title">התראות אימייל</span>
+                                    <span class="setting-desc">קבל עדכונים על קורסים חדשים</span>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="emailNotifications" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </label>
+                            
+                            <label class="setting-option">
+                                <div class="setting-info">
+                                    <span class="setting-title">תזכורות למידה</span>
+                                    <span class="setting-desc">קבל תזכורות יומיות להמשיך ללמוד</span>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="learningReminders" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </label>
+                            
+                            <label class="setting-option">
+                                <div class="setting-info">
+                                    <span class="setting-title">מצב כהה</span>
+                                    <span class="setting-desc">עבור לתצוגה כהה</span>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="darkMode">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button class="btn btn-primary" id="saveSettings">שמור הגדרות</button>
+                    </div>
+                </section>
+                
+                <!-- Security Section -->
+                <section class="profile-section" id="security">
+                    <h2>אבטחה וסיסמה</h2>
+                    
+                    <div class="security-card">
+                        <h3>שינוי סיסמה</h3>
+                        <form id="passwordForm" class="password-form">
+                            <div class="form-group">
+                                <label for="currentPassword">סיסמה נוכחית</label>
+                                <input type="password" id="currentPassword" name="currentPassword" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="newPassword">סיסמה חדשה</label>
+                                <input type="password" id="newPassword" name="newPassword" required minlength="8">
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmNewPassword">אימות סיסמה חדשה</label>
+                                <input type="password" id="confirmNewPassword" name="confirmNewPassword" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">עדכן סיסמה</button>
+                        </form>
+                    </div>
+                    
+                    <div class="danger-zone">
+                        <h3>אזור סכנה</h3>
+                        <div class="danger-option">
+                            <div class="danger-info">
+                                <span class="danger-title">מחק חשבון</span>
+                                <span class="danger-desc">מחיקת החשבון היא לצמיתות</span>
+                            </div>
+                            <button class="btn btn-danger" id="deleteAccount">מחק חשבון</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    
+    <script src="js/lms.js"></script>
+    <script>
+        const Profile = {
+            user: null,
+            
+            init() {
+                // Require authentication
+                if (!LMS.requireAuth()) return;
+                
+                this.user = LMS.getCurrentUser();
+                this.loadUserData();
+                this.setupNavigation();
+                this.setupProfileForm();
+                this.setupPasswordForm();
+                this.setupSettings();
+                this.setupParentsSection();
+                this.loadCertificates();
+                this.loadAchievements();
+                this.handleHashNavigation();
+            },
+            
+            loadUserData() {
+                const user = this.user;
+                const profile = LMS.storage.get('userProfile') || {};
+                
+                document.getElementById('profileDisplayName').textContent = profile.displayName || user.name || 'אורח';
+                document.getElementById('profileEmail').textContent = user.email || 'guest@example.com';
+                document.getElementById('profileAvatarLarge').textContent = profile.avatar || user.avatar || user.name?.charAt(0) || 'א';
+                document.getElementById('userAvatar').textContent = profile.avatar || user.avatar || 'א';
+                document.getElementById('userName').textContent = profile.displayName || user.name || 'אורח';
+                
+                const progress = LMS.storage.get('progress') || {};
+                const certificates = LMS.storage.get('certificates') || [];
+                const streakData = LMS.storage.get('streakData') || { count: 0 };
+                
+                document.getElementById('statCourses').textContent = Object.keys(progress).length;
+                document.getElementById('statHours').textContent = Object.keys(progress).length * 5;
+                document.getElementById('statCertificates').textContent = certificates.length;
+                document.getElementById('profileStreak').textContent = `🔥 ${streakData.count} ימים רצופים`;
+                
+                document.getElementById('firstName').value = profile.firstName || '';
+                document.getElementById('lastName').value = profile.lastName || '';
+                document.getElementById('displayName').value = profile.displayName || user.name || '';
+                document.getElementById('email').value = user.email || '';
+                document.getElementById('phone').value = profile.phone || '';
+                document.getElementById('bio').value = profile.bio || '';
+            },
+            
+            setupNavigation() {
+                const links = document.querySelectorAll('.profile-nav-link');
+                const sections = document.querySelectorAll('.profile-section');
+                
+                links.forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const section = link.dataset.section;
+                        
+                        links.forEach(l => l.classList.remove('active'));
+                        sections.forEach(s => s.classList.remove('active'));
+                        
+                        link.classList.add('active');
+                        document.getElementById(section)?.classList.add('active');
+                        history.pushState(null, '', `#${section}`);
+                    });
+                });
+            },
+            
+            handleHashNavigation() {
+                const hash = window.location.hash.slice(1) || 'profile';
+                const link = document.querySelector(`[data-section="${hash}"]`);
+                if (link) link.click();
+            },
+            
+            setupProfileForm() {
+                document.getElementById('profileForm')?.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const profile = {
+                        firstName: document.getElementById('firstName').value,
+                        lastName: document.getElementById('lastName').value,
+                        displayName: document.getElementById('displayName').value,
+                        phone: document.getElementById('phone').value,
+                        bio: document.getElementById('bio').value,
+                        avatar: LMS.storage.get('userProfile')?.avatar || this.user.avatar
+                    };
+                    
+                    LMS.storage.set('userProfile', profile);
+                    this.user.name = profile.displayName;
+                    LMS.storage.set('user', this.user);
+                    this.loadUserData();
+                    LMS.showNotification('הפרופיל עודכן בהצלחה! ✅', 'success');
+                });
+                
+                document.getElementById('cancelProfile')?.addEventListener('click', () => {
+                    this.loadUserData();
+                    LMS.showNotification('השינויים בוטלו', 'info');
+                });
+                
+                document.getElementById('editAvatarBtn')?.addEventListener('click', () => {
+                    const emoji = prompt('בחר אימוג\'י לאווטאר:', '😀');
+                    if (emoji) {
+                        const profile = LMS.storage.get('userProfile') || {};
+                        profile.avatar = emoji;
+                        LMS.storage.set('userProfile', profile);
+                        this.loadUserData();
+                        LMS.showNotification('האווטאר עודכן!', 'success');
+                    }
+                });
+            },
+            
+            setupPasswordForm() {
+                document.getElementById('passwordForm')?.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const newPass = document.getElementById('newPassword').value;
+                    const confirm = document.getElementById('confirmNewPassword').value;
+                    
+                    if (newPass !== confirm) {
+                        LMS.showNotification('הסיסמאות אינן תואמות', 'error');
+                        return;
+                    }
+                    if (newPass.length < 8) {
+                        LMS.showNotification('הסיסמה חייבת להכיל לפחות 8 תווים', 'error');
+                        return;
+                    }
+                    
+                    e.target.reset();
+                    LMS.showNotification('הסיסמה שונתה בהצלחה! 🔐', 'success');
+                });
+                
+                document.getElementById('deleteAccount')?.addEventListener('click', () => {
+                    if (confirm('האם אתה בטוח? פעולה זו לא ניתנת לביטול!')) {
+                        LMS.storage.clear();
+                        LMS.showNotification('החשבון נמחק', 'info');
+                        setTimeout(() => window.location.href = 'login.html', 1500);
+                    }
+                });
+            },
+            
+            setupSettings() {
+                const settings = LMS.storage.get('settings') || {};
+                document.getElementById('emailNotifications').checked = settings.emailNotifications !== false;
+                document.getElementById('learningReminders').checked = settings.learningReminders !== false;
+                document.getElementById('darkMode').checked = settings.darkMode === true;
+                
+                document.getElementById('darkMode')?.addEventListener('change', (e) => {
+                    document.body.classList.toggle('dark-mode', e.target.checked);
+                });
+                
+                document.getElementById('saveSettings')?.addEventListener('click', () => {
+                    const newSettings = {
+                        emailNotifications: document.getElementById('emailNotifications').checked,
+                        learningReminders: document.getElementById('learningReminders').checked,
+                        darkMode: document.getElementById('darkMode').checked
+                    };
+                    LMS.storage.set('settings', newSettings);
+                    LMS.showNotification('ההגדרות נשמרו! ✅', 'success');
+                });
+            },
+            
+            loadCertificates() {
+                const grid = document.getElementById('certificatesGrid');
+                const empty = document.getElementById('certificatesEmpty');
+                const certificates = LMS.storage.get('certificates') || [];
+                
+                if (certificates.length === 0) {
+                    grid.style.display = 'none';
+                    empty.style.display = 'flex';
+                    return;
+                }
+                
+                grid.style.display = 'grid';
+                empty.style.display = 'none';
+                
+                grid.innerHTML = certificates.map(cert => `
+                    <div class="certificate-card">
+                        <div class="cert-card-icon">🎓</div>
+                        <h4>${cert.title}</h4>
+                        <p>הושלם ב-${new Date(cert.completedAt).toLocaleDateString('he-IL')}</p>
+                        <button class="btn btn-outline btn-sm">צפה בתעודה</button>
+                    </div>
+                `).join('');
+            },
+            
+            loadAchievements() {
+                const grid = document.getElementById('achievementsGrid');
+                const achievements = [
+                    { icon: '🎯', title: 'שיעור ראשון', desc: 'השלמת את השיעור הראשון', unlocked: true, points: 10 },
+                    { icon: '🔥', title: 'רצף 7 ימים', desc: 'למדת 7 ימים רצופים', unlocked: true, points: 50 },
+                    { icon: '🏆', title: 'קורס ראשון', desc: 'סיימת קורס שלם', unlocked: false, points: 100 },
+                    { icon: '⭐', title: 'סטודנט מצטיין', desc: 'קיבלת 100% בבוחן', unlocked: false, points: 75 },
+                    { icon: '💡', title: 'סקרן', desc: 'צפית ב-10 שיעורים', unlocked: true, points: 30 },
+                    { icon: '🌟', title: 'מאסטר AI', desc: 'סיימת את כל קורסי ה-AI', unlocked: false, points: 500 }
+                ];
+                
+                const unlocked = achievements.filter(a => a.unlocked);
+                const totalPoints = unlocked.reduce((sum, a) => sum + a.points, 0);
+                
+                document.getElementById('achievementCount').textContent = unlocked.length;
+                document.getElementById('pointsCount').textContent = totalPoints;
+                
+                const ranks = [{ min: 0, name: 'מתחיל' }, { min: 50, name: 'מתקדם' }, { min: 150, name: 'מומחה' }, { min: 300, name: 'מאסטר' }];
+                const rank = ranks.reverse().find(r => totalPoints >= r.min)?.name || 'מתחיל';
+                document.getElementById('rankText').textContent = rank;
+                
+                grid.innerHTML = achievements.map(a => `
+                    <div class="achievement-card ${a.unlocked ? 'unlocked' : 'locked'}">
+                        <div class="achievement-icon">${a.icon}</div>
+                        <div class="achievement-content">
+                            <h4>${a.title}</h4>
+                            <p>${a.desc}</p>
+                            <span class="achievement-points">+${a.points} נקודות</span>
+                        </div>
+                        ${!a.unlocked ? '<div class="locked-overlay">🔒</div>' : ''}
+                    </div>
+                `).join('');
+            },
+            
+            // ==========================================
+            // Parents Section
+            // ==========================================
+            
+            setupParentsSection() {
+                this.loadParentData();
+                
+                // Setup invite form
+                document.getElementById('inviteParentForm')?.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    await this.sendParentInvite();
+                });
+            },
+            
+            async loadParentData() {
+                try {
+                    const token = localStorage.getItem('hai_lms_token');
+                    if (!token) return;
+                    
+                    const response = await fetch('/api/parent/invites', {
+                        headers: { 'Authorization': `Bearer ${token}` }
+                    });
+                    
+                    const data = await response.json();
+                    if (!data.success) return;
+                    
+                    // Render linked parents
+                    this.renderLinkedParents(data.linkedParents || []);
+                    
+                    // Render pending invites
+                    this.renderPendingInvites(data.invites || []);
+                    
+                } catch (err) {
+                    console.error('Failed to load parent data:', err);
+                }
+            },
+            
+            renderLinkedParents(parents) {
+                const container = document.getElementById('linkedParentsList');
+                if (!container) return;
+                
+                if (parents.length === 0) {
+                    container.innerHTML = '<div class="empty-state"><p>אין הורים מקושרים עדיין</p></div>';
+                    return;
+                }
+                
+                container.innerHTML = parents.map(p => `
+                    <div class="parent-item">
+                        <div class="parent-avatar">👤</div>
+                        <div class="parent-info">
+                            <span class="parent-name">${p.name || 'הורה'}</span>
+                            <span class="parent-email">${p.email}</span>
+                        </div>
+                        <span class="parent-status status-active">✓ מקושר</span>
+                    </div>
+                `).join('');
+            },
+            
+            renderPendingInvites(invites) {
+                const container = document.getElementById('pendingInvitesList');
+                if (!container) return;
+                
+                const pending = invites.filter(i => i.status === 'pending');
+                
+                if (pending.length === 0) {
+                    container.innerHTML = '<div class="empty-state"><p>אין הזמנות ממתינות</p></div>';
+                    return;
+                }
+                
+                container.innerHTML = pending.map(inv => {
+                    const createdAt = new Date(inv.createdAt * 1000).toLocaleDateString('he-IL');
+                    const expiresAt = new Date(inv.expiresAt * 1000).toLocaleDateString('he-IL');
+                    
+                    return `
+                        <div class="invite-item">
+                            <div class="invite-info">
+                                <span class="invite-email">${inv.email}</span>
+                                <span class="invite-date">נשלח: ${createdAt} | פג: ${expiresAt}</span>
+                            </div>
+                            <button class="btn btn-sm btn-outline" onclick="Profile.resendInvite('${inv.id}')">
+                                שלח שוב
+                            </button>
+                        </div>
+                    `;
+                }).join('');
+            },
+            
+            async sendParentInvite() {
+                const emailInput = document.getElementById('parentEmail');
+                const email = emailInput?.value.trim();
+                
+                if (!email) {
+                    LMS.showNotification('אנא הכנס כתובת אימייל', 'error');
+                    return;
+                }
+                
+                try {
+                    const token = localStorage.getItem('hai_lms_token');
+                    const response = await fetch('/api/parent/invite', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        },
+                        body: JSON.stringify({ parentEmail: email })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        LMS.showNotification('ההזמנה נשלחה בהצלחה! 📧', 'success');
+                        emailInput.value = '';
+                        this.loadParentData();
+                    } else {
+                        LMS.showNotification(data.error || 'שגיאה בשליחת ההזמנה', 'error');
+                    }
+                } catch (err) {
+                    console.error('Send invite error:', err);
+                    LMS.showNotification('שגיאה בשליחת ההזמנה', 'error');
+                }
+            },
+            
+            async resendInvite(inviteId) {
+                try {
+                    const token = localStorage.getItem('hai_lms_token');
+                    const response = await fetch('/api/parent/resend-invite', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        },
+                        body: JSON.stringify({ inviteId })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        LMS.showNotification('ההזמנה נשלחה מחדש! 📧', 'success');
+                        this.loadParentData();
+                    } else {
+                        LMS.showNotification(data.error || 'שגיאה בשליחה מחדש', 'error');
+                    }
+                } catch (err) {
+                    console.error('Resend invite error:', err);
+                    LMS.showNotification('שגיאה בשליחה מחדש', 'error');
+                }
+            }
+        };
+        
+        document.addEventListener('DOMContentLoaded', () => Profile.init());
+        window.addEventListener('hashchange', () => Profile.handleHashNavigation());
+    </script>
+</body>
+</html>

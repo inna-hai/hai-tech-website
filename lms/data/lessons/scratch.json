@@ -1,0 +1,227 @@
+{
+  "courseId": "scratch",
+  "courseTitle": "קורס תכנות בסקראץ'",
+  "lessonsCount": 20,
+  "lessons": [
+    {
+      "id": 1,
+      "title": "שיעור 1 –  התחברות  וחתול אומן",
+      "titleEn": "Introduction to Scratch",
+      "description": "הכרות עם סביבת Scratch והממשק הגרפי",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/484188593",
+      "order": 1,
+      "free": true,
+      "resources": []
+    },
+    {
+      "id": 2,
+      "title": "שיעור 2 – דרקונים",
+      "titleEn": "Creating Your First Sprite",
+      "description": "בחירת ויצירת דמויות (sprites) למשחק",
+      "duration": "12:00",
+      "videoUrl": "https://player.vimeo.com/video/497257011",
+      "order": 2,
+      "free": true,
+      "resources": []
+    },
+    {
+      "id": 3,
+      "title": "שיעור 3 –  משחק הכדור",
+      "titleEn": "Basic Movement",
+      "description": "הזזת דמויות על המסך עם בלוקים",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/500805504",
+      "order": 3,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 4,
+      "title": "שיעור 4 – דרקון וחתול",
+      "titleEn": "Simple Animations",
+      "description": "יצירת אנימציות עם החלפת תלבושות",
+      "duration": "18:00",
+      "videoUrl": "https://player.vimeo.com/video/497261053",
+      "order": 4,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 5,
+      "title": "שיעור 5 – אם-אז",
+      "titleEn": "Sounds and Music",
+      "description": "הוספת אפקטים קוליים ומוזיקת רקע",
+      "duration": "12:00",
+      "videoUrl": "https://player.vimeo.com/video/497265051",
+      "order": 5,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 6,
+      "title": "שיעור 6 – משחק המבוך 1",
+      "titleEn": "Loops - Repeating Actions",
+      "description": "שימוש בבלוקי לולאה לחזרה על פעולות",
+      "duration": "20:00",
+      "videoUrl": "https://player.vimeo.com/video/497269851",
+      "order": 6,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 7,
+      "title": "שיעור 7 – משחק המבוך 2",
+      "titleEn": "Conditions - If/Else",
+      "description": "קבלת החלטות בקוד עם בלוקי תנאי",
+      "duration": "20:00",
+      "videoUrl": "https://player.vimeo.com/video/497270009",
+      "order": 7,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 8,
+      "title": "שיעור 8 – משחק זכרון חיות",
+      "titleEn": "Variables - Storing Data",
+      "description": "יצירת משתנים לשמירת ניקוד, חיים ומידע אחר",
+      "duration": "18:00",
+      "videoUrl": "https://player.vimeo.com/video/497274565",
+      "order": 8,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 9,
+      "title": "שיעור 9 – מתנות קופצות – חלק א׳",
+      "titleEn": "First Scoring Game",
+      "description": "בניית משחק פשוט עם מערכת ניקוד",
+      "duration": "25:00",
+      "videoUrl": "https://player.vimeo.com/video/484188177",
+      "order": 9,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 10,
+      "title": "שיעור 10 – מתנות קופצות – חלק ב׳",
+      "titleEn": "Collision Detection",
+      "description": "זיהוי מגע בין דמויות ואובייקטים",
+      "duration": "18:00",
+      "videoUrl": "https://player.vimeo.com/video/484188146",
+      "order": 10,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 11,
+      "title": "שיעור 11 – פעולות חשבון – חלק א׳",
+      "titleEn": "Keyboard Controls",
+      "description": "שליטה בדמויות באמצעות מקשים",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/484187815",
+      "order": 11,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 12,
+      "title": "שיעור 12 – פעולות חשבון -חלק ב׳",
+      "titleEn": "Mouse Controls",
+      "description": "שליטה בדמויות עם העכבר ולחיצות",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/484187499",
+      "order": 12,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 13,
+      "title": "שיעור 13 – פעולות חשבון – חלק ג׳",
+      "titleEn": "Backgrounds and Levels",
+      "description": "החלפת רקעים ויצירת שלבים למשחק",
+      "duration": "18:00",
+      "videoUrl": "https://player.vimeo.com/video/484187060",
+      "order": 13,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 14,
+      "title": "שיעור 14 – משחק המחשבון – חלק א׳",
+      "titleEn": "Cloning Sprites",
+      "description": "יצירת עותקים של דמויות בזמן ריצה",
+      "duration": "20:00",
+      "videoUrl": "https://player.vimeo.com/video/484187021",
+      "order": 14,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 15,
+      "title": "שיעור 15 – משחק המחשבון – חלק ב׳",
+      "titleEn": "Broadcasting Messages",
+      "description": "תקשורת בין דמויות עם הודעות",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/484186978",
+      "order": 15,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 16,
+      "title": "שיעור 16 – סנייק – חלק א׳",
+      "titleEn": "Chase Game",
+      "description": "בניית משחק מרדף עם AI פשוט",
+      "duration": "25:00",
+      "videoUrl": "https://player.vimeo.com/video/484186977",
+      "order": 16,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 17,
+      "title": "שיעור 17 – סנייק – חלק ב׳",
+      "titleEn": "Shooting Game",
+      "description": "יצירת משחק יריות עם קליעים ומטרות",
+      "duration": "25:00",
+      "videoUrl": "https://player.vimeo.com/video/484186912",
+      "order": 17,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 18,
+      "title": "שיעור 18 – סנייק – חלק ג׳",
+      "titleEn": "Platform Game",
+      "description": "בניית משחק פלטפורמה עם קפיצות ומכשולים",
+      "duration": "30:00",
+      "videoUrl": "https://player.vimeo.com/video/484186911",
+      "order": 18,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 19,
+      "title": "שיעור 19 – יצירת גיף",
+      "titleEn": "Personal Project - Planning",
+      "description": "תכנון הפרויקט האישי ובחירת רעיון",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/484186858",
+      "order": 19,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 20,
+      "title": "שיעור 20 – יצירת מוזיקה",
+      "titleEn": "Personal Project - Implementation and Sharing",
+      "description": "מימוש הפרויקט האישי ושיתוף בקהילת Scratch",
+      "duration": "30:00",
+      "videoUrl": "https://player.vimeo.com/video/497277846",
+      "order": 20,
+      "free": false,
+      "resources": []
+    }
+  ]
+}

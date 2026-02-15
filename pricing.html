@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>מחירון | דרך ההייטק - קורסי תכנות לילדים</title>
+    <meta name="description" content="מחירון קורסי תכנות לילדים - קורסים דיגיטליים מ-290₪, שיעורים פרטיים מ-156₪ לשעה. חבילות משתלמות עם הנחות.">
+    <link rel="canonical" href="https://hai.tech/pricing.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hai.tech/pricing.html">
+    <meta property="og:title" content="מחירון | דרך ההייטק - קורסי תכנות לילדים">
+    <meta property="og:description" content="מחירון קורסי תכנות לילדים - קורסים דיגיטליים מ-290₪, שיעורים פרטיים מ-156₪ לשעה.">
+    <meta property="og:image" content="https://hai.tech/images/brand/logo-haitech-transparent.png">
+    <meta property="og:locale" content="he_IL">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="מחירון | דרך ההייטק">
+    <meta name="twitter:description" content="מחירון קורסי תכנות לילדים - קורסים דיגיטליים מ-290₪, שיעורים פרטיים מ-156₪ לשעה.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="https://hai.tech/wp-content/uploads/2023/11/hi-tech-logo.png">
+    
+    <style>
+        * { box-sizing: border-box; }
+        
+        body {
+            font-family: 'Heebo', sans-serif;
+            background: #0f0f1a;
+            color: white;
+            margin: 0;
+        }
+        
+        /* Hero */
+        .pricing-hero {
+            background: linear-gradient(180deg, #1a1a2e 0%, #0f0f1a 100%);
+            padding: 140px 20px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .pricing-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #6366f1, #a855f7, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .pricing-hero p {
+            font-size: 1.3rem;
+            color: #a1a1aa;
+        }
+        
+        .hero-code {
+            font-family: 'Courier New', monospace;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 8px;
+            padding: 1rem 2rem;
+            display: inline-block;
+            margin-top: 2rem;
+            color: #a5b4fc;
+            font-size: 0.95rem;
+        }
+        
+        .hero-code .keyword { color: #c084fc; }
+        .hero-code .string { color: #4ade80; }
+        .hero-code .number { color: #fbbf24; }
+        
+        /* Section */
+        .pricing-section {
+            padding: 5rem 2rem;
+            position: relative;
+        }
+        
+        .pricing-section h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            color: #ffffff !important;
+        }
+        
+        .pricing-section h2 i {
+            color: #818cf8;
+        }
+        
+        .pricing-subtitle {
+            text-align: center;
+            color: #a1a1aa;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Pricing Grid */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        
+        /* Pricing Card */
+        .pricing-card {
+            background: linear-gradient(180deg, #1e1e2e 0%, #16161f 100%);
+            border: 1px solid #2e2e3e;
+            border-radius: 24px;
+            padding: 2.5rem;
+            position: relative;
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+        
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            border-color: #6366f1;
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.2);
+        }
+        
+        .pricing-card:hover::before {
+            opacity: 1;
+        }
+        
+        .pricing-card.popular {
+            border-color: #8b5cf6;
+            background: linear-gradient(180deg, #251e3e 0%, #1a1625 100%);
+        }
+        
+        .pricing-card.popular::before {
+            opacity: 1;
+            background: linear-gradient(90deg, #8b5cf6, #ec4899);
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-icon i {
+            width: 30px;
+            height: 30px;
+            color: #a5b4fc;
+        }
+        
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+        
+        .pricing-card .lessons {
+            color: #a1a1aa;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .pricing-card .price {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 1rem 0;
+        }
+        
+        .pricing-card .price span {
+            font-size: 1rem;
+            font-weight: 400;
+            -webkit-text-fill-color: #d4d4d8;
+        }
+        
+        .savings-badge {
+            display: inline-block;
+            background: rgba(74, 222, 128, 0.1);
+            border: 1px solid rgba(74, 222, 128, 0.3);
+            color: #4ade80;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0 2rem;
+        }
+        
+        .pricing-features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #3f3f50;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: #e4e4e7;
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .pricing-features .check {
+            color: #4ade80;
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+        
+        .pricing-features li strong {
+            color: #fbbf24;
+        }
+        
+        .btn-pricing {
+            width: 100%;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+        
+        .btn-primary-dark {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+        }
+        
+        .btn-primary-dark:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+        }
+        
+        .btn-glow {
+            background: linear-gradient(135deg, #8b5cf6, #ec4899);
+            color: white;
+            animation: glow 2s infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.4); }
+            50% { box-shadow: 0 0 40px rgba(139, 92, 246, 0.6); }
+        }
+        
+        /* Digital Section */
+        .digital-section {
+            background: linear-gradient(180deg, #0f0f1a 0%, #1a1a2e 50%, #0f0f1a 100%);
+        }
+        
+        .digital-card {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 3rem;
+        }
+        
+        .digital-card .price {
+            font-size: 4rem;
+        }
+        
+        /* Duo Section */
+        .duo-section {
+            background: linear-gradient(180deg, #1a1625 0%, #0f0f1a 100%);
+        }
+        
+        .duo-section h2 {
+            color: #fbbf24;
+        }
+        
+        /* Guarantee */
+        .guarantee-section {
+            background: linear-gradient(135deg, rgba(74, 222, 128, 0.1), rgba(34, 197, 94, 0.05));
+            border-top: 1px solid rgba(74, 222, 128, 0.2);
+            border-bottom: 1px solid rgba(74, 222, 128, 0.2);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .guarantee-section h3 {
+            color: #4ade80;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .guarantee-section p {
+            color: #86efac;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #1e1e2e 0%, #16161f 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #ffffff !important;
+            background: none !important;
+            -webkit-text-fill-color: #ffffff !important;
+        }
+        
+        .cta-section p {
+            color: #d4d4d8;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .btn-whatsapp-big {
+            background: #25D366;
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.3s;
+        }
+        
+        .btn-whatsapp-big:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+        }
+        
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(15, 15, 26, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #2e2e3e;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo img {
+            height: 50px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-menu a {
+            color: #a1a1aa;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .nav-menu a:hover {
+            color: #a5b4fc;
+        }
+        
+        /* Floating Elements */
+        .float-code {
+            position: absolute;
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            color: rgba(99, 102, 241, 0.3);
+            pointer-events: none;
+        }
+        
+        @media (max-width: 768px) {
+            .pricing-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .pricing-card .price {
+                font-size: 2.5rem;
+            }
+            
+            .digital-card .price {
+                font-size: 3rem;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+            
+            .hero-code {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="תפריט ראשי">
+        <div class="container">
+            <a href="index.html" class="logo" aria-label="דרך ההייטק - דף הבית">
+                <img src="images/brand/logo-haitech-transparent.png" alt="דרך ההייטק - HAi.TECH" height="60">
+            </a>
+            <button class="mobile-menu-btn" aria-label="פתח תפריט" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html#courses">קורסים דיגיטליים</a></li>
+                <li><a href="index.html#private">שיעורים פרטיים</a></li>
+                <li><a href="locations.html">מוקדים פרונטליים</a></li>
+                <li><a href="institutions.html">למוסדות</a></li>
+                <li><a href="blog.html">בלוג</a></li>
+                <li><a href="index.html#about">אודות</a></li>
+                <li><a href="index.html#faq">שאלות נפוצות</a></li>
+                <li><a href="/lms/login.html" class="nav-link-secondary">כניסה לתלמידים</a></li>
+                <li><a href="index.html#contact" class="btn btn-nav">התחילו עכשיו</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="pricing-hero">
+        <div class="container">
+            <h1>💰 מחירון</h1>
+            <p>השקעה בעתיד הטכנולוגי של הילדים</p>
+        </div>
+    </section>
+
+    <!-- Digital Courses -->
+    <section class="pricing-section digital-section">
+        <div class="container">
+            <h2><i data-lucide="monitor-play"></i> קורסים דיגיטליים</h2>
+            <p class="pricing-subtitle">למידה עצמית • 24/7 • מהבית</p>
+            
+            <div class="pricing-card digital-card">
+                <div class="card-icon" style="margin: 0 auto 1.5rem;">
+                    <i data-lucide="play-circle"></i>
+                </div>
+                <h3>קורס דיגיטלי מלא</h3>
+                <p class="lessons">12-20 שיעורי וידאו מקצועיים</p>
+                <div class="price">290₪ <span>חד פעמי</span></div>
+                <ul class="pricing-features" style="text-align: right; max-width: 350px; margin: 2rem auto;">
+                    <li><i data-lucide="check" class="check"></i> גישה לנצח - ללא הגבלת זמן</li>
+                    <li><i data-lucide="check" class="check"></i> תרגילים ופרויקטים מעשיים</li>
+                    <li><i data-lucide="check" class="check"></i> תמיכה מקצועית בוואטסאפ</li>
+                    <li><i data-lucide="check" class="check"></i> תעודת סיום דיגיטלית</li>
+                </ul>
+                <a href="index.html#courses" class="btn-pricing btn-primary-dark">
+                    <i data-lucide="arrow-right"></i>
+                    צפו בכל הקורסים
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Private Lessons -->
+    <section class="pricing-section">
+        <div class="container">
+            <h2><i data-lucide="user"></i> שיעורים פרטיים 1:1</h2>
+            <p class="pricing-subtitle">שיעורים אישיים בזום • מדריך מקצועי • תוכנית מותאמת</p>
+            
+            <div class="pricing-grid">
+                <!-- Gold -->
+                <div class="pricing-card">
+                    <div class="card-icon">
+                        <i data-lucide="award"></i>
+                    </div>
+                    <h3>🥇 Gold</h3>
+                    <p class="lessons">16 שיעורים</p>
+                    <div class="price">166₪ <span>/ לשיעור</span></div>
+                    <ul class="pricing-features">
+                        <li><i data-lucide="check" class="check"></i> 16 שיעורים × 45 דקות</li>
+                        <li><i data-lucide="check" class="check"></i> מדריך אישי מנוסה</li>
+                        <li><i data-lucide="check" class="check"></i> תוכנית מותאמת אישית</li>
+                        <li><i data-lucide="check" class="check"></i> הקלטות לצפייה חוזרת</li>
+                        <li><i data-lucide="check" class="check"></i> <strong>קורס דיגיטלי במתנה!</strong></li>
+                    </ul>
+                    <a href="index.html#contact" class="btn-pricing btn-primary-dark">
+                        להתחלה
+                        <i data-lucide="arrow-left"></i>
+                    </a>
+                </div>
+                
+                <!-- Classic -->
+                <div class="pricing-card popular">
+                    <span class="popular-badge">
+                        <i data-lucide="star" style="width:16px;height:16px;"></i>
+                        הכי פופולרי
+                    </span>
+                    <div class="card-icon">
+                        <i data-lucide="trophy"></i>
+                    </div>
+                    <h3>🏆 Classic</h3>
+                    <p class="lessons">24 שיעורים</p>
+                    <div class="price">160₪ <span>/ לשיעור</span></div>
+                    <span class="savings-badge">💰 חיסכון 6%</span>
+                    <ul class="pricing-features">
+                        <li><i data-lucide="check" class="check"></i> 24 שיעורים × 45 דקות</li>
+                        <li><i data-lucide="check" class="check"></i> מדריך אישי מנוסה</li>
+                        <li><i data-lucide="check" class="check"></i> תוכנית מותאמת אישית</li>
+                        <li><i data-lucide="check" class="check"></i> הקלטות לצפייה חוזרת</li>
+                        <li><i data-lucide="check" class="check"></i> <strong>2 קורסים דיגיטליים במתנה!</strong></li>
+                    </ul>
+                    <a href="index.html#contact" class="btn-pricing btn-glow">
+                        להתחלה
+                        <i data-lucide="arrow-left"></i>
+                    </a>
+                </div>
+                
+                <!-- Premium -->
+                <div class="pricing-card">
+                    <div class="card-icon">
+                        <i data-lucide="gem"></i>
+                    </div>
+                    <h3>💎 Premium</h3>
+                    <p class="lessons">32 שיעורים</p>
+                    <div class="price">156₪ <span>/ לשיעור</span></div>
+                    <span class="savings-badge">💰 חיסכון 10%</span>
+                    <ul class="pricing-features">
+                        <li><i data-lucide="check" class="check"></i> 32 שיעורים × 45 דקות</li>
+                        <li><i data-lucide="check" class="check"></i> מדריך אישי מנוסה</li>
+                        <li><i data-lucide="check" class="check"></i> תוכנית מותאמת אישית</li>
+                        <li><i data-lucide="check" class="check"></i> הקלטות לצפייה חוזרת</li>
+                        <li><i data-lucide="check" class="check"></i> <strong>4 קורסים דיגיטליים במתנה!</strong></li>
+                    </ul>
+                    <a href="index.html#contact" class="btn-pricing btn-primary-dark">
+                        להתחלה
+                        <i data-lucide="arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Duo Section -->
+    <section class="pricing-section duo-section">
+        <div class="container">
+            <h2><i data-lucide="users"></i> שיעורים בזוגות</h2>
+            <p class="pricing-subtitle">ללמוד עם חבר או בן משפחה • חיסכון משמעותי!</p>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="card-icon"><i data-lucide="users"></i></div>
+                    <h3>🥇 Gold זוגי</h3>
+                    <p class="lessons">16 שיעורים</p>
+                    <div class="price">117₪ <span>/ למשתתף</span></div>
+                    <ul class="pricing-features">
+                        <li><i data-lucide="check" class="check"></i> למידה עם חבר/אח</li>
+                        <li><i data-lucide="check" class="check"></i> 16 שיעורים × 45 דקות</li>
+                        <li><i data-lucide="check" class="check"></i> <strong>קורס דיגיטלי במתנה</strong></li>
+                    </ul>
+                    <a href="index.html#contact" class="btn-pricing btn-primary-dark">להתחלה</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <div class="card-icon"><i data-lucide="users"></i></div>
+                    <h3>🏆 Classic זוגי</h3>
+                    <p class="lessons">24 שיעורים</p>
+                    <div class="price">112₪ <span>/ למשתתף</span></div>
+                    <ul class="pricing-features">
+                        <li><i data-lucide="check" class="check"></i> למידה עם חבר/אח</li>
+                        <li><i data-lucide="check" class="check"></i> 24 שיעורים × 45 דקות</li>
+                        <li><i data-lucide="check" class="check"></i> <strong>2 קורסים דיגיטליים במתנה</strong></li>
+                    </ul>
+                    <a href="index.html#contact" class="btn-pricing btn-primary-dark">להתחלה</a>
+                </div>
+                
+                <div class="pricing-card popular">
+                    <span class="popular-badge">🔥 הכי משתלם</span>
+                    <div class="card-icon"><i data-lucide="users"></i></div>
+                    <h3>💎 Premium זוגי</h3>
+                    <p class="lessons">32 שיעורים</p>
+                    <div class="price">101₪ <span>/ למשתתף</span></div>
+                    <ul class="pricing-features">
+                        <li><i data-lucide="check" class="check"></i> למידה עם חבר/אח</li>
+                        <li><i data-lucide="check" class="check"></i> 32 שיעורים × 45 דקות</li>
+                        <li><i data-lucide="check" class="check"></i> <strong>כל 8 הקורסים במתנה!</strong></li>
+                    </ul>
+                    <a href="index.html#contact" class="btn-pricing btn-glow">להתחלה</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee -->
+    <section class="guarantee-section">
+        <h3><i data-lucide="shield-check" style="width:24px;height:24px;"></i> החזר כספי מובטח</h3>
+        <p>עד השיעור השלישי - אין מחויבות! לא מרוצים? מקבלים החזר מלא.</p>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>🚀 מוכנים להתחיל?</h2>
+            <p>יועצות הלימודים שלנו ישמחו לעזור לכם לבחור את המסלול המתאים</p>
+            <a href="https://wa.me/972533009742" target="_blank" rel="noopener" style="background: #25d366; color: white; padding: 1rem 2.5rem; border-radius: 50px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer; font-size: 1.1rem; position: relative; z-index: 100;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                דברו איתנו בוואטסאפ
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: linear-gradient(180deg, #0f172a 0%, #020617 100%); padding: 4rem 2rem 2rem; border-top: 1px solid #1e293b;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem; text-align: right;">
+                <div>
+                    <h3 style="color: #22c55e; font-size: 1.5rem; margin-bottom: 1rem; font-weight: 700;">דרך ההייטק</h3>
+                    <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem;">מלמדים טכנולוגיה, תכנות ובינה מלאכותית לילדים ונוער מאז 2019.</p>
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="https://www.facebook.com/share/1SpwZhTKPx/" target="_blank" rel="noopener" style="width: 40px; height: 40px; background: #1e293b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #94a3b8;"><i data-lucide="facebook" style="width: 20px; height: 20px;"></i></a>
+                        <a href="https://www.linkedin.com/company/hai-tech-way/" target="_blank" rel="noopener" style="width: 40px; height: 40px; background: #1e293b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #94a3b8;"><i data-lucide="linkedin" style="width: 20px; height: 20px;"></i></a>
+                        <a href="https://youtube.com/channel/UCbBmDyoE0oy0yXuVAoXNp2Q" target="_blank" rel="noopener" style="width: 40px; height: 40px; background: #1e293b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #94a3b8;"><i data-lucide="youtube" style="width: 20px; height: 20px;"></i></a>
+                        <a href="https://wa.me/972533009742" target="_blank" rel="noopener" style="width: 40px; height: 40px; background: #1e293b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #25d366;"><i data-lucide="message-circle" style="width: 20px; height: 20px;"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 style="color: white; font-size: 1.1rem; margin-bottom: 1rem; font-weight: 600;">קישורים מהירים</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 0.75rem;"><a href="index.html" style="color: #94a3b8; text-decoration: none;">דף הבית</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="index.html#courses" style="color: #94a3b8; text-decoration: none;">קורסים</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="institutions.html" style="color: #94a3b8; text-decoration: none;">למוסדות חינוך</a></li>
+                        <li><a href="blog.html" style="color: #94a3b8; text-decoration: none;">בלוג</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: white; font-size: 1.1rem; margin-bottom: 1rem; font-weight: 600;">צרו קשר</h4>
+                    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                        <a href="https://wa.me/972533009742" style="color: #94a3b8; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="phone" style="width: 18px; height: 18px;"></i>053-300-9742</a>
+                        <a href="mailto:info@hai.tech" style="color: #94a3b8; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="mail" style="width: 18px; height: 18px;"></i>info@hai.tech</a>
+                    </div>
+                </div>
+            </div>
+            <div style="border-top: 1px solid #1e293b; padding-top: 1.5rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
+                <p style="color: #64748b; font-size: 0.85rem; margin: 0;">© 2025 דרך ההייטק. כל הזכויות שמורות.</p>
+                <div style="display: flex; gap: 1.5rem;">
+                    <a href="terms.html" style="color: #64748b; font-size: 0.85rem; text-decoration: none;">תנאי שימוש</a>
+                    <a href="privacy.html" style="color: #64748b; font-size: 0.85rem; text-decoration: none;">מדיניות פרטיות</a>
+                    <a href="accessibility.html" style="color: #64748b; font-size: 0.85rem; text-decoration: none;">נגישות</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (mobileMenuBtn && navLinks) {
+            mobileMenuBtn.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                this.setAttribute('aria-expanded', 
+                    this.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'
+                );
+            });
+            
+            // Close mobile menu when clicking a link
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function() {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                });
+            });
+        }
+    </script>
+</body>
+</html>

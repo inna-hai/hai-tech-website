@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מדיניות פרטיות | דרך ההייטק</title>
+    <meta name="description" content="מדיניות הפרטיות של דרך ההייטק - כיצד אנו אוספים, משתמשים ומגנים על המידע שלך">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hai.tech/privacy.html">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://hai.tech/wp-content/uploads/2023/11/hi-tech-logo.png">
+    
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+            --success: #22c55e;
+            --warning: #f59e0b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Heebo', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-dark) 100%);
+            padding: 60px 0;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #fff 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .page-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            text-decoration: none;
+            margin-bottom: 24px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .back-link:hover {
+            color: var(--primary-dark);
+        }
+        
+        /* Content */
+        .legal-content {
+            padding: 60px 0;
+        }
+        
+        .legal-content section {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .legal-content h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .legal-content h2::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .legal-content h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 24px 0 12px;
+            color: var(--text-primary);
+        }
+        
+        .legal-content p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+        
+        .legal-content ul {
+            list-style: none;
+            margin: 16px 0;
+        }
+        
+        .legal-content li {
+            color: var(--text-secondary);
+            padding: 8px 0;
+            padding-right: 28px;
+            position: relative;
+        }
+        
+        .legal-content li::before {
+            content: '🔒';
+            position: absolute;
+            right: 0;
+            font-size: 0.9rem;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(99, 102, 241, 0.05) 100%);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .highlight-box.success {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(34, 197, 94, 0.05) 100%);
+            border-color: rgba(34, 197, 94, 0.3);
+        }
+        
+        .highlight-box h4 {
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+        
+        .highlight-box.success h4 {
+            color: var(--success);
+        }
+        
+        /* Footer */
+        .page-footer {
+            background: var(--bg-card);
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .page-footer p {
+            color: var(--text-secondary);
+        }
+        
+        .page-footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .last-updated {
+            background: var(--bg-dark);
+            color: var(--text-secondary);
+            padding: 8px 16px;
+            border-radius: 8px;
+            display: inline-block;
+            font-size: 0.9rem;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .legal-content section {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <div class="container">
+            <a href="/" class="back-link">→ חזרה לדף הבית</a>
+            <h1>מדיניות פרטיות</h1>
+            <p>כיצד אנו אוספים, משתמשים ומגנים על המידע שלך</p>
+        </div>
+    </header>
+    
+    <main class="legal-content">
+        <div class="container">
+            
+            <section>
+                <h2>המחויבות שלנו לפרטיות</h2>
+                <p>דרך ההייטק ("החברה", "אנחנו") מחויבת להגנה על פרטיות המשתמשים שלנו, ובמיוחד על פרטיות הילדים והנערים הלומדים בפלטפורמה שלנו.</p>
+                <div class="highlight-box success">
+                    <h4>🛡️ ההתחייבות שלנו</h4>
+                    <p style="margin: 0;">אנו פועלים בהתאם לחוק הגנת הפרטיות הישראלי ולתקנות GDPR האירופיות. המידע שלכם בטוח איתנו.</p>
+                </div>
+            </section>
+            
+            <section>
+                <h2>איזה מידע אנו אוספים?</h2>
+                
+                <h3>מידע שאתם מספקים לנו</h3>
+                <ul>
+                    <li>פרטי הרשמה: שם, כתובת אימייל, מספר טלפון</li>
+                    <li>פרטי תשלום: מעובדים באופן מאובטח דרך ספקי סליקה</li>
+                    <li>פרטי התלמיד: שם, גיל, כיתה (לצורך התאמת תוכן)</li>
+                    <li>תכתובות: הודעות שנשלחות אלינו דרך צ'אט או אימייל</li>
+                </ul>
+                
+                <h3>מידע שנאסף אוטומטית</h3>
+                <ul>
+                    <li>נתוני שימוש: דפים שנצפו, זמן שהייה, התקדמות בקורסים</li>
+                    <li>מידע טכני: סוג דפדפן, מערכת הפעלה, כתובת IP</li>
+                    <li>עוגיות (Cookies): לשיפור חווית השימוש</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>כיצד אנו משתמשים במידע?</h2>
+                <ul>
+                    <li>אספקת השירותים והקורסים שרכשתם</li>
+                    <li>התאמה אישית של חווית הלמידה</li>
+                    <li>מעקב אחר התקדמות התלמידים</li>
+                    <li>שליחת עדכונים ומידע חשוב על הקורסים</li>
+                    <li>שיפור השירותים והתכנים שלנו</li>
+                    <li>מענה לפניות ותמיכה טכנית</li>
+                    <li>מניעת הונאות ושמירה על אבטחת המערכת</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>הגנה על פרטיות ילדים</h2>
+                <p>אנו מודעים לכך שחלק גדול ממשתמשי הפלטפורמה הם ילדים ונערים. לכן:</p>
+                <div class="highlight-box">
+                    <h4>👨‍👩‍👧‍👦 הגנה מיוחדת על קטינים</h4>
+                    <ul style="margin: 0;">
+                        <li>הרשמה לפלטפורמה מתבצעת רק על ידי הורים/אפוטרופוסים</li>
+                        <li>אין פרסום מותאם אישית לילדים</li>
+                        <li>להורים יש גישה מלאה לצפייה בפעילות ילדיהם</li>
+                        <li>אין איסוף מידע מילדים ללא הסכמת הורים</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section>
+                <h2>שיתוף מידע עם צדדים שלישיים</h2>
+                <p>אנו <strong>לא מוכרים</strong> את המידע האישי שלכם. אנו עשויים לשתף מידע רק במקרים הבאים:</p>
+                <ul>
+                    <li>ספקי שירות: סליקת תשלומים, אחסון ענן, שירותי אימייל</li>
+                    <li>דרישות חוק: במידה ונדרש על פי צו בית משפט</li>
+                    <li>הגנה על זכויות: למניעת הונאה או פעילות בלתי חוקית</li>
+                </ul>
+                <p>כל ספקי השירות שלנו מחויבים לשמור על סודיות המידע.</p>
+            </section>
+            
+            <section>
+                <h2>אבטחת מידע</h2>
+                <p>אנו נוקטים באמצעי אבטחה מתקדמים להגנה על המידע שלכם:</p>
+                <ul>
+                    <li>הצפנת SSL/TLS לכל התקשורת</li>
+                    <li>אחסון מאובטח בשרתים מוגנים</li>
+                    <li>הגבלת גישה לעובדים מורשים בלבד</li>
+                    <li>ניטור ובקרה שוטפים</li>
+                    <li>גיבויים קבועים ותוכנית התאוששות</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>עוגיות (Cookies)</h2>
+                <p>האתר משתמש בעוגיות לצורך:</p>
+                <ul>
+                    <li>שמירת העדפות והתחברות</li>
+                    <li>ניתוח שימוש ושיפור האתר</li>
+                    <li>התאמה אישית של התוכן</li>
+                </ul>
+                <p>ניתן לנהל את העדפות העוגיות דרך הגדרות הדפדפן.</p>
+            </section>
+            
+            <section>
+                <h2>הזכויות שלכם</h2>
+                <p>יש לכם את הזכויות הבאות בנוגע למידע האישי שלכם:</p>
+                <ul>
+                    <li><strong>זכות לעיון</strong> - לקבל עותק מהמידע שאנו מחזיקים עליכם</li>
+                    <li><strong>זכות לתיקון</strong> - לעדכן או לתקן מידע שגוי</li>
+                    <li><strong>זכות למחיקה</strong> - לבקש מחיקת המידע שלכם</li>
+                    <li><strong>זכות להתנגד</strong> - להתנגד לעיבוד מסוים של המידע</li>
+                    <li><strong>זכות לניוד</strong> - לקבל את המידע בפורמט נפוץ</li>
+                </ul>
+                <p>למימוש זכויותיכם, צרו קשר עם שירות הלקוחות שלנו.</p>
+            </section>
+            
+            <section>
+                <h2>שמירת מידע</h2>
+                <p>אנו שומרים את המידע שלכם כל עוד חשבונכם פעיל או לפי הנדרש לצורך אספקת השירותים. לאחר סגירת החשבון, נשמור מידע מסוים למשך תקופה סבירה לצורך:</p>
+                <ul>
+                    <li>עמידה בדרישות חוק</li>
+                    <li>יישוב מחלוקות</li>
+                    <li>מניעת הונאות</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>עדכונים למדיניות</h2>
+                <p>אנו עשויים לעדכן מדיניות זו מעת לעת. שינויים מהותיים יפורסמו באתר ותישלח הודעה למשתמשים רשומים. המשך השימוש בשירותים מהווה הסכמה למדיניות המעודכנת.</p>
+            </section>
+            
+            <section>
+                <h2>יצירת קשר</h2>
+                <p>לשאלות או בקשות בנוגע למדיניות הפרטיות:</p>
+                <ul>
+                    <li>וואטסאפ: <a href="https://wa.me/972533009742" style="color: var(--primary);">053-300-9742</a></li>
+                    <li>אימייל: privacy@hai.tech</li>
+                </ul>
+            </section>
+            
+            <div class="last-updated">
+                עודכן לאחרונה: פברואר 2026
+            </div>
+            
+        </div>
+    </main>
+    
+    <footer class="page-footer">
+        <div class="container">
+            <p>© 2026 דרך ההייטק. כל הזכויות שמורות.</p>
+            <p style="margin-top: 12px;">
+                <a href="/">דף הבית</a> · 
+                <a href="/terms.html">תנאי שימוש</a> · 
+                <a href="/lms/login.html">כניסה לתלמידים</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

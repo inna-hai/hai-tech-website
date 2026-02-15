@@ -1,0 +1,172 @@
+{
+  "courseId": "minecraft-javascript",
+  "courseTitle": "קורס מיינקראפט + JavaScript",
+  "lessonsCount": 15,
+  "lessons": [
+    {
+      "id": 1,
+      "title": "התקנות והתחברות",
+      "titleEn": "Introduction to the Course and Minecraft",
+      "description": "הכרות עם הקורס, מיינקראפט וחיבור התכנות למשחק",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1104384543",
+      "order": 1,
+      "free": true,
+      "resources": []
+    },
+    {
+      "id": 2,
+      "title": "שיעור 1 – הכרות עם הסוכנות",
+      "titleEn": "Setting Up the Environment",
+      "description": "התקנת הכלים הנדרשים והגדרת סביבת הפיתוח",
+      "duration": "18:00",
+      "videoUrl": "https://player.vimeo.com/video/496442629",
+      "order": 2,
+      "free": true,
+      "resources": []
+    },
+    {
+      "id": 3,
+      "title": "שיעור 2 – משתנים",
+      "titleEn": "JavaScript Basics - Variables",
+      "description": "הכרות עם משתנים וטיפוסי נתונים ב-JavaScript",
+      "duration": "20:00",
+      "videoUrl": "https://player.vimeo.com/video/482505950",
+      "order": 3,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 4,
+      "title": "שיעור 3 – ארועים",
+      "titleEn": "Basic Functions",
+      "description": "יצירת פונקציות וקריאה להן",
+      "duration": "22:00",
+      "videoUrl": "https://player.vimeo.com/video/482506966",
+      "order": 4,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 5,
+      "title": "שיעור 4 – פרמטרים",
+      "titleEn": "Loops - For Loop",
+      "description": "שימוש בלולאות לחזרה על פעולות",
+      "duration": "25:00",
+      "videoUrl": "https://player.vimeo.com/video/482508060",
+      "order": 5,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 6,
+      "title": "שיעור 5 – לולאות",
+      "titleEn": "Conditions - If/Else",
+      "description": "קבלת החלטות בקוד עם תנאים",
+      "duration": "22:00",
+      "videoUrl": "https://player.vimeo.com/video/482508687",
+      "order": 6,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 7,
+      "title": "שיעור 6 – תנאים",
+      "titleEn": "Building Simple Structures",
+      "description": "בניית קירות ומבנים פשוטים עם קוד",
+      "duration": "25:00",
+      "videoUrl": "https://player.vimeo.com/video/482510972",
+      "order": 7,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 8,
+      "title": "שיעור 7 – משחק חיות",
+      "titleEn": "Building Complex Structures",
+      "description": "בניית בתים, מגדלים ומבנים מורכבים",
+      "duration": "30:00",
+      "videoUrl": "https://player.vimeo.com/video/482512130",
+      "order": 8,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 9,
+      "title": "שיעור 8 – משחק זומבים",
+      "titleEn": "Zombie Game - Part 1",
+      "description": "תכנון והתחלת בניית משחק הזומבים",
+      "duration": "28:00",
+      "videoUrl": "https://player.vimeo.com/video/482513851",
+      "order": 9,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 10,
+      "title": "שיעור 9 – משחק מסלול השאלות",
+      "titleEn": "Zombie Game - Part 2",
+      "description": "השלמת משחק הזומבים והוספת מכניקות",
+      "duration": "30:00",
+      "videoUrl": "https://player.vimeo.com/video/482543266",
+      "order": 10,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 11,
+      "title": "שיעור 10 – משחק מסלול השאלות חלק ב׳",
+      "titleEn": "Bow and Arrow Game - Part 1",
+      "description": "תכנון והתחלת בניית משחק החץ וקשת",
+      "duration": "28:00",
+      "videoUrl": "https://player.vimeo.com/video/482544769",
+      "order": 11,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 12,
+      "title": "שיעור 11 – משחק המשימות",
+      "titleEn": "Bow and Arrow Game - Part 2",
+      "description": "השלמת משחק החץ וקשת",
+      "duration": "28:00",
+      "videoUrl": "https://player.vimeo.com/video/482546813",
+      "order": 12,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 13,
+      "title": "שיעור 12 – פונקציות",
+      "titleEn": "Lava Game",
+      "description": "בניית משחק הימנעות מלבה",
+      "duration": "30:00",
+      "videoUrl": "https://player.vimeo.com/video/521562061",
+      "order": 13,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 14,
+      "title": "שיעור 13 – משחק קירות נסגרים",
+      "titleEn": "Independent Project - Planning",
+      "description": "תכנון פרויקט עצמאי במיינקראפט",
+      "duration": "20:00",
+      "videoUrl": "https://player.vimeo.com/video/482558133",
+      "order": 14,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 15,
+      "title": "שיעור 14 – חץ וקשת",
+      "titleEn": "Independent Project - Implementation",
+      "description": "מימוש הפרויקט העצמאי",
+      "duration": "35:00",
+      "videoUrl": "https://player.vimeo.com/video/482558962",
+      "order": 15,
+      "free": false,
+      "resources": []
+    }
+  ]
+}
