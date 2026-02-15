@@ -945,17 +945,17 @@ Bank Security Team
                 <p style="font-size: 1.5rem; margin-bottom: 30px;">
                     כלי פשוט שמקבל הודעה ומסווג את רמת הסיכון שלה
                 </p>
-                <div class="code-demo">
-                    <span class="comment">// הרעיון:</span><br>
-                    <span class="keyword">function</span> <span class="function">checkMessage</span>(text) {<br>
-                    &nbsp;&nbsp;<span class="comment">// בודק סימנים מחשידים</span><br>
-                    &nbsp;&nbsp;<span class="keyword">let</span> riskScore = 0;<br><br>
-                    &nbsp;&nbsp;<span class="keyword">if</span> (text.includes(<span class="string">"דחוף"</span>)) riskScore += 20;<br>
-                    &nbsp;&nbsp;<span class="keyword">if</span> (text.includes(<span class="string">"סיסמה"</span>)) riskScore += 30;<br>
-                    &nbsp;&nbsp;<span class="keyword">if</span> (text.includes(<span class="string">"לחץ כאן"</span>)) riskScore += 25;<br>
-                    &nbsp;&nbsp;<span class="keyword">if</span> (hasWeirdLink(text)) riskScore += 40;<br><br>
-                    &nbsp;&nbsp;<span class="keyword">return</span> riskScore;<br>
-                    }
+                <div class="activity-box" style="direction: rtl; text-align: right;">
+                    <h3>💬 הפרומפט שלנו ל-Base44:</h3>
+                    <p style="font-size: 1.2rem; background: #1a1a2e; padding: 20px; border-radius: 10px; line-height: 1.8;">
+                        "בנה לי אפליקציה לבדיקת הודעות פישינג.<br><br>
+                        האפליקציה תכלול:<br>
+                        • שדה טקסט שבו המשתמש מדביק הודעה<br>
+                        • כפתור 'בדוק הודעה'<br>
+                        • המערכת תבדוק סימנים מחשידים: מילים דחופות, בקשת סיסמה, קישורים מוזרים, הבטחת פרסים<br>
+                        • תציג ציון סיכון באחוזים עם צבע (ירוק/צהוב/אדום)<br>
+                        • תסביר למשתמש מה הסימנים שנמצאו"
+                    </p>
                 </div>
             </div>
         </div>
