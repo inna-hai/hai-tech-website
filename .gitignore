@@ -1,6 +1,9 @@
+node_modules/
 lms/videos/
 lms/node_modules/
+lms/api/node_modules/
 lms/package-lock.json
+package-lock.json
 *.db
 *.log
 
