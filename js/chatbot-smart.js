@@ -480,14 +480,11 @@
                     this.session.lead.phone = phoneMatch[0].replace(/[-\s]/g, '');
                 }
             } else if (this.session.leadStep === 'email') {
-                if (/דלג|אין|לא|skip/i.test(lower)) {
-                    this.session.lead.email = 'skipped';
-                } else {
-                    const emailMatch = message.match(/[\w.-]+@[\w.-]+\.\w+/);
-                    if (emailMatch) {
-                        this.session.lead.email = emailMatch[0];
-                    }
+                const emailMatch = message.match(/[\w.-]+@[\w.-]+\.\w+/);
+                if (emailMatch) {
+                    this.session.lead.email = emailMatch[0];
                 }
+                // Email is required - don't allow skipping
             }
             
             this.session.save();
@@ -726,13 +723,18 @@
                 if (this.session.lead.phone) {
                     this.session.leadStep = 'email';
                     this.session.save();
-                    return 'מעולה! 📱\n\nאימייל? (לא חובה — אפשר "דלג")';
+                    return 'מעולה! 📱\n\nמה האימייל שלך?';
                 }
                 return 'לא זיהיתי מספר טלפון — אפשר לנסות שוב?\n\nלדוגמה: 053-300-9742';
             }
             
             if (step === 'email') {
-                // Email is optional, move to completion
+                // Email is required - check if valid email was provided
+                if (!this.session.lead.email || this.session.lead.email === 'skipped') {
+                    return 'אני צריך את האימייל שלך כדי להמשיך 📧\n\nמה האימייל?';
+                }
+                
+                // Email provided, move to completion
                 this.session.leadStep = null;
                 this.session.setState(STATES.COMPLETED);
                 this.session.save();
