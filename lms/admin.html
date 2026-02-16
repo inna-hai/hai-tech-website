@@ -263,6 +263,32 @@
         <!-- USERS SECTION -->
         <div id="users" class="section">
             <div class="card">
+                <h2>➕ הוסף משתמש חדש</h2>
+                <div class="enroll-form" style="grid-template-columns: 1fr 1fr 1fr 1fr auto;">
+                    <div class="form-group">
+                        <label>שם</label>
+                        <input type="text" id="newUserName" placeholder="שם מלא">
+                    </div>
+                    <div class="form-group">
+                        <label>אימייל</label>
+                        <input type="email" id="newUserEmail" placeholder="email@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>סיסמה</label>
+                        <input type="text" id="newUserPassword" placeholder="סיסמה">
+                    </div>
+                    <div class="form-group">
+                        <label>תפקיד</label>
+                        <select id="newUserRole">
+                            <option value="student">תלמיד</option>
+                            <option value="admin">אדמין</option>
+                        </select>
+                    </div>
+                    <button class="btn-enroll" id="createUserBtn">צור משתמש</button>
+                </div>
+            </div>
+
+            <div class="card">
                 <h2>👥 כל המשתמשים</h2>
                 <table>
                     <thead>
@@ -455,6 +481,41 @@
                 btn.classList.add('active');
                 document.getElementById(btn.dataset.section).classList.add('active');
             });
+        });
+
+        // Create user
+        document.getElementById('createUserBtn').addEventListener('click', async () => {
+            const name = document.getElementById('newUserName').value.trim();
+            const email = document.getElementById('newUserEmail').value.trim();
+            const password = document.getElementById('newUserPassword').value;
+            const role = document.getElementById('newUserRole').value;
+            
+            if (!name || !email || !password) {
+                showAlert('יש למלא את כל השדות', 'error');
+                return;
+            }
+
+            try {
+                const res = await fetch('/lms/api/admin/users', {
+                    method: 'POST',
+                    headers,
+                    body: JSON.stringify({ name, email, password, role })
+                });
+                
+                const data = await res.json();
+                
+                if (data.success) {
+                    showAlert(`המשתמש ${name} נוצר בהצלחה!`);
+                    document.getElementById('newUserName').value = '';
+                    document.getElementById('newUserEmail').value = '';
+                    document.getElementById('newUserPassword').value = '';
+                    loadUsers();
+                } else {
+                    showAlert(data.error || 'שגיאה ביצירת משתמש', 'error');
+                }
+            } catch (err) {
+                showAlert('שגיאה ביצירת משתמש', 'error');
+            }
         });
 
         // Load all data

@@ -119,6 +119,55 @@ adminRoutes.delete('/users/:userId', async (c) => {
   return c.json({ message: 'User deleted' });
 });
 
+// Create user (admin)
+adminRoutes.post('/users', async (c) => {
+  const { email, name, password, role } = await c.req.json();
+
+  if (!email || !name || !password) {
+    return c.json({ error: 'email, name, and password are required' }, 400);
+  }
+
+  // Check if user exists
+  const existing = await c.env.DB.prepare(
+    'SELECT id FROM users WHERE email = ?'
+  ).bind(email.toLowerCase()).first();
+
+  if (existing) {
+    return c.json({ error: 'User with this email already exists' }, 409);
+  }
+
+  // Hash password (simple SHA-256 with salt)
+  const salt = crypto.getRandomValues(new Uint8Array(16));
+  const saltHex = Array.from(salt).map(b => b.toString(16).padStart(2, '0')).join('');
+  const encoder = new TextEncoder();
+  const data = encoder.encode(password);
+  const combined = new Uint8Array(salt.length + data.length);
+  combined.set(salt);
+  combined.set(data, salt.length);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', combined);
+  const hashHex = Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+  const passwordHash = `${saltHex}:${hashHex}`;
+
+  const userId = crypto.randomUUID();
+  const userRole = role || 'student';
+
+  await c.env.DB.prepare(`
+    INSERT INTO users (id, email, password_hash, name, role, created_at)
+    VALUES (?, ?, ?, ?, ?, strftime('%s', 'now'))
+  `).bind(userId, email.toLowerCase(), passwordHash, name, userRole).run();
+
+  // Initialize gamification
+  await c.env.DB.prepare(`
+    INSERT INTO user_gamification (user_id, xp, level, streak_days)
+    VALUES (?, 0, 1, 0)
+  `).bind(userId).run();
+
+  return c.json({ 
+    success: true, 
+    user: { id: userId, email: email.toLowerCase(), name, role: userRole }
+  }, 201);
+});
+
 // Get all courses (including unpublished)
 adminRoutes.get('/courses', async (c) => {
   const courses = await c.env.DB.prepare(`
