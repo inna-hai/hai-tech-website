@@ -12,7 +12,7 @@ const LMS = {
         storagePrefix: 'hai_lms_',
         apiUrl: window.location.hostname === 'localhost' 
             ? 'http://localhost:3001/api' 
-            : `http://${window.location.hostname}:3001/api`,
+            : '/lms/api',
         mockCourses: [
             {
                 id: 'course_1',

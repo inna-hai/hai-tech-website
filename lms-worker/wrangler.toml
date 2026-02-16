@@ -6,12 +6,14 @@ compatibility_date = "2024-01-01"
 [[d1_databases]]
 binding = "DB"
 database_name = "lms-database"
-database_id = "TO_BE_CREATED"
+database_id = "f0b888ec-914b-46ee-a698-a4adec7f09c0"
 
 # Environment variables
 [vars]
-JWT_SECRET = "to-be-set-in-dashboard"
 CORS_ORIGIN = "https://hai.tech"
+
+# Secrets (set via: wrangler secret put JWT_SECRET)
+# JWT_SECRET - set in Cloudflare dashboard or CLI
 
 # Routes - all /lms/api/* goes to this worker
 routes = [
