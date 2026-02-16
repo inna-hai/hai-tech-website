@@ -583,10 +583,18 @@ body {
 }
 
 @media (max-width: 768px) {
-  .mobile-menu-btn {
+  .navbar-user {
     display: flex;
+    gap: 8px;
+  }
+
+  .mobile-menu-btn {
+    display: flex !important;
     align-items: center;
     justify-content: center;
+    z-index: 10;
+    min-width: 44px;
+    min-height: 44px;
   }
 
   .navbar-menu.open {
