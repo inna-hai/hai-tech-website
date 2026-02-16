@@ -289,25 +289,77 @@
             }
         });
 
+        // Get auth token
+        function getToken() {
+            try {
+                return JSON.parse(localStorage.getItem('hai_lms_token') || 'null');
+            } catch {
+                return null;
+            }
+        }
+
+        // Mark lesson as complete
+        async function markLessonComplete(lessonId) {
+            const token = getToken();
+            if (!token) {
+                alert('יש להתחבר כדי לשמור התקדמות');
+                window.location.href = 'login.html';
+                return false;
+            }
+
+            try {
+                const response = await fetch(`/lms/api/progress/lesson/${lessonId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ completed: true, watchedSeconds: 0 })
+                });
+
+                if (response.ok) {
+                    return true;
+                } else {
+                    const data = await response.json();
+                    console.error('Failed to mark complete:', data);
+                    return false;
+                }
+            } catch (error) {
+                console.error('Error marking complete:', error);
+                return false;
+            }
+        }
+
         // Mark as complete button
         const markCompleteBtn = document.getElementById('markCompleteBtn');
-        markCompleteBtn?.addEventListener('click', () => {
-            markCompleteBtn.classList.toggle('btn-completed');
-            if (markCompleteBtn.classList.contains('btn-completed')) {
+        markCompleteBtn?.addEventListener('click', async () => {
+            const lesson = allLessons[currentLessonIndex];
+            if (!lesson) return;
+
+            markCompleteBtn.disabled = true;
+            markCompleteBtn.innerHTML = `<span>שומר...</span>`;
+
+            const success = await markLessonComplete(lesson.id);
+            
+            if (success) {
+                markCompleteBtn.classList.add('btn-completed');
                 markCompleteBtn.innerHTML = `
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M20 6L9 17l-5-5"/>
                     </svg>
                     <span>הושלם!</span>
                 `;
+                // Update sidebar to show completed
+                renderLessonsList();
             } else {
                 markCompleteBtn.innerHTML = `
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M20 6L9 17l-5-5"/>
                     </svg>
-                    <span>סמן כהושלם</span>
+                    <span>שגיאה - נסי שוב</span>
                 `;
             }
+            markCompleteBtn.disabled = false;
         });
 
         // Initialize

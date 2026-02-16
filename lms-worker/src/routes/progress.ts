@@ -56,7 +56,14 @@ progressRoutes.get('/course/:courseId', async (c) => {
 // Update lesson progress (watch time)
 progressRoutes.post('/lesson/:lessonId', async (c) => {
   const { lessonId } = c.req.param();
-  const token = getCookie(c, 'auth_token');
+  // Accept token from cookie OR Authorization header
+  let token = getCookie(c, 'auth_token');
+  if (!token) {
+    const authHeader = c.req.header('Authorization');
+    if (authHeader?.startsWith('Bearer ')) {
+      token = authHeader.slice(7);
+    }
+  }
   const { watchedSeconds, completed } = await c.req.json();
   
   if (!token) {
@@ -75,14 +82,19 @@ progressRoutes.post('/lesson/:lessonId', async (c) => {
       return c.json({ error: 'Lesson not found' }, 404);
     }
 
-    // Check enrollment
+    // Auto-enroll if not enrolled
     const enrollment = await c.env.DB.prepare(`
       SELECT id FROM enrollments 
       WHERE user_id = ? AND course_id = ? AND status = 'active'
     `).bind(payload.userId, lesson.course_id).first();
 
     if (!enrollment) {
-      return c.json({ error: 'Not enrolled in this course' }, 403);
+      // Auto-enroll the user
+      const enrollId = crypto.randomUUID();
+      await c.env.DB.prepare(`
+        INSERT INTO enrollments (id, user_id, course_id, status, enrolled_at)
+        VALUES (?, ?, ?, 'active', strftime('%s', 'now'))
+      `).bind(enrollId, payload.userId, lesson.course_id).run();
     }
 
     // Check if progress exists
