@@ -260,8 +260,13 @@
         }
 
         // Navigation buttons
-        document.getElementById('nextLessonBtn').addEventListener('click', () => {
+        document.getElementById('nextLessonBtn').addEventListener('click', async () => {
             if (currentLessonIndex < allLessons.length - 1) {
+                // Auto-mark current lesson as complete when moving to next
+                const currentLesson = allLessons[currentLessonIndex];
+                if (currentLesson) {
+                    await markLessonComplete(currentLesson.id);
+                }
                 goToLesson(currentLessonIndex + 1);
             }
         });
