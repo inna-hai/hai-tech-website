@@ -75,26 +75,23 @@ progressRoutes.post('/lesson/:lessonId', async (c) => {
     
     // Get lesson info
     const lesson = await c.env.DB.prepare(`
-      SELECT id, course_id, duration_seconds FROM lessons WHERE id = ?
-    `).bind(lessonId).first<{ id: string; course_id: string; duration_seconds: number }>();
+      SELECT id, course_id, duration_seconds, lesson_order FROM lessons WHERE id = ?
+    `).bind(lessonId).first<{ id: string; course_id: string; duration_seconds: number; lesson_order: number }>();
 
     if (!lesson) {
       return c.json({ error: 'Lesson not found' }, 404);
     }
 
-    // Auto-enroll if not enrolled
+    // Check enrollment - must be enrolled to track progress
     const enrollment = await c.env.DB.prepare(`
       SELECT id FROM enrollments 
       WHERE user_id = ? AND course_id = ? AND status = 'active'
     `).bind(payload.userId, lesson.course_id).first();
 
-    if (!enrollment) {
-      // Auto-enroll the user
-      const enrollId = crypto.randomUUID();
-      await c.env.DB.prepare(`
-        INSERT INTO enrollments (id, user_id, course_id, status, enrolled_at)
-        VALUES (?, ?, ?, 'active', strftime('%s', 'now'))
-      `).bind(enrollId, payload.userId, lesson.course_id).run();
+    // Allow progress only for first lesson (free) or if enrolled
+    const isFirstLesson = lesson.lesson_order === 1;
+    if (!enrollment && !isFirstLesson) {
+      return c.json({ error: 'Not enrolled in this course' }, 403);
     }
 
     // Check if progress exists
