@@ -115,8 +115,9 @@
                 const data = await response.json();
                 
                 if (data.success) {
-                    localStorage.setItem('hai_lms_token', data.token);
+                    localStorage.setItem('hai_lms_token', JSON.stringify(data.token));
                     localStorage.setItem('hai_lms_user', JSON.stringify(data.user));
+                    localStorage.setItem('hai_lms_isLoggedIn', JSON.stringify(true));
                     
                     LMS.showNotification('התחברת בהצלחה!', 'success');
                     

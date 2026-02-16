@@ -1,0 +1,24 @@
+name = "hai-tech-lms"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+
+# D1 Database binding
+[[d1_databases]]
+binding = "DB"
+database_name = "lms-database"
+database_id = "TO_BE_CREATED"
+
+# Environment variables
+[vars]
+JWT_SECRET = "to-be-set-in-dashboard"
+CORS_ORIGIN = "https://hai.tech"
+
+# Routes - all /lms/api/* goes to this worker
+routes = [
+  { pattern = "hai.tech/lms/api/*", zone_name = "hai.tech" }
+]
+
+# Development settings
+[dev]
+port = 8787
+local_protocol = "http"
