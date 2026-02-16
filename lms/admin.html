@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | HAI Tech Academy</title>
+    <link rel="stylesheet" href="css/auth-new.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: block;
+            padding: 0;
+        }
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+        .admin-header h1 {
+            font-size: 28px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .admin-nav {
+            display: flex;
+            gap: 8px;
+        }
+        .admin-nav button {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        .admin-nav button.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+        .admin-nav button:hover:not(.active) {
+            background: var(--bg-hover);
+        }
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
+        }
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        .card h2 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            text-align: right;
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+        }
+        th {
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 13px;
+        }
+        td {
+            font-size: 14px;
+        }
+        tr:hover {
+            background: var(--bg-hover);
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .badge-admin {
+            background: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+        }
+        .badge-student {
+            background: rgba(99, 102, 241, 0.2);
+            color: var(--accent-light);
+        }
+        .badge-active {
+            background: rgba(16, 185, 129, 0.2);
+            color: #34d399;
+        }
+        .enroll-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            gap: 16px;
+            align-items: end;
+        }
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+        .form-group select, .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 14px;
+        }
+        .form-group select:focus, .form-group input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        .btn-enroll {
+            padding: 12px 24px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .btn-enroll:hover {
+            background: var(--accent-light);
+        }
+        .btn-enroll:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .alert {
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            font-size: 14px;
+        }
+        .alert-success {
+            background: rgba(16, 185, 129, 0.2);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+        .alert-error {
+            background: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .stat-box {
+            background: var(--bg-hover);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+        .stat-box h3 {
+            font-size: 32px;
+            margin-bottom: 4px;
+            color: var(--accent-light);
+        }
+        .stat-box p {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+        .back-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .back-link:hover {
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1>🛠️ Admin Panel</h1>
+            <div>
+                <a href="index.html" class="back-link">← חזרה ל-LMS</a>
+            </div>
+        </div>
+
+        <div class="admin-nav">
+            <button class="active" data-section="enrollments">📚 הרשמות לקורסים</button>
+            <button data-section="users">👥 משתמשים</button>
+            <button data-section="stats">📊 סטטיסטיקות</button>
+        </div>
+
+        <div id="alert" class="alert" style="display: none;"></div>
+
+        <!-- ENROLLMENTS SECTION -->
+        <div id="enrollments" class="section active">
+            <div class="card">
+                <h2>➕ הוסף הרשמה לקורס</h2>
+                <div class="enroll-form">
+                    <div class="form-group">
+                        <label>משתמש</label>
+                        <select id="enrollUser">
+                            <option value="">טוען משתמשים...</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>קורס</label>
+                        <select id="enrollCourse">
+                            <option value="">טוען קורסים...</option>
+                        </select>
+                    </div>
+                    <button class="btn-enroll" id="enrollBtn">הרשם לקורס</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>📋 הרשמות קיימות</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>משתמש</th>
+                            <th>אימייל</th>
+                            <th>קורס</th>
+                            <th>סטטוס</th>
+                            <th>תאריך</th>
+                        </tr>
+                    </thead>
+                    <tbody id="enrollmentsTable">
+                        <tr><td colspan="5" style="text-align: center; color: var(--text-muted);">טוען...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- USERS SECTION -->
+        <div id="users" class="section">
+            <div class="card">
+                <h2>👥 כל המשתמשים</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>שם</th>
+                            <th>אימייל</th>
+                            <th>תפקיד</th>
+                            <th>XP</th>
+                            <th>נרשם</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersTable">
+                        <tr><td colspan="5" style="text-align: center; color: var(--text-muted);">טוען...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- STATS SECTION -->
+        <div id="stats" class="section">
+            <div class="stats-grid" id="statsGrid">
+                <div class="stat-box">
+                    <h3 id="statUsers">-</h3>
+                    <p>משתמשים</p>
+                </div>
+                <div class="stat-box">
+                    <h3 id="statEnrollments">-</h3>
+                    <p>הרשמות</p>
+                </div>
+                <div class="stat-box">
+                    <h3 id="statNewUsers">-</h3>
+                    <p>חדשים השבוע</p>
+                </div>
+                <div class="stat-box">
+                    <h3 id="statLessons">-</h3>
+                    <p>שיעורים היום</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check if admin
+        const token = JSON.parse(localStorage.getItem('hai_lms_token') || 'null');
+        const user = JSON.parse(localStorage.getItem('hai_lms_user') || 'null');
+        
+        if (!token || !user || user.role !== 'admin') {
+            alert('אין לך הרשאת אדמין');
+            window.location.href = 'login.html';
+        }
+
+        const headers = {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        };
+
+        // Show alert
+        function showAlert(message, type = 'success') {
+            const alert = document.getElementById('alert');
+            alert.textContent = message;
+            alert.className = `alert alert-${type}`;
+            alert.style.display = 'block';
+            setTimeout(() => alert.style.display = 'none', 3000);
+        }
+
+        // Format date
+        function formatDate(timestamp) {
+            if (!timestamp) return '-';
+            return new Date(timestamp * 1000).toLocaleDateString('he-IL');
+        }
+
+        // Load users
+        async function loadUsers() {
+            try {
+                const res = await fetch('/lms/api/admin/users', { headers });
+                const data = await res.json();
+                
+                if (data.users) {
+                    // Populate select
+                    const select = document.getElementById('enrollUser');
+                    select.innerHTML = '<option value="">בחר משתמש</option>' + 
+                        data.users.map(u => `<option value="${u.id}">${u.name} (${u.email})</option>`).join('');
+                    
+                    // Populate table
+                    document.getElementById('usersTable').innerHTML = data.users.map(u => `
+                        <tr>
+                            <td>${u.name}</td>
+                            <td>${u.email}</td>
+                            <td><span class="badge badge-${u.role}">${u.role}</span></td>
+                            <td>${u.xp || 0}</td>
+                            <td>${formatDate(u.created_at)}</td>
+                        </tr>
+                    `).join('');
+                }
+            } catch (err) {
+                console.error('Error loading users:', err);
+            }
+        }
+
+        // Load courses
+        async function loadCourses() {
+            try {
+                const res = await fetch('/lms/api/courses');
+                const data = await res.json();
+                
+                if (data.courses) {
+                    const select = document.getElementById('enrollCourse');
+                    select.innerHTML = '<option value="">בחר קורס</option>' + 
+                        data.courses.map(c => `<option value="${c.id}">${c.title}</option>`).join('');
+                }
+            } catch (err) {
+                console.error('Error loading courses:', err);
+            }
+        }
+
+        // Load enrollments
+        async function loadEnrollments() {
+            try {
+                const res = await fetch('/lms/api/admin/enrollments', { headers });
+                const data = await res.json();
+                
+                if (data.enrollments) {
+                    document.getElementById('enrollmentsTable').innerHTML = data.enrollments.length 
+                        ? data.enrollments.map(e => `
+                            <tr>
+                                <td>${e.user_name}</td>
+                                <td>${e.user_email}</td>
+                                <td>${e.course_title}</td>
+                                <td><span class="badge badge-active">${e.status}</span></td>
+                                <td>${formatDate(e.enrolled_at)}</td>
+                            </tr>
+                        `).join('')
+                        : '<tr><td colspan="5" style="text-align: center; color: var(--text-muted);">אין הרשמות</td></tr>';
+                }
+            } catch (err) {
+                console.error('Error loading enrollments:', err);
+            }
+        }
+
+        // Load stats
+        async function loadStats() {
+            try {
+                const res = await fetch('/lms/api/admin/analytics', { headers });
+                const data = await res.json();
+                
+                document.getElementById('statUsers').textContent = data.totalUsers || 0;
+                document.getElementById('statEnrollments').textContent = data.totalEnrollments || 0;
+                document.getElementById('statNewUsers').textContent = data.newUsersThisWeek || 0;
+                document.getElementById('statLessons').textContent = data.lessonsCompletedToday || 0;
+            } catch (err) {
+                console.error('Error loading stats:', err);
+            }
+        }
+
+        // Enroll user
+        document.getElementById('enrollBtn').addEventListener('click', async () => {
+            const userId = document.getElementById('enrollUser').value;
+            const courseId = document.getElementById('enrollCourse').value;
+            
+            if (!userId || !courseId) {
+                showAlert('יש לבחור משתמש וקורס', 'error');
+                return;
+            }
+
+            try {
+                const res = await fetch('/lms/api/admin/enrollments', {
+                    method: 'POST',
+                    headers,
+                    body: JSON.stringify({ userId, courseId })
+                });
+                
+                const data = await res.json();
+                
+                if (data.success) {
+                    showAlert('המשתמש נרשם לקורס בהצלחה!');
+                    loadEnrollments();
+                } else {
+                    showAlert(data.error || 'שגיאה בהרשמה', 'error');
+                }
+            } catch (err) {
+                showAlert('שגיאה בהרשמה', 'error');
+            }
+        });
+
+        // Tab navigation
+        document.querySelectorAll('.admin-nav button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.admin-nav button').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(btn.dataset.section).classList.add('active');
+            });
+        });
+
+        // Load all data
+        loadUsers();
+        loadCourses();
+        loadEnrollments();
+        loadStats();
+    </script>
+</body>
+</html>

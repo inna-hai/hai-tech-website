@@ -12,7 +12,14 @@ export const adminRoutes = new Hono<{ Bindings: Env }>();
 
 // Middleware: Check admin role
 const requireAdmin = async (c: any, next: any) => {
-  const token = getCookie(c, 'auth_token');
+  // Accept token from cookie OR Authorization header
+  let token = getCookie(c, 'auth_token');
+  if (!token) {
+    const authHeader = c.req.header('Authorization');
+    if (authHeader?.startsWith('Bearer ')) {
+      token = authHeader.slice(7);
+    }
+  }
   
   if (!token) {
     return c.json({ error: 'Not authenticated' }, 401);
@@ -264,4 +271,88 @@ adminRoutes.get('/analytics', async (c) => {
     lessonsCompletedToday: lessonsToday?.count || 0,
     topCourses: topCourses.results
   });
+});
+
+// ==================== ENROLLMENTS ====================
+
+// Get all enrollments
+adminRoutes.get('/enrollments', async (c) => {
+  const enrollments = await c.env.DB.prepare(`
+    SELECT e.id, e.user_id, e.course_id, e.status, e.enrolled_at,
+           u.name as user_name, u.email as user_email,
+           c.title as course_title
+    FROM enrollments e
+    JOIN users u ON e.user_id = u.id
+    JOIN courses c ON e.course_id = c.id
+    ORDER BY e.enrolled_at DESC
+    LIMIT 100
+  `).all();
+
+  return c.json({ enrollments: enrollments.results });
+});
+
+// Enroll user in course
+adminRoutes.post('/enrollments', async (c) => {
+  const { userId, courseId } = await c.req.json();
+
+  if (!userId || !courseId) {
+    return c.json({ error: 'userId and courseId are required' }, 400);
+  }
+
+  // Check if already enrolled
+  const existing = await c.env.DB.prepare(`
+    SELECT id FROM enrollments WHERE user_id = ? AND course_id = ?
+  `).bind(userId, courseId).first();
+
+  if (existing) {
+    return c.json({ error: 'User already enrolled in this course' }, 409);
+  }
+
+  const enrollId = crypto.randomUUID();
+  await c.env.DB.prepare(`
+    INSERT INTO enrollments (id, user_id, course_id, status, enrolled_at)
+    VALUES (?, ?, ?, 'active', strftime('%s', 'now'))
+  `).bind(enrollId, userId, courseId).run();
+
+  return c.json({ success: true, enrollmentId: enrollId }, 201);
+});
+
+// Remove enrollment
+adminRoutes.delete('/enrollments/:enrollmentId', async (c) => {
+  const { enrollmentId } = c.req.param();
+
+  await c.env.DB.prepare(
+    'DELETE FROM enrollments WHERE id = ?'
+  ).bind(enrollmentId).run();
+
+  return c.json({ success: true });
+});
+
+// Bulk enroll user in multiple courses
+adminRoutes.post('/enrollments/bulk', async (c) => {
+  const { userId, courseIds } = await c.req.json();
+
+  if (!userId || !courseIds || !Array.isArray(courseIds)) {
+    return c.json({ error: 'userId and courseIds array are required' }, 400);
+  }
+
+  const results = [];
+  for (const courseId of courseIds) {
+    const existing = await c.env.DB.prepare(`
+      SELECT id FROM enrollments WHERE user_id = ? AND course_id = ?
+    `).bind(userId, courseId).first();
+
+    if (!existing) {
+      const enrollId = crypto.randomUUID();
+      await c.env.DB.prepare(`
+        INSERT INTO enrollments (id, user_id, course_id, status, enrolled_at)
+        VALUES (?, ?, ?, 'active', strftime('%s', 'now'))
+      `).bind(enrollId, userId, courseId).run();
+      results.push({ courseId, status: 'enrolled' });
+    } else {
+      results.push({ courseId, status: 'already_enrolled' });
+    }
+  }
+
+  return c.json({ success: true, results });
 });
