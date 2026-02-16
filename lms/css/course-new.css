@@ -440,6 +440,25 @@ body {
   font-weight: 600;
 }
 
+.locked-badge {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+  padding: 4px 10px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.lesson-card.locked {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.lesson-card.locked:hover {
+  transform: none;
+  border-color: var(--border);
+}
+
 .lesson-action {
   display: flex;
   align-items: center;

@@ -137,7 +137,10 @@
         // Load course and lessons
         async function loadCourse() {
             try {
-                const response = await fetch(`/lms/api/courses/${courseId}`);
+                const token = getToken();
+                const response = await fetch(`/lms/api/courses/${courseId}`, {
+                    headers: token ? { 'Authorization': `Bearer ${token}` } : {}
+                });
                 const data = await response.json();
                 
                 if (!data.course) {

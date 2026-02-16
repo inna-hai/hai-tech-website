@@ -132,10 +132,22 @@
             return `${mins}:${secs.toString().padStart(2, '0')}`;
         }
 
+        // Get token
+        function getToken() {
+            try {
+                return JSON.parse(localStorage.getItem('hai_lms_token') || 'null');
+            } catch {
+                return null;
+            }
+        }
+
         // Load course data
         async function loadCourse() {
             try {
-                const response = await fetch(`/lms/api/courses/${courseId}`);
+                const token = getToken();
+                const response = await fetch(`/lms/api/courses/${courseId}`, {
+                    headers: token ? { 'Authorization': `Bearer ${token}` } : {}
+                });
                 const data = await response.json();
                 
                 if (!data.course) {
@@ -172,8 +184,8 @@
                 // Render lessons
                 const lessonsList = document.getElementById('lessonsList');
                 lessonsList.innerHTML = lessons.map((lesson, index) => `
-                    <a href="lesson.html?course=${courseId}&lesson=${lesson.id}" class="lesson-card${index === 0 ? ' active' : ''}">
-                        <div class="lesson-number">${index + 1}</div>
+                    <a href="${lesson.locked ? '#' : `lesson.html?course=${courseId}&lesson=${lesson.id}`}" class="lesson-card${index === 0 ? ' active' : ''}${lesson.locked ? ' locked' : ''}" ${lesson.locked ? 'onclick="alert(\'יש להירשם לקורס כדי לצפות בשיעור זה\')"' : ''}>
+                        <div class="lesson-number">${lesson.locked ? '🔒' : index + 1}</div>
                         <div class="lesson-content">
                             <h3 class="lesson-title">${lesson.title}</h3>
                             <div class="lesson-meta">
@@ -184,7 +196,7 @@
                                     </svg>
                                     <span>${formatDuration(lesson.duration_seconds)}</span>
                                 </div>
-                                ${lesson.is_free ? '<span class="free-badge">חינם</span>' : ''}
+                                ${lesson.locked ? '<span class="locked-badge">נעול</span>' : lesson.is_free ? '<span class="free-badge">חינם</span>' : ''}
                             </div>
                         </div>
                         <div class="lesson-action">
