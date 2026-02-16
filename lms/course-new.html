@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>קורס רובלוקס | HAI Tech Academy</title>
+    <link rel="stylesheet" href="css/course-new.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="dashboard-new.html" class="back-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 18l6-6-6-6"/>
+            </svg>
+            <span>חזרה לקורסים</span>
+        </a>
+        <a href="../index.html">
+            <img src="../images/logo.png" alt="HAI Tech" class="navbar-logo">
+        </a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="course-hero">
+        <div class="hero-content">
+            <div class="course-info">
+                <div class="course-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                    <span>הקורס הפופולרי ביותר</span>
+                </div>
+                
+                <h1 class="course-title" id="courseTitle">קורס רובלוקס - פיתוח משחקים עם Lua</h1>
+                
+                <p class="course-description" id="courseDescription">
+                    Roblox היא פלטפורמה מדהימה שמאפשרת לכם לבנות כל משחק שעולה בדמיון! 
+                    במהלך הקורס תלמדו ליצור משחקים חדשים ולהפעיל אותם בכל מכשיר.
+                </p>
+                
+                <div class="course-stats">
+                    <div class="stat">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/>
+                            <path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+                        </svg>
+                        <span id="lessonsCount">12 שיעורים</span>
+                    </div>
+                    <div class="stat">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                        <span id="duration">6 שעות</span>
+                    </div>
+                    <div class="stat">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                        </svg>
+                        <span>למתחילים</span>
+                    </div>
+                </div>
+                
+                <div class="course-actions">
+                    <a href="lesson-new.html?course=roblox-lua&lesson=1" class="btn btn-primary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="5 3 19 12 5 21 5 3"/>
+                        </svg>
+                        <span>התחל ללמוד</span>
+                    </a>
+                    <button class="btn btn-outline">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+                        </svg>
+                        <span>שמור למועדפים</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="course-thumbnail">
+                <img src="../images/courses/roblox.png" alt="Roblox Course">
+                <div class="thumbnail-overlay">
+                    <a href="lesson-new.html?course=roblox-lua&lesson=1" class="play-button">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="5 3 19 12 5 21 5 3"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROGRESS BANNER -->
+    <div class="progress-banner" style="margin-right: 32px; margin-left: 32px;">
+        <div class="progress-info">
+            <h3>ההתקדמות שלך</h3>
+            <p>השלמת 5 מתוך 12 שיעורים</p>
+        </div>
+        <div class="progress-bar-container">
+            <div class="progress-bar">
+                <div class="fill" id="progressFill" style="width: 42%"></div>
+            </div>
+        </div>
+        <div class="progress-percentage" id="progressPercent">42%</div>
+    </div>
+
+    <!-- LESSONS -->
+    <section class="lessons-section">
+        <div class="section-header">
+            <h2 class="section-title">תוכן הקורס</h2>
+            <span class="lessons-count">12 שיעורים • 6 שעות</span>
+        </div>
+        
+        <div class="lessons-list" id="lessonsList">
+            <!-- Lesson 1 - Completed -->
+            <a href="lesson-new.html?lesson=1" class="lesson-card completed">
+                <div class="lesson-number">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20">
+                        <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                </div>
+                <div class="lesson-content">
+                    <h3 class="lesson-title">מבוא לקורס</h3>
+                    <div class="lesson-meta">
+                        <div class="lesson-meta-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                            <span>20:00</span>
+                        </div>
+                        <span class="free-badge">חינם</span>
+                    </div>
+                </div>
+                <div class="lesson-action">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="completed-icon">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                    <span>הושלם</span>
+                </div>
+            </a>
+
+            <!-- Lesson 2 - Completed -->
+            <a href="lesson-new.html?lesson=2" class="lesson-card completed">
+                <div class="lesson-number">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20">
+                        <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                </div>
+                <div class="lesson-content">
+                    <h3 class="lesson-title">התקנות והתחברות</h3>
+                    <div class="lesson-meta">
+                        <div class="lesson-meta-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                            <span>15:00</span>
+                        </div>
+                        <span class="free-badge">חינם</span>
+                    </div>
+                </div>
+                <div class="lesson-action">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="completed-icon">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                    <span>הושלם</span>
+                </div>
+            </a>
+
+            <!-- Lesson 3 - Active/Current -->
+            <a href="lesson-new.html?lesson=3" class="lesson-card active">
+                <div class="lesson-number">3</div>
+                <div class="lesson-content">
+                    <h3 class="lesson-title">המדרגות המעופפות – עיצוב המשחק</h3>
+                    <div class="lesson-meta">
+                        <div class="lesson-meta-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                            <span>25:00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-action">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="5 3 19 12 5 21 5 3"/>
+                    </svg>
+                    <span>המשך</span>
+                </div>
+            </a>
+
+            <!-- Lesson 4 -->
+            <a href="lesson-new.html?lesson=4" class="lesson-card">
+                <div class="lesson-number">4</div>
+                <div class="lesson-content">
+                    <h3 class="lesson-title">יצירת שלט כניסה למשחק</h3>
+                    <div class="lesson-meta">
+                        <div class="lesson-meta-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                            <span>30:00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-action">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="5 3 19 12 5 21 5 3"/>
+                    </svg>
+                    <span>צפה</span>
+                </div>
+            </a>
+
+            <!-- Lesson 5 -->
+            <a href="lesson-new.html?lesson=5" class="lesson-card">
+                <div class="lesson-number">5</div>
+                <div class="lesson-content">
+                    <h3 class="lesson-title">קוד והפניות</h3>
+                    <div class="lesson-meta">
+                        <div class="lesson-meta-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                            <span>25:00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-action">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="5 3 19 12 5 21 5 3"/>
+                    </svg>
+                    <span>צפה</span>
+                </div>
+            </a>
+
+            <!-- Lesson 6 -->
+            <a href="lesson-new.html?lesson=6" class="lesson-card">
+                <div class="lesson-number">6</div>
+                <div class="lesson-content">
+                    <h3 class="lesson-title">משתנים ותנאים</h3>
+                    <div class="lesson-meta">
+                        <div class="lesson-meta-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                            <span>30:00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-action">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="5 3 19 12 5 21 5 3"/>
+                    </svg>
+                    <span>צפה</span>
+                </div>
+            </a>
+
+            <!-- More lessons... -->
+            <a href="lesson-new.html?lesson=7" class="lesson-card">
+                <div class="lesson-number">7</div>
+                <div class="lesson-content">
+                    <h3 class="lesson-title">שימוש בפונקציות</h3>
+                    <div class="lesson-meta">
+                        <div class="lesson-meta-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                            <span>35:00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-action">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="5 3 19 12 5 21 5 3"/>
+                    </svg>
+                    <span>צפה</span>
+                </div>
+            </a>
+
+            <a href="lesson-new.html?lesson=8" class="lesson-card">
+                <div class="lesson-number">8</div>
+                <div class="lesson-content">
+                    <h3 class="lesson-title">סיום המשחק – המדרגות המעופפות</h3>
+                    <div class="lesson-meta">
+                        <div class="lesson-meta-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                            <span>25:00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-action">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="5 3 19 12 5 21 5 3"/>
+                    </svg>
+                    <span>צפה</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <script>
+        // Dynamic content loading would go here
+        // For now, using static example data
+    </script>
+</body>
+</html>
