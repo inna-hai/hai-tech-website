@@ -189,7 +189,19 @@
 
             // Update video
             const videoPlayer = document.getElementById('videoPlayer');
-            if (lesson.video_url) {
+            if (lesson.locked) {
+                // Show locked message
+                videoPlayer.parentElement.innerHTML = `
+                    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;background:linear-gradient(135deg, #1a1a24 0%, #0f0f17 100%);color:#94a3b8;text-align:center;padding:40px;">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2" style="margin-bottom:16px;">
+                            <rect x="3" y="11" width="18" height="11" rx="2"/>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                        </svg>
+                        <h3 style="color:#fff;margin-bottom:8px;">🔒 שיעור נעול</h3>
+                        <p>יש להירשם לקורס כדי לצפות בשיעור זה</p>
+                    </div>
+                `;
+            } else if (lesson.video_url) {
                 console.log('Loading video:', lesson.video_url);
                 videoPlayer.src = lesson.video_url;
                 videoPlayer.style.display = 'block';
@@ -217,11 +229,18 @@
             const list = document.getElementById('lessonsList');
             
             list.innerHTML = allLessons.map((lesson, index) => `
-                <a href="javascript:void(0)" onclick="goToLesson(${index})" class="lesson-item${index === currentLessonIndex ? ' active' : ''}${index < currentLessonIndex ? ' completed' : ''}">
+                <a href="javascript:void(0)" onclick="goToLesson(${index})" class="lesson-item${index === currentLessonIndex ? ' active' : ''}${index < currentLessonIndex ? ' completed' : ''}${lesson.locked ? ' locked' : ''}">
                     <div class="lesson-status">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                            <path d="M20 6L9 17l-5-5"/>
-                        </svg>
+                        ${lesson.locked ? `
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="11" width="18" height="11" rx="2"/>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                            </svg>
+                        ` : `
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path d="M20 6L9 17l-5-5"/>
+                            </svg>
+                        `}
                     </div>
                     <div class="lesson-content">
                         <div class="lesson-item-title">${lesson.title}</div>

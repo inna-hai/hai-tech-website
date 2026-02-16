@@ -176,12 +176,15 @@
             }
         }
 
-        // Load courses from API
+        // Load enrolled courses from API
         async function loadCourses() {
             const grid = document.getElementById('coursesGrid');
+            const token = JSON.parse(localStorage.getItem('hai_lms_token') || 'null');
             
             try {
-                const response = await fetch('/lms/api/courses');
+                const response = await fetch('/lms/api/courses/my/enrolled', {
+                    headers: token ? { 'Authorization': `Bearer ${token}` } : {}
+                });
                 const data = await response.json();
                 
                 if (!data.courses || data.courses.length === 0) {
@@ -193,8 +196,8 @@
                                     <path d="M6 12v5c3 3 9 3 12 0v-5"/>
                                 </svg>
                             </div>
-                            <h3>אין קורסים זמינים</h3>
-                            <p>בקרוב יתווספו קורסים חדשים!</p>
+                            <h3>אין קורסים פעילים</h3>
+                            <p>עדיין לא נרשמת לקורסים. צרי קשר לרכישת קורס!</p>
                         </div>
                     `;
                     return;

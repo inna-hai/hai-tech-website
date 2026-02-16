@@ -10,7 +10,7 @@ import { verifyToken } from './auth';
 
 export const coursesRoutes = new Hono<{ Bindings: Env }>();
 
-// Get all published courses
+// Get all published courses (catalog view)
 coursesRoutes.get('/', async (c) => {
   const courses = await c.env.DB.prepare(`
     SELECT id, title, description, image, price, lessons_count, 
@@ -23,9 +23,51 @@ coursesRoutes.get('/', async (c) => {
   return c.json({ courses: courses.results });
 });
 
+// Get user's enrolled courses only
+coursesRoutes.get('/my/enrolled', async (c) => {
+  // Accept token from cookie OR Authorization header
+  let token = getCookie(c, 'auth_token');
+  if (!token) {
+    const authHeader = c.req.header('Authorization');
+    if (authHeader?.startsWith('Bearer ')) {
+      token = authHeader.slice(7);
+    }
+  }
+
+  if (!token) {
+    return c.json({ courses: [] });
+  }
+
+  try {
+    const payload = await verifyToken(token, c.env.JWT_SECRET);
+    
+    const courses = await c.env.DB.prepare(`
+      SELECT c.id, c.title, c.description, c.image, c.price, c.lessons_count, 
+             c.duration_hours, c.level, c.category, e.enrolled_at
+      FROM courses c
+      JOIN enrollments e ON c.id = e.course_id
+      WHERE e.user_id = ? AND e.status = 'active' AND c.is_published = 1
+      ORDER BY e.enrolled_at DESC
+    `).bind(payload.userId).all();
+
+    return c.json({ courses: courses.results });
+  } catch (err) {
+    return c.json({ courses: [] });
+  }
+});
+
 // Get course by ID with lessons
 coursesRoutes.get('/:courseId', async (c) => {
   const { courseId } = c.req.param();
+  
+  // Accept token from cookie OR Authorization header
+  let token = getCookie(c, 'auth_token');
+  if (!token) {
+    const authHeader = c.req.header('Authorization');
+    if (authHeader?.startsWith('Bearer ')) {
+      token = authHeader.slice(7);
+    }
+  }
   
   const course = await c.env.DB.prepare(`
     SELECT * FROM courses WHERE id = ?
@@ -35,6 +77,19 @@ coursesRoutes.get('/:courseId', async (c) => {
     return c.json({ error: 'Course not found' }, 404);
   }
 
+  // Check if user is enrolled
+  let isEnrolled = false;
+  if (token) {
+    try {
+      const payload = await verifyToken(token, c.env.JWT_SECRET);
+      const enrollment = await c.env.DB.prepare(`
+        SELECT id FROM enrollments 
+        WHERE user_id = ? AND course_id = ? AND status = 'active'
+      `).bind(payload.userId, courseId).first();
+      isEnrolled = !!enrollment;
+    } catch (err) {}
+  }
+
   const lessons = await c.env.DB.prepare(`
     SELECT id, title, description, video_url, duration_seconds, lesson_order, is_free
     FROM lessons 
@@ -42,9 +97,20 @@ coursesRoutes.get('/:courseId', async (c) => {
     ORDER BY lesson_order ASC
   `).bind(courseId).all();
 
+  // Filter video URLs: show only for first lesson or if enrolled
+  const filteredLessons = (lessons.results as any[]).map(lesson => {
+    const hasAccess = isEnrolled || lesson.is_free === 1 || lesson.lesson_order === 1;
+    if (!hasAccess) {
+      const { video_url, ...publicLesson } = lesson;
+      return { ...publicLesson, locked: true };
+    }
+    return lesson;
+  });
+
   return c.json({ 
     course,
-    lessons: lessons.results
+    lessons: filteredLessons,
+    isEnrolled
   });
 });
 
@@ -64,8 +130,9 @@ coursesRoutes.get('/:courseId/lessons/:lessonId', async (c) => {
     return c.json({ error: 'Lesson not found' }, 404);
   }
 
-  // Check if lesson is free or user is enrolled
-  let hasAccess = (lesson as any).is_free === 1;
+  // Check if lesson is free (is_free flag OR first lesson) or user is enrolled
+  const lessonData = lesson as any;
+  let hasAccess = lessonData.is_free === 1 || lessonData.lesson_order === 1;
   
   if (!hasAccess && token) {
     try {
