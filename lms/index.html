@@ -50,7 +50,11 @@
                     <line x1="3" y1="18" x2="21" y2="18"/>
                 </svg>
             </button>
-            <div class="user-avatar" id="userAvatar">?</div>
+            <div class="user-avatar" id="userAvatar" onclick="toggleUserMenu()" style="cursor: pointer;">?</div>
+            <div id="userMenu" style="display: none; position: absolute; top: 60px; left: 20px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 8px; min-width: 150px; z-index: 200;">
+                <a href="admin.html" style="display: block; padding: 10px 16px; color: var(--text-secondary); text-decoration: none; border-radius: 8px;" onmouseover="this.style.background='var(--bg-hover)'" onmouseout="this.style.background='transparent'">🛠️ Admin</a>
+                <a href="#" onclick="signOut()" style="display: block; padding: 10px 16px; color: #ef4444; text-decoration: none; border-radius: 8px;" onmouseover="this.style.background='var(--bg-hover)'" onmouseout="this.style.background='transparent'">🚪 התנתק</a>
+            </div>
         </div>
     </nav>
 
@@ -139,6 +143,29 @@
             'python-minecraft': 'linear-gradient(135deg, #2ecc71 0%, #27ae60 100%)',
             'minecraft-mods': 'linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%)'
         };
+
+        // Sign out
+        function signOut() {
+            localStorage.removeItem('hai_lms_token');
+            localStorage.removeItem('hai_lms_user');
+            localStorage.removeItem('hai_lms_isLoggedIn');
+            window.location.href = 'login.html';
+        }
+
+        // Toggle user menu
+        function toggleUserMenu() {
+            const menu = document.getElementById('userMenu');
+            menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const menu = document.getElementById('userMenu');
+            const avatar = document.getElementById('userAvatar');
+            if (!menu.contains(e.target) && e.target !== avatar) {
+                menu.style.display = 'none';
+            }
+        });
 
         // Load user info
         function loadUser() {

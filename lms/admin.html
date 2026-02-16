@@ -207,8 +207,9 @@
     <div class="admin-container">
         <div class="admin-header">
             <h1>🛠️ Admin Panel</h1>
-            <div>
+            <div style="display: flex; gap: 16px; align-items: center;">
                 <a href="index.html" class="back-link">← חזרה ל-LMS</a>
+                <button onclick="signOut()" style="padding: 8px 16px; background: #ef4444; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 14px;">התנתק</button>
             </div>
         </div>
 
@@ -331,6 +332,14 @@
     </div>
 
     <script>
+        // Sign out function
+        function signOut() {
+            localStorage.removeItem('hai_lms_token');
+            localStorage.removeItem('hai_lms_user');
+            localStorage.removeItem('hai_lms_isLoggedIn');
+            window.location.href = 'login.html';
+        }
+
         // Check if admin
         const token = JSON.parse(localStorage.getItem('hai_lms_token') || 'null');
         const user = JSON.parse(localStorage.getItem('hai_lms_user') || 'null');
