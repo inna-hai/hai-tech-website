@@ -121,7 +121,12 @@
         const courseId = urlParams.get('course');
         const lessonId = urlParams.get('lesson');
 
+        console.log('URL Params:', { courseId, lessonId });
+        console.log('Full URL:', window.location.href);
+
         if (!courseId) {
+            console.error('No course ID in URL, redirecting...');
+            alert('לא נמצא מזהה קורס. חוזר לדף הראשי.');
             window.location.href = 'index.html';
         }
 
@@ -190,8 +195,19 @@
             document.getElementById('lessonDuration').textContent = formatDuration(lesson.duration_seconds);
 
             // Update video
+            const videoPlayer = document.getElementById('videoPlayer');
             if (lesson.video_url) {
-                document.getElementById('videoPlayer').src = lesson.video_url;
+                console.log('Loading video:', lesson.video_url);
+                videoPlayer.src = lesson.video_url;
+                videoPlayer.style.display = 'block';
+            } else {
+                console.warn('No video URL for lesson:', lesson.id);
+                // Show placeholder
+                videoPlayer.parentElement.innerHTML = `
+                    <div style="display:flex;align-items:center;justify-content:center;height:100%;background:#1a1a24;color:#94a3b8;">
+                        <p>הסרטון לא זמין כרגע</p>
+                    </div>
+                `;
             }
 
             // Update navigation buttons
