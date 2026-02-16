@@ -4,901 +4,266 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>שיעור | HAI Tech Academy</title>
-    <link rel="stylesheet" href="css/lms.css">
-    <link rel="stylesheet" href="css/player.css">
-    <link rel="stylesheet" href="css/gamification.css">
+    <link rel="stylesheet" href="css/lesson-new.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body class="lesson-page">
-    <!-- Top Navigation -->
-    <nav class="lesson-navbar">
-        <div class="navbar-right">
+<body>
+    <!-- HEADER -->
+    <header class="lesson-header">
+        <div class="header-right">
             <a href="course.html" class="back-btn" id="backToCourse">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="19" y1="12" x2="5" y2="12"></line>
-                    <polyline points="12 19 5 12 12 5"></polyline>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 18l6-6-6-6"/>
                 </svg>
-                <span class="back-text">חזרה לקורס</span>
+                <span>חזרה לקורס</span>
             </a>
-            <div class="course-info">
-                <h1 id="courseTitle">מבוא ל-Machine Learning</h1>
-            </div>
+            <span class="course-title" id="courseTitle">קורס יצירת Minecraft Plugins</span>
         </div>
         
-        <div class="navbar-center">
-            <div class="lesson-nav-controls">
-                <button class="nav-btn" id="prevLessonNav" title="שיעור קודם">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="15 18 9 12 15 6"></polyline>
-                    </svg>
-                </button>
-                <span class="lesson-indicator">
-                    <span id="currentLessonNum">1</span>
-                    <span>/</span>
-                    <span id="totalLessonsNum">12</span>
-                </span>
-                <button class="nav-btn" id="nextLessonNav" title="שיעור הבא">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="9 18 15 12 9 6"></polyline>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        
-        <div class="navbar-left">
-            <div class="progress-mini">
-                <span id="progressPercent">0%</span>
+        <div class="header-center">
+            <div class="progress-pill">
                 <div class="progress-bar-mini">
-                    <div class="progress-fill" id="progressBarFill" style="width: 0%"></div>
+                    <div class="fill" id="progressFill" style="width: 25%"></div>
                 </div>
+                <span class="progress-text" id="progressText">4/18 שיעורים</span>
             </div>
-            <button class="toggle-sidebar-btn" id="toggleSidebar" title="הצג/הסתר רשימת שיעורים">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                    <line x1="9" y1="3" x2="9" y2="21"></line>
+        </div>
+        
+        <div class="header-left">
+            <button class="mobile-toggle" id="toggleSidebar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 6h16M4 12h16M4 18h16"/>
                 </svg>
             </button>
         </div>
-    </nav>
-    
-    <!-- Main Content -->
-    <main class="lesson-main">
-        <!-- Video Player Section -->
-        <section class="lesson-content">
-            <div class="video-section">
-                <!-- Video Player Container -->
-                <div id="videoPlayerContainer" class="video-player-container">
-                    <!-- Video player will be initialized here by player.js -->
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="lesson-container">
+        <!-- VIDEO SECTION -->
+        <section class="video-section">
+            <div class="video-wrapper">
+                <iframe 
+                    id="videoPlayer"
+                    src="https://player.vimeo.com/video/501762982?h=abc123&title=0&byline=0&portrait=0"
+                    allow="autoplay; fullscreen; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+                <div class="video-overlay"></div>
+            </div>
+            
+            <div class="lesson-info">
+                <div class="lesson-meta">
+                    <span class="lesson-number" id="lessonNumber">שיעור 1</span>
+                    <span class="lesson-duration">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                        <span id="lessonDuration">15:00</span>
+                    </span>
                 </div>
                 
-                <!-- Video Navigation -->
-                <div class="video-nav">
-                    <button class="video-nav-btn" id="prevLesson">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polygon points="19 20 9 12 19 4 19 20"></polygon>
-                            <line x1="5" y1="19" x2="5" y2="5"></line>
-                        </svg>
-                        <span>שיעור קודם</span>
-                    </button>
-                    
-                    <button class="video-nav-btn primary" id="markCompleteBtn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
+                <h1 class="lesson-title-main" id="lessonTitle">התקנות - הכרות עם סביבת העבודה</h1>
+                
+                <p class="lesson-description" id="lessonDescription">
+                    בשיעור זה נלמד להתקין את כל הכלים הדרושים לפיתוח Plugins למיינקראפט. 
+                    נגדיר את סביבת הפיתוח ונוודא שהכל עובד כמו שצריך.
+                </p>
+                
+                <div class="lesson-actions">
+                    <button class="btn btn-success" id="markCompleteBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
                         </svg>
                         <span>סמן כהושלם</span>
                     </button>
                     
-                    <a href="#" class="video-nav-btn quiz-btn" id="takeQuizBtn" style="display: none;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                        </svg>
-                        <span>חידון 🎯</span>
-                    </a>
-                    
-                    <button class="video-nav-btn" id="nextLesson">
-                        <span>שיעור הבא</span>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polygon points="5 4 15 12 5 20 5 4"></polygon>
-                            <line x1="19" y1="5" x2="19" y2="19"></line>
+                    <button class="btn btn-primary" id="nextLessonBtn">
+                        <span>לשיעור הבא</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M15 18l-6-6 6-6"/>
                         </svg>
                     </button>
-                </div>
-            </div>
-            
-            <!-- Lesson Info Section -->
-            <div class="lesson-info-section">
-                <div class="lesson-header">
-                    <div class="lesson-badge" id="lessonBadge">שיעור 1</div>
-                    <h2 id="lessonTitle">מה זה Machine Learning?</h2>
-                    <div class="lesson-meta">
-                        <span class="meta-item">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <polyline points="12 6 12 12 16 14"></polyline>
-                            </svg>
-                            <span id="lessonDuration">10:32</span>
-                        </span>
-                        <span class="meta-item" id="lessonStatus">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"></circle>
-                            </svg>
-                            <span>לא הושלם</span>
-                        </span>
-                    </div>
+                    
+                    <button class="btn btn-outline" id="prevLessonBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                        <span>שיעור קודם</span>
+                    </button>
                 </div>
                 
-                <!-- Tabs -->
-                <div class="lesson-tabs">
-                    <button class="lesson-tab active" data-tab="description">תיאור</button>
-                    <button class="lesson-tab" data-tab="notes">הערות שלי</button>
-                    <button class="lesson-tab" data-tab="resources">משאבים</button>
-                </div>
-                
-                <!-- Tab Content -->
-                <div class="tab-content">
-                    <!-- Description Tab -->
-                    <div class="tab-pane active" id="description">
-                        <div class="lesson-description" id="lessonDescription">
-                            <p>בשיעור זה נלמד מהו Machine Learning (למידת מכונה), כיצד הוא עובד ולמה הוא כל כך חשוב בעולם הטכנולוגיה של היום.</p>
-                            
-                            <h3>מה תלמד בשיעור:</h3>
-                            <ul>
-                                <li>הגדרה של Machine Learning</li>
-                                <li>ההבדל בין תכנות מסורתי ללמידת מכונה</li>
-                                <li>דוגמאות ליישומים בעולם האמיתי</li>
-                                <li>הכנה לשיעורים הבאים</li>
-                            </ul>
-                            
-                            <h3>דגשים חשובים:</h3>
-                            <p>Machine Learning הוא תחום של בינה מלאכותית שמאפשר למחשבים ללמוד מנתונים ולשפר את הביצועים שלהם ללא תכנות מפורש.</p>
+                <!-- Quiz Prompt -->
+                <div class="quiz-prompt" id="quizPrompt" style="display: none;">
+                    <div class="quiz-prompt-header">
+                        <div class="quiz-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                                <path d="M12 17h.01"/>
+                            </svg>
                         </div>
+                        <h3>בדוק את עצמך!</h3>
                     </div>
-                    
-                    <!-- Notes Tab -->
-                    <div class="tab-pane" id="notes">
-                        <div class="notes-section">
-                            <div class="notes-header">
-                                <h3>הערות שלי</h3>
-                                <span class="notes-saved-indicator" id="notesSavedIndicator" style="display: none;">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <polyline points="20 6 9 17 4 12"></polyline>
-                                    </svg>
-                                    נשמר
-                                </span>
-                            </div>
-                            <textarea 
-                                id="lessonNotes" 
-                                class="notes-textarea" 
-                                placeholder="כתוב כאן את ההערות שלך... הן יישמרו אוטומטית."
-                            ></textarea>
-                            <div class="notes-actions">
-                                <button class="btn btn-secondary" id="addTimestamp">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <circle cx="12" cy="12" r="10"></circle>
-                                        <polyline points="12 6 12 12 16 14"></polyline>
-                                    </svg>
-                                    הוסף זמן נוכחי
-                                </button>
-                                <button class="btn btn-primary" id="saveNotes">שמור הערות</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Resources Tab -->
-                    <div class="tab-pane" id="resources">
-                        <div class="resources-section" id="resourcesList">
-                            <div class="resource-item">
-                                <div class="resource-icon">📄</div>
-                                <div class="resource-info">
-                                    <span class="resource-title">מצגת השיעור</span>
-                                    <span class="resource-meta">PDF • 2.3 MB</span>
-                                </div>
-                                <a href="#" class="resource-download" download>
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                        <polyline points="7 10 12 15 17 10"></polyline>
-                                        <line x1="12" y1="15" x2="12" y2="3"></line>
-                                    </svg>
-                                </a>
-                            </div>
-                            
-                            <div class="resource-item">
-                                <div class="resource-icon">💻</div>
-                                <div class="resource-info">
-                                    <span class="resource-title">קוד דוגמה - Jupyter Notebook</span>
-                                    <span class="resource-meta">IPYNB • 1.1 MB</span>
-                                </div>
-                                <a href="#" class="resource-download" download>
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                        <polyline points="7 10 12 15 17 10"></polyline>
-                                        <line x1="12" y1="15" x2="12" y2="3"></line>
-                                    </svg>
-                                </a>
-                            </div>
-                            
-                            <div class="resource-item external">
-                                <div class="resource-icon">🔗</div>
-                                <div class="resource-info">
-                                    <span class="resource-title">קריאה מומלצת - Machine Learning Basics</span>
-                                    <span class="resource-meta">קישור חיצוני</span>
-                                </div>
-                                <a href="#" class="resource-link" target="_blank">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                        <polyline points="15 3 21 3 21 9"></polyline>
-                                        <line x1="10" y1="14" x2="21" y2="3"></line>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    <p>יש חידון קצר לשיעור הזה. בוא נראה כמה הבנת!</p>
+                    <a href="quiz.html" class="btn btn-primary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <path d="M14 2v6h6"/>
+                            <path d="M16 13H8"/>
+                            <path d="M16 17H8"/>
+                            <path d="M10 9H8"/>
+                        </svg>
+                        <span>התחל חידון</span>
+                    </a>
                 </div>
             </div>
         </section>
-        
-        <!-- Lessons Sidebar -->
+
+        <!-- LESSONS SIDEBAR -->
         <aside class="lessons-sidebar" id="lessonsSidebar">
             <div class="sidebar-header">
-                <h3>תוכן הקורס</h3>
-                <button class="close-sidebar" id="closeSidebar">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-                </button>
-            </div>
-            
-            <div class="sidebar-progress">
-                <div class="progress-info">
-                    <span><span id="completedLessons">0</span> מתוך <span id="totalLessons">12</span> שיעורים</span>
-                    <span id="sidebarPercent">0%</span>
-                </div>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="sidebarProgressFill" style="width: 0%"></div>
+                <h2 class="sidebar-title">תוכן הקורס</h2>
+                <div class="sidebar-progress">
+                    <div class="sidebar-progress-bar">
+                        <div class="fill" id="sidebarProgressFill" style="width: 25%"></div>
+                    </div>
+                    <span class="sidebar-progress-text" id="sidebarProgressText">4/18</span>
                 </div>
             </div>
             
             <div class="lessons-list" id="lessonsList">
-                <!-- Module 1 -->
-                <div class="lesson-module">
-                    <button class="module-header" data-module="1">
-                        <span class="module-icon">📖</span>
-                        <div class="module-info">
-                            <span class="module-title">מבוא ויסודות</span>
-                            <span class="module-progress">0/4 הושלמו</span>
+                <!-- Lessons will be populated by JavaScript -->
+                
+                <!-- Example Structure -->
+                <div class="lesson-group">
+                    <div class="lesson-group-title">מבוא ויסודות</div>
+                    
+                    <a href="#" class="lesson-item completed">
+                        <div class="lesson-status">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path d="M20 6L9 17l-5-5"/>
+                            </svg>
                         </div>
-                        <svg class="module-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </button>
-                    <div class="module-lessons">
-                        <a href="?lesson=1" class="lesson-item active" data-lesson="1">
-                            <span class="lesson-status">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"></circle>
+                        <div class="lesson-content">
+                            <div class="lesson-item-title">מבוא לקורס</div>
+                            <div class="lesson-item-meta">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M12 6v6l4 2"/>
                                 </svg>
-                            </span>
-                            <div class="lesson-info">
-                                <span class="lesson-name">מה זה Machine Learning?</span>
-                                <span class="lesson-time">10:32</span>
+                                <span>10:00</span>
+                                <span class="lesson-free-badge">חינם</span>
                             </div>
-                        </a>
-                        <a href="?lesson=2" class="lesson-item" data-lesson="2">
-                            <span class="lesson-status">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"></circle>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="lesson-item active">
+                        <div class="lesson-status"></div>
+                        <div class="lesson-content">
+                            <div class="lesson-item-title">התקנות - הכרות עם סביבת העבודה</div>
+                            <div class="lesson-item-meta">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M12 6v6l4 2"/>
                                 </svg>
-                            </span>
-                            <div class="lesson-info">
-                                <span class="lesson-name">Supervised vs Unsupervised</span>
-                                <span class="lesson-time">15:20</span>
+                                <span>15:00</span>
                             </div>
-                        </a>
-                        <a href="?lesson=3" class="lesson-item" data-lesson="3">
-                            <span class="lesson-status">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"></circle>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="lesson-item">
+                        <div class="lesson-status"></div>
+                        <div class="lesson-content">
+                            <div class="lesson-item-title">פלאגין ראשון בפעולה</div>
+                            <div class="lesson-item-meta">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M12 6v6l4 2"/>
                                 </svg>
-                            </span>
-                            <div class="lesson-info">
-                                <span class="lesson-name">הכנת Data Set</span>
-                                <span class="lesson-time">12:45</span>
+                                <span>15:00</span>
                             </div>
-                        </a>
-                        <a href="?lesson=4" class="lesson-item" data-lesson="4">
-                            <span class="lesson-status">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                </svg>
-                            </span>
-                            <div class="lesson-info">
-                                <span class="lesson-name">תרגול: ניתוח נתונים</span>
-                                <span class="lesson-time">8:15</span>
-                            </div>
-                        </a>
-                    </div>
+                        </div>
+                    </a>
                 </div>
                 
-                <!-- Module 2 -->
-                <div class="lesson-module">
-                    <button class="module-header collapsed" data-module="2">
-                        <span class="module-icon">🧮</span>
-                        <div class="module-info">
-                            <span class="module-title">אלגוריתמים בסיסיים</span>
-                            <span class="module-progress">0/5 הושלמו</span>
+                <div class="lesson-group">
+                    <div class="lesson-group-title">מתקדמים</div>
+                    
+                    <a href="#" class="lesson-item">
+                        <div class="lesson-status"></div>
+                        <div class="lesson-content">
+                            <div class="lesson-item-title">שיפור הקוד - מערכים</div>
+                            <div class="lesson-item-meta">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M12 6v6l4 2"/>
+                                </svg>
+                                <span>15:00</span>
+                            </div>
                         </div>
-                        <svg class="module-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </button>
-                    <div class="module-lessons collapsed">
-                        <a href="?lesson=5" class="lesson-item" data-lesson="5">
-                            <span class="lesson-status">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"></circle>
+                    </a>
+                    
+                    <a href="#" class="lesson-item">
+                        <div class="lesson-status"></div>
+                        <div class="lesson-content">
+                            <div class="lesson-item-title">עוד קצת תרגול של מערכים</div>
+                            <div class="lesson-item-meta">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M12 6v6l4 2"/>
                                 </svg>
-                            </span>
-                            <div class="lesson-info">
-                                <span class="lesson-name">Linear Regression</span>
-                                <span class="lesson-time">18:00</span>
+                                <span>7:10</span>
                             </div>
-                        </a>
-                        <a href="?lesson=6" class="lesson-item" data-lesson="6">
-                            <span class="lesson-status">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                </svg>
-                            </span>
-                            <div class="lesson-info">
-                                <span class="lesson-name">Logistic Regression</span>
-                                <span class="lesson-time">14:30</span>
-                            </div>
-                        </a>
-                        <a href="?lesson=7" class="lesson-item" data-lesson="7">
-                            <span class="lesson-status">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                </svg>
-                            </span>
-                            <div class="lesson-info">
-                                <span class="lesson-name">Decision Trees</span>
-                                <span class="lesson-time">16:45</span>
-                            </div>
-                        </a>
-                        <a href="?lesson=8" class="lesson-item" data-lesson="8">
-                            <span class="lesson-status">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                </svg>
-                            </span>
-                            <div class="lesson-info">
-                                <span class="lesson-name">K-Nearest Neighbors</span>
-                                <span class="lesson-time">12:00</span>
-                            </div>
-                        </a>
-                        <a href="?lesson=9" class="lesson-item" data-lesson="9">
-                            <span class="lesson-status">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                </svg>
-                            </span>
-                            <div class="lesson-info">
-                                <span class="lesson-name">בניית מודל ראשון</span>
-                                <span class="lesson-time">10:00</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Module 3 -->
-                <div class="lesson-module">
-                    <button class="module-header collapsed" data-module="3">
-                        <span class="module-icon">🎯</span>
-                        <div class="module-info">
-                            <span class="module-title">פרויקט מסכם</span>
-                            <span class="module-progress">0/3 הושלמו</span>
                         </div>
-                        <svg class="module-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </button>
-                    <div class="module-lessons collapsed">
-                        <a href="?lesson=10" class="lesson-item" data-lesson="10">
-                            <span class="lesson-status">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                </svg>
-                            </span>
-                            <div class="lesson-info">
-                                <span class="lesson-name">הגדרת הפרויקט</span>
-                                <span class="lesson-time">10:00</span>
-                            </div>
-                        </a>
-                        <a href="?lesson=11" class="lesson-item" data-lesson="11">
-                            <span class="lesson-status">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                </svg>
-                            </span>
-                            <div class="lesson-info">
-                                <span class="lesson-name">פיתוח המודל</span>
-                                <span class="lesson-time">20:00</span>
-                            </div>
-                        </a>
-                        <a href="?lesson=12" class="lesson-item" data-lesson="12">
-                            <span class="lesson-status">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                </svg>
-                            </span>
-                            <div class="lesson-info">
-                                <span class="lesson-name">הגשה וסיכום</span>
-                                <span class="lesson-time">15:00</span>
-                            </div>
-                        </a>
-                    </div>
+                    </a>
                 </div>
             </div>
         </aside>
     </main>
-    
-    <!-- Course Completion Modal -->
-    <div class="modal" id="completionModal" style="display: none;">
-        <div class="modal-overlay"></div>
-        <div class="modal-content completion-modal">
-            <div class="completion-icon">🎉</div>
-            <h2>מזל טוב!</h2>
-            <p>סיימת את הקורס בהצלחה!</p>
-            <div class="completion-stats">
-                <div class="stat">
-                    <span class="stat-value" id="modalLessons">12</span>
-                    <span class="stat-label">שיעורים</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-value" id="modalTime">6</span>
-                    <span class="stat-label">שעות למידה</span>
-                </div>
-            </div>
-            <div class="modal-actions">
-                <a href="certificate.html" class="btn btn-primary">קבל תעודה</a>
-                <button class="btn btn-secondary" id="closeModal">סגור</button>
-            </div>
-        </div>
-    </div>
-    
-    <script src="js/lms.js"></script>
-    <script src="js/progress.js"></script>
-    <script src="js/player.js"></script>
+
     <script>
-        // ==========================================
-        // Lesson Page Logic
-        // ==========================================
-        const LessonPage = {
-            courseId: null,
-            lessonId: null,
-            player: null,
-            
-            init() {
-                // Get course and lesson from URL
-                const urlParams = new URLSearchParams(window.location.search);
-                this.courseId = urlParams.get('course') || 'course_1';
-                this.lessonId = urlParams.get('lesson') || '1';
-                
-                // Initialize progress tracker
-                ProgressTracker.init({
-                    userId: LMS.getCurrentUser()?.id
-                });
-                
-                // Initialize video player
-                this.initPlayer();
-                
-                // Setup UI
-                this.setupTabs();
-                this.setupSidebar();
-                this.setupNavigation();
-                this.setupNotes();
-                this.setupModules();
-                
-                // Load lesson data
-                this.loadLesson(this.lessonId);
-                
-                // Update progress display
-                this.updateProgressDisplay();
-                
-                // Listen for progress events
-                this.setupProgressListeners();
-            },
-            
-            initPlayer() {
-                this.player = VideoPlayer.init('videoPlayerContainer', {
-                    lessonId: this.lessonId,
-                    courseId: this.courseId
-                });
-                
-                // Listen for completion
-                document.getElementById('videoPlayerContainer').addEventListener('lessonComplete', (e) => {
-                    this.onLessonAutoComplete();
-                });
-                
-                document.getElementById('videoPlayerContainer').addEventListener('videoEnded', (e) => {
-                    this.onVideoEnded();
-                });
-            },
-            
-            loadLesson(lessonId) {
-                // Update active lesson in sidebar
-                document.querySelectorAll('.lesson-item').forEach(item => {
-                    item.classList.remove('active');
-                    if (item.dataset.lesson === lessonId) {
-                        item.classList.add('active');
-                        // Expand parent module
-                        const module = item.closest('.module-lessons');
-                        if (module) module.classList.remove('collapsed');
-                    }
-                });
-                
-                // Mock lesson data - in production, this would come from an API
-                const lessons = {
-                    '1': {
-                        title: 'מה זה Machine Learning?',
-                        duration: '10:32',
-                        description: 'בשיעור זה נלמד מהו Machine Learning...',
-                        videoUrl: 'https://www.youtube.com/watch?v=ukzFI9rgwfU'
-                    },
-                    '2': {
-                        title: 'Supervised vs Unsupervised',
-                        duration: '15:20',
-                        description: 'נלמד על ההבדלים בין סוגי הלמידה...',
-                        videoUrl: 'https://www.youtube.com/watch?v=W01tIRP_Rqs'
-                    }
-                    // Add more lessons...
-                };
-                
-                const lesson = lessons[lessonId] || lessons['1'];
-                
-                // Update UI
-                document.getElementById('lessonTitle').textContent = lesson.title;
-                document.getElementById('lessonDuration').textContent = lesson.duration;
-                document.getElementById('lessonBadge').textContent = `שיעור ${lessonId}`;
-                document.getElementById('currentLessonNum').textContent = lessonId;
-                
-                // Load video
-                if (lesson.videoUrl) {
-                    this.player.loadVideo(lesson.videoUrl);
-                }
-                
-                // Update completion status
-                this.updateLessonStatus(lessonId);
-                
-                // Load notes for this lesson
-                this.loadNotes();
-                
-                // Check if there's a quiz for this lesson
-                this.checkForQuiz(lessonId);
-                
-                // Update URL
-                window.history.replaceState({}, '', `?course=${this.courseId}&lesson=${lessonId}`);
-                
-                this.lessonId = lessonId;
-            },
-            
-            async checkForQuiz(lessonId) {
-                const quizBtn = document.getElementById('takeQuizBtn');
-                if (!quizBtn) return;
-                
-                try {
-                    const response = await fetch(`/api/quiz/${lessonId}`);
-                    const data = await response.json();
-                    
-                    if (data.success && data.quiz) {
-                        // Show quiz button
-                        quizBtn.style.display = 'inline-flex';
-                        quizBtn.href = `quiz.html?lesson=${lessonId}&course=${this.courseId}`;
-                        
-                        // Update button text based on previous result
-                        if (data.previousResult) {
-                            if (data.previousResult.passed) {
-                                quizBtn.innerHTML = `
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                                    </svg>
-                                    <span>חידון ✅ ${data.previousResult.score}/${data.previousResult.maxScore}</span>
-                                `;
-                            } else {
-                                quizBtn.innerHTML = `
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <circle cx="12" cy="12" r="10"></circle>
-                                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-                                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                                    </svg>
-                                    <span>נסה שוב 🔄</span>
-                                `;
-                            }
-                        }
-                    } else {
-                        // Hide quiz button if no quiz
-                        quizBtn.style.display = 'none';
-                    }
-                } catch (err) {
-                    // API not available, hide button
-                    quizBtn.style.display = 'none';
-                }
-            },
-            
-            updateLessonStatus(lessonId) {
-                const isComplete = ProgressTracker.isLessonComplete(this.courseId, lessonId);
-                const statusEl = document.getElementById('lessonStatus');
-                const markBtn = document.getElementById('markCompleteBtn');
-                
-                if (isComplete) {
-                    statusEl.innerHTML = `
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2">
-                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                        </svg>
-                        <span style="color: var(--success)">הושלם</span>
-                    `;
-                    markBtn.innerHTML = `
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                        <span>הושלם ✓</span>
-                    `;
-                    markBtn.classList.add('completed');
-                } else {
-                    statusEl.innerHTML = `
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"></circle>
-                        </svg>
-                        <span>לא הושלם</span>
-                    `;
-                    markBtn.innerHTML = `
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                        <span>סמן כהושלם</span>
-                    `;
-                    markBtn.classList.remove('completed');
-                }
-                
-                // Update sidebar
-                const sidebarItem = document.querySelector(`.lesson-item[data-lesson="${lessonId}"] .lesson-status`);
-                if (sidebarItem) {
-                    if (isComplete) {
-                        sidebarItem.innerHTML = `
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                            </svg>
-                        `;
-                        sidebarItem.classList.add('completed');
-                    } else {
-                        sidebarItem.innerHTML = `
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"></circle>
-                            </svg>
-                        `;
-                        sidebarItem.classList.remove('completed');
-                    }
-                }
-            },
-            
-            markComplete() {
-                ProgressTracker.markLessonComplete(this.courseId, this.lessonId);
-                this.updateLessonStatus(this.lessonId);
-                this.updateProgressDisplay();
-                
-                // Notify gamification system
-                document.dispatchEvent(new CustomEvent('lessonComplete', {
-                    detail: {
-                        lessonId: this.lessonId,
-                        courseId: this.courseId,
-                        watchTime: this.videoPlayer ? this.videoPlayer.currentTime : 0
-                    }
-                }));
-                
-                // Show notification
-                LMS.showNotification('השיעור סומן כהושלם! 🎉', 'success');
-                
-                // Check if course complete
-                if (ProgressTracker.isCourseComplete(this.courseId)) {
-                    this.showCompletionModal();
-                }
-            },
-            
-            onLessonAutoComplete() {
-                if (!ProgressTracker.isLessonComplete(this.courseId, this.lessonId)) {
-                    this.markComplete();
-                }
-            },
-            
-            onVideoEnded() {
-                // Optionally auto-advance to next lesson
-                // this.goToNextLesson();
-            },
-            
-            updateProgressDisplay() {
-                const progress = ProgressTracker.getCourseProgress(this.courseId);
-                const percentage = progress.percentage || 0;
-                
-                // Update top bar
-                document.getElementById('progressPercent').textContent = `${percentage}%`;
-                document.getElementById('progressBarFill').style.width = `${percentage}%`;
-                
-                // Update sidebar
-                document.getElementById('sidebarPercent').textContent = `${percentage}%`;
-                document.getElementById('sidebarProgressFill').style.width = `${percentage}%`;
-                document.getElementById('completedLessons').textContent = progress.completedLessons || 0;
-            },
-            
-            setupTabs() {
-                const tabs = document.querySelectorAll('.lesson-tab');
-                const panes = document.querySelectorAll('.tab-pane');
-                
-                tabs.forEach(tab => {
-                    tab.addEventListener('click', () => {
-                        const tabId = tab.dataset.tab;
-                        
-                        tabs.forEach(t => t.classList.remove('active'));
-                        panes.forEach(p => p.classList.remove('active'));
-                        
-                        tab.classList.add('active');
-                        document.getElementById(tabId)?.classList.add('active');
-                    });
-                });
-            },
-            
-            setupSidebar() {
-                const toggleBtn = document.getElementById('toggleSidebar');
-                const closeBtn = document.getElementById('closeSidebar');
-                const sidebar = document.getElementById('lessonsSidebar');
-                
-                toggleBtn.addEventListener('click', () => {
-                    sidebar.classList.toggle('open');
-                });
-                
-                closeBtn.addEventListener('click', () => {
-                    sidebar.classList.remove('open');
-                });
-            },
-            
-            setupNavigation() {
-                // Previous/Next buttons
-                document.getElementById('prevLesson').addEventListener('click', () => this.goToPrevLesson());
-                document.getElementById('nextLesson').addEventListener('click', () => this.goToNextLesson());
-                document.getElementById('prevLessonNav').addEventListener('click', () => this.goToPrevLesson());
-                document.getElementById('nextLessonNav').addEventListener('click', () => this.goToNextLesson());
-                
-                // Mark complete button
-                document.getElementById('markCompleteBtn').addEventListener('click', () => this.markComplete());
-                
-                // Lesson items in sidebar
-                document.querySelectorAll('.lesson-item').forEach(item => {
-                    item.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        this.loadLesson(item.dataset.lesson);
-                    });
-                });
-            },
-            
-            setupModules() {
-                document.querySelectorAll('.module-header').forEach(header => {
-                    header.addEventListener('click', () => {
-                        const lessons = header.nextElementSibling;
-                        header.classList.toggle('collapsed');
-                        lessons.classList.toggle('collapsed');
-                    });
-                });
-            },
-            
-            goToPrevLesson() {
-                const currentNum = parseInt(this.lessonId);
-                if (currentNum > 1) {
-                    this.loadLesson(String(currentNum - 1));
-                }
-            },
-            
-            goToNextLesson() {
-                const currentNum = parseInt(this.lessonId);
-                const totalLessons = parseInt(document.getElementById('totalLessonsNum').textContent) || 12;
-                if (currentNum < totalLessons) {
-                    this.loadLesson(String(currentNum + 1));
-                }
-            },
-            
-            setupNotes() {
-                const textarea = document.getElementById('lessonNotes');
-                const saveBtn = document.getElementById('saveNotes');
-                const timestampBtn = document.getElementById('addTimestamp');
-                const indicator = document.getElementById('notesSavedIndicator');
-                
-                let saveTimeout;
-                
-                // Auto-save
-                textarea.addEventListener('input', () => {
-                    clearTimeout(saveTimeout);
-                    indicator.style.display = 'none';
-                    saveTimeout = setTimeout(() => {
-                        this.saveNotes();
-                    }, 1000);
-                });
-                
-                // Manual save
-                saveBtn.addEventListener('click', () => {
-                    this.saveNotes();
-                    LMS.showNotification('ההערות נשמרו!', 'success');
-                });
-                
-                // Add timestamp
-                timestampBtn.addEventListener('click', () => {
-                    if (this.player && this.player.state.currentTime) {
-                        const time = this.player.formatTime(this.player.state.currentTime);
-                        const cursorPos = textarea.selectionStart;
-                        const text = textarea.value;
-                        textarea.value = text.slice(0, cursorPos) + `[${time}] ` + text.slice(cursorPos);
-                        textarea.focus();
-                        textarea.selectionStart = textarea.selectionEnd = cursorPos + time.length + 3;
-                    }
-                });
-            },
-            
-            loadNotes() {
-                const key = `notes_${this.courseId}_${this.lessonId}`;
-                const notes = localStorage.getItem('hai_lms_' + key) || '';
-                document.getElementById('lessonNotes').value = notes;
-            },
-            
-            saveNotes() {
-                const key = `notes_${this.courseId}_${this.lessonId}`;
-                const notes = document.getElementById('lessonNotes').value;
-                localStorage.setItem('hai_lms_' + key, notes);
-                
-                const indicator = document.getElementById('notesSavedIndicator');
-                indicator.style.display = 'inline-flex';
-                setTimeout(() => {
-                    indicator.style.display = 'none';
-                }, 2000);
-            },
-            
-            setupProgressListeners() {
-                ProgressTracker.onProgressUpdate((data) => {
-                    if (data.courseId === this.courseId) {
-                        this.updateProgressDisplay();
-                    }
-                });
-                
-                ProgressTracker.onCourseComplete((data) => {
-                    if (data.courseId === this.courseId) {
-                        this.showCompletionModal();
-                    }
-                });
-            },
-            
-            showCompletionModal() {
-                const modal = document.getElementById('completionModal');
-                modal.style.display = 'flex';
-                
-                document.getElementById('closeModal').addEventListener('click', () => {
-                    modal.style.display = 'none';
-                });
-                
-                modal.querySelector('.modal-overlay').addEventListener('click', () => {
-                    modal.style.display = 'none';
-                });
-            }
-        };
+        // Mobile sidebar toggle
+        const toggleBtn = document.getElementById('toggleSidebar');
+        const sidebar = document.getElementById('lessonsSidebar');
         
-        // Initialize when DOM ready
-        document.addEventListener('DOMContentLoaded', () => {
-            LessonPage.init();
+        toggleBtn?.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+        });
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 1024 && 
+                !sidebar.contains(e.target) && 
+                !toggleBtn.contains(e.target) &&
+                sidebar.classList.contains('open')) {
+                sidebar.classList.remove('open');
+            }
+        });
+
+        // Mark as complete button
+        const markCompleteBtn = document.getElementById('markCompleteBtn');
+        markCompleteBtn?.addEventListener('click', () => {
+            markCompleteBtn.classList.toggle('btn-completed');
+            if (markCompleteBtn.classList.contains('btn-completed')) {
+                markCompleteBtn.innerHTML = `
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 6L9 17l-5-5"/>
+                    </svg>
+                    <span>הושלם!</span>
+                `;
+            } else {
+                markCompleteBtn.innerHTML = `
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 6L9 17l-5-5"/>
+                    </svg>
+                    <span>סמן כהושלם</span>
+                `;
+            }
         });
     </script>
-    <script src="js/gamification.js"></script>
 </body>
 </html>

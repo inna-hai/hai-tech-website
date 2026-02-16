@@ -4,107 +4,125 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>התחברות | HAI Tech Academy</title>
-    <link rel="stylesheet" href="css/lms.css">
+    <link rel="stylesheet" href="css/auth-new.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body class="login-page">
-    <div class="login-container">
-        <div class="login-card">
-            <div class="login-header">
-                <img src="../images/logo.png" alt="HAI Tech Academy" class="login-logo">
-                <h1>ברוכים הבאים</h1>
-                <p>התחבר כדי להמשיך ללמוד</p>
-            </div>
-            
-            <form id="loginForm" class="login-form">
-                <div class="form-group">
-                    <label for="email">אימייל</label>
-                    <input type="email" id="email" name="email" placeholder="your@email.com" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="password">סיסמה</label>
-                    <input type="password" id="password" name="password" placeholder="••••••••" required>
-                    <button type="button" class="toggle-password" aria-label="הצג סיסמה">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                            <circle cx="12" cy="12" r="3"></circle>
-                        </svg>
-                    </button>
-                </div>
-                
-                <div class="form-options">
-                    <label class="remember-me">
-                        <input type="checkbox" name="remember">
-                        <span>זכור אותי</span>
-                    </label>
-                    <a href="#" class="forgot-password">שכחתי סיסמה</a>
-                </div>
-                
-                <button type="submit" class="btn btn-primary btn-login">התחבר</button>
-            </form>
-            
-            <div class="login-divider">
-                <span>או</span>
-            </div>
-            
-            <button type="button" class="btn btn-google" id="googleLogin">
-                <svg width="20" height="20" viewBox="0 0 24 24">
-                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-                </svg>
-                התחבר עם Google
-            </button>
-            
-            <p class="register-link">
-                אין לך חשבון? <a href="register.html">הרשם עכשיו</a>
-            </p>
+<body>
+    <div class="auth-bg"></div>
+    
+    <div class="auth-container">
+        <div class="auth-logo">
+            <a href="../index.html">
+                <img src="../images/logo.png" alt="HAI Tech Academy">
+            </a>
+            <p>ברוכים השבים! 👋</p>
         </div>
         
-        <div class="login-illustration">
-            <div class="illustration-content">
-                <h2>למד AI בקצב שלך</h2>
-                <p>קורסים מעשיים, פרויקטים אמיתיים, ותמיכה של AI מתקדם</p>
-                <div class="features-list">
-                    <div class="feature-item">
-                        <span class="feature-icon">🎯</span>
-                        <span>למידה מותאמת אישית</span>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">🤖</span>
-                        <span>עוזר AI חכם</span>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">📜</span>
-                        <span>תעודות מוכרות</span>
+        <div class="auth-card">
+            <h1 class="auth-title">התחברות</h1>
+            <p class="auth-subtitle">הכנס את הפרטים שלך כדי להמשיך ללמוד</p>
+            
+            <div class="error-message" id="errorMessage">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="15" y1="9" x2="9" y2="15"/>
+                    <line x1="9" y1="9" x2="15" y2="15"/>
+                </svg>
+                <span id="errorText">שגיאה בהתחברות</span>
+            </div>
+            
+            <form class="auth-form" id="loginForm">
+                <div class="form-group">
+                    <label class="form-label">אימייל</label>
+                    <div class="form-input-wrapper">
+                        <svg class="form-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        <input type="email" class="form-input" id="email" placeholder="your@email.com" required>
                     </div>
                 </div>
+                
+                <div class="form-group">
+                    <label class="form-label">סיסמה</label>
+                    <div class="form-input-wrapper">
+                        <svg class="form-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                        </svg>
+                        <input type="password" class="form-input" id="password" placeholder="••••••••" required>
+                        <button type="button" class="password-toggle" id="togglePassword">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="eye-open">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="eye-closed" style="display: none;">
+                                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                                <line x1="1" y1="1" x2="23" y2="23"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <label class="form-checkbox">
+                        <input type="checkbox" id="rememberMe">
+                        <div class="checkbox-custom">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                        </div>
+                        <span>זכור אותי</span>
+                    </label>
+                    <a href="forgot-password.html" style="color: var(--accent-light); font-size: 14px; text-decoration: none;">שכחת סיסמה?</a>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" id="submitBtn">
+                    <span>התחבר</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 18l-6-6 6-6"/>
+                    </svg>
+                </button>
+            </form>
+            
+            <div class="auth-footer">
+                אין לך חשבון? <a href="register.html">הירשם עכשיו</a>
             </div>
         </div>
     </div>
-    
-    <script src="js/lms.js"></script>
+
     <script>
-        // If already logged in, redirect based on role
-        if (LMS.isLoggedIn()) {
-            const user = LMS.getCurrentUser();
-            if (user?.role === 'parent') {
-                window.location.href = 'parent-dashboard.html';
-            } else {
-                window.location.href = 'index.html';
-            }
-        }
+        // Password toggle
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+        const eyeOpen = togglePassword.querySelector('.eye-open');
+        const eyeClosed = togglePassword.querySelector('.eye-closed');
         
-        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+        togglePassword.addEventListener('click', () => {
+            const type = passwordInput.type === 'password' ? 'text' : 'password';
+            passwordInput.type = type;
+            eyeOpen.style.display = type === 'password' ? 'block' : 'none';
+            eyeClosed.style.display = type === 'password' ? 'none' : 'block';
+        });
+
+        // Form submission
+        const form = document.getElementById('loginForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const errorMessage = document.getElementById('errorMessage');
+        const errorText = document.getElementById('errorText');
+
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const email = document.getElementById('email').value.trim();
+            
+            const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             
-            // Custom login with role-based redirect
+            submitBtn.classList.add('btn-loading');
+            submitBtn.disabled = true;
+            errorMessage.classList.remove('show');
+            
             try {
                 const response = await fetch('/lms/api/auth/login', {
                     method: 'POST',
@@ -119,31 +137,17 @@
                     localStorage.setItem('hai_lms_user', JSON.stringify(data.user));
                     localStorage.setItem('hai_lms_isLoggedIn', JSON.stringify(true));
                     
-                    LMS.showNotification('התחברת בהצלחה!', 'success');
-                    
-                    setTimeout(() => {
-                        if (data.user.role === 'parent') {
-                            window.location.href = 'parent-dashboard.html';
-                        } else {
-                            window.location.href = 'index.html';
-                        }
-                    }, 500);
+                    window.location.href = 'index.html';
                 } else {
-                    LMS.showNotification(data.error || 'שגיאה בהתחברות', 'error');
+                    throw new Error(data.error || 'שגיאה בהתחברות');
                 }
-            } catch (err) {
-                console.error('Login error:', err);
-                LMS.showNotification('שגיאה בהתחברות', 'error');
+            } catch (error) {
+                errorText.textContent = error.message || 'שגיאה בהתחברות';
+                errorMessage.classList.add('show');
+            } finally {
+                submitBtn.classList.remove('btn-loading');
+                submitBtn.disabled = false;
             }
-        });
-        
-        document.getElementById('googleLogin').addEventListener('click', function() {
-            alert('התחברות עם Google תהיה זמינה בקרוב!');
-        });
-        
-        document.querySelector('.toggle-password').addEventListener('click', function() {
-            const passwordInput = document.getElementById('password');
-            passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
         });
     </script>
 </body>
