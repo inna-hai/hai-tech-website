@@ -56,6 +56,7 @@ authRoutes.post('/register', async (c) => {
   });
 
   return c.json({
+    success: true,
     message: 'Registration successful',
     token,
     user: { id: userId, email, name, role: 'student' }
@@ -102,6 +103,7 @@ authRoutes.post('/login', async (c) => {
   });
 
   return c.json({
+    success: true,
     message: 'Login successful',
     token,
     user: { id: user.id, email: user.email, name: user.name, role: user.role }
