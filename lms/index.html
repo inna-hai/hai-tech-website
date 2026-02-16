@@ -50,7 +50,7 @@
                     <line x1="3" y1="18" x2="21" y2="18"/>
                 </svg>
             </button>
-            <div class="user-avatar" id="userAvatar">א</div>
+            <div class="user-avatar" id="userAvatar">?</div>
         </div>
     </nav>
 
@@ -59,7 +59,7 @@
         <!-- HERO SECTION -->
         <section class="hero">
             <div class="hero-content">
-                <h1 class="greeting">שלום, <span id="userName">אינה</span>! 👋</h1>
+                <h1 class="greeting">שלום, <span id="userName">תלמיד</span>! 👋</h1>
                 <p class="subtitle">מה נלמד היום?</p>
                 
                 <div class="stats-row">
@@ -71,7 +71,7 @@
                             </svg>
                         </div>
                         <div class="stat-info">
-                            <h3 id="activeCourses">3</h3>
+                            <h3 id="activeCourses">0</h3>
                             <p>קורסים פעילים</p>
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                             </svg>
                         </div>
                         <div class="stat-info">
-                            <h3 id="completedLessons">24</h3>
+                            <h3 id="completedLessons">0</h3>
                             <p>שיעורים הושלמו</p>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
                             </svg>
                         </div>
                         <div class="stat-info">
-                            <h3 id="totalXP">1,250</h3>
+                            <h3 id="totalXP">0</h3>
                             <p>נקודות XP</p>
                         </div>
                     </div>
@@ -107,187 +107,166 @@
         <!-- COURSES SECTION -->
         <section class="content">
             <div class="section-header">
-                <h2 class="section-title">הקורסים שלי</h2>
+                <h2 class="section-title">כל הקורסים</h2>
                 <div class="section-tabs">
                     <button class="tab-btn active" data-filter="all">הכל</button>
-                    <button class="tab-btn" data-filter="in-progress">בתהליך</button>
-                    <button class="tab-btn" data-filter="completed">הושלמו</button>
+                    <button class="tab-btn" data-filter="beginner">למתחילים</button>
+                    <button class="tab-btn" data-filter="game-dev">פיתוח משחקים</button>
                 </div>
             </div>
             
             <div class="courses-grid" id="coursesGrid">
-                <!-- Course Card 1 -->
-                <a href="lesson.html?course=roblox-lua" class="course-card">
-                    <div class="course-image" style="background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);">
-                        <img src="../images/courses/roblox.png" alt="Roblox">
-                        <span class="course-badge in-progress">בתהליך</span>
-                        <div class="course-progress-bar">
-                            <div class="fill" style="width: 45%"></div>
-                        </div>
-                    </div>
-                    <div class="course-content">
-                        <div class="course-category">פיתוח משחקים</div>
-                        <h3 class="course-title">קורס רובלוקס - פיתוח משחקים עם Lua</h3>
-                        <div class="course-meta">
-                            <div class="course-meta-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/>
-                                    <path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
-                                    <path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"/>
-                                    <path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"/>
-                                    <path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"/>
-                                    <path d="M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/>
-                                    <path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"/>
-                                    <path d="M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z"/>
-                                </svg>
-                                <span>12 שיעורים</span>
-                            </div>
-                            <div class="course-meta-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <path d="M12 6v6l4 2"/>
-                                </svg>
-                                <span>6 שעות</span>
-                            </div>
-                        </div>
-                        <div class="course-footer">
-                            <div class="course-progress">
-                                <div class="progress-circle" style="--progress: 45%">
-                                    <span>45%</span>
-                                </div>
-                                <span>5/12 שיעורים</span>
-                            </div>
-                            <button class="continue-btn">
-                                <span>המשך</span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M15 18l-6-6 6-6"/>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Course Card 2 -->
-                <a href="lesson.html?course=minecraft-javascript" class="course-card">
-                    <div class="course-image" style="background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);">
-                        <img src="../images/courses/minecraft-js.png" alt="Minecraft">
-                        <span class="course-badge in-progress">בתהליך</span>
-                        <div class="course-progress-bar">
-                            <div class="fill" style="width: 70%"></div>
-                        </div>
-                    </div>
-                    <div class="course-content">
-                        <div class="course-category">JavaScript</div>
-                        <h3 class="course-title">קורס מיינקראפט + JavaScript</h3>
-                        <div class="course-meta">
-                            <div class="course-meta-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/>
-                                    <path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
-                                </svg>
-                                <span>15 שיעורים</span>
-                            </div>
-                            <div class="course-meta-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <path d="M12 6v6l4 2"/>
-                                </svg>
-                                <span>8 שעות</span>
-                            </div>
-                        </div>
-                        <div class="course-footer">
-                            <div class="course-progress">
-                                <div class="progress-circle" style="--progress: 70%">
-                                    <span>70%</span>
-                                </div>
-                                <span>10/15 שיעורים</span>
-                            </div>
-                            <button class="continue-btn">
-                                <span>המשך</span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M15 18l-6-6 6-6"/>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Course Card 3 -->
-                <a href="lesson.html?course=scratch" class="course-card">
-                    <div class="course-image" style="background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);">
-                        <img src="../images/courses/scratch.webp" alt="Scratch">
-                        <span class="course-badge completed">✓ הושלם</span>
-                        <div class="course-progress-bar">
-                            <div class="fill" style="width: 100%"></div>
-                        </div>
-                    </div>
-                    <div class="course-content">
-                        <div class="course-category">למתחילים</div>
-                        <h3 class="course-title">קורס תכנות בסקראץ'</h3>
-                        <div class="course-meta">
-                            <div class="course-meta-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/>
-                                </svg>
-                                <span>20 שיעורים</span>
-                            </div>
-                            <div class="course-meta-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <path d="M12 6v6l4 2"/>
-                                </svg>
-                                <span>10 שעות</span>
-                            </div>
-                        </div>
-                        <div class="course-footer">
-                            <div class="course-progress">
-                                <div class="progress-circle" style="--progress: 100%; background: conic-gradient(#10b981 100%, var(--bg-hover) 0%)">
-                                    <span>✓</span>
-                                </div>
-                                <span style="color: #10b981;">הושלם!</span>
-                            </div>
-                            <button class="continue-btn" style="background: var(--bg-hover); color: var(--text-secondary);">
-                                <span>צפה שוב</span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M15 18l-6-6 6-6"/>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </a>
+                <!-- Loading -->
+                <div class="loading-state" id="loadingState">
+                    <p>טוען קורסים...</p>
+                </div>
             </div>
         </section>
     </main>
 
     <script>
+        // Course colors mapping
+        const courseColors = {
+            'scratch': 'linear-gradient(135deg, #f39c12 0%, #e67e22 100%)',
+            'minecraft-javascript': 'linear-gradient(135deg, #27ae60 0%, #2ecc71 100%)',
+            'roblox-lua': 'linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)',
+            'web-dev-ai': 'linear-gradient(135deg, #3498db 0%, #2980b9 100%)',
+            'python-pygame': 'linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%)',
+            'discord-bots': 'linear-gradient(135deg, #5865F2 0%, #4752C4 100%)',
+            'minecraft-java-plugins': 'linear-gradient(135deg, #1abc9c 0%, #16a085 100%)',
+            'canva-ai': 'linear-gradient(135deg, #00C4CC 0%, #7B2FF7 100%)',
+            '3d-printing': 'linear-gradient(135deg, #fd7e14 0%, #e55100 100%)',
+            'python-minecraft': 'linear-gradient(135deg, #2ecc71 0%, #27ae60 100%)',
+            'minecraft-mods': 'linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%)'
+        };
+
+        // Load user info
+        function loadUser() {
+            const user = JSON.parse(localStorage.getItem('hai_lms_user') || 'null');
+            if (user) {
+                document.getElementById('userName').textContent = user.name?.split(' ')[0] || 'תלמיד';
+                document.getElementById('userAvatar').textContent = (user.name?.[0] || 'ת').toUpperCase();
+            }
+        }
+
+        // Load courses from API
+        async function loadCourses() {
+            const grid = document.getElementById('coursesGrid');
+            
+            try {
+                const response = await fetch('/lms/api/courses');
+                const data = await response.json();
+                
+                if (!data.courses || data.courses.length === 0) {
+                    grid.innerHTML = `
+                        <div class="empty-state">
+                            <div class="empty-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                                    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                                </svg>
+                            </div>
+                            <h3>אין קורסים זמינים</h3>
+                            <p>בקרוב יתווספו קורסים חדשים!</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                document.getElementById('activeCourses').textContent = data.courses.length;
+
+                grid.innerHTML = data.courses.map(course => `
+                    <a href="course.html?id=${course.id}" class="course-card" data-category="${course.level || 'beginner'}">
+                        <div class="course-image" style="background: ${courseColors[course.id] || 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'};">
+                            ${course.image ? `<img src="../${course.image.replace(/^\//, '')}" alt="${course.title}" onerror="this.style.display='none'">` : ''}
+                            <span class="course-badge new">חדש</span>
+                            <div class="course-progress-bar">
+                                <div class="fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-category">${course.category || course.level || 'תכנות'}</div>
+                            <h3 class="course-title">${course.title}</h3>
+                            <div class="course-meta">
+                                <div class="course-meta-item">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="2" y="3" width="20" height="14" rx="2"/>
+                                        <path d="M8 21h8"/>
+                                        <path d="M12 17v4"/>
+                                    </svg>
+                                    <span>${course.lessons_count || 0} שיעורים</span>
+                                </div>
+                                <div class="course-meta-item">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <path d="M12 6v6l4 2"/>
+                                    </svg>
+                                    <span>${course.duration_hours || 0} שעות</span>
+                                </div>
+                            </div>
+                            <div class="course-footer">
+                                <div class="course-progress">
+                                    <span style="color: var(--accent-light);">₪${course.price || 497}</span>
+                                </div>
+                                <button class="continue-btn">
+                                    <span>צפה בקורס</span>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M15 18l-6-6 6-6"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </a>
+                `).join('');
+
+                // Re-attach filter events
+                attachFilterEvents();
+
+            } catch (error) {
+                console.error('Error loading courses:', error);
+                grid.innerHTML = `
+                    <div class="empty-state">
+                        <h3>שגיאה בטעינת הקורסים</h3>
+                        <p>נסה לרענן את הדף</p>
+                    </div>
+                `;
+            }
+        }
+
         // Tab filtering
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        const courseCards = document.querySelectorAll('.course-card');
-        
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                tabBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                const filter = btn.dataset.filter;
-                
-                courseCards.forEach(card => {
-                    const badge = card.querySelector('.course-badge');
-                    const isCompleted = badge?.classList.contains('completed');
-                    const isInProgress = badge?.classList.contains('in-progress');
+        function attachFilterEvents() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const courseCards = document.querySelectorAll('.course-card');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
                     
-                    if (filter === 'all') {
-                        card.style.display = 'block';
-                    } else if (filter === 'completed' && isCompleted) {
-                        card.style.display = 'block';
-                    } else if (filter === 'in-progress' && isInProgress) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
+                    const filter = btn.dataset.filter;
+                    
+                    courseCards.forEach(card => {
+                        const category = card.dataset.category;
+                        
+                        if (filter === 'all') {
+                            card.style.display = 'block';
+                        } else if (filter === 'beginner' && (category === 'beginner' || category === 'מתחילים')) {
+                            card.style.display = 'block';
+                        } else if (filter === 'game-dev' && (category === 'game-dev' || category?.includes('משחק'))) {
+                            card.style.display = 'block';
+                        } else if (filter === category) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
                 });
             });
-        });
+        }
+
+        // Initialize
+        loadUser();
+        loadCourses();
     </script>
 </body>
 </html>

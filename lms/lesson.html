@@ -13,21 +13,21 @@
     <!-- HEADER -->
     <header class="lesson-header">
         <div class="header-right">
-            <a href="course.html" class="back-btn" id="backToCourse">
+            <a href="#" class="back-btn" id="backToCourse">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M9 18l6-6-6-6"/>
                 </svg>
                 <span>חזרה לקורס</span>
             </a>
-            <span class="course-title" id="courseTitle">קורס יצירת Minecraft Plugins</span>
+            <span class="course-title" id="courseTitle">טוען...</span>
         </div>
         
         <div class="header-center">
             <div class="progress-pill">
                 <div class="progress-bar-mini">
-                    <div class="fill" id="progressFill" style="width: 25%"></div>
+                    <div class="fill" id="progressFill" style="width: 0%"></div>
                 </div>
-                <span class="progress-text" id="progressText">4/18 שיעורים</span>
+                <span class="progress-text" id="progressText">0/0 שיעורים</span>
             </div>
         </div>
         
@@ -47,7 +47,7 @@
             <div class="video-wrapper">
                 <iframe 
                     id="videoPlayer"
-                    src="https://player.vimeo.com/video/501762982?h=abc123&title=0&byline=0&portrait=0"
+                    src=""
                     allow="autoplay; fullscreen; picture-in-picture"
                     allowfullscreen>
                 </iframe>
@@ -62,15 +62,14 @@
                             <circle cx="12" cy="12" r="10"/>
                             <path d="M12 6v6l4 2"/>
                         </svg>
-                        <span id="lessonDuration">15:00</span>
+                        <span id="lessonDuration">0:00</span>
                     </span>
                 </div>
                 
-                <h1 class="lesson-title-main" id="lessonTitle">התקנות - הכרות עם סביבת העבודה</h1>
+                <h1 class="lesson-title-main" id="lessonTitle">טוען...</h1>
                 
                 <p class="lesson-description" id="lessonDescription">
-                    בשיעור זה נלמד להתקין את כל הכלים הדרושים לפיתוח Plugins למיינקראפט. 
-                    נגדיר את סביבת הפיתוח ונוודא שהכל עובד כמו שצריך.
+                    טוען תיאור השיעור...
                 </p>
                 
                 <div class="lesson-actions">
@@ -95,31 +94,6 @@
                         <span>שיעור קודם</span>
                     </button>
                 </div>
-                
-                <!-- Quiz Prompt -->
-                <div class="quiz-prompt" id="quizPrompt" style="display: none;">
-                    <div class="quiz-prompt-header">
-                        <div class="quiz-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"/>
-                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
-                                <path d="M12 17h.01"/>
-                            </svg>
-                        </div>
-                        <h3>בדוק את עצמך!</h3>
-                    </div>
-                    <p>יש חידון קצר לשיעור הזה. בוא נראה כמה הבנת!</p>
-                    <a href="quiz.html" class="btn btn-primary">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                            <path d="M14 2v6h6"/>
-                            <path d="M16 13H8"/>
-                            <path d="M16 17H8"/>
-                            <path d="M10 9H8"/>
-                        </svg>
-                        <span>התחל חידון</span>
-                    </a>
-                </div>
             </div>
         </section>
 
@@ -129,103 +103,159 @@
                 <h2 class="sidebar-title">תוכן הקורס</h2>
                 <div class="sidebar-progress">
                     <div class="sidebar-progress-bar">
-                        <div class="fill" id="sidebarProgressFill" style="width: 25%"></div>
+                        <div class="fill" id="sidebarProgressFill" style="width: 0%"></div>
                     </div>
-                    <span class="sidebar-progress-text" id="sidebarProgressText">4/18</span>
+                    <span class="sidebar-progress-text" id="sidebarProgressText">0/0</span>
                 </div>
             </div>
             
             <div class="lessons-list" id="lessonsList">
-                <!-- Lessons will be populated by JavaScript -->
-                
-                <!-- Example Structure -->
-                <div class="lesson-group">
-                    <div class="lesson-group-title">מבוא ויסודות</div>
-                    
-                    <a href="#" class="lesson-item completed">
-                        <div class="lesson-status">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                                <path d="M20 6L9 17l-5-5"/>
-                            </svg>
-                        </div>
-                        <div class="lesson-content">
-                            <div class="lesson-item-title">מבוא לקורס</div>
-                            <div class="lesson-item-meta">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <path d="M12 6v6l4 2"/>
-                                </svg>
-                                <span>10:00</span>
-                                <span class="lesson-free-badge">חינם</span>
-                            </div>
-                        </div>
-                    </a>
-                    
-                    <a href="#" class="lesson-item active">
-                        <div class="lesson-status"></div>
-                        <div class="lesson-content">
-                            <div class="lesson-item-title">התקנות - הכרות עם סביבת העבודה</div>
-                            <div class="lesson-item-meta">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <path d="M12 6v6l4 2"/>
-                                </svg>
-                                <span>15:00</span>
-                            </div>
-                        </div>
-                    </a>
-                    
-                    <a href="#" class="lesson-item">
-                        <div class="lesson-status"></div>
-                        <div class="lesson-content">
-                            <div class="lesson-item-title">פלאגין ראשון בפעולה</div>
-                            <div class="lesson-item-meta">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <path d="M12 6v6l4 2"/>
-                                </svg>
-                                <span>15:00</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                
-                <div class="lesson-group">
-                    <div class="lesson-group-title">מתקדמים</div>
-                    
-                    <a href="#" class="lesson-item">
-                        <div class="lesson-status"></div>
-                        <div class="lesson-content">
-                            <div class="lesson-item-title">שיפור הקוד - מערכים</div>
-                            <div class="lesson-item-meta">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <path d="M12 6v6l4 2"/>
-                                </svg>
-                                <span>15:00</span>
-                            </div>
-                        </div>
-                    </a>
-                    
-                    <a href="#" class="lesson-item">
-                        <div class="lesson-status"></div>
-                        <div class="lesson-content">
-                            <div class="lesson-item-title">עוד קצת תרגול של מערכים</div>
-                            <div class="lesson-item-meta">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <path d="M12 6v6l4 2"/>
-                                </svg>
-                                <span>7:10</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                <div style="padding: 20px; text-align: center; color: var(--text-muted);">טוען שיעורים...</div>
             </div>
         </aside>
     </main>
 
     <script>
+        // Get params from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const courseId = urlParams.get('course');
+        const lessonId = urlParams.get('lesson');
+
+        if (!courseId) {
+            window.location.href = 'index.html';
+        }
+
+        let allLessons = [];
+        let currentLessonIndex = 0;
+
+        // Format duration
+        function formatDuration(seconds) {
+            if (!seconds) return '0:00';
+            const mins = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        // Load course and lessons
+        async function loadCourse() {
+            try {
+                const response = await fetch(`/lms/api/courses/${courseId}`);
+                const data = await response.json();
+                
+                if (!data.course) {
+                    alert('הקורס לא נמצא');
+                    window.location.href = 'index.html';
+                    return;
+                }
+
+                const course = data.course;
+                allLessons = data.lessons || [];
+
+                // Update course info
+                document.getElementById('courseTitle').textContent = course.title;
+                document.getElementById('backToCourse').href = `course.html?id=${courseId}`;
+
+                // Find current lesson
+                if (lessonId) {
+                    currentLessonIndex = allLessons.findIndex(l => l.id === lessonId);
+                    if (currentLessonIndex === -1) currentLessonIndex = 0;
+                }
+
+                // Update progress
+                const progress = Math.round((currentLessonIndex / allLessons.length) * 100);
+                document.getElementById('progressFill').style.width = `${progress}%`;
+                document.getElementById('progressText').textContent = `${currentLessonIndex + 1}/${allLessons.length} שיעורים`;
+                document.getElementById('sidebarProgressFill').style.width = `${progress}%`;
+                document.getElementById('sidebarProgressText').textContent = `${currentLessonIndex + 1}/${allLessons.length}`;
+
+                // Load current lesson
+                loadLesson(allLessons[currentLessonIndex]);
+
+                // Render lessons list
+                renderLessonsList();
+
+            } catch (error) {
+                console.error('Error loading course:', error);
+            }
+        }
+
+        // Load specific lesson
+        function loadLesson(lesson) {
+            if (!lesson) return;
+
+            document.title = `${lesson.title} | HAI Tech Academy`;
+            document.getElementById('lessonNumber').textContent = `שיעור ${currentLessonIndex + 1}`;
+            document.getElementById('lessonTitle').textContent = lesson.title;
+            document.getElementById('lessonDescription').textContent = lesson.description || '';
+            document.getElementById('lessonDuration').textContent = formatDuration(lesson.duration_seconds);
+
+            // Update video
+            if (lesson.video_url) {
+                document.getElementById('videoPlayer').src = lesson.video_url;
+            }
+
+            // Update navigation buttons
+            document.getElementById('prevLessonBtn').style.display = currentLessonIndex > 0 ? 'flex' : 'none';
+            document.getElementById('nextLessonBtn').style.display = currentLessonIndex < allLessons.length - 1 ? 'flex' : 'none';
+
+            // Update URL without reload
+            const newUrl = `lesson.html?course=${courseId}&lesson=${lesson.id}`;
+            window.history.pushState({}, '', newUrl);
+        }
+
+        // Render lessons list in sidebar
+        function renderLessonsList() {
+            const list = document.getElementById('lessonsList');
+            
+            list.innerHTML = allLessons.map((lesson, index) => `
+                <a href="javascript:void(0)" onclick="goToLesson(${index})" class="lesson-item${index === currentLessonIndex ? ' active' : ''}${index < currentLessonIndex ? ' completed' : ''}">
+                    <div class="lesson-status">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                    </div>
+                    <div class="lesson-content">
+                        <div class="lesson-item-title">${lesson.title}</div>
+                        <div class="lesson-item-meta">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                            <span>${formatDuration(lesson.duration_seconds)}</span>
+                            ${lesson.is_free ? '<span class="lesson-free-badge">חינם</span>' : ''}
+                        </div>
+                    </div>
+                </a>
+            `).join('');
+        }
+
+        // Navigate to lesson
+        function goToLesson(index) {
+            currentLessonIndex = index;
+            loadLesson(allLessons[index]);
+            renderLessonsList();
+            
+            // Update progress
+            const progress = Math.round(((index + 1) / allLessons.length) * 100);
+            document.getElementById('progressFill').style.width = `${progress}%`;
+            document.getElementById('progressText').textContent = `${index + 1}/${allLessons.length} שיעורים`;
+            document.getElementById('sidebarProgressFill').style.width = `${progress}%`;
+            document.getElementById('sidebarProgressText').textContent = `${index + 1}/${allLessons.length}`;
+        }
+
+        // Navigation buttons
+        document.getElementById('nextLessonBtn').addEventListener('click', () => {
+            if (currentLessonIndex < allLessons.length - 1) {
+                goToLesson(currentLessonIndex + 1);
+            }
+        });
+
+        document.getElementById('prevLessonBtn').addEventListener('click', () => {
+            if (currentLessonIndex > 0) {
+                goToLesson(currentLessonIndex - 1);
+            }
+        });
+
         // Mobile sidebar toggle
         const toggleBtn = document.getElementById('toggleSidebar');
         const sidebar = document.getElementById('lessonsSidebar');
@@ -234,7 +264,6 @@
             sidebar.classList.toggle('open');
         });
 
-        // Close sidebar when clicking outside on mobile
         document.addEventListener('click', (e) => {
             if (window.innerWidth <= 1024 && 
                 !sidebar.contains(e.target) && 
@@ -264,6 +293,9 @@
                 `;
             }
         });
+
+        // Initialize
+        loadCourse();
     </script>
 </body>
 </html>
