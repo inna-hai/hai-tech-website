@@ -36,7 +36,7 @@ coursesRoutes.get('/:courseId', async (c) => {
   }
 
   const lessons = await c.env.DB.prepare(`
-    SELECT id, title, description, duration_seconds, lesson_order, is_free
+    SELECT id, title, description, video_url, duration_seconds, lesson_order, is_free
     FROM lessons 
     WHERE course_id = ?
     ORDER BY lesson_order ASC
