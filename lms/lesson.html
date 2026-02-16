@@ -73,13 +73,6 @@
                 </p>
                 
                 <div class="lesson-actions">
-                    <button class="btn btn-success" id="markCompleteBtn">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M20 6L9 17l-5-5"/>
-                        </svg>
-                        <span>סמן כהושלם</span>
-                    </button>
-                    
                     <button class="btn btn-primary" id="nextLessonBtn">
                         <span>לשיעור הבא</span>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -334,38 +327,6 @@
                 return false;
             }
         }
-
-        // Mark as complete button
-        const markCompleteBtn = document.getElementById('markCompleteBtn');
-        markCompleteBtn?.addEventListener('click', async () => {
-            const lesson = allLessons[currentLessonIndex];
-            if (!lesson) return;
-
-            markCompleteBtn.disabled = true;
-            markCompleteBtn.innerHTML = `<span>שומר...</span>`;
-
-            const success = await markLessonComplete(lesson.id);
-            
-            if (success) {
-                markCompleteBtn.classList.add('btn-completed');
-                markCompleteBtn.innerHTML = `
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M20 6L9 17l-5-5"/>
-                    </svg>
-                    <span>הושלם!</span>
-                `;
-                // Update sidebar to show completed
-                renderLessonsList();
-            } else {
-                markCompleteBtn.innerHTML = `
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M20 6L9 17l-5-5"/>
-                    </svg>
-                    <span>שגיאה - נסי שוב</span>
-                `;
-            }
-            markCompleteBtn.disabled = false;
-        });
 
         // Initialize
         loadCourse();
