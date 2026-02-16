@@ -213,7 +213,7 @@
                 submitBtn.textContent = 'מאשר...';
                 
                 try {
-                    const response = await fetch('/api/parent/accept-invite', {
+                    const response = await fetch('/lms/api/parent/accept-invite', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({

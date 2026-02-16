@@ -608,7 +608,7 @@
                     const token = localStorage.getItem('hai_lms_token');
                     if (!token) return;
                     
-                    const response = await fetch('/api/parent/invites', {
+                    const response = await fetch('/lms/api/parent/invites', {
                         headers: { 'Authorization': `Bearer ${token}` }
                     });
                     
@@ -687,7 +687,7 @@
                 
                 try {
                     const token = localStorage.getItem('hai_lms_token');
-                    const response = await fetch('/api/parent/invite', {
+                    const response = await fetch('/lms/api/parent/invite', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -714,7 +714,7 @@
             async resendInvite(inviteId) {
                 try {
                     const token = localStorage.getItem('hai_lms_token');
-                    const response = await fetch('/api/parent/resend-invite', {
+                    const response = await fetch('/lms/api/parent/resend-invite', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',

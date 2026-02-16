@@ -728,7 +728,7 @@
                 const grid = document.getElementById('childrenGrid');
                 
                 try {
-                    const response = await LMS.api('/api/parent/children');
+                    const response = await LMS.api('/lms/api/parent/children');
                     
                     if (response.success) {
                         this.children = response.children;
@@ -1083,7 +1083,7 @@
                 }
 
                 try {
-                    const response = await LMS.api('/api/parent/link-child', {
+                    const response = await LMS.api('/lms/api/parent/link-child', {
                         method: 'POST',
                         body: JSON.stringify({ childEmail: email })
                     });
