@@ -201,6 +201,20 @@
         .back-link:hover {
             color: var(--text-primary);
         }
+        .btn-delete {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 4px 8px;
+            border-radius: 6px;
+            opacity: 0.6;
+            transition: all 0.2s;
+        }
+        .btn-delete:hover {
+            background: rgba(239, 68, 68, 0.2);
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -252,6 +266,7 @@
                             <th>קורס</th>
                             <th>סטטוס</th>
                             <th>תאריך</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody id="enrollmentsTable">
@@ -299,6 +314,7 @@
                             <th>תפקיד</th>
                             <th>XP</th>
                             <th>נרשם</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody id="usersTable">
@@ -389,6 +405,9 @@
                             <td><span class="badge badge-${u.role}">${u.role}</span></td>
                             <td>${u.xp || 0}</td>
                             <td>${formatDate(u.created_at)}</td>
+                            <td>
+                                ${u.role !== 'admin' ? `<button onclick="deleteUser('${u.id}', '${u.name}')" class="btn-delete">🗑️</button>` : ''}
+                            </td>
                         </tr>
                     `).join('');
                 }
@@ -428,9 +447,10 @@
                                 <td>${e.course_title}</td>
                                 <td><span class="badge badge-active">${e.status}</span></td>
                                 <td>${formatDate(e.enrolled_at)}</td>
+                                <td><button onclick="deleteEnrollment('${e.id}', '${e.user_name}', '${e.course_title}')" class="btn-delete">🗑️</button></td>
                             </tr>
                         `).join('')
-                        : '<tr><td colspan="5" style="text-align: center; color: var(--text-muted);">אין הרשמות</td></tr>';
+                        : '<tr><td colspan="6" style="text-align: center; color: var(--text-muted);">אין הרשמות</td></tr>';
                 }
             } catch (err) {
                 console.error('Error loading enrollments:', err);
@@ -491,6 +511,50 @@
                 document.getElementById(btn.dataset.section).classList.add('active');
             });
         });
+
+        // Delete user
+        async function deleteUser(userId, userName) {
+            if (!confirm(`למחוק את המשתמש "${userName}"?`)) return;
+            
+            try {
+                const res = await fetch(`/lms/api/admin/users/${userId}`, {
+                    method: 'DELETE',
+                    headers
+                });
+                
+                if (res.ok) {
+                    showAlert(`המשתמש ${userName} נמחק`);
+                    loadUsers();
+                    loadEnrollments();
+                } else {
+                    const data = await res.json();
+                    showAlert(data.error || 'שגיאה במחיקה', 'error');
+                }
+            } catch (err) {
+                showAlert('שגיאה במחיקה', 'error');
+            }
+        }
+
+        // Delete enrollment
+        async function deleteEnrollment(enrollmentId, userName, courseTitle) {
+            if (!confirm(`להסיר את "${userName}" מקורס "${courseTitle}"?`)) return;
+            
+            try {
+                const res = await fetch(`/lms/api/admin/enrollments/${enrollmentId}`, {
+                    method: 'DELETE',
+                    headers
+                });
+                
+                if (res.ok) {
+                    showAlert('ההרשמה הוסרה');
+                    loadEnrollments();
+                } else {
+                    showAlert('שגיאה בהסרה', 'error');
+                }
+            } catch (err) {
+                showAlert('שגיאה בהסרה', 'error');
+            }
+        }
 
         // Create user
         document.getElementById('createUserBtn').addEventListener('click', async () => {
