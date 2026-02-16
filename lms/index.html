@@ -167,6 +167,12 @@
             }
         });
 
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn')?.addEventListener('click', () => {
+            const navMenu = document.querySelector('.navbar-menu');
+            navMenu.classList.toggle('open');
+        });
+
         // Load user info
         function loadUser() {
             const user = JSON.parse(localStorage.getItem('hai_lms_user') || 'null');
@@ -197,7 +203,11 @@
                                 </svg>
                             </div>
                             <h3>אין קורסים פעילים</h3>
-                            <p>עדיין לא נרשמת לקורסים. צרי קשר לרכישת קורס!</p>
+                            <p>עדיין לא נרשמת לקורסים</p>
+                            <div style="margin-top: 20px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
+                                <a href="catalog.html" style="padding: 12px 24px; background: var(--accent); color: white; border-radius: 10px; text-decoration: none; font-weight: 600;">📚 צפה בקטלוג הקורסים</a>
+                                <a href="https://wa.me/972533009742?text=היי, אשמח לשמוע על הקורסים" target="_blank" style="padding: 12px 24px; background: #25D366; color: white; border-radius: 10px; text-decoration: none; font-weight: 600;">💬 דברו איתנו</a>
+                            </div>
                         </div>
                     `;
                     return;
