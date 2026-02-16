@@ -397,8 +397,11 @@
                     select.innerHTML = '<option value="">בחר משתמש</option>' + 
                         data.users.map(u => `<option value="${u.id}">${u.name} (${u.email})</option>`).join('');
                     
+                    // Store users for reference
+                    window.usersData = data.users;
+                    
                     // Populate table
-                    document.getElementById('usersTable').innerHTML = data.users.map(u => `
+                    document.getElementById('usersTable').innerHTML = data.users.map((u, idx) => `
                         <tr>
                             <td>${u.name}</td>
                             <td>${u.email}</td>
@@ -406,7 +409,7 @@
                             <td>${u.xp || 0}</td>
                             <td>${formatDate(u.created_at)}</td>
                             <td>
-                                ${u.role !== 'admin' ? `<button onclick="deleteUser('${u.id}', '${u.name}')" class="btn-delete">🗑️</button>` : ''}
+                                ${u.role !== 'admin' ? `<button onclick="deleteUserByIndex(${idx})" class="btn-delete">🗑️</button>` : ''}
                             </td>
                         </tr>
                     `).join('');
@@ -439,15 +442,18 @@
                 const data = await res.json();
                 
                 if (data.enrollments) {
+                    // Store enrollments for reference
+                    window.enrollmentsData = data.enrollments;
+                    
                     document.getElementById('enrollmentsTable').innerHTML = data.enrollments.length 
-                        ? data.enrollments.map(e => `
+                        ? data.enrollments.map((e, idx) => `
                             <tr>
                                 <td>${e.user_name}</td>
                                 <td>${e.user_email}</td>
                                 <td>${e.course_title}</td>
                                 <td><span class="badge badge-active">${e.status}</span></td>
                                 <td>${formatDate(e.enrolled_at)}</td>
-                                <td><button onclick="deleteEnrollment('${e.id}', '${e.user_name}', '${e.course_title}')" class="btn-delete">🗑️</button></td>
+                                <td><button onclick="deleteEnrollmentByIndex(${idx})" class="btn-delete">🗑️</button></td>
                             </tr>
                         `).join('')
                         : '<tr><td colspan="6" style="text-align: center; color: var(--text-muted);">אין הרשמות</td></tr>';
@@ -512,18 +518,21 @@
             });
         });
 
-        // Delete user
-        async function deleteUser(userId, userName) {
-            if (!confirm(`למחוק את המשתמש "${userName}"?`)) return;
+        // Delete user by index
+        async function deleteUserByIndex(idx) {
+            const u = window.usersData[idx];
+            if (!u) return;
+            
+            if (!confirm(`למחוק את המשתמש "${u.name}"?`)) return;
             
             try {
-                const res = await fetch(`/lms/api/admin/users/${userId}`, {
+                const res = await fetch(`/lms/api/admin/users/${u.id}`, {
                     method: 'DELETE',
                     headers
                 });
                 
                 if (res.ok) {
-                    showAlert(`המשתמש ${userName} נמחק`);
+                    showAlert(`המשתמש ${u.name} נמחק`);
                     loadUsers();
                     loadEnrollments();
                 } else {
@@ -531,16 +540,20 @@
                     showAlert(data.error || 'שגיאה במחיקה', 'error');
                 }
             } catch (err) {
+                console.error('Delete error:', err);
                 showAlert('שגיאה במחיקה', 'error');
             }
         }
 
-        // Delete enrollment
-        async function deleteEnrollment(enrollmentId, userName, courseTitle) {
-            if (!confirm(`להסיר את "${userName}" מקורס "${courseTitle}"?`)) return;
+        // Delete enrollment by index
+        async function deleteEnrollmentByIndex(idx) {
+            const e = window.enrollmentsData[idx];
+            if (!e) return;
+            
+            if (!confirm(`להסיר את "${e.user_name}" מקורס "${e.course_title}"?`)) return;
             
             try {
-                const res = await fetch(`/lms/api/admin/enrollments/${enrollmentId}`, {
+                const res = await fetch(`/lms/api/admin/enrollments/${e.id}`, {
                     method: 'DELETE',
                     headers
                 });
@@ -549,9 +562,11 @@
                     showAlert('ההרשמה הוסרה');
                     loadEnrollments();
                 } else {
-                    showAlert('שגיאה בהסרה', 'error');
+                    const data = await res.json();
+                    showAlert(data.error || 'שגיאה בהסרה', 'error');
                 }
             } catch (err) {
+                console.error('Delete error:', err);
                 showAlert('שגיאה בהסרה', 'error');
             }
         }
