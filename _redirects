@@ -1,7 +1,7 @@
 # Redirects from old WordPress URLs to new pages
 
-/courses /pricing.html 301
-/courses/ /pricing.html 301
+/courses /#courses 301
+/courses/ /#courses 301
 /contact /index.html#contact 301
 /contact/ /index.html#contact 301
 /about /index.html#about 301
