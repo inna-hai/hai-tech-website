@@ -182,6 +182,85 @@
             }
         }
 
+        // Load full catalog when user has no courses
+        async function loadCatalog(grid) {
+            try {
+                const response = await fetch('/lms/api/courses');
+                const data = await response.json();
+                
+                if (!data.courses || data.courses.length === 0) {
+                    grid.innerHTML = `<div class="empty-state"><h3>אין קורסים זמינים כרגע</h3></div>`;
+                    return;
+                }
+                
+                // Update header to show catalog mode
+                document.querySelector('.greeting').textContent = 'הקורסים שלנו 📚';
+                document.querySelector('.subtitle').textContent = 'בחרו קורס והתחילו ללמוד!';
+                document.getElementById('activeCourses').textContent = data.courses.length;
+                document.querySelector('.stat-card:first-child p').textContent = 'קורסים זמינים';
+                
+                const courseColors = {
+                    'scratch': 'linear-gradient(135deg, #ff9f43 0%, #ee5a24 100%)',
+                    'python-minecraft': 'linear-gradient(135deg, #6ab04c 0%, #009432 100%)',
+                    'minecraft-mods': 'linear-gradient(135deg, #7bed9f 0%, #2ed573 100%)',
+                    'minecraft-js': 'linear-gradient(135deg, #ffa502 0%, #ff6348 100%)',
+                    'roblox': 'linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)',
+                    'web-dev': 'linear-gradient(135deg, #3498db 0%, #2980b9 100%)',
+                    'python-pygame': 'linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%)',
+                    'ai-web': 'linear-gradient(135deg, #1abc9c 0%, #16a085 100%)',
+                    'canva-ai': 'linear-gradient(135deg, #00d2d3 0%, #01a3a4 100%)',
+                    'ai-intro': 'linear-gradient(135deg, #5f27cd 0%, #341f97 100%)',
+                    'chatgpt-prompts': 'linear-gradient(135deg, #00b894 0%, #00cec9 100%)'
+                };
+                
+                grid.innerHTML = data.courses.map(course => `
+                    <a href="course.html?id=${course.id}" class="course-card" data-category="${course.level || 'beginner'}">
+                        <div class="course-image" style="background: ${courseColors[course.id] || 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'};">
+                            ${course.image ? `<img src="../${course.image.replace(/^\//, '')}" alt="${course.title}" onerror="this.style.display='none'">` : ''}
+                            <span class="course-badge new">זמין</span>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-category">${course.category || course.level || 'תכנות'}</div>
+                            <h3 class="course-title">${course.title}</h3>
+                            <div class="course-meta">
+                                <div class="course-meta-item">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="2" y="3" width="20" height="14" rx="2"/>
+                                        <path d="M8 21h8"/>
+                                        <path d="M12 17v4"/>
+                                    </svg>
+                                    <span>${course.lessons_count || 0} שיעורים</span>
+                                </div>
+                                <div class="course-meta-item">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <path d="M12 6v6l4 2"/>
+                                    </svg>
+                                    <span>${course.duration_hours || 0} שעות</span>
+                                </div>
+                            </div>
+                            <div class="course-footer">
+                                <div class="course-progress">
+                                    <span style="color: var(--accent-light); font-weight: 700;">₪${course.price || 290}</span>
+                                </div>
+                                <button class="continue-btn">
+                                    <span>לפרטים</span>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M15 18l-6-6 6-6"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </a>
+                `).join('');
+                
+                attachFilterEvents();
+            } catch (error) {
+                console.error('Error loading catalog:', error);
+                grid.innerHTML = `<div class="empty-state"><h3>שגיאה בטעינת הקטלוג</h3></div>`;
+            }
+        }
+
         // Load enrolled courses from API
         async function loadCourses() {
             const grid = document.getElementById('coursesGrid');
@@ -194,22 +273,8 @@
                 const data = await response.json();
                 
                 if (!data.courses || data.courses.length === 0) {
-                    grid.innerHTML = `
-                        <div class="empty-state">
-                            <div class="empty-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-                                    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
-                                </svg>
-                            </div>
-                            <h3>אין קורסים פעילים</h3>
-                            <p>עדיין לא נרשמת לקורסים</p>
-                            <div style="margin-top: 20px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
-                                <a href="catalog.html" style="padding: 12px 24px; background: var(--accent); color: white; border-radius: 10px; text-decoration: none; font-weight: 600;">📚 צפה בקטלוג הקורסים</a>
-                                <a href="https://wa.me/972533009742?text=היי, אשמח לשמוע על הקורסים" target="_blank" style="padding: 12px 24px; background: #25D366; color: white; border-radius: 10px; text-decoration: none; font-weight: 600;">💬 דברו איתנו</a>
-                            </div>
-                        </div>
-                    `;
+                    // Show full catalog when user has no courses
+                    await loadCatalog(grid);
                     return;
                 }
 
