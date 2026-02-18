@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>איך ללמד ילד תכנות? מדריך מעשי להורים | דרך ההייטק</title>
+    <meta name="description" content="איך ללמד ילד תכנות בבית? מדריך מעשי להורים - מאיפה להתחיל, איזה כלים להשתמש, ואיך לשמור על המוטיבציה. טיפים מנוסים וטעויות להימנע מהן.">
+    <meta name="keywords" content="איך ללמד ילד תכנות, ללמד ילדים תכנות בבית, הורים מלמדים תכנות, תכנות לילדים בבית, איך מתחילים עם תכנות לילדים">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hai.tech/blog/how-to-teach-kids-programming">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/jpeg" href="../images/brand/logo.jpg">
+    
+    <style>
+        .blog-hero { background: linear-gradient(135deg, #0891b2 0%, #06b6d4 50%, #22d3ee 100%); padding: 120px 20px 60px; color: white; text-align: center; }
+        .blog-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; max-width: 800px; margin: 0 auto 1rem; }
+        .blog-content { max-width: 800px; margin: 0 auto; padding: 60px 20px; font-size: 1.1rem; line-height: 1.9; color: #333; }
+        .blog-content h2 { color: #0891b2; font-size: 1.6rem; margin: 2.5rem 0 1rem; }
+        .blog-content p { margin-bottom: 1.25rem; }
+        .tip-box { background: #f0fdfa; border-radius: 12px; padding: 20px; margin: 1.5rem 0; border-right: 4px solid #14b8a6; }
+        .tip-box.warning { background: #fef3c7; border-color: #f59e0b; }
+        .tip-box h4 { margin: 0 0 0.5rem; display: flex; align-items: center; gap: 10px; }
+        .highlight-box { background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%); border-right: 4px solid #06b6d4; padding: 25px; border-radius: 12px; margin: 2rem 0; }
+        .checklist { background: #f8fafc; border-radius: 12px; padding: 25px; margin: 2rem 0; }
+        .checklist li { margin-bottom: 1rem; list-style: none; padding-right: 30px; position: relative; }
+        .checklist li::before { content: "✓"; position: absolute; right: 0; color: #22c55e; font-weight: bold; }
+        .cta-section { background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%); color: white; padding: 50px 20px; text-align: center; border-radius: 16px; margin: 3rem 0; }
+        .cta-section h2 { color: white; }
+        .cta-section .btn { display: inline-block; background: white; color: #0891b2; padding: 15px 35px; border-radius: 30px; text-decoration: none; font-weight: 700; margin-top: 1rem; }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="/" class="logo"><img src="../images/brand/logo-haitech-transparent.png" alt="דרך ההייטק" height="45"></a>
+            <div class="nav-links">
+                <a href="/#courses">קורסים</a>
+                <a href="/pricing.html">מחירון</a>
+                <a href="/blog.html">בלוג</a>
+                <a href="/#contact" class="btn-nav">צרו קשר</a>
+            </div>
+        </div>
+    </nav>
+
+    <article>
+        <header class="blog-hero">
+            <h1>👨‍👩‍👧 איך ללמד ילד תכנות?<br>מדריך מעשי להורים</h1>
+            <p>📅 פברואר 2026 • ⏱️ 8 דקות קריאה</p>
+        </header>
+
+        <div class="blog-content">
+            <p>
+                <strong>לא צריך להיות מתכנת כדי ללמד ילד תכנות.</strong> בעידן של היום יש כלים, קורסים ומשאבים שמאפשרים לכל הורה לעזור לילד להתחיל - גם בלי שום ידע קודם.
+            </p>
+
+            <h2>לפני שמתחילים: 3 שאלות חשובות</h2>
+
+            <h3>1. מה הילד אוהב?</h3>
+            <p>אוהב מיינקראפט? יש קורסי תכנות במיינקראפט. אוהב רובלוקס? יש גם לזה. אוהב ליצור סרטונים? אולי עריכת וידאו עם קוד. <strong>הלמידה הטובה ביותר מתחילה ממה שהילד כבר אוהב.</strong></p>
+
+            <h3>2. מה הגיל?</h3>
+            <ul>
+                <li><strong>7-9:</strong> סקראץ', מיינקראפט בסיסי - בלוקים ויזואליים</li>
+                <li><strong>10-12:</strong> JavaScript, Python בסיסי, Lua (רובלוקס)</li>
+                <li><strong>13+:</strong> שפות מתקדמות, פיתוח אתרים, AI</li>
+            </ul>
+
+            <h3>3. מה המטרה?</h3>
+            <p>כיף והתנסות? קריירה עתידית? פיתוח חשיבה לוגית? המטרה משפיעה על הגישה.</p>
+
+            <h2>5 צעדים להתחלה</h2>
+
+            <div class="tip-box">
+                <h4>🎯 צעד 1: התחילו עם משחק</h4>
+                <p>לא "שיעור" - משחק. Code.org, Scratch, או אפילו מיינקראפט. תנו לילד לגלות לבד, לנסות, להיכשל ולהצליח.</p>
+            </div>
+
+            <div class="tip-box">
+                <h4>⏰ צעד 2: קבעו זמן קבוע</h4>
+                <p>20-30 דקות, 2-3 פעמים בשבוע. עדיף קצר וקבוע מאשר ארוך ולא סדיר. זו צריכה להיות "שעת כיף", לא עוד שיעורי בית.</p>
+            </div>
+
+            <div class="tip-box">
+                <h4>🎉 צעד 3: חגגו הצלחות קטנות</h4>
+                <p>הילד הצליח להזיז דמות? מדהים! יצר משחק פשוט? גאונות! כל צעד קטן שווה חגיגה - זה מה ששומר על המוטיבציה.</p>
+            </div>
+
+            <div class="tip-box">
+                <h4>🤔 צעד 4: תהיו סקרנים יחד</h4>
+                <p>לא יודעים משהו? תגידו "בוא נגלה יחד". זה בסדר לא לדעת! לחפש ביחד, לנסות ביחד - זה חלק מהלמידה.</p>
+            </div>
+
+            <div class="tip-box">
+                <h4>🚀 צעד 5: תנו לילד להוביל</h4>
+                <p>ברגע שהילד מתחיל "לתפוס" - תנו לו לרוץ. לבחור פרויקטים, להחליט מה לבנות. התפקיד שלכם: לעודד ולסייע כשצריך.</p>
+            </div>
+
+            <h2>7 טעויות נפוצות (וכיצד להימנע מהן)</h2>
+
+            <div class="tip-box warning">
+                <h4>⚠️ 1. לדחוף חזק מדי</h4>
+                <p>"למה אתה לא מתקדם?" "תתאמץ יותר!" - לחץ הורג את החשק. תנו לילד ללמוד בקצב שלו.</p>
+            </div>
+
+            <div class="tip-box warning">
+                <h4>⚠️ 2. להתחיל מורכב מדי</h4>
+                <p>לא מתחילים עם Python אם הילד בן 7. לא מתחילים עם אפליקציה מורכבת. קטן → פשוט → הצלחה → ביטחון.</p>
+            </div>
+
+            <div class="tip-box warning">
+                <h4>⚠️ 3. להשוות לילדים אחרים</h4>
+                <p>"הבן של השכנים כבר בונה אפליקציות" - כל ילד מתקדם בקצב שלו. השוואה רק פוגעת.</p>
+            </div>
+
+            <div class="tip-box warning">
+                <h4>⚠️ 4. לתת את כל התשובות</h4>
+                <p>כשהילד תקוע - הכי קל לפתור במקומו. אבל ככה הוא לא לומד. עדיף: "מה כבר ניסית?" "איפה אפשר לחפש?"</p>
+            </div>
+
+            <div class="tip-box warning">
+                <h4>⚠️ 5. לוותר אחרי כישלון ראשון</h4>
+                <p>הילד לא אהב Scratch? אולי יאהב מיינקראפט. לא אהב את זה? אולי רובלוקס. יש הרבה דרכים - אל תוותרו מהר.</p>
+            </div>
+
+            <h2>משאבים חינמיים להתחלה</h2>
+
+            <div class="checklist">
+                <ul>
+                    <li><strong>Code.org</strong> - קורסים חינמיים בעברית לכל גיל</li>
+                    <li><strong>Scratch</strong> - יצירת משחקים עם בלוקים (בעברית)</li>
+                    <li><strong>Khan Academy</strong> - קורסי תכנות חינמיים</li>
+                    <li><strong>YouTube</strong> - אלפי טוטוריאלים לכל נושא</li>
+                    <li><strong>Hour of Code</strong> - שעת קוד למתחילים</li>
+                </ul>
+            </div>
+
+            <h2>מתי לשקול קורס מקצועי?</h2>
+            <p>למידה עצמית מעולה, אבל לפעמים קורס מובנה עדיף:</p>
+            <ul>
+                <li>✅ הילד התחיל ורוצה להתקדם יותר</li>
+                <li>✅ אתם לא יודעים איך לעזור</li>
+                <li>✅ הילד צריך מסגרת ומוטיבציה חיצונית</li>
+                <li>✅ רוצים למידה שיטתית ומסודרת</li>
+                <li>✅ הילד רוצה ללמוד עם ילדים נוספים</li>
+            </ul>
+
+            <div class="highlight-box">
+                <h3>💡 הסוד הגדול</h3>
+                <p>הדבר הכי חשוב שהורה יכול לעשות? <strong>להראות עניין אמיתי.</strong> לשאול "מה בנית היום?", להתפעל מהפרויקטים, לשתף בהצלחות. זה שווה יותר מכל שיעור.</p>
+            </div>
+
+            <div class="cta-section">
+                <h2>👨‍👩‍👧 רוצים עזרה מקצועית?</h2>
+                <p>קורסי תכנות לילדים עם מדריכים מנוסים - אתם יכולים להירגע!</p>
+                <a href="/#contact" class="btn">לפרטים נוספים</a>
+            </div>
+        </div>
+    </article>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section"><h4>דרך ההייטק</h4><p>בית הספר לטכנולוגיה, תכנות ובינה מלאכותית לילדים ונוער</p></div>
+        </div>
+        <div class="footer-bottom"><p>© 2026 דרך ההייטק. כל הזכויות שמורות.</p></div>
+    </footer>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

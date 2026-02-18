@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>פיתוח בעזרת AI | איך לבנות אפליקציות עם בינה מלאכותית | דרך ההייטק</title>
+    <meta name="description" content="פיתוח בעזרת AI - איך ילדים ונוער יכולים לבנות אפליקציות, משחקים ואתרים בעזרת ChatGPT, Copilot וכלי AI נוספים. מדריך מעשי לפיתוח מואץ.">
+    <meta name="keywords" content="פיתוח בעזרת AI, בניית אפליקציות עם AI, ChatGPT לתכנות, GitHub Copilot, AI development, תכנות עם בינה מלאכותית">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hai.tech/blog/building-apps-with-ai">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/jpeg" href="../images/brand/logo.jpg">
+    
+    <style>
+        .blog-hero { background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 50%, #8b5cf6 100%); padding: 120px 20px 60px; color: white; text-align: center; }
+        .blog-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; max-width: 800px; margin: 0 auto 1rem; }
+        .blog-content { max-width: 800px; margin: 0 auto; padding: 60px 20px; font-size: 1.1rem; line-height: 1.9; color: #333; }
+        .blog-content h2 { color: #6366f1; font-size: 1.6rem; margin: 2.5rem 0 1rem; }
+        .blog-content p { margin-bottom: 1.25rem; }
+        .tool-card { background: white; border-radius: 12px; padding: 25px; margin: 1.5rem 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: flex; gap: 20px; align-items: flex-start; }
+        .tool-card .icon { font-size: 2.5rem; }
+        .tool-card h3 { margin: 0 0 0.5rem; color: #6366f1; }
+        .code-example { background: #1e1e1e; color: #d4d4d4; padding: 20px; border-radius: 12px; margin: 1.5rem 0; direction: ltr; text-align: left; font-family: monospace; font-size: 0.9rem; }
+        .prompt-box { background: #f0fdf4; border: 2px solid #86efac; border-radius: 12px; padding: 20px; margin: 1.5rem 0; }
+        .prompt-box .label { color: #16a34a; font-weight: 700; margin-bottom: 0.5rem; }
+        .highlight-box { background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%); border-right: 4px solid #6366f1; padding: 25px; border-radius: 12px; margin: 2rem 0; }
+        .workflow { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 2rem 0; }
+        .workflow-step { background: #f8fafc; padding: 20px; border-radius: 12px; text-align: center; flex: 1; min-width: 150px; }
+        .workflow-step .number { background: #6366f1; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-weight: 700; }
+        .cta-section { background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%); color: white; padding: 50px 20px; text-align: center; border-radius: 16px; margin: 3rem 0; }
+        .cta-section h2 { color: white; }
+        .cta-section .btn { display: inline-block; background: white; color: #6366f1; padding: 15px 35px; border-radius: 30px; text-decoration: none; font-weight: 700; margin-top: 1rem; }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="/" class="logo"><img src="../images/brand/logo-haitech-transparent.png" alt="דרך ההייטק" height="45"></a>
+            <div class="nav-links">
+                <a href="/#courses">קורסים</a>
+                <a href="/pricing.html">מחירון</a>
+                <a href="/blog.html">בלוג</a>
+                <a href="/#contact" class="btn-nav">צרו קשר</a>
+            </div>
+        </div>
+    </nav>
+
+    <article>
+        <header class="blog-hero">
+            <h1>⚡ פיתוח בעזרת AI<br>איך לבנות אפליקציות מהר יותר מאי פעם</h1>
+            <p>📅 פברואר 2026 • ⏱️ 7 דקות קריאה</p>
+        </header>
+
+        <div class="blog-content">
+            <p>
+                <strong>מתכנתים מקצועיים כבר משתמשים ב-AI כדי לכתוב קוד מהר יותר.</strong> אבל מה עם ילדים שרק מתחילים? AI יכול להיות המורה הפרטי הכי טוב שלהם - אם משתמשים בו נכון.
+            </p>
+
+            <h2>הכלים שמשנים את המשחק</h2>
+
+            <div class="tool-card">
+                <div class="icon">💬</div>
+                <div>
+                    <h3>ChatGPT / Claude</h3>
+                    <p>שואלים שאלות, מקבלים הסברים, ומבקשים דוגמאות קוד. כמו מורה פרטי זמין 24/7.</p>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="icon">🤖</div>
+                <div>
+                    <h3>GitHub Copilot</h3>
+                    <p>AI שיושב בתוך עורך הקוד ומציע השלמות בזמן אמת. כמו חבר לתכנות שתמיד יש לו רעיונות.</p>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="icon">🔮</div>
+                <div>
+                    <h3>Replit AI / Cursor</h3>
+                    <p>סביבות פיתוח עם AI מובנה - אפשר לתאר מה רוצים ולקבל קוד עובד.</p>
+                </div>
+            </div>
+
+            <h2>איך זה עובד בפועל?</h2>
+
+            <div class="workflow">
+                <div class="workflow-step">
+                    <div class="number">1</div>
+                    <strong>רעיון</strong>
+                    <p>מה אני רוצה לבנות?</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="number">2</div>
+                    <strong>תיאור</strong>
+                    <p>מסבירים ל-AI מה צריך</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="number">3</div>
+                    <strong>קוד</strong>
+                    <p>AI כותב גרסה ראשונה</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="number">4</div>
+                    <strong>שיפור</strong>
+                    <p>מתקנים, משפרים, לומדים</p>
+                </div>
+            </div>
+
+            <h2>דוגמה: בניית משחק ניחושים</h2>
+
+            <div class="prompt-box">
+                <div class="label">🎯 הפרומפט:</div>
+                <p>"תכתוב לי משחק ניחוש מספרים ב-Python. המחשב בוחר מספר בין 1 ל-100 והשחקן צריך לנחש. תן רמזים 'גבוה יותר' או 'נמוך יותר'."</p>
+            </div>
+
+            <div class="code-example">
+import random<br><br>
+number = random.randint(1, 100)<br>
+attempts = 0<br><br>
+print("🎮 ברוכים הבאים למשחק הניחושים!")<br>
+print("ניחשתי מספר בין 1 ל-100. נסו לגלות אותו!")<br><br>
+while True:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;guess = int(input("הניחוש שלכם: "))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;attempts += 1<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;if guess < number:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("📈 גבוה יותר!")<br>
+&nbsp;&nbsp;&nbsp;&nbsp;elif guess > number:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("📉 נמוך יותר!")<br>
+&nbsp;&nbsp;&nbsp;&nbsp;else:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(f"🎉 מדהים! ניחשתם ב-{attempts} ניסיונות!")<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break
+            </div>
+
+            <p>וואו! קיבלנו משחק עובד. עכשיו הילד יכול:</p>
+            <ul>
+                <li>להריץ את הקוד ולשחק</li>
+                <li>לשאול את AI מה כל שורה עושה</li>
+                <li>לבקש לשפר (להוסיף צבעים, רמות קושי, טבלת שיאים)</li>
+            </ul>
+
+            <div class="highlight-box">
+                <h3>⚠️ חשוב: AI עוזר, לא מחליף</h3>
+                <p>המטרה היא לא ש-AI יכתוב הכל - אלא שהילד ילמד דרכו. לשאול "למה?" ו"איך?" על כל קטע קוד. להבין, לא רק להעתיק.</p>
+            </div>
+
+            <h2>טיפים לעבודה נכונה עם AI</h2>
+
+            <h3>1. 📝 תהיו ספציפיים</h3>
+            <p>במקום "תכתוב לי משחק" → "תכתוב משחק פלטפורמה ב-Python עם Pygame, דמות שקופצת ואוספת מטבעות"</p>
+
+            <h3>2. 🔍 תבקשו הסברים</h3>
+            <p>אחרי שמקבלים קוד, לשאול: "תסביר לי שורה שורה מה קורה פה"</p>
+
+            <h3>3. 🧪 תנסו לשנות</h3>
+            <p>לקחת את הקוד, לשנות משהו קטן, לראות מה קורה. זו הדרך ללמוד באמת.</p>
+
+            <h3>4. 🐛 תתמודדו עם באגים</h3>
+            <p>כשמשהו לא עובד - להדביק את השגיאה ולשאול AI מה לא בסדר.</p>
+
+            <h2>מה ילדים יכולים לבנות עם AI?</h2>
+            <ul>
+                <li>🎮 משחקים - מפשוטים עד מורכבים</li>
+                <li>🌐 אתרים אישיים ובלוגים</li>
+                <li>🤖 בוטים לדיסקורד או טלגרם</li>
+                <li>📱 אפליקציות פשוטות</li>
+                <li>🔧 כלי עזר (מחשבונים, ממירים)</li>
+                <li>🎨 פרויקטי אמנות דיגיטלית</li>
+            </ul>
+
+            <h2>האם זה "רמאות"?</h2>
+            <p>
+                שאלה טובה! התשובה: לא, אם משתמשים נכון. מתכנתים מקצועיים משתמשים ב-AI כל יום. החוכמה היא לא לכתוב הכל לבד - אלא להבין מה כותבים ולדעת לשנות ולשפר.
+            </p>
+            <p>
+                ילד ש"מעתיק" קוד מ-AI בלי להבין לא ילמד כלום. ילד שמשתמש ב-AI ככלי, שואל שאלות, ומשפר - ילמד מהר יותר מאי פעם.
+            </p>
+
+            <div class="cta-section">
+                <h2>⚡ למדו לבנות עם AI</h2>
+                <p>קורסי תכנות שמשלבים AI - הדרך המהירה ללמוד!</p>
+                <a href="/#contact" class="btn">לפרטים נוספים</a>
+            </div>
+        </div>
+    </article>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section"><h4>דרך ההייטק</h4><p>בית הספר לטכנולוגיה, תכנות ובינה מלאכותית לילדים ונוער</p></div>
+        </div>
+        <div class="footer-bottom"><p>© 2026 דרך ההייטק. כל הזכויות שמורות.</p></div>
+    </footer>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
