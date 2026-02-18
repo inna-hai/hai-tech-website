@@ -121,11 +121,44 @@
         }
         
         .blog-card-header {
-            padding: 24px 28px;
             position: relative;
             display: flex;
             align-items: center;
             gap: 16px;
+        }
+        
+        .blog-card-header.has-image {
+            padding: 0;
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .blog-card-header.has-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .blog-card:hover .blog-card-header.has-image img {
+            transform: scale(1.05);
+        }
+        
+        .blog-card-header.has-image .blog-card-meta {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            display: flex;
+            gap: 8px;
+        }
+        
+        .blog-card-header.has-image .blog-card-category {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(4px);
+        }
+        
+        .blog-card-header:not(.has-image) {
+            padding: 24px 28px;
         }
         
         .blog-card-icon {
@@ -378,10 +411,8 @@
                 
                 <!-- 1. Featured Post - מורים דיגיטליים -->
                 <article class="blog-card featured">
-                    <div class="blog-card-header">
-                        <div class="blog-card-icon">
-                            <i data-lucide="user-cog"></i>
-                        </div>
+                    <div class="blog-card-header has-image">
+                        <img src="blog/images/ai-digital-teachers.jpg" alt="" loading="lazy">
                         <div class="blog-card-meta">
                             <span class="blog-card-category">למידה מותאמת אישית</span>
                             <span class="blog-card-date">חדש!</span>
@@ -399,10 +430,8 @@
                 
                 <!-- NEW: הכשרת AI למורים -->
                 <article class="blog-card">
-                    <div class="blog-card-header">
-                        <div class="blog-card-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
-                            <i data-lucide="graduation-cap"></i>
-                        </div>
+                    <div class="blog-card-header has-image">
+                        <img src="blog/images/ai-training-for-teachers.jpg" alt="" loading="lazy">
                         <div class="blog-card-meta">
                             <span class="blog-card-category">לצוותי חינוך</span>
                             <span class="blog-card-date">חדש!</span>
@@ -420,10 +449,8 @@
 
                 <!-- NEW: למה ללמד ילדים תכנות -->
                 <article class="blog-card">
-                    <div class="blog-card-header">
-                        <div class="blog-card-icon green">
-                            <i data-lucide="rocket"></i>
-                        </div>
+                    <div class="blog-card-header has-image">
+                        <img src="blog/images/why-teach-kids-programming.jpg" alt="" loading="lazy">
                         <div class="blog-card-meta">
                             <span class="blog-card-category">מדריך להורים</span>
                             <span class="blog-card-date">חדש!</span>
@@ -441,10 +468,8 @@
                 
                 <!-- NEW: באיזה גיל להתחיל -->
                 <article class="blog-card">
-                    <div class="blog-card-header">
-                        <div class="blog-card-icon teal">
-                            <i data-lucide="calendar"></i>
-                        </div>
+                    <div class="blog-card-header has-image">
+                        <img src="blog/images/best-age-to-learn-programming.jpg" alt="" loading="lazy">
                         <div class="blog-card-meta">
                             <span class="blog-card-category">מדריך גילאים</span>
                             <span class="blog-card-date">חדש!</span>
@@ -462,10 +487,8 @@
                 
                 <!-- NEW: מיינקראפט ותכנות -->
                 <article class="blog-card">
-                    <div class="blog-card-header">
-                        <div class="blog-card-icon orange">
-                            <i data-lucide="gamepad-2"></i>
-                        </div>
+                    <div class="blog-card-header has-image">
+                        <img src="blog/images/minecraft-programming-for-kids.jpg" alt="" loading="lazy">
                         <div class="blog-card-meta">
                             <span class="blog-card-category">מיינקראפט</span>
                             <span class="blog-card-date">חדש!</span>
@@ -483,10 +506,8 @@
 
                 <!-- NEW: רובלוקס לילדים -->
                 <article class="blog-card">
-                    <div class="blog-card-header">
-                        <div class="blog-card-icon red">
-                            <i data-lucide="gamepad"></i>
-                        </div>
+                    <div class="blog-card-header has-image">
+                        <img src="blog/images/roblox-programming-for-kids.jpg" alt="" loading="lazy">
                         <div class="blog-card-meta">
                             <span class="blog-card-category">רובלוקס</span>
                             <span class="blog-card-date">חדש!</span>
@@ -504,10 +525,8 @@
 
                 <!-- NEW: סקראץ' לילדים -->
                 <article class="blog-card">
-                    <div class="blog-card-header">
-                        <div class="blog-card-icon orange">
-                            <i data-lucide="puzzle"></i>
-                        </div>
+                    <div class="blog-card-header has-image">
+                        <img src="blog/images/scratch-for-kids.jpg" alt="" loading="lazy">
                         <div class="blog-card-meta">
                             <span class="blog-card-category">סקראץ'</span>
                             <span class="blog-card-date">חדש!</span>
@@ -525,10 +544,8 @@
 
                 <!-- NEW: Python לילדים -->
                 <article class="blog-card">
-                    <div class="blog-card-header">
-                        <div class="blog-card-icon blue">
-                            <i data-lucide="code"></i>
-                        </div>
+                    <div class="blog-card-header has-image">
+                        <img src="blog/images/python-for-kids.jpg" alt="" loading="lazy">
                         <div class="blog-card-meta">
                             <span class="blog-card-category">Python</span>
                             <span class="blog-card-date">חדש!</span>
@@ -546,10 +563,8 @@
 
                 <!-- NEW: AI לילדים -->
                 <article class="blog-card">
-                    <div class="blog-card-header">
-                        <div class="blog-card-icon purple">
-                            <i data-lucide="bot"></i>
-                        </div>
+                    <div class="blog-card-header has-image">
+                        <img src="blog/images/ai-for-kids.jpg" alt="" loading="lazy">
                         <div class="blog-card-meta">
                             <span class="blog-card-category">בינה מלאכותית</span>
                             <span class="blog-card-date">חדש!</span>
@@ -567,10 +582,8 @@
 
                 <!-- NEW: קייטנת תכנות -->
                 <article class="blog-card">
-                    <div class="blog-card-header">
-                        <div class="blog-card-icon pink">
-                            <i data-lucide="sun"></i>
-                        </div>
+                    <div class="blog-card-header has-image">
+                        <img src="blog/images/summer-coding-camp.jpg" alt="" loading="lazy">
                         <div class="blog-card-meta">
                             <span class="blog-card-category">קייטנות</span>
                             <span class="blog-card-date">חדש!</span>
@@ -588,10 +601,8 @@
 
                 <!-- NEW: יזמות בעידן AI -->
                 <article class="blog-card">
-                    <div class="blog-card-header">
-                        <div class="blog-card-icon green">
-                            <i data-lucide="rocket"></i>
-                        </div>
+                    <div class="blog-card-header has-image">
+                        <img src="blog/images/kids-entrepreneurship-ai-era.jpg" alt="" loading="lazy">
                         <div class="blog-card-meta">
                             <span class="blog-card-category">יזמות</span>
                             <span class="blog-card-date">חדש!</span>
@@ -609,10 +620,8 @@
 
                 <!-- NEW: פיתוח בעזרת AI -->
                 <article class="blog-card">
-                    <div class="blog-card-header">
-                        <div class="blog-card-icon indigo">
-                            <i data-lucide="sparkles"></i>
-                        </div>
+                    <div class="blog-card-header has-image">
+                        <img src="blog/images/building-apps-with-ai.jpg" alt="" loading="lazy">
                         <div class="blog-card-meta">
                             <span class="blog-card-category">AI Development</span>
                             <span class="blog-card-date">חדש!</span>
@@ -630,10 +639,8 @@
 
                 <!-- NEW: פיתוח משחקים -->
                 <article class="blog-card">
-                    <div class="blog-card-header">
-                        <div class="blog-card-icon red">
-                            <i data-lucide="joystick"></i>
-                        </div>
+                    <div class="blog-card-header has-image">
+                        <img src="blog/images/game-development-for-kids.jpg" alt="" loading="lazy">
                         <div class="blog-card-meta">
                             <span class="blog-card-category">פיתוח משחקים</span>
                             <span class="blog-card-date">חדש!</span>
@@ -651,10 +658,8 @@
 
                 <!-- NEW: איך ללמד ילד תכנות -->
                 <article class="blog-card">
-                    <div class="blog-card-header">
-                        <div class="blog-card-icon teal">
-                            <i data-lucide="users"></i>
-                        </div>
+                    <div class="blog-card-header has-image">
+                        <img src="blog/images/how-to-teach-kids-programming.jpg" alt="" loading="lazy">
                         <div class="blog-card-meta">
                             <span class="blog-card-category">מדריך להורים</span>
                             <span class="blog-card-date">חדש!</span>
@@ -672,10 +677,8 @@
                 
                 <!-- 2. AI בחינוך מיוחד: אבחון דיסלקסיה -->
                 <article class="blog-card">
-                    <div class="blog-card-header">
-                        <div class="blog-card-icon purple">
-                            <i data-lucide="brain"></i>
-                        </div>
+                    <div class="blog-card-header has-image">
+                        <img src="blog/images/ai-dyslexia.jpg" alt="" loading="lazy">
                         <div class="blog-card-meta">
                             <span class="blog-card-category">AI בחינוך מיוחד</span>
                         </div>
@@ -692,10 +695,8 @@
                 
                 <!-- 2. AI בהערכת הלמידה -->
                 <article class="blog-card">
-                    <div class="blog-card-header">
-                        <div class="blog-card-icon blue">
-                            <i data-lucide="clipboard-check"></i>
-                        </div>
+                    <div class="blog-card-header has-image">
+                        <img src="blog/images/ai-exam-evaluation.jpg" alt="" loading="lazy">
                         <div class="blog-card-meta">
                             <span class="blog-card-category">הערכה ומבחנים</span>
                         </div>
@@ -712,10 +713,8 @@
                 
                 <!-- 3. מערכות AI לימוד אוטונומיות -->
                 <article class="blog-card">
-                    <div class="blog-card-header">
-                        <div class="blog-card-icon green">
-                            <i data-lucide="bot"></i>
-                        </div>
+                    <div class="blog-card-header has-image">
+                        <img src="blog/images/autonomous-ai-learning.jpg" alt="" loading="lazy">
                         <div class="blog-card-meta">
                             <span class="blog-card-category">מערכות לימוד</span>
                         </div>
@@ -732,10 +731,8 @@
                 
                 <!-- 4. GPT-4 Vision בחינוך -->
                 <article class="blog-card">
-                    <div class="blog-card-header">
-                        <div class="blog-card-icon orange">
-                            <i data-lucide="eye"></i>
-                        </div>
+                    <div class="blog-card-header has-image">
+                        <img src="blog/images/gpt4-vision-education.jpg" alt="" loading="lazy">
                         <div class="blog-card-meta">
                             <span class="blog-card-category">GPT-4 Vision</span>
                         </div>
@@ -752,10 +749,8 @@
                 
                 <!-- 5. למידה מותאמת אישית -->
                 <article class="blog-card">
-                    <div class="blog-card-header">
-                        <div class="blog-card-icon pink">
-                            <i data-lucide="user-cog"></i>
-                        </div>
+                    <div class="blog-card-header has-image">
+                        <img src="blog/images/personalized-learning-ai.jpg" alt="" loading="lazy">
                         <div class="blog-card-meta">
                             <span class="blog-card-category">למידה מותאמת</span>
                         </div>
@@ -772,10 +767,8 @@
                 
                 <!-- 6. שיפור 34% בהישגים -->
                 <article class="blog-card">
-                    <div class="blog-card-header">
-                        <div class="blog-card-icon teal">
-                            <i data-lucide="trending-up"></i>
-                        </div>
+                    <div class="blog-card-header has-image">
+                        <img src="blog/images/stanford-34-improvement.jpg" alt="" loading="lazy">
                         <div class="blog-card-meta">
                             <span class="blog-card-category">מחקר</span>
                         </div>
@@ -792,10 +785,8 @@
                 
                 <!-- 7. זיהוי סגנון למידה -->
                 <article class="blog-card">
-                    <div class="blog-card-header">
-                        <div class="blog-card-icon indigo">
-                            <i data-lucide="scan-face"></i>
-                        </div>
+                    <div class="blog-card-header has-image">
+                        <img src="blog/images/learning-style-detection.jpg" alt="" loading="lazy">
                         <div class="blog-card-meta">
                             <span class="blog-card-category">זיהוי סגנון למידה</span>
                         </div>
@@ -812,10 +803,8 @@
                 
                 <!-- 8. עלמה: דיסלקסיה וקוד -->
                 <article class="blog-card">
-                    <div class="blog-card-header">
-                        <div class="blog-card-icon purple">
-                            <i data-lucide="heart"></i>
-                        </div>
+                    <div class="blog-card-header has-image">
+                        <img src="blog/images/alma-dyslexia-coding.jpg" alt="" loading="lazy">
                         <div class="blog-card-meta">
                             <span class="blog-card-category">סיפור השראה</span>
                         </div>
@@ -832,10 +821,8 @@
                 
                 <!-- 9. פלטפורמות AI בעברית -->
                 <article class="blog-card">
-                    <div class="blog-card-header">
-                        <div class="blog-card-icon blue">
-                            <i data-lucide="languages"></i>
-                        </div>
+                    <div class="blog-card-header has-image">
+                        <img src="blog/images/hebrew-ai-platforms.jpg" alt="" loading="lazy">
                         <div class="blog-card-meta">
                             <span class="blog-card-category">AI בעברית</span>
                         </div>
@@ -852,10 +839,8 @@
                 
                 <!-- 10. הערכה דינמית -->
                 <article class="blog-card">
-                    <div class="blog-card-header">
-                        <div class="blog-card-icon red">
-                            <i data-lucide="activity"></i>
-                        </div>
+                    <div class="blog-card-header has-image">
+                        <img src="blog/images/dynamic-assessment.jpg" alt="" loading="lazy">
                         <div class="blog-card-meta">
                             <span class="blog-card-category">הערכה דינמית</span>
                         </div>
@@ -872,10 +857,8 @@
                 
                 <!-- 11. AI במתמטיקה -->
                 <article class="blog-card">
-                    <div class="blog-card-header">
-                        <div class="blog-card-icon green">
-                            <i data-lucide="calculator"></i>
-                        </div>
+                    <div class="blog-card-header has-image">
+                        <img src="blog/images/ai-math-improvement.jpg" alt="" loading="lazy">
                         <div class="blog-card-meta">
                             <span class="blog-card-category">מתמטיקה</span>
                         </div>
@@ -892,10 +875,8 @@
                 
                 <!-- 12. ילד מפתח אפליקציה -->
                 <article class="blog-card">
-                    <div class="blog-card-header">
-                        <div class="blog-card-icon orange">
-                            <i data-lucide="smartphone"></i>
-                        </div>
+                    <div class="blog-card-header has-image">
+                        <img src="blog/images/kid-builds-app.jpg" alt="" loading="lazy">
                         <div class="blog-card-meta">
                             <span class="blog-card-category">סיפור השראה</span>
                         </div>
@@ -912,10 +893,8 @@
                 
                 <!-- 13. רובוטים חינוכיים -->
                 <article class="blog-card">
-                    <div class="blog-card-header">
-                        <div class="blog-card-icon teal">
-                            <i data-lucide="cpu"></i>
-                        </div>
+                    <div class="blog-card-header has-image">
+                        <img src="blog/images/educational-robots.jpg" alt="" loading="lazy">
                         <div class="blog-card-meta">
                             <span class="blog-card-category">רובוטיקה</span>
                         </div>
@@ -932,10 +911,8 @@
                 
                 <!-- 14. Khanmigo Video Tutor -->
                 <article class="blog-card">
-                    <div class="blog-card-header">
-                        <div class="blog-card-icon pink">
-                            <i data-lucide="video"></i>
-                        </div>
+                    <div class="blog-card-header has-image">
+                        <img src="blog/images/khanmigo-video-tutor.jpg" alt="" loading="lazy">
                         <div class="blog-card-meta">
                             <span class="blog-card-category">כלי AI</span>
                         </div>
@@ -952,10 +929,8 @@
                 
                 <!-- 15. מבחנים אדפטיביים -->
                 <article class="blog-card">
-                    <div class="blog-card-header">
-                        <div class="blog-card-icon indigo">
-                            <i data-lucide="target"></i>
-                        </div>
+                    <div class="blog-card-header has-image">
+                        <img src="blog/images/adaptive-testing.jpg" alt="" loading="lazy">
                         <div class="blog-card-meta">
                             <span class="blog-card-category">הערכה</span>
                         </div>
@@ -972,10 +947,8 @@
                 
                 <!-- 16. 78% מורים ב-AI -->
                 <article class="blog-card">
-                    <div class="blog-card-header">
-                        <div class="blog-card-icon blue">
-                            <i data-lucide="users"></i>
-                        </div>
+                    <div class="blog-card-header has-image">
+                        <img src="blog/images/israeli-teachers-ai.jpg" alt="" loading="lazy">
                         <div class="blog-card-meta">
                             <span class="blog-card-category">מחקר ישראלי</span>
                         </div>
@@ -992,10 +965,8 @@
                 
                 <!-- 17. ChatGPT וכתיבה -->
                 <article class="blog-card">
-                    <div class="blog-card-header">
-                        <div class="blog-card-icon purple">
-                            <i data-lucide="pen-tool"></i>
-                        </div>
+                    <div class="blog-card-header has-image">
+                        <img src="blog/images/chatgpt-writing.jpg" alt="" loading="lazy">
                         <div class="blog-card-meta">
                             <span class="blog-card-category">כתיבה</span>
                         </div>
@@ -1012,10 +983,8 @@
                 
                 <!-- 18. AI רגשי -->
                 <article class="blog-card">
-                    <div class="blog-card-header">
-                        <div class="blog-card-icon red">
-                            <i data-lucide="smile"></i>
-                        </div>
+                    <div class="blog-card-header has-image">
+                        <img src="blog/images/emotional-ai.jpg" alt="" loading="lazy">
                         <div class="blog-card-meta">
                             <span class="blog-card-category">רגש ולמידה</span>
                         </div>
@@ -1032,10 +1001,8 @@
                 
                 <!-- 19. מיינקראפט בחינוך -->
                 <article class="blog-card">
-                    <div class="blog-card-header">
-                        <div class="blog-card-icon green">
-                            <i data-lucide="gamepad-2"></i>
-                        </div>
+                    <div class="blog-card-header has-image">
+                        <img src="blog/images/minecraft-education-sites.jpg" alt="" loading="lazy">
                         <div class="blog-card-meta">
                             <span class="blog-card-category">למידה מבוססת משחק</span>
                         </div>
@@ -1052,10 +1019,8 @@
                 
                 <!-- 20. Tech School ומאנדיי -->
                 <article class="blog-card">
-                    <div class="blog-card-header">
-                        <div class="blog-card-icon orange">
-                            <i data-lucide="building-2"></i>
-                        </div>
+                    <div class="blog-card-header has-image">
+                        <img src="blog/images/tech-school-monday.jpg" alt="" loading="lazy">
                         <div class="blog-card-meta">
                             <span class="blog-card-category">שיתופי פעולה</span>
                         </div>
