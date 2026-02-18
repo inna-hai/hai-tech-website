@@ -1487,19 +1487,26 @@
     <style>
         /* Force UserWay to bottom-right, inside viewport */
         .userway_buttons_wrapper,
-        div[data-userway-widget] {
+        div[data-userway-widget],
+        .uwy.userway_p4,
+        .userway_p4 {
             right: 20px !important;
             left: auto !important;
             bottom: 20px !important;
             top: auto !important;
             position: fixed !important;
         }
-        /* On mobile, move UserWay widget higher to avoid overlap */
+        /* On mobile, move UserWay widget much higher to avoid overlap */
         @media (max-width: 768px) {
             .userway_buttons_wrapper,
-            div[data-userway-widget] {
-                bottom: 100px !important;
-                right: 15px !important;
+            div[data-userway-widget],
+            .uwy.userway_p4,
+            .userway_p4,
+            #userwayAccessibilityIcon,
+            .userway_buttons_wrapper > div {
+                bottom: 180px !important;
+                right: 10px !important;
+                transform: scale(0.85) !important;
             }
         }
     </style>
