@@ -510,14 +510,21 @@ const server = http.createServer((req, res) => {
         '/about': '/#about',
         '/about-4': '/#about',
         '/about-us': '/#about',
-        '/courses/קורס-למידה-עצמית-ליצירת-משחקים': '/#courses',
-        '/courses/%D7%A7%D7%95%D7%A8%D7%A1-%D7%9C%D7%9E%D7%99%D7%93%D7%94-%D7%A2%D7%A6%D7%9E%D7%99%D7%AA-%D7%9C%D7%99%D7%A6%D7%99%D7%A8%D7%AA-%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D': '/#courses'
+        '/courses/קורס-למידה-עצמית-ליצירת-משחקים': '/',
+        '/courses/%D7%A7%D7%95%D7%A8%D7%A1-%D7%9C%D7%9E%D7%99%D7%93%D7%94-%D7%A2%D7%A6%D7%9E%D7%99%D7%AA-%D7%9C%D7%99%D7%A6%D7%99%D7%A8%D7%AA-%D7%9E%D7%A9%D7%97%D7%A7%D7%99%D7%9D': '/'
     };
     
     // Check for redirects (with or without trailing slash)
     const cleanPath = pathname.endsWith('/') && pathname !== '/' ? pathname.slice(0, -1) : pathname;
     if (redirects[cleanPath]) {
         res.writeHead(301, { 'Location': redirects[cleanPath] });
+        res.end();
+        return;
+    }
+    
+    // Catch-all for /courses/* URLs
+    if (cleanPath.startsWith('/courses/')) {
+        res.writeHead(301, { 'Location': '/' });
         res.end();
         return;
     }
