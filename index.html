@@ -1494,6 +1494,14 @@
             top: auto !important;
             position: fixed !important;
         }
+        /* On mobile, move UserWay widget higher to avoid overlap */
+        @media (max-width: 768px) {
+            .userway_buttons_wrapper,
+            div[data-userway-widget] {
+                bottom: 100px !important;
+                right: 15px !important;
+            }
+        }
     </style>
     
     <!-- Floating WhatsApp Button -->
@@ -1592,13 +1600,9 @@
     
     <style>
         @media (max-width: 768px) {
+            /* Hide floating institutions button on mobile - redundant with menu link and banner */
             #floatingInstitutions {
-                top: auto;
-                bottom: 100px;
-                right: 15px;
-                writing-mode: horizontal-tb;
-                padding: 12px 16px;
-                font-size: 0.8rem;
+                display: none !important;
             }
         }
     </style>
