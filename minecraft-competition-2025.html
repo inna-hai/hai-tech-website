@@ -13,20 +13,18 @@
     
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://hai.tech/minecraft-תחרות-ארצית-2025/">
-    <meta property="og:title" content="תחרות מיינקראפט ארצית 2025 | דרך ההייטק">
+    <meta property="og:url" content="https://hai.tech/minecraft-competition-2025">
+    <meta property:og:title" content="תחרות מיינקראפט ארצית 2025 | דרך ההייטק">
     <meta property="og:description" content="התחרות הארצית הגדולה ביותר למיינקראפט לילדים ונוער בישראל!">
     <meta property="og:locale" content="he_IL">
     
-    <!-- Fonts -->
+    <!-- Minecraft-style Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <!-- Styles -->
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/jpeg" href="images/brand/logo.jpg">
     
@@ -42,282 +40,689 @@
             "name": "דרך ההייטק",
             "url": "https://hai.tech"
         },
-        "location": {
-            "@type": "VirtualLocation",
-            "url": "https://hai.tech"
-        },
         "eventStatus": "https://schema.org/EventScheduled",
         "inLanguage": "he"
     }
     </script>
     
     <style>
-        .competition-hero {
-            background: linear-gradient(135deg, #2d5016 0%, #1a3a0f 50%, #0d2106 100%);
-            padding: 120px 20px 80px;
-            text-align: center;
-            color: white;
+        /* Minecraft Color Palette */
+        :root {
+            --mc-grass: #5D8C2E;
+            --mc-grass-dark: #4A7024;
+            --mc-dirt: #8B5A2B;
+            --mc-dirt-dark: #6B4423;
+            --mc-stone: #7F7F7F;
+            --mc-stone-dark: #5F5F5F;
+            --mc-sky: #78A7FF;
+            --mc-water: #2F5FBF;
+            --mc-gold: #DDA520;
+            --mc-diamond: #4AEDD9;
+            --mc-emerald: #17DD62;
+            --mc-redstone: #FF0000;
+            --mc-obsidian: #1B1B2F;
+        }
+        
+        /* Pixel Font */
+        .pixel-font {
+            font-family: 'VT323', monospace;
+            letter-spacing: 2px;
+        }
+        
+        /* Minecraft Block Pattern Background */
+        .mc-pattern {
+            background-image: 
+                linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px),
+                linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px);
+            background-size: 16px 16px;
+        }
+        
+        /* Hero Section - Minecraft Style */
+        .mc-hero {
+            background: linear-gradient(180deg, var(--mc-sky) 0%, var(--mc-sky) 60%, var(--mc-grass) 60%, var(--mc-grass) 65%, var(--mc-dirt) 65%, var(--mc-dirt) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 20px 60px;
             position: relative;
             overflow: hidden;
         }
         
-        .competition-hero::before {
+        /* Animated Clouds */
+        .mc-cloud {
+            position: absolute;
+            background: white;
+            opacity: 0.9;
+            animation: cloudMove 30s linear infinite;
+        }
+        .mc-cloud::before, .mc-cloud::after {
+            content: '';
+            position: absolute;
+            background: white;
+        }
+        .mc-cloud-1 {
+            width: 100px;
+            height: 40px;
+            top: 15%;
+            right: -150px;
+        }
+        .mc-cloud-1::before {
+            width: 50px;
+            height: 30px;
+            top: -20px;
+            right: 15px;
+        }
+        .mc-cloud-1::after {
+            width: 40px;
+            height: 25px;
+            top: -15px;
+            right: 50px;
+        }
+        .mc-cloud-2 {
+            width: 80px;
+            height: 35px;
+            top: 25%;
+            right: -100px;
+            animation-delay: -10s;
+            animation-duration: 35s;
+        }
+        .mc-cloud-3 {
+            width: 120px;
+            height: 45px;
+            top: 10%;
+            right: -200px;
+            animation-delay: -20s;
+            animation-duration: 40s;
+        }
+        
+        @keyframes cloudMove {
+            from { transform: translateX(0); }
+            to { transform: translateX(calc(-100vw - 200px)); }
+        }
+        
+        /* Floating Blocks */
+        .mc-floating-block {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: var(--mc-grass);
+            border: 4px solid var(--mc-grass-dark);
+            box-shadow: inset 0 -20px 0 var(--mc-dirt), inset 0 -24px 0 var(--mc-dirt-dark);
+            animation: floatBlock 3s ease-in-out infinite;
+            image-rendering: pixelated;
+        }
+        .mc-floating-block:nth-child(1) { top: 30%; left: 10%; animation-delay: 0s; }
+        .mc-floating-block:nth-child(2) { top: 20%; right: 15%; animation-delay: 0.5s; }
+        .mc-floating-block:nth-child(3) { top: 45%; left: 5%; animation-delay: 1s; width: 50px; height: 50px; }
+        .mc-floating-block:nth-child(4) { top: 35%; right: 8%; animation-delay: 1.5s; width: 45px; height: 45px; }
+        
+        @keyframes floatBlock {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        /* Hero Content */
+        .mc-hero-content {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+        }
+        
+        .mc-title-badge {
+            display: inline-block;
+            background: var(--mc-gold);
+            color: #1a1a1a;
+            padding: 8px 25px;
+            font-family: 'VT323', monospace;
+            font-size: 1.3rem;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            box-shadow: 4px 4px 0 rgba(0,0,0,0.3);
+            transform: rotate(-2deg);
+        }
+        
+        .mc-hero h1 {
+            font-family: 'VT323', monospace;
+            font-size: clamp(3rem, 8vw, 6rem);
+            color: white;
+            text-shadow: 
+                4px 4px 0 #1a1a1a,
+                -2px -2px 0 #1a1a1a,
+                2px -2px 0 #1a1a1a,
+                -2px 2px 0 #1a1a1a;
+            margin-bottom: 1rem;
+            letter-spacing: 3px;
+        }
+        
+        .mc-hero h1 span {
+            color: var(--mc-emerald);
+        }
+        
+        .mc-hero-subtitle {
+            font-size: 1.4rem;
+            color: white;
+            text-shadow: 2px 2px 0 #1a1a1a;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        /* Minecraft Style Button */
+        .mc-btn {
+            display: inline-block;
+            background: linear-gradient(180deg, #6AAF3D 0%, #5A9A32 50%, #4A8028 100%);
+            color: white;
+            padding: 15px 40px;
+            font-family: 'VT323', monospace;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            text-decoration: none;
+            border: 4px solid #3D6B1E;
+            box-shadow: 
+                inset 0 2px 0 rgba(255,255,255,0.2),
+                inset 0 -2px 0 rgba(0,0,0,0.2),
+                4px 4px 0 rgba(0,0,0,0.3);
+            transition: all 0.1s;
+            cursor: pointer;
+        }
+        .mc-btn:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 
+                inset 0 2px 0 rgba(255,255,255,0.2),
+                inset 0 -2px 0 rgba(0,0,0,0.2),
+                2px 2px 0 rgba(0,0,0,0.3);
+        }
+        .mc-btn:active {
+            transform: translate(4px, 4px);
+            box-shadow: none;
+        }
+        
+        .mc-btn-gold {
+            background: linear-gradient(180deg, #FFD700 0%, #DAA520 50%, #B8860B 100%);
+            border-color: #8B6914;
+            color: #1a1a1a;
+        }
+        
+        /* Content Sections */
+        .mc-section {
+            padding: 80px 20px;
+            position: relative;
+        }
+        
+        .mc-section-grass {
+            background: var(--mc-grass);
+        }
+        
+        .mc-section-stone {
+            background: linear-gradient(180deg, var(--mc-stone) 0%, var(--mc-stone-dark) 100%);
+        }
+        
+        .mc-section-obsidian {
+            background: var(--mc-obsidian);
+            color: white;
+        }
+        
+        .mc-section h2 {
+            font-family: 'VT323', monospace;
+            font-size: clamp(2rem, 5vw, 3rem);
+            text-align: center;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+        }
+        
+        .mc-section-grass h2 {
+            color: white;
+            text-shadow: 3px 3px 0 var(--mc-grass-dark);
+        }
+        
+        .mc-section-stone h2 {
+            color: white;
+            text-shadow: 3px 3px 0 var(--mc-stone-dark);
+        }
+        
+        /* Info Cards - Block Style */
+        .mc-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .mc-card {
+            background: linear-gradient(180deg, #c9a56c 0%, #a58454 50%, #8b6b43 100%);
+            padding: 25px;
+            border: 4px solid #5c4525;
+            box-shadow: 
+                inset 0 2px 0 rgba(255,255,255,0.15),
+                inset 0 -2px 0 rgba(0,0,0,0.15),
+                6px 6px 0 rgba(0,0,0,0.2);
+            position: relative;
+        }
+        
+        .mc-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(76, 175, 80, 0.2) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(139, 195, 74, 0.15) 0%, transparent 50%);
+            background-image: 
+                linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px),
+                linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px);
+            background-size: 8px 8px;
+            pointer-events: none;
         }
         
-        .competition-hero h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 800;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
+        .mc-card-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
         }
         
-        .competition-hero p {
-            font-size: 1.25rem;
-            opacity: 0.9;
-            max-width: 700px;
-            margin: 0 auto 2rem;
-            position: relative;
-            z-index: 1;
+        .mc-card h3 {
+            font-family: 'VT323', monospace;
+            font-size: 1.5rem;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
         }
         
-        .minecraft-icon {
+        .mc-card p {
+            color: #2d2418;
+            line-height: 1.6;
+        }
+        
+        /* Diamond Card Special */
+        .mc-card-diamond {
+            background: linear-gradient(180deg, #7DFFF4 0%, #4AEDD9 50%, #2DCEBF 100%);
+            border-color: #1A9A8C;
+        }
+        .mc-card-diamond h3, .mc-card-diamond p {
+            color: #0D4A44;
+        }
+        
+        /* Gold Card Special */
+        .mc-card-gold {
+            background: linear-gradient(180deg, #FFE66D 0%, #DDA520 50%, #B8860B 100%);
+            border-color: #8B6914;
+        }
+        
+        /* Emerald Card Special */
+        .mc-card-emerald {
+            background: linear-gradient(180deg, #50FF7D 0%, #17DD62 50%, #0FB850 100%);
+            border-color: #0A7A35;
+        }
+        .mc-card-emerald h3, .mc-card-emerald p {
+            color: #0A4A25;
+        }
+        
+        /* Categories Section */
+        .mc-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .mc-category {
+            background: rgba(0,0,0,0.4);
+            border: 4px solid rgba(255,255,255,0.2);
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .mc-category-icon {
             font-size: 4rem;
-            margin-bottom: 1rem;
+            margin-bottom: 15px;
         }
         
-        .competition-content {
-            padding: 60px 20px;
+        .mc-category h3 {
+            font-family: 'VT323', monospace;
+            font-size: 1.8rem;
+            color: var(--mc-gold);
+            margin-bottom: 10px;
+        }
+        
+        .mc-category p {
+            color: rgba(255,255,255,0.85);
+            line-height: 1.7;
+        }
+        
+        .mc-category-age {
+            display: inline-block;
+            background: var(--mc-emerald);
+            color: #0A4A25;
+            padding: 5px 15px;
+            font-family: 'VT323', monospace;
+            font-size: 1.1rem;
+            margin-top: 15px;
+        }
+        
+        /* Prizes Section */
+        .mc-prizes {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
             max-width: 900px;
             margin: 0 auto;
         }
         
-        .competition-content h2 {
-            color: #2d5016;
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .competition-content p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #444;
-            margin-bottom: 1.5rem;
-        }
-        
-        .highlight-box {
-            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
-            border-right: 4px solid #4caf50;
-            padding: 25px;
-            border-radius: 12px;
-            margin: 30px 0;
-        }
-        
-        .highlight-box h3 {
-            color: #2e7d32;
-            margin-bottom: 1rem;
-        }
-        
-        .courses-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin: 40px 0;
-        }
-        
-        .course-card {
-            background: white;
-            border-radius: 16px;
-            padding: 25px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid #e0e0e0;
-        }
-        
-        .course-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-        }
-        
-        .course-card h3 {
-            color: #2d5016;
-            margin-bottom: 0.75rem;
-        }
-        
-        .course-card p {
-            color: #666;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-        }
-        
-        .course-card .btn {
-            display: inline-block;
-            background: #4caf50;
-            color: white;
-            padding: 10px 24px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.3s;
-        }
-        
-        .course-card .btn:hover {
-            background: #388e3c;
-        }
-        
-        .cta-section {
-            background: linear-gradient(135deg, #2d5016 0%, #1a3a0f 100%);
-            color: white;
-            padding: 60px 20px;
+        .mc-prize {
             text-align: center;
-            margin-top: 40px;
+            padding: 20px;
         }
         
-        .cta-section h2 {
-            font-size: 2rem;
+        .mc-prize-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            background: rgba(0,0,0,0.3);
+            border: 4px solid rgba(255,255,255,0.2);
+        }
+        
+        .mc-prize h4 {
+            font-family: 'VT323', monospace;
+            font-size: 1.5rem;
+            color: var(--mc-gold);
+            margin-bottom: 5px;
+        }
+        
+        .mc-prize p {
+            color: rgba(255,255,255,0.8);
+        }
+        
+        /* CTA Section */
+        .mc-cta {
+            background: linear-gradient(180deg, #1B5E20 0%, #0D3B12 100%);
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mc-cta::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background: repeating-linear-gradient(
+                90deg,
+                var(--mc-dirt) 0px,
+                var(--mc-dirt) 32px,
+                var(--mc-dirt-dark) 32px,
+                var(--mc-dirt-dark) 64px
+            );
+        }
+        
+        .mc-cta h2 {
+            font-family: 'VT323', monospace;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: white;
+            text-shadow: 3px 3px 0 #0D3B12;
             margin-bottom: 1rem;
         }
         
-        .cta-section .btn-cta {
-            display: inline-block;
-            background: #4caf50;
-            color: white;
-            padding: 15px 40px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-top: 20px;
-            transition: transform 0.3s, box-shadow 0.3s;
+        .mc-cta p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
         }
         
-        .cta-section .btn-cta:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        /* Creeper Face Decoration */
+        .mc-creeper {
+            width: 80px;
+            height: 80px;
+            margin: 30px auto;
+            background: #50B050;
+            position: relative;
+            box-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+        }
+        .mc-creeper::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 10px;
+            width: 20px;
+            height: 20px;
+            background: #1a1a1a;
+            box-shadow: 40px 0 0 #1a1a1a;
+        }
+        .mc-creeper::after {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 25px;
+            width: 10px;
+            height: 10px;
+            background: #1a1a1a;
+            box-shadow: 
+                20px 0 0 #1a1a1a,
+                0 10px 0 #1a1a1a,
+                20px 10px 0 #1a1a1a,
+                -10px 20px 0 #1a1a1a,
+                0 20px 0 #1a1a1a,
+                10px 20px 0 #1a1a1a,
+                20px 20px 0 #1a1a1a,
+                30px 20px 0 #1a1a1a;
+        }
+        
+        /* Footer */
+        .mc-footer {
+            background: #1a1a1a;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .mc-footer p {
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .mc-footer a {
+            color: var(--mc-emerald);
+            text-decoration: none;
+        }
+        
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .mc-floating-block {
+                display: none;
+            }
+            .mc-hero h1 {
+                font-size: 2.5rem;
+            }
+            .mc-card {
+                padding: 20px;
+            }
+        }
+        
+        /* Navigation */
+        .mc-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.85);
+            padding: 15px 20px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .mc-nav-logo {
+            height: 45px;
+        }
+        
+        .mc-nav-link {
+            color: white;
+            text-decoration: none;
+            font-family: 'VT323', monospace;
+            font-size: 1.2rem;
+            padding: 8px 20px;
+            background: var(--mc-grass);
+            border: 2px solid var(--mc-grass-dark);
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="main-nav">
-        <div class="nav-container">
-            <a href="/" class="logo">
-                <img src="images/brand/logo-haitech-transparent.png" alt="דרך ההייטק" height="45">
-            </a>
-            <div class="nav-links">
-                <a href="/#courses">קורסים</a>
-                <a href="/pricing.html">מחירון</a>
-                <a href="/blog.html">בלוג</a>
-                <a href="/#contact" class="btn-nav">צרו קשר</a>
-            </div>
-            <button class="mobile-menu-btn" aria-label="תפריט">
-                <i data-lucide="menu"></i>
-            </button>
-        </div>
+    <nav class="mc-nav">
+        <a href="index.html">
+            <img src="images/brand/logo-haitech-transparent.png" alt="דרך ההייטק" class="mc-nav-logo">
+        </a>
+        <a href="index.html#courses" class="mc-nav-link">לכל הקורסים</a>
     </nav>
 
     <!-- Hero Section -->
-    <section class="competition-hero">
-        <div class="minecraft-icon">⛏️🎮</div>
-        <h1>תחרות מיינקראפט ארצית 2025</h1>
-        <p>התחרות הגדולה ביותר למיינקראפט לילדים ונוער בישראל! בניית עולמות, יצירתיות ותכנות אמיתי.</p>
+    <header class="mc-hero">
+        <!-- Clouds -->
+        <div class="mc-cloud mc-cloud-1"></div>
+        <div class="mc-cloud mc-cloud-2"></div>
+        <div class="mc-cloud mc-cloud-3"></div>
+        
+        <!-- Floating Blocks -->
+        <div class="mc-floating-block"></div>
+        <div class="mc-floating-block"></div>
+        <div class="mc-floating-block"></div>
+        <div class="mc-floating-block"></div>
+        
+        <div class="mc-hero-content">
+            <div class="mc-title-badge">🏆 תחרות ארצית 2025</div>
+            <h1>MINECRAFT<br><span>COMPETITION</span></h1>
+            <p class="mc-hero-subtitle">התחרות הגדולה ביותר למיינקראפט לילדים ונוער בישראל!</p>
+            <a href="#join" class="mc-btn mc-btn-gold">הצטרפו עכשיו!</a>
+        </div>
+    </header>
+
+    <!-- What is it Section -->
+    <section class="mc-section mc-section-grass mc-pattern">
+        <div class="container">
+            <h2>🎮 מה זה התחרות?</h2>
+            <div class="mc-cards">
+                <div class="mc-card">
+                    <div class="mc-card-icon">🏗️</div>
+                    <h3>בניית עולמות</h3>
+                    <p>תכננו ובנו עולמות מדהימים במיינקראפט. יצירתיות ללא גבולות!</p>
+                </div>
+                <div class="mc-card mc-card-diamond">
+                    <div class="mc-card-icon">💻</div>
+                    <h3>תכנות JavaScript</h3>
+                    <p>כתבו קוד אמיתי שמפעיל את העולם שלכם. רובוטים, מלכודות ואוטומציה!</p>
+                </div>
+                <div class="mc-card mc-card-gold">
+                    <div class="mc-card-icon">🏆</div>
+                    <h3>פרסים מטורפים</h3>
+                    <p>מחשבים, ציוד גיימינג ופרסים שווים למנצחים!</p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Main Content -->
-    <main class="competition-content">
-        <h2>על התחרות</h2>
-        <p>
-            תחרות מיינקראפט הארצית של דרך ההייטק היא אירוע שנתי ייחודי שמאפשר לילדים ונוער מכל רחבי הארץ להציג את היצירתיות והכישרונות שלהם. המשתתפים מתחרים בבניית עולמות, יצירת מבנים מרשימים ותכנות בשפת JavaScript.
-        </p>
-        
-        <div class="highlight-box">
-            <h3>🏆 למה להשתתף בתחרות?</h3>
-            <ul style="margin: 0; padding-right: 20px;">
-                <li>חוויה חינוכית מעשירה</li>
-                <li>פיתוח כישורי תכנות וחשיבה יצירתית</li>
-                <li>פרסים מדהימים לזוכים</li>
-                <li>הכרה וחשיפה ליצירות</li>
-                <li>הצטרפות לקהילת שחקנים ויוצרים</li>
-            </ul>
+    <!-- Categories Section -->
+    <section class="mc-section mc-section-obsidian">
+        <div class="container">
+            <h2 style="color: var(--mc-diamond);">⚔️ קטגוריות התחרות</h2>
+            <div class="mc-categories">
+                <div class="mc-category">
+                    <div class="mc-category-icon">🏰</div>
+                    <h3>בניית עולמות</h3>
+                    <p>בנו עיר, טירה, או עולם שלם. נקודות על יצירתיות, פרטים ועיצוב!</p>
+                    <span class="mc-category-age">גיל 8-12</span>
+                </div>
+                <div class="mc-category">
+                    <div class="mc-category-icon">🤖</div>
+                    <h3>תכנות מתקדם</h3>
+                    <p>כתבו קוד JavaScript שיוצר רובוטים, מערכות אוטומטיות ומשחקים בתוך מיינקראפט!</p>
+                    <span class="mc-category-age">גיל 10-16</span>
+                </div>
+            </div>
+            
+            <div class="mc-creeper"></div>
         </div>
+    </section>
 
-        <h2>רוצים להתכונן לתחרות הבאה?</h2>
-        <p>
-            הדרך הטובה ביותר להתכונן לתחרות היא ללמוד את הכלים! בקורסי מיינקראפט שלנו תלמדו בניית עולמות, תכנות JavaScript ויצירת פרויקטים מרשימים.
-        </p>
-
-        <div class="courses-grid">
-            <div class="course-card">
-                <h3>🏗️ מיינקראפט: בניית עולמות</h3>
-                <p>בניית עיר שלמה עם פארקים, מזרקות וכבישים. מתאים לגיל 8-11.</p>
-                <a href="/lms/course.html?id=python-minecraft" class="btn">לפרטים נוספים</a>
-            </div>
-            <div class="course-card">
-                <h3>🔐 מיינקראפט: חדר בריחה</h3>
-                <p>בניית פירמידה וחדר בריחה עם קוד. לולאות, משתנים ופקודות. גיל 10+.</p>
-                <a href="/lms/course.html?id=minecraft-mods" class="btn">לפרטים נוספים</a>
-            </div>
-            <div class="course-card">
-                <h3>💻 JavaScript במיינקראפט</h3>
-                <p>תכנות אמיתי בשפת JavaScript דרך מיינקראפט! מתאים לגיל 10-13.</p>
-                <a href="/lms/course.html?id=minecraft-javascript" class="btn">לפרטים נוספים</a>
+    <!-- Prizes Section -->
+    <section class="mc-section mc-section-stone mc-pattern">
+        <div class="container">
+            <h2>🎁 הפרסים</h2>
+            <div class="mc-prizes">
+                <div class="mc-prize">
+                    <div class="mc-prize-icon">🥇</div>
+                    <h4>מקום ראשון</h4>
+                    <p>מחשב גיימינג + ציוד</p>
+                </div>
+                <div class="mc-prize">
+                    <div class="mc-prize-icon">🥈</div>
+                    <h4>מקום שני</h4>
+                    <p>אוזניות גיימינג מקצועיות</p>
+                </div>
+                <div class="mc-prize">
+                    <div class="mc-prize-icon">🥉</div>
+                    <h4>מקום שלישי</h4>
+                    <p>מקלדת גיימינג מכנית</p>
+                </div>
+                <div class="mc-prize">
+                    <div class="mc-prize-icon">⭐</div>
+                    <h4>כל המשתתפים</h4>
+                    <p>תעודה + גישה לקורסים</p>
+                </div>
             </div>
         </div>
-    </main>
+    </section>
+
+    <!-- How to Join Section -->
+    <section class="mc-section mc-section-grass" id="join">
+        <div class="container">
+            <h2>📝 איך מצטרפים?</h2>
+            <div class="mc-cards">
+                <div class="mc-card mc-card-emerald">
+                    <div class="mc-card-icon">1️⃣</div>
+                    <h3>נרשמים לקורס</h3>
+                    <p>הצטרפו לאחד מקורסי המיינקראפט שלנו — בניית עולמות או תכנות JavaScript</p>
+                </div>
+                <div class="mc-card">
+                    <div class="mc-card-icon">2️⃣</div>
+                    <h3>לומדים ובונים</h3>
+                    <p>לומדים את החומר ומתחילים לבנות את הפרויקט שלכם לתחרות</p>
+                </div>
+                <div class="mc-card mc-card-diamond">
+                    <div class="mc-card-icon">3️⃣</div>
+                    <h3>מגישים ומנצחים!</h3>
+                    <p>מגישים את הפרויקט, שופטים מקצועיים בוחרים את המנצחים</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- CTA Section -->
-    <section class="cta-section">
-        <h2>מוכנים להתחיל?</h2>
-        <p>הצטרפו לאלפי ילדים שכבר לומדים איתנו!</p>
-        <a href="/#contact" class="btn-cta">לפרטים נוספים</a>
+    <section class="mc-cta">
+        <div class="container">
+            <h2>🚀 מוכנים להצטרף?</h2>
+            <p>התחרות פתוחה לכל תלמידי קורסי המיינקראפט של דרך ההייטק</p>
+            <a href="index.html#courses" class="mc-btn mc-btn-gold" style="cursor: pointer; position: relative; z-index: 10;">צפו בקורסי מיינקראפט</a>
+        </div>
     </section>
 
     <!-- Footer -->
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>דרך ההייטק</h4>
-                <p>בית הספר לטכנולוגיה, תכנות ובינה מלאכותית לילדים ונוער</p>
-            </div>
-            <div class="footer-section">
-                <h4>קישורים</h4>
-                <a href="/">דף הבית</a>
-                <a href="/pricing.html">מחירון</a>
-                <a href="/blog.html">בלוג</a>
-                <a href="/terms.html">תנאי שימוש</a>
-                <a href="/privacy.html">מדיניות פרטיות</a>
-            </div>
-            <div class="footer-section">
-                <h4>צרו קשר</h4>
-                <a href="https://wa.me/972533009742">WhatsApp</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2025 דרך ההייטק. כל הזכויות שמורות.</p>
-        </div>
+    <footer class="mc-footer">
+        <p>תחרות מיינקראפט 2025 | <a href="index.html">דרך ההייטק</a> — בית הספר לטכנולוגיה לילדים ונוער</p>
     </footer>
 
     <script>
         lucide.createIcons();
-        
-        // Mobile menu toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navLinks = document.querySelector('.nav-links');
-        
-        if (mobileMenuBtn && navLinks) {
-            mobileMenuBtn.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-            });
-        }
     </script>
 </body>
 </html>
