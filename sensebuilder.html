@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SenseBuilder - בונים את החושים | דרך ההייטק</title>
+    <meta name="description" content="משחק חינוכי אינטראקטיבי ללימוד חמשת החושים לכיתה ג׳. בנו שרשראות חושים, פתרו משימות ולמדו איך הגוף עובד!">
+    <link rel="canonical" href="https://hai.tech/sensebuilder">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="SenseBuilder - בונים את החושים">
+    <meta property="og:description" content="משחק חינוכי ללימוד חמשת החושים">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hai.tech/sensebuilder">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: Arial, sans-serif;
+            z-index: 1000;
+            transition: opacity 0.5s;
+        }
+        .loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .loading-emoji {
+            font-size: 4rem;
+            animation: bounce 1s infinite;
+        }
+        .loading-text {
+            margin-top: 1rem;
+            font-size: 1.5rem;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading" id="loading">
+        <div class="loading-emoji">🧠</div>
+        <div class="loading-text">טוען את SenseBuilder...</div>
+    </div>
+    
+    <iframe 
+        id="sensebuilder" 
+        src="http://129.159.135.204:3001" 
+        allow="fullscreen"
+        onload="document.getElementById('loading').classList.add('hidden')"
+    ></iframe>
+</body>
+</html>
