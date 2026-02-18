@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO -->
+    <title>הכשרת AI למורים וצוותי חינוך | קורס בינה מלאכותית למחנכים | דרך ההייטק</title>
+    <meta name="description" content="קורסי AI והכשרות בינה מלאכותית למורים, מחנכים וצוותי חינוך. למדו לשלב ChatGPT ו-Gemini בכיתה, לבנות מערכי שיעור עם AI ולהוביל את השינוי הדיגיטלי בבית הספר.">
+    <meta name="keywords" content="הכשרת AI למורים, קורס בינה מלאכותית למורים, AI לצוותי חינוך, ChatGPT למורים, Gemini למחנכים, השתלמות AI, בינה מלאכותית בחינוך, כלי AI למורים">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hai.tech/blog/ai-training-for-teachers">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hai.tech/blog/ai-training-for-teachers">
+    <meta property="og:title" content="הכשרת AI למורים וצוותי חינוך | דרך ההייטק">
+    <meta property="og:description" content="איך מורים יכולים להשתמש ב-AI בכיתה? מדריך מקיף להכשרות בינה מלאכותית לצוותי חינוך">
+    <meta property="og:locale" content="he_IL">
+    
+    <!-- Article Meta -->
+    <meta property="article:published_time" content="2026-02-18">
+    <meta property="article:author" content="דרך ההייטק">
+    <meta property="article:section" content="AI בחינוך">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/jpeg" href="../images/brand/logo.jpg">
+    
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "הכשרת AI למורים וצוותי חינוך - המדריך המלא",
+        "description": "איך מורים יכולים להשתמש בבינה מלאכותית בכיתה? מדריך מקיף להכשרות AI לצוותי חינוך",
+        "author": {
+            "@type": "Organization",
+            "name": "דרך ההייטק",
+            "url": "https://hai.tech"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "דרך ההייטק",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://hai.tech/images/brand/logo-haitech-transparent.png"
+            }
+        },
+        "datePublished": "2026-02-18",
+        "mainEntityOfPage": "https://hai.tech/blog/ai-training-for-teachers"
+    }
+    </script>
+    
+    <style>
+        .blog-hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            padding: 140px 20px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        .blog-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%23ffffff10"/></svg>') repeat;
+            background-size: 50px 50px;
+            opacity: 0.5;
+        }
+        .blog-hero .container {
+            position: relative;
+            z-index: 1;
+        }
+        .blog-hero h1 {
+            color: white;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        .blog-hero h1 span {
+            color: #f59e0b;
+        }
+        .blog-meta {
+            display: flex;
+            gap: 20px;
+            color: rgba(255,255,255,0.8);
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        .blog-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #f59e0b;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            transition: gap 0.3s;
+        }
+        .back-link:hover {
+            gap: 12px;
+        }
+        
+        .blog-content {
+            padding: 60px 20px;
+            background: var(--bg-light);
+        }
+        .blog-article {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+        .blog-article p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+        .blog-article h2 {
+            color: var(--primary);
+            font-size: 1.6rem;
+            margin: 2.5rem 0 1rem;
+        }
+        .blog-article h3 {
+            color: var(--text-dark);
+            font-size: 1.3rem;
+            margin: 2rem 0 1rem;
+        }
+        .blog-article ul, .blog-article ol {
+            margin: 1rem 0 1.5rem 1.5rem;
+        }
+        .blog-article li {
+            margin-bottom: 0.75rem;
+            line-height: 1.8;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-right: 4px solid #f59e0b;
+            padding: 25px;
+            border-radius: 0 15px 15px 0;
+            margin: 2rem 0;
+        }
+        .highlight-box p {
+            margin-bottom: 0;
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 1.5rem 0;
+        }
+        .tool-item {
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .tool-item strong {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+            color: white;
+            padding: 50px 30px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        .cta-section p {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .blog-article {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <img src="../images/brand/logo-haitech-transparent.png" alt="דרך ההייטק" height="60">
+            </a>
+            <button class="mobile-menu-btn" aria-label="תפריט">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="../index.html#courses">קורסים דיגיטליים</a></li>
+                <li><a href="../index.html#private">שיעורים פרטיים</a></li>
+                <li><a href="../institutions.html">למוסדות</a></li>
+                <li><a href="../blog.html">בלוג</a></li>
+                <li><a href="../index.html#about">אודות</a></li>
+                <li><a href="../index.html#contact" class="btn btn-nav">התחילו עכשיו</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="blog-hero">
+        <div class="container">
+            <a href="../blog.html" class="back-link"><i data-lucide="arrow-right"></i> חזרה לבלוג</a>
+            <h1>הכשרת AI למורים וצוותי חינוך<br><span>המדריך המלא</span></h1>
+            <div class="blog-meta">
+                <span><i data-lucide="calendar" class="icon-sm"></i> פברואר 2026</span>
+                <span><i data-lucide="clock" class="icon-sm"></i> 8 דקות קריאה</span>
+                <span><i data-lucide="tag" class="icon-sm"></i> AI לצוותי חינוך</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Content -->
+    <section class="blog-content">
+        <div class="container">
+            <article class="blog-article" id="main-content">
+                
+                <p><strong>בינה מלאכותית כבר כאן</strong> — והיא משנה את הדרך שבה תלמידים לומדים, מכינים שיעורי בית ומתכוננים למבחנים. השאלה היא לא אם להשתמש ב-AI, אלא איך להשתמש בו נכון. ובשביל זה, צוותי החינוך צריכים להיות צעד אחד לפני התלמידים.</p>
+
+                <div class="highlight-box">
+                    <p><strong>📊 נתון מעניין:</strong> לפי סקר של משרד החינוך, למעלה מ-70% מהמורים מרגישים שהם צריכים הכשרה נוספת בתחום הבינה המלאכותית כדי להתמודד עם האתגרים בכיתה.</p>
+                </div>
+
+                <h2>🎯 למה מורים צריכים הכשרת AI?</h2>
+                
+                <p>בואו נהיה כנים — התלמידים כבר משתמשים ב-ChatGPT, Gemini וכלים נוספים. הם משתמשים בהם לשיעורי בית, לפרויקטים, ולפעמים גם להעתקה. מורה שלא מבין את הכלים האלה נמצא בעמדת חיסרון.</p>
+                
+                <h3>היתרונות להכשרת AI למורים:</h3>
+                <ul>
+                    <li><strong>זיהוי שימוש לא הוגן</strong> — לדעת מתי תלמיד השתמש ב-AI ומתי לא</li>
+                    <li><strong>הכנת חומרי לימוד</strong> — ליצור מערכי שיעור, מבחנים ודפי עבודה בחצי מהזמן</li>
+                    <li><strong>התאמה אישית</strong> — ליצור תכנים מותאמים לרמות שונות בכיתה</li>
+                    <li><strong>חיסכון בזמן</strong> — לבדוק עבודות, לכתוב משובים ולנהל משימות אדמיניסטרטיביות</li>
+                    <li><strong>הובלת השינוי</strong> — להיות המורה שמלמד את התלמידים להשתמש ב-AI בחכמה</li>
+                </ul>
+
+                <h2>🛠️ כלי AI שכל מורה צריך להכיר</h2>
+                
+                <div class="tool-grid">
+                    <div class="tool-item">
+                        <strong>ChatGPT</strong>
+                        יצירת תכנים, הסברים ורעיונות
+                    </div>
+                    <div class="tool-item">
+                        <strong>Google Gemini</strong>
+                        חיפוש מידע ועיבוד מסמכים
+                    </div>
+                    <div class="tool-item">
+                        <strong>Canva AI</strong>
+                        עיצוב מצגות ודפי עבודה
+                    </div>
+                    <div class="tool-item">
+                        <strong>Quillbot</strong>
+                        עריכה ושכתוב טקסטים
+                    </div>
+                </div>
+
+                <h2>📚 מה לומדים בהכשרת AI למורים?</h2>
+                
+                <p>הכשרה טובה צריכה להיות מעשית — לא רק תיאוריה. בדרך ההייטק, ההכשרות שלנו כוללות:</p>
+                
+                <h3>1. הבנת הבסיס</h3>
+                <ul>
+                    <li>מה זה AI ואיך הוא עובד (בלי מתמטיקה מסובכת)</li>
+                    <li>ההבדל בין ChatGPT, Gemini ו-Claude</li>
+                    <li>מגבלות ה-AI — מתי לסמוך ומתי לא</li>
+                </ul>
+                
+                <h3>2. כתיבת פרומפטים אפקטיביים</h3>
+                <ul>
+                    <li>איך לשאול שאלות שמקבלות תשובות טובות</li>
+                    <li>טכניקות לשיפור התוצאות</li>
+                    <li>תבניות מוכנות לשימוש יומיומי</li>
+                </ul>
+                
+                <h3>3. יישום בכיתה</h3>
+                <ul>
+                    <li>יצירת מערכי שיעור עם AI</li>
+                    <li>בניית מבחנים ודפי עבודה</li>
+                    <li>כתיבת משובים מותאמים אישית</li>
+                    <li>התאמת חומרים לתלמידים עם צרכים מיוחדים</li>
+                </ul>
+                
+                <h3>4. אתיקה ומדיניות</h3>
+                <ul>
+                    <li>כיצד לזהות שימוש לא הוגן</li>
+                    <li>בניית מדיניות כיתתית לשימוש ב-AI</li>
+                    <li>איך ללמד תלמידים להשתמש ב-AI באחריות</li>
+                </ul>
+
+                <h2>💡 דוגמאות לשימוש יומיומי</h2>
+                
+                <p><strong>מורה להיסטוריה:</strong> "צור לי 5 שאלות פתוחות על מלחמת העולם השנייה, ברמת קושי בינונית, שמעודדות חשיבה ביקורתית"</p>
+                
+                <p><strong>מורה למתמטיקה:</strong> "הסבר את משפט פיתגורס בשלוש רמות — לתלמיד מתקשה, לתלמיד ממוצע ולתלמיד מצטיין"</p>
+                
+                <p><strong>מורה לאנגלית:</strong> "כתוב משוב אישי על החיבור הזה [הדבק חיבור] — ציין 2 נקודות חיוביות ו-2 נקודות לשיפור"</p>
+                
+                <p><strong>מחנך כיתה:</strong> "צור תוכנית לשעת חינוך בנושא בטיחות ברשת, כולל פעילות אינטראקטיבית"</p>
+
+                <h2>🎓 סוגי הכשרות שאנחנו מציעים</h2>
+                
+                <p>בדרך ההייטק יש לנו מספר מסלולים לצוותי חינוך:</p>
+                
+                <ul>
+                    <li><strong>סדנה חד-יומית (4-6 שעות)</strong> — היכרות מהירה עם כלי AI והתנסות מעשית</li>
+                    <li><strong>קורס מקוצר (12 שעות)</strong> — העמקה עם פרויקט מסכם אישי</li>
+                    <li><strong>ליווי שנתי</strong> — הדרכות + תמיכה שוטפת לאורך השנה</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><strong>✅ מאושר גפ"ן:</strong> התוכניות שלנו מוכרות על ידי משרד החינוך ומתאימות להשתלמויות צוות.</p>
+                </div>
+
+                <h2>🚀 איך להתחיל?</h2>
+                
+                <p>אם אתם מנהלים, רכזים פדגוגיים או מורים שרוצים להוביל את השינוי בבית הספר — אנחנו כאן לעזור. ההכשרות שלנו מותאמות לצרכים של כל מוסד, והן כוללות:</p>
+                
+                <ul>
+                    <li>תעודת השתתפות לכל משתתף</li>
+                    <li>חומרי עזר ותבניות לשימוש יומיומי</li>
+                    <li>גישה לקבוצת תמיכה מקצועית</li>
+                    <li>תיעוד מלא למשרד החינוך</li>
+                </ul>
+
+                <!-- CTA -->
+                <div class="cta-section">
+                    <h2>רוצים לשמוע עוד על הכשרות AI לצוותים?</h2>
+                    <p>נשמח לספר על התוכניות שלנו ולהתאים הצעה לבית הספר שלכם</p>
+                    <a href="../institutions.html" style="display: inline-block; background: #f59e0b; color: #1e3a5f; padding: 15px 40px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(245,158,11,0.4);">לעמוד למוסדות חינוך</a>
+                </div>
+
+            </article>
+        </div>
+    </section>
+
+    <!-- Full Footer -->
+    <footer style="background: linear-gradient(180deg, #0f172a 0%, #020617 100%); padding: 4rem 2rem 2rem; border-top: 1px solid #1e293b;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem; text-align: right;">
+                <!-- Brand -->
+                <div>
+                    <h3 style="color: #22c55e; font-size: 1.5rem; margin-bottom: 1rem; font-weight: 700;">דרך ההייטק</h3>
+                    <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem;">מלמדים טכנולוגיה, תכנות ובינה מלאכותית לילדים ונוער מאז 2019. הופכים את זמן המסך להשקעה בעתיד.</p>
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="https://www.facebook.com/share/1SpwZhTKPx/" target="_blank" rel="noopener" style="width: 40px; height: 40px; background: #1e293b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #94a3b8; text-decoration: none;">
+                            <i data-lucide="facebook" style="width: 20px; height: 20px;"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/hai-tech-way/" target="_blank" rel="noopener" style="width: 40px; height: 40px; background: #1e293b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #94a3b8; text-decoration: none;">
+                            <i data-lucide="linkedin" style="width: 20px; height: 20px;"></i>
+                        </a>
+                        <a href="https://youtube.com/channel/UCbBmDyoE0oy0yXuVAoXNp2Q" target="_blank" rel="noopener" style="width: 40px; height: 40px; background: #1e293b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #94a3b8; text-decoration: none;">
+                            <i data-lucide="youtube" style="width: 20px; height: 20px;"></i>
+                        </a>
+                        <a href="https://wa.me/972533009742" target="_blank" rel="noopener" style="width: 40px; height: 40px; background: #1e293b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #94a3b8; text-decoration: none;">
+                            <i data-lucide="message-circle" style="width: 20px; height: 20px;"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h4 style="color: white; font-size: 1.1rem; margin-bottom: 1rem; font-weight: 600;">קישורים מהירים</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 0.75rem;"><a href="../index.html#courses" style="color: #94a3b8; text-decoration: none;">קורסים</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="../index.html#private" style="color: #94a3b8; text-decoration: none;">שיעורים פרטיים</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="../institutions.html" style="color: #94a3b8; text-decoration: none;">למוסדות חינוך</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="../locations.html" style="color: #94a3b8; text-decoration: none;">מוקדים פרונטליים</a></li>
+                        <li><a href="../blog.html" style="color: #94a3b8; text-decoration: none;">בלוג</a></li>
+                    </ul>
+                </div>
+                <!-- Contact -->
+                <div>
+                    <h4 style="color: white; font-size: 1.1rem; margin-bottom: 1rem; font-weight: 600;">צרו קשר</h4>
+                    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                        <a href="https://wa.me/972533009742" style="color: #94a3b8; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                            <i data-lucide="phone" style="width: 18px; height: 18px;"></i>
+                            053-300-9742
+                        </a>
+                        <a href="mailto:info@hai.tech" style="color: #94a3b8; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                            <i data-lucide="mail" style="width: 18px; height: 18px;"></i>
+                            info@hai.tech
+                        </a>
+                        <span style="color: #94a3b8; display: flex; align-items: center; gap: 0.5rem;">
+                            <i data-lucide="map-pin" style="width: 18px; height: 18px;"></i>
+                            באר שבע, עומר, חולון
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div style="border-top: 1px solid #1e293b; padding-top: 1.5rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
+                <p style="color: #64748b; font-size: 0.85rem; margin: 0;">© 2026 דרך ההייטק. כל הזכויות שמורות.</p>
+                <div style="display: flex; gap: 1.5rem;">
+                    <a href="../terms.html" style="color: #64748b; font-size: 0.85rem; text-decoration: none;">תנאי שימוש</a>
+                    <a href="../privacy.html" style="color: #64748b; font-size: 0.85rem; text-decoration: none;">מדיניות פרטיות</a>
+                    <a href="../accessibility.html" style="color: #64748b; font-size: 0.85rem; text-decoration: none;">נגישות</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        
+        // Mobile menu
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn?.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
