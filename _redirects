@@ -21,8 +21,7 @@
 /about-us/ /#about 301
 /תמונות-לינקים / 301
 /תמונות-לינקים/ / 301
-/blog /blog.html 301
-/blog/ /blog.html 301
+# /blog is handled by Cloudflare automatically
 
 # Minecraft Competition 2025
 /minecraft-תחרות-ארצית-2025 /minecraft-competition-2025.html 200
