@@ -144,21 +144,27 @@
 <body>
     <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="תפריט ראשי">
         <div class="container">
-            <a href="../index.html" class="logo">
-                <img src="../images/brand/logo-haitech-transparent.png" alt="דרך ההייטק" height="60">
+            <a href="/" class="logo" aria-label="דרך ההייטק - דף הבית">
+                <img src="../images/brand/logo-haitech-transparent.png" alt="דרך ההייטק - HAi.TECH" height="60">
             </a>
-            <button class="mobile-menu-btn" aria-label="תפריט">
-                <span></span><span></span><span></span>
+            <button class="mobile-menu-btn" aria-label="פתח תפריט" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
             <ul class="nav-links">
-                <li><a href="../index.html#courses">קורסים דיגיטליים</a></li>
-                <li><a href="../index.html#private">שיעורים פרטיים</a></li>
-                <li><a href="../institutions.html">למוסדות</a></li>
+                <li><a href="/#courses">קורסים דיגיטליים</a></li>
+                <li><a href="/#private">שיעורים פרטיים</a></li>
+                <li><a href="../locations.html">מוקדים פרונטליים</a></li>
+                <li><a href="../institutions.html" style="color: #f59e0b !important; font-weight: 600;">🏫 למוסדות חינוך</a></li>
+                <li><a href="../ai-learning.html" style="color: #22c55e !important;">🤖 AI בלמידה</a></li>
                 <li><a href="../blog.html">בלוג</a></li>
-                <li><a href="../index.html#about">אודות</a></li>
-                <li><a href="../index.html#contact" class="btn btn-nav">התחילו עכשיו</a></li>
+                <li><a href="/#about">אודות</a></li>
+                <li><a href="/#faq">שאלות נפוצות</a></li>
+                <li><a href="/lms/login.html" class="nav-link-secondary">כניסה לתלמידים</a></li>
+                <li><a href="/#contact" class="btn btn-nav">התחילו עכשיו</a></li>
             </ul>
         </div>
     </nav>
