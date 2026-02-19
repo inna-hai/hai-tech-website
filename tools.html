@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>כלים | דרך ההייטק</title>
+    <meta name="description" content="כל הכלים שאתם צריכים במקום אחד - הורדות מיינקראפט, תוספים, סרטוני הדרכה ועוד">
+    <meta property="og:title" content="כלים | דרך ההייטק">
+    <meta property="og:description" content="כל הכלים שאתם צריכים במקום אחד - הורדות מיינקראפט, תוספים, סרטוני הדרכה ועוד">
+    <meta property="og:url" content="https://hai.tech/tools">
+    <link rel="icon" type="image/jpeg" href="images/brand/logo.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Heebo', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+        
+        /* Header */
+        .header {
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #4cc9f0;
+        }
+        
+        /* Hero */
+        .hero {
+            padding: 150px 2rem 80px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #4cc9f0, #f72585);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero p {
+            font-size: 1.4rem;
+            color: rgba(255,255,255,0.8);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Tools Grid */
+        .tools-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .tool-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(76, 201, 240, 0.5);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .tool-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .tool-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .tool-card p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .tool-badge {
+            background: linear-gradient(135deg, #4cc9f0, #4361ee);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+        
+        /* Section Title */
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .section-title span {
+            margin-left: 0.5rem;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: rgba(255,255,255,0.6);
+            margin-top: 4rem;
+        }
+        
+        .footer a {
+            color: #4cc9f0;
+            text-decoration: none;
+        }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="/" class="logo">
+                <img src="images/brand/logo-haitech-transparent.png" alt="דרך ההייטק">
+            </a>
+            <nav class="nav-links">
+                <a href="/">דף הבית</a>
+                <a href="/blog">בלוג</a>
+                <a href="/private-courses">קורסים</a>
+                <a href="/tools">כלים</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>🛠️ כלים</h1>
+        <p>כל הכלים שאתם צריכים במקום אחד</p>
+    </section>
+
+    <!-- Tools -->
+    <section class="tools-section">
+        <h2 class="section-title"><span>⛏️</span> כלי מיינקראפט</h2>
+        <div class="tools-grid">
+            <a href="https://drive.google.com/file/d/1E8ezON4C_5al9UVLW_ydwr6Wz72ETkbv/view?usp=sharing" class="tool-card" target="_blank" rel="noopener">
+                <span class="tool-icon">🌍</span>
+                <h3>הורדת עולם מיינקראפט</h3>
+                <p>הורידו את העולם המוכן שלנו ללימוד תכנות במיינקראפט</p>
+                <span class="tool-badge">הורדה</span>
+            </a>
+            
+            <a href="https://makecode.com/_fmD3iH5jKf9X" class="tool-card" target="_blank" rel="noopener">
+                <span class="tool-icon">🔤</span>
+                <h3>תוסף עברית למיינקראפט</h3>
+                <p>תוסף שמאפשר תכנות בעברית בסביבת MakeCode</p>
+                <span class="tool-badge">תוסף</span>
+            </a>
+            
+            <a href="https://vimeo.com/802961754" class="tool-card" target="_blank" rel="noopener">
+                <span class="tool-icon">🎬</span>
+                <h3>סרטון הסבר - שמירת קוד</h3>
+                <p>איך לשמור את הקוד שלכם במיינקראפט אדיוקיישן</p>
+                <span class="tool-badge">סרטון</span>
+            </a>
+            
+            <a href="https://drive.google.com/file/d/18D7tdzmb5lRk8IpuOSPE6IcqvD3uMXu-/view?usp=sharing" class="tool-card" target="_blank" rel="noopener">
+                <span class="tool-icon">📦</span>
+                <h3>קבצי התקנה מיינקראפט</h3>
+                <p>כל קבצי ההתקנה הנדרשים למיינקראפט אדיוקיישן</p>
+                <span class="tool-badge">הורדה</span>
+            </a>
+        </div>
+    </section>
+
+    <section class="tools-section">
+        <h2 class="section-title"><span>🚀</span> כלים שימושיים ללמידה</h2>
+        <div class="tools-grid">
+            <a href="https://studio.code.org/s/mc/lessons/1/levels/1" class="tool-card" target="_blank" rel="noopener">
+                <span class="tool-icon">🧩</span>
+                <h3>פעילות code.org</h3>
+                <p>פעילות אינטראקטיבית ללימוד יסודות התכנות עם מיינקראפט</p>
+                <span class="tool-badge">פעילות</span>
+            </a>
+            
+            <a href="https://scratch.mit.edu/" class="tool-card" target="_blank" rel="noopener">
+                <span class="tool-icon">🐱</span>
+                <h3>Scratch</h3>
+                <p>סביבת תכנות חזותית לילדים מבית MIT</p>
+                <span class="tool-badge">כלי תכנות</span>
+            </a>
+            
+            <a href="https://makecode.microbit.org/" class="tool-card" target="_blank" rel="noopener">
+                <span class="tool-icon">💡</span>
+                <h3>MakeCode micro:bit</h3>
+                <p>תכנות בקרים ורובוטיקה בצורה חזותית</p>
+                <span class="tool-badge">כלי תכנות</span>
+            </a>
+            
+            <a href="https://replit.com/" class="tool-card" target="_blank" rel="noopener">
+                <span class="tool-icon">💻</span>
+                <h3>Replit</h3>
+                <p>סביבת תכנות אונליין - Python, JavaScript ועוד</p>
+                <span class="tool-badge">כלי תכנות</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© דרך ההייטק | <a href="https://hai.tech">hai.tech</a></p>
+    </footer>
+</body>
+</html>
