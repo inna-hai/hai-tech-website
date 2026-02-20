@@ -230,6 +230,7 @@
         <div class="admin-nav">
             <button class="active" data-section="enrollments">📚 הרשמות לקורסים</button>
             <button data-section="users">👥 משתמשים</button>
+            <button data-section="coupons">🎟️ קופונים</button>
             <button data-section="stats">📊 סטטיסטיקות</button>
         </div>
 
@@ -345,7 +346,101 @@
                 </div>
             </div>
         </div>
+
+        <!-- COUPONS SECTION -->
+        <div id="coupons" class="section">
+            <div class="card">
+                <h2>➕ צור קופון חדש</h2>
+                <div class="coupon-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>קוד קופון</label>
+                            <input type="text" id="couponCode" placeholder="למשל: WELCOME50" style="text-transform: uppercase;">
+                        </div>
+                        <div class="form-group">
+                            <label>סוג הנחה</label>
+                            <select id="couponType">
+                                <option value="percent">אחוז (%)</option>
+                                <option value="fixed">סכום קבוע (₪)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>ערך הנחה</label>
+                            <input type="number" id="couponValue" placeholder="למשל: 20" min="0">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>מקסימום שימושים (ריק = ללא הגבלה)</label>
+                            <input type="number" id="couponMaxUses" placeholder="למשל: 100" min="1">
+                        </div>
+                        <div class="form-group">
+                            <label>קורס ספציפי (ריק = כל הקורסים)</label>
+                            <select id="couponCourse">
+                                <option value="">כל הקורסים</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="display: flex; align-items: flex-end;">
+                            <button class="btn-enroll" id="createCouponBtn" onclick="createCoupon()">צור קופון</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>🎟️ קופונים קיימים</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>קוד</th>
+                            <th>הנחה</th>
+                            <th>שימושים</th>
+                            <th>קורס</th>
+                            <th>סטטוס</th>
+                            <th>פעולות</th>
+                        </tr>
+                    </thead>
+                    <tbody id="couponsTable">
+                        <tr><td colspan="6" style="text-align: center; color: var(--text-muted);">טוען...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
+    
+    <style>
+        .coupon-form .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        @media (max-width: 768px) {
+            .coupon-form .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        .badge-inactive {
+            background: rgba(107, 114, 128, 0.2);
+            color: #9ca3af;
+        }
+        .btn-toggle {
+            padding: 4px 8px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-size: 12px;
+            margin-left: 4px;
+        }
+        .btn-toggle.active {
+            background: rgba(16, 185, 129, 0.2);
+            color: #34d399;
+        }
+        .btn-toggle.inactive {
+            background: rgba(107, 114, 128, 0.2);
+            color: #9ca3af;
+        }
+    </style>
 
     <script>
         // Sign out function
@@ -606,11 +701,152 @@
             }
         });
 
+        // ========== COUPON FUNCTIONS ==========
+
+        // Load coupons
+        async function loadCoupons() {
+            try {
+                const res = await fetch('/lms/api/admin/coupons', { headers });
+                const data = await res.json();
+                
+                if (data.coupons) {
+                    window.couponsData = data.coupons;
+                    
+                    document.getElementById('couponsTable').innerHTML = data.coupons.length 
+                        ? data.coupons.map((c, idx) => `
+                            <tr>
+                                <td><strong>${c.code}</strong></td>
+                                <td>${c.discount_type === 'percent' ? c.discount_value + '%' : '₪' + c.discount_value}</td>
+                                <td>${c.current_uses || 0}${c.max_uses ? '/' + c.max_uses : ''}</td>
+                                <td>${c.course_title || 'כל הקורסים'}</td>
+                                <td>
+                                    <span class="badge ${c.is_active ? 'badge-active' : 'badge-inactive'}">
+                                        ${c.is_active ? 'פעיל' : 'מושבת'}
+                                    </span>
+                                </td>
+                                <td>
+                                    <button onclick="toggleCoupon('${c.id}')" class="btn-toggle ${c.is_active ? 'active' : 'inactive'}">
+                                        ${c.is_active ? '🔴 השבת' : '🟢 הפעל'}
+                                    </button>
+                                    <button onclick="deleteCoupon('${c.id}', '${c.code}')" class="btn-delete">🗑️</button>
+                                </td>
+                            </tr>
+                        `).join('')
+                        : '<tr><td colspan="6" style="text-align: center; color: var(--text-muted);">אין קופונים</td></tr>';
+                }
+            } catch (err) {
+                console.error('Error loading coupons:', err);
+            }
+        }
+
+        // Create coupon
+        async function createCoupon() {
+            const code = document.getElementById('couponCode').value.trim();
+            const discountType = document.getElementById('couponType').value;
+            const discountValue = parseFloat(document.getElementById('couponValue').value);
+            const maxUses = document.getElementById('couponMaxUses').value ? parseInt(document.getElementById('couponMaxUses').value) : null;
+            const courseId = document.getElementById('couponCourse').value || null;
+
+            if (!code || !discountValue) {
+                showAlert('יש למלא קוד קופון וערך הנחה', 'error');
+                return;
+            }
+
+            if (discountType === 'percent' && (discountValue < 1 || discountValue > 100)) {
+                showAlert('אחוז הנחה חייב להיות בין 1 ל-100', 'error');
+                return;
+            }
+
+            try {
+                const res = await fetch('/lms/api/admin/coupons', {
+                    method: 'POST',
+                    headers,
+                    body: JSON.stringify({ code, discountType, discountValue, maxUses, courseId })
+                });
+
+                const data = await res.json();
+
+                if (data.success) {
+                    showAlert(`קופון ${code.toUpperCase()} נוצר בהצלחה!`);
+                    document.getElementById('couponCode').value = '';
+                    document.getElementById('couponValue').value = '';
+                    document.getElementById('couponMaxUses').value = '';
+                    document.getElementById('couponCourse').value = '';
+                    loadCoupons();
+                } else {
+                    showAlert(data.error || 'שגיאה ביצירת קופון', 'error');
+                }
+            } catch (err) {
+                showAlert('שגיאה ביצירת קופון', 'error');
+            }
+        }
+
+        // Toggle coupon active status
+        async function toggleCoupon(couponId) {
+            try {
+                const res = await fetch(`/lms/api/admin/coupons/${couponId}/toggle`, {
+                    method: 'POST',
+                    headers
+                });
+
+                const data = await res.json();
+
+                if (data.success) {
+                    showAlert(data.isActive ? 'הקופון הופעל' : 'הקופון הושבת');
+                    loadCoupons();
+                } else {
+                    showAlert(data.error || 'שגיאה בעדכון קופון', 'error');
+                }
+            } catch (err) {
+                showAlert('שגיאה בעדכון קופון', 'error');
+            }
+        }
+
+        // Delete coupon
+        async function deleteCoupon(couponId, code) {
+            if (!confirm(`למחוק את הקופון "${code}"?`)) return;
+
+            try {
+                const res = await fetch(`/lms/api/admin/coupons/${couponId}`, {
+                    method: 'DELETE',
+                    headers
+                });
+
+                if (res.ok) {
+                    showAlert(`הקופון ${code} נמחק`);
+                    loadCoupons();
+                } else {
+                    const data = await res.json();
+                    showAlert(data.error || 'שגיאה במחיקה', 'error');
+                }
+            } catch (err) {
+                showAlert('שגיאה במחיקה', 'error');
+            }
+        }
+
         // Load all data
         loadUsers();
         loadCourses();
         loadEnrollments();
         loadStats();
+        loadCoupons();
+
+        // Also populate coupon course dropdown when courses are loaded
+        async function loadCoursesForCoupons() {
+            try {
+                const res = await fetch('/lms/api/courses');
+                const data = await res.json();
+                
+                if (data.courses) {
+                    const select = document.getElementById('couponCourse');
+                    select.innerHTML = '<option value="">כל הקורסים</option>' + 
+                        data.courses.map(c => `<option value="${c.id}">${c.title}</option>`).join('');
+                }
+            } catch (err) {
+                console.error('Error loading courses for coupons:', err);
+            }
+        }
+        loadCoursesForCoupons();
     </script>
 </body>
 </html>

@@ -405,3 +405,121 @@ adminRoutes.post('/enrollments/bulk', async (c) => {
 
   return c.json({ success: true, results });
 });
+
+// ========== COUPON MANAGEMENT ==========
+
+// Get all coupons
+adminRoutes.get('/coupons', async (c) => {
+  const coupons = await c.env.DB.prepare(`
+    SELECT c.*, co.title as course_title
+    FROM coupons c
+    LEFT JOIN courses co ON c.course_id = co.id
+    ORDER BY c.created_at DESC
+  `).all();
+
+  return c.json({ coupons: coupons.results });
+});
+
+// Create coupon
+adminRoutes.post('/coupons', async (c) => {
+  const { 
+    code, 
+    discountType, 
+    discountValue, 
+    maxUses, 
+    validFrom, 
+    validUntil, 
+    courseId 
+  } = await c.req.json();
+
+  if (!code || !discountType || discountValue === undefined) {
+    return c.json({ error: 'code, discountType, and discountValue are required' }, 400);
+  }
+
+  if (!['percent', 'fixed'].includes(discountType)) {
+    return c.json({ error: 'discountType must be "percent" or "fixed"' }, 400);
+  }
+
+  // Check if code already exists
+  const existing = await c.env.DB.prepare(
+    'SELECT id FROM coupons WHERE code = ?'
+  ).bind(code.toUpperCase()).first();
+
+  if (existing) {
+    return c.json({ error: 'קוד קופון כבר קיים' }, 400);
+  }
+
+  const couponId = crypto.randomUUID();
+  
+  await c.env.DB.prepare(`
+    INSERT INTO coupons (id, code, discount_type, discount_value, max_uses, valid_from, valid_until, course_id, is_active, created_at)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1, unixepoch())
+  `).bind(
+    couponId,
+    code.toUpperCase(),
+    discountType,
+    discountValue,
+    maxUses || null,
+    validFrom || null,
+    validUntil || null,
+    courseId || null
+  ).run();
+
+  return c.json({ success: true, couponId }, 201);
+});
+
+// Update coupon
+adminRoutes.put('/coupons/:couponId', async (c) => {
+  const { couponId } = c.req.param();
+  const updates = await c.req.json();
+
+  const allowedFields = ['discount_type', 'discount_value', 'max_uses', 'valid_from', 'valid_until', 'course_id', 'is_active'];
+  const setClause: string[] = [];
+  const values: any[] = [];
+
+  for (const [key, value] of Object.entries(updates)) {
+    const dbKey = key.replace(/([A-Z])/g, '_$1').toLowerCase(); // camelCase to snake_case
+    if (allowedFields.includes(dbKey)) {
+      setClause.push(`${dbKey} = ?`);
+      values.push(value);
+    }
+  }
+
+  if (setClause.length === 0) {
+    return c.json({ error: 'No valid fields to update' }, 400);
+  }
+
+  values.push(couponId);
+  
+  await c.env.DB.prepare(
+    `UPDATE coupons SET ${setClause.join(', ')} WHERE id = ?`
+  ).bind(...values).run();
+
+  return c.json({ success: true });
+});
+
+// Delete coupon
+adminRoutes.delete('/coupons/:couponId', async (c) => {
+  const { couponId } = c.req.param();
+
+  await c.env.DB.prepare(
+    'DELETE FROM coupons WHERE id = ?'
+  ).bind(couponId).run();
+
+  return c.json({ success: true });
+});
+
+// Toggle coupon active status
+adminRoutes.post('/coupons/:couponId/toggle', async (c) => {
+  const { couponId } = c.req.param();
+
+  await c.env.DB.prepare(
+    'UPDATE coupons SET is_active = NOT is_active WHERE id = ?'
+  ).bind(couponId).run();
+
+  const coupon = await c.env.DB.prepare(
+    'SELECT is_active FROM coupons WHERE id = ?'
+  ).bind(couponId).first<{ is_active: number }>();
+
+  return c.json({ success: true, isActive: !!coupon?.is_active });
+});
