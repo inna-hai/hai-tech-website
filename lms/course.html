@@ -65,6 +65,11 @@
                     </div>
                 </div>
                 
+                <div class="course-price" id="coursePrice" style="display: none;">
+                    <span class="price-label">מחיר הקורס:</span>
+                    <span class="price-value" id="priceValue">₪0</span>
+                </div>
+                
                 <div class="course-actions">
                     <a href="#" class="btn btn-primary" id="startBtn">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -72,6 +77,13 @@
                         </svg>
                         <span>התחל ללמוד</span>
                     </a>
+                    <button class="btn btn-purchase" id="buyBtn" style="display: none;" onclick="purchaseCourse()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                        </svg>
+                        <span>רכוש קורס</span>
+                    </button>
                 </div>
             </div>
             
@@ -141,6 +153,56 @@
             }
         }
 
+        // Current course price (set by loadCourse)
+        let currentCoursePrice = 0;
+
+        // Purchase course
+        async function purchaseCourse() {
+            const token = getToken();
+            if (!token) {
+                // Not logged in - show login modal
+                showEnrollModal();
+                return;
+            }
+
+            const buyBtn = document.getElementById('buyBtn');
+            buyBtn.disabled = true;
+            buyBtn.innerHTML = '<span>מעבד...</span>';
+
+            try {
+                const response = await fetch(`/lms/api/payments/create-payment/${courseId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                const data = await response.json();
+
+                if (data.free) {
+                    // Free course - enrolled directly
+                    alert('נרשמת לקורס בהצלחה!');
+                    window.location.reload();
+                    return;
+                }
+
+                if (data.paymentUrl) {
+                    // Redirect to payment page
+                    window.location.href = data.paymentUrl;
+                } else {
+                    alert(data.error || 'שגיאה בתהליך הרכישה');
+                    buyBtn.disabled = false;
+                    buyBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span>רכוש קורס</span>';
+                }
+            } catch (error) {
+                console.error('Purchase error:', error);
+                alert('שגיאה בתהליך הרכישה');
+                buyBtn.disabled = false;
+                buyBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span>רכוש קורס</span>';
+            }
+        }
+
         // Load course data
         async function loadCourse() {
             try {
@@ -180,6 +242,34 @@
                 const firstLessonId = lessons[0]?.id || 1;
                 document.getElementById('startBtn').href = `lesson.html?course=${courseId}&lesson=${firstLessonId}`;
                 document.getElementById('playBtn').href = `lesson.html?course=${courseId}&lesson=${firstLessonId}`;
+
+                // Handle purchase button visibility
+                const isEnrolled = course.isEnrolled;
+                const price = course.price || 0;
+                currentCoursePrice = price;
+
+                if (!isEnrolled && price > 0) {
+                    // Show price and buy button
+                    document.getElementById('coursePrice').style.display = 'flex';
+                    document.getElementById('priceValue').textContent = `₪${price}`;
+                    document.getElementById('buyBtn').style.display = 'flex';
+                    document.getElementById('startBtn').style.display = 'none';
+                } else if (isEnrolled) {
+                    // Show start button
+                    document.getElementById('startBtn').style.display = 'flex';
+                    document.getElementById('buyBtn').style.display = 'none';
+                }
+
+                // Check for payment status in URL
+                const paymentStatus = urlParams.get('payment');
+                if (paymentStatus === 'success') {
+                    alert('התשלום בוצע בהצלחה! כעת יש לך גישה לקורס.');
+                    // Clean URL
+                    window.history.replaceState({}, document.title, `course.html?id=${courseId}`);
+                } else if (paymentStatus === 'failed') {
+                    alert('התשלום לא הושלם. נסה שוב.');
+                    window.history.replaceState({}, document.title, `course.html?id=${courseId}`);
+                }
 
                 // Render lessons
                 const lessonsList = document.getElementById('lessonsList');
@@ -242,20 +332,45 @@
             <button class="modal-close" onclick="closeEnrollModal()">✕</button>
             <div class="modal-icon">🔒</div>
             <h2>שיעור זה נעול</h2>
-            <p>כדי לצפות בכל השיעורים בקורס, יש להירשם.</p>
+            <p id="enrollModalText">כדי לצפות בכל השיעורים בקורס, יש להירשם.</p>
             
-            <div class="modal-actions">
+            <div class="modal-actions" id="modalActionsNotLoggedIn">
                 <a href="login.html" class="btn-modal-primary">
                     <span>יש לי חשבון - התחברות</span>
                 </a>
-                <a href="https://wa.me/972533009742?text=היי, אשמח לרכוש גישה לקורס" target="_blank" class="btn-modal-secondary">
-                    <span>💬 רכישת גישה בוואטסאפ</span>
+                <a href="register.html" class="btn-modal-secondary" style="background: var(--accent);">
+                    <span>הרשמה חדשה</span>
                 </a>
+            </div>
+            
+            <div class="modal-actions" id="modalActionsLoggedIn" style="display: none;">
+                <button onclick="closeEnrollModal(); purchaseCourse();" class="btn-modal-primary" style="border: none; cursor: pointer; width: 100%;">
+                    <span>🛒 רכוש גישה לקורס</span>
+                </button>
             </div>
             
             <p class="modal-note">שיעור ראשון תמיד פתוח לצפייה חינם!</p>
         </div>
     </div>
+    
+    <script>
+        // Update modal based on login status
+        function updateEnrollModal() {
+            const token = getToken();
+            if (token) {
+                document.getElementById('modalActionsNotLoggedIn').style.display = 'none';
+                document.getElementById('modalActionsLoggedIn').style.display = 'flex';
+                document.getElementById('enrollModalText').textContent = 'כדי לצפות בכל השיעורים, יש לרכוש את הקורס.';
+            } else {
+                document.getElementById('modalActionsNotLoggedIn').style.display = 'flex';
+                document.getElementById('modalActionsLoggedIn').style.display = 'none';
+                document.getElementById('enrollModalText').textContent = 'כדי לצפות בכל השיעורים בקורס, יש להתחבר או להירשם.';
+            }
+        }
+        
+        // Call on page load
+        updateEnrollModal();
+    </script>
 
     <style>
         .modal-overlay {
@@ -350,6 +465,62 @@
             color: var(--text-muted);
             margin-top: 16px;
             margin-bottom: 0;
+        }
+        
+        /* Course Price */
+        .course-price {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding: 16px 20px;
+            background: rgba(46, 204, 113, 0.1);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+            border-radius: 12px;
+        }
+        .price-label {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        .price-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2ecc71;
+        }
+        
+        /* Buy Button */
+        .btn-purchase {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn-purchase:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(46, 204, 113, 0.4);
+        }
+        .btn-purchase:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .btn-purchase svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .course-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
         }
     </style>
 </body>

@@ -13,12 +13,15 @@ import { quizRoutes } from './routes/quiz';
 import { gamificationRoutes } from './routes/gamification';
 import { parentRoutes } from './routes/parent';
 import { adminRoutes } from './routes/admin';
+import { paymentRoutes } from './routes/payments';
 
 // Type definitions for Cloudflare bindings
 export interface Env {
   DB: D1Database;
   JWT_SECRET: string;
   CORS_ORIGIN: string;
+  GREEN_INVOICE_API_KEY: string;
+  GREEN_INVOICE_SECRET: string;
 }
 
 // Create Hono app with typed bindings
@@ -50,6 +53,10 @@ app.route('/lms/api/quiz', quizRoutes);
 app.route('/lms/api/gamification', gamificationRoutes);
 app.route('/lms/api/parent', parentRoutes);
 app.route('/lms/api/admin', adminRoutes);
+app.route('/lms/api/payments', paymentRoutes);
+
+// Webhook routes (also accessible directly)
+app.route('/lms/api/webhooks', paymentRoutes);
 
 // 404 handler
 app.notFound((c) => {
