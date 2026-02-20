@@ -313,38 +313,6 @@
       "featured": false
     },
     {
-      "id": "python-minecraft",
-      "title": "קורס פייתון מיינקראפט",
-      "titleEn": "Python Minecraft",
-      "description": "קורס המשלב בין לימוד שפת Python לבין עולם המשחק האהוב מיינקראפט. הקורס מאפשר ללמוד תכנות בצורה מהנה ואינטראקטיבית.",
-      "shortDescription": "לימוד Python דרך עולם המשחק מיינקראפט",
-      "price": 497,
-      "currency": "ILS",
-      "ageRange": "10+",
-      "lessonsCount": 11,
-      "duration": "למידה עצמית בקצב אישי",
-      "level": "מתחילים",
-      "language": "he",
-      "image": "/images/courses/python-minecraft.png",
-      "url": "https://hai.tech/courses/תכנות-פירמידה-javascript/",
-      "productUrl": "https://hai.tech/product/פייתון-מיינקראפט/",
-      "topics": [
-        "יסודות Python",
-        "משתנים וטיפוסים",
-        "לולאות ותנאים",
-        "פונקציות",
-        "שליטה במיינקראפט עם קוד",
-        "בניית מבנים אוטומטית"
-      ],
-      "skills": [
-        "Python",
-        "חשיבה לוגית",
-        "אוטומציה"
-      ],
-      "prerequisites": "לא נדרש ידע קודם",
-      "featured": false
-    },
-    {
       "id": "minecraft-mods",
       "title": "קורס בניית מודים למיינקראפט",
       "titleEn": "Minecraft Mods Development",
@@ -482,7 +450,7 @@
   ],
   "metadata": {
     "lastUpdated": "2026-02-20",
-    "totalCourses": 14,
+    "totalCourses": 13,
     "source": "hai.tech",
     "currency": "ILS",
     "defaultPrice": 497
