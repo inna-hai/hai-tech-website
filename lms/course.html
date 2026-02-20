@@ -68,6 +68,15 @@
                 <div class="course-price" id="coursePrice" style="display: none;">
                     <span class="price-label">מחיר הקורס:</span>
                     <span class="price-value" id="priceValue">₪0</span>
+                    <span class="price-original" id="priceOriginal" style="display: none;"></span>
+                </div>
+                
+                <div class="coupon-section" id="couponSection" style="display: none;">
+                    <div class="coupon-input-wrapper">
+                        <input type="text" id="couponInput" placeholder="קוד קופון" maxlength="20">
+                        <button type="button" id="applyCouponBtn" onclick="applyCoupon()">החל</button>
+                    </div>
+                    <div class="coupon-message" id="couponMessage"></div>
                 </div>
                 
                 <div class="course-actions">
@@ -155,6 +164,68 @@
 
         // Current course price (set by loadCourse)
         let currentCoursePrice = 0;
+        let originalCoursePrice = 0;
+        let appliedCouponCode = null;
+
+        // Apply coupon code
+        async function applyCoupon() {
+            const couponInput = document.getElementById('couponInput');
+            const couponMessage = document.getElementById('couponMessage');
+            const code = couponInput.value.trim().toUpperCase();
+
+            if (!code) {
+                couponMessage.textContent = 'יש להזין קוד קופון';
+                couponMessage.className = 'coupon-message error';
+                return;
+            }
+
+            const applyCouponBtn = document.getElementById('applyCouponBtn');
+            applyCouponBtn.disabled = true;
+            applyCouponBtn.textContent = '...';
+
+            try {
+                const response = await fetch('/lms/api/payments/validate-coupon', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ code, courseId })
+                });
+
+                const data = await response.json();
+
+                if (data.valid) {
+                    appliedCouponCode = code;
+                    const coupon = data.coupon;
+                    let newPrice;
+
+                    if (coupon.discountType === 'percent') {
+                        newPrice = Math.round(originalCoursePrice * (1 - coupon.discountValue / 100));
+                        couponMessage.textContent = `✅ קופון ${code} הוחל! הנחה ${coupon.discountValue}%`;
+                    } else {
+                        newPrice = Math.max(0, originalCoursePrice - coupon.discountValue);
+                        couponMessage.textContent = `✅ קופון ${code} הוחל! הנחה ₪${coupon.discountValue}`;
+                    }
+
+                    currentCoursePrice = newPrice;
+                    document.getElementById('priceValue').textContent = `₪${newPrice}`;
+                    document.getElementById('priceOriginal').textContent = `₪${originalCoursePrice}`;
+                    document.getElementById('priceOriginal').style.display = 'inline';
+                    couponMessage.className = 'coupon-message success';
+                    couponInput.disabled = true;
+                    applyCouponBtn.textContent = '✓';
+                } else {
+                    couponMessage.textContent = data.error || 'קוד קופון לא תקין';
+                    couponMessage.className = 'coupon-message error';
+                    applyCouponBtn.disabled = false;
+                    applyCouponBtn.textContent = 'החל';
+                }
+            } catch (error) {
+                console.error('Coupon error:', error);
+                couponMessage.textContent = 'שגיאה בבדיקת הקופון';
+                couponMessage.className = 'coupon-message error';
+                applyCouponBtn.disabled = false;
+                applyCouponBtn.textContent = 'החל';
+            }
+        }
 
         // Purchase course
         async function purchaseCourse() {
@@ -175,7 +246,10 @@
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'
-                    }
+                    },
+                    body: JSON.stringify({
+                        couponCode: appliedCouponCode
+                    })
                 });
 
                 const data = await response.json();
@@ -247,17 +321,20 @@
                 const isEnrolled = course.isEnrolled;
                 const price = course.price || 0;
                 currentCoursePrice = price;
+                originalCoursePrice = price;
 
                 if (!isEnrolled && price > 0) {
-                    // Show price and buy button
+                    // Show price, coupon input, and buy button
                     document.getElementById('coursePrice').style.display = 'flex';
                     document.getElementById('priceValue').textContent = `₪${price}`;
+                    document.getElementById('couponSection').style.display = 'block';
                     document.getElementById('buyBtn').style.display = 'flex';
                     document.getElementById('startBtn').style.display = 'none';
                 } else if (isEnrolled) {
                     // Show start button
                     document.getElementById('startBtn').style.display = 'flex';
                     document.getElementById('buyBtn').style.display = 'none';
+                    document.getElementById('couponSection').style.display = 'none';
                 }
 
                 // Check for payment status in URL
@@ -486,6 +563,70 @@
             font-size: 28px;
             font-weight: 700;
             color: #2ecc71;
+        }
+        .price-original {
+            font-size: 18px;
+            color: var(--text-muted);
+            text-decoration: line-through;
+            margin-right: 8px;
+        }
+        
+        /* Coupon Section */
+        .coupon-section {
+            margin-bottom: 16px;
+        }
+        .coupon-input-wrapper {
+            display: flex;
+            gap: 8px;
+            max-width: 300px;
+        }
+        .coupon-input-wrapper input {
+            flex: 1;
+            padding: 10px 14px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--bg-card);
+            color: var(--text-primary);
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+        .coupon-input-wrapper input::placeholder {
+            text-transform: none;
+        }
+        .coupon-input-wrapper input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        .coupon-input-wrapper input:disabled {
+            background: var(--bg-secondary);
+            opacity: 0.7;
+        }
+        .coupon-input-wrapper button {
+            padding: 10px 16px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .coupon-input-wrapper button:hover:not(:disabled) {
+            background: var(--accent-light);
+        }
+        .coupon-input-wrapper button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+        .coupon-message {
+            margin-top: 8px;
+            font-size: 13px;
+        }
+        .coupon-message.success {
+            color: #2ecc71;
+        }
+        .coupon-message.error {
+            color: #e74c3c;
         }
         
         /* Buy Button */

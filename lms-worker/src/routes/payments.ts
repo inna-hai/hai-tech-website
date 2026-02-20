@@ -73,6 +73,15 @@ paymentRoutes.post('/create-payment/:courseId', async (c) => {
   }
 
   const courseId = c.req.param('courseId');
+  
+  // Get coupon code from request body
+  let couponCode: string | null = null;
+  try {
+    const body = await c.req.json();
+    couponCode = body.couponCode || null;
+  } catch {
+    // No body or invalid JSON - that's fine
+  }
 
   // Check if already enrolled
   const existingEnrollment = await c.env.DB.prepare(
@@ -92,8 +101,44 @@ paymentRoutes.post('/create-payment/:courseId', async (c) => {
     return c.json({ error: 'קורס לא נמצא' }, 404);
   }
 
-  if (!course.price || course.price === 0) {
-    // Free course - enroll directly
+  let finalPrice = course.price;
+  let appliedCoupon: string | null = null;
+
+  // Apply coupon if provided
+  if (couponCode) {
+    const now = Math.floor(Date.now() / 1000);
+    const coupon = await c.env.DB.prepare(`
+      SELECT * FROM coupons 
+      WHERE code = ? 
+      AND is_active = 1
+      AND (valid_from IS NULL OR valid_from <= ?)
+      AND (valid_until IS NULL OR valid_until >= ?)
+      AND (max_uses IS NULL OR current_uses < max_uses)
+      AND (course_id IS NULL OR course_id = ?)
+    `).bind(couponCode.toUpperCase(), now, now, courseId).first() as {
+      id: string;
+      code: string;
+      discount_type: string;
+      discount_value: number;
+    } | null;
+
+    if (coupon) {
+      if (coupon.discount_type === 'percent') {
+        finalPrice = Math.round(course.price * (1 - coupon.discount_value / 100));
+      } else {
+        finalPrice = Math.max(0, course.price - coupon.discount_value);
+      }
+      appliedCoupon = coupon.code;
+
+      // Increment coupon usage
+      await c.env.DB.prepare(
+        'UPDATE coupons SET current_uses = current_uses + 1 WHERE id = ?'
+      ).bind(coupon.id).run();
+    }
+  }
+
+  if (!finalPrice || finalPrice === 0) {
+    // Free course (or 100% discount) - enroll directly
     const enrollmentId = crypto.randomUUID();
     await c.env.DB.prepare(`
       INSERT INTO enrollments (id, user_id, course_id, status, enrolled_at)
@@ -115,6 +160,10 @@ paymentRoutes.post('/create-payment/:courseId', async (c) => {
     );
 
     // Create payment form (PaymentForm - דף תשלום)
+    const incomeDescription = appliedCoupon 
+      ? `${course.title} (קופון: ${appliedCoupon})`
+      : course.title;
+
     const paymentResponse = await fetch(`${GREEN_INVOICE_API}/payments/form`, {
       method: 'POST',
       headers: {
@@ -127,7 +176,7 @@ paymentRoutes.post('/create-payment/:courseId', async (c) => {
         lang: 'he',
         currency: 'ILS',
         vatType: 1, // כולל מע"מ
-        amount: course.price,
+        amount: finalPrice,
         maxPayments: 3, // עד 3 תשלומים
         pluginId: 'hai-tech-lms',
         client: {
@@ -136,14 +185,14 @@ paymentRoutes.post('/create-payment/:courseId', async (c) => {
         },
         income: [
           {
-            description: course.title,
+            description: incomeDescription,
             quantity: 1,
-            price: course.price,
+            price: finalPrice,
             currency: 'ILS',
             vatType: 1,
           }
         ],
-        remarks: `קורס: ${course.title}\nמשתמש: ${userId}\nקורס ID: ${courseId}`,
+        remarks: `קורס: ${course.title}\nמשתמש: ${userId}\nקורס ID: ${courseId}${appliedCoupon ? `\nקופון: ${appliedCoupon}` : ''}`,
         successUrl: `https://hai.tech/lms/course?id=${courseId}&payment=success`,
         failureUrl: `https://hai.tech/lms/course?id=${courseId}&payment=failed`,
         notifyUrl: `https://hai.tech/lms/api/webhooks/greeninvoice`,
@@ -170,7 +219,7 @@ paymentRoutes.post('/create-payment/:courseId', async (c) => {
     await c.env.DB.prepare(`
       INSERT INTO pending_payments (id, user_id, course_id, amount, created_at)
       VALUES (?, ?, ?, ?, unixepoch())
-    `).bind(paymentData.id, userId, courseId, course.price).run();
+    `).bind(paymentData.id, userId, courseId, finalPrice).run();
 
     return c.json({
       success: true,
@@ -283,4 +332,45 @@ paymentRoutes.get('/status/:paymentId', async (c) => {
   }
 
   return c.json({ payment });
+});
+
+// Validate coupon code
+paymentRoutes.post('/validate-coupon', async (c) => {
+  const { code, courseId } = await c.req.json();
+
+  if (!code) {
+    return c.json({ valid: false, error: 'קוד קופון חסר' });
+  }
+
+  const now = Math.floor(Date.now() / 1000);
+
+  const coupon = await c.env.DB.prepare(`
+    SELECT * FROM coupons 
+    WHERE code = ? 
+    AND is_active = 1
+    AND (valid_from IS NULL OR valid_from <= ?)
+    AND (valid_until IS NULL OR valid_until >= ?)
+    AND (max_uses IS NULL OR current_uses < max_uses)
+    AND (course_id IS NULL OR course_id = ?)
+  `).bind(code.toUpperCase(), now, now, courseId).first() as {
+    id: string;
+    code: string;
+    discount_type: string;
+    discount_value: number;
+    course_id: string | null;
+  } | null;
+
+  if (!coupon) {
+    return c.json({ valid: false, error: 'קוד קופון לא תקין או פג תוקף' });
+  }
+
+  return c.json({
+    valid: true,
+    coupon: {
+      code: coupon.code,
+      discountType: coupon.discount_type,
+      discountValue: coupon.discount_value,
+      courseSpecific: !!coupon.course_id,
+    }
+  });
 });
