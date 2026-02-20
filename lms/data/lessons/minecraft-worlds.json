@@ -1,0 +1,167 @@
+{
+  "courseId": "minecraft-worlds",
+  "courseTitle": "קורס בניית עולמות במיינקראפט",
+  "lessonsCount": 16,
+  "lessons": [
+    {
+      "id": 1,
+      "title": "סרטון פתיחה",
+      "description": "הכרות עם הקורס ומה נלמד",
+      "duration": "05:00",
+      "videoUrl": "https://player.vimeo.com/video/495994415",
+      "order": 1,
+      "free": true,
+      "resources": []
+    },
+    {
+      "id": 2,
+      "title": "שיעור 0 – התקנות והתחברות",
+      "description": "התקנת הכלים הנדרשים וחיבור למיינקראפט",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1104384543",
+      "order": 2,
+      "free": true,
+      "resources": []
+    },
+    {
+      "id": 3,
+      "title": "הורדת עולם מיינקראפט",
+      "description": "הורדת קובץ העולם לעבודה",
+      "duration": "05:00",
+      "videoUrl": null,
+      "order": 3,
+      "free": true,
+      "resources": []
+    },
+    {
+      "id": 4,
+      "title": "איך מייבאים את קובץ העולם למיינקראפט",
+      "description": "הדרכה לייבוא העולם",
+      "duration": "08:00",
+      "videoUrl": "https://player.vimeo.com/video/893607836",
+      "order": 4,
+      "free": true,
+      "resources": []
+    },
+    {
+      "id": 5,
+      "title": "שיעור 1 – הכרות עם הפלטפורמה",
+      "description": "הכרות עם סביבת העבודה וכלי התכנות",
+      "duration": "13:00",
+      "videoUrl": "https://player.vimeo.com/video/464482409",
+      "order": 5,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 6,
+      "title": "שיעור 2 – סוכנות חלק א׳",
+      "description": "עבודה עם הסוכן במיינקראפט",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/464482541",
+      "order": 6,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 7,
+      "title": "שיעור 3 – סוכנות חלק ב׳",
+      "description": "המשך עבודה עם הסוכן",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/464482656",
+      "order": 7,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 8,
+      "title": "שיעור 4 – בניית כבישים חלק א׳",
+      "description": "לימוד בניית כבישים בקוד",
+      "duration": "12:00",
+      "videoUrl": "https://player.vimeo.com/video/464482702",
+      "order": 8,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 9,
+      "title": "תרגול בבניית כבישים",
+      "description": "תרגול עצמי",
+      "duration": "10:00",
+      "videoUrl": null,
+      "order": 9,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 10,
+      "title": "שיעור 5 – בניית כבישים חלק ב׳ ותחילת בית",
+      "description": "סיום כבישים והתחלת בניית בית",
+      "duration": "18:00",
+      "videoUrl": "https://player.vimeo.com/video/464482804",
+      "order": 10,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 11,
+      "title": "תרגול בבניית בית",
+      "description": "תרגול עצמי",
+      "duration": "10:00",
+      "videoUrl": null,
+      "order": 11,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 12,
+      "title": "שיעור 6 – המשך בניית בית",
+      "description": "השלמת בניית הבית",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/464482881",
+      "order": 12,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 13,
+      "title": "שיעור 7 – בניית גדרות בפארק",
+      "description": "יצירת גדרות סביב הפארק",
+      "duration": "12:00",
+      "videoUrl": "https://player.vimeo.com/video/464482963",
+      "order": 13,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 14,
+      "title": "תרגול גדרות",
+      "description": "תרגול עצמי",
+      "duration": "10:00",
+      "videoUrl": null,
+      "order": 14,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 15,
+      "title": "שיעור 8 – בניית מזרקה בפארק",
+      "description": "יצירת מזרקה מרשימה בקוד",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/464483034",
+      "order": 15,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 16,
+      "title": "תרגול מזרקה",
+      "description": "תרגול עצמי ופרויקט סיום",
+      "duration": "10:00",
+      "videoUrl": null,
+      "order": 16,
+      "free": false,
+      "resources": []
+    }
+  ]
+}

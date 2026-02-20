@@ -1,0 +1,67 @@
+{
+  "courseId": "minecraft-summer-camp",
+  "courseTitle": "מחנה קיץ מיינקראפט JavaScript",
+  "lessonsCount": 6,
+  "lessons": [
+    {
+      "id": 1,
+      "title": "התקנות ורשיון מיינקראפט",
+      "description": "התקנת הכלים הנדרשים והגדרת רשיון",
+      "duration": "15:00",
+      "videoUrl": "https://player.vimeo.com/video/1104384543",
+      "order": 1,
+      "free": true,
+      "resources": []
+    },
+    {
+      "id": 2,
+      "title": "שיעור 1 – יצירת עולם והכרות עם JavaScript",
+      "description": "יצירת עולם חדש ולימוד יסודות השפה",
+      "duration": "20:00",
+      "videoUrl": "https://player.vimeo.com/video/570868690",
+      "order": 2,
+      "free": true,
+      "resources": []
+    },
+    {
+      "id": 3,
+      "title": "שיעור 2 – לולאות ובניית בית בעזרת קוד",
+      "description": "לימוד לולאות ובניית מבנים",
+      "duration": "22:00",
+      "videoUrl": "https://player.vimeo.com/video/571126097",
+      "order": 3,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 4,
+      "title": "שיעור 3 – סיום בניית הבית ותחילת משחק חפש את המטמון",
+      "description": "השלמת הבית והתחלת פיתוח משחק",
+      "duration": "25:00",
+      "videoUrl": "https://player.vimeo.com/video/571539766",
+      "order": 4,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 5,
+      "title": "שיעור 4 – המשך יצירת המשחק + משימה",
+      "description": "פיתוח המשחק והוספת משימות",
+      "duration": "20:00",
+      "videoUrl": "https://player.vimeo.com/video/572044566",
+      "order": 5,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 6,
+      "title": "שיעור 5 – משתנים ומשפטי תנאי – סיום המשחק ובונוס",
+      "description": "לימוד משתנים ותנאים, השלמת הפרויקט",
+      "duration": "25:00",
+      "videoUrl": "https://player.vimeo.com/video/572588401",
+      "order": 6,
+      "free": false,
+      "resources": []
+    }
+  ]
+}

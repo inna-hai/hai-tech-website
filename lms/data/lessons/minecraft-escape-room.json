@@ -1,0 +1,77 @@
+{
+  "courseId": "minecraft-escape-room",
+  "courseTitle": "מחנה חדר בריחה בפירמידה",
+  "lessonsCount": 7,
+  "lessons": [
+    {
+      "id": 1,
+      "title": "הורדות והתקנות",
+      "description": "התקנת הכלים הנדרשים לקורס",
+      "duration": "11:10",
+      "videoUrl": "https://player.vimeo.com/video/1104384543",
+      "order": 1,
+      "free": true,
+      "resources": []
+    },
+    {
+      "id": 2,
+      "title": "התקנת תוסף עברית למיינקראפט",
+      "description": "הוספת תמיכה בעברית למשחק",
+      "duration": "02:24",
+      "videoUrl": "https://player.vimeo.com/video/594233602",
+      "order": 2,
+      "free": true,
+      "resources": []
+    },
+    {
+      "id": 3,
+      "title": "בניית פירמידה – לולאות",
+      "description": "לימוד לולאות דרך בניית פירמידה",
+      "duration": "25:00",
+      "videoUrl": null,
+      "order": 3,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 4,
+      "title": "המשך בניית הפירמידה – תנאים ומשתנים",
+      "description": "לימוד תנאים ומשתנים",
+      "duration": "27:35",
+      "videoUrl": null,
+      "order": 4,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 5,
+      "title": "רדסטון ליצירת דלת כניסה לפירמידה",
+      "description": "יצירת מנגנון דלת עם רדסטון",
+      "duration": "20:00",
+      "videoUrl": null,
+      "order": 5,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 6,
+      "title": "יצירת חדר בריחה",
+      "description": "בניית חדר הבריחה והחידות",
+      "duration": "07:52",
+      "videoUrl": null,
+      "order": 6,
+      "free": false,
+      "resources": []
+    },
+    {
+      "id": 7,
+      "title": "סיכום כל השלבים ופרסום הפירמידה",
+      "description": "סיכום הפרויקט ושיתוף",
+      "duration": "33:42",
+      "videoUrl": null,
+      "order": 7,
+      "free": false,
+      "resources": []
+    }
+  ]
+}
