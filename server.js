@@ -366,6 +366,36 @@ const server = http.createServer((req, res) => {
         return;
     }
     
+    // ============================================
+    // REDIRECTS - Old WordPress URLs
+    // ============================================
+    const redirects = {
+        '/product/פייתון-מיינקראפט/': '/lms/course.html?id=python-minecraft',
+        '/product/פייתון-מיינקראפט': '/lms/course.html?id=python-minecraft',
+        '/product/קורס-למידה-עצמית-של-javascript-באמצעות-מיינקרא/': '/lms/course.html?id=minecraft-javascript',
+        '/product/קורס-למידה-עצמית-תכנות-משחקי-רובלוקס/': '/lms/course.html?id=roblox-lua',
+        '/product/פיתוח-אתרים-ומשחקים-בשילוב-בינה-מלאכו/': '/lms/course.html?id=web-dev-ai',
+        '/courses/קורס-למידה-עצמית-של-javascript-באמצעות-מיינקרא/': '/lms/course.html?id=minecraft-javascript',
+        '/courses/קורס-למידה-עצמית-תכנות-משחקי-רובלוקס/': '/lms/course.html?id=roblox-lua',
+        '/courses/פיתוח-אתרים-ומשחקים-בשילוב-בינה-מלאכו/': '/lms/course.html?id=web-dev-ai'
+    };
+    
+    // Check for exact redirect match
+    if (redirects[pathname]) {
+        console.log(`[REDIRECT] ${pathname} -> ${redirects[pathname]}`);
+        res.writeHead(301, { 'Location': redirects[pathname] });
+        res.end();
+        return;
+    }
+    
+    // Catch-all: redirect any /product/* or /courses/* to homepage
+    if (pathname.startsWith('/product/') || (pathname.startsWith('/courses/') && !pathname.includes('.html'))) {
+        console.log(`[REDIRECT] ${pathname} -> / (catch-all)`);
+        res.writeHead(301, { 'Location': '/' });
+        res.end();
+        return;
+    }
+    
     // API: GitHub Webhook - Auto deploy on push
     if (req.method === 'POST' && pathname === '/api/deploy') {
         console.log('[DEPLOY] Webhook received, pulling latest code...');

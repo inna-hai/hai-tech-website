@@ -375,11 +375,114 @@
       ],
       "prerequisites": "ידע בסיסי בתכנות מומלץ",
       "featured": false
+    },
+    {
+      "id": "minecraft-worlds",
+      "title": "קורס בניית עולמות במיינקראפט",
+      "titleEn": "Minecraft World Building with Code",
+      "description": "קורס מיוחד לבניית עולמות מדהימים במיינקראפט באמצעות תכנות! תלמדו ליצור עיר שלמה עם פארקים, מזרקות וכבישים. הקורס משלב יצירתיות עם לימוד יסודות התכנות בצורה חווייתית ומהנה.",
+      "shortDescription": "בניית עיר שלמה עם פארקים, מזרקות וכבישים במיינקראפט",
+      "price": 497,
+      "currency": "ILS",
+      "ageRange": "8-11",
+      "lessonsCount": 16,
+      "duration": "למידה עצמית בקצב אישי",
+      "level": "מתחילים",
+      "language": "he",
+      "image": "/images/courses/minecraft-worlds.webp",
+      "url": "https://hai.tech/courses/קורס-למידה-עצמית-בניית-עולמות-minecraft-באמצע/",
+      "productUrl": "https://hai.tech/product/קורס-למידה-עצמית-בניית-עולמות-minecraft-באמצע/",
+      "topics": [
+        "הכרות עם ממשק הקוד",
+        "פקודות בסיסיות",
+        "בניית מבנים פשוטים",
+        "יצירת פארקים וגנים",
+        "בניית מזרקות",
+        "סלילת כבישים",
+        "תכנון עיר שלמה",
+        "פרויקט גמר"
+      ],
+      "skills": [
+        "חשיבה מרחבית",
+        "תכנות בסיסי",
+        "יצירתיות",
+        "תכנון ועיצוב"
+      ],
+      "prerequisites": "לא נדרש ידע קודם",
+      "featured": true
+    },
+    {
+      "id": "minecraft-summer-camp",
+      "title": "מחנה קיץ מיינקראפט JavaScript",
+      "titleEn": "Minecraft JavaScript Summer Camp",
+      "description": "גרסה מקוצרת וממוקדת של קורס JavaScript במיינקראפט - מושלם לחופשת הקיץ! תלמדו את יסודות התכנות בשפת JavaScript תוך כדי משחק במיינקראפט בצורה אינטנסיבית וכיפית.",
+      "shortDescription": "גרסה מקוצרת וממוקדת ללימוד JavaScript במיינקראפט",
+      "price": 297,
+      "currency": "ILS",
+      "ageRange": "9-13",
+      "lessonsCount": 6,
+      "duration": "למידה עצמית בקצב אישי",
+      "level": "מתחילים",
+      "language": "he",
+      "image": "/images/courses/minecraft-summer.webp",
+      "url": "https://hai.tech/courses/מחנה-קיץ-מיינקראפט/",
+      "productUrl": "https://hai.tech/product/מחנה-קיץ-מיינקראפט/",
+      "topics": [
+        "יסודות JavaScript",
+        "משתנים ופקודות",
+        "לולאות בסיסיות",
+        "בניית מבנים בקוד",
+        "מיני-משחק",
+        "פרויקט סיום"
+      ],
+      "skills": [
+        "JavaScript",
+        "חשיבה לוגית",
+        "פתרון בעיות"
+      ],
+      "prerequisites": "לא נדרש ידע קודם",
+      "featured": false,
+      "badge": "מחנה קיץ"
+    },
+    {
+      "id": "minecraft-escape-room",
+      "title": "מחנה חדר בריחה בפירמידה",
+      "titleEn": "Minecraft Escape Room - Pyramid",
+      "description": "קורס מיוחד לבניית פירמידה וחדר בריחה מרתק במיינקראפט! תלמדו לתכנת אתגרים, חידות ומנגנונים מורכבים תוך שימוש בלולאות, משתנים ופקודות מתקדמות.",
+      "shortDescription": "בניית פירמידה וחדר בריחה עם קוד במיינקראפט",
+      "price": 297,
+      "currency": "ILS",
+      "ageRange": "10+",
+      "lessonsCount": 7,
+      "duration": "למידה עצמית בקצב אישי",
+      "level": "מתחילים עד בינוני",
+      "language": "he",
+      "image": "/images/courses/minecraft-escape.webp",
+      "url": "https://hai.tech/courses/חדר-בריחה-פירמידה/",
+      "productUrl": "https://hai.tech/product/מחנה-חדר-בריחה-בפירמידה/",
+      "topics": [
+        "תכנון חדר בריחה",
+        "בניית פירמידה בקוד",
+        "לולאות ומשתנים",
+        "יצירת חידות",
+        "מנגנוני הפעלה",
+        "פקודות מתקדמות",
+        "פרויקט גמר"
+      ],
+      "skills": [
+        "חשיבה לוגית",
+        "תכנות",
+        "יצירתיות",
+        "פתרון בעיות"
+      ],
+      "prerequisites": "לא נדרש ידע קודם",
+      "featured": false,
+      "badge": "מחנה קיץ"
     }
   ],
   "metadata": {
-    "lastUpdated": "2026-02-02",
-    "totalCourses": 11,
+    "lastUpdated": "2026-02-20",
+    "totalCourses": 14,
     "source": "hai.tech",
     "currency": "ILS",
     "defaultPrice": 497
