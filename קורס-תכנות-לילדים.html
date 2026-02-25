@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="SaI0ICNzKyVpElKdz9pVek8ame4XKZiK4ccby7SKujk" />
+    
+    <title>קורס תכנות לילדים | לימוד תכנות מגיל 7 | דרך ההייטק</title>
+    <meta name="description" content="קורס תכנות לילדים מגיל 7 עד 18. לימוד JavaScript, Python, Scratch דרך מיינקראפט ורובלוקס. מדריכים מקצועיים, למידה מהבית, תמיכה אישית. הצטרפו ל-5,000+ בוגרים!">
+    <meta name="keywords" content="קורס תכנות לילדים, לימוד תכנות לילדים, תכנות לילדים, קורס מחשבים לילדים, חוג תכנות, לימוד קוד לילדים">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="canonical" href="https://hai.tech/קורס-תכנות-לילדים">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hai.tech/קורס-תכנות-לילדים">
+    <meta property="og:title" content="קורס תכנות לילדים | למידה מהנה מגיל 7 | דרך ההייטק">
+    <meta property="og:description" content="הפכו את זמן המסך להשקעה בעתיד! קורסי תכנות לילדים דרך מיינקראפט ורובלוקס. מדריכים מקצועיים, תמיכה אישית.">
+    <meta property="og:image" content="https://hai.tech/images/og/programming-kids.jpg">
+    <meta property="og:locale" content="he_IL">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="קורס תכנות לילדים | דרך ההייטק">
+    <meta name="twitter:description" content="לימוד תכנות לילדים דרך משחקים. JavaScript, Python, Scratch מגיל 7.">
+    
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "קורס תכנות לילדים",
+        "description": "קורס תכנות מקיף לילדים מגיל 7 עד 18. לימוד שפות תכנות אמיתיות דרך משחקים פופולריים.",
+        "provider": {
+            "@type": "Organization",
+            "name": "דרך ההייטק",
+            "url": "https://hai.tech"
+        },
+        "audience": {
+            "@type": "Audience",
+            "audienceType": "ילדים ונוער",
+            "suggestedMinAge": 7,
+            "suggestedMaxAge": 18
+        },
+        "educationalLevel": "Beginner to Advanced",
+        "inLanguage": "he",
+        "offers": {
+            "@type": "Offer",
+            "price": "290",
+            "priceCurrency": "ILS"
+        }
+    }
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/jpeg" href="images/brand/logo.jpg">
+    
+    <style>
+        .landing-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            padding: 140px 0 100px;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .landing-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        .landing-hero .container { position: relative; z-index: 1; }
+        .landing-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        .landing-hero .subtitle {
+            font-size: 1.35rem;
+            max-width: 750px;
+            margin: 0 auto 2.5rem;
+            opacity: 0.95;
+            line-height: 1.8;
+        }
+        .hero-cta {
+            display: inline-flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn-hero-primary {
+            background: white;
+            color: #764ba2;
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: inline-block;
+        }
+        .btn-hero-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        .btn-hero-secondary {
+            background: rgba(255,255,255,0.15);
+            color: white;
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            border: 2px solid rgba(255,255,255,0.5);
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        .btn-hero-secondary:hover {
+            background: white;
+            color: #764ba2;
+            border-color: white;
+        }
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3.5rem;
+            flex-wrap: wrap;
+        }
+        .trust-badge {
+            text-align: center;
+        }
+        .trust-badge .number {
+            font-size: 2.8rem;
+            font-weight: 900;
+            display: block;
+        }
+        .trust-badge .label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .section-landing {
+            padding: 100px 0;
+        }
+        .section-landing.alt-bg {
+            background: var(--bg-light, #f8fafc);
+        }
+        .section-landing h2 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .section-landing .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.15rem;
+            max-width: 650px;
+            margin: 0 auto 3rem;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .benefit-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+        }
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 1.2rem;
+        }
+        .benefit-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: var(--text);
+        }
+        .benefit-card p {
+            color: var(--text-light);
+            line-height: 1.75;
+        }
+        
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .language-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .language-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.15);
+            transform: translateY(-3px);
+        }
+        .language-card .icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        .language-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        .language-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+        }
+        .language-card .age {
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+        }
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        .cta-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        .cta-section .btn-hero-primary {
+            margin: 0 0.5rem;
+        }
+        .cta-section .btn-hero-secondary {
+            margin: 0 0.5rem;
+        }
+        
+        .faq-section {
+            padding: 100px 0;
+            background: var(--bg-light, #f8fafc);
+        }
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .faq-question {
+            padding: 1.5rem 2rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s;
+        }
+        .faq-question:hover {
+            background: #f8fafc;
+        }
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: 400;
+        }
+        .faq-item.open .faq-question::after {
+            content: '−';
+        }
+        .faq-answer {
+            padding: 0 2rem 1.5rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            display: none;
+        }
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+        
+        .landing-footer {
+            background: var(--bg-dark, #0f172a);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        .landing-footer .brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .landing-footer .tagline {
+            opacity: 0.7;
+            margin-bottom: 2rem;
+        }
+        .landing-footer .links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        .landing-footer .links a {
+            color: white;
+            opacity: 0.8;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        .landing-footer .links a:hover {
+            opacity: 1;
+        }
+        .landing-footer .copyright {
+            opacity: 0.5;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .landing-hero { padding: 120px 0 80px; }
+            .trust-badges { gap: 2rem; }
+            .trust-badge .number { font-size: 2.2rem; }
+            .section-landing { padding: 70px 0; }
+            .benefits-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip Link -->
+    <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
+
+    <!-- Navigation - matching main site -->
+    <header class="navbar" id="navbar">
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="images/brand/logo.jpg" alt="דרך ההייטק - לוגו" height="45">
+                <span>דרך ההייטק</span>
+            </a>
+            <nav class="nav-links" id="navLinks">
+                <a href="/#courses">קורסים</a>
+                <a href="/pricing.html">מחירים</a>
+                <a href="/blog">בלוג</a>
+                <a href="/institutions.html">למוסדות</a>
+                <a href="/#contact" class="btn-nav">צור קשר</a>
+            </nav>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="תפריט">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="landing-hero">
+            <div class="container">
+                <h1>קורס תכנות לילדים</h1>
+                <p class="subtitle">הפכו את זמן המסך של ילדיכם להשקעה בעתיד! לימוד תכנות אמיתי דרך מיינקראפט, רובלוקס ומשחקים שהם אוהבים. מדריכים מקצועיים מהתעשייה, תמיכה אישית, ותוצאות מוכחות.</p>
+                <div class="hero-cta">
+                    <a href="/#contact" class="btn-hero-primary">🚀 התחילו עכשיו</a>
+                    <a href="https://wa.me/972533009742?text=היי, מעוניינים בקורס תכנות לילדים" class="btn-hero-secondary">💬 שאלות? וואטסאפ</a>
+                </div>
+                <div class="trust-badges">
+                    <div class="trust-badge">
+                        <span class="number">5,000+</span>
+                        <span class="label">בוגרים מרוצים</span>
+                    </div>
+                    <div class="trust-badge">
+                        <span class="number">7-18</span>
+                        <span class="label">גילאים</span>
+                    </div>
+                    <div class="trust-badge">
+                        <span class="number">6</span>
+                        <span class="label">שנות ניסיון</span>
+                    </div>
+                    <div class="trust-badge">
+                        <span class="number">🤖</span>
+                        <span class="label">כולל AI</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="section-landing alt-bg">
+            <div class="container">
+                <h2>למה ללמוד תכנות אצלנו?</h2>
+                <p class="section-subtitle">אנחנו לא רק מלמדים קוד - אנחנו בונים את הדור הבא של יוצרי הטכנולוגיה</p>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🎮</div>
+                        <h3>לומדים דרך משחקים</h3>
+                        <p>תכנות אמיתי דרך מיינקראפט ורובלוקס - המשחקים שהילדים כבר אוהבים. יותר מוטיבציה, יותר כיף, יותר הצלחה.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">👨‍💻</div>
+                        <h3>מדריכים מהתעשייה</h3>
+                        <p>המדריכים שלנו הם מהנדסי תוכנה פעילים בהייטק הישראלי. הילדים לומדים מאנשי מקצוע אמיתיים שיודעים מה נדרש.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🏠</div>
+                        <h3>לומדים מהבית</h3>
+                        <p>בלי נסיעות, בלי בזבוז זמן. הילדים לומדים בסביבה מוכרת ונוחה, בזמנים שמתאימים למשפחה.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🤖</div>
+                        <h3>כולל בינה מלאכותית</h3>
+                        <p>לומדים לעבוד עם ChatGPT וכלי AI מתקדמים כחלק אינטגרלי מהלמידה. מכינים את הילדים לעולם של מחר.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🔄</div>
+                        <h3>גישה לנצח</h3>
+                        <p>קניתם קורס? הוא שלכם לתמיד. אפשר לחזור על החומר מתי שרוצים, כמה פעמים שצריך. בלי לחץ, בלי מועדים.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">💬</div>
+                        <h3>תמיכה בוואטסאפ</h3>
+                        <p>נתקעתם בתרגיל? שולחים שאלה בוואטסאפ ומקבלים מענה מקצועי מהצוות. אף אחד לא נשאר לבד!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Languages Section -->
+        <section class="section-landing">
+            <div class="container">
+                <h2>שפות תכנות שנלמד</h2>
+                <p class="section-subtitle">שפות אמיתיות שמשמשות חברות הייטק מובילות בעולם - לא צעצועים</p>
+                <div class="languages-grid">
+                    <div class="language-card">
+                        <div class="icon">🐱</div>
+                        <h3>Scratch</h3>
+                        <p>בלוקים צבעוניים, מושלם להתחלה</p>
+                        <div class="age">גיל 7-10</div>
+                    </div>
+                    <div class="language-card">
+                        <div class="icon">🟨</div>
+                        <h3>JavaScript</h3>
+                        <p>השפה של האינטרנט והמשחקים</p>
+                        <div class="age">גיל 10+</div>
+                    </div>
+                    <div class="language-card">
+                        <div class="icon">🐍</div>
+                        <h3>Python</h3>
+                        <p>השפה הכי מבוקשת בשוק העבודה</p>
+                        <div class="age">גיל 10+</div>
+                    </div>
+                    <div class="language-card">
+                        <div class="icon">🎮</div>
+                        <h3>Lua (Roblox)</h3>
+                        <p>יצירת משחקים אמיתיים ברובלוקס</p>
+                        <div class="age">גיל 10+</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <h2>מוכנים להתחיל?</h2>
+                <p>השאירו פרטים ונחזור אליכם תוך 24 שעות עם תוכנית מותאמת אישית לילד</p>
+                <a href="/#contact" class="btn-hero-primary">📝 השאירו פרטים</a>
+                <a href="https://wa.me/972533009742?text=היי, מעוניינים בקורס תכנות לילדים" class="btn-hero-secondary">💬 וואטסאפ</a>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="container">
+                <h2>שאלות נפוצות על קורס תכנות לילדים</h2>
+                <div class="faq-container">
+                    <div class="faq-item open">
+                        <div class="faq-question">מאיזה גיל אפשר להתחיל ללמוד תכנות?</div>
+                        <div class="faq-answer">אפשר להתחיל כבר מגיל 7 עם Scratch - שפה ויזואלית עם בלוקים צבעוניים שמפתחת חשיבה לוגית. מגיל 10 עוברים לשפות אמיתיות כמו JavaScript ו-Python.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">צריך ידע קודם בתכנות או במחשבים?</div>
+                        <div class="faq-answer">בכלל לא! כל הקורסים מתחילים מאפס, צעד אחר צעד. אנחנו מתאימים את הקצב לכל ילד באופן אישי.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">מה צריך כדי להתחיל ללמוד?</div>
+                        <div class="faq-answer">רק מחשב עם אינטרנט! לקורסי מיינקראפט צריך גם את המשחק (Minecraft Java Edition). הכל השאר אנחנו מספקים.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">כמה עולה קורס תכנות לילדים?</div>
+                        <div class="faq-answer">קורסים עצמאיים (וידאו + תמיכה) מתחילים ב-290₪ עם גישה לנצח. שיעורים פרטיים 1:1 מ-156₪ לשיעור של 45 דקות. צרו קשר לייעוץ חינם ונתאים לכם את הפתרון המושלם.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">איך מקבלים תמיכה אם נתקעים?</div>
+                        <div class="faq-answer">פשוט שולחים שאלה בוואטסאפ ומקבלים מענה מקצועי מהמדריכים שלנו. לרוב תוך כמה שעות, אף אחד לא נשאר תקוע!</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">האם הילד יקבל תעודה?</div>
+                        <div class="faq-answer">כן! בסיום כל קורס הילד מקבל תעודה דיגיטלית + תיק עבודות עם הפרויקטים שבנה. זה נהדר גם למוטיבציה וגם להראות להורים ולחברים.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="landing-footer">
+        <div class="container">
+            <div class="brand">דרך ההייטק</div>
+            <p class="tagline">בית הספר לטכנולוגיה, תכנות ובינה מלאכותית לילדים</p>
+            <div class="links">
+                <a href="/">דף הבית</a>
+                <a href="/חוג-מיינקראפט">חוג מיינקראפט</a>
+                <a href="/קורס-רובלוקס-לילדים">קורס רובלוקס</a>
+                <a href="/לימוד-פייתון-לילדים">לימוד Python</a>
+                <a href="/pricing.html">מחירים</a>
+                <a href="/blog">בלוג</a>
+            </div>
+            <p class="copyright">© 2024 דרך ההייטק. כל הזכויות שמורות.</p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+                const item = q.parentElement;
+                const wasOpen = item.classList.contains('open');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+                if (!wasOpen) item.classList.add('open');
+            });
+        });
+
+        // Mobile menu
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                mobileToggle.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>

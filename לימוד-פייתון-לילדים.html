@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>לימוד פייתון לילדים | קורס Python לנוער | דרך ההייטק</title>
+    <meta name="description" content="קורס Python לילדים ונוער - השפה הכי מבוקשת בשוק העבודה! לימוד תכנות פייתון עם פיתוח משחקים ו-AI. מגיל 10, מהבית, עם מדריכים מקצועיים מההייטק.">
+    <meta name="keywords" content="לימוד פייתון לילדים, קורס Python לילדים, תכנות פייתון לנוער, python לילדים, לימוד תכנות python">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="canonical" href="https://hai.tech/לימוד-פייתון-לילדים">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hai.tech/לימוד-פייתון-לילדים">
+    <meta property="og:title" content="לימוד פייתון לילדים | קורס Python מקצועי">
+    <meta property="og:description" content="Python היא השפה הכי מבוקשת בשוק. למדו את הילדים תכנות אמיתי עם פיתוח משחקים ו-AI!">
+    <meta property="og:image" content="https://hai.tech/images/og/python-course.jpg">
+    <meta property="og:locale" content="he_IL">
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "לימוד פייתון לילדים",
+        "description": "קורס Python לילדים ונוער עם פיתוח משחקים ובינה מלאכותית.",
+        "provider": {
+            "@type": "Organization",
+            "name": "דרך ההייטק",
+            "url": "https://hai.tech"
+        },
+        "audience": {
+            "@type": "Audience",
+            "suggestedMinAge": 10,
+            "suggestedMaxAge": 18
+        },
+        "programmingLanguage": "Python"
+    }
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/jpeg" href="images/brand/logo.jpg">
+    
+    <style>
+        .landing-hero {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%);
+            padding: 140px 0 100px;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        .landing-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M30 30l15-15v30H15V15z'/%3E%3C/g%3E%3C/svg%3E");
+        }
+        .landing-hero .container { position: relative; z-index: 1; }
+        .landing-hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 900; margin-bottom: 1.5rem; color: white; }
+        .landing-hero .subtitle { font-size: 1.35rem; max-width: 750px; margin: 0 auto 2.5rem; opacity: 0.95; line-height: 1.8; }
+        .hero-cta { display: inline-flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+        .btn-hero-primary {
+            background: white;
+            color: #2563eb;
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .btn-hero-primary:hover { transform: translateY(-3px); }
+        .btn-hero-secondary {
+            background: rgba(255,255,255,0.15);
+            color: white;
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            border: 2px solid rgba(255,255,255,0.5);
+            transition: all 0.3s;
+        }
+        .btn-hero-secondary:hover { background: white; color: #2563eb; }
+        .trust-badges { display: flex; justify-content: center; gap: 3rem; margin-top: 3.5rem; flex-wrap: wrap; }
+        .trust-badge { text-align: center; }
+        .trust-badge .number { font-size: 2.8rem; font-weight: 900; display: block; }
+        .trust-badge .label { font-size: 1rem; opacity: 0.9; }
+        
+        .section-landing { padding: 100px 0; }
+        .section-landing.alt-bg { background: #f8fafc; }
+        .section-landing h2 { text-align: center; margin-bottom: 1rem; }
+        .section-landing .section-subtitle { text-align: center; color: #64748b; font-size: 1.15rem; max-width: 650px; margin: 0 auto 3rem; }
+        
+        .why-python {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .why-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+        .why-card:hover { transform: translateY(-5px); }
+        .why-card .icon { font-size: 3rem; margin-bottom: 1.2rem; }
+        .why-card h3 { font-size: 1.4rem; margin-bottom: 0.8rem; }
+        .why-card p { color: #64748b; line-height: 1.75; }
+        
+        .stats-bar {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            padding: 60px 0;
+            color: white;
+        }
+        .stats-grid {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .stat-item { text-align: center; }
+        .stat-item .value { font-size: 3rem; font-weight: 900; display: block; }
+        .stat-item .label { opacity: 0.9; }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+        }
+        .cta-section h2 { color: white; margin-bottom: 1rem; }
+        .cta-section p { font-size: 1.25rem; margin-bottom: 2rem; opacity: 0.95; }
+        
+        .faq-section { padding: 100px 0; background: #f8fafc; }
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-item { background: white; border-radius: 16px; margin-bottom: 1rem; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .faq-question { padding: 1.5rem 2rem; font-weight: 700; font-size: 1.1rem; cursor: pointer; display: flex; justify-content: space-between; }
+        .faq-question:hover { background: #f8fafc; }
+        .faq-question::after { content: '+'; font-size: 1.5rem; color: #3b82f6; }
+        .faq-item.open .faq-question::after { content: '−'; }
+        .faq-answer { padding: 0 2rem 1.5rem; color: #64748b; line-height: 1.8; display: none; }
+        .faq-item.open .faq-answer { display: block; }
+        
+        .landing-footer { background: #0f172a; color: white; padding: 60px 0; text-align: center; }
+        .landing-footer .brand { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .landing-footer .tagline { opacity: 0.7; margin-bottom: 2rem; }
+        .landing-footer .links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem; }
+        .landing-footer .links a { color: white; opacity: 0.8; text-decoration: none; }
+        .landing-footer .copyright { opacity: 0.5; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
+
+    <header class="navbar" id="navbar">
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="images/brand/logo.jpg" alt="דרך ההייטק" height="45">
+                <span>דרך ההייטק</span>
+            </a>
+            <nav class="nav-links" id="navLinks">
+                <a href="/#courses">קורסים</a>
+                <a href="/pricing.html">מחירים</a>
+                <a href="/blog">בלוג</a>
+                <a href="/#contact" class="btn-nav">צור קשר</a>
+            </nav>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="תפריט"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="landing-hero">
+            <div class="container">
+                <h1>🐍 לימוד פייתון לילדים</h1>
+                <p class="subtitle">Python היא השפה הכי מבוקשת בשוק העבודה - ואנחנו מלמדים אותה לילדים בצורה מהנה ומעשית! פיתוח משחקים, בינה מלאכותית, ופרויקטים אמיתיים.</p>
+                <div class="hero-cta">
+                    <a href="/#contact" class="btn-hero-primary">🚀 להרשמה</a>
+                    <a href="https://wa.me/972533009742?text=היי, מעוניינים בקורס פייתון" class="btn-hero-secondary">💬 שאלות?</a>
+                </div>
+                <div class="trust-badges">
+                    <div class="trust-badge">
+                        <span class="number">#1</span>
+                        <span class="label">שפה מבוקשת בעולם</span>
+                    </div>
+                    <div class="trust-badge">
+                        <span class="number">10+</span>
+                        <span class="label">גיל מינימום</span>
+                    </div>
+                    <div class="trust-badge">
+                        <span class="number">🤖</span>
+                        <span class="label">AI + Games</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-landing alt-bg">
+            <div class="container">
+                <h2>למה Python?</h2>
+                <p class="section-subtitle">Python היא לא רק שפת תכנות - היא הכניסה לעולם ההייטק, ה-AI והמדע</p>
+                <div class="why-python">
+                    <div class="why-card">
+                        <div class="icon">📊</div>
+                        <h3>השפה הכי מבוקשת</h3>
+                        <p>Python היא השפה #1 בביקוש בשוק העבודה. Google, Netflix, Instagram - כולם משתמשים ב-Python. ידע בפייתון פותח דלתות.</p>
+                    </div>
+                    <div class="why-card">
+                        <div class="icon">🤖</div>
+                        <h3>בינה מלאכותית</h3>
+                        <p>כמעט כל ה-AI בעולם כתוב ב-Python. ChatGPT, ראייה ממוחשבת, Machine Learning - הכל מתחיל מפה.</p>
+                    </div>
+                    <div class="why-card">
+                        <div class="icon">📚</div>
+                        <h3>קלה ללמידה</h3>
+                        <p>הסינטקס של Python נקי וברור - קרוב לאנגלית. מושלם כשפה ראשונה לילדים שרוצים ללמוד תכנות אמיתי.</p>
+                    </div>
+                    <div class="why-card">
+                        <div class="icon">🎮</div>
+                        <h3>פיתוח משחקים</h3>
+                        <p>עם Pygame הילדים יוצרים משחקים עם גרפיקה אמיתית. זה הרבה יותר מבלוקים - זה קוד אמיתי שרואים על המסך!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats-bar">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="value">48%</span>
+                        <span class="label">מהמפתחים בעולם משתמשים ב-Python</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="value">$120K</span>
+                        <span class="label">משכורת ממוצעת למפתח Python בארה"ב</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="value">#1</span>
+                        <span class="label">בהוראת תכנות באוניברסיטאות</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2>מוכנים ללמוד את השפה של העתיד?</h2>
+                <p>Python היא ההשקעה הכי טובה בעתיד של הילד שלכם</p>
+                <a href="/#contact" class="btn-hero-primary">📝 להרשמה</a>
+                <a href="https://wa.me/972533009742?text=היי, מעוניינים בקורס פייתון" class="btn-hero-secondary">💬 וואטסאפ</a>
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <div class="container">
+                <h2>שאלות נפוצות על לימוד Python</h2>
+                <div class="faq-container">
+                    <div class="faq-item open">
+                        <div class="faq-question">מאיזה גיל אפשר להתחיל ללמוד Python?</div>
+                        <div class="faq-answer">אנחנו ממליצים מגיל 10 ומעלה. בגיל הזה ילדים מסוגלים להתמודד עם חשיבה מופשטת ולהקליד קוד באנגלית. לילדים צעירים יותר ממליצים להתחיל עם Scratch.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">צריך לדעת אנגלית?</div>
+                        <div class="faq-answer">ידע בסיסי באנגלית עוזר כי הקוד כתוב באנגלית, אבל זה לא חובה. נלמד את כל המילים הנדרשות ורוב הילדים קולטים מהר.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">מה ההבדל בין Python ל-Scratch?</div>
+                        <div class="faq-answer">Scratch היא שפה ויזואלית עם בלוקים - מעולה להתחלה. Python היא שפה "אמיתית" שמקלידים - כמו שמפתחים מקצועיים עובדים. Python קשה יותר אבל גם חזקה ושימושית יותר.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">מה הילד יוכל לעשות עם Python?</div>
+                        <div class="faq-answer">הרבה! משחקים עם גרפיקה, תוכנות שימושיות, בוטים, ניתוח נתונים, ואפילו פרויקטי בינה מלאכותית. Python היא שפה מאוד רב-תכליתית.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">כמה עולה קורס Python?</div>
+                        <div class="faq-answer">קורס Python עצמאי ב-290₪ עם גישה לנצח. שיעורים פרטיים 1:1 מ-156₪ לשיעור. צרו קשר לייעוץ חינם!</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="landing-footer">
+        <div class="container">
+            <div class="brand">דרך ההייטק</div>
+            <p class="tagline">בית הספר לטכנולוגיה, תכנות ובינה מלאכותית לילדים</p>
+            <div class="links">
+                <a href="/">דף הבית</a>
+                <a href="/קורס-תכנות-לילדים">קורס תכנות</a>
+                <a href="/חוג-מיינקראפט">חוג מיינקראפט</a>
+                <a href="/קורס-רובלוקס-לילדים">קורס רובלוקס</a>
+                <a href="/blog">בלוג</a>
+            </div>
+            <p class="copyright">© 2024 דרך ההייטק. כל הזכויות שמורות.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+                const item = q.parentElement;
+                const wasOpen = item.classList.contains('open');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+                if (!wasOpen) item.classList.add('open');
+            });
+        });
+    </script>
+</body>
+</html>
