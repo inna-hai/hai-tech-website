@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>בינה מלאכותית לילדים | קורס AI לנוער | דרך ההייטק</title>
+    <meta name="description" content="קורס בינה מלאכותית לילדים ונוער. לימוד ChatGPT, יצירת תמונות עם AI, פיתוח עם כלי AI מתקדמים. הכינו את הילדים לעולם של מחר. מגיל 10.">
+    <meta name="keywords" content="בינה מלאכותית לילדים, קורס AI לילדים, לימוד chatgpt לילדים, AI לנוער, בינה מלאכותית לנוער">
+    
+    <link rel="canonical" href="https://hai.tech/בינה-מלאכותית-לילדים">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hai.tech/בינה-מלאכותית-לילדים">
+    <meta property="og:title" content="בינה מלאכותית לילדים | הכינו אותם לעולם של מחר">
+    <meta property="og:description" content="קורס AI לילדים. לימוד ChatGPT, יצירת תמונות, ופיתוח עם בינה מלאכותית.">
+    <meta property="og:image" content="https://hai.tech/images/og/ai-course.jpg">
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "בינה מלאכותית לילדים",
+        "description": "קורס AI לילדים ונוער - לימוד שימוש בכלי בינה מלאכותית מתקדמים",
+        "provider": {
+            "@type": "Organization",
+            "name": "דרך ההייטק",
+            "url": "https://hai.tech"
+        },
+        "teaches": ["AI Tools", "ChatGPT", "Prompt Engineering", "AI Image Generation"]
+    }
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    
+    <style>
+        .landing-hero {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 50%, #6d28d9 100%);
+            padding: 120px 0 80px;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .landing-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0 L100 50 L50 100 L0 50 Z' fill='%23ffffff' fill-opacity='0.03'/%3E%3C/svg%3E");
+        }
+        .landing-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            color: white;
+            position: relative;
+        }
+        .landing-hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+            position: relative;
+        }
+        .btn-primary {
+            background: white;
+            color: #7c3aed;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0.5rem;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .btn-primary:hover { transform: translateY(-3px); }
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            border: 2px solid white;
+            display: inline-block;
+            margin: 0.5rem;
+            transition: all 0.3s;
+        }
+        .btn-secondary:hover { background: white; color: #7c3aed; }
+        
+        .why-section {
+            padding: 100px 0;
+            background: #faf5ff;
+        }
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            padding: 0 24px;
+        }
+        .why-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+        .why-card h3 { font-size: 1.3rem; margin-bottom: 1rem; color: #1e293b; }
+        .why-card p { color: #64748b; line-height: 1.7; }
+        .why-card .icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        
+        .tools-section {
+            padding: 100px 0;
+        }
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 3rem auto 0;
+            padding: 0 24px;
+        }
+        .tool-card {
+            background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .tool-card:hover { transform: translateY(-5px); }
+        .tool-card .icon { font-size: 3rem; margin-bottom: 1rem; }
+        .tool-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .tool-card p { color: #64748b; font-size: 0.9rem; }
+        
+        .future-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #4c1d95 0%, #5b21b6 100%);
+            color: white;
+        }
+        .future-section h2 { color: white; }
+        .future-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        .future-stat {
+            text-align: center;
+        }
+        .future-stat .number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #c4b5fd;
+        }
+        .future-stat .label { opacity: 0.9; }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+        }
+        .cta-section h2 { color: white; margin-bottom: 1rem; }
+        
+        .faq-section {
+            padding: 100px 0;
+        }
+        .faq-container {
+            max-width: 800px;
+            margin: 3rem auto 0;
+            padding: 0 24px;
+        }
+        .faq-item {
+            background: #faf5ff;
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            padding: 1.5rem 2rem;
+        }
+        .faq-question { font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .faq-answer { color: #64748b; line-height: 1.8; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo"><img loading="lazy" src="/images/brand/logo.jpg" alt="דרך ההייטק" height="40"></a>
+            <div class="nav-links">
+                <a href="/#courses">קורסים</a>
+                <a href="/pricing.html">מחירים</a>
+                <a href="/blog">בלוג</a>
+                <a href="/#contact" class="btn-nav">צור קשר</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="landing-hero">
+        <div class="container">
+            <h1>🤖 בינה מלאכותית לילדים</h1>
+            <p>העולם משתנה - והילדים שלכם צריכים להיות מוכנים. לימוד שימוש חכם ב-AI, יצירה עם כלים מתקדמים, והבנה עמוקה של הטכנולוגיה שמעצבת את העתיד.</p>
+            <a href="#contact" class="btn-primary">🚀 להרשמה</a>
+            <a href="https://wa.me/972533009742?text=היי, מעוניינים בקורס AI לילדים" class="btn-secondary">💬 שאלות?</a>
+        </div>
+    </section>
+
+    <section class="why-section">
+        <div class="container">
+            <h2>למה ילדים צריכים להכיר AI?</h2>
+            <p class="section-subtitle">ההבדל בין ילד שמשתמש ב-AI לילד שמבין AI - הוא קריטי</p>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="icon">🎯</div>
+                    <h3>יתרון תחרותי</h3>
+                    <p>ילדים שמכירים AI יהיו צעד קדימה בלימודים, בעבודה ובחיים. זו המיומנות של העתיד.</p>
+                </div>
+                <div class="why-card">
+                    <div class="icon">🧠</div>
+                    <h3>חשיבה ביקורתית</h3>
+                    <p>לא רק להשתמש - אלא להבין מתי לסמוך על AI ומתי לא. פיתוח שיפוט עצמאי.</p>
+                </div>
+                <div class="why-card">
+                    <div class="icon">🎨</div>
+                    <h3>יצירתיות מוגברת</h3>
+                    <p>AI הוא כלי ליצירה - תמונות, סיפורים, קוד, מוזיקה. הילדים לומדים ליצור בעזרתו.</p>
+                </div>
+                <div class="why-card">
+                    <div class="icon">🔒</div>
+                    <h3>שימוש בטוח</h3>
+                    <p>לומדים על פרטיות, אתיקה ושימוש אחראי בטכנולוגיה.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tools-section">
+        <div class="container">
+            <h2>כלי AI שנלמד</h2>
+            <p class="section-subtitle">הכלים המתקדמים ביותר - בידיים של הילדים שלכם</p>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="icon">💬</div>
+                    <h3>ChatGPT</h3>
+                    <p>שיחות חכמות ועזרה בלמידה</p>
+                </div>
+                <div class="tool-card">
+                    <div class="icon">🎨</div>
+                    <h3>יצירת תמונות</h3>
+                    <p>DALL-E, Midjourney ועוד</p>
+                </div>
+                <div class="tool-card">
+                    <div class="icon">💻</div>
+                    <h3>AI לתכנות</h3>
+                    <p>GitHub Copilot ועזרה בקוד</p>
+                </div>
+                <div class="tool-card">
+                    <div class="icon">🎵</div>
+                    <h3>יצירת מוזיקה</h3>
+                    <p>כלי AI למוזיקה ואודיו</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="future-section">
+        <div class="container">
+            <h2>AI משנה הכל</h2>
+            <div class="future-stats">
+                <div class="future-stat">
+                    <div class="number">85%</div>
+                    <div class="label">מהמשרות יושפעו מ-AI</div>
+                </div>
+                <div class="future-stat">
+                    <div class="number">2030</div>
+                    <div class="label">AI בכל תחום</div>
+                </div>
+                <div class="future-stat">
+                    <div class="number">∞</div>
+                    <div class="label">אפשרויות יצירה</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2>מוכנים להכין את הילדים לעתיד?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">השאירו פרטים ונתאים תוכנית אישית</p>
+            <a href="/#contact" class="btn-primary">📝 להרשמה</a>
+            <a href="https://wa.me/972533009742?text=היי, מעוניינים בקורס AI לילדים" class="btn-secondary">💬 וואטסאפ</a>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <h2>שאלות נפוצות על AI לילדים</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">האם זה בטוח לילדים?</div>
+                    <div class="faq-answer">בהחלט! אנחנו מלמדים שימוש אחראי ובטוח. הילדים לומדים גם על פרטיות ואתיקה בשימוש ב-AI.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">מאיזה גיל מתאים?</div>
+                    <div class="faq-answer">התוכן שלנו מותאם לגילאי 10+. בקורסים אחרים (מיינקראפט, רובלוקס) משלבים AI גם לגילאים צעירים יותר.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">האם AI יחליף תכנות?</div>
+                    <div class="faq-answer">לא! AI הוא כלי שעוזר למתכנתים לעבוד מהר יותר. ילדים שיודעים גם תכנות וגם AI יהיו הכי מבוקשים.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">מה לומדים בפועל?</div>
+                    <div class="faq-answer">Prompt Engineering (איך לשאול נכון), יצירת תמונות, עזרה בלמידה ובפרויקטים, חשיבה ביקורתית על תוצרי AI.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background: #0f172a; color: white; padding: 60px 0; text-align: center;">
+        <div class="container">
+            <p style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;">דרך ההייטק</p>
+            <p style="opacity: 0.5; font-size: 0.9rem;">© 2024 דרך ההייטק. כל הזכויות שמורות.</p>
+        </div>
+    </footer>
+</body>
+</html>

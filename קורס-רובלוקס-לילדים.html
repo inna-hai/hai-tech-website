@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="SaI0ICNzKyVpElKdz9pVek8ame4XKZiK4ccby7SKujk" />
+    
+    <title>קורס רובלוקס לילדים | יצירת משחקים ברובלוקס | דרך ההייטק</title>
+    <meta name="description" content="קורס רובלוקס לילדים - לימוד תכנות Lua ויצירת משחקים ב-Roblox Studio. מגיל 9, מדריכים מקצועיים, למידה מהבית. הפכו את הילד שלכם מ-Gamer ל-Creator!">
+    <meta name="keywords" content="קורס רובלוקס, רובלוקס לילדים, לימוד רובלוקס, Roblox Studio, תכנות Lua, יצירת משחקים רובלוקס, קורס Roblox">
+    
+    <link rel="canonical" href="https://hai.tech/קורס-רובלוקס-לילדים">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hai.tech/קורס-רובלוקס-לילדים">
+    <meta property="og:title" content="קורס רובלוקס לילדים | יצירת משחקים ב-Roblox | דרך ההייטק">
+    <meta property="og:description" content="הפכו את הילד שלכם מגיימר ליוצר משחקים! לימוד Roblox Studio ותכנות Lua. מדריכים מקצועיים, תמיכה אישית.">
+    <meta property="og:image" content="https://hai.tech/images/og/roblox-kids.jpg">
+    <meta property="og:locale" content="he_IL">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="קורס רובלוקס לילדים | דרך ההייטק">
+    <meta name="twitter:description" content="לימוד יצירת משחקים ברובלוקס. תכנות Lua, Roblox Studio מגיל 9.">
+    
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "קורס רובלוקס לילדים",
+        "description": "קורס יצירת משחקים ברובלוקס לילדים. לימוד Roblox Studio ותכנות בשפת Lua.",
+        "provider": {
+            "@type": "Organization",
+            "name": "דרך ההייטק",
+            "url": "https://hai.tech"
+        },
+        "audience": {
+            "@type": "Audience",
+            "audienceType": "ילדים ונוער",
+            "suggestedMinAge": 9,
+            "suggestedMaxAge": 16
+        },
+        "educationalLevel": "Beginner to Intermediate",
+        "inLanguage": "he",
+        "offers": {
+            "@type": "Offer",
+            "price": "290",
+            "priceCurrency": "ILS",
+            "availability": "https://schema.org/InStock"
+        }
+    }
+    </script>
+    
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "מאיזה גיל אפשר להתחיל ללמוד רובלוקס?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "מומלץ להתחיל מגיל 9 ומעלה. בגיל הזה הילדים כבר מכירים את רובלוקס כשחקנים ויכולים להתחיל ללמוד ליצור."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "מה זה Roblox Studio?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Roblox Studio הוא הכלי החינמי של רובלוקס ליצירת משחקים. זה מה שמפתחי רובלוקס האמיתיים משתמשים בו."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "אפשר להרוויח כסף ממשחקי רובלוקס?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "כן! מפתחי רובלוקס יכולים להרוויח Robux מהמשחקים שלהם ולהמיר אותם לכסף אמיתי. יש מפתחים צעירים שמרוויחים אלפי דולרים."
+                }
+            }
+        ]
+    }
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="image/jpeg" href="/images/brand/logo.jpg">
+    
+    <style>
+        .landing-hero {
+            background: linear-gradient(135deg, #e11d48 0%, #be123c 50%, #f43f5e 100%);
+            padding: 120px 0 80px;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .landing-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='10'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        .landing-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            position: relative;
+            color: white;
+        }
+        .landing-hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.95;
+            line-height: 1.8;
+        }
+        .hero-cta {
+            display: inline-flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn-primary {
+            background: white;
+            color: #e11d48;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            border: 2px solid white;
+            transition: all 0.3s;
+        }
+        .btn-secondary:hover {
+            background: white;
+            color: #e11d48;
+        }
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        .trust-badge {
+            text-align: center;
+        }
+        .trust-badge .number {
+            font-size: 2.5rem;
+            font-weight: 900;
+        }
+        .trust-badge .label {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+        
+        .benefits-section {
+            padding: 100px 0;
+            background: #f8fafc;
+        }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .benefit-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+        }
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .benefit-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+        .benefit-card p {
+            color: #64748b;
+            line-height: 1.7;
+        }
+        
+        .path-section {
+            padding: 100px 0;
+        }
+        .path-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 3rem auto 0;
+            padding: 0 24px;
+        }
+        .path-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+        }
+        .path-card:hover {
+            border-color: #e11d48;
+            box-shadow: 0 10px 30px rgba(225, 29, 72, 0.15);
+        }
+        .path-card .step {
+            background: #e11d48;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+        .path-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .path-card p {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+        }
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        .faq-section {
+            padding: 100px 0;
+            background: #f8fafc;
+        }
+        .faq-container {
+            max-width: 800px;
+            margin: 3rem auto 0;
+            padding: 0 24px;
+        }
+        .faq-item {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .faq-question {
+            padding: 1.5rem 2rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: #e11d48;
+        }
+        .faq-answer {
+            padding: 0 2rem 1.5rem;
+            color: #64748b;
+            line-height: 1.8;
+        }
+        
+        .showcase-section {
+            padding: 100px 0;
+            background: linear-gradient(180deg, #fff 0%, #fef2f2 100%);
+        }
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            padding: 0 24px;
+        }
+        .showcase-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+        .showcase-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .showcase-card .content {
+            padding: 1.5rem;
+        }
+        .showcase-card h3 {
+            margin-bottom: 0.5rem;
+        }
+        .showcase-card .creator {
+            color: #e11d48;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">
+                <img loading="lazy" src="/images/brand/logo.jpg" alt="דרך ההייטק" height="40">
+            </a>
+            <div class="nav-links">
+                <a href="/#courses">קורסים</a>
+                <a href="/pricing.html">מחירים</a>
+                <a href="/blog">בלוג</a>
+                <a href="/#contact" class="btn-nav">צור קשר</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="landing-hero">
+        <div class="container">
+            <h1>🎮 קורס רובלוקס לילדים</h1>
+            <p>הילד שלכם אוהב לשחק ברובלוקס? הגיע הזמן שייצור משחקים משלו! לימוד Roblox Studio ותכנות Lua - מגיימר ליוצר. משחקים אמיתיים, כסף אמיתי.</p>
+            <div class="hero-cta">
+                <a href="#contact" class="btn-primary">🚀 התחילו ליצור</a>
+                <a href="https://wa.me/972533009742?text=היי, מעוניינים בקורס רובלוקס לילדים" class="btn-secondary">💬 שאלות? וואטסאפ</a>
+            </div>
+            <div class="trust-badges">
+                <div class="trust-badge">
+                    <div class="number">70M+</div>
+                    <div class="label">משתמשים ברובלוקס</div>
+                </div>
+                <div class="trust-badge">
+                    <div class="number">9-16</div>
+                    <div class="label">גילאים</div>
+                </div>
+                <div class="trust-badge">
+                    <div class="number">$$$</div>
+                    <div class="label">פוטנציאל הכנסה</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <h2>למה ללמוד רובלוקס אצלנו?</h2>
+            <p class="section-subtitle">הפכו את הזמן שהילדים מבלים ברובלוקס להשקעה בעתיד</p>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h3>מגיימר ליוצר</h3>
+                    <p>במקום רק לשחק במשחקים של אחרים, הילד ייצור משחקים משלו שאחרים ישחקו בהם!</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3>אפשר להרוויח</h3>
+                    <p>מפתחי רובלוקס מרוויחים כסף אמיתי מהמשחקים שלהם. יש ילדים שהרוויחו אלפי דולרים!</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔧</div>
+                    <h3>כלים מקצועיים</h3>
+                    <p>Roblox Studio הוא הכלי האמיתי שבו נוצרים כל המשחקים הפופולריים בפלטפורמה.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💻</div>
+                    <h3>תכנות Lua אמיתי</h3>
+                    <p>לא רק בלוקים - לומדים שפת תכנות אמיתית שמשמשת גם במשחקים מקצועיים.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🌍</div>
+                    <h3>פרסום לעולם</h3>
+                    <p>המשחק שהילד יוצר יכול להגיע למיליוני שחקנים מכל העולם - תוך דקות!</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">👨‍💻</div>
+                    <h3>מדריכים מהתעשייה</h3>
+                    <p>המדריכים שלנו הם מפתחי רובלוקס פעילים עם משחקים שפורסמו בפלטפורמה.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Path -->
+    <section class="path-section">
+        <div class="container">
+            <h2>מסלול הלמידה</h2>
+            <p class="section-subtitle">מאפס ועד משחק מפורסם ברובלוקס</p>
+            <div class="path-grid">
+                <div class="path-card">
+                    <div class="step">1</div>
+                    <h3>היכרות עם Studio</h3>
+                    <p>לומדים את הממשק, בונים עולמות, מכניסים אובייקטים ויוצרים את הסצנה הראשונה.</p>
+                </div>
+                <div class="path-card">
+                    <div class="step">2</div>
+                    <h3>סקריפטים בסיסיים</h3>
+                    <p>מתחילים לתכנת ב-Lua: משתנים, תנאים, לולאות, והפיכת העולם לאינטראקטיבי.</p>
+                </div>
+                <div class="path-card">
+                    <div class="step">3</div>
+                    <h3>מכניקות משחק</h3>
+                    <p>בונים מערכות: נקודות, חיים, רמות, חנות, Leaderboards ועוד.</p>
+                </div>
+                <div class="path-card">
+                    <div class="step">4</div>
+                    <h3>פרסום והכנסה</h3>
+                    <p>מפרסמים את המשחק, מוסיפים Passes ו-GamePasses, ומתחילים להרוויח!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2>מוכנים ליצור משחק ברובלוקס?</h2>
+            <p>השאירו פרטים ונחזור אליכם עם תוכנית מותאמת אישית</p>
+            <a href="/#contact" class="btn-primary">📝 השאירו פרטים</a>
+            <span style="margin: 0 1rem; opacity: 0.7;">או</span>
+            <a href="https://wa.me/972533009742?text=היי, מעוניינים בקורס רובלוקס לילדים" class="btn-secondary">💬 וואטסאפ</a>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>שאלות נפוצות על קורס רובלוקס</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">מאיזה גיל אפשר להתחיל ללמוד רובלוקס?</div>
+                    <div class="faq-answer">מומלץ להתחיל מגיל 9 ומעלה. בגיל הזה הילדים כבר מכירים את רובלוקס כשחקנים ויכולים להתחיל ללמוד ליצור. לגילאים צעירים יותר מומלץ להתחיל עם Scratch או מיינקראפט.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">מה זה Roblox Studio? זה עולה כסף?</div>
+                    <div class="faq-answer">Roblox Studio הוא הכלי החינמי של רובלוקס ליצירת משחקים. זה מה שכל מפתחי רובלוקס משתמשים בו - גם אלה שמרוויחים מיליונים. הורדה חינמית לחלוטין!</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">הילד שלי יכול באמת להרוויח כסף?</div>
+                    <div class="faq-answer">בהחלט! רובלוקס מאפשרים למפתחים למכור GamePasses וקנייות במשחק. יש ילדים ונוער שמרוויחים אלפי דולרים בחודש. כמובן, זה דורש עבודה קשה ומשחק מוצלח.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">מה צריך כדי להתחיל?</div>
+                    <div class="faq-answer">רק מחשב (Windows או Mac) עם אינטרנט. Roblox Studio מותקן בחינם. לא צריך ידע קודם בתכנות.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">מה זה שפת Lua?</div>
+                    <div class="faq-answer">Lua היא שפת תכנות אמיתית שמשמשת ביצירת משחקים (גם משחקי AAA כמו World of Warcraft!). ברובלוקס היא השפה שמחיה את המשחקים ומוסיפה להם לוגיקה.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: #0f172a; color: white; padding: 60px 0; text-align: center;">
+        <div class="container">
+            <p style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;">דרך ההייטק</p>
+            <p style="opacity: 0.7; margin-bottom: 2rem;">בית הספר לטכנולוגיה, תכנות ובינה מלאכותית לילדים</p>
+            <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem;">
+                <a href="/" style="color: white; opacity: 0.8;">דף הבית</a>
+                <a href="/קורס-תכנות-לילדים" style="color: white; opacity: 0.8;">קורס תכנות</a>
+                <a href="/חוג-מיינקראפט" style="color: white; opacity: 0.8;">חוג מיינקראפט</a>
+                <a href="/לימוד-פייתון-לילדים" style="color: white; opacity: 0.8;">לימוד פייתון</a>
+                <a href="/#contact" style="color: white; opacity: 0.8;">צור קשר</a>
+            </div>
+            <p style="opacity: 0.5; font-size: 0.9rem;">© 2024 דרך ההייטק. כל הזכויות שמורות.</p>
+        </div>
+    </footer>
+</body>
+</html>

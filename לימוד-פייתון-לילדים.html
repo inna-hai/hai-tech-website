@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="SaI0ICNzKyVpElKdz9pVek8ame4XKZiK4ccby7SKujk" />
+    
+    <title>לימוד פייתון לילדים | Python לנוער | דרך ההייטק</title>
+    <meta name="description" content="קורס פייתון לילדים ונוער - השפה הכי מבוקשת בהייטק! לימוד Python מגיל 10, פרויקטים אמיתיים, AI ובינה מלאכותית. הכנה מושלמת לקריירה בהייטק.">
+    <meta name="keywords" content="לימוד פייתון לילדים, קורס Python, פייתון לנוער, תכנות פייתון לילדים, Python לילדים, קורס תכנות Python">
+    
+    <link rel="canonical" href="https://hai.tech/לימוד-פייתון-לילדים">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hai.tech/לימוד-פייתון-לילדים">
+    <meta property="og:title" content="לימוד פייתון לילדים | השפה הכי מבוקשת בהייטק | דרך ההייטק">
+    <meta property="og:description" content="Python היא השפה הכי מבוקשת בהייטק! קורס פייתון לילדים מגיל 10. פרויקטים אמיתיים, AI, Data Science.">
+    <meta property="og:image" content="https://hai.tech/images/og/python-kids.jpg">
+    <meta property="og:locale" content="he_IL">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="לימוד פייתון לילדים | דרך ההייטק">
+    <meta name="twitter:description" content="קורס Python לילדים מגיל 10. השפה הכי מבוקשת בהייטק!">
+    
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "לימוד פייתון לילדים",
+        "description": "קורס פייתון מקיף לילדים ונוער. לימוד השפה הכי מבוקשת בהייטק עם פרויקטים אמיתיים.",
+        "provider": {
+            "@type": "Organization",
+            "name": "דרך ההייטק",
+            "url": "https://hai.tech"
+        },
+        "audience": {
+            "@type": "Audience",
+            "audienceType": "ילדים ונוער",
+            "suggestedMinAge": 10,
+            "suggestedMaxAge": 18
+        },
+        "educationalLevel": "Beginner to Advanced",
+        "inLanguage": "he",
+        "offers": {
+            "@type": "Offer",
+            "price": "290",
+            "priceCurrency": "ILS",
+            "availability": "https://schema.org/InStock"
+        }
+    }
+    </script>
+    
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "למה כדאי ללמוד Python?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Python היא השפה הכי מבוקשת בשוק ההייטק - משמשת ל-AI, Data Science, אוטומציה ועוד. קלה ללמידה ופותחת דלתות לקריירה מבטיחה."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "מאיזה גיל אפשר ללמוד פייתון?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "מומלץ מגיל 10 ומעלה. זו שפה טקסטואלית שדורשת יכולת קריאה וכתיבה באנגלית בסיסית."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "מה אפשר לבנות עם Python?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "כמעט הכל! משחקים, אתרים, בוטים, כלי AI, אוטומציה, ניתוח נתונים, אפליקציות ועוד."
+                }
+            }
+        ]
+    }
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="image/jpeg" href="/images/brand/logo.jpg">
+    
+    <style>
+        .landing-hero {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 50%, #60a5fa 100%);
+            padding: 120px 0 80px;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .landing-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        .landing-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            position: relative;
+            color: white;
+        }
+        .landing-hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.95;
+            line-height: 1.8;
+        }
+        .hero-cta {
+            display: inline-flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn-primary {
+            background: white;
+            color: #1d4ed8;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            border: 2px solid white;
+            transition: all 0.3s;
+        }
+        .btn-secondary:hover {
+            background: white;
+            color: #1d4ed8;
+        }
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        .trust-badge {
+            text-align: center;
+        }
+        .trust-badge .number {
+            font-size: 2.5rem;
+            font-weight: 900;
+        }
+        .trust-badge .label {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+        
+        .benefits-section {
+            padding: 100px 0;
+            background: #f8fafc;
+        }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .benefit-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+        }
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .benefit-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+        .benefit-card p {
+            color: #64748b;
+            line-height: 1.7;
+        }
+        
+        .projects-section {
+            padding: 100px 0;
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            padding: 0 24px;
+        }
+        .project-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+        .project-card:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.15);
+        }
+        .project-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .project-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .project-card p {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+        .project-card .tag {
+            display: inline-block;
+            background: #eff6ff;
+            color: #3b82f6;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+        
+        .stats-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+            text-align: center;
+        }
+        .stat-item .value {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #1d4ed8;
+        }
+        .stat-item .label {
+            color: #64748b;
+            font-size: 1.1rem;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+        }
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        .faq-section {
+            padding: 100px 0;
+            background: #f8fafc;
+        }
+        .faq-container {
+            max-width: 800px;
+            margin: 3rem auto 0;
+            padding: 0 24px;
+        }
+        .faq-item {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .faq-question {
+            padding: 1.5rem 2rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: #3b82f6;
+        }
+        .faq-answer {
+            padding: 0 2rem 1.5rem;
+            color: #64748b;
+            line-height: 1.8;
+        }
+        
+        .comparison-section {
+            padding: 100px 0;
+        }
+        .comparison-table {
+            max-width: 800px;
+            margin: 3rem auto 0;
+            padding: 0 24px;
+        }
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+        .comparison-table th {
+            background: #3b82f6;
+            color: white;
+            padding: 1.2rem;
+            text-align: right;
+        }
+        .comparison-table td {
+            padding: 1rem 1.2rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+        .check { color: #22c55e; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">
+                <img loading="lazy" src="/images/brand/logo.jpg" alt="דרך ההייטק" height="40">
+            </a>
+            <div class="nav-links">
+                <a href="/#courses">קורסים</a>
+                <a href="/pricing.html">מחירים</a>
+                <a href="/blog">בלוג</a>
+                <a href="/#contact" class="btn-nav">צור קשר</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="landing-hero">
+        <div class="container">
+            <h1>🐍 לימוד פייתון לילדים</h1>
+            <p>Python היא השפה הכי מבוקשת בהייטק - והילד שלכם יכול להתחיל ללמוד אותה כבר היום! מגיל 10, פרויקטים אמיתיים, AI ובינה מלאכותית. הקריירה מתחילה כאן.</p>
+            <div class="hero-cta">
+                <a href="#contact" class="btn-primary">🚀 התחילו ללמוד</a>
+                <a href="https://wa.me/972533009742?text=היי, מעוניינים בקורס פייתון לילדים" class="btn-secondary">💬 שאלות? וואטסאפ</a>
+            </div>
+            <div class="trust-badges">
+                <div class="trust-badge">
+                    <div class="number">#1</div>
+                    <div class="label">שפה מבוקשת בהייטק</div>
+                </div>
+                <div class="trust-badge">
+                    <div class="number">10+</div>
+                    <div class="label">גיל מינימלי</div>
+                </div>
+                <div class="trust-badge">
+                    <div class="number">AI</div>
+                    <div class="label">כולל בינה מלאכותית</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="value">52%</div>
+                <div class="label">משרות ההייטק דורשות Python</div>
+            </div>
+            <div class="stat-item">
+                <div class="value">48K₪</div>
+                <div class="label">שכר חודשי ממוצע למפתח Python</div>
+            </div>
+            <div class="stat-item">
+                <div class="value">3M+</div>
+                <div class="label">משרות Python בעולם</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <h2>למה Python היא הבחירה הנכונה?</h2>
+            <p class="section-subtitle">השפה שכל חברות ההייטק הגדולות משתמשות בה</p>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">📈</div>
+                    <h3>הכי מבוקשת בשוק</h3>
+                    <p>יותר ממחצית ממשרות ההייטק בישראל דורשות Python. זו השפה שפותחת הכי הרבה דלתות.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🤖</div>
+                    <h3>שפת ה-AI</h3>
+                    <p>ChatGPT, מכוניות אוטונומיות, רובוטים - הכל נכתב ב-Python. הילד ילמד את שפת העתיד.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📊</div>
+                    <h3>Data Science</h3>
+                    <p>ניתוח נתונים, למידת מכונה, מדע הנתונים - הכל מתחיל עם Python.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">✨</div>
+                    <h3>קל ללמידה</h3>
+                    <p>Python נוצרה להיות קלה וקריאה. מושלמת להתחלה גם למי שמעולם לא תכנת.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎮</div>
+                    <h3>גם משחקים!</h3>
+                    <p>אפשר ליצור משחקים עם Pygame, בוטים ל-Discord, ואפילו אתרים שלמים.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎓</div>
+                    <h3>יסודות לבגרות</h3>
+                    <p>בגרות במדעי המחשב? Python היא השפה המועדפת. הילד יגיע מוכן.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects-section">
+        <div class="container">
+            <h2>פרויקטים שנבנה בקורס</h2>
+            <p class="section-subtitle">לא רק תיאוריה - פרויקטים אמיתיים שאפשר להראות לחברים</p>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="icon">🎮</div>
+                    <h3>משחק Snake</h3>
+                    <p>המשחק הקלאסי - נבנה אותו מאפס ונוסיף שלבים, ניקוד, וגרפיקה.</p>
+                    <span class="tag">Pygame</span>
+                </div>
+                <div class="project-card">
+                    <div class="icon">🤖</div>
+                    <h3>בוט Discord</h3>
+                    <p>בוט שמגיב לפקודות, מנגן מוזיקה, ושולח בדיחות לשרת שלכם.</p>
+                    <span class="tag">Discord.py</span>
+                </div>
+                <div class="project-card">
+                    <div class="icon">🌤️</div>
+                    <h3>אפליקציית מזג אוויר</h3>
+                    <p>אפליקציה שמושכת נתונים מהאינטרנט ומציגה תחזית מעוצבת.</p>
+                    <span class="tag">API</span>
+                </div>
+                <div class="project-card">
+                    <div class="icon">🔐</div>
+                    <h3>מנהל סיסמאות</h3>
+                    <p>תוכנה מאובטחת לשמירה ויצירת סיסמאות חזקות.</p>
+                    <span class="tag">Security</span>
+                </div>
+                <div class="project-card">
+                    <div class="icon">📱</div>
+                    <h3>בוט WhatsApp</h3>
+                    <p>בוט שעונה על שאלות אוטומטית - כמו ChatGPT אישי!</p>
+                    <span class="tag">AI</span>
+                </div>
+                <div class="project-card">
+                    <div class="icon">📊</div>
+                    <h3>ניתוח נתונים</h3>
+                    <p>לומדים לנתח CSV, ליצור גרפים, ולהפיק תובנות מדאטה.</p>
+                    <span class="tag">Pandas</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2>מוכנים להתחיל ללמוד Python?</h2>
+            <p>השאירו פרטים ונחזור אליכם עם תוכנית מותאמת אישית</p>
+            <a href="/#contact" class="btn-primary">📝 השאירו פרטים</a>
+            <span style="margin: 0 1rem; opacity: 0.7;">או</span>
+            <a href="https://wa.me/972533009742?text=היי, מעוניינים בקורס פייתון לילדים" class="btn-secondary">💬 וואטסאפ</a>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>שאלות נפוצות על לימוד פייתון לילדים</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">למה כדאי ללמוד Python דווקא?</div>
+                    <div class="faq-answer">Python היא השפה הכי מבוקשת בהייטק. היא משמשת ל-AI, Data Science, אוטומציה, פיתוח אתרים ועוד. קלה ללמידה ופותחת הכי הרבה דלתות בשוק העבודה.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">מאיזה גיל אפשר להתחיל?</div>
+                    <div class="faq-answer">מומלץ מגיל 10 ומעלה. Python היא שפה טקסטואלית (לא בלוקים) ודורשת יכולת קריאה בסיסית באנגלית והקלדה. לגילאים צעירים יותר מומלץ להתחיל עם Scratch.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">צריך ידע קודם בתכנות?</div>
+                    <div class="faq-answer">לא! מתחילים מאפס. מי שיש לו ניסיון עם Scratch יתקדם יותר מהר, אבל זה לא חובה.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">מה הקשר בין Python ל-AI?</div>
+                    <div class="faq-answer">Python היא השפה המובילה בתחום ה-AI והבינה המלאכותית. ChatGPT, רכבים אוטונומיים, זיהוי פנים - הכל נכתב ב-Python. מי שרוצה לעבוד בתחום, חייב אותה.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">האם Python רלוונטית לבגרות במדעי המחשב?</div>
+                    <div class="faq-answer">בהחלט! Python היא אחת השפות המאושרות לבגרות ונחשבת לקלה יותר ללמידה מ-Java או C. הילד יגיע מוכן לתיכון.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: #0f172a; color: white; padding: 60px 0; text-align: center;">
+        <div class="container">
+            <p style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;">דרך ההייטק</p>
+            <p style="opacity: 0.7; margin-bottom: 2rem;">בית הספר לטכנולוגיה, תכנות ובינה מלאכותית לילדים</p>
+            <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem;">
+                <a href="/" style="color: white; opacity: 0.8;">דף הבית</a>
+                <a href="/קורס-תכנות-לילדים" style="color: white; opacity: 0.8;">קורס תכנות</a>
+                <a href="/חוג-מיינקראפט" style="color: white; opacity: 0.8;">חוג מיינקראפט</a>
+                <a href="/קורס-רובלוקס-לילדים" style="color: white; opacity: 0.8;">קורס רובלוקס</a>
+                <a href="/#contact" style="color: white; opacity: 0.8;">צור קשר</a>
+            </div>
+            <p style="opacity: 0.5; font-size: 0.9rem;">© 2024 דרך ההייטק. כל הזכויות שמורות.</p>
+        </div>
+    </footer>
+</body>
+</html>

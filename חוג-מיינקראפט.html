@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>חוג מיינקראפט לילדים | לימוד תכנות דרך Minecraft | דרך ההייטק</title>
+    <meta name="description" content="חוג מיינקראפט לילדים - לימוד תכנות JavaScript דרך המשחק האהוב. בניית עולמות, מודים ופלאגינים. מגיל 8, מהבית, עם מדריכים מקצועיים. הצטרפו לאלפי ילדים!">
+    <meta name="keywords" content="חוג מיינקראפט, קורס מיינקראפט לילדים, לימוד תכנות מיינקראפט, minecraft לילדים, חוג מחשבים מיינקראפט">
+    
+    <link rel="canonical" href="https://hai.tech/חוג-מיינקראפט">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hai.tech/חוג-מיינקראפט">
+    <meta property="og:title" content="חוג מיינקראפט לילדים | לימוד תכנות דרך Minecraft">
+    <meta property="og:description" content="הילד שלכם אוהב מיינקראפט? הגיע הזמן ללמוד לתכנת דרך המשחק! JavaScript, בניית מודים ופלאגינים.">
+    <meta property="og:image" content="https://hai.tech/images/og/minecraft-course.jpg">
+    <meta property="og:locale" content="he_IL">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="חוג מיינקראפט לילדים | דרך ההייטק">
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "חוג מיינקראפט לילדים",
+        "description": "לימוד תכנות JavaScript דרך מיינקראפט. בניית עולמות, מודים ופלאגינים למשחק.",
+        "provider": {
+            "@type": "Organization",
+            "name": "דרך ההייטק",
+            "url": "https://hai.tech"
+        },
+        "hasCourseInstance": {
+            "@type": "CourseInstance",
+            "courseMode": "online"
+        },
+        "audience": {
+            "@type": "Audience",
+            "audienceType": "ילדים",
+            "suggestedMinAge": 8,
+            "suggestedMaxAge": 14
+        }
+    }
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="image/jpeg" href="/images/brand/logo.jpg">
+    
+    <style>
+        .landing-hero {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 50%, #15803d 100%);
+            padding: 120px 0 80px;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .landing-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Crect width='20' height='20'/%3E%3Crect x='20' y='20' width='20' height='20'/%3E%3C/g%3E%3C/svg%3E");
+        }
+        .landing-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            position: relative;
+            color: white;
+        }
+        .landing-hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.95;
+            line-height: 1.8;
+        }
+        .hero-cta {
+            display: inline-flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn-primary {
+            background: white;
+            color: #16a34a;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            border: 2px solid white;
+            transition: all 0.3s;
+        }
+        .btn-secondary:hover {
+            background: white;
+            color: #16a34a;
+        }
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        .trust-badge {
+            text-align: center;
+        }
+        .trust-badge .number {
+            font-size: 2.5rem;
+            font-weight: 900;
+        }
+        .trust-badge .label {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+        
+        .courses-section {
+            padding: 100px 0;
+            background: #f8fafc;
+        }
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            padding: 0 24px;
+        }
+        .course-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            border-top: 4px solid #22c55e;
+        }
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+        }
+        .course-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+        .course-card p {
+            color: #64748b;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        .course-meta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .course-meta span {
+            background: #f1f5f9;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .course-meta .age { color: #22c55e; }
+        .course-meta .lang { color: #3b82f6; }
+        
+        .benefits-section {
+            padding: 100px 0;
+        }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            padding: 0 24px;
+        }
+        .benefit-card {
+            text-align: center;
+            padding: 2rem;
+        }
+        .benefit-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        .benefit-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        .benefit-card p {
+            color: #64748b;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+        }
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        .faq-section {
+            padding: 100px 0;
+            background: #f8fafc;
+        }
+        .faq-container {
+            max-width: 800px;
+            margin: 3rem auto 0;
+            padding: 0 24px;
+        }
+        .faq-item {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .faq-question {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+        }
+        .faq-answer {
+            color: #64748b;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">
+                <img loading="lazy" src="/images/brand/logo.jpg" alt="דרך ההייטק" height="40">
+            </a>
+            <div class="nav-links">
+                <a href="/#courses">קורסים</a>
+                <a href="/pricing.html">מחירים</a>
+                <a href="/blog">בלוג</a>
+                <a href="/#contact" class="btn-nav">צור קשר</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="landing-hero">
+        <div class="container">
+            <h1>⛏️ חוג מיינקראפט לילדים</h1>
+            <p>הילד שלכם אוהב מיינקראפט? מעולה! עכשיו הוא יכול ללמוד לתכנת דרך המשחק האהוב. בניית עולמות, יצירת מודים ופיתוח פלאגינים - תכנות אמיתי בכיף!</p>
+            <div class="hero-cta">
+                <a href="#contact" class="btn-primary">🎮 להרשמה</a>
+                <a href="https://wa.me/972533009742?text=היי, מעוניינים בחוג מיינקראפט" class="btn-secondary">💬 שאלות?</a>
+            </div>
+            <div class="trust-badges">
+                <div class="trust-badge">
+                    <div class="number">🏆</div>
+                    <div class="label">הקורס הכי פופולרי</div>
+                </div>
+                <div class="trust-badge">
+                    <div class="number">8+</div>
+                    <div class="label">גיל מינימום</div>
+                </div>
+                <div class="trust-badge">
+                    <div class="number">+AI</div>
+                    <div class="label">כולל בינה מלאכותית</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="courses-section">
+        <div class="container">
+            <h2>קורסי מיינקראפט שלנו</h2>
+            <p class="section-subtitle">מבניית עולמות ועד פיתוח פלאגינים - יש לנו קורס לכל רמה</p>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <h3>🏗️ מיינקראפט: בניית עולמות</h3>
+                    <p>בניית עיר שלמה עם פארקים, מזרקות וכבישים. למידה חווייתית ויצירתית בלי קוד.</p>
+                    <div class="course-meta">
+                        <span class="age">גיל 8-11</span>
+                        <span class="lang">🤖 + AI</span>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <h3>🔐 מיינקראפט: חדר בריחה</h3>
+                    <p>בניית פירמידה וחדר בריחה עם קוד. לולאות, משתנים ופקודות מתקדמות.</p>
+                    <div class="course-meta">
+                        <span class="age">גיל 10+</span>
+                        <span class="lang">Commands</span>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <h3>💻 JavaScript במיינקראפט</h3>
+                    <p>שפת JavaScript הפופולרית דרך חוויית משחק מיינקראפט. תכנות אמיתי!</p>
+                    <div class="course-meta">
+                        <span class="age">גיל 10-13</span>
+                        <span class="lang">JavaScript</span>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <h3>☕ Minecraft Java Plugins</h3>
+                    <p>הקמת שרת מיינקראפט משלכם! לימוד שפת Java באופן מעשי וכיפי.</p>
+                    <div class="course-meta">
+                        <span class="age">גיל 12+</span>
+                        <span class="lang">Java</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits-section">
+        <div class="container">
+            <h2>למה ללמוד תכנות דרך מיינקראפט?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h3>מוטיבציה גבוהה</h3>
+                    <p>הילדים לומדים דרך משחק שהם כבר אוהבים</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🧠</div>
+                    <h3>חשיבה לוגית</h3>
+                    <p>פיתוח יכולות פתרון בעיות וחשיבה מובנית</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💼</div>
+                    <h3>שפות אמיתיות</h3>
+                    <p>JavaScript ו-Java - שפות שמשמשות בתעשייה</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎨</div>
+                    <h3>יצירתיות</h3>
+                    <p>בניית עולמות ומשחקים מהדמיון</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2>רוצים שהילד ילמד לתכנת דרך מיינקראפט?</h2>
+            <p>השאירו פרטים ונחזור אליכם עם המלצה לקורס המתאים</p>
+            <a href="/#contact" class="btn-primary">📝 השאירו פרטים</a>
+            <span style="margin: 0 1rem; opacity: 0.7;">או</span>
+            <a href="https://wa.me/972533009742?text=היי, מעוניינים בחוג מיינקראפט" class="btn-secondary">💬 וואטסאפ</a>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <h2>שאלות נפוצות על חוג מיינקראפט</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">איזו גרסה של מיינקראפט צריך?</div>
+                    <div class="faq-answer">לרוב הקורסים צריך Minecraft Java Edition (לא Bedrock). זו הגרסה שמאפשרת התקנת מודים ופלאגינים.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">מאיזה גיל אפשר להתחיל?</div>
+                    <div class="faq-answer">קורס בניית עולמות מתאים מגיל 8. קורסי תכנות עם JavaScript מגיל 10, ו-Java Plugins מגיל 12.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">צריך לדעת לשחק מיינקראפט?</div>
+                    <div class="faq-answer">היכרות בסיסית עם המשחק עוזרת, אבל לא חובה. נלמד הכל מההתחלה.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">האם לומדים תכנות אמיתי?</div>
+                    <div class="faq-answer">בהחלט! JavaScript ו-Java הן שפות תכנות אמיתיות שמשמשות חברות הייטק מובילות בעולם.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background: #0f172a; color: white; padding: 60px 0; text-align: center;">
+        <div class="container">
+            <p style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;">דרך ההייטק</p>
+            <p style="opacity: 0.7; margin-bottom: 2rem;">בית הספר לטכנולוגיה, תכנות ובינה מלאכותית לילדים</p>
+            <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem;">
+                <a href="/" style="color: white; opacity: 0.8;">דף הבית</a>
+                <a href="/קורס-תכנות-לילדים" style="color: white; opacity: 0.8;">קורס תכנות</a>
+                <a href="/קורס-רובלוקס-לילדים" style="color: white; opacity: 0.8;">קורס רובלוקס</a>
+                <a href="/blog" style="color: white; opacity: 0.8;">בלוג</a>
+            </div>
+            <p style="opacity: 0.5; font-size: 0.9rem;">© 2024 דרך ההייטק. כל הזכויות שמורות.</p>
+        </div>
+    </footer>
+</body>
+</html>
