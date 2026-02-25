@@ -241,10 +241,44 @@
             margin: 3rem auto 0;
             padding: 0 24px;
         }
-        .faq-item {
+        /* Mobile menu */
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
         }
+        .mobile-toggle span {
+            width: 24px;
+            height: 3px;
+            background: #374151;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+        .mobile-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+        .mobile-toggle.active span:nth-child(2) { opacity: 0; }
+        .mobile-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+        
         /* Mobile fixes */
         @media (max-width: 768px) {
+            .mobile-toggle { display: flex; }
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            }
+            .nav-links.active { display: flex; }
+            .nav-links a { padding: 1rem; border-bottom: 1px solid #f1f5f9; }
             .landing-hero { padding: 100px 20px 60px; }
             .landing-hero h1 { font-size: 2rem; }
             .landing-hero p { font-size: 1.1rem; padding: 0 10px; }
@@ -293,12 +327,13 @@
             <a href="/" class="logo">
                 <img loading="lazy" src="/images/brand/logo.webp" alt="דרך ההייטק" height="40">
             </a>
-            <div class="nav-links">
+            <div class="nav-links" id="navLinks">
                 <a href="/#courses">קורסים</a>
                 <a href="/pricing.html">מחירים</a>
                 <a href="/blog">בלוג</a>
                 <a href="/#contact" class="btn-nav">צור קשר</a>
             </div>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="תפריט"><span></span><span></span><span></span></button>
         </div>
     </nav>
 
@@ -456,5 +491,23 @@
             <p style="opacity: 0.5; font-size: 0.9rem;">© 2024 דרך ההייטק. כל הזכויות שמורות.</p>
         </div>
     </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        if (mobileToggle && navLinks) {
+            mobileToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                this.classList.toggle('active');
+            });
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    mobileToggle.classList.remove('active');
+                });
+            });
+        }
+    </script>
 </body>
 </html>

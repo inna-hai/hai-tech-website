@@ -151,8 +151,44 @@
         .faq-item.open .faq-question::after { content: '−'; }
         .faq-answer { padding: 0 2rem 1.5rem; color: #64748b; line-height: 1.8; display: none; }
         .faq-item.open .faq-answer { display: block; }
+        
+        /* Mobile menu */
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
+        .mobile-toggle span {
+            width: 24px;
+            height: 3px;
+            background: #374151;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+        .mobile-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+        .mobile-toggle.active span:nth-child(2) { opacity: 0; }
+        .mobile-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
         /* Mobile fixes */
         @media (max-width: 768px) {
+            .mobile-toggle { display: flex; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            }
+            .nav-links.active { display: flex; }
+            .nav-links a { padding: 1rem; border-bottom: 1px solid #f1f5f9; }
             .landing-hero { padding: 100px 20px 60px; }
             .landing-hero h1 { font-size: 2rem; }
             .landing-hero .subtitle { font-size: 1.1rem; padding: 0 10px; }
@@ -342,6 +378,23 @@
     </footer>
 
     <script>
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        if (mobileToggle && navLinks) {
+            mobileToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                this.classList.toggle('active');
+            });
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    mobileToggle.classList.remove('active');
+                });
+            });
+        }
+        
+        // FAQ accordion
         document.querySelectorAll('.faq-question').forEach(q => {
             q.addEventListener('click', () => {
                 const item = q.parentElement;
