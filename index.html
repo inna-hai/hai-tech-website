@@ -1384,8 +1384,14 @@
     <script src="js/lead-automation.js?v=20260215"></script>
     
     <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
+        // Initialize Lucide icons (wait for it to load)
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        } else {
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof lucide !== 'undefined') lucide.createIcons();
+            });
+        }
         
         // Force video play on mobile
         const heroVideo = document.querySelector('.hero-video-bg video');
@@ -1435,7 +1441,7 @@
 
         // Re-initialize Lucide icons after popup is shown (for dynamic content)
         document.addEventListener('click', function() {
-            setTimeout(() => lucide.createIcons(), 100);
+            setTimeout(() => { if (typeof lucide !== 'undefined') lucide.createIcons(); }, 100);
         });
     </script>
     
