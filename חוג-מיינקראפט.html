@@ -235,6 +235,23 @@
             padding: 0 24px;
         }
         .faq-item {
+        }
+        /* Mobile fixes */
+        @media (max-width: 768px) {
+            .landing-hero { padding: 100px 20px 60px; }
+            .landing-hero h1 { font-size: 2rem; }
+            .landing-hero p { font-size: 1.1rem; padding: 0 10px; }
+            .hero-cta { flex-direction: column; gap: 0.8rem; }
+            .btn-primary, .btn-secondary { padding: 14px 30px; font-size: 1rem; width: 100%; max-width: 280px; }
+            .trust-badges { gap: 1.5rem; }
+            .trust-badge .number { font-size: 2rem; }
+            .benefits-grid { grid-template-columns: 1fr; }
+            .cta-section { padding: 60px 20px; }
+            .cta-section h2 { font-size: 1.6rem; }
+            .faq-question { font-size: 1rem; padding: 1.2rem 1.5rem; }
+        }
+        
+        .faq-item {
             background: white;
             border-radius: 16px;
             margin-bottom: 1rem;
