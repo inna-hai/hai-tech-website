@@ -13,7 +13,7 @@
       "duration": "למידה עצמית בקצב אישי",
       "level": "מתחילים",
       "language": "he",
-      "image": "/images/courses/scratch-new.png",
+      "image": "/images/courses/scratch-new.webp",
       "url": "https://hai.tech/courses/קורס-למידה-עצמית-ליצירת-משחקים/",
       "productUrl": "https://hai.tech/product/scratch/",
       "topics": [
@@ -47,7 +47,7 @@
       "duration": "למידה עצמית בקצב אישי",
       "level": "מתחילים",
       "language": "he",
-      "image": "/images/courses/mc-javascript.png",
+      "image": "/images/courses/mc-javascript.webp",
       "url": "https://hai.tech/courses/קורס-למידה-עצמית-של-javascript-באמצעות-מיינקרא/",
       "productUrl": "https://hai.tech/product/מיינקראפט-javascript-גילאי-10/",
       "topics": [
@@ -81,7 +81,7 @@
       "duration": "למידה עצמית בקצב אישי",
       "level": "מתחילים",
       "language": "he",
-      "image": "/images/courses/roblox-new.png",
+      "image": "/images/courses/roblox-new.webp",
       "url": "https://hai.tech/courses/קורס-למידה-עצמית-תכנות-משחקי-רובלוקס/",
       "productUrl": "https://hai.tech/product/משחקי-roblox-ב-lua/",
       "topics": [
@@ -115,7 +115,7 @@
       "duration": "למידה עצמית בקצב אישי",
       "level": "מתחילים",
       "language": "he",
-      "image": "/images/courses/ai-new.png",
+      "image": "/images/courses/ai-new.webp",
       "url": "https://hai.tech/courses/פיתוח-אתרים-ומשחקים-בשילוב-בינה-מלאכו/",
       "productUrl": "https://hai.tech/product/קורס-פיתוח-אתרים-ומשחקים-בשילוב-בינה-מ/",
       "topics": [
@@ -152,7 +152,7 @@
       "duration": "למידה עצמית בקצב אישי",
       "level": "מתחילים עד מתקדמים",
       "language": "he",
-      "image": "/images/courses/python-new.png",
+      "image": "/images/courses/python-new.webp",
       "url": "https://hai.tech/courses/קורס-למידה-עצמית-פיתוח-משחקים-בשפת-python/",
       "productUrl": "https://hai.tech/product/קורס-למידה-עצמית-פיתוח-משחקים-בשפת-python/",
       "topics": [
@@ -188,7 +188,7 @@
       "duration": "למידה עצמית בקצב אישי",
       "level": "מתקדמים",
       "language": "he",
-      "image": "/images/courses/discord-new.png",
+      "image": "/images/courses/discord-new.webp",
       "url": "https://hai.tech/courses/קורס-פיתוח-בוטים-לשרת-דיסקורד-javascript-node-js/",
       "productUrl": "https://hai.tech/product/פיתוח-בוטים-לשרת-דיסקורד-node-js-גילאי-12/",
       "topics": [
@@ -223,7 +223,7 @@
       "duration": "למידה עצמית בקצב אישי",
       "level": "מתקדמים",
       "language": "he",
-      "image": "/images/courses/java-new.png",
+      "image": "/images/courses/java-new.webp",
       "url": "https://hai.tech/courses/קורס-למידה-עצמית-ליצירת-mincecraft-plugins-ב-java/",
       "productUrl": "https://hai.tech/product/minecraft-java-plugins-לגילאי-12/",
       "topics": [
@@ -258,7 +258,7 @@
       "duration": "למידה עצמית בקצב אישי",
       "level": "מתחילים",
       "language": "he",
-      "image": "/images/courses/canva.png",
+      "image": "/images/courses/canva.webp",
       "url": "https://hai.tech/courses/canvaai/",
       "productUrl": "https://hai.tech/product/קורס-קנבה-עם-בינה-מלאכותית/",
       "topics": [
@@ -292,7 +292,7 @@
       "duration": "למידה עצמית בקצב אישי",
       "level": "מתחילים",
       "language": "he",
-      "image": "/images/courses/3d-print.png",
+      "image": "/images/courses/3d-print.webp",
       "url": "https://hai.tech/courses/3dprinters/",
       "productUrl": "https://hai.tech/product/קורס-תלת-מימד/",
       "topics": [
@@ -325,7 +325,7 @@
       "duration": "למידה עצמית בקצב אישי",
       "level": "מתקדמים",
       "language": "he",
-      "image": "/images/courses/mc-javascript.png",
+      "image": "/images/courses/mc-javascript.webp",
       "url": "https://hai.tech/courses/course/",
       "productUrl": "https://hai.tech/product/קורס-למידה-עצמית-תכנות-לבניית-מודים-במ/",
       "topics": [
@@ -357,7 +357,7 @@
       "duration": "למידה עצמית בקצב אישי",
       "level": "מתחילים",
       "language": "he",
-      "image": "/images/courses/mc-worlds.png",
+      "image": "/images/courses/mc-worlds.webp",
       "url": "https://hai.tech/courses/קורס-למידה-עצמית-בניית-עולמות-minecraft-באמצע/",
       "productUrl": "https://hai.tech/product/קורס-למידה-עצמית-בניית-עולמות-minecraft-באמצע/",
       "topics": [
@@ -392,7 +392,7 @@
       "duration": "למידה עצמית בקצב אישי",
       "level": "מתחילים",
       "language": "he",
-      "image": "/images/courses/mc-summer.png",
+      "image": "/images/courses/mc-summer.webp",
       "url": "https://hai.tech/courses/מחנה-קיץ-מיינקראפט/",
       "productUrl": "https://hai.tech/product/מחנה-קיץ-מיינקראפט/",
       "topics": [
@@ -425,7 +425,7 @@
       "duration": "למידה עצמית בקצב אישי",
       "level": "מתחילים עד בינוני",
       "language": "he",
-      "image": "/images/courses/mc-escape.png",
+      "image": "/images/courses/mc-escape.webp",
       "url": "https://hai.tech/courses/חדר-בריחה-פירמידה/",
       "productUrl": "https://hai.tech/product/מחנה-חדר-בריחה-בפירמידה/",
       "topics": [
