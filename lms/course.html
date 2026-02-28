@@ -162,6 +162,28 @@
             }
         }
 
+        // Check pending payment on page load
+        (async function checkPendingPayment() {
+            const pending = localStorage.getItem('hai_lms_pending_payment');
+            if (!pending) return;
+            try {
+                const { orderId, courseId: pendingCourseId } = JSON.parse(pending);
+                const res = await fetch(`/lms/api/payments/status/${orderId}`);
+                const data = await res.json();
+                if (data.paid) {
+                    localStorage.removeItem('hai_lms_pending_payment');
+                    // Wait a moment for webhook to process enrollment
+                    await new Promise(r => setTimeout(r, 2000));
+                    if (pendingCourseId === courseId) {
+                        window.location.href = `course.html?id=${courseId}&payment=success`;
+                    }
+                } else {
+                    // Payment not completed yet, clear it
+                    localStorage.removeItem('hai_lms_pending_payment');
+                }
+            } catch { localStorage.removeItem('hai_lms_pending_payment'); }
+        })();
+
         // Current course price (set by loadCourse)
         let currentCoursePrice = 0;
         let originalCoursePrice = 0;
@@ -262,6 +284,10 @@
                 }
 
                 if (data.paymentUrl) {
+                    // Save pending payment so we can check on return
+                    localStorage.setItem('hai_lms_pending_payment', JSON.stringify({
+                        orderId: data.orderId, courseId, returnUrl: data.returnUrl
+                    }));
                     // Redirect to payment page
                     window.location.href = data.paymentUrl;
                 } else {
