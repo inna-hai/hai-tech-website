@@ -363,7 +363,7 @@
                 document.getElementById('playBtn').href = `lesson.html?course=${courseId}&lesson=${firstLessonId}`;
 
                 // Handle purchase button visibility
-                const isEnrolled = course.isEnrolled;
+                const isEnrolled = data.isEnrolled;
                 const price = course.price || 0;
                 currentCoursePrice = price;
                 originalCoursePrice = price;
