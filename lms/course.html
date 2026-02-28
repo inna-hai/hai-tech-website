@@ -284,12 +284,31 @@
                 }
 
                 if (data.paymentUrl) {
-                    // Save pending payment so we can check on return
-                    localStorage.setItem('hai_lms_pending_payment', JSON.stringify({
-                        orderId: data.orderId, courseId, returnUrl: data.returnUrl
-                    }));
-                    // Redirect to payment page
-                    window.location.href = data.paymentUrl;
+                    // Open payment in new tab, poll for completion
+                    const payWin = window.open(data.paymentUrl, '_blank');
+                    buyBtn.disabled = true;
+                    buyBtn.innerHTML = '<span>⏳ ממתין לתשלום...</span>';
+                    
+                    const pollInterval = setInterval(async () => {
+                        try {
+                            const statusRes = await fetch(`/lms/api/payments/status/${data.orderId}`);
+                            const statusData = await statusRes.json();
+                            if (statusData.paid) {
+                                clearInterval(pollInterval);
+                                // Wait for webhook to process enrollment
+                                await new Promise(r => setTimeout(r, 3000));
+                                alert('התשלום בוצע בהצלחה! 🎉 כעת יש לך גישה לקורס.');
+                                window.location.reload();
+                            }
+                        } catch {}
+                    }, 5000); // Check every 5 seconds
+                    
+                    // Stop polling after 10 minutes
+                    setTimeout(() => {
+                        clearInterval(pollInterval);
+                        buyBtn.disabled = false;
+                        buyBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span>רכוש קורס</span>';
+                    }, 600000);
                 } else {
                     alert(data.error || 'שגיאה בתהליך הרכישה');
                     buyBtn.disabled = false;
