@@ -422,10 +422,34 @@ paymentRoutes.get('/status/:orderId', async (c) => {
   if (!res.ok) return c.json({ error: 'הזמנה לא נמצאה' }, 404);
 
   const order = await res.json() as any;
+  const paid = ['processing', 'completed', 'on-hold'].includes(order.status);
+
+  // Auto-enroll if paid (fallback in case webhook didn't fire)
+  if (paid) {
+    let lmsUserId: string | null = null;
+    let lmsCourseId: string | null = null;
+    for (const meta of order.meta_data || []) {
+      if (meta.key === 'lms_user_id') lmsUserId = meta.value;
+      if (meta.key === 'lms_course_id') lmsCourseId = meta.value;
+    }
+    if (lmsUserId && lmsCourseId) {
+      const existing = await c.env.DB.prepare(
+        'SELECT id FROM enrollments WHERE user_id = ? AND course_id = ?'
+      ).bind(lmsUserId, lmsCourseId).first();
+      if (!existing) {
+        const enrollmentId = crypto.randomUUID();
+        await c.env.DB.prepare(
+          'INSERT INTO enrollments (id, user_id, course_id, payment_id, status, enrolled_at) VALUES (?, ?, ?, ?, ?, unixepoch())'
+        ).bind(enrollmentId, lmsUserId, lmsCourseId, String(order.id), 'active').run();
+        console.log(`[Status Check] Auto-enrolled user ${lmsUserId} in course ${lmsCourseId} (order ${order.id})`);
+      }
+    }
+  }
+
   return c.json({
     orderId: order.id,
     status: order.status,
-    paid: ['processing', 'completed'].includes(order.status),
+    paid,
     total: order.total,
   });
 });
