@@ -193,6 +193,52 @@ paymentRoutes.post('/create-payment/:courseId', async (c) => {
   }
 
   try {
+    let finalPrice = course.price;
+    let wooCouponCode: string | undefined = undefined;
+
+    // Handle LMS coupon
+    if (couponCode) {
+      const upperCode = couponCode.toUpperCase().trim();
+      const lmsCoupon = await c.env.DB.prepare(
+        'SELECT * FROM coupons WHERE code = ? AND is_active = 1'
+      ).bind(upperCode).first() as {
+        id: string; discount_type: string; discount_value: number;
+        max_uses: number | null; current_uses: number;
+        course_id: string | null;
+      } | null;
+
+      if (lmsCoupon) {
+        // Validate
+        if (lmsCoupon.max_uses && lmsCoupon.current_uses >= lmsCoupon.max_uses) {
+          return c.json({ error: 'קוד הקופון הגיע למגבלת השימוש' }, 400);
+        }
+        if (lmsCoupon.course_id && lmsCoupon.course_id !== courseId) {
+          return c.json({ error: 'קוד הקופון לא תקף לקורס זה' }, 400);
+        }
+        // Apply discount
+        if (lmsCoupon.discount_type === 'percent') {
+          finalPrice = Math.round(course.price * (1 - lmsCoupon.discount_value / 100));
+        } else {
+          finalPrice = Math.max(0, course.price - lmsCoupon.discount_value);
+        }
+        // Increment usage
+        await c.env.DB.prepare('UPDATE coupons SET current_uses = current_uses + 1 WHERE id = ?')
+          .bind(lmsCoupon.id).run();
+
+        // Free after coupon — enroll directly
+        if (finalPrice <= 0) {
+          const enrollmentId = crypto.randomUUID();
+          await c.env.DB.prepare(
+            'INSERT INTO enrollments (id, user_id, course_id, status, enrolled_at) VALUES (?, ?, ?, ?, unixepoch())'
+          ).bind(enrollmentId, userId, courseId, 'active').run();
+          return c.json({ success: true, free: true, message: 'הקופון הוחל — נרשמת לקורס בהצלחה!' });
+        }
+      } else {
+        // Not an LMS coupon — pass to WooCommerce
+        wooCouponCode = couponCode;
+      }
+    }
+
     const nameParts = (userName || '').split(' ');
     const order = await createWooOrder({
       env: c.env,
@@ -201,8 +247,8 @@ paymentRoutes.post('/create-payment/:courseId', async (c) => {
       email: userEmail,
       productId: course.woo_product_id,
       courseName: course.title,
-      price: course.price,
-      couponCode: couponCode || undefined,
+      price: finalPrice,
+      couponCode: wooCouponCode,
       metaUserId: userId,
       metaCourseId: courseId,
     });
@@ -217,40 +263,84 @@ paymentRoutes.post('/create-payment/:courseId', async (c) => {
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
-// PUBLIC: Validate coupon code
+// PUBLIC: Validate coupon code (checks LMS DB first, then WooCommerce)
 // POST /lms/api/payments/validate-coupon
 // ─────────────────────────────────────────────────────────────────────────────
 paymentRoutes.post('/validate-coupon', async (c) => {
-  const { code, productId } = await c.req.json();
+  const { code, productId, courseId } = await c.req.json();
   if (!code) return c.json({ valid: false, error: 'קוד קופון חסר' });
 
-  const auth = wooAuth(c.env.WOO_API_KEY, c.env.WOO_API_SECRET);
-  const res = await fetch(`${WOO_SITE}/wp-json/wc/v3/coupons?code=${encodeURIComponent(code)}`, {
-    headers: { Authorization: auth },
-  });
+  const upperCode = code.toUpperCase().trim();
 
-  if (!res.ok) return c.json({ valid: false, error: 'שגיאה בבדיקת קופון' });
+  // 1. Check LMS DB first
+  const lmsCoupon = await c.env.DB.prepare(
+    'SELECT * FROM coupons WHERE code = ? AND is_active = 1'
+  ).bind(upperCode).first() as {
+    id: string; code: string; discount_type: string; discount_value: number;
+    max_uses: number | null; current_uses: number;
+    valid_from: number | null; valid_until: number | null;
+    course_id: string | null;
+  } | null;
 
-  const coupons = await res.json() as any[];
-  if (!coupons.length) return c.json({ valid: false, error: 'קוד קופון לא תקין' });
+  if (lmsCoupon) {
+    const now = Math.floor(Date.now() / 1000);
+    if (lmsCoupon.valid_from && now < lmsCoupon.valid_from) {
+      return c.json({ valid: false, error: 'קוד הקופון עדיין לא בתוקף' });
+    }
+    if (lmsCoupon.valid_until && now > lmsCoupon.valid_until) {
+      return c.json({ valid: false, error: 'קוד הקופון פג תוקף' });
+    }
+    if (lmsCoupon.max_uses && lmsCoupon.current_uses >= lmsCoupon.max_uses) {
+      return c.json({ valid: false, error: 'קוד הקופון הגיע למגבלת השימוש' });
+    }
+    if (lmsCoupon.course_id && courseId && lmsCoupon.course_id !== courseId) {
+      return c.json({ valid: false, error: 'קוד הקופון לא תקף לקורס זה' });
+    }
 
-  const coupon = coupons[0];
-  const now = new Date();
-  if (coupon.date_expires && new Date(coupon.date_expires) < now) {
-    return c.json({ valid: false, error: 'קוד הקופון פג תוקף' });
+    return c.json({
+      valid: true,
+      source: 'lms',
+      coupon: {
+        code: lmsCoupon.code,
+        discountType: lmsCoupon.discount_type === 'percent' ? 'percent' : 'fixed_cart',
+        discountValue: lmsCoupon.discount_value,
+      },
+    });
   }
-  if (coupon.usage_count >= coupon.usage_limit && coupon.usage_limit > 0) {
-    return c.json({ valid: false, error: 'קוד הקופון הגיע למגבלת השימוש' });
-  }
 
-  return c.json({
-    valid: true,
-    coupon: {
-      code: coupon.code,
-      discountType: coupon.discount_type,  // percent / fixed_cart
-      discountValue: Number(coupon.amount),
-    },
-  });
+  // 2. Fallback to WooCommerce
+  try {
+    const auth = wooAuth(c.env.WOO_API_KEY, c.env.WOO_API_SECRET);
+    const res = await fetch(`${WOO_SITE}/wp-json/wc/v3/coupons?code=${encodeURIComponent(upperCode)}`, {
+      headers: { Authorization: auth },
+    });
+
+    if (!res.ok) return c.json({ valid: false, error: 'קוד קופון לא תקין' });
+
+    const coupons = await res.json() as any[];
+    if (!coupons.length) return c.json({ valid: false, error: 'קוד קופון לא תקין' });
+
+    const coupon = coupons[0];
+    const now = new Date();
+    if (coupon.date_expires && new Date(coupon.date_expires) < now) {
+      return c.json({ valid: false, error: 'קוד הקופון פג תוקף' });
+    }
+    if (coupon.usage_count >= coupon.usage_limit && coupon.usage_limit > 0) {
+      return c.json({ valid: false, error: 'קוד הקופון הגיע למגבלת השימוש' });
+    }
+
+    return c.json({
+      valid: true,
+      source: 'woo',
+      coupon: {
+        code: coupon.code,
+        discountType: coupon.discount_type,
+        discountValue: Number(coupon.amount),
+      },
+    });
+  } catch {
+    return c.json({ valid: false, error: 'קוד קופון לא תקין' });
+  }
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
