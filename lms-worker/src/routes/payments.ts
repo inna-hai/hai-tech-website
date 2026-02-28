@@ -255,7 +255,13 @@ paymentRoutes.post('/create-payment/:courseId', async (c) => {
 
     const payUrl = await buildPayUrl(order.id, c.env);
 
-    return c.json({ success: true, orderId: order.id, total: order.total, paymentUrl: payUrl });
+    return c.json({
+      success: true,
+      orderId: order.id,
+      total: order.total,
+      paymentUrl: payUrl,
+      returnUrl: `https://hai.tech/lms/course.html?id=${courseId}&payment=success`,
+    });
   } catch (err: any) {
     console.error('Payment error:', err);
     return c.json({ error: err.message || 'שגיאה בתהליך התשלום' }, 500);
@@ -354,7 +360,7 @@ paymentRoutes.post('/wc-webhook', async (c) => {
     const order = await c.req.json() as any;
     if (!order?.id) return c.json({ ok: true });
 
-    const paid = ['processing', 'completed'].includes(order.status);
+    const paid = ['processing', 'completed', 'on-hold'].includes(order.status);
     if (!paid) return c.json({ ok: true, ignored: true });
 
     // Extract LMS user/course IDs from order meta
