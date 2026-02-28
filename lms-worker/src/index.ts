@@ -20,8 +20,11 @@ export interface Env {
   DB: D1Database;
   JWT_SECRET: string;
   CORS_ORIGIN: string;
-  GREEN_INVOICE_API_KEY: string;
-  GREEN_INVOICE_SECRET: string;
+  // WooCommerce REST API (haitechdigitalcourses.hai.tech)
+  WOO_API_KEY: string;
+  WOO_API_SECRET: string;
+  // HMAC secret for auto-login payment URLs (must match WP snippet #67)
+  HAITECH_PAY_SECRET: string;
 }
 
 // Create Hono app with typed bindings
@@ -55,8 +58,9 @@ app.route('/lms/api/parent', parentRoutes);
 app.route('/lms/api/admin', adminRoutes);
 app.route('/lms/api/payments', paymentRoutes);
 
-// Webhook routes (also accessible directly)
+// Webhook routes (WooCommerce order webhooks)
 app.route('/lms/api/webhooks', paymentRoutes);
+app.post('/lms/api/webhooks/wc-webhook', (c) => c.redirect('/lms/api/payments/wc-webhook', 307));
 
 // 404 handler
 app.notFound((c) => {

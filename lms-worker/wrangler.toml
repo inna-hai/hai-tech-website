@@ -11,9 +11,12 @@ database_id = "f0b888ec-914b-46ee-a698-a4adec7f09c0"
 # Environment variables
 [vars]
 CORS_ORIGIN = "https://hai.tech"
+WOO_API_KEY = "ck_b206053e871dc496cb21312b88370d99ff4aadf5"
 
 # Secrets (set via: wrangler secret put JWT_SECRET)
 # JWT_SECRET - set in Cloudflare dashboard or CLI
+# WOO_API_SECRET - set in Cloudflare dashboard or CLI
+# HAITECH_PAY_SECRET - set in Cloudflare dashboard or CLI
 
 # Routes - all /lms/api/* goes to this worker
 routes = [
