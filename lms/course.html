@@ -376,10 +376,12 @@
                     document.getElementById('buyBtn').style.display = 'flex';
                     document.getElementById('startBtn').style.display = 'none';
                 } else if (isEnrolled) {
-                    // Show start button
+                    // Show start button + enrolled badge, hide purchase UI
                     document.getElementById('startBtn').style.display = 'flex';
                     document.getElementById('buyBtn').style.display = 'none';
                     document.getElementById('couponSection').style.display = 'none';
+                    document.getElementById('coursePrice').style.display = 'flex';
+                    document.getElementById('coursePrice').innerHTML = '<span style="color: #10b981; font-size: 1.2rem; font-weight: 700;">✅ הקורס נרכש — יש לך גישה מלאה!</span>';
                 }
 
                 // Check for payment status in URL
