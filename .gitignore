@@ -13,3 +13,4 @@ lms/tests/e2e/playwright-report/
 lms/tests/e2e/test-results.json
 
 videos/minecraft-showcase-original.mp4
+.env

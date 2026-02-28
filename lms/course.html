@@ -412,10 +412,10 @@
             <p id="enrollModalText">כדי לצפות בכל השיעורים בקורס, יש להירשם.</p>
             
             <div class="modal-actions" id="modalActionsNotLoggedIn">
-                <a href="login.html" class="btn-modal-primary">
+                <a id="loginLink" href="login.html" class="btn-modal-primary">
                     <span>יש לי חשבון - התחברות</span>
                 </a>
-                <a href="register.html" class="btn-modal-secondary" style="background: var(--accent);">
+                <a id="registerLink" href="register.html" class="btn-modal-secondary" style="background: var(--accent);">
                     <span>הרשמה חדשה</span>
                 </a>
             </div>
@@ -434,6 +434,9 @@
         // Update modal based on login status
         function updateEnrollModal() {
             const token = getToken();
+            const returnUrl = encodeURIComponent(window.location.href);
+            document.getElementById('loginLink').href = `login.html?redirect=${returnUrl}`;
+            document.getElementById('registerLink').href = `register.html?redirect=${returnUrl}`;
             if (token) {
                 document.getElementById('modalActionsNotLoggedIn').style.display = 'none';
                 document.getElementById('modalActionsLoggedIn').style.display = 'flex';

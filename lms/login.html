@@ -137,7 +137,9 @@
                     localStorage.setItem('hai_lms_user', JSON.stringify(data.user));
                     localStorage.setItem('hai_lms_isLoggedIn', JSON.stringify(true));
                     
-                    window.location.href = 'index.html';
+                    const params = new URLSearchParams(window.location.search);
+                    const redirect = params.get('redirect');
+                    window.location.href = redirect || 'index.html';
                 } else {
                     throw new Error(data.error || 'שגיאה בהתחברות');
                 }
