@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>קורס | HAI Tech Academy</title>
+    <title>קורסי תכנות לילדים ונוער | דרך ההייטק — HAI Tech Academy</title>
+    <meta name="description" content="קורסי תכנות לילדים ונוער — מיינקראפט, רובלוקס, Python, JavaScript ובינה מלאכותית. מדריכים מקצועיים, גישה לנצח, תמיכה בוואטסאפ. מגיל 7 עד 18.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="he_IL">
     <link rel="stylesheet" href="css/course-new.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -340,8 +344,28 @@
                 const course = data.course;
                 const lessons = data.lessons || [];
 
-                // Update page title
-                document.title = `${course.title} | HAI Tech Academy`;
+                // Update page title and meta for SEO
+                document.title = `${course.title} | קורס לילדים ונוער | דרך ההייטק`;
+                
+                // Update meta description
+                let metaDesc = document.querySelector('meta[name="description"]');
+                if (!metaDesc) {
+                    metaDesc = document.createElement('meta');
+                    metaDesc.name = 'description';
+                    document.head.appendChild(metaDesc);
+                }
+                metaDesc.content = course.description ? 
+                    `${course.description} | קורס ${course.title} לילדים ונוער בדרך ההייטק. גישה לנצח + תמיכה מקצועית.`.slice(0, 155) :
+                    `${course.title} — קורס אונליין לילדים ונוער בדרך ההייטק. מדריכים מקצועיים, גישה לנצח, תמיכה בוואטסאפ.`;
+                
+                // Update canonical URL
+                let canonical = document.querySelector('link[rel="canonical"]');
+                if (!canonical) {
+                    canonical = document.createElement('link');
+                    canonical.rel = 'canonical';
+                    document.head.appendChild(canonical);
+                }
+                canonical.href = `https://hai.tech/lms/course.html?id=${courseId}`;
 
                 // Update hero
                 document.getElementById('courseTitle').textContent = course.title;
