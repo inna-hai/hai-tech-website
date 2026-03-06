@@ -6,7 +6,7 @@
 const Analytics = {
     // Configuration - Replace with actual GA4 measurement ID
     config: {
-        measurementId: 'G-XXXXXXXXXX', // TODO: Replace with actual GA4 ID
+        measurementId: 'G-E0E5PN9645',
         debug: false
     },
 
