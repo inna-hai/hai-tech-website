@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>הכשרת AI למורים | סדרת מפגשים מקצועיים | דרך ההייטק</title>
+    <meta name="description" content="הכשרת AI למורים — סדרת 8 מפגשים פרקטיים לשילוב בינה מלאכותית בהוראה, הערכה, ניהול כיתה ויצירת תוצרים. למורים, רכזי פדגוגיה ומנהלי בתי ספר.">
+    <meta name="keywords" content="הכשרת AI למורים, בינה מלאכותית למורים, קורס AI למורים, השתלמות AI, AI בחינוך, Gemini למורים">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hai.tech/teacher-ai-training">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="הכשרת AI למורים | דרך ההייטק">
+    <meta property="og:description" content="סדרת 8 מפגשים פרקטיים לשילוב בינה מלאכותית בהוראה. למורים, רכזי פדגוגיה ומנהלי בתי ספר.">
+    <meta property="og:locale" content="he_IL">
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "הכשרת AI למורים",
+        "description": "סדרת 8 מפגשים פרקטיים לשילוב בינה מלאכותית בהוראה, הערכה, ניהול כיתה ויצירת תוצרים.",
+        "provider": {
+            "@type": "Organization",
+            "name": "דרך ההייטק",
+            "url": "https://hai.tech"
+        },
+        "educationalLevel": "Professional Development",
+        "audience": {
+            "@type": "Audience",
+            "audienceType": "מורים, רכזי פדגוגיה, מנהלי בתי ספר"
+        },
+        "inLanguage": "he",
+        "numberOfCredits": "8 מפגשים"
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/jpeg" href="../images/brand/logo.webp">
+
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #eef2ff;
+            --accent: #22c55e;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+        }
+        
+        * { box-sizing: border-box; }
+        
+        .tat-hero {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #6366f1 100%);
+            padding: 140px 20px 80px;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .tat-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+        .tat-hero h1 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 900;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            line-height: 1.3;
+        }
+        .tat-hero .subtitle {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+            line-height: 1.8;
+            position: relative;
+        }
+        .tat-hero .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            backdrop-filter: blur(5px);
+        }
+        
+        .tat-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 2.5rem;
+            position: relative;
+        }
+        .tat-stats .stat {
+            text-align: center;
+        }
+        .tat-stats .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+        .tat-stats .stat-label {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+        
+        .tat-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+        .tat-section h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .tat-section .section-desc {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+        
+        .session-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+        }
+        .session-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 32px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+        }
+        .session-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(99, 102, 241, 0.12);
+            border-color: var(--primary);
+        }
+        .session-card .card-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--primary-light);
+            color: var(--primary);
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        .session-card .card-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+        .session-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text);
+            margin: 0 0 0.75rem;
+            line-height: 1.4;
+        }
+        .session-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            flex: 1;
+        }
+        .session-card .card-btn {
+            display: inline-block;
+            margin-top: 1.25rem;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .session-card .card-btn::after {
+            content: ' ←';
+        }
+        
+        .tools-section {
+            background: var(--bg);
+        }
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+        }
+        .tool-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s;
+        }
+        .tool-card:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+        .tool-card .tool-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+        .tool-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+            margin: 0;
+        }
+        
+        .tat-outcomes {
+            background: linear-gradient(135deg, var(--primary-light) 0%, #f0e7ff 100%);
+            border-radius: 20px;
+            padding: 50px 40px;
+            margin-top: 3rem;
+        }
+        .tat-outcomes h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 0 1.5rem;
+            color: var(--text);
+        }
+        .outcomes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .outcome-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .outcome-item .check {
+            color: var(--accent);
+            font-size: 1.3rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .outcome-item span {
+            color: var(--text);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .tat-cta {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            border-radius: 20px;
+            margin: 4rem auto;
+            max-width: 900px;
+        }
+        .tat-cta h2 { color: white; margin-bottom: 1rem; }
+        .tat-cta p { opacity: 0.9; margin-bottom: 2rem; font-size: 1.1rem; }
+        .tat-cta .btn {
+            display: inline-block;
+            background: white;
+            color: var(--primary-dark);
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.2s;
+        }
+        .tat-cta .btn:hover { transform: scale(1.05); }
+        
+        @media (max-width: 768px) {
+            .tat-hero { padding: 120px 16px 60px; }
+            .tat-section { padding: 50px 16px; }
+            .tat-stats { gap: 20px; }
+            .tat-outcomes { padding: 30px 20px; }
+            .session-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
+    
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="תפריט ראשי">
+        <div class="container">
+            <a href="/" class="logo" aria-label="דרך ההייטק - דף הבית">
+                <img src="../images/brand/logo-haitech-transparent.webp" alt="דרך ההייטק - HAi.TECH" height="60">
+            </a>
+            <button class="mobile-menu-btn" aria-label="פתח תפריט" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="/#courses">קורסים דיגיטליים</a></li>
+                <li><a href="/#private">שיעורים פרטיים</a></li>
+                <li><a href="../locations.html">מוקדים פרונטליים</a></li>
+                <li><a href="../institutions.html" style="color: #f59e0b !important; font-weight: 600;">🏫 למוסדות חינוך</a></li>
+                <li><a href="../ai-learning.html" style="color: #22c55e !important;">🤖 AI בלמידה</a></li>
+                <li><a href="../blog.html">בלוג</a></li>
+                <li><a href="/#about">אודות</a></li>
+                <li><a href="/#contact" class="btn btn-nav">התחילו עכשיו</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="tat-hero">
+        <div class="badge">🎓 תוכנית הכשרה מקצועית</div>
+        <h1>הכשרת AI למורים</h1>
+        <p class="subtitle">סדרת מפגשים פרקטיים שמטרתם לעזור למורים לשלב בינה מלאכותית בהוראה, בהערכה, בניהול כיתה, ביצירת תוצרים ובבניית קהילת מורים משתפת ידע.</p>
+        
+        <div class="tat-stats">
+            <div class="stat">
+                <div class="stat-number">8</div>
+                <div class="stat-label">מפגשים</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">📎</div>
+                <div class="stat-label">תוצרים מעשיים</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">🤖</div>
+                <div class="stat-label">AI בכיתה</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sessions -->
+    <section class="tat-section" id="main-content">
+        <h2>מפגשי ההכשרה</h2>
+        <p class="section-desc">8 מפגשים מעשיים, כל אחד מתמקד בהיבט אחר של שילוב AI בהוראה</p>
+        
+        <div class="session-grid">
+            <a href="hybrid-lesson-design" class="session-card">
+                <div class="card-icon">🎨</div>
+                <div class="card-number">1</div>
+                <h3>עיצוב שיעור היברידי בעזרת AI</h3>
+                <p>איך לתכנן ולעצב שיעור שמשלב בינה מלאכותית בצורה טבעית — מהצבת מטרות ועד למשימת סיכום.</p>
+                <span class="card-btn">לצפייה במפגש</span>
+            </a>
+            
+            <a href="dynamic-content" class="session-card">
+                <div class="card-icon">✨</div>
+                <div class="card-number">2</div>
+                <h3>יצירת תוכן דינמי לשיעורים</h3>
+                <p>כלים ליצירת דפי עבודה, מצגות, חידונים ותוכן מותאם — בלחיצת כפתור.</p>
+                <span class="card-btn">לצפייה במפגש</span>
+            </a>
+            
+            <a href="personalized-learning" class="session-card">
+                <div class="card-icon">🎯</div>
+                <div class="card-number">3</div>
+                <h3>למידה מותאמת אישית עם AI</h3>
+                <p>איך AI יכול לעזור להתאים את קצב ההוראה ואת רמת הקושי לכל תלמיד ותלמידה.</p>
+                <span class="card-btn">לצפייה במפגש</span>
+            </a>
+            
+            <a href="classroom-management" class="session-card">
+                <div class="card-icon">🏫</div>
+                <div class="card-number">4</div>
+                <h3>ניהול כיתה בעידן ה-AI</h3>
+                <p>כלים לניהול זמן, מעקב אחר תלמידים, ארגון חומרים ותקשורת עם הורים — בעזרת AI.</p>
+                <span class="card-btn">לצפייה במפגש</span>
+            </a>
+            
+            <a href="assessment-feedback" class="session-card">
+                <div class="card-icon">📊</div>
+                <div class="card-number">5</div>
+                <h3>הערכה, משוב ובקרה בעידן ה-AI</h3>
+                <p>יצירת מחוונים, בדיקת עבודות, מתן משוב אישי ומעקב אחר התקדמות — עם כלי AI.</p>
+                <span class="card-btn">לצפייה במפגש</span>
+            </a>
+            
+            <a href="critical-thinking-ethics" class="session-card">
+                <div class="card-icon">🧠</div>
+                <div class="card-number">6</div>
+                <h3>חשיבה ביקורתית ואתיקה בעבודה עם AI</h3>
+                <p>איך ללמד תלמידים לבחון מידע שמגיע מ-AI, לזהות הטיות ולהשתמש בכלים באחריות.</p>
+                <span class="card-btn">לצפייה במפגש</span>
+            </a>
+            
+            <a href="ai-project-based-learning" class="session-card">
+                <div class="card-icon">🚀</div>
+                <div class="card-number">7</div>
+                <h3>פרויקטים מבוססי AI ולמידת חקר</h3>
+                <p>בניית פרויקטים בינתחומיים שבהם AI הוא חלק מתהליך החקר, הניתוח וההצגה.</p>
+                <span class="card-btn">לצפייה במפגש</span>
+            </a>
+            
+            <a href="teacher-knowledge-sharing" class="session-card">
+                <div class="card-icon">🤝</div>
+                <div class="card-number">8</div>
+                <h3>שיתוף ידע בין מורים באמצעות AI</h3>
+                <p>בניית Gems ב-Gemini, שיתוף תוצרים בקהילת מורים, ויצירת ספרייה משותפת של כלים.</p>
+                <span class="card-btn">לצפייה במפגש</span>
+            </a>
+        </div>
+        
+        <!-- Outcomes -->
+        <div class="tat-outcomes">
+            <h3>🎯 מה תקבלו מהתוכנית?</h3>
+            <div class="outcomes-grid">
+                <div class="outcome-item">
+                    <span class="check">✅</span>
+                    <span>כלים פרקטיים לשילוב AI בהוראה היומיומית</span>
+                </div>
+                <div class="outcome-item">
+                    <span class="check">✅</span>
+                    <span>תוצרים מוכנים לשימוש — דפי עבודה, מחוונים, מצגות</span>
+                </div>
+                <div class="outcome-item">
+                    <span class="check">✅</span>
+                    <span>ביטחון בשימוש בכלי AI — ChatGPT, Gemini, Canva AI</span>
+                </div>
+                <div class="outcome-item">
+                    <span class="check">✅</span>
+                    <span>הבנת ההיבטים האתיים של AI בכיתה</span>
+                </div>
+                <div class="outcome-item">
+                    <span class="check">✅</span>
+                    <span>ספריית Gems וכלים לשיתוף עם עמיתים</span>
+                </div>
+                <div class="outcome-item">
+                    <span class="check">✅</span>
+                    <span>חסכון משמעותי בזמן הכנת שיעורים</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Library -->
+    <section class="tools-section">
+        <div class="tat-section">
+            <h2>📚 ספריית כלים למורים</h2>
+            <p class="section-desc">אוסף משאבים מסודר לפי קטגוריות — מתעדכן עם כל מפגש</p>
+            
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">🎮</div>
+                    <h4>פעילויות AI בכיתה</h4>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">📋</div>
+                    <h4>מחוונים והערכה</h4>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">🔬</div>
+                    <h4>פרויקטים ולמידת חקר</h4>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">💎</div>
+                    <h4>Gems למורים</h4>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">📤</div>
+                    <h4>חומרים לשיתוף בין מורים</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="tat-section">
+        <div class="tat-cta">
+            <h2>מעוניינים בהכשרת AI לצוות שלכם?</h2>
+            <p>נתאים תוכנית בהתאם לצרכי בית הספר — מפגשים פרונטליים או היברידיים</p>
+            <a href="https://wa.me/972533009742?text=שלום! מעוניינים בהכשרת AI למורים" class="btn">💬 דברו איתנו</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: linear-gradient(180deg, #0f172a 0%, #020617 100%); padding: 4rem 2rem 2rem; border-top: 1px solid #1e293b;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem; text-align: right;">
+                <div>
+                    <h3 style="color: #22c55e; font-size: 1.5rem; margin-bottom: 1rem; font-weight: 700;">דרך ההייטק</h3>
+                    <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7;">מלמדים טכנולוגיה, תכנות ובינה מלאכותית לילדים, נוער ומורים מאז 2019.</p>
+                </div>
+                <div>
+                    <h4 style="color: white; font-size: 1.1rem; margin-bottom: 1rem; font-weight: 600;">קישורים</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 0.75rem;"><a href="../index.html#courses" style="color: #94a3b8; text-decoration: none;">קורסים</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="../institutions.html" style="color: #94a3b8; text-decoration: none;">למוסדות חינוך</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="../blog.html" style="color: #94a3b8; text-decoration: none;">בלוג</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: white; font-size: 1.1rem; margin-bottom: 1rem; font-weight: 600;">צרו קשר</h4>
+                    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                        <a href="https://wa.me/972533009742" style="color: #94a3b8; text-decoration: none;">💬 053-300-9742</a>
+                        <a href="mailto:info@hai.tech" style="color: #94a3b8; text-decoration: none;">✉️ info@hai.tech</a>
+                    </div>
+                </div>
+            </div>
+            <div style="border-top: 1px solid #1e293b; padding-top: 1.5rem; text-align: center;">
+                <p style="color: #64748b; font-size: 0.85rem;">© 2026 דרך ההייטק. כל הזכויות שמורות.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>

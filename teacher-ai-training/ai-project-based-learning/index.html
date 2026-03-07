@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>פרויקטים מבוססי AI ולמידת חקר | הכשרת AI למורים | דרך ההייטק</title>
+    <meta name="description" content="בניית פרויקטים בינתחומיים שבהם AI הוא חלק מתהליך החקר, הניתוח וההצגה. מפגש 7 מתוך 8 בתוכנית הכשרת AI למורים של דרך ההייטק.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hai.tech/teacher-ai-training/ai-project-based-learning">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" type="image/jpeg" href="../../images/brand/logo.webp">
+
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #eef2ff;
+            --accent: #22c55e;
+            --text: #1e293b;
+            --text-light: #64748b;
+        }
+        * { box-sizing: border-box; }
+        
+        .session-hero {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #6366f1 100%);
+            padding: 140px 20px 60px;
+            color: white;
+            text-align: center;
+        }
+        .session-hero .breadcrumb {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+        .session-hero .breadcrumb a { color: white; text-decoration: underline; }
+        .session-hero .session-num {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .session-hero h1 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            max-width: 800px;
+            margin: 0 auto 1rem;
+            line-height: 1.3;
+        }
+        .session-hero .hero-desc {
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+        
+        .session-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .content-block {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 36px;
+            margin-bottom: 24px;
+        }
+        .content-block.highlight {
+            background: var(--primary-light);
+            border-color: transparent;
+        }
+        .content-block .block-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+        .content-block h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text);
+            margin: 0 0 1rem;
+        }
+        .content-block p {
+            color: var(--text);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 0.75rem;
+        }
+        .content-block ul, .content-block ol {
+            padding-right: 1.5rem;
+            margin: 0.5rem 0;
+        }
+        .content-block li {
+            color: var(--text);
+            font-size: 1.02rem;
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+        
+        .presentation-placeholder {
+            background: #f1f5f9;
+            border: 2px dashed #cbd5e1;
+            border-radius: 16px;
+            padding: 60px 20px;
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 24px;
+        }
+        .presentation-placeholder .ph-icon { font-size: 3rem; margin-bottom: 1rem; }
+        .presentation-placeholder p { margin: 0; font-size: 1rem; }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e2e8f0;
+        }
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+        .nav-btn.prev { background: #f1f5f9; color: var(--text); }
+        .nav-btn.next { background: var(--primary); color: white; }
+        .nav-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        
+        .gems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 16px;
+            margin-top: 1.5rem;
+        }
+        .gem-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+        }
+        .gem-card .gem-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+        .gem-card h4 { font-size: 1rem; font-weight: 600; margin: 0 0 0.5rem; color: var(--text); }
+        .gem-card p { font-size: 0.9rem; color: var(--text-light); margin: 0; line-height: 1.6; }
+        
+        @media (max-width: 768px) {
+            .session-content { padding: 40px 16px; }
+            .content-block { padding: 24px; }
+            .nav-buttons { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
+    
+    <nav class="navbar" role="navigation" aria-label="תפריט ראשי">
+        <div class="container">
+            <a href="/" class="logo" aria-label="דרך ההייטק - דף הבית">
+                <img src="../../images/brand/logo-haitech-transparent.webp" alt="דרך ההייטק - HAi.TECH" height="60">
+            </a>
+            <button class="mobile-menu-btn" aria-label="פתח תפריט" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="/#courses">קורסים</a></li>
+                <li><a href="/teacher-ai-training" style="color: #6366f1 !important; font-weight: 600;">🎓 הכשרת AI למורים</a></li>
+                <li><a href="../../institutions.html" style="color: #f59e0b !important; font-weight: 600;">🏫 למוסדות חינוך</a></li>
+                <li><a href="../../blog.html">בלוג</a></li>
+                <li><a href="/#contact" class="btn btn-nav">התחילו עכשיו</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="session-hero">
+        <div class="breadcrumb">
+            <a href="/teacher-ai-training">הכשרת AI למורים</a> / מפגש 7
+        </div>
+        <div class="session-num">🚀 מפגש 7 מתוך 8</div>
+        <h1>פרויקטים מבוססי AI ולמידת חקר</h1>
+        <p class="hero-desc">בניית פרויקטים בינתחומיים שבהם AI הוא חלק מתהליך החקר, הניתוח וההצגה.</p>
+    </header>
+
+    <main class="session-content" id="main-content">
+        
+        <!-- Goal -->
+        <div class="content-block highlight">
+            <div class="block-icon">🎯</div>
+            <h2>מטרת המפגש</h2>
+            <p>ללמוד לתכנן פרויקטים בינתחומיים שבהם התלמידים משתמשים ב-AI ככלי מחקר, ניתוח ויצירה.</p>
+        </div>
+
+        <!-- Presentation -->
+        <div class="presentation-placeholder">
+            <div class="ph-icon">📽️</div>
+            <p>אזור מצגת / שקפים<br><strong>התוכן יעלה בקרוב</strong></p>
+        </div>
+
+        <!-- Outcomes -->
+        <div class="content-block">
+            <div class="block-icon">🎁</div>
+            <h2>מה יוצא לי מהמפגש?</h2>
+            <ul>
+                    <li>תבנית פרויקט חקר עם AI</li>
+                    <li>רעיונות לפרויקטים בינתחומיים</li>
+                    <li>מחוון הערכה לפרויקט מבוסס AI</li>
+            </ul>
+        </div>
+
+        <!-- Task -->
+        <div class="content-block highlight">
+            <div class="block-icon">📝</div>
+            <h2>משימה להמשך</h2>
+            <p>תכננו פרויקט חקר אחד בתחום שלכם — הגדירו שאלת חקר, שלבי עבודה, וכלי AI שהתלמידים ישתמשו בהם.</p>
+        </div>
+
+        <!-- Materials -->
+        <div class="content-block">
+            <div class="block-icon">📎</div>
+            <h2>חומרים ותוצרים</h2>
+            <ul>
+                    <li>תבנית פרויקט חקר</li>
+                    <li>רשימת רעיונות לפי תחום דעת</li>
+                    <li>מחוון הערכה לפרויקטים</li>
+            </ul>
+            <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 1rem;">💡 חומרים נוספים יתווספו לאחר המפגש</p>
+        </div>
+
+        <!-- Navigation -->
+        <div class="nav-buttons">
+            <a href="/teacher-ai-training/critical-thinking-ethics" class="nav-btn prev">→ חשיבה ביקורתית ואתיקה בעבודה עם AI</a>
+            <a href="/teacher-ai-training" class="nav-btn prev" style="margin: 0 auto;">↩ כל המפגשים</a>
+            <a href="/teacher-ai-training/teacher-knowledge-sharing" class="nav-btn next">שיתוף ידע בין מורים באמצעות AI ←</a>
+        </div>
+    </main>
+
+    <footer style="background: linear-gradient(180deg, #0f172a 0%, #020617 100%); padding: 3rem 2rem 1.5rem; border-top: 1px solid #1e293b;">
+        <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
+            <p style="color: #64748b; font-size: 0.85rem;">© 2026 דרך ההייטק. כל הזכויות שמורות.</p>
+        </div>
+    </footer>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>
