@@ -51,7 +51,7 @@ authRoutes.post('/register', async (c) => {
     httpOnly: true,
     secure: true,
     sameSite: 'Lax',
-    maxAge: 60 * 60 * 24 * 7, // 7 days
+    maxAge: 60 * 60 * 24 * 30, // 30 days
     path: '/'
   });
 
@@ -98,7 +98,7 @@ authRoutes.post('/login', async (c) => {
     httpOnly: true,
     secure: true,
     sameSite: 'Lax',
-    maxAge: 60 * 60 * 24 * 7,
+    maxAge: 60 * 60 * 24 * 30,
     path: '/'
   });
 
@@ -201,13 +201,38 @@ authRoutes.put('/password', async (c) => {
   }
 });
 
+// Refresh token — accepts old token (even if nearly expired) and issues new 30-day one
+authRoutes.post('/refresh', async (c) => {
+  let token = getCookie(c, 'auth_token');
+  if (!token) {
+    const authHeader = c.req.header('Authorization');
+    if (authHeader?.startsWith('Bearer ')) token = authHeader.slice(7);
+  }
+  if (!token) return c.json({ error: 'No token provided' }, 401);
+
+  try {
+    const payload = await verifyToken(token, c.env.JWT_SECRET);
+    const newToken = await generateToken(payload.userId, payload.email, payload.role, c.env.JWT_SECRET);
+    setCookie(c, 'auth_token', newToken, {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'Lax',
+      maxAge: 60 * 60 * 24 * 30,
+      path: '/'
+    });
+    return c.json({ success: true, token: newToken });
+  } catch {
+    return c.json({ error: 'טוקן לא תקין' }, 401);
+  }
+});
+
 // Helper functions
 async function generateToken(userId: string, email: string, role: string, secret: string): Promise<string> {
   const secretKey = new TextEncoder().encode(secret);
   return await new jose.SignJWT({ userId, email, role })
     .setProtectedHeader({ alg: 'HS256' })
     .setIssuedAt()
-    .setExpirationTime('7d')
+    .setExpirationTime('30d')
     .sign(secretKey);
 }
 

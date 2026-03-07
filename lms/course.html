@@ -166,6 +166,24 @@
             }
         }
 
+        // Refresh token automatically — saves new token to localStorage
+        async function refreshToken() {
+            const token = getToken();
+            if (!token) return null;
+            try {
+                const res = await fetch('/lms/api/auth/refresh', {
+                    method: 'POST',
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const data = await res.json();
+                if (data.token) {
+                    localStorage.setItem('hai_lms_token', JSON.stringify(data.token));
+                    return data.token;
+                }
+            } catch {}
+            return null;
+        }
+
         // Check pending payment on page load
         (async function checkPendingPayment() {
             const pending = localStorage.getItem('hai_lms_pending_payment');
@@ -255,7 +273,7 @@
 
         // Purchase course
         async function purchaseCourse() {
-            const token = getToken();
+            let token = getToken();
             if (!token) {
                 // Not logged in - show login modal
                 showEnrollModal();
@@ -267,16 +285,35 @@
             buyBtn.innerHTML = '<span>מעבד...</span>';
 
             try {
-                const response = await fetch(`/lms/api/payments/create-payment/${courseId}`, {
+                let response = await fetch(`/lms/api/payments/create-payment/${courseId}`, {
                     method: 'POST',
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({
-                        couponCode: appliedCouponCode
-                    })
+                    body: JSON.stringify({ couponCode: appliedCouponCode })
                 });
+
+                // Auto-refresh token if expired (401), then retry once
+                if (response.status === 401) {
+                    const newToken = await refreshToken();
+                    if (newToken) {
+                        response = await fetch(`/lms/api/payments/create-payment/${courseId}`, {
+                            method: 'POST',
+                            headers: {
+                                'Authorization': `Bearer ${newToken}`,
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ couponCode: appliedCouponCode })
+                        });
+                    } else {
+                        // Refresh also failed — session truly expired
+                        alert('פג תוקף החיבור. אנא התחבר מחדש.');
+                        buyBtn.disabled = false;
+                        buyBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span>רכוש קורס</span>';
+                        return;
+                    }
+                }
 
                 const data = await response.json();
 
