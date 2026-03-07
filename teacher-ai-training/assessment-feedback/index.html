@@ -5,12 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>הערכה ומשוב בעזרת AI | הכשרת AI למורים | דרך ההייטק</title>
     <meta name="description" content="יצירת מחוונים (Rubrics), מתן משוב לתלמידים ובדיקת עבודות בעזרת AI ו-NotebookLM. מפגש 5 בתוכנית הכשרת AI למורים.">
+        <meta name="keywords" content="מחוון הערכה AI, Rubric AI, משוב לתלמידים AI, NotebookLM, בדיקת עבודות AI, הערכה מעצבת, כלי הערכה למורים">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://hai.tech/teacher-ai-training/assessment-feedback">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../style.css">
     <link rel="icon" type="image/jpeg" href="../../images/brand/logo.webp">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="הערכה ומשוב בעזרת AI | הכשרת AI למורים | דרך ההייטק">
+    <meta property="og:description" content="יצירת מחוונים (Rubrics), מתן משוב אישי ובדיקת עבודות בעזרת AI ו-NotebookLM. מפגש 5 בתוכנית הכשרת AI למורים.">
+    <meta property="og:url" content="https://hai.tech/teacher-ai-training/assessment-feedback">
+    <meta property="og:locale" content="he_IL">
+    <meta property="og:site_name" content="דרך ההייטק">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="הערכה ומשוב בעזרת AI">
+    <meta name="twitter:description" content="יצירת מחוונים (Rubrics), מתן משוב אישי ובדיקת עבודות בעזרת AI ו-NotebookLM. מפגש 5 בתוכנית הכשרת AI למורים.">
+
     <style>
         :root { --primary: #6366f1; --primary-dark: #4f46e5; --primary-light: #eef2ff; --accent: #22c55e; --text: #1e293b; --text-light: #64748b; }
         * { box-sizing: border-box; }
@@ -44,6 +56,53 @@
         .nav-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         @media (max-width: 768px) { .session-content { padding: 40px 16px; } .highlight-box, .success-box, .step-box { padding: 20px; } .nav-buttons { flex-direction: column; } .rubric-table { font-size: 0.9rem; } .rubric-table th, .rubric-table td { padding: 8px 10px; } }
     </style>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Course",
+                "name": "הערכה ומשוב בעזרת AI",
+                "description": "יצירת מחוונים (Rubrics), מתן משוב אישי ובדיקת עבודות בעזרת AI ו-NotebookLM. מפגש 5 בתוכנית הכשרת AI למורים.",
+                "provider": {
+                    "@type": "Organization",
+                    "name": "דרך ההייטק",
+                    "url": "https://hai.tech"
+                },
+                "hasCourseInstance": {
+                    "@type": "CourseInstance",
+                    "courseMode": "onsite",
+                    "courseWorkload": "PT1H"
+                },
+                "isPartOf": {
+                    "@type": "Course",
+                    "name": "הכשרת AI למורים",
+                    "url": "https://hai.tech/teacher-ai-training"
+                },
+                "position": 5,
+                "educationalLevel": "Professional Development",
+                "inLanguage": "he"
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+            {"@type": "Question", "name": "מה זה מחוון (Rubric) ואיך AI עוזר ליצור אותו?", "acceptedAnswer": {"@type": "Answer", "text": "מחוון הוא טבלה שמגדירה קריטריונים להערכה ורמות ביצוע. AI יכול ליצור מחוון מותאם למשימה ספציפית תוך דקות — כולל קריטריונים, תיאורי רמות וציונים."}},
+            {"@type": "Question", "name": "איך NotebookLM עוזר בבדיקת עבודות?", "acceptedAnswer": {"@type": "Answer", "text": "NotebookLM מאפשר להעלות מחוון ועבודת תלמיד, ולקבל משוב מפורט על בסיס הקריטריונים שהגדרתם — חוסך זמן ומבטיח עקביות."}},
+            {"@type": "Question", "name": "האם AI יכול להחליף את המורה בהערכה?", "acceptedAnswer": {"@type": "Answer", "text": "AI עוזר ליצור כלים (מחוונים, משוב) ולזרז את התהליך, אבל ההחלטה הסופית על הציון והמשוב האישי נשארת בידי המורה."}}
+                ]
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "דרך ההייטק", "item": "https://hai.tech"},
+                    {"@type": "ListItem", "position": 2, "name": "הכשרת AI למורים", "item": "https://hai.tech/teacher-ai-training"},
+                    {"@type": "ListItem", "position": 3, "name": "הערכה ומשוב בעזרת AI", "item": "https://hai.tech/teacher-ai-training/assessment-feedback"}
+                ]
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
     <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
@@ -163,6 +222,35 @@
                 <li>כלי מעקב והערכה</li>
             </ul>
             <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 1rem; margin-bottom: 0;">💡 חומרים נוספים יתווספו לאחר המפגש</p>
+        </div>
+
+
+        <h2>❓ שאלות נפוצות</h2>
+
+        <div class="step-box">
+            <h3>מה זה מחוון (Rubric) ואיך AI עוזר ליצור אותו?</h3>
+            <p>מחוון הוא טבלה שמגדירה קריטריונים להערכה ורמות ביצוע. AI יכול ליצור מחוון מותאם למשימה ספציפית תוך דקות — כולל קריטריונים, תיאורי רמות וציונים.</p>
+        </div>
+
+        <div class="step-box">
+            <h3>איך NotebookLM עוזר בבדיקת עבודות?</h3>
+            <p>NotebookLM מאפשר להעלות מחוון ועבודת תלמיד, ולקבל משוב מפורט על בסיס הקריטריונים שהגדרתם — חוסך זמן ומבטיח עקביות.</p>
+        </div>
+
+        <div class="step-box">
+            <h3>האם AI יכול להחליף את המורה בהערכה?</h3>
+            <p>AI עוזר ליצור כלים (מחוונים, משוב) ולזרז את התהליך, אבל ההחלטה הסופית על הציון והמשוב האישי נשארת בידי המורה.</p>
+        </div>
+
+
+        <div class="highlight-box">
+            <h3>📚 מפגשים קשורים</h3>
+            <ul>
+                <li><a href="/teacher-ai-training" style="color: var(--primary); font-weight: 600;">כל 8 המפגשים — הכשרת AI למורים</a></li>
+                <li><a href="/teacher-ai-training/classroom-management" style="color: var(--primary);">מפגש 4: ניהול כיתה בעידן ה-AI</a></li>
+                <li><a href="/teacher-ai-training/critical-thinking-ethics" style="color: var(--primary);">מפגש 6: חשיבה ביקורתית ואתיקה בעבודה עם AI</a></li>
+                <li><a href="/teacher-ai-training/dynamic-content" style="color: var(--primary);">מפגש 2: יצירת תוכן דינמי לשיעורים</a></li>
+            </ul>
         </div>
 
         <div class="nav-buttons">
