@@ -8,6 +8,7 @@ import { setCookie, getCookie, deleteCookie } from 'hono/cookie';
 import * as jose from 'jose';
 import { Env } from '../index';
 import { hashPassword, verifyPassword, generateId } from '../utils/helpers';
+import { pushToCRM, notifyNewRegistration } from '../utils/notifications';
 
 export const authRoutes = new Hono<{ Bindings: Env }>();
 
@@ -54,6 +55,14 @@ authRoutes.post('/register', async (c) => {
     maxAge: 60 * 60 * 24 * 30, // 30 days
     path: '/'
   });
+
+  // Fire-and-forget: push to CRM + send email notification
+  c.executionCtx.waitUntil(
+    Promise.allSettled([
+      pushToCRM({ name, email, phone }),
+      notifyNewRegistration({ name, email, phone }),
+    ])
+  );
 
   return c.json({
     success: true,
