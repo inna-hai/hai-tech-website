@@ -57,6 +57,53 @@
         .nav-btn.next { background: var(--primary); color: white; }
         .nav-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         @media (max-width: 768px) { .session-content { padding: 40px 16px; } .highlight-box, .success-box, .step-box { padding: 20px; } .nav-buttons { flex-direction: column; } .tools-grid { grid-template-columns: 1fr 1fr; } }
+    
+        /* Accessibility: reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+        
+        /* Accessibility: high contrast mode support */
+        @media (forced-colors: active) {
+            .highlight-box, .success-box, .step-box, .warning-box, .example-box, .activity-box {
+                border: 2px solid CanvasText;
+            }
+            .nav-btn { border: 2px solid LinkText; }
+        }
+        
+        /* Accessibility: focus visible for all interactive elements */
+        a:focus-visible, button:focus-visible {
+            outline: 3px solid #6366f1;
+            outline-offset: 2px;
+        }
+        
+        /* Accessibility: minimum tap target size (44x44px) */
+        .nav-btn { min-height: 44px; }
+        
+        /* Skip link */
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #6366f1;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 0 0 8px 8px;
+            z-index: 10000;
+            font-weight: 600;
+            text-decoration: none;
+            transition: top 0.2s;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+
     </style>
 
     <script type="application/ld+json">
@@ -120,7 +167,7 @@
             </button>
             <ul class="nav-links">
                 <li><a href="/#courses">קורסים דיגיטליים</a></li>
-                <li><a href="/teacher-ai-training" style="color: #6366f1 !important; font-weight: 600;">🎓 הכשרת AI למורים</a></li>
+                <li><a href="/teacher-ai-training" aria-current="true" style="color: #6366f1 !important; font-weight: 600;">🎓 הכשרת AI למורים</a></li>
                 <li><a href="/locations.html">מוקדים פרונטליים</a></li>
                 <li><a href="/institutions.html" style="color: #f59e0b !important; font-weight: 600;">🏫 למוסדות חינוך</a></li>
                 <li><a href="/ai-learning.html" style="color: #22c55e !important;">🤖 AI בלמידה</a></li>
@@ -158,22 +205,22 @@
         <h2>📦 סוגי תוכן שאפשר ליצור עם AI</h2>
         <div class="tools-grid">
             <div class="tool-card">
-                <div class="t-icon">📽️</div>
+                <div class="t-icon" aria-hidden="true">📽️</div>
                 <span>מצגות</span>
                 <small>Gamma / Canva AI</small>
             </div>
             <div class="tool-card">
-                <div class="t-icon">🖼️</div>
+                <div class="t-icon" aria-hidden="true">🖼️</div>
                 <span>תמונות</span>
                 <small>DALL-E / Gemini</small>
             </div>
             <div class="tool-card">
-                <div class="t-icon">📊</div>
+                <div class="t-icon" aria-hidden="true">📊</div>
                 <span>אינפוגרפיקה</span>
                 <small>Canva AI</small>
             </div>
             <div class="tool-card">
-                <div class="t-icon">🎮</div>
+                <div class="t-icon" aria-hidden="true">🎮</div>
                 <span>פעילויות</span>
                 <small>ChatGPT / Gemini</small>
             </div>
@@ -308,5 +355,56 @@
             });
         }
     </script>
+
+    <!-- UserWay Accessibility Widget -->
+    <script src="https://cdn.userway.org/widget.js" data-account="zBp6yPJpzr" data-position="4" async></script>
+    <style>
+        .userway_buttons_wrapper,
+        div[data-userway-widget],
+        .uwy.userway_p4,
+        .userway_p4 {
+            right: 20px !important;
+            left: auto !important;
+            bottom: 20px !important;
+            top: auto !important;
+            position: fixed !important;
+        }
+        @media (max-width: 768px) {
+            .userway_buttons_wrapper,
+            div[data-userway-widget],
+            .uwy.userway_p4,
+            .userway_p4,
+            #userwayAccessibilityIcon,
+            .userway_buttons_wrapper > div {
+                bottom: 100px !important;
+                right: 10px !important;
+                transform: scale(0.85) !important;
+            }
+        }
+    </style>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/972533009742?text=שלום! מעוניינים בהכשרת AI למורים" target="_blank" rel="noopener" 
+       aria-label="שלחו לנו הודעה בוואטסאפ" id="floatingWhatsApp" style="
+        position: fixed;
+        bottom: 25px;
+        left: 25px;
+        width: 60px;
+        height: 60px;
+        background: #25D366;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
+        z-index: 1000;
+        transition: transform 0.3s, box-shadow 0.3s;
+        text-decoration: none;
+    " onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+
 </body>
 </html>
