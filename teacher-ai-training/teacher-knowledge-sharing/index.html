@@ -12,8 +12,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="../../style.css">
+        <link rel="stylesheet" href="../../style.css">
     <link rel="icon" type="image/jpeg" href="../../images/brand/logo.webp">
 
 
@@ -295,19 +294,23 @@
 <body>
     <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
     
-    <nav class="navbar" role="navigation" aria-label="תפריט ראשי">
+        <nav class="navbar" role="navigation" aria-label="תפריט ראשי">
         <div class="container">
             <a href="/" class="logo" aria-label="דרך ההייטק - דף הבית">
-                <img src="../../images/brand/logo-haitech-transparent.webp" alt="דרך ההייטק - HAi.TECH" height="60">
+                <img loading="lazy" src="../../images/brand/logo-haitech-transparent.webp" alt="דרך ההייטק - HAi.TECH" height="60">
             </a>
             <button class="mobile-menu-btn" aria-label="פתח תפריט" aria-expanded="false">
-                <span></span><span></span><span></span>
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
             <ul class="nav-links">
-                <li><a href="/#courses">קורסים</a></li>
+                <li><a href="/#courses">קורסים דיגיטליים</a></li>
                 <li><a href="/teacher-ai-training" style="color: #6366f1 !important; font-weight: 600;">🎓 הכשרת AI למורים</a></li>
-                <li><a href="../../institutions.html" style="color: #f59e0b !important; font-weight: 600;">🏫 למוסדות חינוך</a></li>
-                <li><a href="../../blog.html">בלוג</a></li>
+                <li><a href="/locations.html">מוקדים פרונטליים</a></li>
+                <li><a href="/institutions.html" style="color: #f59e0b !important; font-weight: 600;">🏫 למוסדות חינוך</a></li>
+                <li><a href="/ai-learning.html" style="color: #22c55e !important;">🤖 AI בלמידה</a></li>
+                <li><a href="/blog.html">בלוג</a></li>
                 <li><a href="/#contact" class="btn btn-nav">התחילו עכשיו</a></li>
             </ul>
         </div>
@@ -618,6 +621,28 @@
         </div>
     </footer>
 
-    <script>lucide.createIcons();</script>
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (mobileMenuBtn && navLinks) {
+            mobileMenuBtn.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                this.classList.toggle('active');
+                this.setAttribute('aria-expanded', 
+                    this.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'
+                );
+            });
+            
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function() {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.classList.remove('active');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                });
+            });
+        }
+    </script>
 </body>
 </html>
