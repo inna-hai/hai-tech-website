@@ -3,177 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>יצירת תוכן דינמי לשיעורים | הכשרת AI למורים | דרך ההייטק</title>
-    <meta name="description" content="כלים ליצירת דפי עבודה, מצגות, חידונים ותוכן מותאם — בלחיצת כפתור. מפגש 2 מתוך 8 בתוכנית הכשרת AI למורים של דרך ההייטק.">
+    <meta name="description" content="שימוש בכלי AI ליצירת מצגות, אינפוגרפיקה, תמונות ופעילויות לשיעור. מפגש 2 בתוכנית הכשרת AI למורים של דרך ההייטק.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://hai.tech/teacher-ai-training/dynamic-content">
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="../../style.css">
     <link rel="icon" type="image/jpeg" href="../../images/brand/logo.webp">
-
     <style>
-        :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --primary-light: #eef2ff;
-            --accent: #22c55e;
-            --text: #1e293b;
-            --text-light: #64748b;
-        }
+        :root { --primary: #6366f1; --primary-dark: #4f46e5; --primary-light: #eef2ff; --accent: #22c55e; --text: #1e293b; --text-light: #64748b; }
         * { box-sizing: border-box; }
-        
-        .session-hero {
-            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #6366f1 100%);
-            padding: 140px 20px 60px;
-            color: white;
-            text-align: center;
-        }
-        .session-hero .breadcrumb {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            margin-bottom: 1rem;
-        }
+        .session-hero { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #6366f1 100%); padding: 140px 20px 60px; color: white; text-align: center; }
+        .session-hero .breadcrumb { font-size: 0.9rem; opacity: 0.8; margin-bottom: 1rem; }
         .session-hero .breadcrumb a { color: white; text-decoration: underline; }
-        .session-hero .session-num {
-            display: inline-block;
-            background: rgba(255,255,255,0.2);
-            padding: 6px 18px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-        .session-hero h1 {
-            font-size: clamp(1.8rem, 4vw, 2.8rem);
-            font-weight: 800;
-            max-width: 800px;
-            margin: 0 auto 1rem;
-            line-height: 1.3;
-        }
-        .session-hero .hero-desc {
-            font-size: 1.15rem;
-            max-width: 600px;
-            margin: 0 auto;
-            opacity: 0.9;
-            line-height: 1.8;
-        }
-        
-        .session-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 60px 20px;
-        }
-        
-        .content-block {
-            background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 16px;
-            padding: 36px;
-            margin-bottom: 24px;
-        }
-        .content-block.highlight {
-            background: var(--primary-light);
-            border-color: transparent;
-        }
-        .content-block .block-icon {
-            font-size: 2rem;
-            margin-bottom: 0.75rem;
-        }
-        .content-block h2 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--text);
-            margin: 0 0 1rem;
-        }
-        .content-block p {
-            color: var(--text);
-            font-size: 1.05rem;
-            line-height: 1.8;
-            margin-bottom: 0.75rem;
-        }
-        .content-block ul, .content-block ol {
-            padding-right: 1.5rem;
-            margin: 0.5rem 0;
-        }
-        .content-block li {
-            color: var(--text);
-            font-size: 1.02rem;
-            line-height: 1.8;
-            margin-bottom: 0.5rem;
-        }
-        
-        .presentation-placeholder {
-            background: #f1f5f9;
-            border: 2px dashed #cbd5e1;
-            border-radius: 16px;
-            padding: 60px 20px;
-            text-align: center;
-            color: var(--text-light);
-            margin-bottom: 24px;
-        }
-        .presentation-placeholder .ph-icon { font-size: 3rem; margin-bottom: 1rem; }
-        .presentation-placeholder p { margin: 0; font-size: 1rem; }
-        
-        .nav-buttons {
-            display: flex;
-            justify-content: space-between;
-            gap: 16px;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid #e2e8f0;
-        }
-        .nav-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.2s;
-        }
+        .session-hero .session-num { display: inline-block; background: rgba(255,255,255,0.2); padding: 6px 18px; border-radius: 20px; font-size: 0.9rem; margin-bottom: 1rem; }
+        .session-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; max-width: 800px; margin: 0 auto 1rem; line-height: 1.3; }
+        .session-hero .hero-desc { font-size: 1.15rem; max-width: 650px; margin: 0 auto; opacity: 0.9; line-height: 1.8; }
+        .session-content { max-width: 800px; margin: 0 auto; padding: 60px 20px 40px; font-size: 1.1rem; line-height: 1.9; color: var(--text); }
+        .session-content h2 { font-size: 1.6rem; font-weight: 800; color: var(--primary-dark); margin: 3rem 0 1.25rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--primary-light); }
+        .session-content h3 { font-size: 1.25rem; font-weight: 700; color: var(--text); margin: 2rem 0 0.75rem; }
+        .session-content p { margin-bottom: 1.25rem; }
+        .session-content ul, .session-content ol { padding-right: 1.5rem; margin: 0.75rem 0 1.5rem; }
+        .session-content li { margin-bottom: 0.5rem; }
+        .highlight-box { background: var(--primary-light); border-radius: 16px; padding: 30px 32px; margin: 2rem 0; }
+        .highlight-box h3 { margin-top: 0; color: var(--primary-dark); }
+        .success-box { background: #f0fdf4; border-right: 4px solid var(--accent); border-radius: 12px; padding: 24px 28px; margin: 2rem 0; }
+        .success-box h3 { margin-top: 0; color: #166534; }
+        .step-box { background: white; border: 1px solid #e2e8f0; border-radius: 16px; padding: 28px 32px; margin: 1.5rem 0; }
+        .step-box .step-num { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: var(--primary); color: white; border-radius: 50%; font-weight: 800; font-size: 1rem; margin-left: 12px; }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 14px; margin: 1.5rem 0; }
+        .tool-card { background: white; border-radius: 12px; padding: 20px; border: 1px solid #e2e8f0; text-align: center; transition: all 0.2s; }
+        .tool-card:hover { border-color: var(--primary); box-shadow: 0 4px 12px rgba(99,102,241,0.1); }
+        .tool-card .t-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+        .tool-card span { font-size: 0.95rem; font-weight: 600; color: var(--text); display: block; }
+        .tool-card small { font-size: 0.8rem; color: var(--text-light); }
+        .quote-block { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: white; border-radius: 16px; padding: 40px 36px; margin: 3rem 0; text-align: center; font-size: 1.3rem; font-weight: 600; line-height: 1.8; }
+        .nav-buttons { display: flex; justify-content: space-between; gap: 16px; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #e2e8f0; }
+        .nav-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: all 0.2s; }
         .nav-btn.prev { background: #f1f5f9; color: var(--text); }
         .nav-btn.next { background: var(--primary); color: white; }
         .nav-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        
-        .gems-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 16px;
-            margin-top: 1.5rem;
-        }
-        .gem-card {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            border: 1px solid #e2e8f0;
-        }
-        .gem-card .gem-icon { font-size: 2rem; margin-bottom: 0.5rem; }
-        .gem-card h4 { font-size: 1rem; font-weight: 600; margin: 0 0 0.5rem; color: var(--text); }
-        .gem-card p { font-size: 0.9rem; color: var(--text-light); margin: 0; line-height: 1.6; }
-        
-        @media (max-width: 768px) {
-            .session-content { padding: 40px 16px; }
-            .content-block { padding: 24px; }
-            .nav-buttons { flex-direction: column; }
-        }
+        @media (max-width: 768px) { .session-content { padding: 40px 16px; } .highlight-box, .success-box, .step-box { padding: 20px; } .nav-buttons { flex-direction: column; } .tools-grid { grid-template-columns: 1fr 1fr; } }
     </style>
 </head>
 <body>
     <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
-    
     <nav class="navbar" role="navigation" aria-label="תפריט ראשי">
         <div class="container">
-            <a href="/" class="logo" aria-label="דרך ההייטק - דף הבית">
-                <img src="../../images/brand/logo-haitech-transparent.webp" alt="דרך ההייטק - HAi.TECH" height="60">
-            </a>
-            <button class="mobile-menu-btn" aria-label="פתח תפריט" aria-expanded="false">
-                <span></span><span></span><span></span>
-            </button>
+            <a href="/" class="logo" aria-label="דרך ההייטק - דף הבית"><img src="../../images/brand/logo-haitech-transparent.webp" alt="דרך ההייטק - HAi.TECH" height="60"></a>
+            <button class="mobile-menu-btn" aria-label="פתח תפריט" aria-expanded="false"><span></span><span></span><span></span></button>
             <ul class="nav-links">
                 <li><a href="/#courses">קורסים</a></li>
                 <li><a href="/teacher-ai-training" style="color: #6366f1 !important; font-weight: 600;">🎓 הכשרת AI למורים</a></li>
@@ -185,64 +64,113 @@
     </nav>
 
     <header class="session-hero">
-        <div class="breadcrumb">
-            <a href="/teacher-ai-training">הכשרת AI למורים</a> / מפגש 2
-        </div>
+        <div class="breadcrumb"><a href="/teacher-ai-training">הכשרת AI למורים</a> / מפגש 2</div>
         <div class="session-num">✨ מפגש 2 מתוך 8</div>
         <h1>יצירת תוכן דינמי לשיעורים</h1>
-        <p class="hero-desc">כלים ליצירת דפי עבודה, מצגות, חידונים ותוכן מותאם — בלחיצת כפתור.</p>
+        <p class="hero-desc">שימוש בכלי AI ליצירת תוכן חזותי ופעילויות לשיעור</p>
     </header>
 
     <main class="session-content" id="main-content">
-        
-        <!-- Goal -->
-        <div class="content-block highlight">
-            <div class="block-icon">🎯</div>
-            <h2>מטרת המפגש</h2>
-            <p>להכיר כלי AI ליצירת תוכן לימודי — דפי עבודה, מצגות, חידונים, סיכומים ותרגילים.</p>
+
+        <div class="highlight-box">
+            <h3>🎯 מטרת המפגש</h3>
+            <p>שימוש בכלי AI ליצירת תוכן חזותי ופעילויות לשיעור — מצגות, תמונות, אינפוגרפיקה ועוד.</p>
         </div>
 
-        <!-- Presentation -->
-        <div class="presentation-placeholder">
-            <div class="ph-icon">📽️</div>
-            <p>אזור מצגת / שקפים<br><strong>התוכן יעלה בקרוב</strong></p>
+        <h2>💡 למה להשתמש ב-AI ליצירת תוכן?</h2>
+        <p>הכנת חומרי לימוד לוקחת זמן. <strong>AI יכול לחסוך שעות של עבודה</strong> — יצירת מצגת, עיצוב דף עבודה, או בניית חידון שלוקחים דקות במקום שעות.</p>
+        <p>במקום להתחיל מדף ריק, אתם מתחילים מטיוטה חכמה ומשפרים אותה.</p>
+
+        <h2>📦 סוגי תוכן שאפשר ליצור עם AI</h2>
+        <div class="tools-grid">
+            <div class="tool-card">
+                <div class="t-icon">📽️</div>
+                <span>מצגות</span>
+                <small>Gamma / Canva AI</small>
+            </div>
+            <div class="tool-card">
+                <div class="t-icon">🖼️</div>
+                <span>תמונות</span>
+                <small>DALL-E / Gemini</small>
+            </div>
+            <div class="tool-card">
+                <div class="t-icon">📊</div>
+                <span>אינפוגרפיקה</span>
+                <small>Canva AI</small>
+            </div>
+            <div class="tool-card">
+                <div class="t-icon">🎮</div>
+                <span>פעילויות</span>
+                <small>ChatGPT / Gemini</small>
+            </div>
         </div>
 
-        <!-- Outcomes -->
-        <div class="content-block">
-            <div class="block-icon">🎁</div>
-            <h2>מה יוצא לי מהמפגש?</h2>
+        <h3>כלים שנשתמש בהם:</h3>
+        <ul>
+            <li><strong>ChatGPT / Gemini</strong> — יצירת טקסטים, שאלות, תרגילים</li>
+            <li><strong>Canva AI</strong> — עיצוב ויזואלי, אינפוגרפיקה, מצגות</li>
+            <li><strong>Base44</strong> — יצירת אפליקציות ופעילויות אינטראקטיביות</li>
+        </ul>
+
+        <h2>🤲 Hands-On — יוצרים תוכן!</h2>
+
+        <div class="step-box">
+            <h3><span class="step-num">1</span> בחירת נושא לשיעור</h3>
+            <p>בחרו נושא שאתם מלמדים בשבוע הקרוב. חשבו על שיעור שצריך חומר ויזואלי.</p>
+            <div class="success-box" style="margin-top: 1rem; margin-bottom: 0;">
+                <strong>📝 התוצר:</strong> נושא אחד לשיעור.
+            </div>
+        </div>
+
+        <div class="step-box">
+            <h3><span class="step-num">2</span> יצירת מצגת קצרה עם AI</h3>
+            <p>השתמשו ב-AI כדי ליצור מצגת קצרה (5-7 שקפים) על הנושא שבחרתם.</p>
+            <div class="highlight-box" style="margin-top: 1rem; margin-bottom: 0;">
+                <h3 style="font-size: 1rem;">💡 דוגמה ל-Prompt:</h3>
+                <p style="font-style: italic; margin-bottom: 0;">"צור מצגת של 5 שקפים על הנושא ___ לתלמידי כיתה ___. כלול כותרת, 3 שקפי תוכן ושקף סיכום."</p>
+            </div>
+            <div class="success-box" style="margin-top: 1rem; margin-bottom: 0;">
+                <strong>📝 התוצר:</strong> מצגת מוכנה לשיעור.
+            </div>
+        </div>
+
+        <div class="step-box">
+            <h3><span class="step-num">3</span> יצירת אינפוגרפיקה ב-Canva AI</h3>
+            <p>היכנסו ל-<a href="https://www.canva.com" target="_blank" rel="noopener" style="color: var(--primary); font-weight: 600;">Canva</a> וצרו אינפוגרפיקה שמסכמת את הנושא בצורה ויזואלית.</p>
+            <div class="success-box" style="margin-top: 1rem; margin-bottom: 0;">
+                <strong>📝 התוצר:</strong> אינפוגרפיקה או חומר ויזואלי לשיעור.
+            </div>
+        </div>
+
+        <div class="success-box">
+            <h3>✅ מה יצרתם היום</h3>
+            <p><strong>חומר ויזואלי לשיעור</strong> — מצגת ואינפוגרפיקה שנוצרו בעזרת AI. עכשיו אתם יודעים איך ליצור חומרים מקצועיים בדקות.</p>
+        </div>
+
+        <div class="quote-block">
+            תוכן טוב לא חייב לקחת שעות.<br>
+            עם AI, אתם מתחילים מטיוטה חכמה —<br>
+            <strong>ומשפרים בדרך</strong>.
+        </div>
+
+        <div class="highlight-box">
+            <h3>📝 משימה להמשך</h3>
+            <p>צרו דף עבודה אחד וחידון אחד בנושא שאתם מלמדים בשבוע הקרוב. השתמשו בכלים מהמפגש — ChatGPT, Gemini, או Canva AI.</p>
+        </div>
+
+        <div class="step-box">
+            <h3>📎 חומרים ותוצרים</h3>
             <ul>
-                    <li>דף עבודה שנוצר עם AI ונערך ידנית</li>
-                    <li>מצגת לשיעור שנבנתה בעזרת AI</li>
-                    <li>חידון או טריוויה שנוצרו אוטומטית</li>
+                <li>מדריך Prompt Engineering ליצירת תוכן</li>
+                <li>תבניות ל-Canva AI</li>
+                <li>דוגמאות לדפי עבודה שנוצרו עם AI</li>
             </ul>
+            <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 1rem; margin-bottom: 0;">💡 חומרים נוספים יתווספו לאחר המפגש</p>
         </div>
 
-        <!-- Task -->
-        <div class="content-block highlight">
-            <div class="block-icon">📝</div>
-            <h2>משימה להמשך</h2>
-            <p>צרו דף עבודה אחד וחידון אחד בנושא שאתם מלמדים בשבוע הקרוב. השתמשו בכלים מהמפגש.</p>
-        </div>
-
-        <!-- Materials -->
-        <div class="content-block">
-            <div class="block-icon">📎</div>
-            <h2>חומרים ותוצרים</h2>
-            <ul>
-                    <li>מדריך Prompt Engineering ליצירת תוכן</li>
-                    <li>תבניות ל-Canva AI</li>
-                    <li>דוגמאות לדפי עבודה שנוצרו עם AI</li>
-            </ul>
-            <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 1rem;">💡 חומרים נוספים יתווספו לאחר המפגש</p>
-        </div>
-
-        <!-- Navigation -->
         <div class="nav-buttons">
-            <a href="/teacher-ai-training/hybrid-lesson-design" class="nav-btn prev">→ עיצוב שיעור היברידי בעזרת AI</a>
-            <a href="/teacher-ai-training" class="nav-btn prev" style="margin: 0 auto;">↩ כל המפגשים</a>
-            <a href="/teacher-ai-training/personalized-learning" class="nav-btn next">למידה מותאמת אישית עם AI ←</a>
+            <a href="/teacher-ai-training/hybrid-lesson-design" class="nav-btn prev">→ עיצוב שיעור היברידי</a>
+            <a href="/teacher-ai-training/personalized-learning" class="nav-btn next">למידה מותאמת אישית ←</a>
         </div>
     </main>
 
@@ -251,7 +179,5 @@
             <p style="color: #64748b; font-size: 0.85rem;">© 2026 דרך ההייטק. כל הזכויות שמורות.</p>
         </div>
     </footer>
-
-    <script>lucide.createIcons();</script>
 </body>
 </html>
