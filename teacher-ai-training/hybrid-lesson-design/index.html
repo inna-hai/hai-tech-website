@@ -130,13 +130,13 @@
     </nav>
 
     <header class="session-hero">
-        <div class="breadcrumb"><a href="/teacher-ai-training">הכשרת AI למורים</a> / מפגש 1</div>
+        <nav class="breadcrumb" aria-label="ניווט פירורי לחם"><a href="/teacher-ai-training">הכשרת AI למורים</a> / מפגש 1</nav>
         <div class="session-num">🎨 מפגש 1 מתוך 8</div>
         <h1>עיצוב שיעור היברידי בעזרת AI</h1>
         <p class="hero-desc">איך לנהל שיעור אפקטיבי של 60 דקות עם AI</p>
     </header>
 
-    <main class="session-content" id="main-content">
+    <main role="main" class="session-content" id="main-content">
 
         <div class="highlight-box">
             <h3>🎯 מטרת המפגש</h3>
@@ -184,7 +184,7 @@
             </div>
         </div>
 
-        <h2>🤲 Hands-On — בונים שיעור!</h2>
+        <h2>🤲 <span lang="en">Hands-On</span> — בונים שיעור!</h2>
 
         <div class="step-box">
             <h3><span class="step-num">1</span> בחירת נושא</h3>
@@ -267,15 +267,18 @@
             </ul>
         </div>
 
-        <div class="nav-buttons">
+        <nav class="nav-buttons" aria-label="ניווט בין מפגשים">
             <a href="/teacher-ai-training" class="nav-btn prev">↩ כל המפגשים</a>
             <a href="/teacher-ai-training/dynamic-content" class="nav-btn next">יצירת תוכן דינמי ←</a>
-        </div>
+        </nav>
     </main>
 
-    <footer style="background: linear-gradient(180deg, #0f172a 0%, #020617 100%); padding: 3rem 2rem 1.5rem; border-top: 1px solid #1e293b;">
+        <footer style="background: linear-gradient(180deg, #0f172a 0%, #020617 100%); padding: 3rem 2rem 1.5rem; border-top: 1px solid #1e293b;">
         <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
-            <p style="color: #64748b; font-size: 0.85rem;">© 2026 דרך ההייטק. כל הזכויות שמורות.</p>
+            <p style="color: #64748b; font-size: 0.85rem;">
+                © 2026 דרך ההייטק. כל הזכויות שמורות. | 
+                <a href="/accessibility.html" style="color: #64748b; text-decoration: underline;">הצהרת נגישות</a>
+            </p>
         </div>
     </footer>
     <script>

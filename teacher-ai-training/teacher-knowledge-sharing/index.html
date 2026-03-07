@@ -317,15 +317,15 @@
     </nav>
 
     <header class="session-hero">
-        <div class="breadcrumb">
+        <nav class="breadcrumb" aria-label="ניווט פירורי לחם">
             <a href="/teacher-ai-training">הכשרת AI למורים</a> / מפגש 8
-        </div>
+        </nav>
         <div class="session-num">🤝 מפגש 8 מתוך 8</div>
         <h1>שיתוף ידע בין מורים באמצעות AI</h1>
         <p class="hero-desc">בניית Gems ב-Gemini ושיתוף שלהם בקהילת מורים</p>
     </header>
 
-    <main class="session-content" id="main-content">
+    <main role="main" class="session-content" id="main-content">
 
         <!-- מטרת המפגש -->
         <div class="highlight-box">
@@ -395,8 +395,8 @@
             </div>
         </div>
 
-        <!-- Hands-On שלב 1 -->
-        <h2>🤲 Hands-On — בונים!</h2>
+        <!-- <span lang="en">Hands-On</span> שלב 1 -->
+        <h2>🤲 <span lang="en">Hands-On</span> — בונים!</h2>
 
         <div class="step-box">
             <h3><span class="step-num">1</span> בחירת נושא</h3>
@@ -417,7 +417,7 @@
             <h3><span class="step-num">2</span> יצירת Gem ב-Gemini</h3>
             <p><strong>שלבים:</strong></p>
             <ol>
-                <li>פתחו את <a href="https://gemini.google.com" target="_blank" rel="noopener" style="color: var(--primary); font-weight: 600;">Gemini</a></li>
+                <li>פתחו את <a href="https://gemini.google.com" title="נפתח בחלון חדש — gemini.google.com" target="_blank" rel="noopener" style="color: var(--primary); font-weight: 600;">Gemini</a></li>
                 <li>היכנסו ל-Gems</li>
                 <li>לחצו <strong>Create Gem</strong></li>
                 <li>הגדירו את תפקיד העוזר</li>
@@ -609,15 +609,18 @@
             </ul>
         </div>
 
-        <div class="nav-buttons">
+        <nav class="nav-buttons" aria-label="ניווט בין מפגשים">
             <a href="/teacher-ai-training/ai-project-based-learning" class="nav-btn prev">→ פרויקטים מבוססי AI ולמידת חקר</a>
             <a href="/teacher-ai-training" class="nav-btn next" style="background: var(--accent);">↩ כל המפגשים</a>
-        </div>
+        </nav>
     </main>
 
-    <footer style="background: linear-gradient(180deg, #0f172a 0%, #020617 100%); padding: 3rem 2rem 1.5rem; border-top: 1px solid #1e293b;">
+        <footer style="background: linear-gradient(180deg, #0f172a 0%, #020617 100%); padding: 3rem 2rem 1.5rem; border-top: 1px solid #1e293b;">
         <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
-            <p style="color: #64748b; font-size: 0.85rem;">© 2026 דרך ההייטק. כל הזכויות שמורות.</p>
+            <p style="color: #64748b; font-size: 0.85rem;">
+                © 2026 דרך ההייטק. כל הזכויות שמורות. | 
+                <a href="/accessibility.html" style="color: #64748b; text-decoration: underline;">הצהרת נגישות</a>
+            </p>
         </div>
     </footer>
 

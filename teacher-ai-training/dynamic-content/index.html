@@ -131,13 +131,13 @@
     </nav>
 
     <header class="session-hero">
-        <div class="breadcrumb"><a href="/teacher-ai-training">הכשרת AI למורים</a> / מפגש 2</div>
+        <nav class="breadcrumb" aria-label="ניווט פירורי לחם"><a href="/teacher-ai-training">הכשרת AI למורים</a> / מפגש 2</nav>
         <div class="session-num">✨ מפגש 2 מתוך 8</div>
         <h1>יצירת תוכן דינמי לשיעורים</h1>
         <p class="hero-desc">שימוש בכלי AI ליצירת תוכן חזותי ופעילויות לשיעור</p>
     </header>
 
-    <main class="session-content" id="main-content">
+    <main role="main" class="session-content" id="main-content">
 
         <div class="highlight-box">
             <h3>🎯 מטרת המפגש</h3>
@@ -186,7 +186,7 @@
             <li><strong>Base44</strong> — יצירת אפליקציות ופעילויות אינטראקטיביות</li>
         </ul>
 
-        <h2>🤲 Hands-On — יוצרים תוכן!</h2>
+        <h2>🤲 <span lang="en">Hands-On</span> — יוצרים תוכן!</h2>
 
         <div class="step-box">
             <h3><span class="step-num">1</span> בחירת נושא לשיעור</h3>
@@ -210,7 +210,7 @@
 
         <div class="step-box">
             <h3><span class="step-num">3</span> יצירת אינפוגרפיקה ב-Canva AI</h3>
-            <p>היכנסו ל-<a href="https://www.canva.com" target="_blank" rel="noopener" style="color: var(--primary); font-weight: 600;">Canva</a> וצרו אינפוגרפיקה שמסכמת את הנושא בצורה ויזואלית.</p>
+            <p>היכנסו ל-<a href="https://www.canva.com" title="נפתח בחלון חדש — www.canva.com" target="_blank" rel="noopener" style="color: var(--primary); font-weight: 600;">Canva</a> וצרו אינפוגרפיקה שמסכמת את הנושא בצורה ויזואלית.</p>
             <div class="success-box" style="margin-top: 1rem; margin-bottom: 0;">
                 <strong>📝 התוצר:</strong> אינפוגרפיקה או חומר ויזואלי לשיעור.
             </div>
@@ -271,15 +271,18 @@
             </ul>
         </div>
 
-        <div class="nav-buttons">
+        <nav class="nav-buttons" aria-label="ניווט בין מפגשים">
             <a href="/teacher-ai-training/hybrid-lesson-design" class="nav-btn prev">→ עיצוב שיעור היברידי</a>
             <a href="/teacher-ai-training/personalized-learning" class="nav-btn next">למידה מותאמת אישית ←</a>
-        </div>
+        </nav>
     </main>
 
-    <footer style="background: linear-gradient(180deg, #0f172a 0%, #020617 100%); padding: 3rem 2rem 1.5rem; border-top: 1px solid #1e293b;">
+        <footer style="background: linear-gradient(180deg, #0f172a 0%, #020617 100%); padding: 3rem 2rem 1.5rem; border-top: 1px solid #1e293b;">
         <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
-            <p style="color: #64748b; font-size: 0.85rem;">© 2026 דרך ההייטק. כל הזכויות שמורות.</p>
+            <p style="color: #64748b; font-size: 0.85rem;">
+                © 2026 דרך ההייטק. כל הזכויות שמורות. | 
+                <a href="/accessibility.html" style="color: #64748b; text-decoration: underline;">הצהרת נגישות</a>
+            </p>
         </div>
     </footer>
     <script>

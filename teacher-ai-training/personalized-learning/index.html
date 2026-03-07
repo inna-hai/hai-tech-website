@@ -133,13 +133,13 @@
     </nav>
 
     <header class="session-hero">
-        <div class="breadcrumb"><a href="/teacher-ai-training">הכשרת AI למורים</a> / מפגש 3</div>
+        <nav class="breadcrumb" aria-label="ניווט פירורי לחם"><a href="/teacher-ai-training">הכשרת AI למורים</a> / מפגש 3</nav>
         <div class="session-num">🎯 מפגש 3 מתוך 8</div>
         <h1>למידה מותאמת אישית עם AI</h1>
         <p class="hero-desc">איך ליצור גרסאות שונות של אותו שיעור לפי רמת תלמידים</p>
     </header>
 
-    <main class="session-content" id="main-content">
+    <main role="main" class="session-content" id="main-content">
 
         <div class="highlight-box">
             <h3>🎯 מטרת המפגש</h3>
@@ -175,7 +175,7 @@
             </div>
         </div>
 
-        <h2>🤲 Hands-On — יוצרים שלוש רמות!</h2>
+        <h2>🤲 <span lang="en">Hands-On</span> — יוצרים שלוש רמות!</h2>
 
         <div class="step-box">
             <h3><span class="step-num">1</span> בחירת נושא לימודי</h3>
@@ -264,15 +264,18 @@
             </ul>
         </div>
 
-        <div class="nav-buttons">
+        <nav class="nav-buttons" aria-label="ניווט בין מפגשים">
             <a href="/teacher-ai-training/dynamic-content" class="nav-btn prev">→ יצירת תוכן דינמי</a>
             <a href="/teacher-ai-training/classroom-management" class="nav-btn next">ניהול כיתה בעידן ה-AI ←</a>
-        </div>
+        </nav>
     </main>
 
-    <footer style="background: linear-gradient(180deg, #0f172a 0%, #020617 100%); padding: 3rem 2rem 1.5rem; border-top: 1px solid #1e293b;">
+        <footer style="background: linear-gradient(180deg, #0f172a 0%, #020617 100%); padding: 3rem 2rem 1.5rem; border-top: 1px solid #1e293b;">
         <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
-            <p style="color: #64748b; font-size: 0.85rem;">© 2026 דרך ההייטק. כל הזכויות שמורות.</p>
+            <p style="color: #64748b; font-size: 0.85rem;">
+                © 2026 דרך ההייטק. כל הזכויות שמורות. | 
+                <a href="/accessibility.html" style="color: #64748b; text-decoration: underline;">הצהרת נגישות</a>
+            </p>
         </div>
     </footer>
     <script>

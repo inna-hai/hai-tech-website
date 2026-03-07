@@ -255,7 +255,7 @@
                 "@type": "FAQPage",
                 "mainEntity": [
             {"@type": "Question", "name": "מה זה פרויקט חקר עם AI?", "acceptedAnswer": {"@type": "Answer", "text": "פרויקט חקר עם AI הוא פרויקט שבו התלמידים משתמשים ב-AI ככלי מחקר ויצירה — הם חוקרים נושא, אוספים מידע, ויוצרים תוצר כמו מצגת, אינפוגרפיקה או לומדה."}},
-            {"@type": "Question", "name": "אילו תוצרים תלמידים יכולים ליצור עם AI?", "acceptedAnswer": {"@type": "Answer", "text": "דף מידע, אינפוגרפיקה, מצגת, מדריך (How-To), ניסוי מתועד, דיבייט עם מקורות, פתרון בעיה מנומק, ולומדה אינטראקטיבית."}},
+            {"@type": "Question", "name": "אילו תוצרים תלמידים יכולים ליצור עם AI?", "acceptedAnswer": {"@type": "Answer", "text": "דף מידע, אינפוגרפיקה, מצגת, מדריך (<span lang="en">How-To</span>), ניסוי מתועד, דיבייט עם מקורות, פתרון בעיה מנומק, ולומדה אינטראקטיבית."}},
             {"@type": "Question", "name": "מה זה Google AI Studio ואיך משתמשים בו בחינוך?", "acceptedAnswer": {"@type": "Answer", "text": "Google AI Studio הוא כלי ליצירת סימולציות, שאלות ודיאלוגים עם AI. מורים יכולים להשתמש בו ליצירת פעילויות למידה מתקדמות שקשה לבנות בלי AI."}}
                 ]
             },
@@ -297,15 +297,15 @@
     </nav>
 
     <header class="session-hero">
-        <div class="breadcrumb">
+        <nav class="breadcrumb" aria-label="ניווט פירורי לחם">
             <a href="/teacher-ai-training">הכשרת AI למורים</a> / מפגש 7
-        </div>
-        <div class="session-num">🚀 מפגש 7 מתוך 8 • 60 דקות Hands-On</div>
+        </nav>
+        <div class="session-num">🚀 מפגש 7 מתוך 8 • 60 דקות <span lang="en">Hands-On</span></div>
         <h1>פרויקטים ולמידת חקר בעזרת AI</h1>
         <p class="hero-desc">איך להפוך תלמידים ליצרני ידע</p>
     </header>
 
-    <main class="session-content" id="main-content">
+    <main role="main" class="session-content" id="main-content">
 
         <!-- מטרת המפגש -->
         <div class="highlight-box">
@@ -366,7 +366,7 @@
             </div>
             <div class="product-card">
                 <div class="p-icon">📘</div>
-                <span>מדריך (How-To)</span>
+                <span>מדריך (<span lang="en">How-To</span>)</span>
             </div>
             <div class="product-card">
                 <div class="p-icon">🔬</div>
@@ -386,8 +386,8 @@
             </div>
         </div>
 
-        <!-- Hands-On -->
-        <h2>🤲 Hands-On — בונים פרויקט!</h2>
+        <!-- <span lang="en">Hands-On</span> -->
+        <h2>🤲 <span lang="en">Hands-On</span> — בונים פרויקט!</h2>
 
         <div class="step-box">
             <h3><span class="step-num">1</span> בחירת נושא לפרויקט</h3>
@@ -446,7 +446,7 @@
         <!-- Google AI Studio -->
         <div class="highlight-box">
             <h3>⚡ עבודה עם Google AI Studio</h3>
-            <p>ב-<a href="https://aistudio.google.com" target="_blank" rel="noopener" style="color: var(--primary); font-weight: 600;">AI Studio</a> אפשר ליצור:</p>
+            <p>ב-<a href="https://aistudio.google.com" title="נפתח בחלון חדש — aistudio.google.com" target="_blank" rel="noopener" style="color: var(--primary); font-weight: 600;">AI Studio</a> אפשר ליצור:</p>
             <ul>
                 <li><strong>סימולציות</strong> — מצבים שהתלמידים צריכים לפתור</li>
                 <li><strong>שאלות לתלמידים</strong> — מותאמות לנושא ולרמה</li>
@@ -530,7 +530,7 @@
 
         <div class="step-box">
             <h3>אילו תוצרים תלמידים יכולים ליצור עם AI?</h3>
-            <p>דף מידע, אינפוגרפיקה, מצגת, מדריך (How-To), ניסוי מתועד, דיבייט עם מקורות, פתרון בעיה מנומק, ולומדה אינטראקטיבית.</p>
+            <p>דף מידע, אינפוגרפיקה, מצגת, מדריך (<span lang="en">How-To</span>), ניסוי מתועד, דיבייט עם מקורות, פתרון בעיה מנומק, ולומדה אינטראקטיבית.</p>
         </div>
 
         <div class="step-box">
@@ -548,15 +548,18 @@
             </ul>
         </div>
 
-        <div class="nav-buttons">
+        <nav class="nav-buttons" aria-label="ניווט בין מפגשים">
             <a href="/teacher-ai-training/critical-thinking-ethics" class="nav-btn prev">→ חשיבה ביקורתית ואתיקה</a>
             <a href="/teacher-ai-training/teacher-knowledge-sharing" class="nav-btn next">שיתוף ידע בין מורים ←</a>
-        </div>
+        </nav>
     </main>
 
-    <footer style="background: linear-gradient(180deg, #0f172a 0%, #020617 100%); padding: 3rem 2rem 1.5rem; border-top: 1px solid #1e293b;">
+        <footer style="background: linear-gradient(180deg, #0f172a 0%, #020617 100%); padding: 3rem 2rem 1.5rem; border-top: 1px solid #1e293b;">
         <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
-            <p style="color: #64748b; font-size: 0.85rem;">© 2026 דרך ההייטק. כל הזכויות שמורות.</p>
+            <p style="color: #64748b; font-size: 0.85rem;">
+                © 2026 דרך ההייטק. כל הזכויות שמורות. | 
+                <a href="/accessibility.html" style="color: #64748b; text-decoration: underline;">הצהרת נגישות</a>
+            </p>
         </div>
     </footer>
 
