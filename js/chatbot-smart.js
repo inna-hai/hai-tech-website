@@ -776,11 +776,10 @@
                 const lead = this.session.lead;
                 const course = COURSES[this.session.recommendedCourse];
                 
-                await fetch('https://dev-crm.orma-ai.com/api/webhook/leads', {
+                await fetch('/lms/api/leads/submit', {
                     method: 'POST',
                     headers: { 
-                        'Content-Type': 'application/json',
-                        'x-api-key': 'haitech-crm-api-key-2026'
+                        'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
                         name: lead.name || '',

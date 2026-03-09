@@ -12,11 +12,11 @@ const url = require('url');
 const CONFIG = {
     port: 8080,
     staticDir: __dirname,
-    // HaiTech CRM Configuration
-    crmEndpoint: 'https://dev-crm.orma-ai.com/api/webhook/leads',
-    crmWebhookUrl: 'https://dev-crm.orma-ai.com/api/webhook/leads',
-    crmApiKey: 'haitech-crm-api-key-2026',
-    apiKey: 'haitech-crm-api-key-2026',
+    // HaiTech CRM Configuration — API key loaded from env (never hardcode!)
+    crmEndpoint: 'https://crm.orma-ai.com/api/webhook/leads',
+    crmWebhookUrl: 'https://crm.orma-ai.com/api/webhook/leads',
+    crmApiKey: process.env.CRM_API_KEY || '',
+    apiKey: process.env.CRM_API_KEY || '',
     // OpenAI API (optional - set to enable AI responses)
     openaiKey: process.env.OPENAI_API_KEY || null
 };

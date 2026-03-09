@@ -11,9 +11,8 @@ const LeadAutomation = {
         formId: 'contactForm',
         popupDelay: 5000, // 5 seconds
         exitIntentEnabled: true,
-        // CRM API Configuration - HaiTech CRM Webhook
-        apiEndpoint: 'https://crm.orma-ai.com/api/webhook/leads',
-        apiKey: 'haitech-crm-api-key-2026'
+        // Lead submission endpoint (proxied through LMS Worker — API key hidden server-side)
+        apiEndpoint: '/lms/api/leads/submit'
     },
 
     // Initialize the system
@@ -71,8 +70,7 @@ const LeadAutomation = {
             const response = await fetch(this.config.apiEndpoint, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
-                    'x-api-key': this.config.apiKey
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(crmData)
             });
