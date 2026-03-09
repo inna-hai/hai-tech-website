@@ -11,7 +11,7 @@ interface NewUserData {
 }
 
 const CRM_WEBHOOK_URL = 'https://crm.orma-ai.com/api/webhook/leads';
-const CRM_API_KEY = 'haitech-crm-api-key-2026';
+const CRM_API_KEY = '9d75edbf83df79261c4f9bd8b3943f18338854d1fc3e7cbd1fece3df17825f9a';
 const NOTIFICATION_WEBHOOK_URL = 'https://notify.hai.tech/new-lead';
 
 /**
