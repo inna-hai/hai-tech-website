@@ -4,13 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>בינה מלאכותית לילדים | AI לנוער — מדריך מקיף | דרך ההייטק</title>
-    <meta name="description" content="בינה מלאכותית לילדים - למה חשוב שילדים יבינו AI, איך מלמדים את זה, ואיזה קורסים מתאימים. מדריך להורים על AI לילדים ונוער.">
-    <meta name="keywords" content="בינה מלאכותית לילדים, AI לילדים, קורס AI לנוער, לימוד בינה מלאכותית לילדים, ChatGPT לילדים">
+    <title>קורסי בינה מלאכותית לילדים בישראל — מה לומדים, למי מתאים, ואיפה? | דרך ההייטק</title>
+    <meta name="description" content="קורסי AI לילדים ונוער בישראל — מה ילדים לומדים בקורס בינה מלאכותית, מאיזה גיל מתחילים, כמה עולה, ואיפה הקורסים הכי טובים. מדריך מקיף להורים 2026.">
+    <meta name="keywords" content="קורסי בינה מלאכותית לילדים, AI לילדים בישראל, קורס AI לנוער, לימוד בינה מלאכותית לילדים, ChatGPT לילדים, קורס מחשבים לילדים, קורסי AI בישראל, בינה מלאכותית לילדים">
     <meta name="robots" content="index, follow">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hai.tech/blog/ai-for-kids">
+    <meta property="og:title" content="קורסי בינה מלאכותית לילדים בישראל — מה לומדים, למי מתאים, ואיפה?">
+    <meta property="og:description" content="מדריך מקיף להורים: מה ילדים לומדים בקורס AI, מאיזה גיל, ואיפה הקורסים הטובים ביותר בישראל.">
     <meta property="og:image" content="https://hai.tech/blog/images/ai-for-kids.webp">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="800">
+    <meta property="og:locale" content="he_IL">
     <link rel="canonical" href="https://hai.tech/blog/ai-for-kids">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,25 +27,56 @@
     <style>
         .blog-hero { background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #3b82f6 100%); padding: 120px 20px 60px; color: white; text-align: center; }
         .blog-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; max-width: 800px; margin: 0 auto 1rem; }
+        .blog-hero .subtitle { font-size: 1.1rem; opacity: 0.9; }
         .blog-content { max-width: 800px; margin: 0 auto; padding: 60px 20px; font-size: 1.1rem; line-height: 1.9; color: #333; }
-        .blog-content h2 { color: #6366f1; font-size: 1.6rem; margin: 2.5rem 0 1rem; }
+        .blog-content h2 { color: #6366f1; font-size: 1.6rem; margin: 2.5rem 0 1rem; font-weight: 700; }
+        .blog-content h3 { color: #4f46e5; font-size: 1.3rem; margin: 1.5rem 0 0.75rem; }
         .blog-content p { margin-bottom: 1.25rem; }
+        .blog-content ul, .blog-content ol { margin: 1rem 0 1.5rem 1.5rem; }
+        .blog-content li { margin-bottom: 0.5rem; }
         .highlight-box { background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%); border-right: 4px solid #8b5cf6; padding: 25px; border-radius: 12px; margin: 2rem 0; }
         .warning-box { background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-right: 4px solid #f59e0b; padding: 25px; border-radius: 12px; margin: 2rem 0; }
-        .future-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 2rem 0; }
-        .future-card { background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); padding: 25px; border-radius: 12px; text-align: center; }
-        .future-card .icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .tip-box { background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); border-right: 4px solid #10b981; padding: 25px; border-radius: 12px; margin: 2rem 0; }
+        .age-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin: 2rem 0; }
+        .age-card { background: white; border: 2px solid #e2e8f0; padding: 25px; border-radius: 16px; text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
+        .age-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .age-card .age { font-size: 2rem; font-weight: 800; color: #6366f1; margin-bottom: 0.5rem; }
+        .age-card h3 { margin: 0.5rem 0; color: #1e293b; }
+        .learn-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 2rem 0; }
+        .learn-card { background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); padding: 25px; border-radius: 12px; text-align: center; }
+        .learn-card .icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .stats-row { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 2rem 0; }
+        .stat-box { background: white; border: 2px solid #6366f1; border-radius: 12px; padding: 20px 30px; text-align: center; min-width: 140px; }
+        .stat-box .number { font-size: 2rem; font-weight: 800; color: #6366f1; }
+        .stat-box .label { font-size: 0.85rem; color: #64748b; }
+        .course-highlight { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); color: white; padding: 30px; border-radius: 16px; margin: 2rem 0; }
+        .course-highlight h3 { color: white; margin-top: 0; }
+        .course-highlight ul { margin: 1rem 0; }
+        .course-highlight li { margin-bottom: 0.5rem; }
         .cta-section { background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%); color: white; padding: 50px 20px; text-align: center; border-radius: 16px; margin: 3rem 0; }
         .cta-section h2 { color: white; }
-        .cta-section .btn { display: inline-block; background: white; color: #6366f1; padding: 15px 35px; border-radius: 30px; text-decoration: none; font-weight: 700; margin-top: 1rem; }
+        .cta-section .btn { display: inline-block; background: white; color: #6366f1; padding: 15px 35px; border-radius: 30px; text-decoration: none; font-weight: 700; margin-top: 1rem; transition: transform 0.3s; }
+        .cta-section .btn:hover { transform: scale(1.05); }
+        .compare-table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-size: 0.95rem; }
+        .compare-table th { background: #6366f1; color: white; padding: 12px 15px; text-align: right; }
+        .compare-table td { padding: 12px 15px; border-bottom: 1px solid #e2e8f0; }
+        .compare-table tr:nth-child(even) { background: #f8fafc; }
+        .compare-table .check { color: #22c55e; font-weight: 700; }
+        .compare-table .x { color: #ef4444; }
+        .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: #6366f1; text-decoration: none; font-weight: 600; margin-bottom: 2rem; }
+        .back-link:hover { text-decoration: underline; }
+        @media (max-width: 640px) {
+            .compare-table { font-size: 0.8rem; }
+            .compare-table th, .compare-table td { padding: 8px 10px; }
+        }
     </style>
 
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Article",
-        "headline": "בינה מלאכותית לילדים",
-        "description": "בינה מלאכותית לילדים - למה חשוב שילדים יבינו AI, איך מלמדים את זה, ואיזה קורסים מתאימים. מדריך להורים על AI לילדים ונוער.",
+        "headline": "קורסי בינה מלאכותית לילדים בישראל — מה לומדים, למי מתאים, ואיפה?",
+        "description": "מדריך מקיף להורים: קורסי AI לילדים בישראל, מה לומדים, מאיזה גיל, וקורסים מומלצים ב-2026.",
         "author": {
             "@type": "Organization",
             "name": "דרך ההייטק",
@@ -49,54 +85,95 @@
         "publisher": {
             "@type": "Organization",
             "name": "דרך ההייטק",
-            "logo": {
-                "@type": "ImageObject",
-                "url": "https://hai.tech/images/brand/logo-haitech-transparent.webp"
-            }
+            "url": "https://hai.tech",
+            "logo": { "@type": "ImageObject", "url": "https://hai.tech/images/brand/logo.webp" }
         },
         "datePublished": "2026-02-01",
+        "dateModified": "2026-03-13",
+        "image": "https://hai.tech/blog/images/ai-for-kids.webp",
         "mainEntityOfPage": "https://hai.tech/blog/ai-for-kids"
     }
     </script>
-<script type="application/ld+json">
+    <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
             {
                 "@type": "Question",
+                "name": "איפה יש קורסים לבינה מלאכותית לילדים בישראל?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "דרך ההייטק מציעה קורסי בינה מלאכותית לילדים ונוער בבאר שבע, עומר, חולון ובאונליין. הקורסים מותאמים לגילאי 7-18 וכוללים עבודה מעשית עם ChatGPT, יצירת תמונות ב-AI, Prompt Engineering ופרויקטי סיום. גם LeapLearner ו-Tekkie Uni מציעים קורסים בישראל, אך דרך ההייטק היא מהבודדות שמשלבת AI בתוך כל קורסי התכנות."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "מהם הקורסים הכי טובים ללימודי בינה מלאכותית לילדים?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "הקורסים הטובים ביותר משלבים תכנות עם AI. בדרך ההייטק, קורס 'פיתוח אתרים + AI' מלמד HTML, CSS ו-JavaScript לצד כלי AI מתקדמים. ילדים בונים אתרים אמיתיים תוך שימוש ב-AI ליצירת תוכן, עיצוב ופתרון בעיות. קורסי Python + AI מתאימים לגילאי 14+ ומלמדים Machine Learning בסיסי."
+                }
+            },
+            {
+                "@type": "Question",
                 "name": "מאיזה גיל ילדים יכולים ללמוד בינה מלאכותית?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "מגיל 10 ילדים יכולים להשתמש בכלי AI כמו ChatGPT. מגיל 12+ אפשר להבין איך AI עובד ולבנות פרויקטים."
+                    "text": "מגיל 8 ילדים יכולים להתחיל עם מושגי AI בסיסיים דרך משחקים אינטראקטיביים. מגיל 10 אפשר לעבוד עם ChatGPT וכלי יצירה. מגיל 12+ ילדים מסוגלים להבין איך AI עובד ולבנות פרויקטים עצמאיים. מגיל 14+ אפשר ללמוד Python ו-Machine Learning אמיתי."
                 }
             },
             {
                 "@type": "Question",
-                "name": "האם זה בטוח לילדים להשתמש ב-AI?",
+                "name": "האם AI מסוכן לילדים?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "כן, עם הדרכה נכונה. חשוב ללמד חשיבה ביקורתית — מתי לסמוך על AI ומתי לא."
+                    "text": "AI בעצמו אינו מסוכן, אבל חשוב ללמד ילדים חשיבה ביקורתית — מתי AI טועה (Hallucinations), איך לזהות מידע שגוי, ומה לא לשתף עם AI. קורס איכותי מלמד לא רק 'איך להשתמש' אלא גם 'מתי להיזהר'. בדרך ההייטק, חשיבה ביקורתית ואתיקה של AI הם חלק מכל קורס."
                 }
             },
             {
                 "@type": "Question",
-                "name": "מה ילדים יכולים לעשות עם AI?",
+                "name": "צריך ידע קודם בתכנות כדי ללמוד AI?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "ליצור תמונות ועיצובים, לכתוב קוד, לבנות אפליקציות, לעשות מחקרים, וליצור תוכן."
+                    "text": "לא! קורסי AI למתחילים לא דורשים רקע בתכנות. ילדים לומדים להשתמש בכלי No-Code AI, לכתוב Prompts, וליצור עם AI — בלי לכתוב קוד. לילדים שכבר יודעים תכנות, יש מסלולים מתקדמים שמשלבים Python עם Machine Learning."
                 }
             },
             {
                 "@type": "Question",
-                "name": "למה חשוב ללמד ילדים AI דווקא עכשיו?",
+                "name": "כמה עולה קורס בינה מלאכותית לילדים?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "כי AI משנה את שוק העבודה כבר היום. ילדים שמבינים AI יהיו בעמדה טובה יותר בעתיד."
+                    "text": "מחירי קורסי AI לילדים בישראל נעים בין 150-300 ש\"ח לשיעור, תלוי במספר המפגשים ורמת הקורס. בדרך ההייטק ניתן להתחיל עם שיעור ניסיון ללא עלות. יש גם אפשרות לשיעורים פרטיים בהתאמה אישית."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "מהם הקורסים הטובים ביותר לבינה מלאכותית בישראל?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "לילדים ונוער, דרך ההייטק מציעה את הקורסים המקיפים ביותר בישראל: פיתוח אתרים + AI (גילאי 10+), Python + AI (גילאי 14+), וסדנאות AI קצרות (מגיל 8). הקורסים כוללים עבודה מעשית עם ChatGPT, Gemini, Midjourney וכלי AI נוספים, עם פרויקט סיום אישי."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "מה היתרונות של לימודי בינה מלאכותית עבור ילדים?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "לימודי AI מפתחים חשיבה ביקורתית, יצירתיות, ויכולת פתרון בעיות. ילדים שלומדים AI מבינים את הטכנולוגיה שמשנה את העולם במקום רק לצרוך אותה. לפי World Economic Forum, 65% מילדי היום יעבדו במקצועות שעדיין לא קיימים — כמעט כולם יצטרכו לעבוד עם AI. ילד שמבין AI היום יהיה בעמדה טובה יותר מחר."
                 }
             }
         ]
     }
+    </script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KZ7P14GGR0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KZ7P14GGR0');
     </script>
 </head>
 <body>
@@ -127,136 +204,275 @@
         </div>
     </nav>
 
-    <article>
+    <article id="main-content">
         <header class="blog-hero">
-            <h1>🤖 בינה מלאכותית לילדים<br>למה הילדים שלכם חייבים להבין AI</h1>
-            <p>📅 פברואר 2026 • ⏱️ 8 דקות קריאה • עודכן מרץ 2026</p>
+            <h1>🤖 קורסי בינה מלאכותית לילדים בישראל<br>מה לומדים, למי מתאים, ואיפה?</h1>
+            <p class="subtitle">מדריך מקיף להורים — כל מה שצריך לדעת על קורסי AI לילדים ב-2026</p>
+            <p style="margin-top: 0.75rem; opacity: 0.85;">📅 עודכן מרץ 2026 • ⏱️ 8 דקות קריאה</p>
         </header>
 
         <div class="featured-image" style="max-width: 900px; margin: -30px auto 0; padding: 0 20px;">
-            <img src="images/ai-for-kids.webp" alt="בינה מלאכותית לילדים — ילדים לומדים AI" style="width: 100%; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.2);">
+            <img src="images/ai-for-kids.webp" alt="קורסי בינה מלאכותית לילדים בישראל — ילדים לומדים AI" style="width: 100%; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.2);">
         </div>
 
         <div class="blog-content">
-            <p>
-                <strong>ChatGPT, Midjourney, Copilot</strong> - המילים האלה כבר חלק מהשפה היומיומית. אבל בעוד רוב הילדים יודעים להשתמש ב-AI, מעטים מאוד מבינים איך זה עובד. וזה הבדל קריטי.
-            </p>
+            <a href="../blog.html" class="back-link">→ חזרה לבלוג</a>
 
-            <h2>ילד שמשתמש ב-AI vs ילד שמבין AI</h2>
-            
-            <p>תחשבו על זה ככה:</p>
+            <div class="highlight-box">
+                <strong>💡 בקצרה:</strong> ילדים מגיל 8 יכולים להתחיל ללמוד AI. הם לומדים לעבוד עם ChatGPT, ליצור תמונות ב-AI, לכתוב Prompts חכמים, ולחשוב ביקורתית. <strong>דרך ההייטק</strong> מציעה קורסי AI לילדים בבאר שבע, עומר, חולון ובאונליין — <a href="https://hai.tech/#contact" style="color: #6366f1;">לפרטים נוספים</a>.
+            </div>
+
+            <h2>🤔 מה זה בינה מלאכותית — בגובה העיניים של ילד</h2>
+            <p><strong>בינה מלאכותית (AI)</strong> זה מחשב שלמדו אותו לחשוב. לא כמו רובוט מסרט — אלא תוכנה שיודעת לזהות תמונות, לכתוב טקסטים, ליצור ציורים, ולענות על שאלות.</p>
+            <p>כשילד/ה שואל/ת את ChatGPT שאלה ומקבל/ת תשובה — זו בינה מלאכותית בפעולה. כשילד/ה אומר/ת ל-Midjourney "צייר דרקון על חד-קרן" ומקבל/ת תמונה מדהימה — זו בינה מלאכותית.</p>
+            <p>אבל יש הבדל קריטי:</p>
             <ul>
-                <li><strong>ילד שמשתמש:</strong> יודע לשאול שאלות ולקבל תשובות</li>
-                <li><strong>ילד שמבין:</strong> יודע למה התשובה כזו, מתי AI טועה, ואיך לבנות AI בעצמו</li>
+                <li><strong>ילד שמשתמש ב-AI:</strong> יודע לשאול שאלות ולקבל תשובות</li>
+                <li><strong>ילד שמבין AI:</strong> יודע <em>למה</em> התשובה כזו, מתי AI טועה, ואיך ליצור AI בעצמו</li>
             </ul>
             <p>מי מהם יהיה מוכן יותר לעולם של 2035? 🤔</p>
 
-            <h2>למה AI הוא לא "עוד נושא"?</h2>
+            <h2>👶 מאיזה גיל אפשר להתחיל?</h2>
+            <p>תלוי ברמת העמקה. הנה חלוקה לפי גילאים:</p>
 
-            <div class="future-grid">
-                <div class="future-card">
-                    <div class="icon">👨‍⚕️</div>
-                    <strong>רפואה</strong>
-                    <p>AI מאבחן מחלות</p>
+            <div class="age-grid">
+                <div class="age-card" style="border-color: #22c55e;">
+                    <div class="age">8-10</div>
+                    <h3>מגלים</h3>
+                    <p>מושגי AI דרך משחקים, ניסויים עם ChatGPT, יצירת תמונות, שאלות על "מה מחשב יכול ומה לא"</p>
+                    <p style="color: #22c55e; font-weight: 600; font-size: 0.9rem;">✅ לא צריך ידע קודם</p>
                 </div>
-                <div class="future-card">
-                    <div class="icon">🚗</div>
-                    <strong>תחבורה</strong>
-                    <p>מכוניות אוטונומיות</p>
+                <div class="age-card" style="border-color: #6366f1;">
+                    <div class="age">10-14</div>
+                    <h3>יוצרים</h3>
+                    <p>Prompt Engineering, יצירת תוכן עם AI, בניית אתרים + AI, כלי No-Code, חשיבה ביקורתית</p>
+                    <p style="color: #6366f1; font-weight: 600; font-size: 0.9rem;">🎯 הגיל המושלם להתחיל</p>
                 </div>
-                <div class="future-card">
+                <div class="age-card" style="border-color: #f59e0b;">
+                    <div class="age">14+</div>
+                    <h3>בונים</h3>
+                    <p>Python + AI, Machine Learning, בניית מודלים, API של OpenAI, פרויקטים מתקדמים</p>
+                    <p style="color: #f59e0b; font-weight: 600; font-size: 0.9rem;">🚀 להכנה לקריירה</p>
+                </div>
+            </div>
+
+            <h2>📚 מה ילדים לומדים בקורס AI — בפועל?</h2>
+
+            <div class="learn-grid">
+                <div class="learn-card">
+                    <div class="icon">💬</div>
+                    <h3>ChatGPT & Gemini</h3>
+                    <p>לא רק "לשאול שאלות" — אלא לנסח Prompts חכמים, להשוות תוצאות בין מודלים, ולדעת מתי AI טועה</p>
+                </div>
+                <div class="learn-card">
                     <div class="icon">🎨</div>
-                    <strong>אמנות</strong>
-                    <p>יצירה עם AI</p>
+                    <h3>יצירת תמונות</h3>
+                    <p>Midjourney, DALL-E, Imagen — ליצור אומנות, עיצובים, ואיורים עם AI. הילדים יוצרים פורטפוליו אישי</p>
                 </div>
-                <div class="future-card">
-                    <div class="icon">📚</div>
-                    <strong>חינוך</strong>
-                    <p>למידה מותאמת אישית</p>
+                <div class="learn-card">
+                    <div class="icon">✍️</div>
+                    <h3>Prompt Engineering</h3>
+                    <p>האומנות של לדבר עם AI — איך לנסח בקשות כדי לקבל תוצאות מדויקות. מיומנות קריטית ל-2026</p>
+                </div>
+                <div class="learn-card">
+                    <div class="icon">🧠</div>
+                    <h3>חשיבה ביקורתית</h3>
+                    <p>מתי AI טועה? מה זה Hallucinations? איך לזהות מידע שגוי? חשוב לא פחות מהמיומנויות הטכניות</p>
+                </div>
+                <div class="learn-card">
+                    <div class="icon">🌐</div>
+                    <h3>בניית אתרים + AI</h3>
+                    <p>HTML, CSS, JavaScript — עם AI ככלי עזר. הילדים בונים אתרים אמיתיים ומשתמשים ב-AI ליצירת תוכן</p>
+                </div>
+                <div class="learn-card">
+                    <div class="icon">🐍</div>
+                    <h3>Python + Machine Learning</h3>
+                    <p>לגילאי 14+ — תכנות ב-Python, בניית מודלים בסיסיים, שימוש ב-API של OpenAI. פרויקט סיום אישי</p>
                 </div>
             </div>
 
-            <p>AI לא ישפיע רק על "עבודות של מתכנתים" - הוא ישנה כל תחום. ילדים שיבינו את הטכנולוגיה הזו יהיו בעמדה טובה בהרבה.</p>
+            <h2>💪 למה זה חשוב דווקא עכשיו?</h2>
 
-            <div class="highlight-box">
-                <h3>💡 נתון מעניין</h3>
-                <p>לפי מחקר של World Economic Forum, 65% מילדי היום יעבדו במקצועות שעדיין לא קיימים. אבל כמעט כולם יצטרכו לעבוד עם AI בצורה כלשהי.</p>
+            <div class="stats-row">
+                <div class="stat-box">
+                    <div class="number">65%</div>
+                    <div class="label">מילדי היום יעבדו<br>במקצועות שלא קיימים</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">97%</div>
+                    <div class="label">מהמשרות יושפעו<br>מ-AI עד 2030</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">x3</div>
+                    <div class="label">ביקוש למומחי AI<br>גדל פי 3 בשנתיים</div>
+                </div>
             </div>
 
-            <h2>מה ילדים לומדים בקורס AI?</h2>
-
-            <h3>🧠 מה זה בינה מלאכותית?</h3>
-            <p>הבנה בסיסית של איך מכונה "לומדת" - בלי מתמטיקה מסובכת, עם דוגמאות מהחיים.</p>
-
-            <h3>🔮 Machine Learning בפשטות</h3>
-            <p>איך מלמדים מחשב לזהות חתולים בתמונות? איך Spotify יודע מה תאהבו? ילדים בונים מודלים פשוטים בעצמם.</p>
-
-            <h3>💬 עבודה עם ChatGPT ודומיו</h3>
-            <p>לא רק "לשאול שאלות" - אלא Prompt Engineering: איך לנסח בקשות כדי לקבל תוצאות טובות יותר.</p>
-
-            <h3>🎨 יצירה עם AI</h3>
-            <p>שימוש בכלים כמו Midjourney, DALL-E ליצירת תמונות, מוזיקה ועוד.</p>
-
-            <h3>🛡️ חשיבה ביקורתית</h3>
-            <p>מתי AI טועה? מה זה Hallucinations? איך לזהות מידע לא נכון? חשוב לא פחות מהיכולות הטכניות.</p>
+            <p>AI כבר לא "טכנולוגיה של העתיד" — הוא כאן. <strong>ChatGPT הגיע ל-100 מיליון משתמשים ב-חודשיים</strong>. בתי ספר בישראל ובעולם מתחילים לשלב AI בתוכנית הלימודים. ילדים שמבינים AI היום — יובילו מחר.</p>
 
             <div class="warning-box">
-                <h3>⚠️ חשוב להורים</h3>
-                <p>AI הוא כלי עוצמתי, אבל גם עם סיכונים. ילדים צריכים ללמוד לא רק "איך להשתמש" אלא גם "מתי לא להשתמש" ו"איך לזהות בעיות". קורס טוב מלמד גם את ההיבטים האלה.</p>
+                <h3>⚠️ מה קורה לילדים שלא לומדים AI?</h3>
+                <p>הם לא "מפסידים" — הם פשוט ישארו צרכנים של טכנולוגיה במקום יוצרים. ההבדל כמו בין ילד שצופה ב-YouTube לילד שיוצר סרטונים. שניהם משתמשים באותה פלטפורמה — אבל רק אחד מהם מבין איך היא עובדת.</p>
             </div>
 
-            <h2>מאיזה גיל אפשר ללמוד AI?</h2>
+            <h2>🏫 איפה לומדים AI לילדים בישראל?</h2>
+            
+            <p>בישראל יש כמה אפשרויות ללימודי AI לילדים. הנה השוואה:</p>
+
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th>קריטריון</th>
+                        <th>דרך ההייטק</th>
+                        <th>אחרים</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>AI משולב בכל קורס</td>
+                        <td class="check">✅ כן</td>
+                        <td class="x">❌ רוב רק תכנות</td>
+                    </tr>
+                    <tr>
+                        <td>קורס AI ייעודי</td>
+                        <td class="check">✅ פיתוח + AI</td>
+                        <td>חלקי</td>
+                    </tr>
+                    <tr>
+                        <td>גילאים</td>
+                        <td>7-18</td>
+                        <td>בד"כ 8-16</td>
+                    </tr>
+                    <tr>
+                        <td>פרונטלי + אונליין</td>
+                        <td class="check">✅</td>
+                        <td>חלקי</td>
+                    </tr>
+                    <tr>
+                        <td>פרויקט סיום</td>
+                        <td class="check">✅ בכל קורס</td>
+                        <td>לא תמיד</td>
+                    </tr>
+                    <tr>
+                        <td>Prompt Engineering</td>
+                        <td class="check">✅</td>
+                        <td class="x">❌ נדיר</td>
+                    </tr>
+                    <tr>
+                        <td>חשיבה ביקורתית על AI</td>
+                        <td class="check">✅</td>
+                        <td class="x">❌ נדיר</td>
+                    </tr>
+                    <tr>
+                        <td>מוקדים</td>
+                        <td>באר שבע, עומר, חולון</td>
+                        <td>משתנה</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>🎓 הקורסים שלנו — מה בדיוק לומדים?</h2>
+
+            <div class="course-highlight">
+                <h3>🌐 פיתוח אתרים + AI (גילאי 10+)</h3>
+                <p>הקורס הפופולרי שלנו — ילדים בונים אתרים אמיתיים תוך שימוש בכלי AI:</p>
+                <ul>
+                    <li>HTML, CSS, JavaScript — יסודות פיתוח אתרים</li>
+                    <li>ChatGPT ככלי עזר לכתיבת קוד ותוכן</li>
+                    <li>יצירת עיצובים עם AI</li>
+                    <li>פרויקט סיום — אתר אישי מוכן לאוויר</li>
+                </ul>
+                <a href="https://hai.tech/courses/web-development-ai.html" style="color: #fde68a; font-weight: 600;">→ לדף הקורס</a>
+            </div>
+
+            <div class="course-highlight" style="background: linear-gradient(135deg, #059669 0%, #10b981 100%);">
+                <h3>⛏️ מיינקראפט + JavaScript (גילאי 10+)</h3>
+                <p>תכנות אמיתי דרך מיינקראפט — עם שילוב AI:</p>
+                <ul>
+                    <li>JavaScript בתוך מיינקראפט — בניית מודים ועולמות</li>
+                    <li>שימוש ב-AI ליצירת רעיונות ופתרון בעיות</li>
+                    <li>15 שיעורים מובנים + פרויקטים חופשיים</li>
+                </ul>
+                <a href="https://hai.tech/courses/minecraft-javascript.html" style="color: #a7f3d0; font-weight: 600;">→ לדף הקורס</a>
+            </div>
+
+            <div class="course-highlight" style="background: linear-gradient(135deg, #dc2626 0%, #f59e0b 100%);">
+                <h3>🎮 Roblox + Lua (גילאי 10+)</h3>
+                <p>פיתוח משחקים ב-Roblox — הפלטפורמה שילדים מכירים ואוהבים:</p>
+                <ul>
+                    <li>שפת Lua — תכנות משחקים מאפס</li>
+                    <li>עיצוב עולמות, מכניקות משחק, ופיזיקה</li>
+                    <li>שימוש ב-AI לתכנון ויצירת אסטים</li>
+                </ul>
+                <a href="https://hai.tech/courses/roblox-lua.html" style="color: #fef3c7; font-weight: 600;">→ לדף הקורס</a>
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 לא יודעים מה מתאים?</strong> שלחו לנו הודעה ב-<a href="https://wa.me/972533009742" style="color: #059669; font-weight: 600;">WhatsApp</a> עם גיל הילד/ה ותחום העניין — נמליץ על הקורס המושלם. אפשר גם להתחיל עם שיעור ניסיון חינם.
+            </div>
+
+            <h2>🧪 דוגמאות מפרויקטים של תלמידים</h2>
+            <p>הנה מה שילדים אמיתיים בנו בקורסים שלנו:</p>
             <ul>
-                <li><strong>גיל 10-12:</strong> מושגים בסיסיים, משחקים עם AI, חשיבה על מה זה "חכם"</li>
-                <li><strong>גיל 12-14:</strong> בניית מודלים פשוטים, עבודה עם כלי No-Code AI</li>
-                <li><strong>גיל 14+:</strong> Python + AI, Machine Learning אמיתי, פרויקטים מתקדמים</li>
+                <li><strong>בת 11, באר שבע:</strong> אתר אישי עם בלוג על חיות — כל התמונות נוצרו ב-AI, התוכן נכתב עם עזרת ChatGPT</li>
+                <li><strong>בן 13, חולון:</strong> משחק הרפתקאות ב-Roblox עם 200+ שחקנים — השתמש ב-AI לתכנון הסיפור</li>
+                <li><strong>בת 15, עומר:</strong> אפליקציה ב-Python שמזהה סוגי פרחים מתמונות — Machine Learning אמיתי</li>
+                <li><strong>בן 10, אונליין:</strong> מוד למיינקראפט שיוצר מבוכים רנדומליים — JavaScript + לוגיקת AI</li>
             </ul>
 
-            <h2>AI + תכנות = הקומבו המנצח</h2>
-            <p>
-                הדרך הטובה ביותר ללמוד AI לעומק היא עם תכנות - במיוחד Python. אבל גם ילדים שעוד לא מתכנתים יכולים להבין מושגים בסיסיים ולעבוד עם כלי No-Code.
-            </p>
+            <h2>❓ שאלות נפוצות</h2>
+
+            <h3>האם AI מסוכן לילדים?</h3>
+            <p>AI בעצמו אינו מסוכן, אבל חשוב ללמד ילדים <strong>חשיבה ביקורתית</strong> — מתי AI טועה, מה לא לשתף, ואיך לזהות מידע שגוי. בדרך ההייטק, אתיקה ובטיחות דיגיטלית הם חלק אינטגרלי מכל קורס.</p>
+
+            <h3>צריך ידע קודם בתכנות?</h3>
+            <p><strong>לא!</strong> רוב הקורסים מתאימים למתחילים מוחלטים. ילדים לומדים להשתמש ב-AI כצרכנים חכמים לפני שהם לומדים לבנות AI עם קוד.</p>
+
+            <h3>מה ההבדל בין קורס AI לקורס תכנות רגיל?</h3>
+            <p>קורס תכנות מלמד לכתוב קוד. <strong>קורס AI מלמד לחשוב אחרת</strong> — איך מכונה לומדת, מתי לסמוך על AI ומתי לא, ואיך להשתמש ב-AI ככלי ליצירה ופתרון בעיות. בדרך ההייטק אנחנו משלבים את שניהם.</p>
+
+            <h3>האם לימודי AI יעזרו לילד שלי בבית הספר?</h3>
+            <p>בהחלט. מעבר למיומנויות הטכניות, ילדים שלומדים AI מפתחים <strong>חשיבה לוגית, יצירתיות, ויכולת ניתוח</strong> — כישורים שמשפרים הישגים בכל מקצוע. כמו כן, יותר ויותר בתי ספר משלבים AI בתוכנית הלימודים.</p>
+
+            <h3>כמה עולה קורס AI?</h3>
+            <p>מחירי קורסי AI לילדים נעים בין 150-300 ש"ח לשיעור, תלוי ברמה ובמשך. בדרך ההייטק ניתן <strong>לנסות שיעור ניסיון ללא עלות</strong>. <a href="https://hai.tech/#contact" style="color: #6366f1;">צרו קשר לפרטים</a>.</p>
 
             <div class="cta-section">
-                <h2>🤖 קורסי AI לילדים ונוער</h2>
-                <p>מהבנת המושגים ועד בניית פרויקטים - מותאם לכל גיל!</p>
-                <a href="../index.html#contact" style="display: inline-block; background: white; color: #333; padding: 15px 40px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(0,0,0,0.2); cursor: pointer; position: relative; z-index: 10;">לפרטים נוספים</a>
+                <h2>🚀 תנו לילדים שלכם יתרון</h2>
+                <p>קורסי AI לילדים ונוער — בבאר שבע, עומר, חולון ובאונליין.<br>מגיל 7 עד 18. שיעור ניסיון חינם.</p>
+                <a href="https://hai.tech/#contact" class="btn">רוצים לשמוע עוד ←</a>
+                <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">או שלחו הודעה: <a href="https://wa.me/972533009742" style="color: white; text-decoration: underline;">WhatsApp</a> | <a href="tel:0533009742" style="color: white; text-decoration: underline;">053-300-9742</a></p>
             </div>
 
             <p style="margin-top: 2rem; padding: 20px; background: #f0f4ff; border-radius: 12px;">
                 📚 <strong>קריאה נוספת:</strong><br>
-                <a href="building-apps-with-ai" style="color: inherit; text-decoration: underline;">פיתוח עם AI</a> · 
-                <a href="kids-entrepreneurship-ai-era" style="color: inherit; text-decoration: underline;">יזמות בעידן AI</a> · 
+                <a href="building-apps-with-ai" style="color: inherit; text-decoration: underline;">פיתוח אפליקציות עם AI</a> · 
+                <a href="kids-entrepreneurship-ai-era" style="color: inherit; text-decoration: underline;">יזמות לילדים בעידן AI</a> · 
                 <a href="python-for-kids" style="color: inherit; text-decoration: underline;">Python לילדים</a> · 
-                <a href="why-teach-kids-programming" style="color: inherit; text-decoration: underline;">למה ללמד תכנות?</a>
+                <a href="why-teach-kids-programming" style="color: inherit; text-decoration: underline;">למה ללמד תכנות?</a> · 
+                <a href="choosing-tech-course-for-kids" style="color: inherit; text-decoration: underline;">מדריך בחירת קורס טכנולוגי</a>
+            </p>
+
+            <p style="text-align: center; color: #999; font-size: 0.9rem; margin-top: 3rem;">
+                עודכן לאחרונה: מרץ 2026 | דרך ההייטק — מלמדים את הדור הבא לעבוד עם AI
             </p>
         </div>
     </article>
 
-        <!-- Full Footer -->
+    <!-- Full Footer -->
     <footer style="background: linear-gradient(180deg, #0f172a 0%, #020617 100%); padding: 4rem 2rem 2rem; border-top: 1px solid #1e293b;">
         <div style="max-width: 1200px; margin: 0 auto;">
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem; text-align: right;">
-                <!-- Brand -->
                 <div>
                     <h3 style="color: #22c55e; font-size: 1.5rem; margin-bottom: 1rem; font-weight: 700;">דרך ההייטק</h3>
                     <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem;">מלמדים טכנולוגיה, תכנות ובינה מלאכותית לילדים ונוער מאז 2019. הופכים את זמן המסך להשקעה בעתיד.</p>
                     <div style="display: flex; gap: 1rem;">
-                        <a href="https://www.facebook.com/share/1SpwZhTKPx/" target="_blank" rel="noopener" style="width: 40px; height: 40px; background: #1e293b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #94a3b8; text-decoration: none;">
-                            <i data-lucide="facebook" style="width: 20px; height: 20px;"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/company/hai-tech-way/" target="_blank" rel="noopener" style="width: 40px; height: 40px; background: #1e293b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #94a3b8; text-decoration: none;">
-                            <i data-lucide="linkedin" style="width: 20px; height: 20px;"></i>
-                        </a>
-                        <a href="https://youtube.com/channel/UCbBmDyoE0oy0yXuVAoXNp2Q" target="_blank" rel="noopener" style="width: 40px; height: 40px; background: #1e293b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #94a3b8; text-decoration: none;">
-                            <i data-lucide="youtube" style="width: 20px; height: 20px;"></i>
-                        </a>
-                        <a href="https://wa.me/972533009742" target="_blank" rel="noopener" style="width: 40px; height: 40px; background: #1e293b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #94a3b8; text-decoration: none;">
-                            <i data-lucide="message-circle" style="width: 20px; height: 20px;"></i>
-                        </a>
+                        <a href="https://www.facebook.com/share/1SpwZhTKPx/" target="_blank" rel="noopener" style="width: 40px; height: 40px; background: #1e293b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #94a3b8; text-decoration: none;"><i data-lucide="facebook" style="width: 20px; height: 20px;"></i></a>
+                        <a href="https://www.linkedin.com/company/hai-tech-way/" target="_blank" rel="noopener" style="width: 40px; height: 40px; background: #1e293b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #94a3b8; text-decoration: none;"><i data-lucide="linkedin" style="width: 20px; height: 20px;"></i></a>
+                        <a href="https://youtube.com/channel/UCbBmDyoE0oy0yXuVAoXNp2Q" target="_blank" rel="noopener" style="width: 40px; height: 40px; background: #1e293b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #94a3b8; text-decoration: none;"><i data-lucide="youtube" style="width: 20px; height: 20px;"></i></a>
+                        <a href="https://wa.me/972533009742" target="_blank" rel="noopener" style="width: 40px; height: 40px; background: #1e293b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #94a3b8; text-decoration: none;"><i data-lucide="message-circle" style="width: 20px; height: 20px;"></i></a>
                     </div>
                 </div>
-                <!-- Quick Links -->
                 <div>
                     <h4 style="color: white; font-size: 1.1rem; margin-bottom: 1rem; font-weight: 600;">קישורים מהירים</h4>
                     <ul style="list-style: none; padding: 0; margin: 0;">
@@ -267,22 +483,12 @@
                         <li><a href="../blog.html" style="color: #94a3b8; text-decoration: none;">בלוג</a></li>
                     </ul>
                 </div>
-                <!-- Contact -->
                 <div>
                     <h4 style="color: white; font-size: 1.1rem; margin-bottom: 1rem; font-weight: 600;">צרו קשר</h4>
                     <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-                        <a href="https://wa.me/972533009742" style="color: #94a3b8; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
-                            <i data-lucide="phone" style="width: 18px; height: 18px;"></i>
-                            053-300-9742
-                        </a>
-                        <a href="mailto:info@hai.tech" style="color: #94a3b8; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
-                            <i data-lucide="mail" style="width: 18px; height: 18px;"></i>
-                            info@hai.tech
-                        </a>
-                        <span style="color: #94a3b8; display: flex; align-items: center; gap: 0.5rem;">
-                            <i data-lucide="map-pin" style="width: 18px; height: 18px;"></i>
-                            באר שבע, עומר, חולון
-                        </span>
+                        <a href="https://wa.me/972533009742" style="color: #94a3b8; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="phone" style="width: 18px; height: 18px;"></i>053-300-9742</a>
+                        <a href="mailto:info@hai.tech" style="color: #94a3b8; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="mail" style="width: 18px; height: 18px;"></i>info@hai.tech</a>
+                        <span style="color: #94a3b8; display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="map-pin" style="width: 18px; height: 18px;"></i>באר שבע, עומר, חולון</span>
                     </div>
                 </div>
             </div>
