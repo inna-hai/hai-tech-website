@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>דוח שיווק — דרך ההייטק | 13-14 מרץ 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Heebo', sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            line-height: 1.7;
+        }
+
+        /* Header */
+        .report-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 60px 24px;
+            text-align: center;
+        }
+        .report-header h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+        }
+        .report-header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        .report-header .date {
+            font-size: 1rem;
+            opacity: 0.7;
+            margin-top: 0.5rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Summary Cards */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: -40px auto 3rem;
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            padding: 0 24px;
+        }
+        .summary-card {
+            background: #1e293b;
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid #334155;
+        }
+        .summary-card .number {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #22c55e;
+        }
+        .summary-card .number.red { color: #ef4444; }
+        .summary-card .number.blue { color: #60a5fa; }
+        .summary-card .number.purple { color: #a78bfa; }
+        .summary-card .label {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin-top: 0.3rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 3rem;
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid #334155;
+        }
+        .section-header .icon {
+            font-size: 1.5rem;
+        }
+        .section-header h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+        .section-header .day-badge {
+            background: #334155;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-right: auto;
+        }
+
+        /* Before/After */
+        .before-after {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .before-box, .after-box {
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+        .before-box {
+            background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%);
+            border: 1px solid #dc2626;
+        }
+        .after-box {
+            background: linear-gradient(135deg, #14532d 0%, #166534 100%);
+            border: 1px solid #22c55e;
+        }
+        .before-box h3, .after-box h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+        .before-box ul, .after-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        .before-box li, .after-box li {
+            padding: 0.3rem 0;
+            font-size: 0.9rem;
+            opacity: 0.95;
+        }
+
+        /* Task List */
+        .task-list {
+            list-style: none;
+            padding: 0;
+        }
+        .task-list li {
+            padding: 0.75rem 1rem;
+            background: #1e293b;
+            border-radius: 12px;
+            margin-bottom: 0.5rem;
+            border-right: 4px solid #22c55e;
+            font-size: 0.95rem;
+        }
+        .task-list li.highlight {
+            border-right-color: #f59e0b;
+            background: #1e293b;
+        }
+        .task-list li .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+        .tag-seo { background: #1e3a5f; color: #60a5fa; }
+        .tag-ads { background: #3b1f0b; color: #fb923c; }
+        .tag-content { background: #1a2e05; color: #84cc16; }
+        .tag-analytics { background: #2e1065; color: #c084fc; }
+        .tag-fix { background: #4c0519; color: #fb7185; }
+
+        /* Stats Table */
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        .stats-table th, .stats-table td {
+            padding: 0.75rem 1rem;
+            text-align: right;
+            border-bottom: 1px solid #334155;
+        }
+        .stats-table th {
+            background: #1e293b;
+            color: #94a3b8;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .stats-table td { font-size: 0.95rem; }
+        .stats-table .status-ok { color: #22c55e; }
+        .stats-table .status-bad { color: #ef4444; }
+        .stats-table .status-warn { color: #f59e0b; }
+
+        /* Money Highlight */
+        .money-wasted {
+            background: linear-gradient(135deg, #450a0a 0%, #7f1d1d 100%);
+            border: 1px solid #dc2626;
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+        .money-wasted .amount {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #ef4444;
+        }
+        .money-wasted .desc {
+            color: #fca5a5;
+            margin-top: 0.5rem;
+        }
+
+        /* Conversion Card */
+        .conversion-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .conversion-card {
+            background: #1e293b;
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid #334155;
+        }
+        .conversion-card .emoji { font-size: 2rem; margin-bottom: 0.5rem; }
+        .conversion-card .name { font-weight: 700; font-size: 1rem; }
+        .conversion-card .value { font-size: 1.5rem; font-weight: 900; color: #22c55e; margin-top: 0.3rem; }
+        .conversion-card .status { font-size: 0.8rem; color: #94a3b8; }
+
+        /* Next Steps */
+        .next-steps {
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid #4338ca;
+        }
+        .next-steps h3 { margin-bottom: 1rem; }
+        .next-steps li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .next-steps li:last-child { border: none; }
+
+        /* Footer */
+        .report-footer {
+            text-align: center;
+            padding: 3rem;
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 600px) {
+            .report-header h1 { font-size: 1.8rem; }
+            .before-after { grid-template-columns: 1fr; }
+            .conversion-grid { grid-template-columns: 1fr; }
+            .summary-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="report-header">
+        <h1>🐝 דוח שיווק — דרך ההייטק</h1>
+        <div class="subtitle">סיכום עבודה: SEO, Google Ads, Analytics ותוכן</div>
+        <div class="date">13-14 מרץ 2026</div>
+    </div>
+
+    <div class="summary-grid">
+        <div class="summary-card">
+            <div class="number red">₪14,898</div>
+            <div class="label">נחסכו מבזבוז על לינקים שבורים</div>
+        </div>
+        <div class="summary-card">
+            <div class="number blue">66</div>
+            <div class="label">דפים עם Analytics (היה: 1)</div>
+        </div>
+        <div class="summary-card">
+            <div class="number purple">16</div>
+            <div class="label">דפים עם מחירים מתוקנים</div>
+        </div>
+        <div class="summary-card">
+            <div class="number">3</div>
+            <div class="label">Primary Conversions (היה: 25+)</div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- BEFORE/AFTER -->
+        <div class="section">
+            <div class="section-header">
+                <span class="icon">⚡</span>
+                <h2>לפני ואחרי</h2>
+            </div>
+            <div class="before-after">
+                <div class="before-box">
+                    <h3>🔴 לפני</h3>
+                    <ul>
+                        <li>• ₪20/יום על 3 קמפיינים (2 מתים)</li>
+                        <li>• 4 Sitelinks → דפי 404</li>
+                        <li>• מודעות מפנות ל-URL של WIX</li>
+                        <li>• Display עם טקסט מ-2021</li>
+                        <li>• 25+ המרות Primary</li>
+                        <li>• Analytics רק בעמוד הראשי</li>
+                        <li>• 0 מעקב רכישות ב-LMS</li>
+                        <li>• מחירים שגויים (₪290 במקום ₪497)</li>
+                    </ul>
+                </div>
+                <div class="after-box">
+                    <h3>🟢 אחרי</h3>
+                    <ul>
+                        <li>• ₪49/יום על קמפיין Search אחד חזק</li>
+                        <li>• כל הלינקים עובדים ומעודכנים</li>
+                        <li>• URL → דף נחיתה חדש ומותאם</li>
+                        <li>• Display + Video → Paused</li>
+                        <li>• 3 המרות Primary בלבד</li>
+                        <li>• Analytics ב-66 דפים</li>
+                        <li>• Purchase + Checkout tracking ב-LMS</li>
+                        <li>• מחירים נכונים בכל האתר</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- GOOGLE ADS -->
+        <div class="section">
+            <div class="section-header">
+                <span class="icon">💰</span>
+                <h2>Google Ads — בעיות שנמצאו ותוקנו</h2>
+            </div>
+
+            <div class="money-wasted">
+                <div class="amount">₪14,898</div>
+                <div class="desc">הוצאו על 4 Sitelinks שהובילו לדפי 404 (שגיאה)</div>
+            </div>
+
+            <table class="stats-table">
+                <thead>
+                    <tr>
+                        <th>בעיה</th>
+                        <th>לפני</th>
+                        <th>אחרי</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sitelink Roblox (₪5,736)</td>
+                        <td class="status-bad">404 ❌</td>
+                        <td class="status-ok">תוקן ✅</td>
+                    </tr>
+                    <tr>
+                        <td>Sitelink Full Stack (₪4,767)</td>
+                        <td class="status-bad">404 ❌</td>
+                        <td class="status-ok">נמחק ✅</td>
+                    </tr>
+                    <tr>
+                        <td>Sitelink מיינקראפט (₪2,831)</td>
+                        <td class="status-bad">404 ❌</td>
+                        <td class="status-ok">תוקן ✅</td>
+                    </tr>
+                    <tr>
+                        <td>Sitelink פייטון+AI (₪1,564)</td>
+                        <td class="status-bad">404 ❌</td>
+                        <td class="status-ok">תוקן ✅</td>
+                    </tr>
+                    <tr>
+                        <td>Final URL מודעות</td>
+                        <td class="status-bad">URL ישן מ-WIX</td>
+                        <td class="status-ok">דף נחיתה חדש ✅</td>
+                    </tr>
+                    <tr>
+                        <td>מילים שליליות</td>
+                        <td class="status-bad">4 בלבד</td>
+                        <td class="status-ok">28 מילים ✅</td>
+                    </tr>
+                    <tr>
+                        <td>כותרות + תיאורים</td>
+                        <td class="status-bad">גנריים וישנים</td>
+                        <td class="status-ok">8 כותרות + 2 תיאורים חדשים ✅</td>
+                    </tr>
+                    <tr>
+                        <td>Display Campaign</td>
+                        <td class="status-bad">טקסט מ-2021</td>
+                        <td class="status-ok">Paused ✅</td>
+                    </tr>
+                    <tr>
+                        <td>Video Campaign</td>
+                        <td class="status-bad">0 חשיפות, URL שבור</td>
+                        <td class="status-ok">Paused ✅</td>
+                    </tr>
+                    <tr>
+                        <td>תקציב יומי</td>
+                        <td class="status-warn">₪20 על 3 קמפיינים</td>
+                        <td class="status-ok">₪49 על Search בלבד ✅</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- CONVERSIONS -->
+        <div class="section">
+            <div class="section-header">
+                <span class="icon">📊</span>
+                <h2>Conversion Tracking — ניקוי ומיקוד</h2>
+            </div>
+            <p style="color: #94a3b8; margin-bottom: 1rem;">היו 25+ המרות Primary — גוגל ניסה לאופטמז לכולן ונכשל. צומצם ל-3:</p>
+            <div class="conversion-grid">
+                <div class="conversion-card">
+                    <div class="emoji">🛒</div>
+                    <div class="name">רכישה</div>
+                    <div class="value">₪497</div>
+                    <div class="status">Purchase (GA4)</div>
+                </div>
+                <div class="conversion-card">
+                    <div class="emoji">💬</div>
+                    <div class="name">וואטסאפ</div>
+                    <div class="value">₪40</div>
+                    <div class="status">WhatsApp clicked (GA4)</div>
+                </div>
+                <div class="conversion-card">
+                    <div class="emoji">📋</div>
+                    <div class="name">טופס לידים</div>
+                    <div class="value">₪40</div>
+                    <div class="status">Contact Form</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEO -->
+        <div class="section">
+            <div class="section-header">
+                <span class="icon">🔍</span>
+                <h2>SEO ואתר</h2>
+            </div>
+            <ul class="task-list">
+                <li>
+                    noindex על 21 דפים לא רלוונטיים (AI בחינוך, דפים כפולים)
+                    <span class="tag tag-seo">SEO</span>
+                </li>
+                <li>
+                    שדרוג דף "קורס תכנות לילדים" — 22KB→45KB (FAQ Schema, מסלולים, השוואה, חוות דעת)
+                    <span class="tag tag-content">תוכן</span>
+                </li>
+                <li>
+                    שדרוג דף "בינה מלאכותית לילדים" — 14KB→43KB (אותו טיפול)
+                    <span class="tag tag-content">תוכן</span>
+                </li>
+                <li class="highlight">
+                    תיקון מחירים ₪290→₪497 ב-16 דפים
+                    <span class="tag tag-fix">תיקון קריטי</span>
+                </li>
+                <li>
+                    תיקון _redirects — Hebrew URLs היו שבורים (2 תיקונים)
+                    <span class="tag tag-fix">תיקון</span>
+                </li>
+                <li>
+                    ניקוי Sitemap: 42→28 דפים
+                    <span class="tag tag-seo">SEO</span>
+                </li>
+                <li>
+                    שדרוג titles + meta descriptions ב-10 דפים מרכזיים
+                    <span class="tag tag-seo">SEO</span>
+                </li>
+                <li>
+                    CTA חדש ב-14 מאמרי בלוג — דיגיטלי ₪497 + VIP 1:1 ₪156 + לינק ישיר לרכישה
+                    <span class="tag tag-content">תוכן</span>
+                </li>
+                <li>
+                    כפתור וואטסאפ צף ב-23 דפים
+                    <span class="tag tag-content">UX</span>
+                </li>
+                <li>
+                    VIP 1:1 בולט ב-Hero ובטבלת השוואה בדף נחיתה
+                    <span class="tag tag-content">תוכן</span>
+                </li>
+                <li>
+                    הוספת לינקים פנימיים בעמוד הראשי
+                    <span class="tag tag-seo">SEO</span>
+                </li>
+                <li>
+                    ארגון מחדש דף הבלוג (מאמרים רלוונטיים למעלה)
+                    <span class="tag tag-seo">SEO</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ANALYTICS -->
+        <div class="section">
+            <div class="section-header">
+                <span class="icon">📈</span>
+                <h2>Analytics</h2>
+            </div>
+            <ul class="task-list">
+                <li>
+                    GA4 הורחב מדף 1 ל-66 דפים
+                    <span class="tag tag-analytics">Analytics</span>
+                </li>
+                <li>
+                    E-commerce tracking ב-LMS: add_to_cart, begin_checkout, purchase
+                    <span class="tag tag-analytics">Analytics</span>
+                </li>
+                <li>
+                    Lead tracking: generate_lead event בטופס יצירת קשר
+                    <span class="tag tag-analytics">Analytics</span>
+                </li>
+                <li>
+                    WhatsApp click tracking בכל 66 הדפים (היה רק בעמוד הראשי)
+                    <span class="tag tag-analytics">Analytics</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="section">
+            <div class="section-header">
+                <span class="icon">📱</span>
+                <h2>תוכן שיווקי</h2>
+            </div>
+            <ul class="task-list">
+                <li>
+                    5 טיוטות פוסטים לפייסבוק הוכנו
+                    <span class="tag tag-content">פייסבוק</span>
+                </li>
+                <li>
+                    פוסט 1 (מיינקראפט) — אושר ומוכן לפרסום
+                    <span class="tag tag-content">פייסבוק</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- NEXT STEPS -->
+        <div class="section">
+            <div class="next-steps">
+                <h3>📅 מה הלאה</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li>📌 יום ב' 16.3 — פוסט פייסבוק #2 (באיזה גיל מתחילים)</li>
+                    <li>📌 יום ד' 18.3 — פוסט פייסבוק #3 (סיפור הצלחה)</li>
+                    <li>📌 שבוע-שבועיים — בדיקת ביצועים Google Ads + GSC</li>
+                    <li>📌 לפני פסח — דף נחיתה קייטנת קיץ</li>
+                    <li>📌 שוטף — מעקב אחרי המרות ואופטימיזציה</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="report-footer">
+        <p>🐝 באזי — סוכן שיווק | דרך ההייטק</p>
+        <p>הדוח הזה נוצר אוטומטית | 14 מרץ 2026</p>
+    </div>
+
+</body>
+</html>
