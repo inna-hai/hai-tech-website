@@ -284,6 +284,15 @@
             buyBtn.disabled = true;
             buyBtn.innerHTML = '<span>מעבד...</span>';
 
+            // GA4: add_to_cart event
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'add_to_cart', {
+                    currency: 'ILS',
+                    value: currentCoursePrice,
+                    items: [{ item_id: courseId, item_name: document.title, price: currentCoursePrice }]
+                });
+            }
+
             try {
                 let response = await fetch(`/lms/api/payments/create-payment/${courseId}`, {
                     method: 'POST',
@@ -325,6 +334,14 @@
                 }
 
                 if (data.paymentUrl) {
+                    // GA4: begin_checkout event
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'begin_checkout', {
+                            currency: 'ILS',
+                            value: currentCoursePrice,
+                            items: [{ item_id: courseId, item_name: document.title, price: currentCoursePrice }]
+                        });
+                    }
                     // Open payment in new tab, poll for completion
                     const payWin = window.open(data.paymentUrl, '_blank');
                     buyBtn.disabled = true;
@@ -336,6 +353,15 @@
                             const statusData = await statusRes.json();
                             if (statusData.paid) {
                                 clearInterval(pollInterval);
+                                // GA4: purchase event
+                                if (typeof gtag !== 'undefined') {
+                                    gtag('event', 'purchase', {
+                                        transaction_id: data.orderId,
+                                        currency: 'ILS',
+                                        value: currentCoursePrice,
+                                        items: [{ item_id: courseId, item_name: document.title, price: currentCoursePrice }]
+                                    });
+                                }
                                 // Wait for webhook to process enrollment
                                 await new Promise(r => setTimeout(r, 3000));
                                 alert('התשלום בוצע בהצלחה! 🎉 כעת יש לך גישה לקורס.');
@@ -775,5 +801,6 @@
             flex-wrap: wrap;
         }
     </style>
+    <script src="/js/analytics.js?v=20260314"></script>
 </body>
 </html>
