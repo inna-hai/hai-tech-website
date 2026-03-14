@@ -3,6 +3,7 @@
 
 User-agent: *
 Allow: /
+Disallow: /reports/
 
 # Sitemap location
 Sitemap: https://hai.tech/sitemap.xml
