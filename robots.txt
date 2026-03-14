@@ -4,6 +4,13 @@
 User-agent: *
 Allow: /
 Disallow: /reports/
+Disallow: /lms/coverage/
+Disallow: /lms/admin.html
+Disallow: /components/
+Disallow: /lms-worker/
+Disallow: /*.md$
+Disallow: /*.sh$
+Disallow: /*.service$
 
 # Sitemap location
 Sitemap: https://hai.tech/sitemap.xml
