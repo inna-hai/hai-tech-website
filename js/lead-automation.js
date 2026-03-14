@@ -149,6 +149,13 @@ const LeadAutomation = {
         if (typeof Analytics !== 'undefined') {
             Analytics.trackEvent('form_submission', 'success', 'contact_form');
         }
+        // GA4: generate_lead event for Google Ads conversion tracking
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'generate_lead', {
+                currency: 'ILS',
+                value: 50
+            });
+        }
     },
 
     // Show error message
