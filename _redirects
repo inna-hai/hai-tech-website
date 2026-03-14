@@ -62,31 +62,16 @@
 
 /product/* / 301
 
-# SEO Landing Pages (Hebrew URLs → Hebrew files)
-# Cloudflare Pages auto-strips .html, but explicit rewrites ensure correct file is served
+# SEO Landing Pages — Hebrew .html files served automatically by Cloudflare Pages
+# No rewrite rules needed — Cloudflare auto-strips .html and serves the correct file
+# Example: קורס-תכנות-לילדים.html is served at /קורס-תכנות-לילדים
 
-/קורס-תכנות-לילדים /%D7%A7%D7%95%D7%A8%D7%A1-%D7%AA%D7%9B%D7%A0%D7%95%D7%AA-%D7%9C%D7%99%D7%9C%D7%93%D7%99%D7%9D.html 200
-/קורס-תכנות-לילדים/ /%D7%A7%D7%95%D7%A8%D7%A1-%D7%AA%D7%9B%D7%A0%D7%95%D7%AA-%D7%9C%D7%99%D7%9C%D7%93%D7%99%D7%9D.html 200
-/%D7%A7%D7%95%D7%A8%D7%A1-%D7%AA%D7%9B%D7%A0%D7%95%D7%AA-%D7%9C%D7%99%D7%9C%D7%93%D7%99%D7%9D /%D7%A7%D7%95%D7%A8%D7%A1-%D7%AA%D7%9B%D7%A0%D7%95%D7%AA-%D7%9C%D7%99%D7%9C%D7%93%D7%99%D7%9D.html 200
-/%D7%A7%D7%95%D7%A8%D7%A1-%D7%AA%D7%9B%D7%A0%D7%95%D7%AA-%D7%9C%D7%99%D7%9C%D7%93%D7%99%D7%9D/ /%D7%A7%D7%95%D7%A8%D7%A1-%D7%AA%D7%9B%D7%A0%D7%95%D7%AA-%D7%9C%D7%99%D7%9C%D7%93%D7%99%D7%9D.html 200
-
-/חוג-מיינקראפט /%D7%97%D7%95%D7%92-%D7%9E%D7%99%D7%99%D7%A0%D7%A7%D7%A8%D7%90%D7%A4%D7%98.html 200
-/חוג-מיינקראפט/ /%D7%97%D7%95%D7%92-%D7%9E%D7%99%D7%99%D7%A0%D7%A7%D7%A8%D7%90%D7%A4%D7%98.html 200
-/%D7%97%D7%95%D7%92-%D7%9E%D7%99%D7%99%D7%A0%D7%A7%D7%A8%D7%90%D7%A4%D7%98 /%D7%97%D7%95%D7%92-%D7%9E%D7%99%D7%99%D7%A0%D7%A7%D7%A8%D7%90%D7%A4%D7%98.html 200
-/%D7%97%D7%95%D7%92-%D7%9E%D7%99%D7%99%D7%A0%D7%A7%D7%A8%D7%90%D7%A4%D7%98/ /%D7%97%D7%95%D7%92-%D7%9E%D7%99%D7%99%D7%A0%D7%A7%D7%A8%D7%90%D7%A4%D7%98.html 200
-
-/קורס-רובלוקס-לילדים /%D7%A7%D7%95%D7%A8%D7%A1-%D7%A8%D7%95%D7%91%D7%9C%D7%95%D7%A7%D7%A1-%D7%9C%D7%99%D7%9C%D7%93%D7%99%D7%9D.html 200
-/קורס-רובלוקס-לילדים/ /%D7%A7%D7%95%D7%A8%D7%A1-%D7%A8%D7%95%D7%91%D7%9C%D7%95%D7%A7%D7%A1-%D7%9C%D7%99%D7%9C%D7%93%D7%99%D7%9D.html 200
-/%D7%A7%D7%95%D7%A8%D7%A1-%D7%A8%D7%95%D7%91%D7%9C%D7%95%D7%A7%D7%A1-%D7%9C%D7%99%D7%9C%D7%93%D7%99%D7%9D /%D7%A7%D7%95%D7%A8%D7%A1-%D7%A8%D7%95%D7%91%D7%9C%D7%95%D7%A7%D7%A1-%D7%9C%D7%99%D7%9C%D7%93%D7%99%D7%9D.html 200
-/%D7%A7%D7%95%D7%A8%D7%A1-%D7%A8%D7%95%D7%91%D7%9C%D7%95%D7%A7%D7%A1-%D7%9C%D7%99%D7%9C%D7%93%D7%99%D7%9D/ /%D7%A7%D7%95%D7%A8%D7%A1-%D7%A8%D7%95%D7%91%D7%9C%D7%95%D7%A7%D7%A1-%D7%9C%D7%99%D7%9C%D7%93%D7%99%D7%9D.html 200
-
-/לימוד-פייתון-לילדים /%D7%9C%D7%99%D7%9E%D7%95%D7%93-%D7%A4%D7%99%D7%99%D7%AA%D7%95%D7%9F-%D7%9C%D7%99%D7%9C%D7%93%D7%99%D7%9D.html 200
-/לימוד-פייתון-לילדים/ /%D7%9C%D7%99%D7%9E%D7%95%D7%93-%D7%A4%D7%99%D7%99%D7%AA%D7%95%D7%9F-%D7%9C%D7%99%D7%9C%D7%93%D7%99%D7%9D.html 200
-/%D7%9C%D7%99%D7%9E%D7%95%D7%93-%D7%A4%D7%99%D7%99%D7%AA%D7%95%D7%9F-%D7%9C%D7%99%D7%9C%D7%93%D7%99%D7%9D /%D7%9C%D7%99%D7%9E%D7%95%D7%93-%D7%A4%D7%99%D7%99%D7%AA%D7%95%D7%9F-%D7%9C%D7%99%D7%9C%D7%93%D7%99%D7%9D.html 200
-/%D7%9C%D7%99%D7%9E%D7%95%D7%93-%D7%A4%D7%99%D7%99%D7%AA%D7%95%D7%9F-%D7%9C%D7%99%D7%9C%D7%93%D7%99%D7%9D/ /%D7%9C%D7%99%D7%9E%D7%95%D7%93-%D7%A4%D7%99%D7%99%D7%AA%D7%95%D7%9F-%D7%9C%D7%99%D7%9C%D7%93%D7%99%D7%9D.html 200
-
-# Old English URLs redirect to Hebrew canonical
-/programming-course-kids /%D7%A7%D7%95%D7%A8%D7%A1-%D7%AA%D7%9B%D7%A0%D7%95%D7%AA-%D7%9C%D7%99%D7%9C%D7%93%D7%99%D7%9D 301
-/programming-course-kids/ /%D7%A7%D7%95%D7%A8%D7%A1-%D7%AA%D7%9B%D7%A0%D7%95%D7%AA-%D7%9C%D7%99%D7%9C%D7%93%D7%99%D7%9D 301
-/roblox-course-kids /%D7%A7%D7%95%D7%A8%D7%A1-%D7%A8%D7%95%D7%91%D7%9C%D7%95%D7%A7%D7%A1-%D7%9C%D7%99%D7%9C%D7%93%D7%99%D7%9D 301
-/roblox-course-kids/ /%D7%A7%D7%95%D7%A8%D7%A1-%D7%A8%D7%95%D7%91%D7%9C%D7%95%D7%A7%D7%A1-%D7%9C%D7%99%D7%9C%D7%93%D7%99%D7%9D 301
+# Old English URLs redirect to Hebrew canonical (301)
+/programming-course-kids /קורס-תכנות-לילדים 301
+/programming-course-kids/ /קורס-תכנות-לילדים 301
+/roblox-course-kids /קורס-רובלוקס-לילדים 301
+/roblox-course-kids/ /קורס-רובלוקס-לילדים 301
+/python-course-kids /לימוד-פייתון-לילדים 301
+/python-course-kids/ /לימוד-פייתון-לילדים 301
+/minecraft-club /חוג-מיינקראפט 301
+/minecraft-club/ /חוג-מיינקראפט 301
