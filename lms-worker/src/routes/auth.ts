@@ -666,6 +666,140 @@ authRoutes.post('/refresh', async (c) => {
   }
 });
 
+// ─── Forgot Password ──────────────────────────────────────────────────────────
+
+// POST /api/auth/forgot-password — send reset link to email
+authRoutes.post('/forgot-password', async (c) => {
+  const { email } = await c.req.json<{ email: string }>();
+
+  if (!email) {
+    return c.json({ error: 'נדרש אימייל' }, 400);
+  }
+
+  const normalizedEmail = email.toLowerCase().trim();
+
+  // Always return success (don't reveal if email exists)
+  const successMsg = 'אם האימייל קיים במערכת, נשלח אליו קישור לאיפוס סיסמה';
+
+  try {
+    const user = await c.env.DB.prepare(
+      'SELECT id, email, name FROM users WHERE LOWER(email) = ?'
+    ).bind(normalizedEmail).first<{ id: string; email: string; name: string }>();
+
+    if (!user) {
+      return c.json({ message: successMsg });
+    }
+
+    // Generate reset token (64 hex chars)
+    const tokenBytes = new Uint8Array(32);
+    crypto.getRandomValues(tokenBytes);
+    const resetToken = Array.from(tokenBytes).map(b => b.toString(16).padStart(2, '0')).join('');
+
+    // Token expires in 1 hour
+    const expiresAt = Math.floor(Date.now() / 1000) + 3600;
+
+    // Save token to DB
+    await c.env.DB.prepare(
+      'UPDATE users SET reset_token = ?, reset_token_expires = ? WHERE id = ?'
+    ).bind(resetToken, expiresAt, user.id).run();
+
+    // Build reset link
+    const baseUrl = c.req.header('Origin') || 'https://hai.tech';
+    const resetLink = `${baseUrl}/lms/reset-password.html?token=${resetToken}`;
+
+    // Send email via notify.hai.tech
+    try {
+      await fetch('https://notify.hai.tech/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          to: user.email,
+          subject: '🔑 איפוס סיסמה — HAI Tech Academy',
+          html: `
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head><meta charset="UTF-8"></head>
+<body style="font-family: Arial, sans-serif; background: #f5f5f5; margin: 0; padding: 0;">
+  <table style="max-width: 600px; margin: 40px auto; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" width="100%">
+    <tr>
+      <td style="background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%); padding: 30px; text-align: center;">
+        <h1 style="color: #fff; margin: 0; font-size: 24px;">🔑 איפוס סיסמה</h1>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 30px;">
+        <p style="color: #374151; font-size: 16px; line-height: 1.6;">שלום ${user.name || ''}! 👋</p>
+        <p style="color: #374151; font-size: 16px; line-height: 1.6;">קיבלנו בקשה לאיפוס הסיסמה שלך. לחץ/י על הכפתור למטה:</p>
+        <div style="text-align: center; margin: 30px 0;">
+          <a href="${resetLink}" style="display: inline-block; background: linear-gradient(135deg, #6366f1, #4f46e5); color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-size: 16px; font-weight: 600;">
+            איפוס סיסמה →
+          </a>
+        </div>
+        <p style="color: #6b7280; font-size: 14px;">הקישור תקף לשעה אחת בלבד.</p>
+        <p style="color: #6b7280; font-size: 14px;">אם לא ביקשת איפוס סיסמה, ניתן להתעלם מהמייל הזה.</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="background: #f9fafb; padding: 20px; text-align: center; border-top: 1px solid #e5e7eb;">
+        <p style="color: #9ca3af; font-size: 12px; margin: 0;">HAI Tech Academy | hai.tech</p>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`
+        }),
+      });
+    } catch (emailErr) {
+      console.error('[Auth] Failed to send reset email:', emailErr);
+    }
+
+    return c.json({ message: successMsg });
+  } catch (err) {
+    console.error('[Auth] Forgot password error:', err);
+    return c.json({ message: successMsg });
+  }
+});
+
+// POST /api/auth/reset-password — reset password with token
+authRoutes.post('/reset-password', async (c) => {
+  const { token, password } = await c.req.json<{ token: string; password: string }>();
+
+  if (!token || !password) {
+    return c.json({ error: 'חסרים פרטים' }, 400);
+  }
+
+  if (password.length < 6) {
+    return c.json({ error: 'סיסמה חייבת להכיל לפחות 6 תווים' }, 400);
+  }
+
+  try {
+    const now = Math.floor(Date.now() / 1000);
+
+    // Find user with valid token
+    const user = await c.env.DB.prepare(
+      'SELECT id, email FROM users WHERE reset_token = ? AND reset_token_expires > ?'
+    ).bind(token, now).first<{ id: string; email: string }>();
+
+    if (!user) {
+      return c.json({ error: 'קישור לא תקף או שפג תוקפו. בקש/י קישור חדש.' }, 400);
+    }
+
+    // Hash new password
+    const { hashPassword } = await import('../utils/helpers.js');
+    const newHash = await hashPassword(password);
+
+    // Update password and clear reset token
+    await c.env.DB.prepare(
+      'UPDATE users SET password_hash = ?, reset_token = NULL, reset_token_expires = NULL, updated_at = ? WHERE id = ?'
+    ).bind(newHash, now, user.id).run();
+
+    return c.json({ message: 'הסיסמה עודכנה בהצלחה! ניתן להתחבר.' });
+  } catch (err) {
+    console.error('[Auth] Reset password error:', err);
+    return c.json({ error: 'שגיאה באיפוס הסיסמה' }, 500);
+  }
+});
+
 // Helper functions
 async function generateToken(userId: string, email: string, role: string, secret: string): Promise<string> {
   const secretKey = new TextEncoder().encode(secret);
