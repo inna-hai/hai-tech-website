@@ -187,7 +187,7 @@
             document.title = `${lesson.title} | HAI Tech Academy`;
             document.getElementById('lessonNumber').textContent = `שיעור ${currentLessonIndex + 1}`;
             document.getElementById('lessonTitle').textContent = lesson.title;
-            document.getElementById('lessonDescription').textContent = lesson.description || '';
+            document.getElementById('lessonDescription').innerHTML = (lesson.description || '').replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" rel="noopener" style="color:#818cf8;text-decoration:underline;">$1</a>').replace(/\n/g, '<br>');
             document.getElementById('lessonDuration').textContent = formatDuration(lesson.duration_seconds);
 
             // Update video
