@@ -106,6 +106,15 @@ const Analytics = {
             // Track WhatsApp clicks
             if (href.includes('wa.me')) {
                 this.trackEvent('engagement', 'whatsapp_click', href);
+                // Also fire the GA4 event that Google Ads conversion tracks
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'whatsapp_clicked', {
+                        event_category: 'engagement',
+                        event_label: href,
+                        value: 40,
+                        currency: 'ILS'
+                    });
+                }
             }
 
             // Track external links

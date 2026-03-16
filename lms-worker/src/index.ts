@@ -181,6 +181,44 @@ app.post('/lms/api/leads/submit', async (c) => {
 
     const result = await crmResponse.json();
     console.log(`[LEAD-PROXY] ${ip}: ${name} → CRM ${crmResponse.status}`);
+
+    // Send email notification to info@hai.tech via notify server
+    try {
+      const emailBody = `
+        <div dir="rtl" style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <div style="background: linear-gradient(135deg, #22c55e, #16a34a); color: white; padding: 20px 24px; border-radius: 12px 12px 0 0;">
+            <h2 style="margin: 0;">🎉 ליד חדש מהאתר!</h2>
+          </div>
+          <div style="background: #f8fafc; padding: 24px; border: 1px solid #e2e8f0; border-radius: 0 0 12px 12px;">
+            <table style="width: 100%; border-collapse: collapse;">
+              <tr><td style="padding: 8px 0; font-weight: bold; color: #334155;">📝 שם:</td><td style="padding: 8px 0;">${name.trim()}</td></tr>
+              <tr><td style="padding: 8px 0; font-weight: bold; color: #334155;">📱 טלפון:</td><td style="padding: 8px 0; direction: ltr;">${phone?.trim() || 'לא צוין'}</td></tr>
+              <tr><td style="padding: 8px 0; font-weight: bold; color: #334155;">📧 אימייל:</td><td style="padding: 8px 0;">${email?.trim() || 'לא צוין'}</td></tr>
+              ${childName ? `<tr><td style="padding: 8px 0; font-weight: bold; color: #334155;">👦 שם הילד/ה:</td><td style="padding: 8px 0;">${childName.trim()}</td></tr>` : ''}
+              ${childAge ? `<tr><td style="padding: 8px 0; font-weight: bold; color: #334155;">🎂 גיל:</td><td style="padding: 8px 0;">${childAge}</td></tr>` : ''}
+              ${interest ? `<tr><td style="padding: 8px 0; font-weight: bold; color: #334155;">📚 מתעניין/ת ב:</td><td style="padding: 8px 0;">${interest.trim()}</td></tr>` : ''}
+              ${message ? `<tr><td style="padding: 8px 0; font-weight: bold; color: #334155;">💬 הודעה:</td><td style="padding: 8px 0;">${message.trim()}</td></tr>` : ''}
+            </table>
+            <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 16px 0;">
+            <p style="color: #94a3b8; font-size: 12px; margin: 0;">מקור: אתר hai.tech | ${new Date().toLocaleString('he-IL', { timeZone: 'Asia/Jerusalem' })}</p>
+            <p style="color: #94a3b8; font-size: 12px; margin: 4px 0 0;">CRM: ${crmResponse.ok ? '✅ נשלח בהצלחה' : '❌ שגיאה בשליחה'}</p>
+          </div>
+        </div>
+      `;
+
+      await fetch('https://notify.hai.tech/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          to: 'info@hai.tech',
+          subject: `🎯 ליד חדש: ${name.trim()} ${phone ? '(' + phone.trim() + ')' : ''}`,
+          html: emailBody,
+        }),
+      });
+    } catch (emailErr) {
+      console.error('[LEAD-PROXY] Email notification failed:', emailErr);
+    }
+
     return c.json({ success: true, isNew: (result as any).isNew }, crmResponse.status as any);
   } catch (err) {
     console.error('[LEAD-PROXY] Error:', err);
