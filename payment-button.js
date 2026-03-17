@@ -96,8 +96,14 @@
       <label>אימייל *</label>
       <input id="ht-email" placeholder="mail@example.com" type="email" />
 
-      <label>טלפון (אופציונלי)</label>
+      <label>טלפון *</label>
       <input id="ht-phone" placeholder="050-0000000" type="tel" />
+
+      <label>שם הילד/ה *</label>
+      <input id="ht-child-name" placeholder="שם הילד/ה" type="text" />
+
+      <label>גיל הילד/ה *</label>
+      <input id="ht-child-age" placeholder="לדוגמה: 10" type="number" min="6" max="18" />
 
       <label>קוד קופון (אופציונלי)</label>
       <div class="ht-coupon-row">
@@ -206,12 +212,36 @@
     const errEl = document.getElementById('ht-pay-error');
     const btn = document.getElementById('ht-pay-submit');
 
+    const childName = document.getElementById('ht-child-name').value.trim();
+    const childAge = document.getElementById('ht-child-age').value.trim();
+
     if (!firstName) { errEl.textContent = 'נא להזין שם מלא'; return; }
     if (!email || !email.includes('@')) { errEl.textContent = 'נא להזין כתובת אימייל תקינה'; return; }
+    if (!phone) { errEl.textContent = 'נא להזין מספר טלפון'; return; }
+    if (!childName) { errEl.textContent = 'נא להזין שם הילד/ה'; return; }
+    if (!childAge || childAge < 6 || childAge > 18) { errEl.textContent = 'נא להזין גיל תקין (6-18)'; return; }
 
     errEl.textContent = '';
     btn.disabled = true;
     btn.textContent = '⏳ מעבד...';
+
+    // Send to CRM (non-blocking — don't wait for response)
+    try {
+      fetch('/lms/api/leads/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: firstName,
+          email,
+          phone,
+          childName,
+          childAge: parseInt(childAge),
+          interest: currentCourseName,
+          source: 'pesach-camp',
+          message: `קייטנת פסח: ${currentCourseName}, ילד/ה: ${childName}, גיל: ${childAge}`,
+        }),
+      }).catch(() => {}); // fire-and-forget
+    } catch {}
 
     try {
       const nameParts = firstName.split(' ');
