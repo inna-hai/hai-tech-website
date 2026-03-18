@@ -53,7 +53,7 @@
     #ht-pay-modal label { display: block; font-size: .875rem; font-weight: 600; color: #374151; margin-bottom: 4px; }
     #ht-pay-modal input {
       width: 100%; padding: 10px 14px; border: 2px solid #e5e7eb; border-radius: 10px;
-      font-size: 1rem; box-sizing: border-box; margin-bottom: 14px; direction: ltr;
+      font-size: 1rem; box-sizing: border-box; margin-bottom: 14px; direction: rtl; text-align: right;
     }
     #ht-pay-modal input:focus { border-color: #7c3aed; outline: none; }
     #ht-pay-modal .ht-coupon-row { display: flex; gap: 8px; margin-bottom: 14px; }
