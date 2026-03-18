@@ -574,7 +574,13 @@
             if (token) {
                 document.getElementById('modalActionsNotLoggedIn').style.display = 'none';
                 document.getElementById('modalActionsLoggedIn').style.display = 'flex';
-                document.getElementById('enrollModalText').textContent = 'כדי לצפות בכל השיעורים, יש לרכוש את הקורס.';
+                const isFree = currentCoursePrice === 0;
+                document.getElementById('enrollModalText').textContent = isFree 
+                    ? 'לחצו להירשם לקורס ולקבל גישה לכל השיעורים — בחינם!' 
+                    : 'כדי לצפות בכל השיעורים, יש לרכוש את הקורס.';
+                document.querySelector('#modalActionsLoggedIn button span').textContent = isFree 
+                    ? '✨ הירשם לקורס בחינם' 
+                    : '🛒 רכוש גישה לקורס';
             } else {
                 document.getElementById('modalActionsNotLoggedIn').style.display = 'flex';
                 document.getElementById('modalActionsLoggedIn').style.display = 'none';
