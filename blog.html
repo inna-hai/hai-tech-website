@@ -1063,12 +1063,10 @@
     </footer>
 
     <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
-        
-        // Mobile menu toggle
+        // Mobile menu toggle — runs immediately (no dependency on lucide)
         document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
             document.querySelector('.nav-links').classList.toggle('active');
+            this.classList.toggle('active');
         });
 
         // Smooth scroll for anchor links
@@ -1081,6 +1079,15 @@
                 }
             });
         });
+
+        // Initialize Lucide icons after script loads (deferred)
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        } else {
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof lucide !== 'undefined') lucide.createIcons();
+            });
+        }
     </script>
 
     <!-- Footer -->
