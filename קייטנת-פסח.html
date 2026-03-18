@@ -426,15 +426,7 @@
 
         /* Urgency */
         .urgency-bar {
-            background: #dc2626;
-            color: white;
-            text-align: center;
-            padding: 12px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            display: none;
         }
 
         @media (max-width: 768px) {
@@ -483,6 +475,36 @@
             </div>
         </div>
     </section>
+
+    <!-- Countdown Timer -->
+    <section style="padding:40px 0; background:white;">
+        <div style="max-width:600px; margin:0 auto; text-align:center;">
+            <p style="color:#7c3aed; font-weight:700; font-size:1rem; margin:0 0 12px;">⏰ ההרשמה נסגרת בקרוב</p>
+            <div id="countdown" style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap;"></div>
+        </div>
+    </section>
+    <script>
+    (function() {
+        const target = new Date('2026-03-29T10:00:00+03:00');
+        function pad(n) { return n < 10 ? '0' + n : n; }
+        function box(val, label) {
+            return '<div style="background:linear-gradient(135deg,#7c3aed,#2563eb); color:white; border-radius:16px; padding:16px 20px; min-width:70px; box-shadow:0 4px 15px rgba(124,58,237,0.2);">' +
+                '<div style="font-size:2rem; font-weight:900; line-height:1;">' + pad(val) + '</div>' +
+                '<div style="font-size:0.75rem; opacity:0.85; margin-top:4px;">' + label + '</div></div>';
+        }
+        function update() {
+            const now = new Date();
+            const diff = Math.max(0, target - now);
+            const d = Math.floor(diff / 86400000);
+            const h = Math.floor((diff % 86400000) / 3600000);
+            const m = Math.floor((diff % 3600000) / 60000);
+            const s = Math.floor((diff % 60000) / 1000);
+            document.getElementById('countdown').innerHTML = box(d,'ימים') + box(h,'שעות') + box(m,'דקות') + box(s,'שניות');
+        }
+        update();
+        setInterval(update, 1000);
+    })();
+    </script>
 
     <!-- 3 Camps -->
     <section class="camps-section" id="camps">
