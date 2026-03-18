@@ -165,7 +165,7 @@ app.post('/lms/api/leads/submit', async (c) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'x-api-key': '9d75edbf83df79261c4f9bd8b3943f18338854d1fc3e7cbd1fece3df17825f9a',
+        'x-api-key': 'haitech-crm-api-key-2026',
       },
       body: JSON.stringify({
         name: name.trim(),
