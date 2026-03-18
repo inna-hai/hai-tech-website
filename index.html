@@ -269,6 +269,7 @@
         ]
     }
     </script>
+    <link rel="stylesheet" href="css/cookie-consent.css">
 </head>
 <body>
     <!-- Skip to main content -->
@@ -1330,6 +1331,10 @@
                         <label for="message">הודעה</label>
                         <textarea id="message" name="message" rows="3" placeholder="שאלות או הערות נוספות..."></textarea>
                     </div>
+                    <label class="consent-checkbox">
+                        <input type="checkbox" id="privacyConsent" required>
+                        <span>אני מאשר/ת את <a href="/privacy.html" target="_blank">מדיניות הפרטיות</a> ומסכים/ה לקבל תוכן מדרך ההייטק</span>
+                    </label>
                     <button type="submit" class="btn btn-primary btn-full">
                         <i data-lucide="send" class="icon-sm"></i>
                         שליחה
@@ -1422,7 +1427,8 @@
     </footer>
 
     <!-- Lead Automation & Analytics Scripts -->
-    <script src="js/analytics.js?v=20260306"></script>
+    <script src="js/cookie-consent.js?v=20260318"></script>
+    <script src="js/analytics.js?v=20260318"></script>
     <script src="js/lead-automation.js?v=20260215"></script>
     
     <script>
@@ -1526,6 +1532,10 @@
                             dir="ltr"
                         >
                     </div>
+                    <label class="consent-checkbox" style="margin: 8px 0 4px;">
+                        <input type="checkbox" required>
+                        <span>מאשר/ת <a href="/privacy.html" target="_blank">מדיניות פרטיות</a></span>
+                    </label>
                     <button type="submit" class="popup-submit-btn">
                         <i data-lucide="send"></i>
                         שלחו לי פרטים

@@ -185,8 +185,15 @@ const Analytics = {
     }
 };
 
-// Initialize on DOM ready
+// Initialize on DOM ready — only if cookie consent granted
+// CookieConsent.js handles calling Analytics.init() after consent
 document.addEventListener('DOMContentLoaded', () => {
+    // If cookie-consent.js is loaded, let it handle initialization
+    if (typeof CookieConsent !== 'undefined') {
+        // CookieConsent will call Analytics.init() when appropriate
+        return;
+    }
+    // Fallback: if no consent system, init directly (e.g. LMS pages without banner)
     Analytics.init();
 });
 
