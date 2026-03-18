@@ -183,12 +183,42 @@ paymentRoutes.post('/create-link', async (c) => {
   if (!productId && (!courseName || !price)) return c.json({ error: 'נדרש מוצר או שם + מחיר' }, 400);
 
   try {
+    let finalPrice = price ? Number(price) : undefined;
+    let wooCouponCode: string | undefined = couponCode || undefined;
+
+    // Check if coupon is an LMS coupon (apply discount locally, don't pass to WooCommerce)
+    if (couponCode) {
+      const upperCode = couponCode.toUpperCase().trim();
+      const lmsCoupon = await c.env.DB.prepare(
+        'SELECT * FROM coupons WHERE code = ? AND is_active = 1'
+      ).bind(upperCode).first() as {
+        id: string; discount_type: string; discount_value: number;
+        max_uses: number | null; current_uses: number;
+      } | null;
+
+      if (lmsCoupon) {
+        // Apply LMS discount
+        if (finalPrice) {
+          if (lmsCoupon.discount_type === 'percent') {
+            finalPrice = Math.round(finalPrice * (1 - lmsCoupon.discount_value / 100));
+          } else {
+            finalPrice = Math.max(0, finalPrice - lmsCoupon.discount_value);
+          }
+        }
+        // Don't pass LMS coupon to WooCommerce
+        wooCouponCode = undefined;
+        // Increment usage
+        await c.env.DB.prepare('UPDATE coupons SET current_uses = current_uses + 1 WHERE id = ?')
+          .bind(lmsCoupon.id).run();
+      }
+    }
+
     const order = await createWooOrder({
       env: c.env,
       firstName, lastName: lastName || '', email, phone,
       productId: productId ? Number(productId) : undefined,
-      courseName, price: price ? Number(price) : undefined,
-      couponCode: couponCode || undefined,
+      courseName, price: finalPrice,
+      couponCode: wooCouponCode,
     });
 
     const payUrl = await buildPayUrl(order.id, c.env);
