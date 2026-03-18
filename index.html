@@ -1676,5 +1676,32 @@
     
     <!-- AI Chatbot Widget -->
     <!-- <script src="js/chatbot-smart.js"></script> --> <!-- DISABLED - WhatsApp only -->
+<!-- Pesach Camp Popup (temporary - remove after April 8) -->
+<div id="pesach-popup" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:10000; align-items:center; justify-content:center;">
+    <div style="background:white; border-radius:24px; padding:32px; max-width:420px; width:90%; text-align:center; position:relative; box-shadow:0 20px 60px rgba(0,0,0,0.3); direction:rtl;">
+        <button onclick="closePesachPopup()" style="position:absolute; top:12px; left:12px; background:none; border:none; font-size:1.5rem; cursor:pointer; color:#94a3b8;">✕</button>
+        <div style="font-size:3rem; margin-bottom:12px;">🚀</div>
+        <h3 style="font-size:1.4rem; color:#1e1b4b; margin:0 0 8px;">קייטנות פסח 2026</h3>
+        <p style="color:#64748b; margin:0 0 16px; line-height:1.6;">AI + תכנות לילדים גילאי 8-13<br>5 מפגשי זום חיים עם מדריך מקצועי<br><strong style="color:#7c3aed;">₪497 בלבד</strong></p>
+        <div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap;">
+            <a href="/קייטנת-פסח" style="display:inline-block; background:linear-gradient(135deg,#7c3aed,#2563eb); color:white; padding:12px 28px; border-radius:50px; text-decoration:none; font-weight:700;">לפרטים והרשמה →</a>
+            <button onclick="closePesachPopup()" style="padding:12px 20px; border:2px solid #e2e8f0; background:white; border-radius:50px; cursor:pointer; font-weight:600; color:#64748b;">אולי אחר כך</button>
+        </div>
+        <p style="margin:12px 0 0; font-size:0.8rem; color:#94a3b8;">3 מסלולים: פיתוח אפליקציות • מיינקראפט • Python</p>
+    </div>
+</div>
+<script>
+function closePesachPopup() {
+    document.getElementById('pesach-popup').style.display = 'none';
+    localStorage.setItem('pesach_popup_closed', '1');
+}
+// Show popup after 5 seconds, only once
+if (!localStorage.getItem('pesach_popup_closed')) {
+    setTimeout(function() {
+        document.getElementById('pesach-popup').style.display = 'flex';
+    }, 5000);
+}
+</script>
+
 </body>
 </html>
