@@ -65,6 +65,10 @@ const CookieConsent = {
             </div>
         `;
         document.body.appendChild(banner);
+
+        // Push floating elements up so banner doesn't cover them
+        const floating = document.getElementById('floatingContact');
+        if (floating) floating.style.bottom = '85px';
     },
 
     hideBanner() {
@@ -73,6 +77,9 @@ const CookieConsent = {
             banner.classList.add('cookie-banner-hide');
             setTimeout(() => banner.remove(), 400);
         }
+        // Restore floating button position
+        const floating = document.getElementById('floatingContact');
+        if (floating) floating.style.bottom = '25px';
     }
 };
 
