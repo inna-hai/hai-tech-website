@@ -163,6 +163,7 @@
             top: 0; left: 0; right: 0; bottom: 0;
             background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
             opacity: 0.5;
+            pointer-events: none;
         }
         .landing-hero h1 {
             font-size: clamp(2.5rem, 6vw, 4rem);
@@ -179,6 +180,8 @@
             line-height: 1.8;
         }
         .hero-cta {
+            position: relative;
+            z-index: 2;
             display: inline-flex;
             gap: 1rem;
             flex-wrap: wrap;
@@ -405,6 +408,8 @@
             .landing-hero h1 { font-size: 2rem; }
             .landing-hero p { font-size: 1.1rem; padding: 0 10px; }
             .hero-cta { flex-direction: column; gap: 0.8rem; }
+            position: relative;
+            z-index: 2;
             .btn-primary, .btn-secondary { padding: 14px 30px; font-size: 1rem; width: 100%; max-width: 280px; }
             .trust-badges { gap: 1.5rem; }
             .trust-badge .number { font-size: 2rem; }
