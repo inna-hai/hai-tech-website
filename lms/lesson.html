@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>שיעור | HAI Tech Academy</title>
     <link rel="stylesheet" href="css/lesson-new.css">
+    <script src="js/video-tracker.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -212,6 +213,10 @@
                 console.log('Loading video:', lesson.video_url);
                 videoPlayer.src = lesson.video_url;
                 videoPlayer.style.display = 'block';
+                // Start tracking video progress
+                if (typeof VideoTracker !== 'undefined') {
+                    VideoTracker.init(courseId, lesson.id, videoPlayer);
+                }
             } else {
                 console.warn('No video URL for lesson:', lesson.id);
                 // Show placeholder
@@ -284,7 +289,10 @@
                 // Auto-mark current lesson as complete when moving to next
                 const currentLesson = allLessons[currentLessonIndex];
                 if (currentLesson) {
-                    await markLessonComplete(currentLesson.id);
+                    // Use tracked watch time if available
+                    const watched = (typeof VideoTracker !== 'undefined') 
+                        ? Math.floor(VideoTracker.state.watched || 0) : 0;
+                    await markLessonComplete(currentLesson.id, watched);
                 }
                 goToLesson(currentLessonIndex + 1);
             }
@@ -323,7 +331,7 @@
         }
 
         // Mark lesson as complete
-        async function markLessonComplete(lessonId) {
+        async function markLessonComplete(lessonId, watchedSeconds) {
             const token = getToken();
             if (!token) {
                 alert('יש להתחבר כדי לשמור התקדמות');
@@ -338,7 +346,7 @@
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${token}`
                     },
-                    body: JSON.stringify({ completed: true, watchedSeconds: 0 })
+                    body: JSON.stringify({ completed: true, watchedSeconds: watchedSeconds || 0 })
                 });
 
                 if (response.ok) {
@@ -353,6 +361,13 @@
                 return false;
             }
         }
+
+        // Listen for auto-complete from video tracker
+        document.addEventListener('videoTracker:complete', (e) => {
+            console.log('Video auto-completed:', e.detail);
+            // Update sidebar to show lesson as completed
+            renderLessonsList();
+        });
 
         // Initialize
         loadCourse();
