@@ -701,7 +701,7 @@
                 </div>
             </div>
             <!-- Mini Lead Form in Hero -->
-            <div style="max-width:420px; margin:0 auto 20px; background:rgba(255,255,255,0.12); backdrop-filter:blur(10px); border-radius:20px; padding:20px;">
+            <div style="max-width:420px; margin:0 auto 20px; background:rgba(255,255,255,0.12); backdrop-filter:blur(10px); border-radius:20px; padding:20px; position:relative; z-index:2;">
                 <p style="font-size:0.95rem; margin:0 0 12px; opacity:0.9;">📋 השאירו פרטים — נחזור אליכם תוך שעה</p>
                 <form onsubmit="return submitLeadForm(event)" style="display:flex; flex-direction:column; gap:10px;">
                     <div style="display:flex; gap:10px;">
@@ -1054,7 +1054,7 @@
             <p>השאירו פרטים ונחזור אליכם תוך שעה — או שלחו וואטסאפ</p>
             
             <!-- Lead Form -->
-            <div id="lead-form-wrapper" style="max-width:400px; margin:0 auto 24px; text-align:right;">
+            <div id="lead-form-wrapper" style="max-width:400px; margin:0 auto 24px; text-align:right; position:relative; z-index:2;">
                 <form id="lead-form" onsubmit="return submitLeadForm(event)" style="display:flex; flex-direction:column; gap:12px;">
                     <input type="text" id="lead-name" placeholder="שם ההורה" required 
                         style="padding:14px 18px; border-radius:50px; border:none; background:white; color:#333; font-size:1rem; direction:rtl; outline:none;">
