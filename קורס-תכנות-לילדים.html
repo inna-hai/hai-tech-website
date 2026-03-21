@@ -1102,7 +1102,7 @@
                 <form id="lead-form" onsubmit="return submitLeadForm(event)" style="display:flex; flex-direction:column; gap:12px;">
                     <input type="text" id="lead-name" placeholder="שם ההורה" required 
                         style="padding:14px 18px; border-radius:50px; border:none; background:white; color:#333; font-size:1rem; direction:rtl; outline:none;">
-                    <input type="tel" id="lead-phone" placeholder="טלפון" required 
+                    <input type="tel" id="lead-phone" placeholder="טלפון" required inputmode="numeric" pattern="[0-9-+]{9,15}" 
                         style="padding:14px 18px; border-radius:50px; border:none; background:white; color:#333; font-size:1rem; direction:rtl; outline:none;">
                     <input type="text" id="lead-child-age" placeholder="גיל הילד/ה" 
                         style="padding:14px 18px; border-radius:50px; border:none; background:white; color:#333; font-size:1rem; direction:rtl; outline:none;">
