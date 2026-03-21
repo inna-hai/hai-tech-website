@@ -1033,11 +1033,69 @@
     <section class="cta-section" id="contact">
         <div class="container">
             <h2>מוכנים שהילד יתחיל לתכנת?</h2>
-            <p>שלחו לנו הודעה בוואטסאפ ונעזור לבחור את הקורס המתאים — בלי התחייבות</p>
-            <a target="_blank" href="https://wa.me/972533009742?text=%D7%94%D7%99%D7%99%2C%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%A0%D7%99%D7%9D%20%D7%91%D7%A7%D7%95%D7%A8%D7%A1%20%D7%AA%D7%9B%D7%A0%D7%95%D7%AA%20%D7%9C%D7%99%D7%9C%D7%93%D7%99%D7%9D" class="btn-primary" style="background:white;color:#764ba2;">💬 שלחו וואטסאפ עכשיו</a>
-            <p style="margin-top:1.5rem;opacity:0.8;font-size:0.95rem;">או חייגו: <a href="tel:0533009742" style="color:white;font-weight:700;">053-300-9742</a></p>
+            <p>השאירו פרטים ונחזור אליכם תוך שעה — או שלחו וואטסאפ</p>
+            
+            <!-- Lead Form -->
+            <div id="lead-form-wrapper" style="max-width:400px; margin:0 auto 24px; text-align:right;">
+                <form id="lead-form" onsubmit="return submitLeadForm(event)" style="display:flex; flex-direction:column; gap:12px;">
+                    <input type="text" id="lead-name" placeholder="שם ההורה" required 
+                        style="padding:14px 18px; border-radius:50px; border:2px solid rgba(255,255,255,0.3); background:rgba(255,255,255,0.15); color:white; font-size:1rem; direction:rtl; outline:none;"
+                        onfocus="this.style.borderColor='white'" onblur="this.style.borderColor='rgba(255,255,255,0.3)'">
+                    <input type="tel" id="lead-phone" placeholder="טלפון" required 
+                        style="padding:14px 18px; border-radius:50px; border:2px solid rgba(255,255,255,0.3); background:rgba(255,255,255,0.15); color:white; font-size:1rem; direction:rtl; outline:none;"
+                        onfocus="this.style.borderColor='white'" onblur="this.style.borderColor='rgba(255,255,255,0.3)'">
+                    <input type="text" id="lead-child-age" placeholder="גיל הילד/ה" 
+                        style="padding:14px 18px; border-radius:50px; border:2px solid rgba(255,255,255,0.3); background:rgba(255,255,255,0.15); color:white; font-size:1rem; direction:rtl; outline:none;"
+                        onfocus="this.style.borderColor='white'" onblur="this.style.borderColor='rgba(255,255,255,0.3)'">
+                    <button type="submit" id="lead-submit-btn"
+                        style="padding:16px; border-radius:50px; border:none; background:white; color:#764ba2; font-size:1.1rem; font-weight:800; cursor:pointer; transition:transform 0.3s;"
+                        onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">
+                        📋 חזרו אליי
+                    </button>
+                </form>
+                <div id="lead-success" style="display:none; background:rgba(255,255,255,0.2); border-radius:16px; padding:20px; margin-top:12px;">
+                    <p style="color:white; font-size:1.1rem; font-weight:700; margin:0;">✅ קיבלנו! נחזור אליכם בהקדם</p>
+                </div>
+            </div>
+
+            <p style="color:rgba(255,255,255,0.7); font-size:0.9rem; margin-bottom:16px;">— או —</p>
+            <a target="_blank" href="https://wa.me/972533009742?text=%D7%94%D7%99%D7%99%2C%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%A0%D7%99%D7%9D%20%D7%91%D7%A7%D7%95%D7%A8%D7%A1%20%D7%AA%D7%9B%D7%A0%D7%95%D7%AA%20%D7%9C%D7%99%D7%9C%D7%93%D7%99%D7%9D" class="btn-primary" style="background:rgba(255,255,255,0.15);color:white;border:2px solid rgba(255,255,255,0.4);">💬 שלחו וואטסאפ</a>
         </div>
     </section>
+
+    <script>
+    async function submitLeadForm(e) {
+        e.preventDefault();
+        const btn = document.getElementById('lead-submit-btn');
+        btn.textContent = '⏳ שולח...';
+        btn.disabled = true;
+        try {
+            const body = {
+                name: document.getElementById('lead-name').value,
+                phone: document.getElementById('lead-phone').value,
+                childAge: document.getElementById('lead-child-age').value,
+                source: 'landing-page-form',
+                notes: 'טופס מדף קורס תכנות לילדים'
+            };
+            await fetch('https://hai.tech/lms/api/leads/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(body)
+            });
+            // GA4 event
+            if (typeof gtag === 'function') {
+                gtag('event', 'generate_lead', { event_category: 'form', event_label: 'landing-page' });
+            }
+            document.getElementById('lead-form').style.display = 'none';
+            document.getElementById('lead-success').style.display = 'block';
+        } catch (err) {
+            btn.textContent = '📋 חזרו אליי';
+            btn.disabled = false;
+            alert('שגיאה, נסו שוב');
+        }
+        return false;
+    }
+    </script>
 
     <!-- SEO Content Section -->
     <section class="content-section">
