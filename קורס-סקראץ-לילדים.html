@@ -171,7 +171,7 @@
                 <a href="/#courses">קורסים</a>
                 <a href="/pricing.html">מחירים</a>
                 <a href="/blog">בלוג</a>
-                <a href="/#contact" class="btn-nav">צור קשר</a>
+                <a href="#contact" class="btn-nav">צור קשר</a>
             </div>
         </div>
     </nav>
@@ -258,10 +258,28 @@
 
     <section class="cta-section" id="contact">
         <div class="container">
-            <h2>מוכנים להתחיל את המסע?</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 2rem;">השאירו פרטים ונחזור עם כל המידע על הקורס</p>
-            <a href="/#contact" class="btn-primary">📝 להרשמה</a>
-            <a target="_blank" href="https://wa.me/972533009742?text=%D7%94%D7%99%D7%99%2C%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%A0%D7%99%D7%9D%20%D7%91%D7%A7%D7%95%D7%A8%D7%A1%20%D7%A1%D7%A7%D7%A8%D7%90%D7%A5%27" class="btn-secondary">💬 וואטסאפ</a>
+            <h2>🐱 רוצים להתחיל?</h2>
+            
+            <div style="max-width:400px; margin:0 auto 24px;">
+                <div class="ht-pay-btn" data-product-id="30688" data-course-name="קורס סקראץ' לילדים" data-price="497" data-label="🛒 לרכישה ₪497"></div>
+            </div>
+
+            <p style="color:rgba(255,255,255,0.7); margin:16px 0;">— או השאירו פרטים ונחזור אליכם —</p>
+            
+            <div style="max-width:400px; margin:0 auto;">
+                <form onsubmit="return submitLeadForm(event)" style="display:flex; flex-direction:column; gap:10px;">
+                    <input type="text" placeholder="שם" required style="padding:14px 18px; border-radius:50px; border:none; font-size:1rem; direction:rtl;">
+                    <input type="tel" placeholder="טלפון" required style="padding:14px 18px; border-radius:50px; border:none; font-size:1rem; direction:rtl;">
+                    <button type="submit" style="padding:14px; border-radius:50px; border:none; background:white; color:#764ba2; font-size:1rem; font-weight:800; cursor:pointer;">📋 חזרו אליי</button>
+                </form>
+                <div class="lead-success" style="display:none; background:rgba(255,255,255,0.2); border-radius:16px; padding:20px; margin-top:12px; text-align:center;">
+                    <p style="color:white; font-size:1.1rem; font-weight:700; margin:0;">✅ קיבלנו! נחזור אליכם בהקדם</p>
+                </div>
+            </div>
+
+            <p style="margin-top:16px;">
+                <a target="_blank" href="https://wa.me/972533009742" style="color:white; font-weight:600; text-decoration:none;">💬 או שלחו וואטסאפ</a>
+            </p>
         </div>
     </section>
 
@@ -296,5 +314,46 @@
         </div>
     </footer>
     <script src="/js/analytics.js?v=20260314"></script>
+    <script src="/payment-button.js"></script>
+
+    <script>
+    async function submitLeadForm(e) {
+        e.preventDefault();
+        var form = e.target;
+        var btn = form.querySelector('button[type="submit"]');
+        var origText = btn.textContent;
+        btn.textContent = '⏳ שולח...';
+        btn.disabled = true;
+        try {
+            var nameEl = form.querySelector('input[type="text"]');
+            var phoneEl = form.querySelector('input[type="tel"]');
+            var body = {
+                name: nameEl ? nameEl.value : '',
+                phone: phoneEl ? phoneEl.value : '',
+                source: 'course-page-form',
+                notes: document.title
+            };
+            await fetch('https://hai.tech/lms/api/leads/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(body)
+            });
+            if (typeof gtag === 'function') {
+                gtag('event', 'generate_lead', { event_category: 'form', event_label: 'course-page' });
+            }
+            form.style.display = 'none';
+            var success = form.parentElement.querySelector('.lead-success');
+            if (success) success.style.display = 'block';
+        } catch (err) {
+            btn.textContent = origText;
+            btn.disabled = false;
+        }
+        return false;
+    }
+    </script>
+
+    <a href="https://wa.me/972533009742" target="_blank" id="floatingWhatsApp" style="position:fixed;bottom:25px;left:25px;width:65px;height:65px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.5);z-index:1000;text-decoration:none;" aria-label="WhatsApp">
+        <svg width="35" height="35" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.387 0-4.591-.838-6.313-2.236l-.44-.362-2.893.97.97-2.893-.362-.44A9.935 9.935 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+    </a>
 </body>
 </html>
