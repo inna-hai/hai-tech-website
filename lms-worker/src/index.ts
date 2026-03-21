@@ -183,6 +183,61 @@ app.post('/lms/api/leads/submit', async (c) => {
     const result = await crmResponse.json();
     console.log(`[LEAD-PROXY] ${ip}: ${name} → CRM ${crmResponse.status}`);
 
+    // Save lead to D1 database (backup + analytics)
+    try {
+      const db = (c.env as any).DB;
+      if (db) {
+        await db.prepare(`
+          CREATE TABLE IF NOT EXISTS leads (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            phone TEXT,
+            email TEXT,
+            child_name TEXT,
+            child_age INTEGER,
+            interest TEXT,
+            message TEXT,
+            source TEXT DEFAULT 'website',
+            utm_source TEXT,
+            utm_medium TEXT,
+            utm_campaign TEXT,
+            utm_term TEXT,
+            utm_content TEXT,
+            gclid TEXT,
+            fbclid TEXT,
+            crm_ok INTEGER DEFAULT 0,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+          )
+        `).run();
+
+        await db.prepare(`
+          INSERT INTO leads (name, phone, email, child_name, child_age, interest, message, source,
+            utm_source, utm_medium, utm_campaign, utm_term, utm_content, gclid, fbclid, crm_ok)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        `).bind(
+          name.trim(),
+          phone?.trim() || null,
+          email?.trim() || null,
+          childName?.trim() || null,
+          childAge || null,
+          interest?.trim() || null,
+          message?.trim() || null,
+          source || 'website',
+          (utm as any)?.utm_source || null,
+          (utm as any)?.utm_medium || null,
+          (utm as any)?.utm_campaign || null,
+          (utm as any)?.utm_term || null,
+          (utm as any)?.utm_content || null,
+          (utm as any)?.gclid || null,
+          (utm as any)?.fbclid || null,
+          crmResponse.ok ? 1 : 0
+        ).run();
+        console.log(`[LEAD-DB] Saved lead: ${name.trim()}`);
+      }
+    } catch (dbErr) {
+      console.error('[LEAD-DB] Error saving to D1:', dbErr);
+    }
+
     // Send email notification to info@hai.tech via notify server
     try {
       const emailBody = `
