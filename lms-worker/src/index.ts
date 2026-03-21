@@ -134,7 +134,7 @@ app.post('/lms/api/leads/submit', async (c) => {
 
   try {
     const body = await c.req.json();
-    const { name, phone, email, childName, childAge, interest, message, source } = body;
+    const { name, phone, email, childName, childAge, interest, message, source, utm } = body;
 
     // Validate required fields
     if (!name || typeof name !== 'string' || name.trim().length < 2) {
@@ -176,6 +176,7 @@ app.post('/lms/api/leads/submit', async (c) => {
         interest: interest?.trim() || undefined,
         message: message?.trim() || undefined,
         source: source || 'website',
+        utm: utm || undefined,
       }),
     });
 

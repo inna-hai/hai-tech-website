@@ -1140,6 +1140,7 @@
                 phone: phoneEl ? phoneEl.value : '',
                 childAge: ageEl ? ageEl.value : '',
                 source: 'landing-page-form',
+                utm: (typeof getUtmData === 'function') ? getUtmData() : {},
                 notes: 'טופס מדף קורס תכנות לילדים'
             };
             await fetch('https://hai.tech/lms/api/leads/submit', {

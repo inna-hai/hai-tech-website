@@ -207,3 +207,36 @@ window.addEventListener('load', () => {
 
 // Export for external use
 window.Analytics = Analytics;
+
+// ── UTM Parameter Capture ──────────────────────────────────────────────
+(function() {
+    const params = new URLSearchParams(window.location.search);
+    const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'fbclid'];
+    const utmData = {};
+    let hasUtm = false;
+    
+    utmKeys.forEach(function(key) {
+        var val = params.get(key);
+        if (val) {
+            utmData[key] = val;
+            hasUtm = true;
+        }
+    });
+    
+    if (hasUtm) {
+        // Store in sessionStorage so it persists across pages in same session
+        sessionStorage.setItem('utm_data', JSON.stringify(utmData));
+    }
+    
+    // Also store landing page
+    if (!sessionStorage.getItem('landing_page')) {
+        sessionStorage.setItem('landing_page', window.location.pathname);
+    }
+})();
+
+// Helper: get stored UTM data for forms
+function getUtmData() {
+    try {
+        return JSON.parse(sessionStorage.getItem('utm_data') || '{}');
+    } catch(e) { return {}; }
+}

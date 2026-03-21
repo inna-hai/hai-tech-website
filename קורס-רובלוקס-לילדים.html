@@ -636,6 +636,7 @@
                 name: nameEl ? nameEl.value : '',
                 phone: phoneEl ? phoneEl.value : '',
                 source: 'course-page-form',
+                utm: (typeof getUtmData === 'function') ? getUtmData() : {},
                 notes: document.title
             };
             await fetch('https://hai.tech/lms/api/leads/submit', {
