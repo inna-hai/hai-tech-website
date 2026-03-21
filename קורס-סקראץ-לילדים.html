@@ -329,6 +329,8 @@
         try {
             var nameEl = form.querySelector('input[type="text"]');
             var phoneEl = form.querySelector('input[type="tel"]');
+            var phoneVal = phoneEl ? phoneEl.value.replace(/[^0-9]/g, '') : '';
+            if (phoneVal.length < 9 || phoneVal.length > 15) { btn.textContent = origText; btn.disabled = false; alert('נא להזין מספר טלפון תקין'); return false; }
             var body = {
                 name: nameEl ? nameEl.value : '',
                 phone: phoneEl ? phoneEl.value : '',
