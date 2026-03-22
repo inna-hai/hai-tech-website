@@ -847,45 +847,53 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="landing-hero">
+    <header class="hero">
+        <div class="hero-video-bg">
+            <video autoplay muted loop playsinline webkit-playsinline preload="auto">
+                <source src="videos/minecraft-showcase.mp4" type="video/mp4">
+            </video>
+            <div class="hero-video-overlay"></div>
+        </div>
         <div class="container">
-            <h1>קורס תכנות לילדים — למידה מהבית</h1>
-            <div class="subtitle">מיינקראפט 🎮 רובלוקס 🎯 Python 🐍 בינה מלאכותית 🤖</div>
-            <p>הילד שלכם אוהב משחקי מחשב? מעולה. אצלנו הוא ילמד <strong>לבנות משחקים בעצמו</strong> — עם שפות תכנות אמיתיות שמשתמשים בהן בהייטק. מגיל 7, מהבית.</p>
-            <div class="hero-badge-group">
-                <div class="hero-badge">
-                    <div class="badge-title">📺 קורסים דיגיטליים</div>
-                    <div class="badge-sub">למידה עצמית • גישה לנצח</div>
+            <div class="hero-content">
+                <h1>קורס תכנות לילדים<br><span class="highlight">למידה מהבית — מגיל 7</span></h1>
+                <p class="hero-description">מיינקראפט 🎮 רובלוקס 🎯 Python 🐍 בינה מלאכותית 🤖<br>הילד שלכם ילמד לבנות משחקים בעצמו — עם שפות תכנות אמיתיות</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-cta btn-xl">
+                        <span>📋 השאירו פרטים</span>
+                    </a>
+                    <a target="_blank" href="https://wa.me/972533009742?text=%D7%94%D7%99%D7%99%2C%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%A0%D7%99%D7%9D%20%D7%91%D7%A7%D7%95%D7%A8%D7%A1%20%D7%AA%D7%9B%D7%A0%D7%95%D7%AA%20%D7%9C%D7%99%D7%9C%D7%93%D7%99%D7%9D" class="btn btn-outline btn-xl" onclick="if(typeof gtag!=='undefined')gtag('event','whatsapp_click');if(typeof gtag!=='undefined')gtag('event','whatsapp_clicked');">
+                        <span>💬 שלחו וואטסאפ</span>
+                    </a>
                 </div>
-                <div class="hero-badge">
-                    <div class="badge-title">👨‍💻 שיעורים פרטיים 1:1</div>
-                    <div class="badge-sub">מדריך אישי • בזום</div>
+                <p class="hero-microcopy">חוזרים אליכם תוך 24 שעות</p>
+                <div class="hero-benefits">
+                    <span>✅ ללא התחייבות</span>
+                    <span>👨‍💻 מדריכים מקצועיים</span>
+                    <span>🎯 תוכנית אישית</span>
                 </div>
-            </div>
-            <div class="hero-cta">
-                <a href="#contact" class="btn-primary">📋 השאירו פרטים</a>
-                <a target="_blank" href="https://wa.me/972533009742?text=%D7%94%D7%99%D7%99%2C%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%A0%D7%99%D7%9D%20%D7%91%D7%A7%D7%95%D7%A8%D7%A1%20%D7%AA%D7%9B%D7%A0%D7%95%D7%AA%20%D7%9C%D7%99%D7%9C%D7%93%D7%99%D7%9D" class="btn-secondary">💬 וואטסאפ</a>
-            </div>
-            <div class="trust-badges">
-                <div class="trust-badge">
-                    <div class="number">5,000+</div>
-                    <div class="label">ילדים שכבר למדו</div>
-                </div>
-                <div class="trust-badge">
-                    <div class="number">7-18</div>
-                    <div class="label">גילאים</div>
-                </div>
-                <div class="trust-badge">
-                    <div class="number">♾️</div>
-                    <div class="label">גישה לנצח</div>
-                </div>
-                <div class="trust-badge">
-                    <div class="number">2019</div>
-                    <div class="label">שנת הקמה</div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">5,000+</span>
+                        <span class="stat-label">בוגרים מרוצים</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">2019</span>
+                        <span class="stat-label">שנת הקמה</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">7-18</span>
+                        <span class="stat-label">גילאים</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+        <div class="hero-wave">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path fill="#f8fafc" d="M0,64 C480,150 960,-20 1440,64 L1440,120 L0,120 Z"></path>
+            </svg>
+        </div>
+    </header>
 
     <!-- Problem-Solution -->
     <section class="problem-section">
@@ -1407,5 +1415,17 @@
     </a>
 
     <script src="/js/analytics.js?v=20260314"></script>
+
+    <script>
+    // Force video play on mobile
+    const heroVideo = document.querySelector('.hero-video-bg video');
+    if (heroVideo) {
+        heroVideo.play().catch(function() {
+            document.addEventListener('touchstart', function() {
+                heroVideo.play();
+            }, {once: true});
+        });
+    }
+    </script>
 </body>
 </html>
