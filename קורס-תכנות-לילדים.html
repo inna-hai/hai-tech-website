@@ -921,90 +921,70 @@
         <div class="container">
             <h2>איזה קורס תכנות מתאים לילד שלכם?</h2>
             <p class="section-subtitle">בחרו לפי גיל ותחום עניין — כל המסלולים כוללים תמיכה מקצועית</p>
-            <div class="paths-grid">
-                <div class="path-card">
-                    <div class="path-header scratch">
-                        <div class="age-badge">גיל 7-10</div>
-                        <h3>🐱 סקראץ'</h3>
-                        <p>התחלה מושלמת לקטנים</p>
+            <div class="courses-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1.5rem; max-width:1200px; margin:3rem auto 0; padding:0 24px;">
+                <article class="course-card-mini">
+                    <div class="course-header-mini scratch">
+                        <img loading="lazy" src="images/courses/scratch-new.webp" alt="קורס סקראץ'" class="course-image">
+                        <div class="course-badge-mini">20 שיעורים</div>
                     </div>
-                    <div class="path-body">
-                        <ul>
-                            <li>תכנות עם בלוקים צבעוניים</li>
-                            <li>יצירת משחקים ואנימציות</li>
-                            <li>חשיבה לוגית ופתרון בעיות</li>
-                            <li>פרויקט משחק אישי</li>
-                            <li>בעברית מלאה</li>
-                        </ul>
+                    <div class="course-body-mini">
+                        <h3>🐱 תכנות בסקראץ'</h3>
+                        <p>תכנות עם בלוקים צבעוניים, יצירת משחקים ואנימציות. התחלה מושלמת!</p>
+                        <div class="course-meta-mini">
+                            <span class="age-tag">גיל 7-10</span>
+                            <span class="ai-badge" style="background:linear-gradient(135deg,#8b5cf6,#6366f1);color:white;padding:4px 10px;border-radius:12px;font-size:0.75rem;font-weight:600;">🤖 + AI</span>
+                        </div>
+                        <a href="/קורס-סקראץ-לילדים" class="btn-course-details">פרטים נוספים ←</a>
                     </div>
-                    <div class="path-price">
-                        <a href="/lms/course.html?id=scratch" class="btn-buy">לרכישת הקורס →</a>
-                        <a href="/קורס-סקראץ-לילדים" class="btn-details">לפרטים נוספים →</a>
-                    </div>
-                </div>
+                </article>
 
-                <div class="path-card">
-                    <div class="path-header minecraft">
-                        <div class="age-badge">גיל 8+</div>
-                        <h3>⛏️ מיינקראפט</h3>
-                        <p>תכנות JavaScript דרך המשחק</p>
+                <article class="course-card-mini">
+                    <div class="course-header-mini minecraft">
+                        <img loading="lazy" src="images/courses/mc-javascript.webp" alt="קורס מיינקראפט" class="course-image">
+                        <div class="course-badge-mini">16 שיעורים</div>
                     </div>
-                    <div class="path-body">
-                        <ul>
-                            <li>בניית מודים ופלאגינים אמיתיים</li>
-                            <li>לימוד JavaScript מאפס</li>
-                            <li>יצירת עולמות ואובייקטים</li>
-                            <li>פרויקט מוד אישי</li>
-                            <li>אפשרות למסלול Java מתקדם</li>
-                        </ul>
+                    <div class="course-body-mini">
+                        <h3>⛏️ מיינקראפט + JavaScript</h3>
+                        <p>בניית מודים ופלאגינים אמיתיים, לימוד JavaScript דרך המשחק האהוב.</p>
+                        <div class="course-meta-mini">
+                            <span class="age-tag">גיל 8+</span>
+                            <span class="ai-badge" style="background:linear-gradient(135deg,#8b5cf6,#6366f1);color:white;padding:4px 10px;border-radius:12px;font-size:0.75rem;font-weight:600;">🤖 + AI</span>
+                        </div>
+                        <a href="/חוג-מיינקראפט" class="btn-course-details">פרטים נוספים ←</a>
                     </div>
-                    <div class="path-price">
-                        <a href="/lms/course.html?id=minecraft-javascript" class="btn-buy">לרכישת הקורס →</a>
-                        <a href="/חוג-מיינקראפט" class="btn-details">לפרטים נוספים →</a>
-                    </div>
-                </div>
+                </article>
 
-                <div class="path-card">
-                    <div class="path-header roblox">
-                        <div class="age-badge">גיל 10+</div>
-                        <h3>🎮 רובלוקס</h3>
-                        <p>יצירת משחקים ב-Roblox Studio</p>
+                <article class="course-card-mini">
+                    <div class="course-header-mini roblox">
+                        <img loading="lazy" src="images/courses/roblox-new.webp" alt="קורס רובלוקס" class="course-image">
+                        <div class="course-badge-mini">12 שיעורים</div>
                     </div>
-                    <div class="path-body">
-                        <ul>
-                            <li>לימוד שפת Lua</li>
-                            <li>עיצוב ופיתוח משחקים</li>
-                            <li>פרסום משחק ברובלוקס</li>
-                            <li>עבודה עם Roblox Studio</li>
-                            <li>חברים מכל העולם ישחקו במשחק שלו!</li>
-                        </ul>
+                    <div class="course-body-mini">
+                        <h3>🎮 רובלוקס — פיתוח משחקים</h3>
+                        <p>לימוד שפת Lua, עיצוב ופרסום משחקים ב-Roblox Studio.</p>
+                        <div class="course-meta-mini">
+                            <span class="age-tag">גיל 10+</span>
+                            <span class="ai-badge" style="background:linear-gradient(135deg,#8b5cf6,#6366f1);color:white;padding:4px 10px;border-radius:12px;font-size:0.75rem;font-weight:600;">🤖 + AI</span>
+                        </div>
+                        <a href="/קורס-רובלוקס-לילדים" class="btn-course-details">פרטים נוספים ←</a>
                     </div>
-                    <div class="path-price">
-                        <a href="/lms/course.html?id=roblox-lua" class="btn-buy">לרכישת הקורס →</a>
-                        <a href="/קורס-רובלוקס-לילדים" class="btn-details">לפרטים נוספים →</a>
-                    </div>
-                </div>
+                </article>
 
-                <div class="path-card">
-                    <div class="path-header python">
-                        <div class="age-badge">גיל 10+</div>
-                        <h3>🐍 Python + AI</h3>
-                        <p>השפה #1 בהייטק ובינה מלאכותית</p>
+                <article class="course-card-mini">
+                    <div class="course-header-mini python">
+                        <img loading="lazy" src="images/courses/python-new.webp" alt="קורס Python + AI" class="course-image">
+                        <div class="course-badge-mini">14 שיעורים</div>
                     </div>
-                    <div class="path-body">
-                        <ul>
-                            <li>לימוד Python מאפס</li>
-                            <li>פרויקטים עם בינה מלאכותית</li>
-                            <li>ChatGPT וכלי AI מתקדמים</li>
-                            <li>פיתוח אפליקציות ובוטים</li>
-                            <li>הכנה מושלמת לקריירה בהייטק</li>
-                        </ul>
+                    <div class="course-body-mini">
+                        <h3>🐍 Python + בינה מלאכותית</h3>
+                        <p>לימוד Python, פרויקטים עם AI, ChatGPT ופיתוח אפליקציות.</p>
+                        <div class="course-meta-mini">
+                            <span class="age-tag">גיל 10+</span>
+                            <span class="ai-badge" style="background:linear-gradient(135deg,#8b5cf6,#6366f1);color:white;padding:4px 10px;border-radius:12px;font-size:0.75rem;font-weight:600;">🤖 + AI</span>
+                        </div>
+                        <a href="/לימוד-פייתון-לילדים" class="btn-course-details">פרטים נוספים ←</a>
                     </div>
-                    <div class="path-price">
-                        <a href="/lms/course.html?id=python-pygame" class="btn-buy">לרכישת הקורס →</a>
-                        <a href="/לימוד-פייתון-לילדים" class="btn-details">לפרטים נוספים →</a>
-                    </div>
-                </div>
+                </article>
             </div>
         </div>
     </section>
