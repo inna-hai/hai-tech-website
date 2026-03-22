@@ -998,52 +998,97 @@
     </section>
 
     <!-- More Courses -->
-    <section class="more-courses-section">
+    <section style="padding:60px 0; background:#f8fafc;">
         <div class="container">
             <h2>🎯 עוד קורסים</h2>
-            <div class="more-courses-grid">
-                <div class="mini-card">
-                    <div>
-                        <h3>🌐 פיתוח אתרים + AI</h3>
-                        <p>HTML, CSS, JavaScript ובינה מלאכותית. בונים אתר אמיתי! גיל 10+</p>
+            <div class="courses-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1.5rem; max-width:1200px; margin:2rem auto 0; padding:0 24px;">
+                <article class="course-card-mini">
+                    <div class="course-header-mini">
+                        <img loading="lazy" src="images/courses/ai-new.webp" alt="פיתוח אתרים + AI" class="course-image">
+                        <div class="course-badge-mini">14 שיעורים</div>
                     </div>
-                    <a href="/lms/course.html?id=web-dev-ai" class="btn-buy">לרכישת הקורס →</a>
-                </div>
-                <div class="mini-card">
-                    <div>
-                        <h3>🤖 בוטים ל-Discord</h3>
-                        <p>בניית בוטים חכמים לדיסקורד עם JavaScript ו-AI. גיל 12+</p>
+                    <div class="course-body-mini">
+                        <h3>פיתוח אתרים + AI</h3>
+                        <p>HTML, CSS, JavaScript ובינה מלאכותית. בונים אתר אמיתי!</p>
+                        <div class="course-meta-mini">
+                            <span class="age-tag">גיל 10+</span>
+                            <span class="ai-badge" style="background:linear-gradient(135deg,#8b5cf6,#6366f1);color:white;padding:4px 10px;border-radius:12px;font-size:0.75rem;font-weight:600;">🤖 + AI</span>
+                        </div>
+                        <a href="lms/course.html?id=web-dev-ai" class="btn-course-details">פרטים נוספים ←</a>
                     </div>
-                    <a href="/lms/course.html?id=discord-bots" class="btn-buy">לרכישת הקורס →</a>
-                </div>
-                <div class="mini-card">
-                    <div>
-                        <h3>⛏️ מיינקראפט: בניית עולמות</h3>
-                        <p>עיצוב ובנייה של עולמות מדהימים במיינקראפט. גיל 8+</p>
+                </article>
+                <article class="course-card-mini">
+                    <div class="course-header-mini">
+                        <img loading="lazy" src="images/courses/discord-new.webp" alt="בוטים ל-Discord" class="course-image">
+                        <div class="course-badge-mini">10 שיעורים</div>
                     </div>
-                    <a href="/lms/course.html?id=minecraft-worlds" class="btn-buy">לרכישת הקורס →</a>
-                </div>
-                <div class="mini-card">
-                    <div>
-                        <h3>☕ Minecraft Java Plugins</h3>
-                        <p>תכנות פלאגינים למיינקראפט עם Java — למתקדמים. גיל 12+</p>
+                    <div class="course-body-mini">
+                        <h3>בוטים ל-Discord</h3>
+                        <p>בניית בוטים חכמים לדיסקורד עם JavaScript ו-AI.</p>
+                        <div class="course-meta-mini">
+                            <span class="age-tag">גיל 12+</span>
+                            <span class="ai-badge" style="background:linear-gradient(135deg,#8b5cf6,#6366f1);color:white;padding:4px 10px;border-radius:12px;font-size:0.75rem;font-weight:600;">🤖 + AI</span>
+                        </div>
+                        <a href="lms/course.html?id=discord-bots" class="btn-course-details">פרטים נוספים ←</a>
                     </div>
-                    <a href="/lms/course.html?id=minecraft-java-plugins" class="btn-buy">לרכישת הקורס →</a>
-                </div>
-                <div class="mini-card">
-                    <div>
-                        <h3>🎨 קאנבה + AI</h3>
-                        <p>עיצוב גרפי עם Canva ובינה מלאכותית. גיל 8+</p>
+                </article>
+                <article class="course-card-mini">
+                    <div class="course-header-mini">
+                        <img loading="lazy" src="images/courses/mc-worlds.webp" alt="מיינקראפט בניית עולמות" class="course-image">
+                        <div class="course-badge-mini">12 שיעורים</div>
                     </div>
-                    <a href="/lms/course.html?id=canva-ai" class="btn-buy">לרכישת הקורס →</a>
-                </div>
-                <div class="mini-card">
-                    <div>
-                        <h3>🖨️ הדפסת תלת מימד</h3>
-                        <p>עיצוב ותכנון מודלים תלת מימדיים. גיל 8+</p>
+                    <div class="course-body-mini">
+                        <h3>מיינקראפט: בניית עולמות</h3>
+                        <p>עיצוב ובנייה של עולמות מדהימים במיינקראפט.</p>
+                        <div class="course-meta-mini">
+                            <span class="age-tag">גיל 8+</span>
+                        </div>
+                        <a href="lms/course.html?id=minecraft-worlds" class="btn-course-details">פרטים נוספים ←</a>
                     </div>
-                    <a href="/lms/course.html?id=3d-printing" class="btn-buy">לרכישת הקורס →</a>
-                </div>
+                </article>
+                <article class="course-card-mini">
+                    <div class="course-header-mini">
+                        <img loading="lazy" src="images/courses/java-new.webp" alt="Minecraft Java Plugins" class="course-image">
+                        <div class="course-badge-mini">12 שיעורים</div>
+                    </div>
+                    <div class="course-body-mini">
+                        <h3>Minecraft Java Plugins</h3>
+                        <p>תכנות פלאגינים למיינקראפט עם Java — למתקדמים.</p>
+                        <div class="course-meta-mini">
+                            <span class="age-tag">גיל 12+</span>
+                        </div>
+                        <a href="lms/course.html?id=minecraft-java-plugins" class="btn-course-details">פרטים נוספים ←</a>
+                    </div>
+                </article>
+                <article class="course-card-mini">
+                    <div class="course-header-mini">
+                        <img loading="lazy" src="images/courses/canva.webp" alt="קאנבה + AI" class="course-image">
+                        <div class="course-badge-mini">10 שיעורים</div>
+                    </div>
+                    <div class="course-body-mini">
+                        <h3>קאנבה + AI</h3>
+                        <p>עיצוב גרפי עם Canva ובינה מלאכותית.</p>
+                        <div class="course-meta-mini">
+                            <span class="age-tag">גיל 8+</span>
+                            <span class="ai-badge" style="background:linear-gradient(135deg,#8b5cf6,#6366f1);color:white;padding:4px 10px;border-radius:12px;font-size:0.75rem;font-weight:600;">🤖 + AI</span>
+                        </div>
+                        <a href="lms/course.html?id=canva-ai" class="btn-course-details">פרטים נוספים ←</a>
+                    </div>
+                </article>
+                <article class="course-card-mini">
+                    <div class="course-header-mini">
+                        <img loading="lazy" src="images/courses/3d-print.webp" alt="הדפסת תלת מימד" class="course-image">
+                        <div class="course-badge-mini">10 שיעורים</div>
+                    </div>
+                    <div class="course-body-mini">
+                        <h3>הדפסת תלת מימד</h3>
+                        <p>עיצוב ותכנון מודלים תלת מימדיים.</p>
+                        <div class="course-meta-mini">
+                            <span class="age-tag">גיל 8+</span>
+                        </div>
+                        <a href="lms/course.html?id=3d-printing" class="btn-course-details">פרטים נוספים ←</a>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
