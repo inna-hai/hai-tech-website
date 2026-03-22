@@ -46,7 +46,7 @@
         "inLanguage": "he",
         "offers": {
             "@type": "Offer",
-            "price": "290",
+            "price": "497",
             "priceCurrency": "ILS",
             "availability": "https://schema.org/InStock"
         }
@@ -94,21 +94,20 @@
     
     <style>
         .landing-hero {
-            background: linear-gradient(135deg, #e11d48 0%, #be123c 50%, #f43f5e 100%);
-            padding: 120px 0 80px;
+            background: url('/images/courses/roblox-hero.png') center/cover no-repeat;
+            position: relative;
+            padding: 140px 0 100px;
             color: white;
             text-align: center;
-            position: relative;
             overflow: hidden;
         }
         .landing-hero::before {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='10'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.5;
-            pointer-events: none;
+            background: linear-gradient(180deg, rgba(15,23,42,0.7) 0%, rgba(15,23,42,0.6) 50%, rgba(15,23,42,0.8) 100%);
         }
+        .landing-hero .container { position: relative; z-index: 1; }
         .landing-hero h1 {
             font-size: clamp(2.5rem, 6vw, 4rem);
             font-weight: 900;
@@ -208,8 +207,15 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.12);
         }
         .benefit-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 1rem;
+        }
+        .benefit-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
         }
         .benefit-card h3 {
             font-size: 1.4rem;
@@ -461,32 +467,32 @@
             <p class="section-subtitle">הפכו את הזמן שהילדים מבלים ברובלוקס להשקעה בעתיד</p>
             <div class="benefits-grid">
                 <div class="benefit-card">
-                    <div class="benefit-icon">🎯</div>
+                    <div class="benefit-icon"><img src="/images/icons/gamer-to-creator.png" alt="מגיימר ליוצר" loading="lazy"></div>
                     <h3>מגיימר ליוצר</h3>
                     <p>במקום רק לשחק במשחקים של אחרים, הילד ייצור משחקים משלו שאחרים ישחקו בהם!</p>
                 </div>
                 <div class="benefit-card">
-                    <div class="benefit-icon">💰</div>
+                    <div class="benefit-icon"><img src="/images/icons/earn-money.png" alt="אפשר להרוויח" loading="lazy"></div>
                     <h3>אפשר להרוויח</h3>
                     <p>מפתחי רובלוקס מרוויחים כסף אמיתי מהמשחקים שלהם. יש ילדים שהרוויחו אלפי דולרים!</p>
                 </div>
                 <div class="benefit-card">
-                    <div class="benefit-icon">🔧</div>
+                    <div class="benefit-icon"><img src="/images/icons/pro-tools.png" alt="כלים מקצועיים" loading="lazy"></div>
                     <h3>כלים מקצועיים</h3>
                     <p>Roblox Studio הוא הכלי האמיתי שבו נוצרים כל המשחקים הפופולריים בפלטפורמה.</p>
                 </div>
                 <div class="benefit-card">
-                    <div class="benefit-icon">💻</div>
+                    <div class="benefit-icon"><img src="/images/icons/lua-code.png" alt="תכנות Lua" loading="lazy"></div>
                     <h3>תכנות Lua אמיתי</h3>
                     <p>לא רק בלוקים - לומדים שפת תכנות אמיתית שמשמשת גם במשחקים מקצועיים.</p>
                 </div>
                 <div class="benefit-card">
-                    <div class="benefit-icon">🌍</div>
+                    <div class="benefit-icon"><img src="/images/icons/publish-world.png" alt="פרסום לעולם" loading="lazy"></div>
                     <h3>פרסום לעולם</h3>
                     <p>המשחק שהילד יוצר יכול להגיע למיליוני שחקנים מכל העולם - תוך דקות!</p>
                 </div>
                 <div class="benefit-card">
-                    <div class="benefit-icon">👨‍💻</div>
+                    <div class="benefit-icon"><img src="/images/icons/roblox-instructor.png" alt="מדריכים מהתעשייה" loading="lazy"></div>
                     <h3>מדריכים מהתעשייה</h3>
                     <p>המדריכים שלנו הם מפתחי רובלוקס פעילים עם משחקים שפורסמו בפלטפורמה.</p>
                 </div>
