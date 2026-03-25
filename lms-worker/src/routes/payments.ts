@@ -213,6 +213,24 @@ paymentRoutes.post('/create-link', async (c) => {
       }
     }
 
+    // Fire-and-forget: send lead to CRM before payment
+    try {
+      const leadBody: any = {
+        name: `${firstName} ${lastName || ''}`.trim(),
+        email,
+        phone: phone || undefined,
+        interest: courseName || 'רכישה',
+        source: 'purchase-form',
+        message: `רכישה: ${courseName || 'מוצר'}` + (couponCode ? ` (קופון: ${couponCode})` : ''),
+      };
+      fetch('https://crm.orma-ai.com/api/webhook/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-api-key': 'haitech-crm-api-key-2026' },
+        body: JSON.stringify(leadBody),
+      }).catch(() => {});
+      console.log(`[PAYMENT-LEAD] Sent to CRM: ${firstName} (${email})`);
+    } catch {}
+
     const order = await createWooOrder({
       env: c.env,
       firstName, lastName: lastName || '', email, phone,
@@ -336,6 +354,23 @@ paymentRoutes.post('/create-payment/:courseId', async (c) => {
         wooCouponCode = couponCode;
       }
     }
+
+    // Fire-and-forget: send lead to CRM before payment
+    try {
+      const leadBody: any = {
+        name: userName || 'לקוח',
+        email: userEmail,
+        interest: course.title,
+        source: 'purchase-form',
+        message: `רכישת קורס: ${course.title}` + (couponCode ? ` (קופון: ${couponCode})` : ''),
+      };
+      fetch('https://crm.orma-ai.com/api/webhook/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-api-key': 'haitech-crm-api-key-2026' },
+        body: JSON.stringify(leadBody),
+      }).catch(() => {});
+      console.log(`[PAYMENT-LEAD] Sent to CRM: ${userName} (${userEmail}) — ${course.title}`);
+    } catch {}
 
     const nameParts = (userName || '').split(' ');
     const order = await createWooOrder({
