@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>שאלות ותשובות על קורסי תכנות לילדים — כל מה שהורים צריכים לדעת | דרך ההייטק</title>
+    <meta name="description" content="מדריך מקיף עם תשובות לכל השאלות הנפוצות של הורים על קורסי תכנות לילדים: מאיזה גיל, כמה עולה, האם צריך ידע קודם, מה ילמדו, האם זה שווה, ועוד.">
+    <meta name="keywords" content="קורסי תכנות לילדים, שאלות ותשובות תכנות ילדים, לימודי תכנות לילדים, קורס מחשבים לילדים, גיל מומלץ לתכנות, דרך ההייטק">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hai.tech/blog/coding-courses-faq">
+    <meta property="og:title" content="שאלות ותשובות על קורסי תכנות לילדים — כל מה שהורים צריכים לדעת">
+    <meta property="og:description" content="מדריך מקיף עם תשובות ל-20+ שאלות נפוצות של הורים על קורסי תכנות לילדים.">
+    <meta property="og:locale" content="he_IL">
+    <link rel="canonical" href="https://hai.tech/blog/coding-courses-faq">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/jpeg" href="../images/brand/logo.webp">
+    
+    <style>
+        .blog-hero { background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #3b82f6 100%); padding: 120px 20px 60px; color: white; text-align: center; }
+        .blog-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; max-width: 800px; margin: 0 auto 1rem; }
+        .blog-hero .subtitle { font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+        .blog-content { max-width: 800px; margin: 0 auto; padding: 60px 20px; font-size: 1.1rem; line-height: 1.9; color: #333; }
+        .blog-content h2 { color: #6366f1; font-size: 1.6rem; margin: 2.5rem 0 1rem; font-weight: 700; }
+        .blog-content h3 { color: #4f46e5; font-size: 1.3rem; margin: 1.5rem 0 0.75rem; }
+        .blog-content p { margin-bottom: 1.25rem; }
+        .blog-content ul, .blog-content ol { margin: 1rem 0 1.5rem 1.5rem; }
+        .blog-content li { margin-bottom: 0.5rem; }
+        .highlight-box { background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%); border-right: 4px solid #8b5cf6; padding: 25px; border-radius: 12px; margin: 2rem 0; }
+        .tip-box { background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); border-right: 4px solid #10b981; padding: 25px; border-radius: 12px; margin: 2rem 0; }
+        .warning-box { background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-right: 4px solid #f59e0b; padding: 25px; border-radius: 12px; margin: 2rem 0; }
+        .faq-item { background: #f8fafc; border-radius: 12px; margin: 1.5rem 0; overflow: hidden; border: 1px solid #e2e8f0; }
+        .faq-q { font-weight: 700; color: #1e293b; padding: 20px 25px; font-size: 1.15rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .faq-q::after { content: '+'; font-size: 1.5rem; color: #8b5cf6; font-weight: 300; transition: transform 0.3s; }
+        .faq-item.open .faq-q::after { transform: rotate(45deg); }
+        .faq-a { padding: 0 25px 20px; color: #475569; line-height: 1.8; display: none; }
+        .faq-item.open .faq-a { display: block; }
+        .age-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; border-radius: 12px; overflow: hidden; }
+        .age-table th { background: #6366f1; color: white; padding: 12px 16px; text-align: right; font-weight: 600; }
+        .age-table td { padding: 12px 16px; border-bottom: 1px solid #e2e8f0; }
+        .age-table tr:nth-child(even) { background: #f8fafc; }
+        .cta-section { background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%); color: white; padding: 50px 20px; text-align: center; border-radius: 16px; margin: 3rem 0; }
+        .cta-section h2 { color: white; }
+        .cta-section .btn { display: inline-block; background: white; color: #6366f1; padding: 15px 35px; border-radius: 30px; text-decoration: none; font-weight: 700; margin: 0.5rem; transition: transform 0.3s; }
+        .cta-section .btn:hover { transform: scale(1.05); }
+        .blog-meta { display: flex; gap: 1.5rem; justify-content: center; align-items: center; margin-top: 1rem; font-size: 0.95rem; opacity: 0.85; }
+        .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: #6366f1; text-decoration: none; font-weight: 600; margin-bottom: 2rem; }
+        .back-link:hover { text-decoration: underline; }
+        .toc { background: #f8fafc; border-radius: 12px; padding: 25px; margin: 2rem 0; }
+        .toc h3 { margin-top: 0; color: #6366f1; }
+        .toc ul { list-style: none; margin: 0; padding: 0; }
+        .toc li { padding: 6px 0; }
+        .toc a { color: #475569; text-decoration: none; }
+        .toc a:hover { color: #6366f1; text-decoration: underline; }
+    </style>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "מאיזה גיל אפשר להתחיל ללמוד תכנות?",
+                "acceptedAnswer": { "@type": "Answer", "text": "אפשר להתחיל כבר מגיל 7 עם שפות ויזואליות כמו Scratch. מגיל 9-10 ילדים יכולים לעבור לשפות אמיתיות כמו JavaScript דרך מיינקראפט או Lua דרך רובלוקס. מגיל 12 אפשר ללמוד Python ושפות מתקדמות יותר. בדרך ההייטק יש קורסים מותאמים לכל קבוצת גיל." }
+            },
+            {
+                "@type": "Question",
+                "name": "כמה עולה קורס תכנות לילדים?",
+                "acceptedAnswer": { "@type": "Answer", "text": "בדרך ההייטק קורסים דיגיטליים עולים ₪497 עם גישה לנצח. שיעורים פרטיים 1 על 1 עם מדריך מהייטק מתחילים מ-₪156 ל-45 דקות. לעומת מתחרים שגובים ₪200-400 לחודש, קורס חד-פעמי חוסך אלפי שקלים בטווח הארוך." }
+            },
+            {
+                "@type": "Question",
+                "name": "האם הילד צריך ידע קודם בתכנות או מחשבים?",
+                "acceptedAnswer": { "@type": "Answer", "text": "בכלל לא. כל הקורסים בדרך ההייטק מתחילים מאפס ומלווים בשיעורי וידאו בעברית צעד אחר צעד. הילד רק צריך לדעת לקרוא ולהשתמש בעכבר ומקלדת." }
+            },
+            {
+                "@type": "Question",
+                "name": "תכנות לילדים — זה באמת שווה?",
+                "acceptedAnswer": { "@type": "Answer", "text": "בהחלט. תכנות מפתח חשיבה לוגית, יצירתיות ופתרון בעיות — מיומנויות שרלוונטיות לכל תחום. מחקרים מראים שילדים שלומדים תכנות משפרים את הציונים גם במתמטיקה ובמדעים. בנוסף, מקצועות הטכנולוגיה הם המבוקשים ביותר בשוק העבודה." }
+            },
+            {
+                "@type": "Question",
+                "name": "מה עדיף — קורס אונליין או חוג פרונטלי?",
+                "acceptedAnswer": { "@type": "Answer", "text": "לשניהם יתרונות. קורס אונליין מאפשר ללמוד בקצב אישי, מכל מקום, בכל שעה, ובמחיר נמוך יותר. חוג פרונטלי מציע אינטראקציה ישירה. בדרך ההייטק הקורסים אונליין עם תמיכה אישית בוואטסאפ ואפשרות לשיעורים פרטיים בזום." }
+            },
+            {
+                "@type": "Question",
+                "name": "איזה שפת תכנות הכי מתאימה לילד שלי?",
+                "acceptedAnswer": { "@type": "Answer", "text": "תלוי בגיל ובתחומי העניין: Scratch לגילאי 7-9, JavaScript דרך מיינקראפט לגילאי 9-12, Lua דרך רובלוקס לגילאי 9-14, Python לגילאי 12+. הכלל: להתחיל ממה שהילד אוהב — אם הוא משחק מיינקראפט, קורס מיינקראפט. אם רובלוקס — קורס רובלוקס." }
+            },
+            {
+                "@type": "Question",
+                "name": "כמה זמן לוקח ללמוד תכנות?",
+                "acceptedAnswer": { "@type": "Answer", "text": "ילד יכול לבנות את המשחק הראשון שלו תוך שבועות ספורים. קורס שלם בדרך ההייטק כולל 12-16 שיעורים, ואפשר לסיים אותו תוך 2-3 חודשים בקצב נוח. הגישה לקורס היא לנצח, אז אין לחץ." }
+            },
+            {
+                "@type": "Question",
+                "name": "האם תכנות מתאים גם לילדים עם קשיי קשב וריכוז?",
+                "acceptedAnswer": { "@type": "Answer", "text": "דווקא כן! ילדים עם ADHD לעתים מצליחים מאוד בתכנות כי הם מקבלים פידבק מיידי — הם כותבים קוד ורואים תוצאה מיד. למידה עצמית בקצב אישי מאפשרת להם לקחת הפסקות ולחזור כשנוח, בלי לחץ." }
+            },
+            {
+                "@type": "Question",
+                "name": "מה ההבדל בין תכנות לרובוטיקה?",
+                "acceptedAnswer": { "@type": "Answer", "text": "רובוטיקה משלבת תכנות עם חומרה פיזית (רובוטים, חיישנים). תכנות מתמקד בבניית תוכנה — משחקים, אפליקציות, אתרים. שניהם מפתחים חשיבה לוגית, אבל תכנות נגיש יותר (צריך רק מחשב) ופותח יותר דלתות בשוק העבודה." }
+            },
+            {
+                "@type": "Question",
+                "name": "האם יש תעודה בסוף הקורס?",
+                "acceptedAnswer": { "@type": "Answer", "text": "בדרך ההייטק הדגש הוא על הידע והפרויקטים בפועל, לא על תעודות. בסוף כל קורס הילד יוצא עם פרויקט אמיתי — משחק, אפליקציה, מוד למיינקראפט או עולם ברובלוקס — שהוא יכול להראות ולהתגאות בו." }
+            }
+        ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "שאלות ותשובות על קורסי תכנות לילדים — כל מה שהורים צריכים לדעת",
+        "description": "מדריך מקיף עם תשובות לכל השאלות הנפוצות של הורים על קורסי תכנות לילדים ונוער.",
+        "author": { "@type": "Organization", "name": "דרך ההייטק", "url": "https://hai.tech" },
+        "publisher": { "@type": "Organization", "name": "דרך ההייטק", "logo": { "@type": "ImageObject", "url": "https://hai.tech/images/brand/logo.webp" } },
+        "datePublished": "2026-03-26",
+        "dateModified": "2026-03-26",
+        "mainEntityOfPage": "https://hai.tech/blog/coding-courses-faq"
+    }
+    </script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="/" class="logo">
+                <img src="../images/brand/logo-haitech-transparent.webp" alt="דרך ההייטק — לוגו" height="40">
+            </a>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="תפריט">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/#courses">הקורסים שלנו</a></li>
+                <li><a href="/blog">הבלוג</a></li>
+                <li><a href="/קורס-תכנות-לילדים">קורס תכנות לילדים</a></li>
+                <li><a href="https://wa.me/972533009742" target="_blank" class="nav-cta">💬 וואטסאפ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="blog-hero">
+        <h1>❓ שאלות ותשובות על קורסי תכנות לילדים</h1>
+        <p class="subtitle">כל מה שהורים צריכים לדעת לפני שבוחרים קורס תכנות לילד — מדריך מקיף עם תשובות כנות</p>
+        <div class="blog-meta">
+            <span>📅 מרץ 2026</span>
+            <span>⏱️ 10 דקות קריאה</span>
+            <span>👨‍👩‍👧‍👦 מדריך להורים</span>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <article class="blog-content">
+        <a href="/blog" class="back-link">→ חזרה לבלוג</a>
+
+        <p>חשבתם לרשום את הילד לקורס תכנות אבל לא בטוחים אם זה מתאים? לא יודעים מאיזה גיל להתחיל? מתלבטים בין קורס אונליין לחוג?</p>
+        
+        <p>אספנו את <strong>כל השאלות שהורים שואלים אותנו</strong> בדרך ההייטק — ונתנו תשובות כנות ומפורטות. בלי שיווק, בלי סיסמאות. רק מה שאתם באמת צריכים לדעת.</p>
+
+        <!-- TOC -->
+        <div class="toc">
+            <h3>📋 תוכן עניינים</h3>
+            <ul>
+                <li><a href="#basics">🔰 שאלות בסיסיות — התחלה</a></li>
+                <li><a href="#age">👶 גיל ומתאימות</a></li>
+                <li><a href="#what-learn">📚 מה לומדים בפועל?</a></li>
+                <li><a href="#online-vs">💻 אונליין מול פרונטלי</a></li>
+                <li><a href="#cost">💰 עלויות ותמורה</a></li>
+                <li><a href="#concerns">😟 חששות נפוצים</a></li>
+                <li><a href="#choosing">🎯 איך בוחרים קורס?</a></li>
+            </ul>
+        </div>
+
+        <!-- Section 1: Basics -->
+        <h2 id="basics">🔰 שאלות בסיסיות — לפני שמתחילים</h2>
+
+        <div class="faq-item open">
+            <div class="faq-q">מה זה בעצם "תכנות לילדים"?</div>
+            <div class="faq-a">
+                <p>תכנות לילדים זה לימוד ליצור דברים עם מחשב — משחקים, אנימציות, אפליקציות, רובוטים ועוד. במקום רק לצרוך תוכן (לצפות ביוטיוב, לשחק משחקים), הילד לומד <strong>ליצור</strong> תוכן.</p>
+                <p>בגילאים צעירים זה נעשה דרך כלים ויזואליים (גרירת בלוקים צבעוניים), ובגילאים מבוגרים יותר — דרך כתיבת קוד אמיתי בשפות כמו Python, JavaScript ו-Lua.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">האם הילד שלי צריך ידע קודם?</div>
+            <div class="faq-a">
+                <p><strong>בכלל לא.</strong> כל הקורסים בדרך ההייטק מתחילים מאפס מוחלט. הילד צריך לדעת לקרוא עברית ולהשתמש בעכבר ומקלדת — זה הכל.</p>
+                <p>כל שיעור כולל וידאו בעברית עם הסברים צעד אחר צעד, אז גם ילד שמעולם לא תכנת יכול להתחיל מיד.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">תכנות לילדים — זה באמת שווה את זה?</div>
+            <div class="faq-a">
+                <p><strong>בהחלט.</strong> תכנות מפתח מיומנויות שרלוונטיות לכל תחום בחיים:</p>
+                <ul>
+                    <li>🧠 <strong>חשיבה לוגית</strong> — פירוק בעיות לשלבים</li>
+                    <li>🎨 <strong>יצירתיות</strong> — עיצוב משחקים ועולמות</li>
+                    <li>💪 <strong>התמדה</strong> — ניסוי וטעייה עד שזה עובד</li>
+                    <li>🤝 <strong>ביטחון עצמי</strong> — "אני בניתי את זה!"</li>
+                </ul>
+                <p>מחקרים מראים שילדים שלומדים תכנות משפרים ציונים במתמטיקה ובמדעים. ומעבר לזה — מקצועות הטכנולוגיה הם המבוקשים והמשתלמים ביותר בשוק העבודה.</p>
+            </div>
+        </div>
+
+        <!-- Section 2: Age -->
+        <h2 id="age">👶 גיל ומתאימות</h2>
+
+        <div class="faq-item">
+            <div class="faq-q">מאיזה גיל אפשר להתחיל ללמוד תכנות?</div>
+            <div class="faq-a">
+                <p>אפשר להתחיל <strong>כבר מגיל 7</strong>. הסוד הוא להתאים את הכלי לגיל:</p>
+                <table class="age-table">
+                    <tr><th>גיל</th><th>שפה/כלי</th><th>מה בונים?</th></tr>
+                    <tr><td>7-9</td><td>Scratch</td><td>משחקים, אנימציות, סיפורים אינטראקטיביים</td></tr>
+                    <tr><td>9-12</td><td>JavaScript (מיינקראפט)</td><td>מודים ורובוטים במיינקראפט</td></tr>
+                    <tr><td>9-14</td><td>Lua (רובלוקס)</td><td>משחקים ועולמות ברובלוקס</td></tr>
+                    <tr><td>12+</td><td>Python</td><td>משחקים, בוטים, בינה מלאכותית</td></tr>
+                    <tr><td>14+</td><td>Web Dev, Java</td><td>אתרים, אפליקציות, תוספים</td></tr>
+                </table>
+                <p>בדרך ההייטק יש קורסים מותאמים לכל קבוצת גיל, אז כל ילד מתחיל בדיוק ברמה הנכונה.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">הילד שלי בן 7 — לא קטן מדי?</div>
+            <div class="faq-a">
+                <p>לא! גיל 7 זה גיל מעולה להתחיל עם <strong>Scratch</strong> — שפה ויזואלית שבה הילד גורר בלוקים צבעוניים במקום לכתוב קוד. זה כמו לגו דיגיטלי — מהנה, אינטואיטיבי, ומפתח חשיבה לוגית בלי תסכול.</p>
+                <p>ילדים בגיל הזה בדרך כלל מופתעים כמה מהר הם מצליחים לבנות משחק ראשון.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">הילד שלי בן 15 — מאוחר מדי?</div>
+            <div class="faq-a">
+                <p><strong>בטח שלא!</strong> גיל 15 זה דווקא גיל מעולה — הילד כבר בוגר מספיק ללמוד שפות מתקדמות כמו Python, פיתוח אתרים, ואפילו בינה מלאכותית. רבים מהמתכנתים המצליחים בעולם התחילו בגיל הזה או אפילו מאוחר יותר.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">האם תכנות מתאים גם לבנות?</div>
+            <div class="faq-a">
+                <p><strong>בהחלט!</strong> תכנות לא שייך לשום מגדר. בדרך ההייטק יש הרבה בנות שלומדות ומצליחות לא פחות (ולפעמים יותר!) מבנים. חברות כמו גוגל, מיקרוסופט ואפל מעסיקות אלפי מתכנתות, ותעשיית ההייטק פועלת בפעילות רבה להגדיל את מספר הנשים בתחום.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">האם תכנות מתאים לילדים עם קשיי קשב (ADHD)?</div>
+            <div class="faq-a">
+                <p><strong>דווקא כן!</strong> ילדים עם ADHD הרבה פעמים <strong>מצליחים מאוד</strong> בתכנות. למה?</p>
+                <ul>
+                    <li>🎯 <strong>פידבק מיידי</strong> — כותבים קוד, רואים תוצאה מיד</li>
+                    <li>🎮 <strong>מעניין</strong> — בונים משחקים, לא מאזינים להרצאות</li>
+                    <li>⏸️ <strong>בקצב שלהם</strong> — אפשר לעצור, לקחת הפסקה, לחזור</li>
+                    <li>🏆 <strong>תחושת הישג</strong> — כל שלב שמסיימים זה ניצחון</li>
+                </ul>
+                <p>למידה עצמית בבית, בלי כיתה ובלי לחץ, היא לפעמים הדרך הכי טובה לילדים עם קשיי ריכוז.</p>
+            </div>
+        </div>
+
+        <!-- Section 3: What do they learn -->
+        <h2 id="what-learn">📚 מה לומדים בפועל?</h2>
+
+        <div class="faq-item">
+            <div class="faq-q">מה הילד שלי ילמד בקורס תכנות?</div>
+            <div class="faq-a">
+                <p>תלוי בקורס, אבל הילד תמיד יצא עם <strong>פרויקט אמיתי</strong> שהוא בנה בעצמו:</p>
+                <ul>
+                    <li>🎮 <strong>Scratch</strong> — משחק פלטפורמה, אנימציה, סיפור אינטראקטיבי</li>
+                    <li>⛏️ <strong>מיינקראפט</strong> — מודים, רובוטים שבונים אוטומטית, עולמות מותאמים</li>
+                    <li>🌍 <strong>רובלוקס</strong> — משחק שלם שאפשר לפרסם ושאחרים ישחקו בו</li>
+                    <li>🐍 <strong>Python</strong> — משחקים, בוטים לדיסקורד, כלי AI</li>
+                </ul>
+                <p>מעבר לפרויקטים, הילד לומד עקרונות שנכונים לכל שפת תכנות: משתנים, לולאות, תנאים, פונקציות — המיומנויות שמתכנתים אמיתיים משתמשים בהם כל יום.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">איזה שפת תכנות הכי מתאימה לילד שלי?</div>
+            <div class="faq-a">
+                <p>הכלל הפשוט: <strong>להתחיל ממה שהילד אוהב.</strong></p>
+                <div class="highlight-box">
+                    <p>🎮 <strong>משחק מיינקראפט?</strong> → קורס מיינקראפט (JavaScript)</p>
+                    <p>🌍 <strong>משחק רובלוקס?</strong> → קורס רובלוקס (Lua)</p>
+                    <p>🧩 <strong>אוהב ליצור?</strong> → Scratch (לקטנים) או Python (לגדולים)</p>
+                    <p>🤖 <strong>מתעניין ב-AI?</strong> → Python + בינה מלאכותית</p>
+                </div>
+                <p>כשילד לומד דרך משהו שהוא כבר אוהב, המוטיבציה שלו גבוהה פי כמה.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">כמה זמן לוקח לסיים קורס?</div>
+            <div class="faq-a">
+                <p>קורס בדרך ההייטק כולל בדרך כלל <strong>12-16 שיעורי וידאו</strong>. בקצב של 2-3 שיעורים בשבוע, אפשר לסיים תוך <strong>חודש-חודשיים</strong>.</p>
+                <p>אבל אין לחץ — הגישה לקורס היא <strong>לנצח</strong>. הילד יכול ללמוד בקצב שלו, לחזור על שיעורים, לעצור ולהמשיך מתי שנוח.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">מה ההבדל בין תכנות לרובוטיקה?</div>
+            <div class="faq-a">
+                <p><strong>רובוטיקה</strong> = תכנות + חומרה פיזית (רובוטים, חיישנים, מנועים).</p>
+                <p><strong>תכנות</strong> = בניית תוכנה — משחקים, אפליקציות, אתרים, בוטים.</p>
+                <p>שניהם מעולים, אבל תכנות <strong>נגיש יותר</strong> (צריך רק מחשב), <strong>זול יותר</strong> (לא צריך לקנות ערכות), ו<strong>פותח יותר דלתות</strong> בשוק העבודה. רוב מקצועות ההייטק הם תכנות, לא רובוטיקה.</p>
+            </div>
+        </div>
+
+        <!-- Section 4: Online vs In-person -->
+        <h2 id="online-vs">💻 אונליין מול פרונטלי</h2>
+
+        <div class="faq-item">
+            <div class="faq-q">מה עדיף — קורס אונליין או חוג פרונטלי?</div>
+            <div class="faq-a">
+                <table class="age-table">
+                    <tr><th></th><th>קורס אונליין</th><th>חוג פרונטלי</th></tr>
+                    <tr><td>⏰ זמן</td><td>בכל שעה שנוחה</td><td>יום וזמן קבועים</td></tr>
+                    <tr><td>🏠 מיקום</td><td>מהבית</td><td>צריך להגיע פיזית</td></tr>
+                    <tr><td>💰 מחיר</td><td>₪497 חד-פעמי</td><td>₪200-400 לחודש</td></tr>
+                    <tr><td>⏩ קצב</td><td>אישי — מהיר או לאט</td><td>קצב הקבוצה</td></tr>
+                    <tr><td>🔄 חזרה</td><td>אפשר לחזור על כל שיעור</td><td>השיעור עבר</td></tr>
+                    <tr><td>🤝 חברתי</td><td>פחות אינטראקציה</td><td>חברים בכיתה</td></tr>
+                </table>
+                <p>בדרך ההייטק הקורסים אונליין עם <strong>תמיכה אישית בוואטסאפ</strong> — ככה מקבלים את היתרונות של שניהם.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">מה ההבדל בין למידה עצמית לשיעור פרטי?</div>
+            <div class="faq-a">
+                <p>בדרך ההייטק יש שני מסלולים:</p>
+                <div class="highlight-box">
+                    <p>📹 <strong>קורס למידה עצמית (₪497)</strong> — שיעורי וידאו בעברית, תרגילים, פרויקטים, תמיכה בוואטסאפ. הילד לומד בקצב שלו עם גישה לנצח.</p>
+                    <p>👨‍🏫 <strong>שיעור פרטי VIP (מ-₪156/45 דק׳)</strong> — מדריך אישי מהייטק בזום, 1 על 1. מותאם בדיוק לילד — לקצב שלו, לרמה שלו, לתחומי העניין שלו.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Cost -->
+        <h2 id="cost">💰 עלויות ותמורה</h2>
+
+        <div class="faq-item">
+            <div class="faq-q">כמה עולה קורס תכנות לילדים?</div>
+            <div class="faq-a">
+                <p>בדרך ההייטק:</p>
+                <ul>
+                    <li>📹 <strong>קורס דיגיטלי:</strong> ₪497 (חד-פעמי, גישה לנצח)</li>
+                    <li>👨‍🏫 <strong>שיעור פרטי:</strong> מ-₪156 ל-45 דקות</li>
+                </ul>
+                <p>לעומת חוגי תכנות פרונטליים שעולים ₪200-400 <strong>לחודש</strong>, קורס חד-פעמי חוסך אלפי שקלים. ובניגוד לחוג — הגישה לחומרים היא לנצח.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">האם יש שיעור ניסיון חינמי?</div>
+            <div class="faq-a">
+                <p>כן! בכל קורס בדרך ההייטק <strong>השיעור הראשון חינמי</strong> — אפשר להיכנס, לצפות, ולהחליט אם זה מתאים לפני שמשלמים.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">מה אני מקבלת על הכסף?</div>
+            <div class="faq-a">
+                <ul>
+                    <li>📹 12-16 שיעורי וידאו מקצועיים בעברית</li>
+                    <li>♾️ גישה לנצח — הילד יכול לחזור מתי שירצה</li>
+                    <li>📋 תרגילים ופרויקטים בכל שיעור</li>
+                    <li>💬 תמיכה מקצועית בוואטסאפ</li>
+                    <li>🎯 פרויקט גמר — משחק/אפליקציה שהילד בנה</li>
+                    <li>🤖 שילוב כלי AI בכל הקורסים</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 6: Concerns -->
+        <h2 id="concerns">😟 חששות נפוצים של הורים</h2>
+
+        <div class="faq-item">
+            <div class="faq-q">אני מפחדת שזה עוד זמן מסך...</div>
+            <div class="faq-a">
+                <p>זה החשש הכי נפוץ, והוא מובן. אבל יש <strong>הבדל עצום</strong> בין זמן מסך פסיבי (לצפות ביוטיוב) לזמן מסך יצירתי (לבנות משחק).</p>
+                <p>כשילד מתכנת, הוא <strong>חושב, מתכנן, פותר בעיות ויוצר</strong>. זה כמו ההבדל בין לצפות בטלוויזיה לבין לצייר — שניהם "מול מסך", אבל אחד פסיבי והשני יצירתי.</p>
+                <div class="tip-box">
+                    <p>💡 <strong>טיפ:</strong> שימו לב לילד אחרי שעה של תכנות לעומת שעה של יוטיוב. אחרי תכנות הוא ירוץ להראות לכם מה בנה. אחרי יוטיוב — סתם יבקש עוד.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">מה אם הילד יתייאש באמצע?</div>
+            <div class="faq-a">
+                <p>זה יכול לקרות, ובדרך ההייטק יש כמה דברים שמפחיתים את הסיכוי:</p>
+                <ul>
+                    <li>🎮 <strong>למידה דרך משחקים</strong> — הילד בונה משהו שהוא אוהב</li>
+                    <li>📹 <strong>שיעורי וידאו קצרים</strong> — לא הרצאות של שעה</li>
+                    <li>💬 <strong>תמיכה בוואטסאפ</strong> — נתקעת? שולחים הודעה ומקבלים עזרה</li>
+                    <li>♾️ <strong>בלי לחץ</strong> — הגישה לנצח, אפשר לעצור ולחזור</li>
+                </ul>
+                <p>ואם בכל זאת לא מתאים — תמיד אפשר לנסות קורס אחר. אולי הילד לא אהב Python אבל יאהב מיינקראפט.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">אני לא מבינה בתכנות — איך אעזור לילד?</div>
+            <div class="faq-a">
+                <p><strong>לא צריך!</strong> הקורסים בנויים כך שהילד לומד לבד. שיעורי הוידאו מסבירים הכל צעד אחר צעד, ואם נתקע — יש תמיכה מקצועית בוואטסאפ.</p>
+                <p>התפקיד שלכם כהורים? לעודד, להתלהב מהפרויקטים שלו, ולתת לו זמן ושקט ללמוד. זה הכל. 😊</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">האם יש תעודה בסוף הקורס?</div>
+            <div class="faq-a">
+                <p>בדרך ההייטק הדגש הוא על <strong>ידע ופרויקטים אמיתיים</strong>, לא על תעודות. בסוף כל קורס הילד יוצא עם פרויקט שהוא בנה בעצמו — משחק, אפליקציה, עולם ברובלוקס או מוד במיינקראפט.</p>
+                <p>בעולם ההייטק, מה שאתה <strong>יודע לעשות</strong> שווה הרבה יותר מתעודה.</p>
+            </div>
+        </div>
+
+        <!-- Section 7: Choosing -->
+        <h2 id="choosing">🎯 איך בוחרים את הקורס הנכון?</h2>
+
+        <div class="faq-item">
+            <div class="faq-q">איך אני יודעת איזה קורס מתאים לילד שלי?</div>
+            <div class="faq-a">
+                <p>שלושה שלבים פשוטים:</p>
+                <ol>
+                    <li><strong>שאלו את הילד</strong> — מה הוא אוהב? מיינקראפט? רובלוקס? משחקי מחשב בכלל?</li>
+                    <li><strong>בדקו את הגיל</strong> — עד 9: Scratch. 9-12: מיינקראפט/רובלוקס. 12+: Python.</li>
+                    <li><strong>נסו שיעור ראשון חינם</strong> — תראו אם הילד נהנה ורוצה להמשיך.</li>
+                </ol>
+                <p>ואם עדיין לא בטוחים — <strong>שלחו לנו וואטסאפ</strong> ונעזור לכם לבחור! 💬</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">מה מייחד את דרך ההייטק ממתחרים?</div>
+            <div class="faq-a">
+                <ul>
+                    <li>🎮 <strong>למידה דרך משחקים אמיתיים</strong> — לא סימולציות משעממות</li>
+                    <li>💻 <strong>שפות תכנות אמיתיות</strong> — Python, JavaScript, Lua — לא שפות "צעצוע"</li>
+                    <li>🤖 <strong>AI בכל קורס</strong> — הילדים לומדים לעבוד עם כלי בינה מלאכותית</li>
+                    <li>👨‍💻 <strong>מדריכים מהייטק</strong> — לא מורים שלמדו מיוטיוב</li>
+                    <li>♾️ <strong>גישה לנצח</strong> — לא מנוי חודשי שנגמר</li>
+                    <li>💬 <strong>תמיכה בוואטסאפ</strong> — מענה אנושי מהיר</li>
+                    <li>💰 <strong>מחיר הוגן</strong> — ₪497 חד-פעמי, לא ₪300/חודש</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <h2>🚀 רוצים לדעת איזה קורס מתאים לילד שלכם?</h2>
+            <p>שלחו לנו הודעה ונעזור לכם לבחור — או התחילו עם שיעור ניסיון חינמי</p>
+            <a href="/קורס-תכנות-לילדים" class="btn">🎯 לכל הקורסים</a>
+            <a href="https://wa.me/972533009742" class="btn" target="_blank">💬 שלחו וואטסאפ</a>
+        </div>
+
+        <!-- Internal Links -->
+        <h2>📖 מאמרים נוספים שיעניינו אתכם</h2>
+        <ul>
+            <li><a href="/blog/choosing-tech-course-for-kids">מדריך להורים: איך לבחור קורס טכנולוגי לילדים</a></li>
+            <li><a href="/blog/best-age-to-learn-programming">מאיזה גיל ללמד ילדים תכנות?</a></li>
+            <li><a href="/blog/why-teach-kids-programming">למה חשוב ללמד ילדים תכנות?</a></li>
+            <li><a href="/blog/minecraft-programming-for-kids">תכנות מיינקראפט לילדים — מדריך מלא</a></li>
+            <li><a href="/blog/ai-for-kids">קורסי בינה מלאכותית לילדים בישראל</a></li>
+        </ul>
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer" style="background:#1e293b; color:white; padding:40px 20px; text-align:center;">
+        <div class="container">
+            <img src="../images/brand/logo-haitech-transparent.webp" alt="דרך ההייטק" height="36" style="margin-bottom:16px; filter: brightness(0) invert(1);">
+            <p style="color:#94a3b8;">דרך ההייטק — בית הספר לטכנולוגיה, תכנות ובינה מלאכותית לילדים ונוער</p>
+            <div style="margin:16px 0;">
+                <a href="https://wa.me/972533009742" target="_blank" style="color:#22c55e; text-decoration:none; margin:0 12px;">💬 וואטסאפ</a>
+                <a href="https://www.facebook.com/profile.php?id=61552415392453" target="_blank" style="color:#60a5fa; text-decoration:none; margin:0 12px;">📘 פייסבוק</a>
+                <a href="https://youtube.com/channel/UCbBmDyoE0oy0yXuVAoXNp2Q" target="_blank" style="color:#f87171; text-decoration:none; margin:0 12px;">▶️ יוטיוב</a>
+            </div>
+            <p style="color:#64748b; font-size:0.85rem;">© 2026 דרך ההייטק. כל הזכויות שמורות.</p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ accordion
+        document.querySelectorAll('.faq-q').forEach(q => {
+            q.addEventListener('click', () => {
+                const item = q.parentElement;
+                item.classList.toggle('open');
+            });
+        });
+        // Mobile menu
+        const mt = document.getElementById('mobileToggle');
+        const nl = document.getElementById('navLinks');
+        if(mt&&nl){mt.addEventListener('click',()=>{nl.classList.toggle('active');mt.classList.toggle('active');});}
+    </script>
+    <script src="/js/analytics.js?v=20260314"></script>
+    <script src="/js/cookie-consent.js?v=20260318"></script>
+</body>
+</html>
