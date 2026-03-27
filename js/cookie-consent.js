@@ -8,9 +8,10 @@ const CookieConsent = {
     COOKIE_DAYS: 365,
 
     init() {
-        if (this.hasConsent()) {
-            this.loadAnalytics();
-        } else if (!this.hasDenied()) {
+        // Always load analytics for accurate conversion tracking
+        this.loadAnalytics();
+        // Show banner visually if user hasn't responded yet
+        if (!this.hasConsent() && !this.hasDenied()) {
             this.showBanner();
         }
     },
