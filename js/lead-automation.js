@@ -153,6 +153,7 @@ const LeadAutomation = {
         if (typeof gtag !== 'undefined') {
             gtag('event', 'generate_lead', {
                 gtag('event', 'contact_form_submit', { event_category: 'form', event_label: 'lead-automation' });
+                gtag('event', 'conversion', {'send_to': 'AW-581343244/QYBxCJaMzroZEIywmpUC'});
                 currency: 'ILS',
                 value: 50
             });

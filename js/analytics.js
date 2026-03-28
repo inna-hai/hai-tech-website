@@ -45,6 +45,8 @@ const Analytics = {
             'language': 'he',
             'currency': 'ILS'
         });
+        // Google Ads conversion tracking
+        gtag('config', 'AW-581343244');
     },
 
     // Track page views
