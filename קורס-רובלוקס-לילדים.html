@@ -707,7 +707,7 @@
         e.preventDefault();
         var name=document.getElementById('hero-lead-name').value;
         var phone=document.getElementById('hero-lead-phone').value;
-        fetch('/lms/api/leads/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name,phone:phone,interest:'רובלוקס',source:'hero-form',utm_source:new URLSearchParams(location.search).get('utm_source')||'',utm_medium:new URLSearchParams(location.search).get('utm_medium')||'',utm_campaign:new URLSearchParams(location.search).get('utm_campaign')||'',gclid:new URLSearchParams(location.search).get('gclid')||''})});
+        fetch('/lms/api/leads/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name,phone:phone,interest:'רובלוקס',source:'hero-form-roblox',utm_source:new URLSearchParams(location.search).get('utm_source')||'',utm_medium:new URLSearchParams(location.search).get('utm_medium')||'',utm_campaign:new URLSearchParams(location.search).get('utm_campaign')||'',gclid:new URLSearchParams(location.search).get('gclid')||''})});
         if(typeof gtag==='function')gtag('event','generate_lead',{event_category:'engagement',event_label:'hero-roblox'});
         e.target.style.display='none';
         document.getElementById('hero-lead-success').style.display='block';
