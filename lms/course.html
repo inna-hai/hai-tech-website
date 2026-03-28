@@ -475,6 +475,21 @@
                 const paymentStatus = urlParams.get('payment');
                 if (paymentStatus === 'success') {
                     alert('התשלום בוצע בהצלחה! כעת יש לך גישה לקורס.');
+                    // Google Ads Purchase conversion
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'conversion', {
+                            'send_to': 'AW-581343244/26vvCMHxqZEcEIywmpUC',
+                            'value': 497,
+                            'currency': 'ILS',
+                            'transaction_id': `${courseId}_${Date.now()}`
+                        });
+                        gtag('event', 'purchase', {
+                            event_category: 'ecommerce',
+                            event_label: courseId,
+                            value: 497,
+                            currency: 'ILS'
+                        });
+                    }
                     // Clean URL
                     window.history.replaceState({}, document.title, `course.html?id=${courseId}`);
                 } else if (paymentStatus === 'failed') {
