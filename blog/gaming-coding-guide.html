@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>המדריך המלא לתכנות במשחקים | מיינקראפט, רובלוקס ועוד | דרך ההייטק</title>
+    <meta name="description" content="איך לומדים תכנות דרך משחקים? מדריך מפורט להורים על לימוד תכנות דרך מיינקראפט, רובלוקס, סקראץ' ועוד. גילאים, שפות, יתרונות וטיפים.">
+    <meta name="keywords" content="תכנות דרך משחקים, תכנות מיינקראפט לילדים, תכנות רובלוקס, לימוד תכנות במשחקים, קורס תכנות משחקים לילדים, Scratch לילדים">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hai.tech/blog/gaming-coding-guide">
+    <meta property="og:title" content="המדריך המלא לתכנות במשחקים — מיינקראפט, רובלוקס ועוד">
+    <meta property="og:description" content="מדריך מפורט להורים: איך הילדים יכולים ללמוד תכנות אמיתי דרך המשחקים שהם כבר אוהבים.">
+    <meta property="og:image" content="https://hai.tech/blog/images/gaming-coding-guide.png">
+    <meta property="og:locale" content="he_IL">
+    <link rel="canonical" href="https://hai.tech/blog/gaming-coding-guide">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/jpeg" href="../images/brand/logo.webp">
+    
+    <style>
+        .blog-hero { background: linear-gradient(135deg, #7c3aed 0%, #6366f1 50%, #2563eb 100%); padding: 120px 20px 60px; color: white; text-align: center; }
+        .blog-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; max-width: 800px; margin: 0 auto 1rem; }
+        .blog-hero .subtitle { font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+        .blog-hero img { max-width: 700px; width: 100%; border-radius: 16px; margin-top: 2rem; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        .blog-content { max-width: 800px; margin: 0 auto; padding: 60px 20px; font-size: 1.1rem; line-height: 1.9; color: #333; }
+        .blog-content h2 { color: #6366f1; font-size: 1.6rem; margin: 2.5rem 0 1rem; font-weight: 700; }
+        .blog-content h3 { color: #4f46e5; font-size: 1.3rem; margin: 1.5rem 0 0.75rem; }
+        .blog-content p { margin-bottom: 1.25rem; }
+        .blog-content ul, .blog-content ol { margin: 1rem 0 1.5rem 1.5rem; }
+        .blog-content li { margin-bottom: 0.5rem; }
+        .highlight-box { background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%); border-right: 4px solid #8b5cf6; padding: 25px; border-radius: 12px; margin: 2rem 0; }
+        .tip-box { background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); border-right: 4px solid #10b981; padding: 25px; border-radius: 12px; margin: 2rem 0; }
+        .game-card { background: white; border-radius: 16px; padding: 30px; margin: 2rem 0; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid #e2e8f0; }
+        .game-card h3 { margin-top: 0; }
+        .game-card .game-meta { display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0; }
+        .game-card .game-meta span { background: #f1f5f9; padding: 6px 14px; border-radius: 20px; font-size: 0.9rem; font-weight: 600; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; border-radius: 12px; overflow: hidden; }
+        .comparison-table th { background: #6366f1; color: white; padding: 14px 16px; text-align: right; font-weight: 600; }
+        .comparison-table td { padding: 12px 16px; border-bottom: 1px solid #e2e8f0; }
+        .comparison-table tr:nth-child(even) { background: #f8fafc; }
+        .cta-section { background: linear-gradient(135deg, #7c3aed 0%, #6366f1 100%); color: white; padding: 50px 20px; text-align: center; border-radius: 16px; margin: 3rem 0; }
+        .cta-section h2 { color: white; }
+        .cta-section .btn { display: inline-block; background: white; color: #6366f1; padding: 15px 35px; border-radius: 30px; text-decoration: none; font-weight: 700; margin: 0.5rem; transition: transform 0.3s; }
+        .cta-section .btn:hover { transform: scale(1.05); }
+        .blog-meta { display: flex; gap: 1.5rem; justify-content: center; align-items: center; margin-top: 1rem; font-size: 0.95rem; opacity: 0.85; }
+        .faq-item { background: #f8fafc; border-radius: 12px; margin: 1.5rem 0; overflow: hidden; border: 1px solid #e2e8f0; }
+        .faq-q { font-weight: 700; color: #1e293b; padding: 20px 25px; font-size: 1.15rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .faq-q::after { content: '+'; font-size: 1.5rem; color: #8b5cf6; font-weight: 300; transition: transform 0.3s; }
+        .faq-item.open .faq-q::after { transform: rotate(45deg); }
+        .faq-a { padding: 0 25px 20px; color: #475569; line-height: 1.8; display: none; }
+        .faq-item.open .faq-a { display: block; }
+    </style>
+
+    <!-- Article Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "המדריך המלא לתכנות במשחקים — מיינקראפט, רובלוקס ועוד",
+        "description": "מדריך מפורט להורים: איך ילדים יכולים ללמוד תכנות אמיתי דרך משחקים כמו מיינקראפט, רובלוקס וסקראץ'.",
+        "author": {
+            "@type": "Organization",
+            "name": "דרך ההייטק",
+            "url": "https://hai.tech"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "דרך ההייטק",
+            "url": "https://hai.tech"
+        },
+        "datePublished": "2026-03-28",
+        "dateModified": "2026-03-28",
+        "image": "https://hai.tech/blog/images/gaming-coding-guide.png",
+        "mainEntityOfPage": "https://hai.tech/blog/gaming-coding-guide"
+    }
+    </script>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "האם ילדים באמת לומדים תכנות דרך משחקים?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "בהחלט! מחקרים מראים שלמידה דרך משחקים (Game-Based Learning) מגבירה מוטיבציה ושימור ידע. הילדים כותבים קוד אמיתי בשפות כמו JavaScript, Lua ו-Python — רק שהתוצאה היא משחק שהם רואים ומשחקים. בדרך ההייטק, הילדים בונים מודים למיינקראפט, משחקים ברובלוקס ופרויקטים בסקראץ' — הכל עם תכנות אמיתי."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "מאיזה גיל אפשר ללמוד תכנות דרך משחקים?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "מגיל 7 עם סקראץ' (תכנות ויזואלי בבלוקים), מגיל 8 עם מיינקראפט (JavaScript), ומגיל 9-10 עם רובלוקס (Lua). בדרך ההייטק יש קורסים מותאמים לכל גיל."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "מה ההבדל בין תכנות במיינקראפט לתכנות ברובלוקס?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "במיינקראפט לומדים JavaScript ובונים מודים, עולמות ופלאגינים למשחק. ברובלוקס לומדים Lua ובונים משחקים שלמים שאפשר לפרסם ושחקנים אחרים ישחקו בהם. שניהם מלמדים תכנות אמיתי, ההבדל הוא בשפה ובסוג הפרויקטים."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "האם צריך ידע קודם כדי להתחיל?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "לא! כל הקורסים בדרך ההייטק מתחילים מאפס ומתאימים למתחילים מוחלטים. הילדים לומדים צעד אחר צעד, מהבסיס ועד פרויקטים מתקדמים."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "כמה עולה קורס תכנות במשחקים?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "בדרך ההייטק, קורסים דיגיטליים עולים ₪497 לגישה לנצח — כולל כל השיעורים המוקלטים, משימות מעשיות ותמיכה. שיעורים פרטיים 1:1 מתחילים מ-₪156 ל-45 דקות."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "מה עדיף — סקראץ', מיינקראפט או רובלוקס?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "תלוי בגיל ובתחומי העניין של הילד. סקראץ' מתאים לגיל 7-10 ולמי שרוצה להתחיל בנוח. מיינקראפט מתאים לגיל 8+ ולילדים שכבר משחקים במיינקראפט. רובלוקס מתאים לגיל 9+ ולילדים שרוצים לבנות משחקים ולפרסם אותם. בדרך ההייטק יש קורסים לכל אחד מהם."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "האם תכנות דרך משחקים יכול להוביל לקריירה?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "בהחלט! JavaScript (מיינקראפט) היא אחת השפות המבוקשות בעולם. Lua (רובלוקס) משמשת בפיתוח משחקים מקצועי. Python (שאפשר ללמוד בהמשך) היא השפה הנפוצה ביותר בעולם. ילדים שמתחילים לתכנת דרך משחקים רוכשים חשיבה לוגית ומיומנויות שישמשו אותם בכל מסלול טכנולוגי."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "כמה שעות ביום צריך להשקיע?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "מספיק 2-3 שיעורים בשבוע, כל שיעור כ-30-45 דקות. בקורסים של דרך ההייטק הילדים לומדים בקצב שלהם, מתי שנוח להם, עם גישה 24/7."
+                }
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation">
+        <div class="container">
+            <a href="/" class="logo"><img src="/images/brand/logo-haitech-transparent.webp" alt="דרך ההייטק" height="50"></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/#courses">קורסים</a></li>
+                <li><a href="/pricing.html">מחירים</a></li>
+                <li><a href="/blog">בלוג</a></li>
+                <li><a href="/#contact" class="btn-nav">צור קשר</a></li>
+            </ul>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="תפריט"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="blog-hero">
+        <h1>🎮 המדריך המלא לתכנות במשחקים</h1>
+        <p class="subtitle">איך הילדים שלכם יכולים ללמוד תכנות אמיתי דרך מיינקראפט, רובלוקס וסקראץ'</p>
+        <div class="blog-meta">
+            <span>📅 מרץ 2026</span>
+            <span>⏱️ 10 דקות קריאה</span>
+            <span>👨‍👩‍👧 מדריך להורים</span>
+        </div>
+        <img src="images/gaming-coding-guide.png" alt="ילדים לומדים תכנות דרך משחקים" loading="lazy">
+    </section>
+
+    <!-- Content -->
+    <article class="blog-content">
+        
+        <p>הילד שלכם מבלה שעות על מיינקראפט או רובלוקס? יש חדשות טובות — <strong>המשחקים האלה הם דלת הכניסה המושלמת לעולם התכנות</strong>. ילדים שלומדים לתכנת דרך משחקים לא רק נהנים — הם רוכשים מיומנויות אמיתיות בשפות תכנות מבוקשות כמו JavaScript, Lua ו-Python.</p>
+
+        <p>במדריך הזה נסביר בדיוק איך זה עובד, מה ההבדל בין הפלטפורמות, מאיזה גיל מתחילים, ואיך לבחור את המסלול הנכון לילד שלכם.</p>
+
+        <h2>🧠 למה תכנות דרך משחקים עובד?</h2>
+
+        <p>תכנות "רגיל" יכול להרגיש מופשט ומשעמם לילדים — מסך שחור עם טקסט לבן, בלי שום תוצאה ויזואלית מיידית. אבל כשהתוצאה היא <strong>משחק שהילד בנה בעצמו</strong>? הסיפור משתנה לגמרי.</p>
+
+        <div class="highlight-box">
+            <strong>🔬 מה אומר המחקר?</strong><br>
+            מחקרים בתחום Game-Based Learning מראים שלמידה דרך משחקים מגבירה מוטיבציה ב-50%, שימור ידע ב-40%, ומעורבות פעילה של הלומדים. הסיבה פשוטה — הילדים רואים תוצאה מיידית לקוד שהם כותבים.
+        </div>
+
+        <h3>היתרונות של תכנות דרך משחקים:</h3>
+        <ul>
+            <li><strong>מוטיבציה טבעית</strong> — הילד רוצה שהמשחק שלו יעבוד, אז הוא מתאמץ לפתור באגים</li>
+            <li><strong>פידבק מיידי</strong> — כתבת קוד → המשחק השתנה. רואים את התוצאה תוך שניות</li>
+            <li><strong>יצירתיות</strong> — הילד לא רק לומד תחביר, אלא מתכנן, מעצב ובונה</li>
+            <li><strong>חשיבה לוגית</strong> — פתרון בעיות, תנאים, לולאות — הכל בתוך ההקשר של המשחק</li>
+            <li><strong>שפות אמיתיות</strong> — לא "שפת צעצוע" אלא JavaScript, Lua, Python — שפות שמשמשות בתעשייה</li>
+        </ul>
+
+        <h2>🎮 הפלטפורמות: מיינקראפט, רובלוקס וסקראץ'</h2>
+
+        <p>שלוש הפלטפורמות העיקריות ללימוד תכנות דרך משחקים הן <strong>סקראץ'</strong> (Scratch), <strong>מיינקראפט</strong> (Minecraft) ו-<strong>רובלוקס</strong> (Roblox). לכל אחת יתרונות, שפת תכנות וקהל יעד שונה.</p>
+
+        <!-- Scratch Card -->
+        <div class="game-card">
+            <h3>🧩 סקראץ' (Scratch) — ההתחלה המושלמת</h3>
+            <div class="game-meta">
+                <span>👦 גיל 7-10</span>
+                <span>🔧 תכנות ויזואלי (בלוקים)</span>
+                <span>💰 חינם</span>
+            </div>
+            <p>סקראץ' הוא סביבת תכנות ויזואלית שפותחה ב-MIT. במקום לכתוב קוד, הילדים <strong>גוררים בלוקים צבעוניים</strong> ומחברים אותם — כמו לגו דיגיטלי. התוצאה? אנימציות, משחקים, סיפורים אינטראקטיביים.</p>
+            <p><strong>מה לומדים:</strong> חשיבה לוגית, משתנים, תנאים, לולאות, אירועים. כל מושגי היסוד של תכנות — בלי לדאוג לתחביר.</p>
+            <p><strong>למי מתאים:</strong> ילדים צעירים (7-10), מתחילים מוחלטים, ילדים שעדיין לא מרגישים בנוח עם הקלדה באנגלית.</p>
+            <p>📘 <a href="/קורס-סקראץ-לילדים" style="color:#6366f1; font-weight:600;">קורס סקראץ' בדרך ההייטק →</a></p>
+        </div>
+
+        <!-- Minecraft Card -->
+        <div class="game-card">
+            <h3>⛏️ מיינקראפט (Minecraft) — מהמשחק לקוד אמיתי</h3>
+            <div class="game-meta">
+                <span>👦 גיל 8+</span>
+                <span>🔧 JavaScript</span>
+                <span>🏗️ מודים + פלאגינים</span>
+            </div>
+            <p>מיינקראפט הוא המשחק הנמכר ביותר בהיסטוריה — ורוב הילדים כבר מכירים אותו. <strong>תכנות במיינקראפט</strong> אומר לכתוב קוד ב-JavaScript שמשנה את המשחק: בניית מבנים אוטומטית, יצירת מודים, תכנות בוטים שפועלים במשחק.</p>
+            <p><strong>מה לומדים:</strong> JavaScript — משתנים, פונקציות, לולאות, תנאים, אובייקטים. אחת השפות המבוקשות ביותר בשוק העבודה.</p>
+            <p><strong>למי מתאים:</strong> ילדים מגיל 8 שכבר משחקים במיינקראפט ורוצים "להאקר" את המשחק. מתחילים בלי ידע קודם.</p>
+            <p>📘 <a href="/חוג-מיינקראפט" style="color:#6366f1; font-weight:600;">קורס מיינקראפט בדרך ההייטק →</a></p>
+        </div>
+
+        <!-- Roblox Card -->
+        <div class="game-card">
+            <h3>🎯 רובלוקס (Roblox) — בנה משחקים שאחרים ישחקו</h3>
+            <div class="game-meta">
+                <span>👦 גיל 9+</span>
+                <span>🔧 Lua</span>
+                <span>🌍 פרסום לקהילה</span>
+            </div>
+            <p>רובלוקס היא לא רק משחק — היא <strong>פלטפורמה ליצירת משחקים</strong>. עם Roblox Studio (חינמי), ילדים יכולים לבנות משחקים שלמים, לפרסם אותם, ולתת לאנשים אמיתיים מכל העולם לשחק בהם.</p>
+            <p><strong>מה לומדים:</strong> Lua — שפת תכנות שמשמשת בפיתוח משחקים מקצועי. כוללת עבודה עם פיזיקה, אנימציה, ממשק משתמש ולוגיקת משחק.</p>
+            <p><strong>למי מתאים:</strong> ילדים מגיל 9 שאוהבים רובלוקס ורוצים ליצור — לא רק לשחק. מתאים גם למי שרוצה חוויה של "פרסום" אמיתי.</p>
+            <p>📘 <a href="/קורס-רובלוקס-לילדים" style="color:#6366f1; font-weight:600;">קורס רובלוקס בדרך ההייטק →</a></p>
+        </div>
+
+        <h2>📊 טבלת השוואה: איזו פלטפורמה מתאימה?</h2>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>קריטריון</th>
+                    <th>🧩 סקראץ'</th>
+                    <th>⛏️ מיינקראפט</th>
+                    <th>🎯 רובלוקס</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>גיל מומלץ</strong></td>
+                    <td>7-10</td>
+                    <td>8+</td>
+                    <td>9+</td>
+                </tr>
+                <tr>
+                    <td><strong>שפת תכנות</strong></td>
+                    <td>בלוקים (ויזואלי)</td>
+                    <td>JavaScript</td>
+                    <td>Lua</td>
+                </tr>
+                <tr>
+                    <td><strong>רמת קושי</strong></td>
+                    <td>קל</td>
+                    <td>בינוני</td>
+                    <td>בינוני-מתקדם</td>
+                </tr>
+                <tr>
+                    <td><strong>מה בונים</strong></td>
+                    <td>אנימציות, משחקים קטנים</td>
+                    <td>מודים, עולמות, פלאגינים</td>
+                    <td>משחקים שלמים לפרסום</td>
+                </tr>
+                <tr>
+                    <td><strong>ידע קודם נדרש</strong></td>
+                    <td>❌ אף אחד</td>
+                    <td>❌ אף אחד</td>
+                    <td>❌ אף אחד</td>
+                </tr>
+                <tr>
+                    <td><strong>שימוש בתעשייה</strong></td>
+                    <td>חינוכי בלבד</td>
+                    <td>JavaScript — #1 בעולם</td>
+                    <td>Lua — פיתוח משחקים</td>
+                </tr>
+                <tr>
+                    <td><strong>עלות פלטפורמה</strong></td>
+                    <td>חינם</td>
+                    <td>רכישת Minecraft</td>
+                    <td>חינם (Roblox Studio)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>🗺️ מסלול הלמידה המומלץ לפי גיל</h2>
+
+        <div class="tip-box">
+            <strong>💡 המסלול הקלאסי:</strong><br>
+            <strong>גיל 7-8:</strong> סקראץ' → לומדים חשיבה לוגית בלי לחץ<br>
+            <strong>גיל 8-10:</strong> מיינקראפט → JavaScript אמיתי דרך המשחק האהוב<br>
+            <strong>גיל 9-12:</strong> רובלוקס → בניית משחקים מלאים ב-Lua<br>
+            <strong>גיל 11+:</strong> Python → המעבר לתכנות "מבוגרים"<br><br>
+            כמובן שאפשר גם לדלג — ילד בן 9 שמכור לרובלוקס יכול להתחיל ישר שם!
+        </div>
+
+        <h2>⛏️ תכנות במיינקראפט — מה זה אומר בפועל?</h2>
+
+        <p>כשאומרים "תכנות במיינקראפט" — הכוונה לכתיבת קוד <strong>שמשנה את המשחק מבפנים</strong>. הנה כמה דוגמאות:</p>
+
+        <ul>
+            <li><strong>בניית עולמות אוטומטית:</strong> קוד שבונה בית, מגדל או עיר שלמה בלחיצת כפתור</li>
+            <li><strong>יצירת מודים:</strong> הוספת פריטים חדשים, יצורים, כלי נשק או כוחות מיוחדים</li>
+            <li><strong>בוטים חכמים:</strong> תכנות "סוכן" שפועל במשחק — חופר, בונה, שומר</li>
+            <li><strong>מיני-משחקים:</strong> משחק הזומבים, מרוצים, חדר בריחה — הכל בתוך מיינקראפט</li>
+        </ul>
+
+        <p>הילד כותב קוד ב-JavaScript, לוחץ "הפעל" — ורואה את התוצאה במיינקראפט תוך שניות. זו הקסם של הלמידה הזו.</p>
+
+        <h2>🎯 תכנות ברובלוקס — מהשחקן ליוצר</h2>
+
+        <p>רובלוקס היא פלטפורמה עם <strong>מיליארדי שחקנים</strong>. כשילד לומד לתכנת ברובלוקס, הוא לא רק יוצר משחק — הוא יכול <strong>לפרסם אותו לעולם</strong>. אנשים אמיתיים ישחקו במשחק שהילד שלכם בנה.</p>
+
+        <ul>
+            <li><strong>Roblox Studio:</strong> כלי פיתוח מקצועי — חינמי לגמרי</li>
+            <li><strong>שפת Lua:</strong> שפה אלגנטית שקלה ללמידה</li>
+            <li><strong>פרסום:</strong> בלחיצת כפתור המשחק עולה לאוויר</li>
+            <li><strong>קהילה:</strong> פידבק ממשתמשים אמיתיים</li>
+        </ul>
+
+        <h2>🧩 סקראץ' — הצעד הראשון</h2>
+
+        <p>סקראץ' הוא המקום הכי נוח להתחיל. <strong>אין טקסט באנגלית</strong> (יש ממשק בעברית), אין שגיאות תחביר, ואי אפשר "לשבור" שום דבר. הילד פשוט גורר בלוקים צבעוניים ורואה את הדמות על המסך עושה מה שהוא ביקש.</p>
+
+        <p>גם אם הילד "רק" בן 7 — סקראץ' מלמד את כל היסודות: תנאים (אם... אז...), לולאות (חזור 10 פעמים), משתנים (ניקוד, חיים), אירועים (כשלוחצים על מקש). כל זה בצורה ויזואלית ומהנה.</p>
+
+        <h2>❓ שאלות נפוצות</h2>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">האם ילדים באמת לומדים תכנות דרך משחקים?</div>
+            <div class="faq-a">בהחלט! הילדים כותבים קוד אמיתי בשפות כמו JavaScript, Lua ו-Python — רק שהתוצאה היא משחק שהם רואים ומשחקים. בדרך ההייטק, הילדים בונים מודים למיינקראפט, משחקים ברובלוקס ופרויקטים בסקראץ' — הכל עם תכנות אמיתי.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">מאיזה גיל אפשר להתחיל?</div>
+            <div class="faq-a">מגיל 7 עם סקראץ' (תכנות ויזואלי בבלוקים), מגיל 8 עם מיינקראפט (JavaScript), ומגיל 9-10 עם רובלוקס (Lua). בדרך ההייטק יש קורסים מותאמים לכל גיל.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">מה ההבדל בין תכנות במיינקראפט לתכנות ברובלוקס?</div>
+            <div class="faq-a">במיינקראפט לומדים JavaScript ובונים מודים ועולמות. ברובלוקס לומדים Lua ובונים משחקים שלמים שאפשר לפרסם. שניהם מלמדים תכנות אמיתי — ההבדל בשפה ובסוג הפרויקטים.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">האם צריך ידע קודם?</div>
+            <div class="faq-a">לא! כל הקורסים בדרך ההייטק מתחילים מאפס ומתאימים למתחילים מוחלטים. הילדים לומדים צעד אחר צעד.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">כמה עולה קורס תכנות במשחקים?</div>
+            <div class="faq-a">בדרך ההייטק, קורסים דיגיטליים עולים ₪497 לגישה לנצח. שיעורים פרטיים 1:1 מתחילים מ-₪156 ל-45 דקות.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">מה עדיף — סקראץ', מיינקראפט או רובלוקס?</div>
+            <div class="faq-a">תלוי בגיל ובתחומי העניין. סקראץ' מתאים לגיל 7-10 ולמתחילים. מיינקראפט לגיל 8+ ולמי שכבר משחק. רובלוקס לגיל 9+ ולמי שרוצה לבנות ולפרסם משחקים. בדרך ההייטק יש קורסים לכולם.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">האם זה יכול להוביל לקריירה?</div>
+            <div class="faq-a">בהחלט! JavaScript, Lua ו-Python הן שפות שמשמשות בתעשייה. ילדים שמתחילים לתכנת דרך משחקים רוכשים חשיבה לוגית ומיומנויות שישמשו אותם בכל מסלול טכנולוגי.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">כמה שעות ביום צריך להשקיע?</div>
+            <div class="faq-a">מספיק 2-3 שיעורים בשבוע, כל שיעור כ-30-45 דקות. בדרך ההייטק הילדים לומדים בקצב שלהם, מתי שנוח להם, עם גישה 24/7.</div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <h2>🎮 מוכנים להפוך את המשחק ללמידה?</h2>
+            <p style="opacity:0.9; max-width:500px; margin:0 auto 1.5rem;">בדרך ההייטק יש קורסים לכל גיל ולכל משחק. הילדים לומדים מהבית, בקצב שלהם, עם מדריכים מקצועיים.</p>
+            <a href="/קורס-תכנות-לילדים" class="btn">🚀 לכל הקורסים</a>
+            <a href="https://wa.me/972533009742?text=היי, מעוניינים בקורס תכנות דרך משחקים" class="btn" target="_blank" style="background:#25D366; color:white;">💬 דברו איתנו</a>
+        </div>
+
+        <h2>🔗 קריאה נוספת</h2>
+        <ul>
+            <li><a href="/blog/minecraft-programming-for-kids" style="color:#6366f1;">תכנות מיינקראפט לילדים — המדריך המלא</a></li>
+            <li><a href="/blog/roblox-programming-for-kids" style="color:#6366f1;">תכנות רובלוקס לילדים — כל מה שצריך לדעת</a></li>
+            <li><a href="/blog/scratch-for-kids" style="color:#6366f1;">סקראץ' לילדים — ההתחלה המושלמת</a></li>
+            <li><a href="/blog/best-age-to-learn-programming" style="color:#6366f1;">מאיזה גיל ללמוד תכנות?</a></li>
+            <li><a href="/blog/coding-courses-faq" style="color:#6366f1;">שאלות ותשובות על קורסי תכנות לילדים</a></li>
+        </ul>
+
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="/images/brand/logo-haitech-transparent.webp" alt="דרך ההייטק" width="120">
+                    <p>בית ספר אונליין לתכנות לילדים ונוער</p>
+                    <div style="display:flex; gap:12px; margin-top:10px;">
+                        <a href="https://youtube.com/channel/UCbBmDyoE0oy0yXuVAoXNp2Q" target="_blank" style="color:#94a3b8;">YouTube</a>
+                        <a href="https://www.facebook.com/profile.php?id=61552415392453" target="_blank" style="color:#94a3b8;">Facebook</a>
+                        <a href="https://tiktok.com/@the_high_tech_way" target="_blank" style="color:#94a3b8;">TikTok</a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>קורסים</h4>
+                    <ul>
+                        <li><a href="/קורס-סקראץ-לילדים">סקראץ'</a></li>
+                        <li><a href="/חוג-מיינקראפט">מיינקראפט</a></li>
+                        <li><a href="/קורס-רובלוקס-לילדים">רובלוקס</a></li>
+                        <li><a href="/לימוד-פייתון-לילדים">פייתון</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>מידע</h4>
+                    <ul>
+                        <li><a href="/blog">בלוג</a></li>
+                        <li><a href="/#faq">שאלות נפוצות</a></li>
+                        <li><a href="/privacy.html">מדיניות פרטיות</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4 style="color:white;">צור קשר</h4>
+                    <ul>
+                        <li>📧 info@hai.tech</li>
+                        <li>💬 <a href="https://wa.me/972533009742" target="_blank">WhatsApp</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 דרך ההייטק. כל הזכויות שמורות.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/analytics.js?v=20260328"></script>
+    <script src="/js/cookie-consent.js"></script>
+
+    <!-- Floating WhatsApp -->
+    <a id="floatingWhatsApp" href="https://wa.me/972533009742?text=היי, קראתי את המדריך על תכנות במשחקים ואשמח לשמוע עוד" target="_blank" style="position:fixed;bottom:25px;left:25px;z-index:998;background:#25D366;color:white;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 4px 15px rgba(37,211,102,0.4);text-decoration:none;" onclick="if(typeof gtag==='function'){gtag('event','whatsapp_clicked',{event_category:'engagement'});gtag('event','conversion',{'send_to':'AW-581343244/lMe8CPiXrL8bEIywmpUC'});}">💬</a>
+</body>
+</html>
