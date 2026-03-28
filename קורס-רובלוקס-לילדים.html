@@ -673,6 +673,7 @@
             });
             if (typeof gtag === 'function') {
                 gtag('event', 'generate_lead', { event_category: 'form', event_label: 'course-page' });
+                gtag('event', 'contact_form_submit', { event_category: 'form', event_label: 'course-page' });
             }
             form.style.display = 'none';
             var success = form.parentElement.querySelector('.lead-success');

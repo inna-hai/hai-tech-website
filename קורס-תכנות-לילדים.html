@@ -1336,6 +1336,7 @@
             });
             if (typeof gtag === 'function') {
                 gtag('event', 'generate_lead', { event_category: 'form', event_label: 'landing-page' });
+                gtag('event', 'contact_form_submit', { event_category: 'form', event_label: 'landing-page' });
             }
             // Hide form, show success
             form.style.display = 'none';

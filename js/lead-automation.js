@@ -152,6 +152,7 @@ const LeadAutomation = {
         // GA4: generate_lead event for Google Ads conversion tracking
         if (typeof gtag !== 'undefined') {
             gtag('event', 'generate_lead', {
+                gtag('event', 'contact_form_submit', { event_category: 'form', event_label: 'lead-automation' });
                 currency: 'ILS',
                 value: 50
             });
