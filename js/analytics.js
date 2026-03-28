@@ -116,6 +116,10 @@ const Analytics = {
                         value: 40,
                         currency: 'ILS'
                     });
+                    // Google Ads direct conversion - WhatsApp
+                    gtag('event', 'conversion', {
+                        'send_to': 'AW-581343244/lMe8CPiXrL8bEIywmpUC'
+                    });
                 }
             }
 
