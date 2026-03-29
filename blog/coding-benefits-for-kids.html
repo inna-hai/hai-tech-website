@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>10 יתרונות בלימוד תכנות בגיל צעיר | דרך ההייטק</title>
+    <meta name="description" content="למה כדאי ללמד ילדים תכנות? 10 יתרונות מוכחים: חשיבה לוגית, יצירתיות, פתרון בעיות, ביטחון עצמי, הכנה לעתיד ועוד. מדריך מלא להורים.">
+    <meta name="keywords" content="יתרונות תכנות לילדים, למה ללמד ילדים תכנות, תכנות בגיל צעיר, יתרונות קורס תכנות, חשיבה לוגית ילדים, פיתוח מיומנויות ילדים">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hai.tech/blog/coding-benefits-for-kids">
+    <meta property="og:title" content="10 יתרונות בלימוד תכנות בגיל צעיר">
+    <meta property="og:description" content="למה כדאי ללמד ילדים תכנות? 10 יתרונות מוכחים שכל הורה צריך לדעת.">
+    <meta property="og:image" content="https://hai.tech/blog/images/coding-benefits-kids.png">
+    <meta property="og:locale" content="he_IL">
+    <link rel="canonical" href="https://hai.tech/blog/coding-benefits-for-kids">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/jpeg" href="../images/brand/logo.webp">
+    
+    <style>
+        .blog-hero { background: linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%); padding: 120px 20px 60px; color: white; text-align: center; }
+        .blog-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; max-width: 800px; margin: 0 auto 1rem; }
+        .blog-hero .subtitle { font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+        .blog-hero img { max-width: 700px; width: 100%; border-radius: 16px; margin-top: 2rem; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        .blog-content { max-width: 800px; margin: 0 auto; padding: 60px 20px; font-size: 1.1rem; line-height: 1.9; color: #333; }
+        .blog-content h2 { color: #059669; font-size: 1.6rem; margin: 2.5rem 0 1rem; font-weight: 700; }
+        .blog-content h3 { color: #047857; font-size: 1.3rem; margin: 1.5rem 0 0.75rem; }
+        .blog-content p { margin-bottom: 1.25rem; }
+        .blog-content ul, .blog-content ol { margin: 1rem 0 1.5rem 1.5rem; }
+        .blog-content li { margin-bottom: 0.5rem; }
+        .benefit-card { background: white; border-radius: 16px; padding: 30px; margin: 2rem 0; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid #e2e8f0; border-right: 5px solid #10b981; }
+        .benefit-card .benefit-number { display: inline-block; background: #10b981; color: white; width: 36px; height: 36px; border-radius: 50%; text-align: center; line-height: 36px; font-weight: 800; font-size: 1.1rem; margin-left: 12px; }
+        .benefit-card h3 { display: inline; margin: 0; color: #1e293b; }
+        .benefit-card p { margin-top: 12px; color: #475569; }
+        .highlight-box { background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); border-right: 4px solid #10b981; padding: 25px; border-radius: 12px; margin: 2rem 0; }
+        .stat-box { background: #f0fdf4; border-radius: 12px; padding: 20px; text-align: center; margin: 1rem 0; }
+        .stat-box .stat-number { font-size: 2.5rem; font-weight: 800; color: #059669; }
+        .stat-box .stat-label { font-size: 0.95rem; color: #64748b; }
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 2rem 0; }
+        @media (max-width: 600px) { .stats-grid { grid-template-columns: 1fr; } }
+        .faq-item { background: #f8fafc; border-radius: 12px; margin: 1.5rem 0; overflow: hidden; border: 1px solid #e2e8f0; }
+        .faq-q { font-weight: 700; color: #1e293b; padding: 20px 25px; font-size: 1.15rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .faq-q::after { content: '+'; font-size: 1.5rem; color: #10b981; font-weight: 300; transition: transform 0.3s; }
+        .faq-item.open .faq-q::after { transform: rotate(45deg); }
+        .faq-a { padding: 0 25px 20px; color: #475569; line-height: 1.8; display: none; }
+        .faq-item.open .faq-a { display: block; }
+        .blog-meta { display: flex; gap: 1.5rem; justify-content: center; align-items: center; margin-top: 1rem; font-size: 0.95rem; opacity: 0.85; }
+    </style>
+
+    <!-- Article Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "10 יתרונות בלימוד תכנות בגיל צעיר",
+        "description": "מדריך מלא להורים: 10 יתרונות מוכחים של לימוד תכנות בגיל צעיר — חשיבה לוגית, יצירתיות, ביטחון עצמי ועוד.",
+        "author": { "@type": "Organization", "name": "דרך ההייטק", "url": "https://hai.tech" },
+        "publisher": { "@type": "Organization", "name": "דרך ההייטק", "url": "https://hai.tech" },
+        "datePublished": "2026-03-29",
+        "dateModified": "2026-03-29",
+        "image": "https://hai.tech/blog/images/coding-benefits-kids.png",
+        "mainEntityOfPage": "https://hai.tech/blog/coding-benefits-for-kids"
+    }
+    </script>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "מאיזה גיל כדאי להתחיל ללמד ילדים תכנות?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "אפשר להתחיל מגיל 7 עם תכנות ויזואלי כמו סקראץ', ומגיל 8-9 לעבור לשפות אמיתיות כמו JavaScript (דרך מיינקראפט) או Lua (דרך רובלוקס). בדרך ההייטק יש קורסים מותאמים לכל גיל."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "האם תכנות בגיל צעיר באמת משפר ביצועים בבית הספר?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "כן! מחקרים מראים שילדים שלומדים תכנות משפרים את הציונים במתמטיקה ובמדעים. תכנות מפתח חשיבה לוגית, פתרון בעיות ויכולת ניתוח — מיומנויות שעוזרות בכל מקצוע."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "כמה שעות בשבוע צריך ללמוד תכנות?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "מספיק 2-3 שיעורים בשבוע של 30-45 דקות כל אחד. בדרך ההייטק הילדים לומדים בקצב שלהם עם גישה 24/7 לשיעורים המוקלטים."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "האם ילד שלא אוהב מתמטיקה יצליח בתכנות?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "בהחלט! תכנות לילדים דרך משחקים כמו מיינקראפט ורובלוקס הוא חוויה יצירתית, לא שיעור מתמטיקה. דווקא ילדים שלא אוהבים מתמטיקה מסורתית מגלים שתכנות הוא סיפור אחר לגמרי — כי הם רואים תוצאה מיידית ומשחקית."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "מה היתרון של לימוד תכנות אונליין לעומת פרונטלי?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "למידה אונליין מאפשרת ללמוד בקצב אישי, לחזור על שיעורים, ללמוד מהבית בכל שעה, ולחסוך זמן נסיעות. בדרך ההייטק הקורסים הדיגיטליים כוללים שיעורים מוקלטים, משימות מעשיות ותמיכה — בגישה לנצח."
+                }
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation">
+        <div class="container">
+            <a href="/" class="logo"><img src="/images/brand/logo-haitech-transparent.webp" alt="דרך ההייטק" height="50"></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/#courses">קורסים</a></li>
+                <li><a href="/pricing.html">מחירים</a></li>
+                <li><a href="/blog">בלוג</a></li>
+                <li><a href="/#contact" class="btn-nav">צור קשר</a></li>
+            </ul>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="תפריט"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="blog-hero">
+        <h1>🏆 10 יתרונות בלימוד תכנות בגיל צעיר</h1>
+        <p class="subtitle">למה ההשקעה הכי חכמה שתעשו לילד שלכם היא לימוד תכנות</p>
+        <div class="blog-meta">
+            <span>📅 מרץ 2026</span>
+            <span>⏱️ 8 דקות קריאה</span>
+            <span>👨‍👩‍👧 מדריך להורים</span>
+        </div>
+        <img src="images/coding-benefits-kids.png" alt="יתרונות תכנות לילדים" loading="lazy">
+    </section>
+
+    <!-- Content -->
+    <article class="blog-content">
+        
+        <p>בעידן הדיגיטלי, תכנות הפך ממיומנות טכנית ל<strong>שפה חדשה שכל ילד צריך לדעת</strong>. אבל מעבר ל"זה חשוב לעתיד" — לימוד תכנות בגיל צעיר מפתח מיומנויות שמשפיעות על <strong>כל תחום בחיים</strong>: מציונים בבית הספר ועד ביטחון עצמי.</p>
+
+        <p>אספנו 10 יתרונות מוכחים שיגרמו לכם להבין למה עכשיו זה הזמן להתחיל.</p>
+
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-number">67%</div>
+                <div class="stat-label">מהמשרות החדשות בעולם דורשות מיומנויות טכנולוגיות</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">7+</div>
+                <div class="stat-label">הגיל שבו ילדים יכולים להתחיל ללמוד תכנות</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">40%</div>
+                <div class="stat-label">שיפור בפתרון בעיות אצל ילדים שלומדים תכנות</div>
+            </div>
+        </div>
+
+        <!-- Benefit 1 -->
+        <div class="benefit-card">
+            <span class="benefit-number">1</span>
+            <h3>חשיבה לוגית וביקורתית</h3>
+            <p>תכנות מלמד ילדים <strong>לחשוב בצורה מסודרת</strong>. כדי לכתוב קוד שעובד, צריך לפרק בעיה גדולה לצעדים קטנים, לזהות דפוסים, ולבנות פתרון שלב אחר שלב. זו בדיוק חשיבה לוגית — מיומנות שמשפרת ביצועים במתמטיקה, מדעים, ובעצם בכל תחום.</p>
+        </div>
+
+        <!-- Benefit 2 -->
+        <div class="benefit-card">
+            <span class="benefit-number">2</span>
+            <h3>יצירתיות ודמיון</h3>
+            <p>תכנות הוא לא רק "מספרים על מסך". ילד שבונה <strong>משחק במיינקראפט</strong> או יוצר <strong>עולם ברובלוקס</strong> מפעיל דמיון ויצירתיות ברמה גבוהה. הוא מתכנן, מעצב, בונה ובודק — בדיוק כמו אדריכל דיגיטלי. תכנות נותן לילדים כלי ליצור כל דבר שהם מדמיינים.</p>
+        </div>
+
+        <!-- Benefit 3 -->
+        <div class="benefit-card">
+            <span class="benefit-number">3</span>
+            <h3>פתרון בעיות ועמידות</h3>
+            <p>בתכנות, דברים לא עובדים מהניסיון הראשון — וזה בסדר. <strong>דיבאגינג</strong> (מציאת ותיקון שגיאות) מלמד ילדים להתמודד עם כישלון, לא לוותר, ולנסות שוב. זו מיומנות חיים קריטית — ילדים שלומדים תכנות מפתחים עמידות וסבלנות שמלווים אותם בכל תחום.</p>
+        </div>
+
+        <!-- Benefit 4 -->
+        <div class="benefit-card">
+            <span class="benefit-number">4</span>
+            <h3>ביטחון עצמי ותחושת מסוגלות</h3>
+            <p>הרגע שבו ילד רואה משחק שהוא בנה <strong>עובד</strong> — זה רגע מכונן. "אני עשיתי את זה!" הוא משפט שמשנה את האופן שבו ילד רואה את עצמו. בדרך ההייטק, ילדים מסיימים כל שיעור עם פרויקט עובד — וזה בונה ביטחון עצמי אמיתי.</p>
+        </div>
+
+        <!-- Benefit 5 -->
+        <div class="benefit-card">
+            <span class="benefit-number">5</span>
+            <h3>שיפור במתמטיקה ובמדעים</h3>
+            <p>תכנות הוא <strong>מתמטיקה בפעולה</strong>. משתנים, לולאות, תנאים, קואורדינטות — כל אלה מושגים מתמטיים שילדים לומדים בצורה טבעית כשהם מתכנתים. מחקרים מראים שילדים שלומדים תכנות משפרים את הציונים שלהם במתמטיקה ובמקצועות מדעיים.</p>
+        </div>
+
+        <div class="highlight-box">
+            <strong>💡 ידעתם?</strong> לפי מחקר של MIT, ילדים שלמדו תכנות בגיל צעיר הראו שיפור של עד 30% ביכולת פתרון בעיות מתמטיות, בהשוואה לילדים שלא למדו.
+        </div>
+
+        <!-- Benefit 6 -->
+        <div class="benefit-card">
+            <span class="benefit-number">6</span>
+            <h3>הכנה לשוק העבודה העתידי</h3>
+            <p>לא משנה מה הילד שלכם יעשה כשיגדל — <strong>טכנולוגיה תהיה חלק מזה</strong>. רופאים, מעצבים, מהנדסים, אנשי עסקים — כולם צריכים להבין טכנולוגיה. ילד שלומד JavaScript במיינקראפט היום, מכיר את אחת השפות המבוקשות ביותר בשוק העבודה.</p>
+        </div>
+
+        <!-- Benefit 7 -->
+        <div class="benefit-card">
+            <span class="benefit-number">7</span>
+            <h3>אוריינות דיגיטלית</h3>
+            <p>ילדים היום הם <strong>צרכני טכנולוגיה</strong> — הם משתמשים באפליקציות, משחקים ורשתות חברתיות. תכנות הופך אותם מצרכנים ל<strong>יוצרים</strong>. במקום רק לשחק ברובלוקס — הם בונים משחקים. במקום רק לצפות ביוטיוב — הם מבינים איך אתרים עובדים.</p>
+        </div>
+
+        <!-- Benefit 8 -->
+        <div class="benefit-card">
+            <span class="benefit-number">8</span>
+            <h3>עבודת צוות ותקשורת</h3>
+            <p>פרויקטי תכנות מלמדים ילדים <strong>לעבוד יחד</strong>. לתכנן ביחד, לחלק משימות, להסביר את הקוד שלהם, ולקבל ולתת פידבק. אלה בדיוק מיומנויות עבודת הצוות שמעסיקים מחפשים — והילדים לומדים אותן כבר עכשיו.</p>
+        </div>
+
+        <!-- Benefit 9 -->
+        <div class="benefit-card">
+            <span class="benefit-number">9</span>
+            <h3>זמן מסך איכותי</h3>
+            <p>ילדים ככה ככה על המסך — אז <strong>למה שזה לא יהיה פרודוקטיבי?</strong> במקום צריכה פסיבית (סרטונים, טיקטוק), תכנות הוא זמן מסך <strong>פעיל ויצירתי</strong>. הילד חושב, פותר, בונה ויוצר — לא רק צופה.</p>
+        </div>
+
+        <!-- Benefit 10 -->
+        <div class="benefit-card">
+            <span class="benefit-number">10</span>
+            <h3>הנאה ומוטיבציה פנימית</h3>
+            <p>בסופו של דבר — <strong>ילדים שאוהבים את מה שהם עושים, לומדים יותר טוב</strong>. תכנות דרך משחקים (מיינקראפט, רובלוקס, סקראץ') הופך את הלמידה לחוויה מהנה. ילדים בדרך ההייטק רצים לשיעור הבא — לא בורחים ממנו.</p>
+        </div>
+
+        <h2>🎯 איך להתחיל?</h2>
+
+        <p>הדרך הכי טובה להתחיל היא <strong>דרך משהו שהילד כבר אוהב</strong>:</p>
+
+        <ul>
+            <li><strong>אוהב מיינקראפט?</strong> → <a href="/חוג-מיינקראפט" style="color:#059669; font-weight:600;">קורס מיינקראפט + JavaScript</a></li>
+            <li><strong>אוהב רובלוקס?</strong> → <a href="/קורס-רובלוקס-לילדים" style="color:#059669; font-weight:600;">קורס רובלוקס + Lua</a></li>
+            <li><strong>גיל 7-9?</strong> → <a href="/קורס-סקראץ-לילדים" style="color:#059669; font-weight:600;">קורס סקראץ' (תכנות ויזואלי)</a></li>
+            <li><strong>גיל 10+?</strong> → <a href="/לימוד-פייתון-לילדים" style="color:#059669; font-weight:600;">קורס Python + AI</a></li>
+        </ul>
+
+        <p>כל הקורסים בדרך ההייטק הם <strong>אונליין, בקצב עצמי, עם גישה לנצח</strong>. הילד לומד מהבית, מתי שנוח לו, עם שיעורים מוקלטים ותמיכה מקצועית.</p>
+
+        <h2>❓ שאלות נפוצות</h2>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">מאיזה גיל כדאי להתחיל?</div>
+            <div class="faq-a">מגיל 7 עם סקראץ' (תכנות ויזואלי), מגיל 8 עם מיינקראפט (JavaScript), ומגיל 9-10 עם רובלוקס (Lua). בדרך ההייטק יש קורסים מותאמים לכל גיל.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">האם תכנות משפר ביצועים בבית הספר?</div>
+            <div class="faq-a">כן! מחקרים מראים שילדים שלומדים תכנות משפרים ציונים במתמטיקה ומדעים. תכנות מפתח חשיבה לוגית ופתרון בעיות — מיומנויות שעוזרות בכל מקצוע.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">כמה שעות בשבוע צריך ללמוד?</div>
+            <div class="faq-a">מספיק 2-3 שיעורים בשבוע של 30-45 דקות. בדרך ההייטק הילדים לומדים בקצב שלהם עם גישה 24/7.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">ילד שלא אוהב מתמטיקה יצליח בתכנות?</div>
+            <div class="faq-a">בהחלט! תכנות דרך משחקים הוא חוויה יצירתית, לא שיעור מתמטיקה. דווקא ילדים שלא אוהבים מתמטיקה מסורתית מגלים שתכנות הוא סיפור אחר לגמרי.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">מה היתרון של לימוד אונליין?</div>
+            <div class="faq-a">למידה אונליין מאפשרת ללמוד בקצב אישי, לחזור על שיעורים, ללמוד מהבית בכל שעה, ולחסוך זמן נסיעות. בדרך ההייטק הקורסים כוללים שיעורים מוקלטים, משימות מעשיות ותמיכה — בגישה לנצח.</div>
+        </div>
+
+        <!-- CTA -->
+        <div style="background:linear-gradient(135deg,#059669 0%,#10b981 100%); color:white; padding:50px 20px; text-align:center; border-radius:16px; margin:3rem 0; position:relative; z-index:5;">
+            <h2 style="color:white; font-size:1.6rem; margin-bottom:0.5rem;">🚀 מוכנים לתת לילד שלכם את היתרון?</h2>
+            <p style="opacity:0.9; max-width:500px; margin:0 auto 1.5rem;">קורסים דיגיטליים מ-₪497 לגישה לנצח. שיעורים פרטיים 1:1 מ-₪156.</p>
+            <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+                <a href="/קורס-תכנות-לילדים" style="display:inline-block; background:white; color:#059669; padding:15px 35px; border-radius:30px; text-decoration:none; font-weight:700; font-size:1.1rem; position:relative; z-index:10; cursor:pointer;">🎮 לכל הקורסים</a>
+                <a href="https://wa.me/972533009742?text=היי, מעוניינים בקורס תכנות לילדים" target="_blank" style="display:inline-block; background:#25D366; color:white; padding:15px 35px; border-radius:30px; text-decoration:none; font-weight:700; font-size:1.1rem; position:relative; z-index:10; cursor:pointer;">💬 דברו איתנו</a>
+            </div>
+        </div>
+
+        <h2>🔗 קריאה נוספת</h2>
+        <ul>
+            <li><a href="/blog/gaming-coding-guide" style="color:#059669;">המדריך המלא לתכנות במשחקים</a></li>
+            <li><a href="/blog/why-teach-kids-programming" style="color:#059669;">למה ללמד ילדים תכנות? 7 סיבות</a></li>
+            <li><a href="/blog/best-age-to-learn-programming" style="color:#059669;">מאיזה גיל ללמוד תכנות?</a></li>
+            <li><a href="/blog/coding-courses-faq" style="color:#059669;">שאלות ותשובות על קורסי תכנות לילדים</a></li>
+        </ul>
+
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="/images/brand/logo-haitech-transparent.webp" alt="דרך ההייטק" width="120">
+                    <p>בית ספר אונליין לתכנות לילדים ונוער</p>
+                    <div style="display:flex; gap:12px; margin-top:10px;">
+                        <a href="https://youtube.com/channel/UCbBmDyoE0oy0yXuVAoXNp2Q" target="_blank" style="color:#94a3b8;">YouTube</a>
+                        <a href="https://www.facebook.com/profile.php?id=61552415392453" target="_blank" style="color:#94a3b8;">Facebook</a>
+                        <a href="https://tiktok.com/@the_high_tech_way" target="_blank" style="color:#94a3b8;">TikTok</a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>קורסים</h4>
+                    <ul>
+                        <li><a href="/קורס-סקראץ-לילדים">סקראץ'</a></li>
+                        <li><a href="/חוג-מיינקראפט">מיינקראפט</a></li>
+                        <li><a href="/קורס-רובלוקס-לילדים">רובלוקס</a></li>
+                        <li><a href="/לימוד-פייתון-לילדים">פייתון</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>מידע</h4>
+                    <ul>
+                        <li><a href="/blog">בלוג</a></li>
+                        <li><a href="/#faq">שאלות נפוצות</a></li>
+                        <li><a href="/privacy.html">מדיניות פרטיות</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4 style="color:white;">צור קשר</h4>
+                    <ul>
+                        <li>📧 info@hai.tech</li>
+                        <li>💬 <a href="https://wa.me/972533009742" target="_blank">WhatsApp</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 דרך ההייטק. כל הזכויות שמורות.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/analytics.js?v=20260329"></script>
+    <script src="/js/cookie-consent.js"></script>
+
+    <!-- Floating WhatsApp -->
+    <a id="floatingWhatsApp" href="https://wa.me/972533009742?text=היי, קראתי על יתרונות תכנות לילדים ואשמח לשמוע עוד" target="_blank" style="position:fixed;bottom:25px;left:25px;z-index:998;background:#25D366;color:white;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 4px 15px rgba(37,211,102,0.4);text-decoration:none;" onclick="if(typeof gtag==='function'){gtag('event','whatsapp_clicked',{event_category:'engagement'});gtag('event','conversion',{'send_to':'AW-581343244/lMe8CPiXrL8bEIywmpUC'});}">💬</a>
+</body>
+</html>
