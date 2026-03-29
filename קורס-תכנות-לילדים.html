@@ -894,6 +894,16 @@
                         <span class="stat-label">גילאים</span>
                     </div>
                 </div>
+                <!-- Hero Lead Form -->
+                <div style="max-width:420px; margin:24px auto 0; background:rgba(255,255,255,0.12); backdrop-filter:blur(10px); border-radius:16px; padding:18px 22px;">
+                    <p style="color:white; font-weight:700; margin:0 0 10px; font-size:0.95rem;">📋 השאירו פרטים — נחזור תוך שעה</p>
+                    <form onsubmit="return submitHeroLead(event)" style="display:flex; flex-direction:column; gap:8px;">
+                        <input type="text" id="hero-lead-name" placeholder="שם ההורה" required style="padding:12px 16px; border-radius:50px; border:none; font-size:0.95rem; direction:rtl;">
+                        <input type="tel" id="hero-lead-phone" placeholder="טלפון" required inputmode="numeric" oninput="this.value=this.value.replace(/[^0-9\-\+]/g,'')" pattern="[0-9-+]{9,15}" style="padding:12px 16px; border-radius:50px; border:none; font-size:0.95rem; direction:rtl;">
+                        <button type="submit" style="padding:12px; border-radius:50px; border:none; background:#22c55e; color:white; font-weight:700; font-size:1rem; cursor:pointer;">שלחו →</button>
+                    </form>
+                    <div id="hero-lead-success" style="display:none; color:#22c55e; font-weight:700; text-align:center; padding:12px;">✅ קיבלנו! נחזור אליכם בהקדם</div>
+                </div>
             </div>
         </div>
         <div class="hero-wave">
@@ -1514,5 +1524,17 @@
     })();
     </script>
 
+    <script>
+    function submitHeroLead(e){
+        e.preventDefault();
+        var name=document.getElementById("hero-lead-name").value;
+        var phone=document.getElementById("hero-lead-phone").value;
+        fetch("/lms/api/leads/submit",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:name,phone:phone,interest:"כללי",source:"hero-form-landing",utm_source:new URLSearchParams(location.search).get("utm_source")||"",utm_medium:new URLSearchParams(location.search).get("utm_medium")||"",utm_campaign:new URLSearchParams(location.search).get("utm_campaign")||"",gclid:new URLSearchParams(location.search).get("gclid")||""})});
+        if(typeof gtag==="function"){gtag("event","generate_lead",{event_category:"form",event_label:"hero-landing"});gtag("event","contact_form_submit",{event_category:"form",event_label:"hero-landing"});gtag("event","conversion",{"send_to":"AW-581343244/QYBxCJaMzroZEIywmpUC"});}
+        e.target.style.display="none";
+        document.getElementById("hero-lead-success").style.display="block";
+        return false;
+    }
+    </script>
 </body>
 </html>
