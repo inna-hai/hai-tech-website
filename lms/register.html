@@ -109,7 +109,7 @@
                 </div>
                 
                 <label class="form-checkbox">
-                    <input type="checkbox" id="terms" required>
+                    <input type="checkbox" id="terms">
                     <div class="checkbox-custom">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
                             <polyline points="20 6 9 17 4 12"/>
@@ -158,6 +158,17 @@
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
+            
+            const termsCheckbox = document.getElementById('terms');
+            const checkboxLabel = termsCheckbox.closest('.form-checkbox');
+            
+            if (!termsCheckbox.checked) {
+                checkboxLabel.classList.add('shake');
+                errorText.textContent = 'יש לאשר את תנאי השימוש';
+                errorMessage.classList.add('show');
+                setTimeout(() => checkboxLabel.classList.remove('shake'), 500);
+                return;
+            }
             
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;

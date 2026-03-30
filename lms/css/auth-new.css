@@ -202,13 +202,16 @@ body {
 }
 
 .form-checkbox input {
-  display: none;
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
 .checkbox-custom {
   width: 22px;
   height: 22px;
-  border: 2px solid var(--border);
+  border: 2px solid rgba(255, 255, 255, 0.35);
   border-radius: 6px;
   display: flex;
   align-items: center;
@@ -239,6 +242,17 @@ body {
 .form-checkbox span {
   font-size: 14px;
   color: var(--text-secondary);
+}
+
+.form-checkbox.shake .checkbox-custom {
+  border-color: #ef4444;
+  animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
 }
 
 /* ==================== BUTTONS ==================== */
