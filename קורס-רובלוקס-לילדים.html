@@ -435,21 +435,19 @@
         <div class="container">
             <h1>🎮 קורס רובלוקס לילדים</h1>
             <p>הילד שלכם אוהב לשחק ברובלוקס? הגיע הזמן שייצור משחקים משלו! לימוד Roblox Studio ותכנות Lua - מגיימר ליוצר. משחקים אמיתיים, כסף אמיתי.</p>
-            <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:24px;">
-                    <a href="/lms/course.html?id=roblox-lua" class="btn-primary">🛒 לרכישת הקורס</a>
-                    <a href="#faq" class="btn-secondary">❓ שאלות?</a>
+            <!-- Hero Lead Form -->
+            <div style="max-width:380px; margin:24px auto 0; background:rgba(255,255,255,0.12); backdrop-filter:blur(10px); border-radius:16px; padding:16px 20px;">
+                <p style="color:white; font-weight:700; margin:0 0 10px; font-size:0.95rem; text-align:center;">📋 השאירו פרטים — נחזור תוך שעה</p>
+                <form onsubmit="return submitHeroLead(event)" style="display:flex; flex-direction:column; gap:8px;">
+                    <input type="text" id="hero-lead-name" placeholder="שם" required style="padding:12px 16px; border-radius:50px; border:none; font-size:0.95rem; direction:rtl;">
+                    <input type="tel" id="hero-lead-phone" placeholder="טלפון" required inputmode="numeric" oninput="this.value=this.value.replace(/[^0-9\-\+]/g,'')" pattern="[0-9-+]{9,15}" style="padding:12px 16px; border-radius:50px; border:none; font-size:0.95rem; direction:rtl;">
+                    <button type="submit" style="padding:12px; border-radius:50px; border:none; background:#22c55e; color:white; font-weight:700; font-size:1rem; cursor:pointer;">שלחו →</button>
+                </form>
+                <div id="hero-lead-success" style="display:none; color:#22c55e; font-weight:700; text-align:center; padding:12px;">✅ קיבלנו! נחזור אליכם בהקדם</div>
             </div>
-            <div>
-                <!-- Hero Lead Form -->
-                <div style="max-width:400px; margin:24px auto 0; background:rgba(255,255,255,0.12); backdrop-filter:blur(10px); border-radius:16px; padding:16px 20px;">
-                    <p style="color:white; font-weight:700; margin:0 0 10px; font-size:0.95rem;">📋 השאירו פרטים — נחזור תוך שעה</p>
-                    <form onsubmit="return submitHeroLead(event)" style="display:flex; flex-direction:column; gap:8px;">
-                        <input type="text" id="hero-lead-name" placeholder="שם" required style="padding:12px 16px; border-radius:50px; border:none; font-size:0.95rem; direction:rtl;">
-                        <input type="tel" id="hero-lead-phone" placeholder="טלפון" required inputmode="numeric" oninput="this.value=this.value.replace(/[^0-9\-\+]/g,'')" pattern="[0-9-+]{9,15}" style="padding:12px 16px; border-radius:50px; border:none; font-size:0.95rem; direction:rtl;">
-                        <button type="submit" style="padding:12px; border-radius:50px; border:none; background:#22c55e; color:white; font-weight:700; font-size:1rem; cursor:pointer;">שלחו →</button>
-                    </form>
-                    <div id="hero-lead-success" style="display:none; color:#22c55e; font-weight:700; text-align:center; padding:12px;">✅ קיבלנו! נחזור אליכם בהקדם</div>
-                </div>
+            <div style="display:flex; gap:12px; justify-content:center; margin-top:16px;">
+                <a href="/lms/course.html?id=roblox-lua" class="btn-primary">🛒 לרכישת הקורס</a>
+                <a href="#faq" class="btn-secondary">❓ שאלות?</a>
             </div>
             <div class="trust-badges">
                 <div class="trust-badge">
