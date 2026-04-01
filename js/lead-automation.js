@@ -226,9 +226,21 @@ const LeadAutomation = {
             // Check privacy consent
             const privacyCheckbox = form.querySelector('#privacyConsent');
             if (privacyCheckbox && !privacyCheckbox.checked) {
-                this.showError('יש לאשר את מדיניות הפרטיות');
-                privacyCheckbox.closest('.consent-checkbox').style.color = '#ef4444';
-                setTimeout(() => { privacyCheckbox.closest('.consent-checkbox').style.color = ''; }, 3000);
+                const label = privacyCheckbox.closest('.consent-checkbox');
+                label.style.color = '#ef4444';
+                label.style.fontWeight = '700';
+                // Add inline error message below checkbox
+                let errEl = label.parentElement.querySelector('.checkbox-error');
+                if (!errEl) {
+                    errEl = document.createElement('p');
+                    errEl.className = 'checkbox-error';
+                    errEl.style.cssText = 'color:#ef4444;font-size:0.9rem;font-weight:700;margin:4px 0 0;';
+                    label.parentElement.insertBefore(errEl, label.nextSibling);
+                }
+                errEl.textContent = '⚠️ יש לאשר את מדיניות הפרטיות';
+                // Scroll to checkbox on mobile
+                label.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                setTimeout(() => { label.style.color = ''; label.style.fontWeight = ''; if (errEl) errEl.remove(); }, 5000);
                 return;
             }
 
