@@ -30,11 +30,10 @@ const LeadAutomation = {
         return emailRegex.test(email);
     },
 
-    // Phone validation (Israeli format)
+    // Phone validation (Israeli format — accepts 05x, +9725x, 9725x)
     validatePhone(phone) {
-        const phoneRegex = /^0[2-9]\d{7,8}$/;
-        const cleanPhone = phone.replace(/[-\s]/g, '');
-        return phoneRegex.test(cleanPhone);
+        const cleanPhone = phone.replace(/[-\s()]/g, '');
+        return /^0[2-9]\d{7,8}$/.test(cleanPhone) || /^\+?9720?[2-9]\d{7,8}$/.test(cleanPhone);
     },
 
     // Generate WhatsApp link with pre-filled message
@@ -149,14 +148,11 @@ const LeadAutomation = {
         if (typeof Analytics !== 'undefined') {
             Analytics.trackEvent('form_submission', 'success', 'contact_form');
         }
-        // GA4: generate_lead event for Google Ads conversion tracking
+        // GA4 + Google Ads conversion tracking
         if (typeof gtag !== 'undefined') {
-            gtag('event', 'generate_lead', {
-                gtag('event', 'contact_form_submit', { event_category: 'form', event_label: 'lead-automation' });
-                gtag('event', 'conversion', {'send_to': 'AW-581343244/QYBxCJaMzroZEIywmpUC'});
-                currency: 'ILS',
-                value: 50
-            });
+            gtag('event', 'generate_lead', { currency: 'ILS', value: 50 });
+            gtag('event', 'contact_form_submit', { event_category: 'form', event_label: 'lead-automation' });
+            gtag('event', 'conversion', { 'send_to': 'AW-581343244/QYBxCJaMzroZEIywmpUC' });
         }
     },
 
@@ -224,6 +220,15 @@ const LeadAutomation = {
 
             if (!this.validateEmail(lead.email)) {
                 this.showError('כתובת האימייל אינה תקינה', form.querySelector('#email'));
+                return;
+            }
+
+            // Check privacy consent
+            const privacyCheckbox = form.querySelector('#privacyConsent');
+            if (privacyCheckbox && !privacyCheckbox.checked) {
+                this.showError('יש לאשר את מדיניות הפרטיות');
+                privacyCheckbox.closest('.consent-checkbox').style.color = '#ef4444';
+                setTimeout(() => { privacyCheckbox.closest('.consent-checkbox').style.color = ''; }, 3000);
                 return;
             }
 
