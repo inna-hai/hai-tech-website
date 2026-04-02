@@ -206,6 +206,23 @@
                 this.updateUserInfo();
             },
             
+            // Course image mapping
+            courseImages: {
+                'scratch': '/images/courses/scratch-new.webp',
+                'minecraft-javascript': '/images/courses/mc-javascript.webp',
+                'roblox-lua': '/images/courses/roblox-new.webp',
+                'web-dev-ai': '/images/courses/ai-new.webp',
+                'python-pygame': '/images/courses/python-new.webp',
+                'discord-bots': '/images/courses/discord-new.webp',
+                'minecraft-java-plugins': '/images/courses/java-new.webp',
+                'canva-ai': '/images/courses/canva.webp',
+                '3d-printing': '/images/courses/3d-print.webp',
+                'minecraft-mods': '/images/courses/mc-mods.webp',
+                'minecraft-worlds': '/images/courses/mc-worlds.webp',
+                'minecraft-summer-camp': '/images/courses/mc-summer.webp',
+                'minecraft-escape-room': '/images/courses/mc-escape.webp'
+            },
+
             async loadCourses() {
                 try {
                     const response = await fetch('data/courses.json');
@@ -214,7 +231,7 @@
                         id: course.id,
                         title: course.title,
                         description: course.shortDescription || course.description.substring(0, 100) + '...',
-                        image: this.gradients[index % this.gradients.length],
+                        image: this.courseImages[course.id] || this.gradients[index % this.gradients.length],
                         category: this.detectCategory(course),
                         level: this.mapLevel(course.level),
                         price: course.price,
@@ -373,9 +390,11 @@
                 noResults.style.display = 'none';
                 grid.innerHTML = this.filteredCourses.map(course => {
                     const levelLabels = { beginner: 'מתחיל', intermediate: 'בינוני', advanced: 'מתקדם' };
+                    const isImage = course.image && !course.image.startsWith('linear-gradient');
                     return `
                         <div class="course-card" data-course-id="${course.id}">
-                            <div class="course-image" style="background: ${course.image};">
+                            <div class="course-image" style="${isImage ? '' : 'background: ' + course.image + ';'}">
+                                ${isImage ? `<img src="${course.image}" alt="${course.title}" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">` : ''}
                                 ${course.badge ? `<span class="course-badge">${course.badge}</span>` : ''}
                             </div>
                             <div class="course-content">
