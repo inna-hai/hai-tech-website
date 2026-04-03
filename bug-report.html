@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>דיווח על באג | דרך ההייטק</title>
+    <link rel="icon" type="image/webp" href="/images/brand/logo-haitech-transparent.webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Heebo', Arial, sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+            min-height: 100vh;
+        }
+        .navbar {
+            background: #1a1a2e;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .navbar img { height: 40px; }
+        .navbar a { color: #fff; text-decoration: none; font-size: 14px; opacity: 0.8; }
+        .navbar a:hover { opacity: 1; }
+
+        .container {
+            max-width: 640px;
+            margin: 40px auto;
+            padding: 0 16px;
+        }
+        .card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 32px;
+        }
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            color: #1a1a2e;
+        }
+        .subtitle {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 28px;
+            line-height: 1.6;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+            color: #334155;
+        }
+        label .required { color: #ef4444; }
+
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1.5px solid #d1d5db;
+            border-radius: 10px;
+            font-family: 'Heebo', Arial, sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.2s;
+            background: #fff;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 3px rgba(139,92,246,0.1);
+        }
+        textarea { min-height: 120px; resize: vertical; }
+
+        .file-upload {
+            border: 2px dashed #d1d5db;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+        .file-upload:hover, .file-upload.dragover {
+            border-color: #8b5cf6;
+            background: #f5f3ff;
+        }
+        .file-upload input[type="file"] {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+        .file-upload .upload-icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+        .file-upload p {
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+        .file-preview {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 12px;
+        }
+        .file-preview .preview-item {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+        .file-preview .preview-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .file-preview .preview-item .remove-btn {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            background: rgba(239,68,68,0.9);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Heebo', Arial, sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+        .submit-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(109,40,217,0.3); }
+        .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+        .success-msg {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .success-msg .icon { font-size: 3rem; margin-bottom: 12px; }
+        .success-msg h2 { color: #16a34a; margin-bottom: 8px; }
+        .success-msg p { color: #64748b; line-height: 1.6; }
+        .success-msg a {
+            display: inline-block;
+            margin-top: 20px;
+            color: #8b5cf6;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .error-msg {
+            background: #fef2f2;
+            color: #dc2626;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/"><img src="/images/brand/logo-haitech-transparent.webp" alt="דרך ההייטק"></a>
+        <a href="/">← חזרה לאתר</a>
+    </nav>
+
+    <div class="container">
+        <div class="card">
+            <div id="formSection">
+                <h1>🐛 דיווח על באג</h1>
+                <p class="subtitle">מצאתם בעיה באתר או ב-LMS? ספרו לנו ונתקן בהקדם!</p>
+
+                <div class="error-msg" id="errorMsg"></div>
+
+                <form id="bugForm" onsubmit="return false;">
+                    <div class="form-group">
+                        <label>שם <span class="required">*</span></label>
+                        <input type="text" id="bugName" required placeholder="השם שלכם">
+                    </div>
+
+                    <div class="form-group">
+                        <label>אימייל</label>
+                        <input type="email" id="bugEmail" placeholder="לעדכון כשהבאג יתוקן">
+                    </div>
+
+                    <div class="form-group">
+                        <label>איפה הבעיה? <span class="required">*</span></label>
+                        <select id="bugArea" required>
+                            <option value="">בחרו אזור...</option>
+                            <option value="אתר ראשי">אתר ראשי (hai.tech)</option>
+                            <option value="LMS - קורסים">LMS — קורסים ושיעורים</option>
+                            <option value="LMS - הרשמה/תשלום">LMS — הרשמה / תשלום</option>
+                            <option value="LMS - פרופיל">LMS — פרופיל / תעודות</option>
+                            <option value="מובייל">בעיה במובייל</option>
+                            <option value="אחר">אחר</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>תיאור הבעיה <span class="required">*</span></label>
+                        <textarea id="bugDescription" required placeholder="תארו את הבעיה: מה ניסיתם לעשות, מה קרה, ומה ציפיתם שיקרה?"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>צילום מסך</label>
+                        <div class="file-upload" id="fileUpload">
+                            <div class="upload-icon">📎</div>
+                            <p>גררו תמונה לכאן או לחצו לבחירה</p>
+                            <p style="font-size:0.75rem; color:#94a3b8; margin-top:4px;">JPG, PNG, WEBP — עד 5MB לתמונה (עד 3 תמונות)</p>
+                            <input type="file" id="fileInput" accept="image/*" multiple>
+                        </div>
+                        <div class="file-preview" id="filePreview"></div>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitBtn" onclick="submitBug()">שליחת דיווח</button>
+                </form>
+            </div>
+
+            <div class="success-msg" id="successMsg">
+                <div class="icon">✅</div>
+                <h2>הדיווח נשלח!</h2>
+                <p>תודה על הדיווח. נבדוק את הבעיה ונטפל בהקדם.</p>
+                <a href="/">← חזרה לאתר</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const MAX_FILES = 3;
+        const MAX_SIZE = 5 * 1024 * 1024; // 5MB
+        let selectedFiles = [];
+
+        // Drag & drop
+        const uploadArea = document.getElementById('fileUpload');
+        uploadArea.addEventListener('dragover', (e) => { e.preventDefault(); uploadArea.classList.add('dragover'); });
+        uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('dragover'));
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            handleFiles(e.dataTransfer.files);
+        });
+
+        document.getElementById('fileInput').addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+            e.target.value = '';
+        });
+
+        function handleFiles(files) {
+            for (const file of files) {
+                if (selectedFiles.length >= MAX_FILES) break;
+                if (!file.type.startsWith('image/')) continue;
+                if (file.size > MAX_SIZE) {
+                    showError('תמונה גדולה מדי (מקסימום 5MB)');
+                    continue;
+                }
+                selectedFiles.push(file);
+            }
+            renderPreviews();
+        }
+
+        function renderPreviews() {
+            const container = document.getElementById('filePreview');
+            container.innerHTML = '';
+            selectedFiles.forEach((file, i) => {
+                const div = document.createElement('div');
+                div.className = 'preview-item';
+                const img = document.createElement('img');
+                img.src = URL.createObjectURL(file);
+                const btn = document.createElement('button');
+                btn.className = 'remove-btn';
+                btn.textContent = '×';
+                btn.onclick = () => { selectedFiles.splice(i, 1); renderPreviews(); };
+                div.appendChild(img);
+                div.appendChild(btn);
+                container.appendChild(div);
+            });
+        }
+
+        function showError(msg) {
+            const el = document.getElementById('errorMsg');
+            el.textContent = msg;
+            el.style.display = 'block';
+            setTimeout(() => el.style.display = 'none', 5000);
+        }
+
+        async function fileToBase64(file) {
+            return new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.readAsDataURL(file);
+            });
+        }
+
+        async function submitBug() {
+            const name = document.getElementById('bugName').value.trim();
+            const email = document.getElementById('bugEmail').value.trim();
+            const area = document.getElementById('bugArea').value;
+            const description = document.getElementById('bugDescription').value.trim();
+
+            if (!name || !area || !description) {
+                showError('נא למלא את כל שדות החובה');
+                return;
+            }
+
+            const btn = document.getElementById('submitBtn');
+            btn.disabled = true;
+            btn.textContent = 'שולח...';
+
+            try {
+                // Build images HTML
+                let imagesHtml = '';
+                if (selectedFiles.length > 0) {
+                    const base64Images = await Promise.all(selectedFiles.map(f => fileToBase64(f)));
+                    imagesHtml = '<h3 style="margin:16px 0 8px;">📎 צילומי מסך:</h3>' +
+                        base64Images.map((src, i) =>
+                            `<p style="margin:8px 0;"><img src="${src}" alt="צילום ${i+1}" style="max-width:100%;border-radius:8px;border:1px solid #e2e8f0;"></p>`
+                        ).join('');
+                }
+
+                const html = `
+                    <div dir="rtl" style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
+                        <div style="background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;padding:20px 24px;border-radius:12px 12px 0 0;">
+                            <h2 style="margin:0;">🐛 דיווח באג חדש</h2>
+                        </div>
+                        <div style="background:#f8fafc;padding:24px;border:1px solid #e2e8f0;border-radius:0 0 12px 12px;">
+                            <table style="width:100%;border-collapse:collapse;">
+                                <tr><td style="padding:8px 0;font-weight:bold;color:#334155;">👤 שם:</td><td style="padding:8px 0;">${name}</td></tr>
+                                ${email ? `<tr><td style="padding:8px 0;font-weight:bold;color:#334155;">📧 אימייל:</td><td style="padding:8px 0;">${email}</td></tr>` : ''}
+                                <tr><td style="padding:8px 0;font-weight:bold;color:#334155;">📍 אזור:</td><td style="padding:8px 0;">${area}</td></tr>
+                            </table>
+                            <hr style="border:none;border-top:1px solid #e2e8f0;margin:16px 0;">
+                            <h3 style="color:#334155;margin:0 0 8px;">📝 תיאור:</h3>
+                            <p style="color:#475569;line-height:1.7;white-space:pre-wrap;">${description}</p>
+                            ${imagesHtml}
+                            <hr style="border:none;border-top:1px solid #e2e8f0;margin:16px 0;">
+                            <p style="color:#94a3b8;font-size:12px;margin:0;">🕐 ${new Date().toLocaleString('he-IL', { timeZone: 'Asia/Jerusalem' })}</p>
+                        </div>
+                    </div>`;
+
+                const res = await fetch('https://notify.hai.tech/send-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        to: 'info@hai.tech',
+                        subject: `🐛 באג: ${area} — ${description.substring(0, 60)}`,
+                        html
+                    })
+                });
+
+                if (res.ok) {
+                    document.getElementById('formSection').style.display = 'none';
+                    document.getElementById('successMsg').style.display = 'block';
+                } else {
+                    throw new Error('Send failed');
+                }
+            } catch (err) {
+                showError('שגיאה בשליחה. נסו שוב או שלחו מייל ל-info@hai.tech');
+                btn.disabled = false;
+                btn.textContent = 'שליחת דיווח';
+            }
+        }
+    </script>
+</body>
+</html>
