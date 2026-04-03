@@ -338,44 +338,15 @@
             btn.textContent = 'שולח...';
 
             try {
-                // Build images HTML
-                let imagesHtml = '';
-                if (selectedFiles.length > 0) {
-                    const base64Images = await Promise.all(selectedFiles.map(f => fileToBase64(f)));
-                    imagesHtml = '<h3 style="margin:16px 0 8px;">📎 צילומי מסך:</h3>' +
-                        base64Images.map((src, i) =>
-                            `<p style="margin:8px 0;"><img src="${src}" alt="צילום ${i+1}" style="max-width:100%;border-radius:8px;border:1px solid #e2e8f0;"></p>`
-                        ).join('');
-                }
+                // Convert images to base64
+                const images = selectedFiles.length > 0
+                    ? await Promise.all(selectedFiles.map(f => fileToBase64(f)))
+                    : [];
 
-                const html = `
-                    <div dir="rtl" style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
-                        <div style="background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;padding:20px 24px;border-radius:12px 12px 0 0;">
-                            <h2 style="margin:0;">🐛 דיווח באג חדש</h2>
-                        </div>
-                        <div style="background:#f8fafc;padding:24px;border:1px solid #e2e8f0;border-radius:0 0 12px 12px;">
-                            <table style="width:100%;border-collapse:collapse;">
-                                <tr><td style="padding:8px 0;font-weight:bold;color:#334155;">👤 שם:</td><td style="padding:8px 0;">${name}</td></tr>
-                                ${email ? `<tr><td style="padding:8px 0;font-weight:bold;color:#334155;">📧 אימייל:</td><td style="padding:8px 0;">${email}</td></tr>` : ''}
-                                <tr><td style="padding:8px 0;font-weight:bold;color:#334155;">📍 אזור:</td><td style="padding:8px 0;">${area}</td></tr>
-                            </table>
-                            <hr style="border:none;border-top:1px solid #e2e8f0;margin:16px 0;">
-                            <h3 style="color:#334155;margin:0 0 8px;">📝 תיאור:</h3>
-                            <p style="color:#475569;line-height:1.7;white-space:pre-wrap;">${description}</p>
-                            ${imagesHtml}
-                            <hr style="border:none;border-top:1px solid #e2e8f0;margin:16px 0;">
-                            <p style="color:#94a3b8;font-size:12px;margin:0;">🕐 ${new Date().toLocaleString('he-IL', { timeZone: 'Asia/Jerusalem' })}</p>
-                        </div>
-                    </div>`;
-
-                const res = await fetch('https://notify.hai.tech/send-email', {
+                const res = await fetch('/lms/api/bug-report', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        to: 'info@hai.tech',
-                        subject: `🐛 באג: ${area} — ${description.substring(0, 60)}`,
-                        html
-                    })
+                    body: JSON.stringify({ name, email, area, description, images })
                 });
 
                 if (res.ok) {

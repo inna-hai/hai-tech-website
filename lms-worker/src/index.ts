@@ -282,6 +282,78 @@ app.post('/lms/api/leads/submit', async (c) => {
   }
 });
 
+// ─────────────────────────────────────────────────────────────────────────────
+// Bug Report endpoint
+// POST /lms/api/bug-report
+// ─────────────────────────────────────────────────────────────────────────────
+app.post('/lms/api/bug-report', async (c) => {
+  try {
+    const { name, email, area, description, images } = await c.req.json();
+    if (!name || !area || !description) {
+      return c.json({ error: 'שדות חובה חסרים' }, 400);
+    }
+
+    const id = crypto.randomUUID();
+    // images is an array of base64 strings — store as JSON
+    const imagesJson = images && images.length > 0 ? JSON.stringify(images) : null;
+
+    await c.env.DB.prepare(
+      `INSERT INTO bug_reports (id, name, email, area, description, images, status, created_at)
+       VALUES (?, ?, ?, ?, ?, ?, 'open', datetime('now'))`
+    ).bind(id, name.trim(), email?.trim() || null, area, description.trim(), imagesJson).run();
+
+    console.log(`[BUG-REPORT] Saved: ${id} — ${area} — ${name.trim()}`);
+
+    // Also send email notification
+    try {
+      let imagesHtml = '';
+      if (images && images.length > 0) {
+        imagesHtml = '<h3 style="margin:16px 0 8px;">📎 צילומי מסך:</h3>' +
+          images.map((src: string, i: number) =>
+            `<p style="margin:8px 0;"><img src="${src}" alt="צילום ${i+1}" style="max-width:100%;border-radius:8px;border:1px solid #e2e8f0;"></p>`
+          ).join('');
+      }
+
+      const html = `
+        <div dir="rtl" style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
+          <div style="background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;padding:20px 24px;border-radius:12px 12px 0 0;">
+            <h2 style="margin:0;">🐛 דיווח באג חדש</h2>
+          </div>
+          <div style="background:#f8fafc;padding:24px;border:1px solid #e2e8f0;border-radius:0 0 12px 12px;">
+            <table style="width:100%;border-collapse:collapse;">
+              <tr><td style="padding:8px 0;font-weight:bold;color:#334155;">🔢 ID:</td><td style="padding:8px 0;direction:ltr;font-size:0.8rem;">${id}</td></tr>
+              <tr><td style="padding:8px 0;font-weight:bold;color:#334155;">👤 שם:</td><td style="padding:8px 0;">${name.trim()}</td></tr>
+              ${email ? `<tr><td style="padding:8px 0;font-weight:bold;color:#334155;">📧 אימייל:</td><td style="padding:8px 0;">${email.trim()}</td></tr>` : ''}
+              <tr><td style="padding:8px 0;font-weight:bold;color:#334155;">📍 אזור:</td><td style="padding:8px 0;">${area}</td></tr>
+              <tr><td style="padding:8px 0;font-weight:bold;color:#334155;">📊 סטטוס:</td><td style="padding:8px 0;">🟡 פתוח</td></tr>
+            </table>
+            <hr style="border:none;border-top:1px solid #e2e8f0;margin:16px 0;">
+            <h3 style="color:#334155;margin:0 0 8px;">📝 תיאור:</h3>
+            <p style="color:#475569;line-height:1.7;white-space:pre-wrap;">${description.trim()}</p>
+            ${imagesHtml}
+            <hr style="border:none;border-top:1px solid #e2e8f0;margin:16px 0;">
+            <p style="color:#94a3b8;font-size:12px;margin:0;">🕐 ${new Date().toLocaleString('he-IL', { timeZone: 'Asia/Jerusalem' })}</p>
+          </div>
+        </div>`;
+
+      fetch('https://notify.hai.tech/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          to: 'info@hai.tech',
+          subject: `🐛 באג: ${area} — ${description.trim().substring(0, 60)}`,
+          html
+        })
+      }).catch(() => {});
+    } catch {}
+
+    return c.json({ success: true, id });
+  } catch (err) {
+    console.error('[BUG-REPORT] Error:', err);
+    return c.json({ error: 'שגיאה בשמירת הדיווח' }, 500);
+  }
+});
+
 // 404 handler
 app.notFound((c) => {
   return c.json({ error: 'Not Found', path: c.req.path }, 404);
