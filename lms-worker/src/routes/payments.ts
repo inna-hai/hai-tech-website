@@ -532,13 +532,46 @@ paymentRoutes.post('/wc-webhook', async (c) => {
       'INSERT INTO enrollments (id, user_id, course_id, payment_id, status, enrolled_at) VALUES (?, ?, ?, ?, ?, unixepoch())'
     ).bind(enrollmentId, lmsUserId, lmsCourseId, String(order.id), 'active').run();
 
-    // Send welcome email
-    const enrolledUser = await c.env.DB.prepare('SELECT name, email FROM users WHERE id = ?')
-      .bind(lmsUserId).first() as { name: string; email: string } | null;
+    // Send welcome email to student
+    const enrolledUser = await c.env.DB.prepare('SELECT name, email, phone FROM users WHERE id = ?')
+      .bind(lmsUserId).first() as { name: string; email: string; phone?: string } | null;
     const enrolledCourse = await c.env.DB.prepare('SELECT title FROM courses WHERE id = ?')
       .bind(lmsCourseId).first() as { title: string } | null;
     if (enrolledUser && enrolledCourse) {
       sendWelcomeEmail(enrolledUser.name, enrolledUser.email, enrolledCourse.title, lmsCourseId);
+
+      // Send purchase notification to info@hai.tech
+      try {
+        const purchaseHtml = `
+          <div dir="rtl" style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+            <div style="background: linear-gradient(135deg, #8b5cf6, #6d28d9); color: white; padding: 20px 24px; border-radius: 12px 12px 0 0;">
+              <h2 style="margin: 0;">💰 רכישה חדשה!</h2>
+            </div>
+            <div style="background: #f8fafc; padding: 24px; border: 1px solid #e2e8f0; border-radius: 0 0 12px 12px;">
+              <table style="width: 100%; border-collapse: collapse;">
+                <tr><td style="padding: 8px 0; font-weight: bold; color: #334155;">📝 שם:</td><td style="padding: 8px 0;">${enrolledUser.name}</td></tr>
+                <tr><td style="padding: 8px 0; font-weight: bold; color: #334155;">📧 אימייל:</td><td style="padding: 8px 0;">${enrolledUser.email}</td></tr>
+                <tr><td style="padding: 8px 0; font-weight: bold; color: #334155;">📱 טלפון:</td><td style="padding: 8px 0; direction: ltr;">${enrolledUser.phone || 'לא צוין'}</td></tr>
+                <tr><td style="padding: 8px 0; font-weight: bold; color: #334155;">🎓 קורס:</td><td style="padding: 8px 0;">${enrolledCourse.title}</td></tr>
+                <tr><td style="padding: 8px 0; font-weight: bold; color: #334155;">💳 סכום:</td><td style="padding: 8px 0;">₪${order.total || '?'}</td></tr>
+                <tr><td style="padding: 8px 0; font-weight: bold; color: #334155;">🔢 הזמנה:</td><td style="padding: 8px 0;">#${order.id}</td></tr>
+              </table>
+              <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 16px 0;">
+              <p style="color: #94a3b8; font-size: 12px; margin: 0;">🕐 ${new Date().toLocaleString('he-IL', { timeZone: 'Asia/Jerusalem' })}</p>
+            </div>
+          </div>`;
+        fetch('https://notify.hai.tech/send-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            to: 'info@hai.tech',
+            subject: `💰 רכישה: ${enrolledUser.name} — ${enrolledCourse.title} (₪${order.total || '?'})`,
+            html: purchaseHtml,
+          }),
+        }).catch(() => {});
+      } catch (emailErr) {
+        console.error('[PURCHASE-EMAIL] Failed:', emailErr);
+      }
     }
 
     console.log(`[WC Webhook] Enrolled user ${lmsUserId} in course ${lmsCourseId} (order ${order.id})`);
