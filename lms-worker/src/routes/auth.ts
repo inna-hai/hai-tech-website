@@ -678,8 +678,7 @@ authRoutes.post('/forgot-password', async (c) => {
 
   const normalizedEmail = email.toLowerCase().trim();
 
-  // Always return success (don't reveal if email exists)
-  const successMsg = 'אם האימייל קיים במערכת, נשלח אליו קישור לאיפוס סיסמה';
+  const successMsg = 'נשלח קישור לאיפוס סיסמה לאימייל שלך';
 
   try {
     const user = await c.env.DB.prepare(
@@ -687,7 +686,7 @@ authRoutes.post('/forgot-password', async (c) => {
     ).bind(normalizedEmail).first<{ id: string; email: string; name: string }>();
 
     if (!user) {
-      return c.json({ message: successMsg });
+      return c.json({ error: 'האימייל לא נמצא במערכת. אם עדיין לא נרשמת, ניתן להירשם בדף הקורס.' }, 404);
     }
 
     // Generate reset token (64 hex chars)
