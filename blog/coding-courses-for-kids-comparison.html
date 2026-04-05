@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>קורס תכנות לילדים גיל 10 — מדריך השוואה מלא 2026 | דרך ההייטק</title>
+    <meta name="description" content="מחפשים קורס תכנות לילדים? מדריך השוואה מקיף בין 12+ בתי ספר לתכנות לילדים בישראל — גילאים, שפות, מחירים וסוג למידה. כל מה שהורים צריכים לדעת.">
+    <meta name="keywords" content="קורס תכנות לילדים, לימוד תכנות לילדים, קורס תכנות לילדים גיל 10, לימוד Python לילדים, לימוד Minecraft לילדים, בית ספר לתכנות ילדים, השוואת קורסי תכנות לילדים">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hai.tech/blog/coding-courses-for-kids-comparison">
+    <meta property="og:title" content="קורס תכנות לילדים גיל 10 — מדריך השוואה מלא 2026">
+    <meta property="og:description" content="מדריך השוואה מקיף בין 12+ בתי ספר לתכנות לילדים בישראל. כל מה שהורים צריכים לדעת לפני שבוחרים.">
+    <meta property="og:image" content="https://hai.tech/blog/images/coding-courses-comparison.webp">
+    <meta property="og:locale" content="he_IL">
+    <link rel="canonical" href="https://hai.tech/blog/coding-courses-for-kids-comparison">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/jpeg" href="../images/brand/logo.webp">
+
+    <style>
+        .blog-hero { background: linear-gradient(135deg, #4f46e5 0%, #6366f1 50%, #818cf8 100%); padding: 120px 20px 60px; color: white; text-align: center; }
+        .blog-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; max-width: 800px; margin: 0 auto 1rem; }
+        .blog-hero .subtitle { font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+        .blog-hero img { max-width: 700px; width: 100%; border-radius: 16px; margin-top: 2rem; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        .blog-content { max-width: 800px; margin: 0 auto; padding: 60px 20px; font-size: 1.1rem; line-height: 1.9; color: #333; }
+        .blog-content h2 { color: #4f46e5; font-size: 1.6rem; margin: 2.5rem 0 1rem; font-weight: 700; }
+        .blog-content h3 { color: #6366f1; font-size: 1.3rem; margin: 1.5rem 0 0.75rem; }
+        .blog-content p { margin-bottom: 1.25rem; }
+        .blog-content ul, .blog-content ol { margin: 1rem 0 1.5rem 1.5rem; }
+        .blog-content li { margin-bottom: 0.5rem; }
+        .highlight-box { background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%); border-right: 4px solid #6366f1; padding: 25px; border-radius: 12px; margin: 2rem 0; }
+        .blog-meta { display: flex; gap: 1.5rem; justify-content: center; align-items: center; margin-top: 1rem; font-size: 0.95rem; opacity: 0.85; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-size: 0.95rem; overflow-x: auto; display: block; }
+        .comparison-table thead { background: linear-gradient(135deg, #4f46e5, #6366f1); color: white; }
+        .comparison-table th { padding: 14px 12px; text-align: right; font-weight: 700; white-space: nowrap; }
+        .comparison-table td { padding: 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .comparison-table tr:hover { background: #f8fafc; }
+        .comparison-table tr:nth-child(even) { background: #f1f5f9; }
+        .comparison-table tr:nth-child(even):hover { background: #e2e8f0; }
+        .school-card { background: white; border-radius: 16px; padding: 28px; margin: 1.5rem 0; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid #e2e8f0; border-right: 5px solid #6366f1; }
+        .school-card h3 { margin-top: 0; color: #1e293b; }
+        .school-card .school-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+        .school-card .school-tags span { background: #eef2ff; color: #4f46e5; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 500; }
+        .checklist li { list-style: none; position: relative; padding-right: 28px; }
+        .checklist li::before { content: '✅'; position: absolute; right: 0; }
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 2rem 0; }
+        .stat-box { background: #eef2ff; border-radius: 12px; padding: 20px; text-align: center; }
+        .stat-box .stat-number { font-size: 2.5rem; font-weight: 800; color: #4f46e5; }
+        .stat-box .stat-label { font-size: 0.95rem; color: #64748b; }
+        .faq-item { background: #f8fafc; border-radius: 12px; margin: 1.5rem 0; overflow: hidden; border: 1px solid #e2e8f0; }
+        .faq-q { font-weight: 700; color: #1e293b; padding: 20px 25px; font-size: 1.15rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .faq-q::after { content: '+'; font-size: 1.5rem; color: #6366f1; font-weight: 300; transition: transform 0.3s; }
+        .faq-item.open .faq-q::after { transform: rotate(45deg); }
+        .faq-a { padding: 0 25px 20px; color: #475569; line-height: 1.8; display: none; }
+        .faq-item.open .faq-a { display: block; }
+        @media (max-width: 600px) {
+            .stats-grid { grid-template-columns: 1fr; }
+            .comparison-table { font-size: 0.85rem; }
+            .comparison-table th, .comparison-table td { padding: 8px 6px; }
+        }
+    </style>
+
+    <!-- Article Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "קורס תכנות לילדים גיל 10 — מדריך השוואה מלא 2026",
+        "description": "מדריך השוואה מקיף בין 12+ בתי ספר לתכנות לילדים בישראל — גילאים, שפות תכנות, סוגי למידה ומחירים.",
+        "author": { "@type": "Organization", "name": "דרך ההייטק", "url": "https://hai.tech" },
+        "publisher": { "@type": "Organization", "name": "דרך ההייטק", "url": "https://hai.tech", "logo": { "@type": "ImageObject", "url": "https://hai.tech/images/brand/logo-haitech-transparent.webp" } },
+        "datePublished": "2026-04-05",
+        "dateModified": "2026-04-05",
+        "image": "https://hai.tech/blog/images/coding-courses-comparison.webp",
+        "mainEntityOfPage": "https://hai.tech/blog/coding-courses-for-kids-comparison"
+    }
+    </script>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "מאיזה גיל כדאי להתחיל ללמוד תכנות?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "ילדים יכולים להתחיל מגיל 6-7 עם תכנות ויזואלי כמו Scratch, ומגיל 9-10 לעבור לשפות אמיתיות כמו Python, JavaScript או Lua."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "מה עדיף — קורס אונליין או פרונטלי?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "שני הסוגים יעילים. קורס אונליין מאפשר גמישות, לימוד מהבית ולחזור על חומר. קורס פרונטלי מציע אינטראקציה חברתית. הבחירה תלויה באופי הילד ובלוח הזמנים של המשפחה."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "כמה עולה קורס תכנות לילדים בישראל?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "המחירים נעים בין כ-300 ש\"ח לחודש לקבוצות קטנות ועד 500+ ש\"ח לגישה לנצח לקורס דיגיטלי מלא. שיעורים פרטיים עולים בדרך כלל 150-200 ש\"ח לשיעור."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "איזו שפת תכנות הכי מתאימה לילד בן 10?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "לגיל 10, Python היא בחירה מצוינת — קלה ללמידה ומבוקשת בשוק העבודה. אם הילד אוהב משחקים, JavaScript דרך Minecraft או Lua דרך Roblox הן דרך מהנה להתחיל."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "האם ילד חייב לדעת מתמטיקה כדי ללמוד תכנות?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "לא. תכנות לילדים מתחיל מרמה בסיסית ולא דורש ידע מתמטי מתקדם. דווקא הלמידה דרך משחקים הופכת את התכנות לחוויה יצירתית ומהנה."
+                }
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation">
+        <div class="container">
+            <a href="/" class="logo"><img src="/images/brand/logo-haitech-transparent.webp" alt="דרך ההייטק" height="50"></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/#courses">קורסים</a></li>
+                <li><a href="/pricing.html">מחירים</a></li>
+                <li><a href="/blog">בלוג</a></li>
+                <li><a href="/#contact" class="btn-nav">צור קשר</a></li>
+            </ul>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="תפריט"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="blog-hero">
+        <h1>קורס תכנות לילדים גיל 10 — מדריך השוואה מלא 2026</h1>
+        <p class="subtitle">השוואה מקיפה בין בתי הספר והקורסים המובילים לתכנות לילדים בישראל</p>
+        <div class="blog-meta">
+            <span>📅 אפריל 2026</span>
+            <span>⏱️ 10 דקות קריאה</span>
+            <span>👨‍👩‍👧 מדריך להורים</span>
+        </div>
+        <img src="images/coding-courses-comparison.webp" alt="השוואת קורסי תכנות לילדים בישראל" loading="lazy">
+    </section>
+
+    <!-- Content -->
+    <article class="blog-content">
+
+        <p>ילד בן 10 שמגלה עניין במחשבים, במשחקים או בטכנולוגיה — זה הרגע המושלם לתת לו כלים אמיתיים. <strong>לימוד תכנות לילדים</strong> הפך בשנים האחרונות מנישה למגמה מרכזית בחינוך הישראלי, ולהורים יש היום מגוון אפשרויות שלא היו קיימות לפני כמה שנים בלבד.</p>
+
+        <p>אבל עם כל כך הרבה אפשרויות — <strong>איך בוחרים את הקורס הנכון?</strong> מה ההבדל בין קורס אונליין לפרונטלי? איזו שפת תכנות מתאימה לגיל 10? והאם כל בית ספר לתכנות באמת מתאים לכל ילד?</p>
+
+        <p>במדריך הזה ריכזנו את <strong>כל מה שצריך לדעת</strong> כדי לבחור קורס תכנות לילדים — כולל השוואה מפורטת בין בתי הספר המובילים בישראל.</p>
+
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-number">12+</div>
+                <div class="stat-label">בתי ספר וקורסים לתכנות לילדים בישראל</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">7-18</div>
+                <div class="stat-label">טווח הגילאים המקובל ללמידה</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">6+</div>
+                <div class="stat-label">שפות תכנות שילדים יכולים ללמוד</div>
+            </div>
+        </div>
+
+        <!-- Section 1 -->
+        <h2>למה דווקא גיל 10 הוא הזמן להתחיל?</h2>
+
+        <p>גיל 10 הוא נקודת מפנה בהתפתחות הקוגניטיבית של ילדים. בגיל הזה ילדים כבר מסוגלים לחשוב באופן מופשט, להבין היגיון סיבתי, ולעבוד על פרויקטים מורכבים יחסית. בדיוק בגיל הזה, <strong>קורס תכנות לילדים גיל 10</strong> יכול לפתוח דלתות לעולמות שלמים:</p>
+
+        <ul>
+            <li><strong>מוכנות קוגניטיבית</strong> — היכולת להבין משתנים, תנאים ולולאות בצורה אינטואיטיבית</li>
+            <li><strong>מוטיבציה פנימית</strong> — ילדים בגיל הזה רוצים ליצור, לבנות ולהראות לחברים מה הם עשו</li>
+            <li><strong>חשיפה מוקדמת</strong> — ילדים שמתחילים בגיל 10 מגיעים לתיכון עם יסודות מוצקים</li>
+            <li><strong>הנאה דרך משחקים</strong> — <strong>לימוד Minecraft לילדים</strong> או Roblox הופך תכנות לחוויה ולא לשיעורי בית</li>
+        </ul>
+
+        <!-- Section 2 -->
+        <h2>סוגי למידה — מה מתאים לילד שלכם?</h2>
+
+        <p>לפני שבוחרים בית ספר לתכנות, חשוב להבין את סוגי הלמידה הקיימים:</p>
+
+        <h3>קורס אונליין בקצב עצמי</h3>
+        <p>שיעורים מוקלטים שהילד צופה בהם מתי שנוח לו. מתאים לילדים עצמאיים שאוהבים ללמוד לבד, ולמשפחות עם לוח זמנים עמוס. היתרון הגדול — אפשר לחזור על חומר כמה פעמים שצריך.</p>
+
+        <h3>שיעורים חיים בזום (קבוצות קטנות)</h3>
+        <p>מורה מלמד בזמן אמת קבוצה של 4-10 ילדים. מתאים לילדים שצריכים מסגרת ותמיכה ישירה ממורה. החיסרון — תלוי בשעות קבועות.</p>
+
+        <h3>לימוד פרונטלי (פנים אל פנים)</h3>
+        <p>חוגים ובתי ספר פיזיים שהילד מגיע אליהם. מתאים לילדים שנהנים מאינטראקציה חברתית ולמידה בקבוצה. החיסרון — תלוי במיקום גיאוגרפי ובנסיעות.</p>
+
+        <h3>פלטפורמה גיימיפיקטורית (לימוד עצמי דרך משחק)</h3>
+        <p>סביבת משחק אונליין שמלמדת תכנות. מתאים כתוספת או כהיכרות ראשונית. החיסרון — לרוב חסר ליווי אישי של מורה.</p>
+
+        <!-- Section 3 -->
+        <h2>השוואה מפורטת: בתי ספר לתכנות לילדים בישראל</h2>
+
+        <p>ריכזנו עבורכם את המידע על בתי הספר והקורסים המובילים ב<strong>לימוד תכנות לילדים</strong> בישראל. ההשוואה כוללת מידע כללי שנאסף ממקורות פומביים — מומלץ לבדוק ישירות מול כל מוסד לפני הרשמה.</p>
+
+        <!-- School 1 -->
+        <div class="school-card" style="border-right-color: #6366f1;">
+            <h3>דרך ההייטק (HaiTech)</h3>
+            <p><strong>גילאים:</strong> 7-18 | <strong>סוג למידה:</strong> אונליין — קורסים דיגיטליים בקצב עצמי + שיעורים פרטיים 1:1</p>
+            <p>בית ספר אונליין לתכנות שמלמד דרך המשחקים שהילדים כבר אוהבים. הקטלוג כולל <strong>12 קורסים</strong>: Scratch לגילאי 7-10, JavaScript דרך Minecraft, פיתוח משחקים ב-Roblox עם Lua, <strong>לימוד Python לילדים</strong> עם pygame, בניית בוטים ל-Discord, Java עם Minecraft Plugins, פיתוח אתרים עם AI, הדפסת 3D, ו-Canva+AI למורים. מערכת LMS מתקדמת עם גיימיפיקציה — נקודות XP, רמות, תגים ותעודות דיגיטליות. גישה לנצח לכל הקורסים הדיגיטליים.</p>
+            <div class="school-tags">
+                <span>Scratch</span>
+                <span>Python</span>
+                <span>JavaScript</span>
+                <span>Lua</span>
+                <span>Java</span>
+                <span>Minecraft</span>
+                <span>Roblox</span>
+                <span>AI</span>
+            </div>
+        </div>
+
+        <!-- School 2 -->
+        <div class="school-card">
+            <h3>Z-School</h3>
+            <p><strong>גילאים:</strong> 6-18 | <strong>סוג למידה:</strong> אונליין (זום) — קבוצות קטנות של 4-6 ילדים + שיעורים פרטיים</p>
+            <p>פלטפורמת למידה אונליין גדולה שמציעה קורסים בתכנות לצד מתמטיקה ואנגלית. מלמדים Python, Scratch, JavaScript וסייבר. מתאימים גם למשפחות ישראליות בחו"ל. ניתן לארגן קבוצה פרטית ולקבל שיעור ראשון חינם.</p>
+            <div class="school-tags">
+                <span>Python</span>
+                <span>Scratch</span>
+                <span>JavaScript</span>
+                <span>סייבר</span>
+            </div>
+        </div>
+
+        <!-- School 3 -->
+        <div class="school-card">
+            <h3>KidKod (Coding Kids)</h3>
+            <p><strong>גילאים:</strong> 8+ | <strong>סוג למידה:</strong> אונליין (זום) — קבוצות עד 9 ילדים</p>
+            <p>מלמדים Scratch, Python, פיתוח אתרים (HTML/CSS/JavaScript) ופיתוח משחקים עם Unity. השיעורים מוקלטים לצפייה חוזרת. המדריכים שומרים על קשר רציף עם התלמידים דרך וואטסאפ לעזרה בשיעורי בית.</p>
+            <div class="school-tags">
+                <span>Scratch</span>
+                <span>Python</span>
+                <span>HTML/CSS</span>
+                <span>Unity</span>
+            </div>
+        </div>
+
+        <!-- School 4 -->
+        <div class="school-card">
+            <h3>Tekkie Uni</h3>
+            <p><strong>גילאים:</strong> 7-17 | <strong>סוג למידה:</strong> אונליין — שיעורים חיים בקבוצות</p>
+            <p>חברה ישראלית (רמת גן) שפועלת גם בינלאומית. מציעים מסלולים רב-שנתיים בפיתוח אפליקציות, Python, JavaScript, רובוטיקה, עריכת וידאו ואנימציה. דגש על עבודת צוות ושיתוף פעולה בפרויקטים.</p>
+            <div class="school-tags">
+                <span>JavaScript</span>
+                <span>Python</span>
+                <span>Scratch</span>
+                <span>רובוטיקה</span>
+                <span>אפליקציות</span>
+            </div>
+        </div>
+
+        <!-- School 5 -->
+        <div class="school-card">
+            <h3>LeapLearner</h3>
+            <p><strong>גילאים:</strong> 5-14 | <strong>סוג למידה:</strong> אונליין + פרונטלי (גבעתיים, תל אביב)</p>
+            <p>אחד ממעט בתי הספר שמציעים גם כיתות פיזיות וגם אונליין. מלמדים Scratch, Python, JavaScript, ו-C# עם Unity. מסלולים קצרים (1-2 חודשים) ומסלולים שנתיים (10 חודשים). כיתות קטנות של 8-10 תלמידים.</p>
+            <div class="school-tags">
+                <span>Scratch</span>
+                <span>Python</span>
+                <span>JavaScript</span>
+                <span>C#</span>
+                <span>Unity</span>
+            </div>
+        </div>
+
+        <!-- School 6 -->
+        <div class="school-card">
+            <h3>CodeMonkey</h3>
+            <p><strong>גילאים:</strong> 5-14 | <strong>סוג למידה:</strong> פלטפורמה גיימיפיקטורית (לימוד עצמי)</p>
+            <p>פלטפורמה ישראלית (תל אביב) שמלמדת תכנות דרך משחק — הילדים כותבים קוד אמיתי כדי לנווט קוף לאסוף בננות. תומך ב-CoffeeScript ו-Python. שימש באולימפיאדת התכנות הישראלית עם 250,000+ תלמידים. מתאים ללימוד עצמי או כפלטפורמה בכיתה.</p>
+            <div class="school-tags">
+                <span>CoffeeScript</span>
+                <span>Python</span>
+                <span>גיימיפיקציה</span>
+            </div>
+        </div>
+
+        <!-- School 7 -->
+        <div class="school-card">
+            <h3>MindPlay</h3>
+            <p><strong>גילאים:</strong> 10-15 | <strong>סוג למידה:</strong> אונליין (זום) — קבוצות עד 10 ילדים</p>
+            <p>מלמדים Python, Scratch, בינה מלאכותית, פיתוח אפליקציות ועריכת וידאו. השיעורים מוקלטים לצפייה חוזרת. שעות גמישות — אחה"צ, ערב וסופ"ש.</p>
+            <div class="school-tags">
+                <span>Python</span>
+                <span>Scratch</span>
+                <span>AI</span>
+                <span>אפליקציות</span>
+            </div>
+        </div>
+
+        <!-- School 8 -->
+        <div class="school-card">
+            <h3>שחקים (Shchackim)</h3>
+            <p><strong>גילאים:</strong> כיתות א'-ו' ומעלה | <strong>סוג למידה:</strong> פרונטלי + אונליין (40+ מוסדות בארץ)</p>
+            <p>מתמחים בשילוב ייחודי של <strong>תכנות וסייבר</strong>. המדריכים הם בוגרי יחידות טכנולוגיות בצה"ל. מלמדים Python, הגנת סייבר ופיתוח משחקים. מלמדים כ-6,000 תלמידים בשנה ב-100+ מוסדות חינוך.</p>
+            <div class="school-tags">
+                <span>Python</span>
+                <span>סייבר</span>
+                <span>פרונטלי</span>
+            </div>
+        </div>
+
+        <!-- School 9 -->
+        <div class="school-card">
+            <h3>Tech4Kids (D-World)</h3>
+            <p><strong>גילאים:</strong> 6+ | <strong>סוג למידה:</strong> אונליין (זום) + תוכניות לבתי ספר</p>
+            <p>פועלים 13+ שנים בתחום. מלמדים Java, JavaScript, Python, Lua, Scratch ו-AI. מציעים מסלולים מכיתה א' ועד תיכון. גם תוכנית ייעודית לבתי ספר (תוכנית גפן).</p>
+            <div class="school-tags">
+                <span>Java</span>
+                <span>JavaScript</span>
+                <span>Python</span>
+                <span>Scratch</span>
+                <span>AI</span>
+            </div>
+        </div>
+
+        <!-- School 10 -->
+        <div class="school-card">
+            <h3>HiTech School</h3>
+            <p><strong>גילאים:</strong> 8-17 | <strong>סוג למידה:</strong> אונליין — שיעורים מוקלטים + מפגשים שבועיים חיים</p>
+            <p>מציעים שלושה מסלולים: פיתוח משחקים (Unity/C#), פיתוח אתרים (HTML/CSS) ופיתוח אפליקציות. הלמידה בקצב עצמי עם מפגש שבועי חי עם מדריך לשאלות ומענה.</p>
+            <div class="school-tags">
+                <span>C#</span>
+                <span>Unity</span>
+                <span>HTML/CSS</span>
+            </div>
+        </div>
+
+        <!-- School 11 -->
+        <div class="school-card">
+            <h3>ICode Israel</h3>
+            <p><strong>גילאים:</strong> 6-16 | <strong>סוג למידה:</strong> פלטפורמה גיימיפיקטורית + תוכניות לבתי ספר</p>
+            <p>פלטפורמה ישראלית שפועלת ב-70+ מדינות. מלמדים Python ו-Scratch דרך אתגרים גיימיפיקטוריים. הפעילו האקתון גלובלי עם 2.15 מיליון משתתפים. עובדים בעיקר עם בתי ספר באישור משרד החינוך.</p>
+            <div class="school-tags">
+                <span>Python</span>
+                <span>Scratch</span>
+                <span>בתי ספר</span>
+            </div>
+        </div>
+
+        <!-- School 12 -->
+        <div class="school-card">
+            <h3>אלי איזק (מורה פרטי)</h3>
+            <p><strong>גילאים:</strong> כל הגילאים | <strong>סוג למידה:</strong> שיעורים פרטיים 1:1</p>
+            <p>מהנדס תוכנה עם תואר שני שמלמד פרטי — מ-Scratch לילדים ועד קורסים אקדמיים. מתמחה ב-Python, C, C++, C#, Java, JavaScript, פיתוח אפליקציות ובניית אתרים. מתאים למי שמחפש ליווי אישי ומותאם.</p>
+            <div class="school-tags">
+                <span>Python</span>
+                <span>Java</span>
+                <span>C++</span>
+                <span>JavaScript</span>
+                <span>פרטי</span>
+            </div>
+        </div>
+
+        <!-- Comparison Table -->
+        <h2>טבלת השוואה מסכמת</h2>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>בית ספר</th>
+                    <th>גילאים</th>
+                    <th>סוג למידה</th>
+                    <th>שפות עיקריות</th>
+                    <th>ייחוד</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>דרך ההייטק</strong></td>
+                    <td>7-18</td>
+                    <td>אונליין (קצב עצמי + פרטי)</td>
+                    <td>Scratch, Python, JS, Lua, Java</td>
+                    <td>12 קורסים, גיימיפיקציה, גישה לנצח</td>
+                </tr>
+                <tr>
+                    <td><strong>Z-School</strong></td>
+                    <td>6-18</td>
+                    <td>אונליין (זום)</td>
+                    <td>Python, Scratch, JS</td>
+                    <td>קבוצות קטנות, גם מתמטיקה ואנגלית</td>
+                </tr>
+                <tr>
+                    <td><strong>KidKod</strong></td>
+                    <td>8+</td>
+                    <td>אונליין (זום)</td>
+                    <td>Scratch, Python, Unity</td>
+                    <td>ליווי בוואטסאפ, שיעורים מוקלטים</td>
+                </tr>
+                <tr>
+                    <td><strong>Tekkie Uni</strong></td>
+                    <td>7-17</td>
+                    <td>אונליין (חי)</td>
+                    <td>JS, Python, Scratch</td>
+                    <td>מסלולים רב-שנתיים, עבודת צוות</td>
+                </tr>
+                <tr>
+                    <td><strong>LeapLearner</strong></td>
+                    <td>5-14</td>
+                    <td>אונליין + פרונטלי</td>
+                    <td>Scratch, Python, JS, C#</td>
+                    <td>כיתות פיזיות + אונליין</td>
+                </tr>
+                <tr>
+                    <td><strong>CodeMonkey</strong></td>
+                    <td>5-14</td>
+                    <td>פלטפורמת משחק</td>
+                    <td>CoffeeScript, Python</td>
+                    <td>למידה עצמית דרך משחק</td>
+                </tr>
+                <tr>
+                    <td><strong>MindPlay</strong></td>
+                    <td>10-15</td>
+                    <td>אונליין (זום)</td>
+                    <td>Python, Scratch, AI</td>
+                    <td>שעות גמישות, קורסי AI</td>
+                </tr>
+                <tr>
+                    <td><strong>שחקים</strong></td>
+                    <td>כיתות א'+</td>
+                    <td>פרונטלי + אונליין</td>
+                    <td>Python, סייבר</td>
+                    <td>תכנות + סייבר, בוגרי צה"ל</td>
+                </tr>
+                <tr>
+                    <td><strong>Tech4Kids</strong></td>
+                    <td>6+</td>
+                    <td>אונליין (זום)</td>
+                    <td>Java, JS, Python, Lua</td>
+                    <td>13+ שנות ניסיון, גם לבתי ספר</td>
+                </tr>
+                <tr>
+                    <td><strong>HiTech School</strong></td>
+                    <td>8-17</td>
+                    <td>אונליין (קצב עצמי)</td>
+                    <td>C#, Unity, HTML/CSS</td>
+                    <td>קצב עצמי + מפגש שבועי חי</td>
+                </tr>
+                <tr>
+                    <td><strong>ICode</strong></td>
+                    <td>6-16</td>
+                    <td>פלטפורמה + בתי ספר</td>
+                    <td>Python, Scratch</td>
+                    <td>70+ מדינות, האקתונים גלובליים</td>
+                </tr>
+                <tr>
+                    <td><strong>אלי איזק</strong></td>
+                    <td>כל הגילאים</td>
+                    <td>פרטי 1:1</td>
+                    <td>Python, Java, C++, JS</td>
+                    <td>התאמה אישית מלאה</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Section 4 -->
+        <h2>איזו שפת תכנות מתאימה לאיזה גיל?</h2>
+
+        <p>כשבוחרים <strong>קורס תכנות לילדים</strong>, שפת התכנות היא שיקול חשוב. הנה המלצה לפי גיל:</p>
+
+        <div class="highlight-box">
+            <strong>גילאי 7-9:</strong> <strong>Scratch</strong> — תכנות ויזואלי עם בלוקים צבעוניים. מושלם להיכרות ראשונה עם חשיבה תכנותית, בלי צורך להקליד קוד.
+        </div>
+
+        <div class="highlight-box">
+            <strong>גילאי 9-11:</strong> <strong>JavaScript (דרך Minecraft)</strong> או <strong>Lua (דרך Roblox)</strong> — שפות אמיתיות שהילדים לומדים דרך המשחקים שהם כבר מכירים. <strong>לימוד Minecraft לילדים</strong> עם JavaScript הוא אחד הקורסים הפופולריים בתחום.
+        </div>
+
+        <div class="highlight-box">
+            <strong>גילאי 10+:</strong> <strong>Python</strong> — השפה הכי מבוקשת בשוק העבודה, וגם אחת הקלות ללמידה. <strong>לימוד Python לילדים</strong> פותח דלתות לבינה מלאכותית, מדע נתונים ופיתוח משחקים.
+        </div>
+
+        <div class="highlight-box">
+            <strong>גילאי 12+:</strong> <strong>Java</strong>, <strong>C#</strong> או <strong>פיתוח אתרים (HTML/CSS/JS)</strong> — שפות מתקדמות יותר לילדים שכבר יש להם ניסיון בסיסי ורוצים להתקדם לפרויקטים מורכבים.
+        </div>
+
+        <!-- Section 5 -->
+        <h2>איך בוחרים את הקורס הנכון? 5 שאלות שכל הורה צריך לשאול</h2>
+
+        <ol>
+            <li><strong>מה הילד אוהב?</strong> — ילד שמשחק Minecraft כל היום יתחבר לקורס שמלמד JavaScript דרך Minecraft. ילד שאוהב Roblox ירצה ללמוד Lua. התאימו את הקורס לתחום העניין.</li>
+            <li><strong>מה סוג הלמידה המתאים?</strong> — ילד עצמאי יצליח בקצב עצמי. ילד שצריך מסגרת יעדיף קבוצה עם מורה. אין תשובה אחת נכונה — זה תלוי באופי.</li>
+            <li><strong>מה הגיל ורמת הניסיון?</strong> — מתחיל בן 7? Scratch. מתחיל בן 10? Python או Minecraft+JS. כבר יש ניסיון? Java או C#.</li>
+            <li><strong>מה התקציב?</strong> — המחירים נעים בין כ-300 ש"ח/חודש לקבוצות ועד 500+ ש"ח לגישה מלאה לקורס דיגיטלי. שיעורים פרטיים הם בדרך כלל 150-200 ש"ח לשיעור.</li>
+            <li><strong>האם יש שיעור ניסיון?</strong> — רוב בתי הספר מציעים שיעור ניסיון או תקופת התנסות. נצלו את זה כדי לראות אם הילד מתחבר.</li>
+        </ol>
+
+        <!-- Section 6 -->
+        <h2>היתרונות של לימוד תכנות דרך משחקים</h2>
+
+        <p>אחת המגמות הבולטות בתחום <strong>לימוד תכנות לילדים</strong> היא שימוש במשחקים מוכרים כפלטפורמת למידה. זו לא סתם טריק שיווקי — יש לזה יתרונות מוכחים:</p>
+
+        <ul>
+            <li><strong>מוטיבציה גבוהה</strong> — הילד לומד תכנות בתוך משהו שהוא כבר אוהב</li>
+            <li><strong>תוצאה מיידית</strong> — כל שורת קוד יוצרת שינוי שהילד רואה מיד במשחק</li>
+            <li><strong>למידה דרך ניסוי וטעייה</strong> — הילד מתנסה, טועה, מתקן ולומד — בדיוק כמו בעולם האמיתי</li>
+            <li><strong>גאווה ושיתוף</strong> — ילדים רוצים להראות לחברים את המשחק שהם בנו</li>
+        </ul>
+
+        <p>בתי ספר כמו דרך ההייטק, KidKod ו-Tech4Kids מתמחים בגישה הזו — ומציעים קורסים שמשלבים Minecraft, Roblox ופלטפורמות משחק נוספות עם שפות תכנות אמיתיות.</p>
+
+        <!-- FAQ -->
+        <h2>שאלות נפוצות</h2>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">מאיזה גיל כדאי להתחיל ללמוד תכנות?</div>
+            <div class="faq-a">ילדים יכולים להתחיל מגיל 6-7 עם תכנות ויזואלי כמו Scratch, ומגיל 9-10 לעבור לשפות אמיתיות כמו Python, JavaScript או Lua. הגיל המושלם תלוי בבשלות ובעניין של הילד.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">מה עדיף — קורס אונליין או פרונטלי?</div>
+            <div class="faq-a">שני הסוגים יעילים. קורס אונליין מאפשר גמישות, לימוד מהבית ולחזור על חומר. קורס פרונטלי מציע אינטראקציה חברתית. הבחירה תלויה באופי הילד ובלוח הזמנים של המשפחה.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">כמה עולה קורס תכנות לילדים?</div>
+            <div class="faq-a">המחירים נעים בין כ-300 ש"ח לחודש לקבוצות קטנות ועד 500+ ש"ח לגישה לנצח לקורס דיגיטלי מלא. שיעורים פרטיים עולים בדרך כלל 150-200 ש"ח לשיעור. חלק מהמוסדות מסובסדים על ידי רשויות מקומיות.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">איזו שפת תכנות הכי מתאימה לגיל 10?</div>
+            <div class="faq-a">לגיל 10, Python היא בחירה מצוינת — קלה ללמידה ומבוקשת בשוק העבודה. אם הילד אוהב משחקים, JavaScript דרך Minecraft או Lua דרך Roblox הן דרך מהנה להתחיל.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">האם ילד חייב לדעת מתמטיקה כדי ללמוד תכנות?</div>
+            <div class="faq-a">לא. תכנות לילדים מתחיל מרמה בסיסית ולא דורש ידע מתמטי מתקדם. דווקא הלמידה דרך משחקים הופכת את התכנות לחוויה יצירתית ומהנה, ולא לשיעור מתמטיקה.</div>
+        </div>
+
+        <!-- CTA -->
+        <div style="background:linear-gradient(135deg,#4f46e5 0%,#6366f1 100%); color:white; padding:50px 20px; text-align:center; border-radius:16px; margin:3rem 0; position:relative; z-index:5;">
+            <h2 style="color:white; font-size:1.6rem; margin-bottom:0.5rem;">מוכנים לתת לילד שלכם להתחיל?</h2>
+            <p style="opacity:0.9; max-width:500px; margin:0 auto 1.5rem;">12 קורסים. Minecraft, Roblox, Python ועוד. קורסים דיגיטליים מ-₪497 לגישה לנצח.</p>
+            <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+                <a href="/קורס-תכנות-לילדים" style="display:inline-block; background:white; color:#4f46e5; padding:15px 35px; border-radius:30px; text-decoration:none; font-weight:700; font-size:1.1rem; position:relative; z-index:10; cursor:pointer;">לכל הקורסים</a>
+                <a href="https://wa.me/972533009742?text=היי, קראתי את מדריך ההשוואה ואשמח לשמוע עוד" target="_blank" style="display:inline-block; background:#25D366; color:white; padding:15px 35px; border-radius:30px; text-decoration:none; font-weight:700; font-size:1.1rem; position:relative; z-index:10; cursor:pointer;">דברו איתנו בוואטסאפ</a>
+            </div>
+        </div>
+
+        <h2>קריאה נוספת</h2>
+        <ul>
+            <li><a href="/blog/coding-benefits-for-kids" style="color:#4f46e5;">10 יתרונות בלימוד תכנות בגיל צעיר</a></li>
+            <li><a href="/blog/best-age-to-learn-programming" style="color:#4f46e5;">מאיזה גיל ללמוד תכנות?</a></li>
+            <li><a href="/blog/gaming-coding-guide" style="color:#4f46e5;">המדריך המלא לתכנות במשחקים</a></li>
+            <li><a href="/blog/coding-courses-faq" style="color:#4f46e5;">שאלות ותשובות על קורסי תכנות לילדים</a></li>
+        </ul>
+
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="/images/brand/logo-haitech-transparent.webp" alt="דרך ההייטק" width="120">
+                    <p>בית ספר אונליין לתכנות לילדים ונוער</p>
+                    <div style="display:flex; gap:12px; margin-top:10px;">
+                        <a href="https://youtube.com/channel/UCbBmDyoE0oy0yXuVAoXNp2Q" target="_blank" style="color:#94a3b8;">YouTube</a>
+                        <a href="https://www.facebook.com/profile.php?id=61552415392453" target="_blank" style="color:#94a3b8;">Facebook</a>
+                        <a href="https://tiktok.com/@the_high_tech_way" target="_blank" style="color:#94a3b8;">TikTok</a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>קורסים</h4>
+                    <ul>
+                        <li><a href="/קורס-סקראץ-לילדים">סקראץ'</a></li>
+                        <li><a href="/חוג-מיינקראפט">מיינקראפט</a></li>
+                        <li><a href="/קורס-רובלוקס-לילדים">רובלוקס</a></li>
+                        <li><a href="/לימוד-פייתון-לילדים">פייתון</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>מידע</h4>
+                    <ul>
+                        <li><a href="/blog">בלוג</a></li>
+                        <li><a href="/#faq">שאלות נפוצות</a></li>
+                        <li><a href="/privacy.html">מדיניות פרטיות</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4 style="color:white;">צור קשר</h4>
+                    <ul>
+                        <li>📧 info@hai.tech</li>
+                        <li><a href="https://wa.me/972533009742" target="_blank">WhatsApp</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 דרך ההייטק. כל הזכויות שמורות.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/analytics.js?v=20260405"></script>
+    <script src="/js/cookie-consent.js"></script>
+
+    <!-- Floating WhatsApp -->
+    <a id="floatingWhatsApp" href="https://wa.me/972533009742?text=היי, קראתי את מדריך השוואת קורסי התכנות ואשמח לשמוע עוד" target="_blank" style="position:fixed;bottom:25px;left:25px;z-index:998;background:#25D366;color:white;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 4px 15px rgba(37,211,102,0.4);text-decoration:none;" onclick="if(typeof gtag==='function'){gtag('event','whatsapp_clicked',{event_category:'engagement'});gtag('event','conversion',{'send_to':'AW-581343244/lMe8CPiXrL8bEIywmpUC'});}">💬</a>
+</body>
+</html>
