@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>AI למורים: מה למדנו, מה חדש, ולאן ממשיכים | דרך ההייטק</title>
+    <meta name="description" content="מפגש 9 בתוכנית הכשרת AI למורים — סיכום כל מה שנלמד, היכרות עם חידושים עדכניים, ובניית ארגז כלים אישי להמשך העבודה עם AI בכיתה.">
+    <meta name="keywords" content="מפגש 9 AI למורים, סיכום הכשרת AI למורים, חידושים ב-AI בחינוך, ארגז כלים AI למורים, התפתחות מקצועית מורים AI">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hai.tech/teacher-ai-training/ai-for-teachers-whats-next">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" type="image/jpeg" href="../../images/brand/logo.webp">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="AI למורים: מה למדנו, מה חדש, ולאן ממשיכים | הכשרת AI למורים | דרך ההייטק">
+    <meta property="og:description" content="מפגש 9 — סיכום התוכנית, חידושים בעולם ה-AI, ובניית ארגז כלים אישי להמשך העבודה בהוראה.">
+    <meta property="og:url" content="https://hai.tech/teacher-ai-training/ai-for-teachers-whats-next">
+    <meta property="og:locale" content="he_IL">
+    <meta property="og:image" content="https://hai.tech/teacher-ai-training/images/session8.webp">
+    <meta property="og:image:alt" content="AI למורים — סיכום, חידושים וצעדים להמשך">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="675">
+    <meta name="twitter:image" content="https://hai.tech/teacher-ai-training/images/session8.webp">
+    <meta property="og:site_name" content="דרך ההייטק">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="AI למורים: מה למדנו, מה חדש, ולאן ממשיכים">
+    <meta name="twitter:description" content="מפגש 9 בתוכנית הכשרת AI למורים — סיכום, חידושים, וארגז כלים אישי להמשך.">
+
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #eef2ff;
+            --accent: #22c55e;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --warning: #f59e0b;
+            --warning-light: #fffbeb;
+        }
+        * { box-sizing: border-box; }
+
+        .session-hero {
+            background: linear-gradient(135deg, #0f172a 0%, #4338ca 45%, #7c3aed 100%);
+            padding: 140px 20px 60px;
+            color: white;
+            text-align: center;
+        }
+        .session-hero .breadcrumb { font-size: 0.9rem; opacity: 0.85; margin-bottom: 1rem; }
+        .session-hero .breadcrumb a { color: white; text-decoration: underline; }
+        .session-hero .session-num {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .session-hero h1 {
+            font-size: clamp(1.9rem, 4vw, 3rem);
+            font-weight: 800;
+            max-width: 860px;
+            margin: 0 auto 1rem;
+            line-height: 1.3;
+        }
+        .session-hero .hero-desc {
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.92;
+            line-height: 1.8;
+        }
+
+        .session-content {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 60px 20px 40px;
+            font-size: 1.08rem;
+            line-height: 1.9;
+            color: var(--text);
+        }
+        .session-content h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin: 3rem 0 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-light);
+        }
+        .session-content h3 {
+            font-size: 1.22rem;
+            font-weight: 700;
+            color: var(--text);
+            margin: 2rem 0 0.75rem;
+        }
+        .session-content p { margin-bottom: 1.25rem; }
+        .session-content ul, .session-content ol {
+            padding-right: 1.5rem;
+            margin: 0.75rem 0 1.5rem;
+        }
+        .session-content li { margin-bottom: 0.5rem; }
+
+        .highlight-box, .success-box, .warning-box, .activity-box, .step-box {
+            border-radius: 16px;
+            padding: 28px 32px;
+            margin: 2rem 0;
+        }
+        .highlight-box { background: var(--primary-light); }
+        .highlight-box h3 { margin-top: 0; color: var(--primary-dark); }
+        .success-box {
+            background: #f0fdf4;
+            border-right: 4px solid var(--accent);
+        }
+        .success-box h3 { margin-top: 0; color: #166534; }
+        .warning-box {
+            background: var(--warning-light);
+            border-right: 4px solid var(--warning);
+        }
+        .warning-box h3 { margin-top: 0; color: #92400e; }
+        .activity-box {
+            background: #ecfeff;
+            border: 1px solid #67e8f9;
+        }
+        .activity-box h3 { margin-top: 0; color: #0f766e; }
+        .step-box {
+            background: white;
+            border: 1px solid #e2e8f0;
+        }
+        .step-box .step-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            font-weight: 800;
+            font-size: 1rem;
+            margin-left: 12px;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+            margin: 1.5rem 0;
+        }
+        .summary-item {
+            background: var(--primary-light);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+        .summary-item .check { color: var(--accent); font-size: 1.5rem; }
+        .summary-item span { display: block; margin-top: 0.5rem; font-size: 0.95rem; font-weight: 600; }
+
+        .table-wrapper { overflow-x: auto; margin: 1.5rem 0; }
+        .table-wrapper table { width: 100%; border-collapse: collapse; }
+        .table-wrapper th {
+            background: var(--primary-light);
+            padding: 12px 16px;
+            text-align: right;
+            font-weight: 700;
+            border-bottom: 2px solid var(--primary);
+        }
+        .table-wrapper td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+
+        .quote-block {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 40px 36px;
+            margin: 3rem 0;
+            text-align: center;
+            font-size: 1.25rem;
+            font-weight: 600;
+            line-height: 1.8;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e2e8f0;
+        }
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+        .nav-btn.prev { background: #f1f5f9; color: var(--text); }
+        .nav-btn.next { background: var(--primary); color: white; }
+        .nav-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+
+        @media (max-width: 768px) {
+            .session-content { padding: 40px 16px; }
+            .highlight-box, .success-box, .warning-box, .activity-box, .step-box { padding: 20px; }
+            .nav-buttons { flex-direction: column; }
+            .summary-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+        @media (forced-colors: active) {
+            .highlight-box, .success-box, .warning-box, .activity-box, .step-box { border: 2px solid CanvasText; }
+            .nav-btn { border: 2px solid LinkText; }
+        }
+        a:focus-visible, button:focus-visible {
+            outline: 3px solid #6366f1;
+            outline-offset: 2px;
+        }
+        .nav-btn { min-height: 44px; }
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #6366f1;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 0 0 8px 8px;
+            z-index: 10000;
+            font-weight: 600;
+            text-decoration: none;
+            transition: top 0.2s;
+        }
+        .skip-link:focus { top: 0; }
+    </style>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Course",
+                "name": "AI למורים: מה למדנו, מה חדש, ולאן ממשיכים",
+                "description": "מפגש 9 בתוכנית הכשרת AI למורים — סיכום כל התוכנית, סקירת חידושים בעולם ה-AI, ובניית ארגז כלים אישי להמשך.",
+                "provider": {
+                    "@type": "Organization",
+                    "name": "דרך ההייטק",
+                    "url": "https://hai.tech"
+                },
+                "hasCourseInstance": {
+                    "@type": "CourseInstance",
+                    "courseMode": "onsite",
+                    "courseWorkload": "PT1H"
+                },
+                "isPartOf": {
+                    "@type": "Course",
+                    "name": "הכשרת AI למורים",
+                    "url": "https://hai.tech/teacher-ai-training"
+                },
+                "position": 9,
+                "educationalLevel": "Professional Development",
+                "inLanguage": "he"
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {"@type": "Question", "name": "למה צריך מפגש 9 אחרי 8 מפגשים?", "acceptedAnswer": {"@type": "Answer", "text": "מפגש 9 נועד לסכם את מה שנלמד, לעשות סדר מעשי, ולהראות איך ממשיכים בעולם שבו כלי AI משתנים כל הזמן."}},
+                    {"@type": "Question", "name": "מה המורים יוצאים איתו מהמפגש?", "acceptedAnswer": {"@type": "Answer", "text": "ארגז כלים אישי, כיוונים מעשיים לשימוש בהוראה, ומסגרת ברורה לבחירת כלים גם כשנכנסים חידושים חדשים."}},
+                    {"@type": "Question", "name": "האם צריך ללמוד כל כלי חדש שיוצא?", "acceptedAnswer": {"@type": "Answer", "text": "לא. המפגש מדגיש שהכלים משתנים, אבל העקרונות נשארים: בחירת כלי לפי צורך, בדיקת תשובות, והתאמה פדגוגית."}}
+                ]
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "דרך ההייטק", "item": "https://hai.tech"},
+                    {"@type": "ListItem", "position": 2, "name": "הכשרת AI למורים", "item": "https://hai.tech/teacher-ai-training"},
+                    {"@type": "ListItem", "position": 3, "name": "AI למורים: מה למדנו, מה חדש, ולאן ממשיכים", "item": "https://hai.tech/teacher-ai-training/ai-for-teachers-whats-next"}
+                ]
+            }
+        ]
+    }
+    </script>
+    <link rel="stylesheet" href="../../css/cookie-consent.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
+
+    <nav class="navbar" role="navigation" aria-label="תפריט ראשי">
+        <div class="container">
+            <a href="/" class="logo" aria-label="דרך ההייטק - דף הבית">
+                <img loading="lazy" src="../../images/brand/logo-haitech-transparent.webp" alt="דרך ההייטק - HAi.TECH" height="60">
+            </a>
+            <button class="mobile-menu-btn" aria-label="פתח תפריט" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="/#courses">קורסים דיגיטליים</a></li>
+                <li><a href="/teacher-ai-training" aria-current="true" style="color: #6366f1 !important; font-weight: 600;">🎓 הכשרת AI למורים</a></li>
+                <li><a href="/locations.html">מוקדים פרונטליים</a></li>
+                <li><a href="/institutions.html" style="color: #f59e0b !important; font-weight: 600;">🏫 למוסדות חינוך</a></li>
+                <li><a href="/ai-learning.html" style="color: #22c55e !important;">🤖 AI בלמידה</a></li>
+                <li><a href="/blog.html">בלוג</a></li>
+                <li><a href="/#contact" class="btn btn-nav">התחילו עכשיו</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="session-hero">
+        <nav class="breadcrumb" aria-label="ניווט פירורי לחם">
+            <a href="/teacher-ai-training">הכשרת AI למורים</a> / מפגש 9
+        </nav>
+        <div class="session-num">🔄 מפגש 9 מתוך 9</div>
+        <h1>AI למורים: מה למדנו, מה חדש, ולאן ממשיכים</h1>
+        <p class="hero-desc">מפגש מסכם שמחבר בין כל מה שלמדנו, חושף חידושים רלוונטיים, ובונה לכל מורה ארגז כלים אישי להמשך העבודה עם AI.</p>
+    </header>
+
+    <main role="main" class="session-content" id="main-content">
+        <div class="highlight-box">
+            <h3>🎯 מטרת המפגש</h3>
+            <p>במפגש הזה נלמד:</p>
+            <ul>
+                <li>איך לסכם את כל מה שנלמד לאורך התוכנית ולתרגם אותו לשגרת עבודה</li>
+                <li>אילו חידושים בעולם ה-AI באמת חשובים למורים — ואילו פחות</li>
+                <li>איך בוחרים כלי נכון לפי צורך פדגוגי, ולא לפי הייפ</li>
+                <li>איך בונים ארגז כלים אישי להמשך השנה</li>
+            </ul>
+        </div>
+
+        <div style="margin: -1rem 0 2rem; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+            <img src="/teacher-ai-training/images/session8.webp" alt="מורים מסכמים תהליך למידה עם כלי AI וחושבים על הצעדים הבאים" width="1200" height="675" loading="eager" style="width: 100%; height: auto; display: block;">
+        </div>
+
+        <div class="success-box">
+            <h3>✅ מה ניצור היום</h3>
+            <p>בסוף המפגש יהיה לכם:</p>
+            <ul>
+                <li>✔ מפת-על של כל התוכנית</li>
+                <li>✔ הבנה מה באמת חדש וחשוב בעולם ה-AI</li>
+                <li>✔ ארגז כלים אישי להמשך</li>
+                <li>✔ משימת יישום ברורה להמשך השנה</li>
+            </ul>
+        </div>
+
+        <h2>🧭 פתיחה — מה השתנה מאז שהתחלנו?</h2>
+        <p>
+            עולם ה-AI משתנה כל הזמן. יוצאים מודלים חדשים, כלים חדשים, פיצ'רים חדשים, וקל מאוד להרגיש שצריך לרוץ אחרי הכול. 
+            אבל במציאות, מה שחשוב למורים הוא לא לדעת כל חידוש — אלא לדעת <strong>איך לבחור נכון</strong>.
+        </p>
+        <p>במקום לרדוף אחרי כל כפתור חדש, המפגש הזה שואל:</p>
+        <ul>
+            <li>מה באמת למדנו?</li>
+            <li>מה נשאר רלוונטי גם כשהכלים משתנים?</li>
+            <li>איך ממשיכים מכאן בצורה רגועה, חכמה ופרקטית?</li>
+        </ul>
+
+        <div class="warning-box">
+            <h3>⚠️ מסר חשוב לפתיחה</h3>
+            <p>לא צריך לדעת כל כלי חדש שיוצא. צריך לדעת:</p>
+            <ul>
+                <li>מה המטרה ההוראתית שלכם</li>
+                <li>איזה כלי תומך בה</li>
+                <li>איך בודקים שהתוצאה טובה</li>
+                <li>ואיך שומרים על שיקול דעת פדגוגי</li>
+            </ul>
+        </div>
+
+        <h2>🗺️ סיכום התוכנית — מה באמת למדנו</h2>
+        <p>אם מסתכלים על כל שמונת המפגשים הראשונים, אפשר לסדר את התוכנית סביב ארבעה צירים מרכזיים:</p>
+
+        <div class="table-wrapper">
+            <table>
+                <tr>
+                    <th>ציר</th>
+                    <th>מה למדנו</th>
+                    <th>דוגמאות מהמפגשים</th>
+                </tr>
+                <tr>
+                    <td><strong>תכנון הוראה</strong></td>
+                    <td>שימוש ב-AI לתכנון שיעור, התאמה לכיתה, ובניית רצף למידה</td>
+                    <td>מפגש 1, מפגש 3</td>
+                </tr>
+                <tr>
+                    <td><strong>יצירת תוכן</strong></td>
+                    <td>בניית דפי עבודה, משימות, מצגות, תרגול ותכנים דינמיים</td>
+                    <td>מפגש 2, מפגש 7</td>
+                </tr>
+                <tr>
+                    <td><strong>למידה, הערכה ומשוב</strong></td>
+                    <td>יצירת מחוונים, משוב, בקרה, התאמה אישית והתקדמות תלמידים</td>
+                    <td>מפגש 4, מפגש 5</td>
+                </tr>
+                <tr>
+                    <td><strong>חשיבה ביקורתית ושיתוף</strong></td>
+                    <td>עבודה אתית, בדיקת מידע, בניית Gems ושיתוף ידע</td>
+                    <td>מפגש 6, מפגש 8</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="highlight-box">
+            <h3>💡 השורה התחתונה</h3>
+            <p>AI הוא לא "עוד כלי" — הוא שכבת תמיכה חדשה כמעט בכל שלב בעבודת המורה:</p>
+            <ul>
+                <li>בתכנון</li>
+                <li>ביצירה</li>
+                <li>בהתאמה אישית</li>
+                <li>במשוב</li>
+                <li>ובבניית קהילת מורים לומדת</li>
+            </ul>
+        </div>
+
+        <h2>🚀 מה חדש היום ב-AI למורים?</h2>
+        <p>בשנה האחרונה קצב החידושים עלה מאוד, אבל לא כל חידוש חשוב באותה מידה. הנה ארבעה כיוונים שכן שווה להכיר:</p>
+
+        <div class="step-box">
+            <h3><span class="step-num">1</span> מולטימודליות</h3>
+            <p>היום כלים יודעים לעבוד לא רק עם טקסט, אלא גם עם:</p>
+            <ul>
+                <li>תמונות</li>
+                <li>PDFים</li>
+                <li>מצגות</li>
+                <li>קבצי שמע</li>
+                <li>סרטונים</li>
+            </ul>
+            <p><strong>מה זה אומר למורה?</strong> שאפשר להעלות דף עבודה, צילום מחברת או טקסט של תלמיד — ולקבל עזרה הרבה יותר עשירה.</p>
+        </div>
+
+        <div class="step-box">
+            <h3><span class="step-num">2</span> סוכני AI ומשימות מורכבות</h3>
+            <p>כלי AI כבר לא רק עונים תשובה אחת, אלא מסוגלים לבצע רצף של פעולות:</p>
+            <ul>
+                <li>לנתח מידע</li>
+                <li>להציע שיפור</li>
+                <li>לבנות חומר חדש</li>
+                <li>לעבוד בשלבים</li>
+            </ul>
+            <p>למורה זה פותח אפשרות לעבוד עם AI כשותף תכנון, לא רק כמחולל טקסט.</p>
+        </div>
+
+        <div class="step-box">
+            <h3><span class="step-num">3</span> יצירת וידאו, מצגות והמחשות</h3>
+            <p>כלי יצירה מבוססי AI הפכו לנגישים יותר:</p>
+            <ul>
+                <li>פתיח לשיעור</li>
+                <li>המחשה ויזואלית</li>
+                <li>סרטון קצר</li>
+                <li>מצגת כמעט מוכנה</li>
+            </ul>
+            <p>החידוש כאן הוא לא רק “וואו”, אלא חיסכון בזמן ויכולת לייצר מעורבות גבוהה יותר בכיתה.</p>
+        </div>
+
+        <div class="step-box">
+            <h3><span class="step-num">4</span> בחירת כלי לפי צורך</h3>
+            <p>אחד החידושים החשובים הוא בכלל שינוי בגישה:</p>
+            <ul>
+                <li>לא כל דבר צריך ChatGPT</li>
+                <li>לא כל תוצר צריך Gemini</li>
+                <li>לפעמים צריך כלי מצגות</li>
+                <li>לפעמים כלי מחקר</li>
+                <li>לפעמים כלי תמונה</li>
+            </ul>
+            <p>מורה טוב לא צריך לדעת הכול — הוא צריך לדעת <strong>לבחור נכון</strong>.</p>
+        </div>
+
+        <h2>🧰 פעילות מרכזית — ארגז ה-AI האישי שלי</h2>
+        <div class="activity-box">
+            <h3>🎯 משימה</h3>
+            <p>כל מורה בונה לעצמו <strong>ערכת AI אישית להמשך</strong>, לפי 4 שאלות:</p>
+            <ol>
+                <li>מה הצורך המרכזי שלי כמורה כרגע?</li>
+                <li>איזה כלי AI הכי עוזר לי בזה?</li>
+                <li>באיזו משימה אשתמש בו כבר השבוע?</li>
+                <li>מה הכלל שלי לשימוש אחראי?</li>
+            </ol>
+        </div>
+
+        <h3>דוגמה ל"ערכת AI אישית"</h3>
+        <div class="table-wrapper">
+            <table>
+                <tr>
+                    <th>צורך</th>
+                    <th>כלי מתאים</th>
+                    <th>שימוש השבוע</th>
+                </tr>
+                <tr>
+                    <td>תכנון שיעור</td>
+                    <td>ChatGPT / Gemini</td>
+                    <td>בניית פתיחה לשיעור + 2 שאלות סיכום</td>
+                </tr>
+                <tr>
+                    <td>יצירת תוכן</td>
+                    <td>Canva AI / Gamma</td>
+                    <td>מצגת קצרה לשיעור הבא</td>
+                </tr>
+                <tr>
+                    <td>חקר וקריאה</td>
+                    <td><span lang="en">NotebookLM</span> / Gemini</td>
+                    <td>סיכום חומר קריאה לתלמידים</td>
+                </tr>
+                <tr>
+                    <td>משוב והערכה</td>
+                    <td>ChatGPT / Gemini</td>
+                    <td>מחוון קצר למשימת הערכה</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="success-box">
+            <h3>📝 התוצר של הפעילות</h3>
+            <p>כל מורה יוצא מהמפגש עם:</p>
+            <ul>
+                <li>כלי אחד לתכנון</li>
+                <li>כלי אחד ליצירת תוכן</li>
+                <li>כלי אחד להערכה/משוב</li>
+                <li>כיוון אחד ברור ליישום כבר השבוע</li>
+            </ul>
+        </div>
+
+        <h2>📌 מה לוקחים הלאה?</h2>
+        <p>המטרה של התוכנית לא הייתה להפוך אתכם למומחי טכנולוגיה, אלא לתת לכם דרך עבודה חדשה עם AI.</p>
+        <p>שלוש תובנות שכדאי לקחת מהמפגש המסכם:</p>
+        <ul>
+            <li><strong>הכלים משתנים — העקרונות נשארים.</strong></li>
+            <li><strong>לא צריך לדעת הכול — צריך לדעת לבחור נכון.</strong></li>
+            <li><strong>AI לא מחליף מורה טוב — הוא מחזק אותו.</strong></li>
+        </ul>
+
+        <div class="quote-block">
+            לא צריך לרדוף אחרי כל חידוש.<br>
+            צריך לדעת לבחור כלי נכון,<br>
+            לשאול שאלות טובות,<br>
+            ולחבר את ה-AI לעשייה הפדגוגית שלכם.
+        </div>
+
+        <h2>🎁 מה יצרתם היום</h2>
+        <div class="summary-grid">
+            <div class="summary-item">
+                <div class="check">✅</div>
+                <span>מפת-על של כל התוכנית</span>
+            </div>
+            <div class="summary-item">
+                <div class="check">✅</div>
+                <span>סקירה של חידושים רלוונטיים</span>
+            </div>
+            <div class="summary-item">
+                <div class="check">✅</div>
+                <span>ערכת AI אישית להמשך</span>
+            </div>
+            <div class="summary-item">
+                <div class="check">✅</div>
+                <span>צעד יישומי לשבוע הקרוב</span>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <h3>📝 משימה להמשך</h3>
+            <p>בחרו שימוש אחד ב-AI שאותו תטמיעו כבר השבוע — לא משהו גדול, אלא פעולה אחת ברורה:</p>
+            <ul>
+                <li>בניית פתיח לשיעור</li>
+                <li>יצירת דף עבודה</li>
+                <li>בניית מחוון</li>
+                <li>עבודה עם Gem / עוזר אישי</li>
+            </ul>
+            <p>תעדו לעצמכם מה עבד, מה חסך זמן, ומה דורש התאמה בהמשך.</p>
+        </div>
+
+        <div class="step-box">
+            <h3>📎 חומרים ותוצרים</h3>
+            <ul>
+                <li>דף סיכום של 9 המפגשים</li>
+                <li>תבנית "ערכת AI אישית למורה"</li>
+                <li>רשימת כלים מומלצים לפי צורך</li>
+                <li>רשימת שאלות בקרה לשימוש אחראי ב-AI</li>
+            </ul>
+            <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 1rem; margin-bottom: 0;">💡 חומרים נוספים יתווספו לאחר המפגש</p>
+        </div>
+
+        <h2>❓ שאלות נפוצות</h2>
+        <div class="step-box">
+            <h3>למה צריך מפגש 9 אחרי 8 מפגשים?</h3>
+            <p>מפגש 9 נועד לסכם את מה שנלמד, לעשות סדר מעשי, ולהראות איך ממשיכים בעולם שבו כלי AI משתנים כל הזמן.</p>
+        </div>
+        <div class="step-box">
+            <h3>מה המורים יוצאים איתו מהמפגש?</h3>
+            <p>ארגז כלים אישי, כיוונים מעשיים לשימוש בהוראה, ומסגרת ברורה לבחירת כלים גם כשנכנסים חידושים חדשים.</p>
+        </div>
+        <div class="step-box">
+            <h3>האם צריך ללמוד כל כלי חדש שיוצא?</h3>
+            <p>לא. המפגש מדגיש שהכלים משתנים, אבל העקרונות נשארים: בחירת כלי לפי צורך, בדיקת תשובות, והתאמה פדגוגית.</p>
+        </div>
+
+        <div class="highlight-box">
+            <h3>📚 מפגשים קשורים</h3>
+            <ul>
+                <li><a href="/teacher-ai-training" style="color: var(--primary); font-weight: 600;">כל 9 המפגשים — הכשרת AI למורים</a></li>
+                <li><a href="/teacher-ai-training/teacher-knowledge-sharing" style="color: var(--primary);">מפגש 8: שיתוף ידע בין מורים באמצעות AI</a></li>
+                <li><a href="/teacher-ai-training/critical-thinking-ethics" style="color: var(--primary);">מפגש 6: חשיבה ביקורתית ואתיקה בעבודה עם AI</a></li>
+            </ul>
+        </div>
+
+        <nav class="nav-buttons" aria-label="ניווט בין מפגשים">
+            <a href="/teacher-ai-training/teacher-knowledge-sharing" class="nav-btn prev">→ שיתוף ידע בין מורים באמצעות AI</a>
+            <a href="/teacher-ai-training" class="nav-btn next" style="background: var(--accent);">↩ כל המפגשים</a>
+        </nav>
+    </main>
+
+    <footer style="background: linear-gradient(180deg, #0f172a 0%, #020617 100%); padding: 3rem 2rem 1.5rem; border-top: 1px solid #1e293b;">
+        <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
+            <p style="color: #64748b; font-size: 0.85rem;">
+                © 2026 דרך ההייטק. כל הזכויות שמורות. |
+                <a href="/accessibility.html" style="color: #64748b; text-decoration: underline;">הצהרת נגישות</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        if (mobileMenuBtn && navLinks) {
+            mobileMenuBtn.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                this.classList.toggle('active');
+                this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
+            });
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function() {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.classList.remove('active');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                });
+            });
+        }
+    </script>
+
+    <script src="https://cdn.userway.org/widget.js" data-account="zBp6yPJpzr" data-position="4" async></script>
+    <style>
+        .userway_buttons_wrapper,
+        div[data-userway-widget],
+        .uwy.userway_p4,
+        .userway_p4 {
+            right: 20px !important;
+            left: auto !important;
+            bottom: 20px !important;
+            top: auto !important;
+            position: fixed !important;
+        }
+        @media (max-width: 768px) {
+            .userway_buttons_wrapper,
+            div[data-userway-widget],
+            .uwy.userway_p4,
+            .userway_p4,
+            #userwayAccessibilityIcon,
+            .userway_buttons_wrapper > div {
+                bottom: 100px !important;
+                right: 10px !important;
+                transform: scale(0.85) !important;
+            }
+        }
+    </style>
+
+    <a href="https://wa.me/972533009742?text=%D7%A9%D7%9C%D7%95%D7%9D%21%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%A0%D7%99%D7%9D%20%D7%91%D7%94%D7%9B%D7%A9%D7%A8%D7%AA%20AI%20%D7%9C%D7%9E%D7%95%D7%A8%D7%99%D7%9D" target="_blank" rel="noopener" aria-label="שלחו לנו הודעה בוואטסאפ" id="floatingWhatsApp" style="position: fixed; bottom: 25px; left: 25px; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5); z-index: 1000; transition: transform 0.3s, box-shadow 0.3s; text-decoration: none;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+
+    <script src="../../../../js/analytics.js"></script>
+</body>
+</html>
