@@ -272,6 +272,89 @@
             font-size: 0.95rem;
         }
         
+        .vip-section {
+            padding: 90px 0;
+            background: linear-gradient(180deg, #fff1f2 0%, #ffffff 100%);
+        }
+        .vip-box {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+            gap: 2rem;
+            align-items: stretch;
+        }
+        .vip-main,
+        .vip-side {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            padding: 2rem;
+        }
+        .vip-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #e11d48, #7c3aed);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        .vip-main h2 {
+            margin-bottom: 1rem;
+            color: #0f172a;
+        }
+        .vip-main p,
+        .vip-side p {
+            color: #475569;
+            line-height: 1.8;
+        }
+        .vip-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0 0;
+            display: grid;
+            gap: 0.9rem;
+        }
+        .vip-list li {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 0.9rem 1rem;
+            color: #1e293b;
+            font-weight: 600;
+        }
+        .vip-side {
+            background: linear-gradient(135deg, #e11d48 0%, #7c3aed 100%);
+            color: white;
+        }
+        .vip-side h3 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        .vip-side p,
+        .vip-side li {
+            color: rgba(255,255,255,0.96);
+        }
+        .vip-side ul {
+            list-style: none;
+            padding: 0;
+            margin: 1.25rem 0;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .vip-side li {
+            padding-right: 0;
+            font-weight: 600;
+        }
+        .vip-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
         .cta-section {
             position: relative;
             background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
@@ -344,6 +427,9 @@
             .trust-badges { gap: 1.5rem; }
             .trust-badge .number { font-size: 2rem; }
             .benefits-grid { grid-template-columns: 1fr; }
+            .vip-box { grid-template-columns: 1fr; }
+            .vip-main, .vip-side { padding: 1.5rem; }
+            .vip-actions { flex-direction: column; }
             .cta-section { padding: 60px 20px; }
             .cta-section h2 { font-size: 1.6rem; }
             .faq-question { font-size: 1rem; padding: 1.2rem 1.5rem; }
@@ -536,14 +622,47 @@
         </div>
     </section>
 
+    <section class="vip-section" id="vip">
+        <div class="vip-box">
+            <div class="vip-main">
+                <div class="vip-badge">VIP 1:1 עם מדריך</div>
+                <h2>רוצים מסלול אישי? יש גם חבילות VIP 1:1 ברובלוקס</h2>
+                <p>אם הילד או הילדה שלכם רוצים יחס אישי, קצב למידה מותאם, וליווי צמוד סביב בניית משחקים ברובלוקס — אפשר ללמוד גם במסלול <strong>VIP אישי 1:1 עם מדריך מקצועי</strong>.</p>
+                <p>זה מסלול מצוין לילדים שרוצים לשאול שאלות בזמן אמת, להתקדם מהר יותר, לבנות פרויקט אישי, או לקבל תוכנית שמותאמת בדיוק לרמה ולמטרות שלהם.</p>
+                <ul class="vip-list">
+                    <li>✅ שיעור פרטי 1:1 בזום עם מדריך מההייטק</li>
+                    <li>✅ תוכנית אישית לפי גיל, רמה ותחומי עניין</li>
+                    <li>✅ מתאים גם למתחילים וגם לילדים שכבר משחקים ברובלוקס</li>
+                    <li>✅ אפשר להתמקד ב-Roblox Studio, Lua, מכניקות משחק או פרויקט אישי</li>
+                </ul>
+            </div>
+            <aside class="vip-side">
+                <h3>למי זה הכי מתאים?</h3>
+                <p>המסלול האישי מתאים במיוחד לילדים שאוהבים ללמוד אחד על אחד, רוצים תמיכה קרובה יותר, או חולמים לבנות משחק רובלוקס משלהם עם הכוונה מקצועית צמודה.</p>
+                <ul>
+                    <li>🎯 יחס אישי מלא בכל שיעור</li>
+                    <li>🎮 למידה סביב המשחקים והרעיונות שבאמת מעניינים את הילד</li>
+                    <li>🚀 התקדמות מהירה יותר בתכנות ובבניית משחקים</li>
+                    <li>💬 אפשר להתייעץ איתנו על חבילת ה-VIP המתאימה</li>
+                </ul>
+                <div class="vip-actions">
+                    <a href="https://wa.me/972533009742?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%A0%D7%AA%20%D7%91%D7%97%D7%91%D7%99%D7%9C%D7%95%D7%AA%20VIP%201%3A1%20%D7%9C%D7%A7%D7%95%D7%A8%D7%A1%20%D7%A8%D7%95%D7%91%D7%9C%D7%95%D7%A7%D7%A1" class="btn-primary" style="color:#e11d48;">💬 לבירור בוואטסאפ על מסלול VIP</a>
+                    <a href="/pricing.html" class="btn-secondary">💰 לצפייה בחבילות ובמחירים</a>
+                </div>
+            </aside>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="cta-section" id="contact">
         <div class="container">
             <h2>מוכנים ליצור משחק ברובלוקס?</h2>
+            <p>אפשר לבחור בין קורס דיגיטלי לרכישה מיידית לבין מסלול VIP 1:1 עם מדריך אישי.</p>
             
-            <div style="max-width:400px; margin:0 auto 24px;">
-                <a href="/lms/course.html?id=roblox-lua" style="display:block;background:white;color:#764ba2;padding:16px 40px;border-radius:50px;font-weight:800;font-size:1.15rem;text-decoration:none;cursor:pointer;position:relative;z-index:10;">🛒 לרכישת הקורס</a></li>
-            </ul>
+            <div style="max-width:520px; margin:0 auto 24px; display:flex; flex-wrap:wrap; gap:12px; justify-content:center;">
+                <a href="/lms/course.html?id=roblox-lua" style="display:block;background:white;color:#764ba2;padding:16px 28px;border-radius:50px;font-weight:800;font-size:1.05rem;text-decoration:none;cursor:pointer;position:relative;z-index:10;">🛒 לרכישת הקורס</a>
+                <a href="https://wa.me/972533009742?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%A0%D7%AA%20%D7%91%D7%97%D7%91%D7%99%D7%9C%D7%95%D7%AA%20VIP%201%3A1%20%D7%9C%D7%A7%D7%95%D7%A8%D7%A1%20%D7%A8%D7%95%D7%91%D7%9C%D7%95%D7%A7%D7%A1" style="display:block;background:#7c3aed;color:white;padding:16px 28px;border-radius:50px;font-weight:800;font-size:1.05rem;text-decoration:none;cursor:pointer;position:relative;z-index:10;">💬 לבירור בוואטסאפ על VIP 1:1</a>
+            </div>
 
             <p style="color:rgba(255,255,255,0.7); margin:16px 0;">— או השאירו פרטים ונחזור אליכם —</p>
             
