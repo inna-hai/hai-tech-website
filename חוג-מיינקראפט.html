@@ -226,6 +226,89 @@
             color: #64748b;
         }
         
+        .vip-section {
+            padding: 90px 0;
+            background: linear-gradient(180deg, #f0fdf4 0%, #ffffff 100%);
+        }
+        .vip-box {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+            gap: 2rem;
+            align-items: stretch;
+        }
+        .vip-main,
+        .vip-side {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            padding: 2rem;
+        }
+        .vip-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #7c3aed, #22c55e);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        .vip-main h2 {
+            margin-bottom: 1rem;
+            color: #0f172a;
+        }
+        .vip-main p,
+        .vip-side p {
+            color: #475569;
+            line-height: 1.8;
+        }
+        .vip-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0 0;
+            display: grid;
+            gap: 0.9rem;
+        }
+        .vip-list li {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 0.9rem 1rem;
+            color: #1e293b;
+            font-weight: 600;
+        }
+        .vip-side {
+            background: linear-gradient(135deg, #7c3aed 0%, #22c55e 100%);
+            color: white;
+        }
+        .vip-side h3 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        .vip-side p,
+        .vip-side li {
+            color: rgba(255,255,255,0.96);
+        }
+        .vip-side ul {
+            list-style: none;
+            padding: 0;
+            margin: 1.25rem 0;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .vip-side li {
+            padding-right: 0;
+            font-weight: 600;
+        }
+        .vip-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
         .cta-section {
             position: relative;
             background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
@@ -300,6 +383,9 @@
             .trust-badges { gap: 1.5rem; }
             .trust-badge .number { font-size: 2rem; }
             .benefits-grid { grid-template-columns: 1fr; }
+            .vip-box { grid-template-columns: 1fr; }
+            .vip-main, .vip-side { padding: 1.5rem; }
+            .vip-actions { flex-direction: column; }
             .cta-section { padding: 60px 20px; }
             .cta-section h2 { font-size: 1.6rem; }
             .faq-question { font-size: 1rem; padding: 1.2rem 1.5rem; }
@@ -473,13 +559,46 @@
         </div>
     </section>
 
+    <section class="vip-section" id="vip">
+        <div class="vip-box">
+            <div class="vip-main">
+                <div class="vip-badge">VIP 1:1 עם מדריך</div>
+                <h2>רוצים מסלול אישי? יש גם חבילות VIP 1:1 במיינקראפט</h2>
+                <p>אם הילד או הילדה שלכם רוצים יחס אישי, קצב לימוד מותאם, ותוכנית שבנויה בדיוק לפי הרמה והתחומי עניין שלהם — אפשר ללמוד מיינקראפט גם במסלול <strong>VIP אישי 1:1 עם מדריך מקצועי</strong>.</p>
+                <p>זה מסלול מעולה לילדים שרוצים להתקדם מהר יותר, לשאול שאלות בזמן אמת, לבנות פרויקטים אישיים, ולקבל ליווי צמוד לאורך הדרך.</p>
+                <ul class="vip-list">
+                    <li>✅ שיעור פרטי 1:1 בזום עם מדריך מההייטק</li>
+                    <li>✅ תוכנית מותאמת אישית לפי גיל, רמה ומטרות</li>
+                    <li>✅ מתאים גם למתחילים וגם לילדים שכבר משחקים ומתקדמים</li>
+                    <li>✅ אפשר להתמקד בבנייה, פקודות, JavaScript, פלאגינים או פרויקט אישי</li>
+                </ul>
+            </div>
+            <aside class="vip-side">
+                <h3>למי זה הכי מתאים?</h3>
+                <p>המסלול האישי מתאים במיוחד לילדים שצריכים יותר הכוונה, אוהבים ללמוד אחד על אחד, או רוצים חוויית פרימיום עם מדריך שמתקדם איתם בקצב שלהם.</p>
+                <ul>
+                    <li>🎯 יחס אישי מלא בכל שיעור</li>
+                    <li>🎮 למידה סביב מיינקראפט שממש מעניינת את הילד</li>
+                    <li>🚀 קפיצה מהירה יותר בתכנות ובביטחון</li>
+                    <li>💬 אפשרות להתייעץ איתנו על החבילה המתאימה</li>
+                </ul>
+                <div class="vip-actions">
+                    <a href="https://wa.me/972533009742?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%A0%D7%AA%20%D7%91%D7%97%D7%91%D7%99%D7%9C%D7%95%D7%AA%20VIP%201%3A1%20%D7%9C%D7%A7%D7%95%D7%A8%D7%A1%20%D7%9E%D7%99%D7%99%D7%A0%D7%A7%D7%A8%D7%90%D7%A4%D7%98" class="btn-primary" style="color:#7c3aed;">💬 לפרטים על מסלול VIP</a>
+                    <a href="/pricing.html" class="btn-secondary">💰 לצפייה בחבילות ובמחירים</a>
+                </div>
+            </aside>
+        </div>
+    </section>
+
     <section class="cta-section" id="contact">
         <div class="container">
             <h2>🚀 רוצים שהילדים ילמדו לתכנת דרך מיינקראפט?</h2>
+            <p>אפשר לבחור בין קורס דיגיטלי לרכישה מיידית לבין מסלול VIP 1:1 עם מדריך אישי.</p>
             
-            <div style="max-width:400px; margin:0 auto 24px;">
-                <a href="/lms/course.html?id=minecraft-javascript" style="display:block;background:white;color:#764ba2;padding:16px 40px;border-radius:50px;font-weight:800;font-size:1.15rem;text-decoration:none;cursor:pointer;position:relative;z-index:10;">🛒 לרכישת הקורס</a></li>
-            </ul>
+            <div style="max-width:520px; margin:0 auto 24px; display:flex; flex-wrap:wrap; gap:12px; justify-content:center;">
+                <a href="/lms/course.html?id=minecraft-javascript" style="display:block;background:white;color:#764ba2;padding:16px 28px;border-radius:50px;font-weight:800;font-size:1.05rem;text-decoration:none;cursor:pointer;position:relative;z-index:10;">🛒 לרכישת הקורס</a>
+                <a href="https://wa.me/972533009742?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%A0%D7%AA%20%D7%91%D7%97%D7%91%D7%99%D7%9C%D7%95%D7%AA%20VIP%201%3A1%20%D7%9C%D7%A7%D7%95%D7%A8%D7%A1%20%D7%9E%D7%99%D7%99%D7%A0%D7%A7%D7%A8%D7%90%D7%A4%D7%98" style="display:block;background:#7c3aed;color:white;padding:16px 28px;border-radius:50px;font-weight:800;font-size:1.05rem;text-decoration:none;cursor:pointer;position:relative;z-index:10;">⭐ לפרטים על VIP 1:1</a>
+            </div>
 
             <p style="color:rgba(255,255,255,0.7); margin:16px 0;">— או השאירו פרטים ונחזור אליכם —</p>
             
