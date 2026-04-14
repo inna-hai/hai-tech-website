@@ -137,6 +137,8 @@
             margin: 2rem 0;
         }
         .cta-section {
+            position: relative;
+            z-index: 1;
             background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
             color: white;
             padding: 44px 20px;
@@ -146,6 +148,9 @@
         }
         .cta-section h2 { color: white; margin-bottom: 1rem; }
         .cta-section .btn {
+            position: relative;
+            z-index: 5;
+            pointer-events: auto;
             display: inline-block;
             background: white;
             color: #2563eb;
