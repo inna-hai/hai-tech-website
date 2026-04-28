@@ -212,6 +212,42 @@
             font-size: 0.9rem;
             margin-top: 10px;
         }
+        .trust-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 14px;
+            max-width: 1000px;
+            margin: 2rem auto 0;
+        }
+        .trust-item {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 16px;
+            padding: 16px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .mini-reviews {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+            margin-top: 2rem;
+        }
+        .mini-review {
+            background: white;
+            border-radius: 18px;
+            padding: 22px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+            border: 1px solid #ede9fe;
+        }
+        .mini-review p {
+            color: #4b5563;
+            line-height: 1.8;
+            margin-bottom: 0.8rem;
+        }
+        .mini-review strong {
+            color: #1e1b4b;
+        }
         .pulse {
             display: inline-block;
             width: 8px;
@@ -244,8 +280,8 @@
                 <h1>הילד שלך אוהב רובלוקס?<br>הגיע הזמן ש<span style="color:#a78bfa;">יבנה</span> אותו.</h1>
                 <p style="max-width: 720px; margin: 1.5rem auto;">
                     קבוצה חדשה לקורס <strong>פיתוח משחקים ברובלוקס</strong> לילדים בני <strong>10-13</strong>.<br>
-                    12 מפגשי לייב של שעה, פעם בשבוע, בקבוצה קטנה של עד <strong>10 ילדים</strong>.<br>
-                    מדריך מקצועי, Roblox Studio, תכנות בסיסי ב-Lua, ובניית משחק אמיתי שאפשר להעלות ל-Roblox.
+                    12 מפגשי לייב של שעה, פעם בשבוע, בקבוצה קטנה של עד <strong>10 ילדים</strong> בלבד.<br>
+                    מדריך מקצועי, Roblox Studio, תכנות בסיסי ב-Lua, ובניית משחק אמיתי שאפשר לשתף עם חברים ולהעלות ל-Roblox.
                 </p>
                 <div class="info-chips" style="margin-top: 1.5rem;">
                     <span class="info-chip">📅 שלישי 12.5.2026</span>
@@ -262,6 +298,11 @@
                     <span class="pulse"></span>
                     נותרו רק <strong id="spots-left-2">7</strong> מקומות בקבוצה
                 </div>
+                <div class="trust-strip">
+                    <div class="trust-item">👨‍🏫 מדריכים מקצועיים מצוות דרך ההייטק</div>
+                    <div class="trust-item">🏫 מלמדים ילדים טכנולוגיה מאז 2019</div>
+                    <div class="trust-item">💬 ליווי אישי וקבוצה קטנה</div>
+                </div>
             </div>
         </section>
 
@@ -269,10 +310,10 @@
             <div class="container" style="text-align: center; max-width: 800px;">
                 <h2 style="margin-bottom: 1rem;">למה דווקא הקבוצה הזו?</h2>
                 <p style="font-size: 1.05rem; line-height: 1.8;">
-                    בגלל שזה <strong>לא עוד קורס מוקלט</strong>. כל שיעור הוא <strong>בלייב</strong>, עם מדריך אמיתי שעונה על שאלות, רואה את המסך של הילד, ומתאים את הקצב לקבוצה. הקבוצה קטנה (עד 10) — כדי שכל ילד יקבל יחס.
+                    בגלל שזה <strong>לא עוד קורס מוקלט</strong>. כל שיעור הוא <strong>בלייב</strong>, עם מדריך אמיתי שעונה על שאלות, רואה את המסך של הילד, ועוזר לו להתקדם שלב אחרי שלב. הקבוצה קטנה (עד 10 ילדים) — כדי שכל ילד יקבל יחס אישי.
                 </p>
                 <p style="font-size: 1.05rem; line-height: 1.8; margin-top: 1rem;">
-                    בקבוצה הקודמת המקומות נסגרו תוך כמה ימים. מי שמתחיל ב-12.5 — מסיים ב-28.7 עם <strong>משחק שלם שהוא בנה לבד</strong> ויכול לשתף עם החברים.
+                    בקבוצה הקודמת המקומות נסגרו מהר. מי שמתחיל ב-12.5 — מסיים עם <strong>משחק שלם שהוא בנה בעצמו</strong>, ועם בסיס אמיתי לחשיבה תכנותית והמשך לימוד טכנולוגי.
                 </p>
             </div>
         </section>
@@ -328,7 +369,7 @@
 
                 <div class="level-form-card form-success" id="form-success">
                     <h3>✅ קיבלנו!</h3>
-                    <p>נחזור אליך לוואטסאפ תוך שעה עם התשובה האם הקורס מתאים לילד שלך.<br>תודה ש[שם המוסד] בוחרים בנו 🙏</p>
+                    <p>נחזור אליך לוואטסאפ תוך שעה עם תשובה האם הקורס מתאים לילד שלך.<br>תודה שבחרתם בדרך ההייטק 🙏</p>
                 </div>
             </div>
         </section>
@@ -358,12 +399,33 @@
             </div>
         </section>
 
+        <section class="section-block section-alt">
+            <div class="container" style="max-width: 1000px; text-align: center;">
+                <h2 style="margin-bottom: 0.8rem;">מה הורים אוהבים בקורסים שלנו?</h2>
+                <p style="color:#6b7280; max-width: 700px; margin: 0 auto 1rem; line-height:1.8;">הורים בוחרים בדרך ההייטק כי הילדים לא רק "צורכים מסך" — הם בונים, חושבים, שואלים ומתקדמים.</p>
+                <div class="mini-reviews">
+                    <div class="mini-review">
+                        <p>"פעם ראשונה שהוא לא רק שיחק — אלא באמת יצר משהו משלו והתלהב להראות לכולם."</p>
+                        <strong>אמא לתלמיד בקורס רובלוקס</strong>
+                    </div>
+                    <div class="mini-review">
+                        <p>"הקבוצה הקטנה והליווי בלייב עשו את כל ההבדל. הוא נשאר מרוכז והרגיש שמתקדמים איתו באמת."</p>
+                        <strong>הורה מתוכנית אונליין</strong>
+                    </div>
+                    <div class="mini-review">
+                        <p>"זה בדיוק מה שחיפשנו — מסגרת טכנולוגית רצינית, אבל כיפית ומתאימה לילדים."</p>
+                        <strong>אמא לילד בן 11</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Pricing reassurance -->
         <section class="section-block section-alt">
             <div class="container" style="text-align: center; max-width: 700px;">
                 <h2>השקעה</h2>
                 <div style="font-size: 3.5rem; font-weight: 900; color: #7c3aed; margin: 1rem 0;">₪995</div>
-                <p style="font-size: 1.05rem;">לכל המסלול — 12 מפגשי לייב.<br>זה ₪83 לשיעור, פחות ממחיר של שיעור פרטי בודד.</p>
+                <p style="font-size: 1.05rem;">לכל המסלול — 12 מפגשי לייב.<br>זה יוצא בערך ₪83 לשיעור — הרבה פחות משיעור פרטי, עם ערך של קבוצה, מדריך וליווי לאורך כל הדרך.</p>
                 <p style="margin-top: 1.5rem; color: #6b7280;">אפשר לחלק ל-2 תשלומים. תשלום מאובטח.</p>
                 <a href="#level-check" class="btn-hero-primary" style="margin-top: 1.5rem;">🎯 בדוק התאמה</a>
             </div>
@@ -405,7 +467,7 @@
         <section class="section-block section-alt">
             <div class="container" style="text-align: center; max-width: 700px;">
                 <h2>הקבוצה מתמלאת. אל תפספסו.</h2>
-                <p>בדיקת ההתאמה לוקחת 60 שניות. נחזור אליך לוואטסאפ עם תשובה אישית.</p>
+                <p>בדיקת ההתאמה לוקחת 60 שניות בלבד. אחרי מילוי הטופס נחזור אליך לוואטסאפ עם תשובה אישית, ונעזור לך להבין אם זו הקבוצה הנכונה לילד שלך.</p>
                 <a href="#level-check" class="btn-hero-primary" style="margin-top: 1rem;">🎯 התחל את הבדיקה</a>
             </div>
         </section>
