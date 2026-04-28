@@ -269,6 +269,25 @@
         קבוצה חדשה — פתיחה 12.5 · נותרו <span id="spots-left">7</span> מתוך 10 מקומות
     </div>
 
+    <nav class="navbar" role="navigation" aria-label="תפריט ראשי">
+        <div class="container">
+            <a href="/" class="logo" aria-label="דרך ההייטק - דף הבית">
+                <img loading="lazy" src="/images/brand/logo-haitech-transparent.webp" alt="דרך ההייטק - HAi.TECH" height="60">
+            </a>
+            <button class="mobile-menu-btn" aria-label="פתח תפריט" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="/">דף הבית</a></li>
+                <li><a href="/#courses">קורסים</a></li>
+                <li><a href="/#faq">שאלות נפוצות</a></li>
+                <li><a href="#level-check" class="btn btn-nav">בדיקת התאמה</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <main id="main-content">
         <section class="course-hero" style="padding-top: 40px; padding-bottom: 40px;">
             <div class="container">
@@ -484,6 +503,15 @@
     </footer>
 
     <script>
+        const mobileBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        if (mobileBtn && navLinks) {
+            mobileBtn.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                this.classList.toggle('active');
+            });
+        }
+
         // Submit level-check form to existing CRM endpoint
         async function submitLevelForm(event) {
             event.preventDefault();
