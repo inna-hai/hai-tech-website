@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>קורס רובלוקס לילדים — קבוצה חדשה 12.5.2026 | דרך ההייטק</title>
+    <meta name="description" content="קבוצה חדשה לקורס פיתוח משחקים ברובלוקס לילדים בני 10-13. פתיחה: שלישי 12.5.2026, 18:00-19:00. 12 מפגשי לייב, 10 ילדים בלבד בקבוצה, ₪995.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="https://hai.tech/roblox-קבוצה-מאי-2026">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hai.tech/roblox-קבוצה-מאי-2026">
+    <meta property="og:title" content="קורס רובלוקס — קבוצה חדשה 12.5 | רק 10 מקומות">
+    <meta property="og:description" content="פיתוח משחקים ברובלוקס לילדים 10-13. 12 מפגשי לייב, מדריך מקצועי, ₪995. בדיקת התאמה ב-60 שניות.">
+    <meta property="og:image" content="https://hai.tech/images/courses/roblox-group-course-hero-v2.png">
+    <meta property="og:locale" content="he_IL">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="image/png" href="https://hai.tech/wp-content/uploads/2023/11/hi-tech-logo.webp">
+
+    <style>
+        /* Campaign-specific touches */
+        .urgency-banner {
+            background: linear-gradient(90deg, #ef4444 0%, #f59e0b 100%);
+            color: white;
+            text-align: center;
+            padding: 10px 16px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+        }
+        .level-form-card {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 10px 40px rgba(124, 58, 237, 0.15);
+            max-width: 520px;
+            margin: 0 auto;
+        }
+        .level-form-card h2 {
+            font-size: 1.6rem;
+            color: #1e1b4b;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        .level-form-card .subtitle {
+            color: #6b7280;
+            text-align: center;
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+        }
+        .form-field { margin-bottom: 18px; }
+        .form-field label {
+            display: block;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        .form-field input, .form-field select {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+            direction: rtl;
+            background: #fafafa;
+            transition: border-color 0.2s;
+        }
+        .form-field input:focus, .form-field select:focus {
+            outline: none;
+            border-color: #7c3aed;
+            background: white;
+        }
+        .form-field .help {
+            font-size: 0.85rem;
+            color: #9ca3af;
+            margin-top: 4px;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #7c3aed 0%, #2563eb 100%);
+            color: white;
+            font-size: 1.05rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s;
+            margin-top: 8px;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(124, 58, 237, 0.3);
+        }
+        .submit-btn:disabled { opacity: 0.6; cursor: wait; }
+        .form-success {
+            display: none;
+            background: #ecfdf5;
+            border: 2px solid #10b981;
+            border-radius: 16px;
+            padding: 28px;
+            text-align: center;
+        }
+        .form-success h3 {
+            color: #065f46;
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+        .form-success p { color: #047857; margin-bottom: 0; }
+        .spots-counter {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(239, 68, 68, 0.1);
+            color: #dc2626;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+        .pulse {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #ef4444;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.3); }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
+
+    <div class="urgency-banner">
+        🔥 קבוצה חדשה — פתיחה 12.5 · נותרו <span id="spots-left">7</span> מתוך 10 מקומות
+    </div>
+
+    <nav class="navbar" role="navigation" aria-label="תפריט ראשי">
+        <div class="container">
+            <a href="/" class="logo" aria-label="דרך ההייטק - דף הבית">
+                <img loading="lazy" src="/images/brand/logo-haitech-transparent.webp" alt="דרך ההייטק - HAi.TECH" height="60">
+            </a>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <section class="course-hero" style="padding-top: 40px; padding-bottom: 40px;">
+            <div class="container">
+                <div class="hero-badges">
+                    <span class="hero-badge">🎮 קורס קבוצתי בלייב</span>
+                    <span class="hero-badge">📅 פתיחה: שלישי 12.5.2026</span>
+                    <span class="hero-badge">⏰ 18:00–19:00</span>
+                </div>
+                <h1>הילד שלך אוהב רובלוקס?<br>הגיע הזמן ש<span style="color:#a78bfa;">יבנה</span> אותו.</h1>
+                <p style="max-width: 720px; margin: 1.5rem auto;">
+                    קבוצה חדשה לקורס <strong>פיתוח משחקים ברובלוקס</strong> לילדים בני <strong>10-13</strong>.<br>
+                    12 מפגשי לייב של שעה, פעם בשבוע, בקבוצה קטנה של עד <strong>10 ילדים</strong>.<br>
+                    מדריך מקצועי, Roblox Studio, תכנות בסיסי ב-Lua, ובניית משחק אמיתי שאפשר להעלות ל-Roblox.
+                </p>
+                <div class="info-chips" style="margin-top: 1.5rem;">
+                    <span class="info-chip">📅 שלישי 12.5.2026</span>
+                    <span class="info-chip">⏰ 18:00–19:00</span>
+                    <span class="info-chip">⏱️ 12 מפגשי לייב</span>
+                    <span class="info-chip">👥 עד 10 ילדים</span>
+                    <span class="info-chip">🧒 גילאי 10–13</span>
+                    <span class="info-chip">💸 ₪995 לכל הקורס</span>
+                </div>
+                <div class="hero-actions" style="margin-top: 2rem;">
+                    <a href="#level-check" class="btn-hero-primary">🎯 בדוק התאמה (60 שניות)</a>
+                </div>
+                <div class="spots-counter">
+                    <span class="pulse"></span>
+                    נותרו רק <strong id="spots-left-2">7</strong> מקומות בקבוצה
+                </div>
+            </div>
+        </section>
+
+        <section class="section-block">
+            <div class="container" style="text-align: center; max-width: 800px;">
+                <h2 style="margin-bottom: 1rem;">למה דווקא הקבוצה הזו?</h2>
+                <p style="font-size: 1.05rem; line-height: 1.8;">
+                    בגלל שזה <strong>לא עוד קורס מוקלט</strong>. כל שיעור הוא <strong>בלייב</strong>, עם מדריך אמיתי שעונה על שאלות, רואה את המסך של הילד, ומתאים את הקצב לקבוצה. הקבוצה קטנה (עד 10) — כדי שכל ילד יקבל יחס.
+                </p>
+                <p style="font-size: 1.05rem; line-height: 1.8; margin-top: 1rem;">
+                    בקבוצה הקודמת המקומות נסגרו תוך כמה ימים. מי שמתחיל ב-12.5 — מסיים ב-28.7 עם <strong>משחק שלם שהוא בנה לבד</strong> ויכול לשתף עם החברים.
+                </p>
+            </div>
+        </section>
+
+        <!-- Level Check Form -->
+        <section class="section-block section-alt" id="level-check" style="padding: 60px 20px;">
+            <div class="container">
+                <div class="level-form-card" id="level-form-wrapper">
+                    <h2>🎯 בדיקת התאמה — 60 שניות</h2>
+                    <p class="subtitle">3 שאלות קצרות כדי שנוודא שהקורס מתאים לילד שלך, ונחזור אליך עם התשובה.</p>
+
+                    <form id="level-form" onsubmit="return submitLevelForm(event)">
+                        <div class="form-field">
+                            <label for="parent-name">השם שלך (ההורה)</label>
+                            <input type="text" id="parent-name" name="parent-name" required minlength="2" placeholder="לדוגמה: דנה כהן">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="parent-phone">טלפון נייד לחזרה</label>
+                            <input type="tel" id="parent-phone" name="parent-phone" required pattern="[0-9\-\+]{9,15}" inputmode="numeric"
+                                   oninput="this.value=this.value.replace(/[^0-9\-\+]/g,'')" placeholder="לדוגמה: 052-1234567">
+                            <div class="help">נחזור אליך בוואטסאפ תוך שעה</div>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="child-age">גיל הילד</label>
+                            <select id="child-age" name="child-age" required>
+                                <option value="">בחר/י גיל</option>
+                                <option value="9-">צעיר מ-10</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14+">14 ומעלה</option>
+                            </select>
+                            <div class="help">הקורס מותאם לגילאי 10–13</div>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="child-experience">ניסיון של הילד עם רובלוקס</label>
+                            <select id="child-experience" name="child-experience" required>
+                                <option value="">בחר/י</option>
+                                <option value="play-only">משחק ברובלוקס אבל לא בנה כלום</option>
+                                <option value="tried-studio">ניסה Roblox Studio קצת</option>
+                                <option value="built-game">בנה משחק/מפה ברובלוקס</option>
+                                <option value="no-experience">עוד לא משחק ברובלוקס</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="submit-btn" id="submit-btn">📨 שלח/י לי תשובה לוואטסאפ</button>
+                    </form>
+                </div>
+
+                <div class="level-form-card form-success" id="form-success">
+                    <h3>✅ קיבלנו!</h3>
+                    <p>נחזור אליך לוואטסאפ תוך שעה עם התשובה האם הקורס מתאים לילד שלך.<br>תודה ש[שם המוסד] בוחרים בנו 🙏</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- What kid will learn -->
+        <section class="section-block">
+            <div class="container">
+                <h2 style="text-align: center; margin-bottom: 2rem;">מה הילד יוצא איתו אחרי 12 שיעורים?</h2>
+                <div class="two-col">
+                    <div class="card">
+                        <h3>🎮 משחק שלם, שלו</h3>
+                        <p>בסוף הקורס — לכל ילד יש משחק שהוא <strong>בנה לבד</strong>. שלבים, דמויות, חוקים, ניקוד. אפשר לשתף עם חברים מ-Roblox, אפשר להעלות לחנות.</p>
+                    </div>
+                    <div class="card">
+                        <h3>💻 יסודות תכנות אמיתיים</h3>
+                        <p>משתנים, תנאים, לולאות, פונקציות. הילד לומד לחשוב כמו מתכנת — לא רק "ללחוץ ולקבל". הבסיס הזה משרת אותו בכל שפת תכנות אחרת בעתיד.</p>
+                    </div>
+                    <div class="card">
+                        <h3>🧠 חשיבה יצירתית-טכנית</h3>
+                        <p>"מה אם הדמות תיפול כשהיא נוגעת בלבה?" — הילד מתחיל לחשוב על מנגנונים, על משחקיות, על חוויית משתמש. כישורים שווים יותר מהשפה עצמה.</p>
+                    </div>
+                    <div class="card">
+                        <h3>👥 קבוצה תומכת</h3>
+                        <p>הילד נפגש פעם בשבוע עם 6-9 ילדים אחרים שאוהבים את אותו דבר. רואים מה השני בנה, מקבלים השראה, ומתחרים בכיף.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing reassurance -->
+        <section class="section-block section-alt">
+            <div class="container" style="text-align: center; max-width: 700px;">
+                <h2>השקעה</h2>
+                <div style="font-size: 3.5rem; font-weight: 900; color: #7c3aed; margin: 1rem 0;">₪995</div>
+                <p style="font-size: 1.05rem;">לכל המסלול — 12 מפגשי לייב.<br>זה ₪83 לשיעור, פחות ממחיר של שיעור פרטי בודד.</p>
+                <p style="margin-top: 1.5rem; color: #6b7280;">אפשר לחלק ל-2 תשלומים. תשלום מאובטח.</p>
+                <a href="#level-check" class="btn-hero-primary" style="margin-top: 1.5rem;">🎯 בדוק התאמה</a>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section-block">
+            <div class="container" style="max-width: 800px;">
+                <h2 style="text-align: center; margin-bottom: 2rem;">שאלות נפוצות</h2>
+
+                <details class="faq-item" style="margin-bottom: 14px; padding: 18px; background: #f9fafb; border-radius: 12px; cursor: pointer;">
+                    <summary style="font-weight: 700; color: #1e1b4b;">הילד לא יודע לתכנת. זה בעיה?</summary>
+                    <p style="margin-top: 12px; color: #4b5563;">בכלל לא. הקורס מתחיל מאפס — מניחים שהילד מכיר את רובלוקס בתור שחקן בלבד. שיעור 1 הוא היכרות עם Roblox Studio.</p>
+                </details>
+
+                <details class="faq-item" style="margin-bottom: 14px; padding: 18px; background: #f9fafb; border-radius: 12px; cursor: pointer;">
+                    <summary style="font-weight: 700; color: #1e1b4b;">מה צריך מהבית?</summary>
+                    <p style="margin-top: 12px; color: #4b5563;">מחשב (PC או Mac, לא טאבלט), חיבור אינטרנט יציב, אוזניות עם מיקרופון. Roblox Studio זה הכלי החינמי של רובלוקס — אנחנו עוזרים להתקין יחד בשיעור הראשון.</p>
+                </details>
+
+                <details class="faq-item" style="margin-bottom: 14px; padding: 18px; background: #f9fafb; border-radius: 12px; cursor: pointer;">
+                    <summary style="font-weight: 700; color: #1e1b4b;">מה אם הילד מפספס שיעור?</summary>
+                    <p style="margin-top: 12px; color: #4b5563;">כל שיעור מוקלט ונשלח אחר כך. אפשר להשלים בעצמו או לקבל סיכום מהמדריך.</p>
+                </details>
+
+                <details class="faq-item" style="margin-bottom: 14px; padding: 18px; background: #f9fafb; border-radius: 12px; cursor: pointer;">
+                    <summary style="font-weight: 700; color: #1e1b4b;">הילד שלי בן 9 / 14. מתאים?</summary>
+                    <p style="margin-top: 12px; color: #4b5563;">הקבוצה הזו ממוקדת ב-10-13. אם הילד צעיר/מבוגר — תמלא/י את הטופס בכל זאת, ונחזור אליך עם המלצה לקבוצה אחרת או למסלול פרטי.</p>
+                </details>
+
+                <details class="faq-item" style="margin-bottom: 14px; padding: 18px; background: #f9fafb; border-radius: 12px; cursor: pointer;">
+                    <summary style="font-weight: 700; color: #1e1b4b;">מי המדריך/ה?</summary>
+                    <p style="margin-top: 12px; color: #4b5563;">מדריך מנוסה מצוות דרך ההייטק — מפתח רובלוקס + ניסיון של שנים בהוראה לילדים. נשלח פרטים אחרי שתאושר/י לקבוצה.</p>
+                </details>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="section-block section-alt">
+            <div class="container" style="text-align: center; max-width: 700px;">
+                <h2>הקבוצה מתמלאת. אל תפספסו.</h2>
+                <p>בדיקת ההתאמה לוקחת 60 שניות. נחזור אליך לוואטסאפ עם תשובה אישית.</p>
+                <a href="#level-check" class="btn-hero-primary" style="margin-top: 1rem;">🎯 התחל את הבדיקה</a>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background: linear-gradient(180deg, #0f172a 0%, #020617 100%); padding: 3rem 2rem 2rem; border-top: 1px solid #1e293b;">
+        <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
+            <h3 style="color: #22c55e; font-size: 1.3rem; margin-bottom: 1rem; font-weight: 700;">דרך ההייטק</h3>
+            <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem; max-width: 600px; margin-right: auto; margin-left: auto;">מלמדים טכנולוגיה, תכנות ובינה מלאכותית לילדים ונוער מאז 2019.</p>
+            <div style="border-top: 1px solid #1e293b; padding-top: 1.5rem; margin-top: 2rem; color: #64748b; font-size: 0.85rem;">
+                © 2026 דרך ההייטק · <a href="https://wa.me/972533009742" style="color: #94a3b8;">053-300-9742</a> · <a href="mailto:info@hai.tech" style="color: #94a3b8;">info@hai.tech</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Submit level-check form to existing CRM endpoint
+        async function submitLevelForm(event) {
+            event.preventDefault();
+            const btn = document.getElementById('submit-btn');
+            btn.disabled = true;
+            btn.textContent = '⏳ שולח...';
+
+            const name = document.getElementById('parent-name').value.trim();
+            const phone = document.getElementById('parent-phone').value.trim();
+            const childAge = document.getElementById('child-age').value;
+            const childExperience = document.getElementById('child-experience').value;
+
+            const expLabel = {
+                'play-only': 'משחק ברובלוקס בלי לבנות',
+                'tried-studio': 'ניסה Roblox Studio',
+                'built-game': 'כבר בנה משחק/מפה',
+                'no-experience': 'עוד לא משחק ברובלוקס'
+            }[childExperience] || childExperience;
+
+            const notes = `[קבוצה רובלוקס מאי 2026] גיל הילד: ${childAge} · ניסיון: ${expLabel}`;
+
+            const params = new URLSearchParams(location.search);
+            const payload = {
+                name,
+                phone,
+                interest: 'roblox-group-may26',
+                source: 'landing-roblox-may26',
+                notes,
+                utm_source: params.get('utm_source') || '',
+                utm_medium: params.get('utm_medium') || '',
+                utm_campaign: params.get('utm_campaign') || '',
+                gclid: params.get('gclid') || ''
+            };
+
+            try {
+                const res = await fetch('/lms/api/leads/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!res.ok && res.status !== 201) throw new Error('submit failed: ' + res.status);
+
+                document.getElementById('level-form-wrapper').style.display = 'none';
+                document.getElementById('form-success').style.display = 'block';
+                document.getElementById('form-success').scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                // Track conversion
+                if (typeof gtag === 'function') {
+                    gtag('event', 'lead_submit', {
+                        event_category: 'roblox-may26',
+                        event_label: childAge + '/' + childExperience
+                    });
+                }
+            } catch (err) {
+                console.error(err);
+                btn.disabled = false;
+                btn.textContent = '📨 שלח/י לי תשובה לוואטסאפ';
+                alert('משהו השתבש. נסה/י שוב, או שלחו לנו וואטסאפ ל-053-300-9742');
+            }
+
+            return false;
+        }
+    </script>
+</body>
+</html>
