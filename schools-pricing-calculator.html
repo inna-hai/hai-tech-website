@@ -119,6 +119,9 @@
             display: grid;
             gap: 14px;
             align-content: start;
+            position: sticky;
+            top: 18px;
+            align-self: start;
         }
 
         .summary-card h2,
@@ -409,6 +412,10 @@
             .assumptions-grid,
             .totals-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .summary-card {
+                position: static;
             }
         }
 
