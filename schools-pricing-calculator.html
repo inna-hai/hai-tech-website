@@ -247,7 +247,8 @@
             margin-top: 18px;
         }
 
-        .recalc-btn {
+        .recalc-btn,
+        .floating-recalc-btn {
             border: none;
             border-radius: 999px;
             background: var(--gradient);
@@ -258,6 +259,25 @@
             font-weight: 800;
             cursor: pointer;
             box-shadow: 0 10px 26px rgba(67,56,202,0.18);
+        }
+
+        .floating-recalc {
+            position: fixed;
+            left: 16px;
+            right: 16px;
+            bottom: 16px;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        .floating-recalc-btn {
+            width: min(520px, 100%);
+            padding: 15px 20px;
+            font-size: 1rem;
+            pointer-events: auto;
+            box-shadow: 0 16px 40px rgba(67,56,202,0.28);
         }
 
         .scenario-btn:hover {
@@ -733,6 +753,10 @@
         </section>
     </main>
 
+    <div class="floating-recalc">
+        <button class="floating-recalc-btn" id="floatingRecalcButton" type="button">חשב מחדש ולעדכן סיכום</button>
+    </div>
+
     <script>
         const scenarios = {
             conservative: { schools: 35, groupsPerSchool: 4, managementRate: 45, teachersRate: 35 },
@@ -859,6 +883,7 @@
         });
 
         el('recalcButton').addEventListener('click', updateCalculator);
+        el('floatingRecalcButton').addEventListener('click', updateCalculator);
 
         document.querySelectorAll('[data-scenario]').forEach((button) => {
             button.addEventListener('click', () => {
