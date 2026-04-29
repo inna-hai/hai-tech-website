@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>דו"ח סיכום מנהלים | תוכנית מיינקראפט</title>
+ <meta name="description" content="דו״ח סיכום מנהלים לתוכנית מיינקראפט — פעילות, הישגים, שרתים, תמיכה טכנית ואימפקט פדגוגי.">
+ <meta name="robots" content="noindex, nofollow">
+ <link rel="canonical" href="https://hai.tech/minecraft-program-report-2026.html">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+ <link rel="icon" type="image/png" href="/images/brand/logo.webp">
+ <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ <style>
+ :root{
+ --bg:#f6f7fb;
+ --bg2:#eef1ff;
+ --panel:#ffffff;
+ --panelSoft:#f8f9ff;
+ --text:#323338;
+ --muted:#676879;
+ --blue:#0073ea;
+ --green:#00c875;
+ --yellow:#ffcb00;
+ --orange:#fdab3d;
+ --red:#e2445c;
+ --purple:#784bd1;
+ --line:#d0d4e4;
+ --cardShadow:0 14px 34px rgba(16, 24, 40, .08);
+ }
+ *{box-sizing:border-box}
+ body{
+ margin:0;
+ font-family:"Heebo", "Segoe UI", Arial, sans-serif;
+ background:
+ radial-gradient(circle at top left, rgba(0,115,234,.08), transparent 28%),
+ radial-gradient(circle at 95% 0%, rgba(120,75,209,.08), transparent 24%),
+ linear-gradient(180deg, #f7f9ff 0%, #f6f7fb 55%, #eef2fb 100%);
+ color:var(--text);
+ line-height:1.65;
+ }
+ .wrap{max-width:1180px;margin:0 auto;padding:24px 20px 54px}
+ .topbar{
+ display:flex;justify-content:space-between;align-items:center;gap:16px;
+ margin-bottom:16px;flex-wrap:wrap
+ }
+ .brand{display:flex;align-items:center;gap:12px;color:var(--text)}
+ .brand img{width:54px;height:54px;object-fit:contain;border-radius:14px;background:#fff;padding:8px;border:1px solid var(--line)}
+ .top-actions{display:flex;gap:10px;flex-wrap:wrap}
+ .top-btn{border:1px solid var(--line);background:#fff;color:var(--text);border-radius:999px;padding:10px 16px;font-family:inherit;font-weight:700;cursor:pointer}
+ .heroSplit{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;align-items:stretch}
+ header{
+ position:relative;
+ overflow:hidden;
+ border:1px solid #d8ddf0;
+ border-radius:28px;
+ padding:38px 34px;
+ background:linear-gradient(135deg, #ffffff 0%, #f6f8ff 42%, #eef4ff 100%);
+ box-shadow:var(--cardShadow);
+ }
+ header:before{
+ content:"";
+ position:absolute;top:-26px;left:-22px;width:180px;height:180px;
+ background:linear-gradient(135deg,var(--green),var(--blue));
+ opacity:.08;border-radius:36px;transform:rotate(18deg)
+ }
+ header:after{
+ content:"";
+ position:absolute;top:-40px;left:auto;right:-35px;width:220px;height:220px;
+ background:linear-gradient(135deg,var(--purple),var(--blue));
+ opacity:.08;border-radius:50px;transform:rotate(-18deg)
+ }
+ .kicker{color:var(--blue);font-weight:800;letter-spacing:.3px;margin-bottom:8px;position:relative;z-index:1}
+ h1{font-size:42px;line-height:1.08;margin:0 0 12px;font-weight:900;color:#1f2430;position:relative;z-index:1}
+ .subtitle{font-size:18px;color:var(--muted);max-width:850px;margin:0;position:relative;z-index:1}
+ .badgeRow{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;position:relative;z-index:1}
+ .badge{border:1px solid #d8def1;background:#fff;border-radius:999px;padding:8px 14px;color:#3f4252;font-size:14px;font-weight:700;box-shadow:0 8px 18px rgba(0,115,234,.06)}
+ .heroStats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+ .heroStat{background:linear-gradient(180deg,#ffffff 0%, #f7f9ff 100%);border:1px solid #d8ddf0;border-radius:24px;padding:22px;box-shadow:var(--cardShadow);position:relative;overflow:hidden}
+ .heroStat:before{content:"";position:absolute;inset:auto -20px -28px auto;width:100px;height:100px;border-radius:24px;background:linear-gradient(135deg, rgba(0,115,234,.14), rgba(120,75,209,.10));transform:rotate(24deg)}
+ .heroStat .eyebrow{display:inline-block;padding:6px 10px;border-radius:999px;background:#eef4ff;color:var(--blue);font-size:12px;font-weight:800;margin-bottom:10px}
+ .heroStat strong{display:block;font-size:2rem;line-height:1;color:#1f2430;margin-bottom:8px}
+ .heroStat p{margin:0;color:var(--muted);font-size:.95rem}
+ section{margin-top:22px}
+ .grid{display:grid;gap:18px}
+ .grid-4{grid-template-columns:repeat(4,1fr)}
+ .grid-3{grid-template-columns:repeat(3,1fr)}
+ .grid-2{grid-template-columns:repeat(2,1fr)}
+ .card{
+ border:1px solid #d8ddf0;
+ border-radius:24px;
+ background:var(--panel);
+ box-shadow:var(--cardShadow);
+ padding:22px;
+ }
+ .metric{min-height:150px;position:relative;overflow:hidden;background:linear-gradient(180deg,#fff,#fafbff);transition:transform .2s ease, box-shadow .2s ease}
+ .metric:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,115,234,.12)}
+ .metric:after{content:"";position:absolute;left:-24px;bottom:-38px;width:110px;height:110px;background:rgba(0,115,234,.06);border-radius:26px;transform:rotate(25deg)}
+ .metric.cyanAccent{background:linear-gradient(180deg,#f7fbff,#eef6ff)}
+ .metric.greenAccent{background:linear-gradient(180deg,#f7fff9,#effcf5)}
+ .metric.yellowAccent{background:linear-gradient(180deg,#fffdf7,#fff7e8)}
+ .metric.purpleAccent{background:linear-gradient(180deg,#fbf9ff,#f3efff)}
+ .label{color:var(--muted);font-size:14px;margin-bottom:8px}
+ .value{font-size:36px;font-weight:900;line-height:1;color:var(--text);margin-bottom:8px}
+ .value.green{color:var(--green)} .value.cyan{color:var(--blue)} .value.yellow{color:var(--orange)} .value.purple{color:var(--purple)}
+ h2{font-size:28px;margin:0 0 14px;color:var(--text)}
+ h3{font-size:20px;margin:0 0 10px;color:var(--text)}
+ p{margin:0 0 12px;color:#454b5a}
+ .muted{color:var(--muted)}
+ .chartBox{height:330px;padding:14px;background:var(--panelSoft);border:1px solid #e1e5f5;border-radius:20px}
+ .heroImage{
+ width:100%;height:100%;min-height:320px;object-fit:cover;border-radius:22px;border:1px solid #d8ddf0;
+ box-shadow:var(--cardShadow);display:block
+ }
+ .heroImageWrap{position:relative}
+ .heroImageLabel{position:absolute;right:18px;bottom:18px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border:1px solid #d8ddf0;border-radius:16px;padding:12px 14px;max-width:320px;box-shadow:0 14px 30px rgba(16,24,40,.12)}
+ .heroImageLabel strong{display:block;color:#1f2430;margin-bottom:4px}
+ .heroImageLabel span{display:block;color:var(--muted);font-size:.92rem;line-height:1.5}
+ .tableWrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:18px}
+ table{width:100%;border-collapse:separate;border-spacing:0;overflow:hidden;border-radius:18px;border:1px solid #e1e5f5;font-size:15px;min-width:700px}
+ th,td{padding:14px 15px;border-bottom:1px solid #e8ebf7;text-align:right;vertical-align:top}
+ th{background:#edf4ff;color:#1f2430;font-weight:800}
+ tr:last-child td{border-bottom:none}
+ td{color:#454b5a;background:#fff}
+ .pill{display:inline-block;border-radius:999px;padding:4px 10px;font-size:13px;font-weight:800;background:rgba(0,200,117,.10);color:#008f5a;border:1px solid rgba(0,200,117,.22)}
+ .pill.survival{background:rgba(255,203,0,.12);color:#8f6a00;border-color:rgba(255,203,0,.25)}
+ .quote{border-right:5px solid var(--blue);padding:14px 18px;background:#f3f7ff;border-radius:14px;color:#243049;font-size:18px;margin-top:10px}
+ .insight{display:flex;gap:13px;align-items:flex-start;padding:14px;border-radius:18px;background:var(--panelSoft);border:1px solid #e1e5f5;margin-bottom:12px}
+ .icon{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:#e8f3ff;font-weight:900;color:var(--blue);flex:0 0 34px}
+ .positive{border-right:4px solid var(--green)}
+ .improve{border-right:4px solid var(--yellow)}
+ .footerNote{margin-top:26px;color:var(--muted);font-size:13px;text-align:center}
+ @media(max-width:900px){
+ .heroSplit,.grid-4,.grid-3,.grid-2,.heroStats{grid-template-columns:1fr}
+ h1{font-size:31px}
+ .wrap{padding:16px 12px 44px}
+ .chartBox{height:260px;padding:10px}
+ .heroImage{height:220px;min-height:220px;border-radius:18px}
+ .heroImageLabel{right:12px;left:12px;bottom:12px;max-width:none;padding:10px 12px}
+ header{padding:28px 20px;border-radius:22px}
+ .card{padding:18px;border-radius:20px}
+ h2{font-size:23px}
+ .topbar{align-items:stretch}
+ .top-actions,.top-btn{width:100%}
+ .top-btn{justify-content:center;display:inline-flex}
+ .badgeRow{gap:8px}
+ .badge{font-size:13px;padding:7px 11px}
+ .value{font-size:32px}
+ table{min-width:620px;font-size:14px}
+ }
+ @media print{body{background:#fff;color:#111}.topbar{display:none}.card,header{box-shadow:none;background:#fff;color:#111;border-color:#ddd}.wrap{max-width:none}.value,h1,h2,h3{color:#111}.muted,p,td{color:#222}.chartBox{break-inside:avoid;background:#fff}section{break-inside:avoid}.badge{color:#111;border-color:#ddd;background:#fff}th{background:#eef4fb;color:#111}}
+ </style>
+</head>
+<body>
+ <div class="wrap">
+ <div class="topbar">
+   <div class="brand">
+     <img src="/images/brand/logo-haitech-transparent.webp" alt="לוגו דרך ההייטק">
+     <div>
+       <strong>דרך ההייטק</strong><br>
+       <span class="muted">דוח פרטי לשיתוף</span>
+     </div>
+   </div>
+   <div class="top-actions">
+     <button class="top-btn" type="button" onclick="window.print()">הדפסה / PDF</button>
+   </div>
+ </div>
+ <section class="heroSplit">
+ <header>
+ <div class="kicker">דו"ח סיכום מנהלים</div>
+ <h1>תוכנית מיינקראפט</h1>
+ <p class="subtitle">סיכום פעילות התוכנית עד כה | אוקטובר 2025 – אפריל 2026</p>
+ <div class="badgeRow">
+ <span class="badge">אתגרים מבוססי Minecraft Education</span>
+ <span class="badge">הכשרת מורים</span>
+ <span class="badge">מדידה והערכה</span>
+ <span class="badge">אימפקט פדגוגי וקהילתי</span>
+ </div>
+ <div class="heroStats" style="margin-top:22px;position:relative;z-index:1">
+   <div class="heroStat">
+     <span class="eyebrow">Engagement</span>
+     <strong>193</strong>
+     <p>תלמידים פעילים עם שיעור המשכיות מרשים לאורך חודשי הפעילות.</p>
+   </div>
+   <div class="heroStat">
+     <span class="eyebrow">Impact</span>
+     <strong>88.1</strong>
+     <p>ציון ממוצע כולל שממחיש איכות תוצרים, ליווי ומשוב עקבי.</p>
+   </div>
+ </div>
+ </header>
+ <div class="heroImageWrap">
+ <img class="heroImage" src="/images/institutions/minecraft-green-city-report.webp" alt="עיר ירוקה בסגנון Minecraft עבור דוח התוכנית">
+ <div class="heroImageLabel">
+   <strong>Sustainable City</strong>
+   <span>הדמיה ויזואלית של כיוון האתגר הבא — עיר ירוקה, שיתופית, מבוססת חשיבה מערכתית וקיימות.</span>
+ </div>
+ </div>
+ </section>
+
+ <section class="grid grid-4">
+ <div class="card metric cyanAccent"><div class="label">בתי ספר פעילים</div><div class="value cyan">10</div><p class="muted">מתוך 12 שנבחרו בתחילה</p></div>
+ <div class="card metric greenAccent"><div class="label">תלמידים פעילים</div><div class="value green">193</div><p class="muted">שיעור המשכיות של 76%</p></div>
+ <div class="card metric yellowAccent"><div class="label">תוצרים שהוגשו</div><div class="value yellow">104</div><p class="muted">על פני האתגרים השונים</p></div>
+ <div class="card metric purpleAccent"><div class="label">ציון ממוצע כולל</div><div class="value purple">88.1</div><p class="muted">רמת ביצוע גבוהה ועקבית</p></div>
+ </section>
+
+ <section class="grid grid-2">
+ <div class="card">
+ <h2>תמונת מצב כללית</h2>
+ <p>התוכנית מציגה הישגים משמעותיים במעורבות תלמידים ומורים, תוך יצירת קהילה לומדת פעילה. הנתונים מצביעים על רצף למידה מתמשך, שמירה על שיעור השתתפות גבוה, ותוצרים איכותיים לאורך האתגרים.</p>
+ <p>הפעילות מתקדמת באופן מדורג: מחיבור ראשוני ויצירתיות, דרך עבודה צוותית בסביבת Survival, ועד פיתוח עיר ירוקה ושיתופי פעולה מורכבים יותר.</p>
+ </div>
+ <div class="card">
+ <h2>מדדי הצלחה מרכזיים</h2>
+ <div class="chartBox"><canvas id="kpiChart"></canvas></div>
+ </div>
+ </section>
+
+ <section class="card">
+ <h2>התקדמות לאורך האתגרים</h2>
+ <p class="muted">כל אתגר מעלה את רמת המורכבות הטכנולוגית, הפדגוגית והצוותית.</p>
+ <div class="tableWrap"><table>
+ <thead><tr><th>שם האתגר</th><th>סביבת משחק</th><th>מוקד פדגוגי</th><th>כמות הגשות</th><th>ציון ממוצע</th></tr></thead>
+ <tbody>
+ <tr><td><strong>אתגר 1: Build & Bond</strong></td><td><span class="pill">Creative</span></td><td>יצירתיות, חיבור ראשוני ועבודה בזוגות</td><td>72</td><td>89.3</td></tr>
+ <tr><td><strong>אתגר 2: Home Town</strong></td><td><span class="pill survival">Survival</span></td><td>בניית עיירה, עבודה כצוות “סטארטאפ”, חלוקת תפקידים ו־Ownership</td><td>32</td><td>86.9</td></tr>
+ <tr><td><strong>אתגר 3: Sustainable City</strong></td><td><span class="pill survival">Survival</span></td><td>פיתוח עיר ירוקה, קיימות ושיתוף פעולה בין־בתי ספרי</td><td>בביצוע</td><td>בביצוע</td></tr>
+ </tbody>
+ </table></div>
+ </section>
+
+ <section class="grid grid-2">
+ <div class="card">
+ <h2>השוואת הגשות וציונים</h2>
+ <div class="chartBox"><canvas id="challengeChart"></canvas></div>
+ </div>
+ <div class="card">
+ <h2>סיפור הצלחה בולט</h2>
+ <h3>קבוצה G#2 | אביר יעקב, נהריה</h3>
+ <p>הקבוצה מדגימה היטב את כוח התוכנית ביצירת מעורבות ושיפור לאורך זמן. באתגר הראשון הוגשו 4 תוצרים בלבד מתוך 15 תלמידים. לאחר פרסום הציונים, התקיים תהליך רפלקציה עם המורה והתלמידים, ובאתגר השני הקבוצה הגישה כמעט בהרכב מלא: 13 תלמידים, עם ציון ממוצע גבוה של 92.3.</p>
+ <div class="chartBox" style="height:220px"><canvas id="g2Chart"></canvas></div>
+ <div class="quote">“הוכחתם שערך שיתוף הפעולה וההקשבה מוביל לתוצר טוב יותר מאשר עבודה לבד.”</div>
+ </div>
+ </section>
+
+ <section class="grid grid-2">
+ <div class="card">
+ <h2>ניתוח נתוני שרתים</h2>
+ <p>נתוני השרתים מציגים תמונה חזקה של מעורבות: התלמידים לא רק מבצעים משימות, אלא פועלים בתוך קהילה משותפת, גם מעבר לשעות הלימודים ובחופשות.</p>
+ <div class="grid grid-2" style="margin-top:14px">
+ <div class="insight positive"><div class="icon">1</div><div><strong>2,312 סשנים</strong><br><span class="muted">במדגם מרץ–אפריל 2026</span></div></div>
+ <div class="insight positive"><div class="icon">2</div><div><strong>43 סשנים בממוצע</strong><br><span class="muted">ביום פעילות</span></div></div>
+ </div>
+ </div>
+ <div class="card">
+ <h2>ימי שיא בשרתים</h2>
+ <div class="chartBox"><canvas id="serverChart"></canvas></div>
+ </div>
+ </section>
+
+ <section class="card">
+ <h2>מדגם ימי שיא: פעילות קהילתית רחבה</h2>
+ <div class="tableWrap"><table>
+ <thead><tr><th>שרת</th><th>תאריך תצפית</th><th>כמות התחברויות ביום</th><th>מקסימום שחקנים במקביל</th><th>תובנה מרכזית</th></tr></thead>
+ <tbody>
+ <tr><td>שרת 5</td><td>07.01.2026</td><td>190</td><td>16</td><td>עמידה בעומסים יוצאי דופן של קהילה לומדת</td></tr>
+ <tr><td>שרת 3</td><td>30.12.2025</td><td>133</td><td>21</td><td>שיתוף פעולה רחב מאוד ושיא חודשי</td></tr>
+ <tr><td>שרת 1</td><td>28.01.2026</td><td>124</td><td>25</td><td>פעילות שיא קבוצתית בסוף החודש</td></tr>
+ <tr><td>כללי</td><td>13.04.2026</td><td>159</td><td>26</td><td>שיא שחקנים בו־זמני המצביע על עבודה מסונכרנת</td></tr>
+ </tbody>
+ </table></div>
+ </section>
+
+ <section class="grid grid-2">
+ <div class="card">
+ <h2>תמיכה טכנית כגורם מאפשר</h2>
+ <p>המעטפת הטכנית פועלת כגורם מרכזי בשמירה על רצף למידה. הפניות מטופלות במהירות, ונמחקות מהמערכת לאחר 48 שעות ממועד הטיפול כדי לשמור על סביבת עבודה נקייה.</p>
+ <div class="insight positive"><div class="icon">✓</div><div><strong>100% טיפול בפניות</strong><br><span class="muted">שמירה על המשכיות, מוטיבציה וחזרה מהירה לפעילות</span></div></div>
+ </div>
+ <div class="card">
+ <h2>סוגי פניות נפוצות</h2>
+ <div class="chartBox"><canvas id="supportChart"></canvas></div>
+ </div>
+ </section>
+
+ <section class="grid grid-2">
+ <div class="card">
+ <h2>נקודות לשימור</h2>
+ <div class="insight positive"><div class="icon">1</div><div><strong>איכות צוות ההדרכה והתמיכה</strong><br><span class="muted">יחס אישי, סבלנות והדרכה איכותית; השתלמויות סביב 4.7 מתוך 5 באפקטיביות.</span></div></div>
+ <div class="insight positive"><div class="icon">2</div><div><strong>פיתוח מיומנויות רכות</strong><br><span class="muted">תקשורת, חלוקת תפקידים, חשיבה ביקורתית ומערכתית.</span></div></div>
+ <div class="insight positive"><div class="icon">3</div><div><strong>מוטיבציה ו־Gamification</strong><br><span class="muted">לוח ציונים פומבי, Ownership והתמודדות בסביבת Survival.</span></div></div>
+ <div class="insight positive"><div class="icon">4</div><div><strong>יציבות שרתים</strong><br><span class="muted">פעילות רציפה גם בעומסים של למעלה מ־100 התחברויות ביום.</span></div></div>
+ </div>
+ <div class="card">
+ <h2>הזדמנויות לחיזוק</h2>
+ <div class="insight improve"><div class="icon">1</div><div><strong>צמצום פערים דיגיטליים בקרב מורים</strong><br><span class="muted">הוספת זמן תרגול טכני מעשי להגברת ביטחון בסביבת המשחק.</span></div></div>
+ <div class="insight improve"><div class="icon">2</div><div><strong>הנגשת חומרי הדרכה מראש</strong><br><span class="muted">שליחת מצגות וחומרי עזר לפני ההשתלמויות והשיעורים.</span></div></div>
+ <div class="insight improve"><div class="icon">3</div><div><strong>התמודדות עם פערים טכנולוגיים בבתי הספר</strong><br><span class="muted">תדריך עבודה למחשבים ישנים ופתרונות לחלוקת עבודה בציוד מוגבל.</span></div></div>
+ <div class="insight improve"><div class="icon">4</div><div><strong>פערי ידע בין תלמידים</strong><br><span class="muted">בניית צוותים הטרוגניים ושימוש בתלמידים מנוסים כמנטורים טכניים.</span></div></div>
+ </div>
+ </section>
+
+ <section class="card">
+ <h2>אימפקט כללי עד כה</h2>
+ <div class="grid grid-3">
+ <div class="insight positive"><div class="icon">✓</div><div><strong>קהילה לומדת פעילה</strong><br><span class="muted">פעילות מתמשכת בשרתים גם מעבר לשעות הלימודים.</span></div></div>
+ <div class="insight positive"><div class="icon">✓</div><div><strong>למידה מבוססת תוצרים</strong><br><span class="muted">104 תוצרים שהוגשו עד כה, עם איכות גבוהה ומדידה.</span></div></div>
+ <div class="insight positive"><div class="icon">✓</div><div><strong>שיפור מוכח לאורך זמן</strong><br><span class="muted">דוגמת G#2 מדגימה השפעה של משוב, רפלקציה וליווי.</span></div></div>
+ </div>
+ </section>
+
+ <div class="footerNote">תוכנית מיינקראפט | דו"ח סיכום מנהלים | אוקטובר 2025 – אפריל 2026</div>
+ </div>
+
+ <script>
+ Chart.defaults.font.family = 'Heebo, Segoe UI, Arial, sans-serif';
+ Chart.defaults.color = '#676879';
+ const grid = 'rgba(103,104,121,.16)';
+
+ new Chart(document.getElementById('kpiChart'), {
+ type: 'bar',
+ data: { labels: ['בתי ספר', 'תלמידים פעילים', 'תוצרים', 'ציון ממוצע'], datasets: [{ label: 'מדדים מרכזיים', data: [10,193,104,88.1], borderWidth: 1, borderRadius: 10, backgroundColor:['#0073ea','#00c875','#ffcb00','#784bd1'] }] },
+ options: { responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{y:{beginAtZero:true,grid:{color:grid}}, x:{grid:{display:false}}} }
+ });
+
+ new Chart(document.getElementById('challengeChart'), {
+ type: 'bar',
+ data: { labels: ['אתגר 1', 'אתגר 2'], datasets: [
+ { label: 'כמות הגשות', data: [72,32], borderRadius: 10, yAxisID:'y', backgroundColor:'#0073ea' },
+ { label: 'ציון ממוצע', data: [89.3,86.9], type:'line', tension:.3, yAxisID:'y1', borderColor:'#00c875', backgroundColor:'#00c875' }
+ ]},
+ options: { responsive:true, maintainAspectRatio:false, scales:{ y:{beginAtZero:true,grid:{color:grid}}, y1:{position:'left', min:80, max:95, grid:{display:false}}, x:{grid:{display:false}} } }
+ });
+
+ new Chart(document.getElementById('g2Chart'), {
+ type: 'bar',
+ data: { labels: ['אתגר 1', 'אתגר 2'], datasets: [{ label: 'מספר תלמידים שהגישו', data: [4,13], borderRadius: 10, backgroundColor:'#784bd1' }] },
+ options: { responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{y:{beginAtZero:true,suggestedMax:15,grid:{color:grid}}, x:{grid:{display:false}}} }
+ });
+
+ new Chart(document.getElementById('serverChart'), {
+ type: 'bar',
+ data: { labels: ['שרת 5\n07.01', 'שרת 3\n30.12', 'שרת 1\n28.01', 'כללי\n13.04'], datasets: [
+ { label: 'התחברויות ביום', data: [190,133,124,159], borderRadius: 10, backgroundColor:'#0073ea' },
+ { label: 'מקסימום שחקנים במקביל', data: [16,21,25,26], borderRadius: 10, backgroundColor:'#00c875' }
+ ]},
+ options: { responsive:true, maintainAspectRatio:false, scales:{y:{beginAtZero:true,grid:{color:grid}}, x:{grid:{display:false}}} }
+ });
+
+ new Chart(document.getElementById('supportChart'), {
+ type: 'doughnut',
+ data: { labels: ['איפוסי סיסמה', 'נוכחות / גישה לשרת', 'עזרה כללית'], datasets: [{ data: [50,30,20], borderWidth: 2, backgroundColor:['#0073ea','#ffcb00','#00c875'] }] },
+ options: { responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'bottom'}, tooltip:{callbacks:{label:(ctx)=>`${ctx.label}: שכיחות יחסית`}}} }
+ });
+ </script>
+</body>
+</html>
