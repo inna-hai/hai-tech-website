@@ -241,6 +241,25 @@
             transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
         }
 
+        .recalc-wrap {
+            display: flex;
+            justify-content: flex-start;
+            margin-top: 18px;
+        }
+
+        .recalc-btn {
+            border: none;
+            border-radius: 999px;
+            background: var(--gradient);
+            color: white;
+            padding: 12px 20px;
+            font-family: inherit;
+            font-size: 0.98rem;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 10px 26px rgba(67,56,202,0.18);
+        }
+
         .scenario-btn:hover {
             transform: translateY(-2px);
             border-color: #c7d2fe;
@@ -469,6 +488,9 @@
                     <input id="teachersRate" type="number" min="0" max="100" step="1" value="60">
                     <div class="hint">גם כאן החישוב הוא מתוך מספר בתי הספר.</div>
                 </div>
+            </div>
+            <div class="recalc-wrap">
+                <button class="recalc-btn" id="recalcButton" type="button">חשב מחדש</button>
             </div>
         </section>
 
@@ -831,7 +853,12 @@
 
         document.querySelectorAll('input').forEach((input) => {
             input.addEventListener('input', updateCalculator);
+            input.addEventListener('change', updateCalculator);
+            input.addEventListener('keyup', updateCalculator);
+            input.addEventListener('blur', updateCalculator);
         });
+
+        el('recalcButton').addEventListener('click', updateCalculator);
 
         document.querySelectorAll('[data-scenario]').forEach((button) => {
             button.addEventListener('click', () => {
