@@ -447,7 +447,7 @@
 
         <section class="panel">
             <h2>הגדרות בסיס</h2>
-            <p class="panel-intro">כאן מגדירים את תרחיש השוק הכללי. אם תרצי, אפשר לעבוד לפי מספר בתי ספר ואחוזי חדירה — או פשוט לשנות ידנית את כמויות הקבוצות בכל מוצר.</p>
+            <p class="panel-intro">כאן מגדירים את תרחיש השוק הכללי. במודל המעודכן, תלמידים מחושבים לפי מספר בתי ספר כפול מספר קבוצות ממוצע לכל בית ספר.</p>
             <div class="assumptions-grid">
                 <div class="field">
                     <label for="schoolsCount">מספר בתי ספר בשוק</label>
@@ -455,9 +455,9 @@
                     <div class="hint">משמש לחישוב הנהלה ומורים לפי אחוז חדירה.</div>
                 </div>
                 <div class="field">
-                    <label for="studentsGroups">מספר קבוצות תלמידים</label>
-                    <input id="studentsGroups" type="number" min="0" step="1" value="30">
-                    <div class="hint">כאן עובדים בכמות קבוצות ישירה.</div>
+                    <label for="groupsPerSchool">קבוצות תלמידים לכל בית ספר</label>
+                    <input id="groupsPerSchool" type="number" min="0" step="1" value="5">
+                    <div class="hint">סך קבוצות התלמידים יחושב אוטומטית לפי מספר בתי הספר.</div>
                 </div>
                 <div class="field">
                     <label for="managementRate">חדירת הנהלה (%)</label>
@@ -478,15 +478,15 @@
             <div class="scenario-grid">
                 <button class="scenario-btn" type="button" data-scenario="conservative">
                     <strong>תרחיש שמרני</strong>
-                    <span>35 בתי ספר · 18 קבוצות תלמידים · 45% הנהלה · 35% מורים</span>
+                    <span>35 בתי ספר · 4 קבוצות תלמידים לבית ספר · 45% הנהלה · 35% מורים</span>
                 </button>
                 <button class="scenario-btn" type="button" data-scenario="base">
                     <strong>תרחיש סביר</strong>
-                    <span>50 בתי ספר · 30 קבוצות תלמידים · 70% הנהלה · 60% מורים</span>
+                    <span>50 בתי ספר · 5 קבוצות תלמידים לבית ספר · 70% הנהלה · 60% מורים</span>
                 </button>
                 <button class="scenario-btn" type="button" data-scenario="growth">
                     <strong>תרחיש צמיחה</strong>
-                    <span>80 בתי ספר · 48 קבוצות תלמידים · 80% הנהלה · 70% מורים</span>
+                    <span>80 בתי ספר · 6 קבוצות תלמידים לבית ספר · 80% הנהלה · 70% מורים</span>
                 </button>
             </div>
         </section>
@@ -520,7 +520,7 @@
                             </div>
                         </div>
                         <div class="mini-stat">
-                            <div class="mini-stat-label">כמות יחידות בתרחיש הנוכחי</div>
+                            <div class="mini-stat-label">כמות קבוצות בתרחיש הנוכחי</div>
                             <div class="mini-stat-value" id="studentsUnits">0</div>
                         </div>
                         <div class="split-2">
@@ -713,9 +713,9 @@
 
     <script>
         const scenarios = {
-            conservative: { schools: 35, studentsGroups: 18, managementRate: 45, teachersRate: 35 },
-            base: { schools: 50, studentsGroups: 30, managementRate: 70, teachersRate: 60 },
-            growth: { schools: 80, studentsGroups: 48, managementRate: 80, teachersRate: 70 }
+            conservative: { schools: 35, groupsPerSchool: 4, managementRate: 45, teachersRate: 35 },
+            base: { schools: 50, groupsPerSchool: 5, managementRate: 70, teachersRate: 60 },
+            growth: { schools: 80, groupsPerSchool: 6, managementRate: 80, teachersRate: 70 }
         };
 
         const products = {
@@ -735,7 +735,7 @@
         function getUnits() {
             const schools = getValue('schoolsCount');
             return {
-                students: getValue('studentsGroups'),
+                students: schools * getValue('groupsPerSchool'),
                 management: Math.round((schools * getValue('managementRate')) / 100),
                 teachers: Math.round((schools * getValue('teachersRate')) / 100)
             };
@@ -837,7 +837,7 @@
             button.addEventListener('click', () => {
                 const scenario = scenarios[button.dataset.scenario];
                 el('schoolsCount').value = scenario.schools;
-                el('studentsGroups').value = scenario.studentsGroups;
+                el('groupsPerSchool').value = scenario.groupsPerSchool;
                 el('managementRate').value = scenario.managementRate;
                 el('teachersRate').value = scenario.teachersRate;
                 updateCalculator();
