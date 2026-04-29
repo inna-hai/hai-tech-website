@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הצעת מסגרת לסדנאות STEAM | מרכז אתחלא חולון | דרך ההייטק</title>
+    <meta name="description" content="דף הצעה ייעודי לסדנאות STEAM עבור מרכז אתחלא חולון — קוד, מייקרים, רובוטיקה ובינה מלאכותית לילדים בכיתות ג׳-ו׳.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://hai.tech/steam-holon-proposal-2026.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hai.tech/steam-holon-proposal-2026.html">
+    <meta property="og:title" content="הצעת מסגרת לסדנאות STEAM | דרך ההייטק">
+    <meta property="og:description" content="דף ייעודי עבור מרכז אתחלא חולון — 60 שעות אקדמיות של סדנאות STEAM לכיתות ג׳-ו׳.">
+    <meta property="og:image" content="https://hai.tech/images/institutions/futuremakers.webp">
+    <meta property="og:locale" content="he_IL">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="image/png" href="/images/brand/logo.webp">
+
+    <style>
+        :root {
+            --proposal-bg: #f8fafc;
+            --proposal-text: #0f172a;
+            --proposal-muted: #475569;
+            --proposal-line: #e2e8f0;
+            --proposal-card: #ffffff;
+            --proposal-primary: #4338ca;
+            --proposal-secondary: #0f766e;
+            --proposal-accent: #f59e0b;
+        }
+
+        body {
+            background: linear-gradient(180deg, #eef2ff 0%, #f8fafc 30%, #ffffff 100%);
+            color: var(--proposal-text);
+        }
+
+        .proposal-shell {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 32px 20px 72px;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .brand img {
+            width: 72px;
+            height: 72px;
+            object-fit: contain;
+            border-radius: 18px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+            padding: 10px;
+        }
+
+        .brand small,
+        .meta small {
+            display: block;
+            color: var(--proposal-muted);
+            line-height: 1.7;
+        }
+
+        .meta {
+            text-align: left;
+        }
+
+        .print-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+            border-radius: 999px;
+            background: var(--gradient);
+            color: white;
+            padding: 14px 22px;
+            font-family: inherit;
+            font-size: 0.98rem;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 12px 32px rgba(99, 102, 241, 0.22);
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 28px;
+            align-items: stretch;
+            margin-bottom: 28px;
+        }
+
+        .hero-card,
+        .image-card,
+        .section-card,
+        .program-card,
+        .price-card,
+        .note-card {
+            background: rgba(255,255,255,0.9);
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            box-shadow: 0 20px 45px rgba(15, 23, 42, 0.06);
+            border-radius: 28px;
+        }
+
+        .hero-card {
+            padding: 42px;
+            background: linear-gradient(135deg, rgba(67,56,202,0.96), rgba(15,118,110,0.92));
+            color: white;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border-radius: 999px;
+            padding: 8px 14px;
+            background: rgba(255,255,255,0.14);
+            border: 1px solid rgba(255,255,255,0.2);
+            font-size: 0.92rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .hero-card h1 {
+            color: white;
+            font-size: clamp(2rem, 5vw, 3.4rem);
+            margin-bottom: 16px;
+            line-height: 1.15;
+        }
+
+        .hero-card p {
+            color: rgba(255,255,255,0.92);
+            font-size: 1.08rem;
+            line-height: 1.9;
+            margin-bottom: 0;
+        }
+
+        .hero-pills,
+        .stats-grid,
+        .program-grid,
+        .pricing-grid,
+        .logistics-grid {
+            display: grid;
+            gap: 16px;
+        }
+
+        .hero-pills {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            margin-top: 24px;
+        }
+
+        .hero-pill {
+            padding: 14px 16px;
+            border-radius: 18px;
+            background: rgba(255,255,255,0.13);
+            border: 1px solid rgba(255,255,255,0.14);
+            font-weight: 700;
+            line-height: 1.6;
+        }
+
+        .image-card {
+            overflow: hidden;
+            min-height: 100%;
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .section-card {
+            padding: 34px;
+            margin-bottom: 22px;
+        }
+
+        .section-card h2 {
+            text-align: right;
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            margin-bottom: 10px;
+        }
+
+        .section-intro {
+            color: var(--proposal-muted);
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 24px;
+        }
+
+        .stats-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .stat-box {
+            padding: 22px;
+            border-radius: 22px;
+            background: var(--proposal-bg);
+            border: 1px solid var(--proposal-line);
+        }
+
+        .stat-box strong {
+            display: block;
+            font-size: 1.6rem;
+            color: var(--proposal-primary);
+            margin-bottom: 6px;
+        }
+
+        .stat-box span {
+            color: var(--proposal-muted);
+            line-height: 1.7;
+        }
+
+        .program-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .program-card {
+            padding: 26px;
+        }
+
+        .program-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .program-card p,
+        .program-card li,
+        .checklist li,
+        .logistics-list li,
+        .pricing-note,
+        .contact-box p {
+            color: var(--proposal-muted);
+            line-height: 1.85;
+        }
+
+        .program-card ul,
+        .checklist,
+        .logistics-list {
+            margin: 14px 18px 0 0;
+            padding: 0;
+        }
+
+        .checklist li,
+        .logistics-list li,
+        .program-card li {
+            margin-bottom: 8px;
+        }
+
+        .highlight-strip {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 18px;
+        }
+
+        .highlight-strip span {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: #eef2ff;
+            color: var(--proposal-primary);
+            font-weight: 700;
+        }
+
+        .logistics-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .note-card {
+            padding: 24px 26px;
+            background: linear-gradient(135deg, #fff7ed, #fffbeb);
+            border: 1px solid #fed7aa;
+        }
+
+        .note-card strong {
+            display: block;
+            color: #9a3412;
+            margin-bottom: 8px;
+        }
+
+        .pricing-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .price-card {
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .price-card.primary {
+            background: linear-gradient(135deg, #312e81, #4338ca);
+            color: white;
+            border-color: transparent;
+        }
+
+        .price-card.primary h3,
+        .price-card.primary .price-value,
+        .price-card.primary .pricing-note {
+            color: white;
+        }
+
+        .price-card h3 {
+            margin-bottom: 12px;
+        }
+
+        .price-value {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--proposal-primary);
+            margin-bottom: 10px;
+        }
+
+        .placeholder {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 10px;
+            background: rgba(245, 158, 11, 0.14);
+            color: #b45309;
+            font-weight: 800;
+            letter-spacing: 0.3px;
+        }
+
+        .price-card.primary .placeholder {
+            background: rgba(255,255,255,0.18);
+            color: #fef3c7;
+        }
+
+        .contact-box {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-box a {
+            color: var(--proposal-primary);
+            font-weight: 700;
+        }
+
+        .footer-note {
+            text-align: center;
+            color: var(--proposal-muted);
+            margin-top: 18px;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 960px) {
+            .hero,
+            .logistics-grid,
+            .stats-grid,
+            .program-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-card,
+            .section-card {
+                padding: 28px;
+            }
+
+            .meta {
+                text-align: right;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .proposal-shell {
+                max-width: 100%;
+                padding: 0;
+            }
+
+            .print-btn {
+                display: none;
+            }
+
+            .hero-card,
+            .image-card,
+            .section-card,
+            .program-card,
+            .price-card,
+            .note-card {
+                box-shadow: none;
+            }
+
+            a {
+                text-decoration: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="proposal-shell">
+        <section class="topbar" aria-label="פרטי ההצעה">
+            <div class="brand">
+                <img src="/images/brand/logo-haitech-transparent.webp" alt="לוגו דרך ההייטק">
+                <div>
+                    <strong>דרך ההייטק</strong>
+                    <small>תוכניות טכנולוגיה, קוד ובינה מלאכותית לילדים ונוער</small>
+                    <small>הצעה ייעודית עבור מרכז אתחלא, חולון</small>
+                </div>
+            </div>
+            <div class="meta">
+                <small><strong>תאריך הכנת הדף:</strong> 29.4.2026</small>
+                <small><strong>מיועד עבור:</strong> אגף חדשנות, מנהל החינוך חולון</small>
+                <small><strong>מסירה:</strong> דף פרטי לשיתוף / הדפסה / PDF</small>
+            </div>
+            <button class="print-btn" type="button" onclick="window.print()">הדפסה / PDF</button>
+        </section>
+
+        <section class="hero">
+            <div class="hero-card">
+                <div class="eyebrow">הצעת מסגרת לסדנאות STEAM תשפ״ו</div>
+                <h1>קוד, מייקרים, רובוטיקה ובינה — במסגרת אחת גמישה ומעשית</h1>
+                <p>
+                    הכנו דף ייעודי עבור הבקשה של מרכז אתחלא בחולון: בנק של <strong>60 שעות אקדמיות</strong>,
+                    לתלמידי כיתות <strong>ג׳-ו׳</strong>, בקבוצות של <strong>15–20 תלמידים</strong>, במבנה של
+                    <strong>3–10 מפגשים</strong> לכל מחזור. הדגש שלנו הוא חוויה טכנולוגית סוחפת שמחברת בין יצירה,
+                    חשיבה הנדסית, פתרון בעיות ועבודה עם כלים עדכניים.
+                </p>
+                <div class="hero-pills">
+                    <div class="hero-pill">60 שעות אקדמיות לבנק שנתי גמיש</div>
+                    <div class="hero-pill">סדנאות מותאמות גיל ורמת קבוצה</div>
+                    <div class="hero-pill">ציוד מתכלה וכלים נדרשים כלולים</div>
+                    <div class="hero-pill">מתאים לפעילות אחה״צ במרכז אתחלא</div>
+                </div>
+            </div>
+            <div class="image-card">
+                <img src="/images/institutions/futuremakers.webp" alt="סדנאות טכנולוגיה לילדים">
+            </div>
+        </section>
+
+        <section class="section-card">
+            <h2>עיקרי הבקשה שקיבלנו</h2>
+            <p class="section-intro">
+                ריכזנו כאן את פרטי המסגרת, כדי שיהיה קל לבדוק שהדף עונה בדיוק לדרישות המכרז/הבקשה.
+            </p>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <strong>15–20</strong>
+                    <span>תלמידים בכל סדנה</span>
+                </div>
+                <div class="stat-box">
+                    <strong>ג׳–ו׳</strong>
+                    <span>שכבות גיל עם חלוקה למחזורי גיל נפרדים</span>
+                </div>
+                <div class="stat-box">
+                    <strong>3–10</strong>
+                    <span>מפגשים לכל מסלול, לפי הצורך</span>
+                </div>
+                <div class="stat-box">
+                    <strong>60</strong>
+                    <span>שעות אקדמיות לבנק השעות הכולל</span>
+                </div>
+            </div>
+            <div class="highlight-strip">
+                <span>📍 הבנאי 62, חולון</span>
+                <span>🗓️ תיאום מול מרכז אתחלא לפני תחילת הפעילות</span>
+                <span>🛡️ בכפוף לאישור ביטוחים</span>
+                <span>💻 מחשבים ניידים אינם כלולים</span>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <h2>מסלולי הסדנאות המוצעים</h2>
+            <p class="section-intro">
+                אפשר להרכיב את בנק השעות ממסלול אחד ממוקד או משילוב של כמה עולמות תוכן — לפי גיל, ביקוש ורמת הקבוצה.
+            </p>
+            <div class="program-grid">
+                <article class="program-card">
+                    <h3>קוד וחשיבה חישובית</h3>
+                    <p>פעילות מעשית סביב לוגיקה, אלגוריתמיקה, בניית משחקים ופתרון בעיות — ברמה נגישה ומלהיבה לילדים.</p>
+                    <ul>
+                        <li>יסודות תכנות דרך פרויקטים אינטראקטיביים</li>
+                        <li>תכנון שלבים, תנאים, לולאות ומשתנים</li>
+                        <li>פיתוח משחק/אתגר מסכם לכל מחזור</li>
+                    </ul>
+                </article>
+                <article class="program-card">
+                    <h3>רובוטיקה ומייקרים</h3>
+                    <p>למידה חווייתית דרך בנייה, חקר, תכנון והרכבה — עם דגש על עבודת ידיים, חשיבה הנדסית ויצירתיות.</p>
+                    <ul>
+                        <li>היכרות עם מנגנונים, חיישנים ותנועה</li>
+                        <li>משימות קבוצתיות של תכנון ובנייה</li>
+                        <li>שילוב חומרים מתכלים ואביזרי יצירה</li>
+                    </ul>
+                </article>
+                <article class="program-card">
+                    <h3>בינה מלאכותית לילדים</h3>
+                    <p>היכרות עם עולם ה-AI בגובה העיניים: איך מכונות "חושבות", איך מייצרים תוצרים חכמים ואיך עובדים נכון ובטוח.</p>
+                    <ul>
+                        <li>יצירת תוכן, תמונות ורעיונות בעזרת כלי AI</li>
+                        <li>דיון באתיקה, אמינות ובדיקת מידע</li>
+                        <li>פרויקטים יצירתיים בשילוב בינה מלאכותית</li>
+                    </ul>
+                </article>
+                <article class="program-card">
+                    <h3>מסלולי STEAM משולבים</h3>
+                    <p>מסלול משולב שמחבר טכנולוגיה, יצירה וחשיבה מערכתית — למרכזים שרוצים מגוון בתוך בנק שעות אחד.</p>
+                    <ul>
+                        <li>שילוב בין קוד, מייקרים, AI ורובוטיקה</li>
+                        <li>חלוקה למחזורי גיל ותוכן נבדלים</li>
+                        <li>בניית רצף שנתי עם שיאי תוצר לאורך הדרך</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <h2>מה כוללת ההצעה</h2>
+            <div class="logistics-grid">
+                <div>
+                    <ul class="checklist">
+                        <li>התאמת תכנים לשכבות גיל שונות בתוך כיתות ג׳-ו׳</li>
+                        <li>בניית מחזורי פעילות של 3–10 מפגשים לפי מסלול</li>
+                        <li>הנחיה מקצועית על ידי צוות טכנולוגי מנוסה</li>
+                        <li>ציוד מתכלה וכלים נדרשים לפעילות, למעט מחשבים ניידים</li>
+                        <li>מערכי שיעור, פרויקטים ותוצרים מותאמי מסגרת אחה״צ</li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class="checklist">
+                        <li>תיאום לוגיסטי מול מרכז אתחלא לפני פתיחת כל מחזור</li>
+                        <li>גמישות בבחירת מסלולים לפי רישום בפועל</li>
+                        <li>מענה לקבוצות של 15–20 תלמידים</li>
+                        <li>עבודה בהתאם לאישור הביטוחים הנדרש</li>
+                        <li>אפשרות לבניית תמהיל תוכן ייעודי לפי צרכי המרכז</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <h2>לוגיסטיקה ותנאי מסגרת</h2>
+            <div class="logistics-grid">
+                <div class="note-card">
+                    <strong>חשוב לדעת</strong>
+                    <p>
+                        קיום הסדנאות מותנה באישור סופי של משרד החדשנות, המדע והטכנולוגיה,
+                        וכן ברישום תלמידים בפועל לכל מחזור.
+                    </p>
+                </div>
+                <div>
+                    <ul class="logistics-list">
+                        <li>מיקום הפעילות: מרכז אתחלא, הבנאי 62, חולון</li>
+                        <li>מסגרת הפעילות: שעות אחר הצהריים</li>
+                        <li>תיאום מועדים לפני תחילת הפעילות מול המרכז</li>
+                        <li>המחירים יוצגו לפני מע״מ</li>
+                        <li>תוקף ההצעה מומלץ: 30 יום ממועד ההגשה</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <h2>בלוק המחירים — מוכן להשלמה</h2>
+            <p class="section-intro">
+                השארתי כאן את שדות המחיר כ-placeholder, כדי שתוכלי להחליט בנפרד על התמחור המדויק ואז נעדכן תוך דקה.
+            </p>
+            <div class="pricing-grid">
+                <article class="price-card">
+                    <h3>מחיר לשעה אקדמית</h3>
+                    <div class="price-value"><span class="placeholder">₪ ___</span></div>
+                    <p class="pricing-note">לפני מע״מ, כולל הנחיה, הכנה וציוד מתכלה נדרש.</p>
+                </article>
+                <article class="price-card primary">
+                    <h3>מחיר כולל לבנק 60 שעות</h3>
+                    <div class="price-value"><span class="placeholder">₪ ___</span></div>
+                    <p class="pricing-note">לפני מע״מ, לפי היקף הפעילות המבוקש במסמך.</p>
+                </article>
+                <article class="price-card">
+                    <h3>תוקף ההצעה</h3>
+                    <div class="price-value">30 יום</div>
+                    <p class="pricing-note">או כל תקופה אחרת שתעדיפי לציין בהגשה.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="contact-box">
+                <div>
+                    <h2 style="margin-bottom: 8px; text-align: right;">פרטי התקשרות</h2>
+                    <p>
+                        דרך ההייטק · תוכניות טכנולוגיה לילדים, נוער ומוסדות חינוך<br>
+                        טלפון/וואטסאפ: <a href="tel:+972533009742">053-300-9742</a><br>
+                        אימייל: <a href="mailto:info@hai.tech">info@hai.tech</a><br>
+                        אתר: <a href="https://hai.tech">hai.tech</a>
+                    </p>
+                </div>
+                <div>
+                    <p>
+                        לפי מסמך הבקשה, את ההצעה יש לשלוח אל:<br>
+                        <strong><a href="mailto:eliyae@holon.muni.il">eliyae@holon.muni.il</a></strong><br>
+                        עד לתאריך <strong>26.2.26</strong>
+                    </p>
+                </div>
+            </div>
+            <p class="footer-note">
+                דף זה מוגדר <strong>noindex</strong> ולא מיועד להופעה בתוצאות חיפוש.
+            </p>
+        </section>
+    </main>
+</body>
+</html>
