@@ -49,6 +49,7 @@
  .brand img{width:54px;height:54px;object-fit:contain;border-radius:14px;background:#fff;padding:8px;border:1px solid var(--line)}
  .top-actions{display:flex;gap:10px;flex-wrap:wrap}
  .top-btn{border:1px solid var(--line);background:#fff;color:var(--text);border-radius:999px;padding:10px 16px;font-family:inherit;font-weight:700;cursor:pointer}
+ .heroSplit{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;align-items:stretch}
  header{
  position:relative;
  overflow:hidden;
@@ -74,7 +75,13 @@
  h1{font-size:42px;line-height:1.08;margin:0 0 12px;font-weight:900;color:#1f2430;position:relative;z-index:1}
  .subtitle{font-size:18px;color:var(--muted);max-width:850px;margin:0;position:relative;z-index:1}
  .badgeRow{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;position:relative;z-index:1}
- .badge{border:1px solid #d8def1;background:#fff;border-radius:999px;padding:8px 14px;color:#3f4252;font-size:14px;font-weight:700}
+ .badge{border:1px solid #d8def1;background:#fff;border-radius:999px;padding:8px 14px;color:#3f4252;font-size:14px;font-weight:700;box-shadow:0 8px 18px rgba(0,115,234,.06)}
+ .heroStats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+ .heroStat{background:linear-gradient(180deg,#ffffff 0%, #f7f9ff 100%);border:1px solid #d8ddf0;border-radius:24px;padding:22px;box-shadow:var(--cardShadow);position:relative;overflow:hidden}
+ .heroStat:before{content:"";position:absolute;inset:auto -20px -28px auto;width:100px;height:100px;border-radius:24px;background:linear-gradient(135deg, rgba(0,115,234,.14), rgba(120,75,209,.10));transform:rotate(24deg)}
+ .heroStat .eyebrow{display:inline-block;padding:6px 10px;border-radius:999px;background:#eef4ff;color:var(--blue);font-size:12px;font-weight:800;margin-bottom:10px}
+ .heroStat strong{display:block;font-size:2rem;line-height:1;color:#1f2430;margin-bottom:8px}
+ .heroStat p{margin:0;color:var(--muted);font-size:.95rem}
  section{margin-top:22px}
  .grid{display:grid;gap:18px}
  .grid-4{grid-template-columns:repeat(4,1fr)}
@@ -87,8 +94,13 @@
  box-shadow:var(--cardShadow);
  padding:22px;
  }
- .metric{min-height:142px;position:relative;overflow:hidden;background:linear-gradient(180deg,#fff,#fafbff)}
+ .metric{min-height:150px;position:relative;overflow:hidden;background:linear-gradient(180deg,#fff,#fafbff);transition:transform .2s ease, box-shadow .2s ease}
+ .metric:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,115,234,.12)}
  .metric:after{content:"";position:absolute;left:-24px;bottom:-38px;width:110px;height:110px;background:rgba(0,115,234,.06);border-radius:26px;transform:rotate(25deg)}
+ .metric.cyanAccent{background:linear-gradient(180deg,#f7fbff,#eef6ff)}
+ .metric.greenAccent{background:linear-gradient(180deg,#f7fff9,#effcf5)}
+ .metric.yellowAccent{background:linear-gradient(180deg,#fffdf7,#fff7e8)}
+ .metric.purpleAccent{background:linear-gradient(180deg,#fbf9ff,#f3efff)}
  .label{color:var(--muted);font-size:14px;margin-bottom:8px}
  .value{font-size:36px;font-weight:900;line-height:1;color:var(--text);margin-bottom:8px}
  .value.green{color:var(--green)} .value.cyan{color:var(--blue)} .value.yellow{color:var(--orange)} .value.purple{color:var(--purple)}
@@ -98,9 +110,13 @@
  .muted{color:var(--muted)}
  .chartBox{height:330px;padding:14px;background:var(--panelSoft);border:1px solid #e1e5f5;border-radius:20px}
  .heroImage{
- width:100%;height:320px;object-fit:cover;border-radius:22px;border:1px solid #d8ddf0;
+ width:100%;height:100%;min-height:320px;object-fit:cover;border-radius:22px;border:1px solid #d8ddf0;
  box-shadow:var(--cardShadow);display:block
  }
+ .heroImageWrap{position:relative}
+ .heroImageLabel{position:absolute;right:18px;bottom:18px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border:1px solid #d8ddf0;border-radius:16px;padding:12px 14px;max-width:320px;box-shadow:0 14px 30px rgba(16,24,40,.12)}
+ .heroImageLabel strong{display:block;color:#1f2430;margin-bottom:4px}
+ .heroImageLabel span{display:block;color:var(--muted);font-size:.92rem;line-height:1.5}
  .tableWrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:18px}
  table{width:100%;border-collapse:separate;border-spacing:0;overflow:hidden;border-radius:18px;border:1px solid #e1e5f5;font-size:15px;min-width:700px}
  th,td{padding:14px 15px;border-bottom:1px solid #e8ebf7;text-align:right;vertical-align:top}
@@ -116,11 +132,12 @@
  .improve{border-right:4px solid var(--yellow)}
  .footerNote{margin-top:26px;color:var(--muted);font-size:13px;text-align:center}
  @media(max-width:900px){
- .grid-4,.grid-3,.grid-2{grid-template-columns:1fr}
+ .heroSplit,.grid-4,.grid-3,.grid-2,.heroStats{grid-template-columns:1fr}
  h1{font-size:31px}
  .wrap{padding:16px 12px 44px}
  .chartBox{height:260px;padding:10px}
- .heroImage{height:220px;border-radius:18px}
+ .heroImage{height:220px;min-height:220px;border-radius:18px}
+ .heroImageLabel{right:12px;left:12px;bottom:12px;max-width:none;padding:10px 12px}
  header{padding:28px 20px;border-radius:22px}
  .card{padding:18px;border-radius:20px}
  h2{font-size:23px}
@@ -149,6 +166,7 @@
      <button class="top-btn" type="button" onclick="window.print()">הדפסה / PDF</button>
    </div>
  </div>
+ <section class="heroSplit">
  <header>
  <div class="kicker">דו"ח סיכום מנהלים</div>
  <h1>Tech School × Minecraft</h1>
@@ -159,17 +177,33 @@
  <span class="badge">מדידה והערכה</span>
  <span class="badge">אימפקט פדגוגי וקהילתי</span>
  </div>
+ <div class="heroStats" style="margin-top:22px;position:relative;z-index:1">
+   <div class="heroStat">
+     <span class="eyebrow">Engagement</span>
+     <strong>193</strong>
+     <p>תלמידים פעילים עם שיעור המשכיות מרשים לאורך חודשי הפעילות.</p>
+   </div>
+   <div class="heroStat">
+     <span class="eyebrow">Impact</span>
+     <strong>88.1</strong>
+     <p>ציון ממוצע כולל שממחיש איכות תוצרים, ליווי ומשוב עקבי.</p>
+   </div>
+ </div>
  </header>
-
- <section>
+ <div class="heroImageWrap">
  <img class="heroImage" src="/images/institutions/minecraft-green-city-report.webp" alt="עיר ירוקה בסגנון Minecraft עבור דוח התוכנית">
+ <div class="heroImageLabel">
+   <strong>Sustainable City</strong>
+   <span>הדמיה ויזואלית של כיוון האתגר הבא — עיר ירוקה, שיתופית, מבוססת חשיבה מערכתית וקיימות.</span>
+ </div>
+ </div>
  </section>
 
  <section class="grid grid-4">
- <div class="card metric"><div class="label">בתי ספר פעילים</div><div class="value cyan">10</div><p class="muted">מתוך 12 שנבחרו בתחילה</p></div>
- <div class="card metric"><div class="label">תלמידים פעילים</div><div class="value green">193</div><p class="muted">שיעור המשכיות של 76%</p></div>
- <div class="card metric"><div class="label">תוצרים שהוגשו</div><div class="value yellow">104</div><p class="muted">על פני האתגרים השונים</p></div>
- <div class="card metric"><div class="label">ציון ממוצע כולל</div><div class="value purple">88.1</div><p class="muted">רמת ביצוע גבוהה ועקבית</p></div>
+ <div class="card metric cyanAccent"><div class="label">בתי ספר פעילים</div><div class="value cyan">10</div><p class="muted">מתוך 12 שנבחרו בתחילה</p></div>
+ <div class="card metric greenAccent"><div class="label">תלמידים פעילים</div><div class="value green">193</div><p class="muted">שיעור המשכיות של 76%</p></div>
+ <div class="card metric yellowAccent"><div class="label">תוצרים שהוגשו</div><div class="value yellow">104</div><p class="muted">על פני האתגרים השונים</p></div>
+ <div class="card metric purpleAccent"><div class="label">ציון ממוצע כולל</div><div class="value purple">88.1</div><p class="muted">רמת ביצוע גבוהה ועקבית</p></div>
  </section>
 
  <section class="grid grid-2">
