@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מחשבון תמחור ורווחיות לבתי ספר | דרך ההייטק</title>
+    <meta name="description" content="מחשבון דינמי לבדיקת הכנסה, הוצאה ורווח בתרחישי הדרכות לבתי ספר — הנהלה, מורים ותלמידים.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://hai.tech/schools-pricing-calculator.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hai.tech/schools-pricing-calculator.html">
+    <meta property="og:title" content="מחשבון תמחור ורווחיות לבתי ספר">
+    <meta property="og:description" content="עמוד דינמי שמאפשר לשחק עם כמויות, מחירים ועלויות ולראות מיד הכנסה, הוצאה ורווח.">
+    <meta property="og:locale" content="he_IL">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="image/png" href="/images/brand/logo.webp">
+
+    <style>
+        :root {
+            --calc-bg: #f8fafc;
+            --calc-text: #0f172a;
+            --calc-muted: #475569;
+            --calc-line: #dbe4f0;
+            --calc-card: rgba(255,255,255,0.96);
+            --calc-primary: #4338ca;
+            --calc-secondary: #0891b2;
+            --calc-success: #15803d;
+            --calc-warning: #b45309;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at top right, rgba(99,102,241,0.10), transparent 25%),
+                linear-gradient(180deg, #eef2ff 0%, #f8fafc 28%, #ffffff 100%);
+            color: var(--calc-text);
+        }
+
+        .calc-shell {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 32px 20px 80px;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .hero-card,
+        .panel,
+        .summary-card,
+        .product-card,
+        .table-card,
+        .insight-card {
+            background: var(--calc-card);
+            border: 1px solid rgba(219,228,240,0.95);
+            border-radius: 28px;
+            box-shadow: 0 18px 45px rgba(15,23,42,0.07);
+        }
+
+        .hero-card {
+            padding: 36px;
+            background: linear-gradient(135deg, rgba(67,56,202,0.97), rgba(8,145,178,0.94));
+            color: white;
+        }
+
+        .hero-card h1 {
+            color: white;
+            font-size: clamp(2rem, 5vw, 3.4rem);
+            margin-bottom: 14px;
+            line-height: 1.12;
+        }
+
+        .hero-card p {
+            color: rgba(255,255,255,0.92);
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 0;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.14);
+            border: 1px solid rgba(255,255,255,0.18);
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .hero-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 22px;
+        }
+
+        .hero-pills span {
+            display: inline-flex;
+            align-items: center;
+            padding: 9px 14px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.13);
+            border: 1px solid rgba(255,255,255,0.14);
+            font-weight: 700;
+        }
+
+        .summary-card {
+            padding: 28px;
+            display: grid;
+            gap: 14px;
+            align-content: start;
+        }
+
+        .summary-card h2,
+        .panel h2,
+        .table-card h2,
+        .insight-card h2 {
+            text-align: right;
+            font-size: 1.5rem;
+            margin-bottom: 4px;
+        }
+
+        .kpi {
+            padding: 18px 20px;
+            border-radius: 20px;
+            background: var(--calc-bg);
+            border: 1px solid var(--calc-line);
+        }
+
+        .kpi-label {
+            color: var(--calc-muted);
+            font-size: 0.94rem;
+            margin-bottom: 6px;
+        }
+
+        .kpi-value {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--calc-primary);
+            line-height: 1.15;
+        }
+
+        .kpi.success .kpi-value { color: var(--calc-success); }
+        .kpi.warning .kpi-value { color: var(--calc-warning); }
+
+        .panel {
+            padding: 28px;
+            margin-bottom: 22px;
+        }
+
+        .panel-intro {
+            color: var(--calc-muted);
+            line-height: 1.8;
+            margin-bottom: 18px;
+        }
+
+        .assumptions-grid,
+        .products-grid,
+        .totals-grid,
+        .scenario-grid {
+            display: grid;
+            gap: 18px;
+        }
+
+        .assumptions-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .products-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .totals-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin-top: 18px;
+        }
+
+        .scenario-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .field,
+        .mini-stat,
+        .scenario-btn,
+        .product-card {
+            border-radius: 22px;
+            border: 1px solid var(--calc-line);
+            background: white;
+        }
+
+        .field {
+            padding: 16px;
+        }
+
+        .field label {
+            display: block;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .field input {
+            width: 100%;
+            border: 2px solid #e5e7eb;
+            border-radius: 14px;
+            padding: 13px 14px;
+            font-family: inherit;
+            font-size: 1rem;
+            direction: ltr;
+            text-align: right;
+            background: #fbfdff;
+        }
+
+        .field input:focus {
+            border-color: var(--calc-primary);
+            outline: none;
+            background: white;
+        }
+
+        .hint {
+            color: #64748b;
+            font-size: 0.83rem;
+            margin-top: 7px;
+            line-height: 1.55;
+        }
+
+        .scenario-btn {
+            padding: 16px 18px;
+            text-align: right;
+            cursor: pointer;
+            transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+        }
+
+        .scenario-btn:hover {
+            transform: translateY(-2px);
+            border-color: #c7d2fe;
+            box-shadow: 0 10px 25px rgba(67,56,202,0.08);
+        }
+
+        .scenario-btn strong {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--calc-primary);
+        }
+
+        .scenario-btn span {
+            color: var(--calc-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .product-card {
+            padding: 22px;
+        }
+
+        .product-card h3 {
+            margin-bottom: 6px;
+            font-size: 1.25rem;
+        }
+
+        .product-subtitle {
+            color: var(--calc-muted);
+            font-size: 0.93rem;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .product-fields {
+            display: grid;
+            gap: 12px;
+        }
+
+        .split-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .mini-stat {
+            padding: 14px 16px;
+            background: #f8fafc;
+        }
+
+        .mini-stat-label {
+            color: var(--calc-muted);
+            font-size: 0.85rem;
+            margin-bottom: 4px;
+        }
+
+        .mini-stat-value {
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--calc-primary);
+        }
+
+        .table-card,
+        .insight-card {
+            padding: 28px;
+            margin-top: 22px;
+        }
+
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 14px;
+            overflow: hidden;
+        }
+
+        .results-table th,
+        .results-table td {
+            padding: 14px 12px;
+            text-align: center;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .results-table th {
+            background: #eef2ff;
+            color: var(--calc-primary);
+            font-weight: 800;
+        }
+
+        .results-table tr:last-child td {
+            border-bottom: none;
+            font-weight: 800;
+        }
+
+        .profit-good { color: var(--calc-success); font-weight: 800; }
+        .profit-neutral { color: var(--calc-primary); font-weight: 800; }
+
+        .insight-list {
+            display: grid;
+            gap: 14px;
+            margin-top: 12px;
+        }
+
+        .insight-item {
+            padding: 18px 20px;
+            border-radius: 18px;
+            background: var(--calc-bg);
+            border: 1px solid var(--calc-line);
+            color: var(--calc-muted);
+            line-height: 1.8;
+        }
+
+        .insight-item strong {
+            color: var(--calc-text);
+        }
+
+        .footer-note {
+            text-align: center;
+            color: var(--calc-muted);
+            margin-top: 18px;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 1080px) {
+            .hero,
+            .products-grid,
+            .scenario-grid,
+            .assumptions-grid,
+            .totals-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .calc-shell {
+                padding: 22px 14px 60px;
+            }
+
+            .hero-card,
+            .summary-card,
+            .panel,
+            .table-card,
+            .insight-card,
+            .product-card {
+                border-radius: 22px;
+            }
+
+            .hero-card,
+            .panel,
+            .table-card,
+            .insight-card {
+                padding: 22px;
+            }
+
+            .split-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .results-table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="calc-shell">
+        <section class="hero">
+            <div class="hero-card">
+                <div class="eyebrow">מחשבון דינמי · הצעה לבתי ספר</div>
+                <h1>מחשבון תמחור, הכנסה ורווחיות לבתי ספר</h1>
+                <p>
+                    בניתי לך עמוד דינמי שאפשר לשחק בו עם כמויות, מחירים, עלות מדריך, מספר בתי ספר ואחוזי חדירה.
+                    כל שינוי מתעדכן מיד ומציג <strong>הכנסה</strong>, <strong>הוצאה</strong> ו<strong>רווח</strong> — גם ברמת כל מוצר וגם בסך הכול.
+                </p>
+                <div class="hero-pills">
+                    <span>תלמידים</span>
+                    <span>מורים</span>
+                    <span>הנהלה</span>
+                    <span>תרחישים דינמיים</span>
+                </div>
+            </div>
+
+            <aside class="summary-card">
+                <h2>סיכום מהיר</h2>
+                <div class="kpi">
+                    <div class="kpi-label">הכנסה כוללת</div>
+                    <div class="kpi-value" id="totalRevenue">₪0</div>
+                </div>
+                <div class="kpi warning">
+                    <div class="kpi-label">הוצאה כוללת</div>
+                    <div class="kpi-value" id="totalCost">₪0</div>
+                </div>
+                <div class="kpi success">
+                    <div class="kpi-label">רווח כולל</div>
+                    <div class="kpi-value" id="totalProfit">₪0</div>
+                </div>
+                <div class="kpi">
+                    <div class="kpi-label">שיעור רווח</div>
+                    <div class="kpi-value" id="profitMargin">0%</div>
+                </div>
+            </aside>
+        </section>
+
+        <section class="panel">
+            <h2>הגדרות בסיס</h2>
+            <p class="panel-intro">כאן מגדירים את תרחיש השוק הכללי. אם תרצי, אפשר לעבוד לפי מספר בתי ספר ואחוזי חדירה — או פשוט לשנות ידנית את כמויות הקבוצות בכל מוצר.</p>
+            <div class="assumptions-grid">
+                <div class="field">
+                    <label for="schoolsCount">מספר בתי ספר בשוק</label>
+                    <input id="schoolsCount" type="number" min="0" step="1" value="50">
+                    <div class="hint">משמש לחישוב הנהלה ומורים לפי אחוז חדירה.</div>
+                </div>
+                <div class="field">
+                    <label for="studentsGroups">מספר קבוצות תלמידים</label>
+                    <input id="studentsGroups" type="number" min="0" step="1" value="30">
+                    <div class="hint">כאן עובדים בכמות קבוצות ישירה.</div>
+                </div>
+                <div class="field">
+                    <label for="managementRate">חדירת הנהלה (%)</label>
+                    <input id="managementRate" type="number" min="0" max="100" step="1" value="70">
+                    <div class="hint">יחושב כמספר יחידות מתוך בתי הספר בשוק.</div>
+                </div>
+                <div class="field">
+                    <label for="teachersRate">חדירת מורים (%)</label>
+                    <input id="teachersRate" type="number" min="0" max="100" step="1" value="60">
+                    <div class="hint">גם כאן החישוב הוא מתוך מספר בתי הספר.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="panel">
+            <h2>תרחישים מהירים</h2>
+            <p class="panel-intro">לחיצה על אחד הכפתורים תמלא את כל המספרים אוטומטית. אחר כך אפשר להמשיך לשחק ידנית.</p>
+            <div class="scenario-grid">
+                <button class="scenario-btn" type="button" data-scenario="conservative">
+                    <strong>תרחיש שמרני</strong>
+                    <span>35 בתי ספר · 18 קבוצות תלמידים · 45% הנהלה · 35% מורים</span>
+                </button>
+                <button class="scenario-btn" type="button" data-scenario="base">
+                    <strong>תרחיש סביר</strong>
+                    <span>50 בתי ספר · 30 קבוצות תלמידים · 70% הנהלה · 60% מורים</span>
+                </button>
+                <button class="scenario-btn" type="button" data-scenario="growth">
+                    <strong>תרחיש צמיחה</strong>
+                    <span>80 בתי ספר · 48 קבוצות תלמידים · 80% הנהלה · 70% מורים</span>
+                </button>
+            </div>
+        </section>
+
+        <section class="panel">
+            <h2>מוצרי ההצעה</h2>
+            <p class="panel-intro">אפשר לשנות שעות, מחיר לשעה ועלות מדריך — והמחשבון יעדכן את כל הטבלאות והסיכומים מיידית.</p>
+            <div class="products-grid">
+                <article class="product-card" data-product="students">
+                    <h3>תלמידים</h3>
+                    <p class="product-subtitle">ברירת מחדל: 4 מפגשים × 2 שעות אקדמיות = 8 שעות לקבוצה.</p>
+                    <div class="product-fields">
+                        <div class="split-2">
+                            <div class="field">
+                                <label for="studentsSessions">מספר מפגשים</label>
+                                <input id="studentsSessions" type="number" min="0" step="1" value="4">
+                            </div>
+                            <div class="field">
+                                <label for="studentsHoursPerSession">שעות אקדמיות למפגש</label>
+                                <input id="studentsHoursPerSession" type="number" min="0" step="0.5" value="2">
+                            </div>
+                        </div>
+                        <div class="split-2">
+                            <div class="field">
+                                <label for="studentsPricePerHour">מחיר לשעה</label>
+                                <input id="studentsPricePerHour" type="number" min="0" step="1" value="240">
+                            </div>
+                            <div class="field">
+                                <label for="studentsCostPerHour">עלות מדריך לשעה</label>
+                                <input id="studentsCostPerHour" type="number" min="0" step="1" value="150">
+                            </div>
+                        </div>
+                        <div class="mini-stat">
+                            <div class="mini-stat-label">כמות יחידות בתרחיש הנוכחי</div>
+                            <div class="mini-stat-value" id="studentsUnits">0</div>
+                        </div>
+                        <div class="split-2">
+                            <div class="mini-stat">
+                                <div class="mini-stat-label">הכנסה ליחידה</div>
+                                <div class="mini-stat-value" id="studentsRevenuePerUnit">₪0</div>
+                            </div>
+                            <div class="mini-stat">
+                                <div class="mini-stat-label">רווח ליחידה</div>
+                                <div class="mini-stat-value" id="studentsProfitPerUnit">₪0</div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-product="management">
+                    <h3>הנהלה</h3>
+                    <p class="product-subtitle">ברירת מחדל: 4 מפגשים × 3 שעות אקדמיות = 12 שעות ליחידה.</p>
+                    <div class="product-fields">
+                        <div class="split-2">
+                            <div class="field">
+                                <label for="managementSessions">מספר מפגשים</label>
+                                <input id="managementSessions" type="number" min="0" step="1" value="4">
+                            </div>
+                            <div class="field">
+                                <label for="managementHoursPerSession">שעות אקדמיות למפגש</label>
+                                <input id="managementHoursPerSession" type="number" min="0" step="0.5" value="3">
+                            </div>
+                        </div>
+                        <div class="split-2">
+                            <div class="field">
+                                <label for="managementPricePerHour">מחיר לשעה</label>
+                                <input id="managementPricePerHour" type="number" min="0" step="1" value="250">
+                            </div>
+                            <div class="field">
+                                <label for="managementCostPerHour">עלות מדריך לשעה</label>
+                                <input id="managementCostPerHour" type="number" min="0" step="1" value="150">
+                            </div>
+                        </div>
+                        <div class="mini-stat">
+                            <div class="mini-stat-label">כמות יחידות בתרחיש הנוכחי</div>
+                            <div class="mini-stat-value" id="managementUnits">0</div>
+                        </div>
+                        <div class="split-2">
+                            <div class="mini-stat">
+                                <div class="mini-stat-label">הכנסה ליחידה</div>
+                                <div class="mini-stat-value" id="managementRevenuePerUnit">₪0</div>
+                            </div>
+                            <div class="mini-stat">
+                                <div class="mini-stat-label">רווח ליחידה</div>
+                                <div class="mini-stat-value" id="managementProfitPerUnit">₪0</div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-product="teachers">
+                    <h3>מורים</h3>
+                    <p class="product-subtitle">ברירת מחדל: 10 מפגשים × 3 שעות אקדמיות = 30 שעות ליחידה.</p>
+                    <div class="product-fields">
+                        <div class="split-2">
+                            <div class="field">
+                                <label for="teachersSessions">מספר מפגשים</label>
+                                <input id="teachersSessions" type="number" min="0" step="1" value="10">
+                            </div>
+                            <div class="field">
+                                <label for="teachersHoursPerSession">שעות אקדמיות למפגש</label>
+                                <input id="teachersHoursPerSession" type="number" min="0" step="0.5" value="3">
+                            </div>
+                        </div>
+                        <div class="split-2">
+                            <div class="field">
+                                <label for="teachersPricePerHour">מחיר לשעה</label>
+                                <input id="teachersPricePerHour" type="number" min="0" step="1" value="230">
+                            </div>
+                            <div class="field">
+                                <label for="teachersCostPerHour">עלות מדריך לשעה</label>
+                                <input id="teachersCostPerHour" type="number" min="0" step="1" value="150">
+                            </div>
+                        </div>
+                        <div class="mini-stat">
+                            <div class="mini-stat-label">כמות יחידות בתרחיש הנוכחי</div>
+                            <div class="mini-stat-value" id="teachersUnits">0</div>
+                        </div>
+                        <div class="split-2">
+                            <div class="mini-stat">
+                                <div class="mini-stat-label">הכנסה ליחידה</div>
+                                <div class="mini-stat-value" id="teachersRevenuePerUnit">₪0</div>
+                            </div>
+                            <div class="mini-stat">
+                                <div class="mini-stat-label">רווח ליחידה</div>
+                                <div class="mini-stat-value" id="teachersProfitPerUnit">₪0</div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="totals-grid">
+                <div class="mini-stat">
+                    <div class="mini-stat-label">סה״כ יחידות</div>
+                    <div class="mini-stat-value" id="totalUnits">0</div>
+                </div>
+                <div class="mini-stat">
+                    <div class="mini-stat-label">רווח ממוצע ליחידה</div>
+                    <div class="mini-stat-value" id="avgProfitPerUnit">₪0</div>
+                </div>
+                <div class="mini-stat">
+                    <div class="mini-stat-label">הכנסה ממוצעת ליחידה</div>
+                    <div class="mini-stat-value" id="avgRevenuePerUnit">₪0</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="table-card">
+            <h2>פירוט תוצאות לפי מוצר</h2>
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th>מוצר</th>
+                        <th>כמות</th>
+                        <th>שעות ליחידה</th>
+                        <th>הכנסה ליחידה</th>
+                        <th>הוצאה ליחידה</th>
+                        <th>רווח ליחידה</th>
+                        <th>הכנסה כוללת</th>
+                        <th>הוצאה כוללת</th>
+                        <th>רווח כולל</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>תלמידים</td>
+                        <td id="tableStudentsUnits">0</td>
+                        <td id="tableStudentsHours">0</td>
+                        <td id="tableStudentsRevenuePerUnit">₪0</td>
+                        <td id="tableStudentsCostPerUnit">₪0</td>
+                        <td id="tableStudentsProfitPerUnit" class="profit-neutral">₪0</td>
+                        <td id="tableStudentsRevenue">₪0</td>
+                        <td id="tableStudentsCost">₪0</td>
+                        <td id="tableStudentsProfit" class="profit-good">₪0</td>
+                    </tr>
+                    <tr>
+                        <td>הנהלה</td>
+                        <td id="tableManagementUnits">0</td>
+                        <td id="tableManagementHours">0</td>
+                        <td id="tableManagementRevenuePerUnit">₪0</td>
+                        <td id="tableManagementCostPerUnit">₪0</td>
+                        <td id="tableManagementProfitPerUnit" class="profit-neutral">₪0</td>
+                        <td id="tableManagementRevenue">₪0</td>
+                        <td id="tableManagementCost">₪0</td>
+                        <td id="tableManagementProfit" class="profit-good">₪0</td>
+                    </tr>
+                    <tr>
+                        <td>מורים</td>
+                        <td id="tableTeachersUnits">0</td>
+                        <td id="tableTeachersHours">0</td>
+                        <td id="tableTeachersRevenuePerUnit">₪0</td>
+                        <td id="tableTeachersCostPerUnit">₪0</td>
+                        <td id="tableTeachersProfitPerUnit" class="profit-neutral">₪0</td>
+                        <td id="tableTeachersRevenue">₪0</td>
+                        <td id="tableTeachersCost">₪0</td>
+                        <td id="tableTeachersProfit" class="profit-good">₪0</td>
+                    </tr>
+                    <tr>
+                        <td>סה״כ</td>
+                        <td id="tableTotalUnits">0</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td id="tableTotalRevenue">₪0</td>
+                        <td id="tableTotalCost">₪0</td>
+                        <td id="tableTotalProfit" class="profit-good">₪0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="insight-card">
+            <h2>תובנות אוטומטיות</h2>
+            <div class="insight-list">
+                <div class="insight-item" id="bestProfitInsight"></div>
+                <div class="insight-item" id="mixInsight"></div>
+                <div class="insight-item" id="marketInsight"></div>
+            </div>
+            <p class="footer-note">העמוד מוגדר <strong>noindex</strong> כדי שתוכלי לעבוד עליו בשקט ולשתף רק עם מי שצריך.</p>
+        </section>
+    </main>
+
+    <script>
+        const scenarios = {
+            conservative: { schools: 35, studentsGroups: 18, managementRate: 45, teachersRate: 35 },
+            base: { schools: 50, studentsGroups: 30, managementRate: 70, teachersRate: 60 },
+            growth: { schools: 80, studentsGroups: 48, managementRate: 80, teachersRate: 70 }
+        };
+
+        const products = {
+            students: { label: 'תלמידים' },
+            management: { label: 'הנהלה' },
+            teachers: { label: 'מורים' }
+        };
+
+        const el = (id) => document.getElementById(id);
+        const money = (value) => `₪${Math.round(value).toLocaleString('he-IL')}`;
+        const number = (value) => Math.round(value * 10) / 10;
+
+        function getValue(id) {
+            return parseFloat(el(id).value) || 0;
+        }
+
+        function getUnits() {
+            const schools = getValue('schoolsCount');
+            return {
+                students: getValue('studentsGroups'),
+                management: Math.round((schools * getValue('managementRate')) / 100),
+                teachers: Math.round((schools * getValue('teachersRate')) / 100)
+            };
+        }
+
+        function getProductData(key, units) {
+            const sessions = getValue(`${key}Sessions`);
+            const hoursPerSession = getValue(`${key}HoursPerSession`);
+            const pricePerHour = getValue(`${key}PricePerHour`);
+            const costPerHour = getValue(`${key}CostPerHour`);
+            const hoursPerUnit = sessions * hoursPerSession;
+            const revenuePerUnit = hoursPerUnit * pricePerHour;
+            const costPerUnit = hoursPerUnit * costPerHour;
+            const profitPerUnit = revenuePerUnit - costPerUnit;
+            const quantity = units[key];
+            return {
+                key,
+                quantity,
+                sessions,
+                hoursPerSession,
+                hoursPerUnit,
+                pricePerHour,
+                costPerHour,
+                revenuePerUnit,
+                costPerUnit,
+                profitPerUnit,
+                totalRevenue: revenuePerUnit * quantity,
+                totalCost: costPerUnit * quantity,
+                totalProfit: profitPerUnit * quantity
+            };
+        }
+
+        function updateProductCard(data) {
+            el(`${data.key}Units`).textContent = data.quantity.toLocaleString('he-IL');
+            el(`${data.key}RevenuePerUnit`).textContent = money(data.revenuePerUnit);
+            el(`${data.key}ProfitPerUnit`).textContent = money(data.profitPerUnit);
+
+            const cap = data.key.charAt(0).toUpperCase() + data.key.slice(1);
+            el(`table${cap}Units`).textContent = data.quantity.toLocaleString('he-IL');
+            el(`table${cap}Hours`).textContent = number(data.hoursPerUnit).toLocaleString('he-IL');
+            el(`table${cap}RevenuePerUnit`).textContent = money(data.revenuePerUnit);
+            el(`table${cap}CostPerUnit`).textContent = money(data.costPerUnit);
+            el(`table${cap}ProfitPerUnit`).textContent = money(data.profitPerUnit);
+            el(`table${cap}Revenue`).textContent = money(data.totalRevenue);
+            el(`table${cap}Cost`).textContent = money(data.totalCost);
+            el(`table${cap}Profit`).textContent = money(data.totalProfit);
+        }
+
+        function updateInsights(results, totals, schools) {
+            const bestPerUnit = [...results].sort((a, b) => b.profitPerUnit - a.profitPerUnit)[0];
+            const bestTotal = [...results].sort((a, b) => b.totalProfit - a.totalProfit)[0];
+            const penetrationManagement = schools ? Math.round((results.find(r => r.key === 'management').quantity / schools) * 100) : 0;
+            const penetrationTeachers = schools ? Math.round((results.find(r => r.key === 'teachers').quantity / schools) * 100) : 0;
+
+            el('bestProfitInsight').innerHTML = `<strong>הרווח הגבוה ביותר ליחידה:</strong> ${products[bestPerUnit.key].label} עם ${money(bestPerUnit.profitPerUnit)} רווח לכל יחידה.`;
+            el('mixInsight').innerHTML = `<strong>מנוע הרווח המרכזי כרגע:</strong> ${products[bestTotal.key].label} מייצרים ${money(bestTotal.totalProfit)} רווח מצטבר בתרחיש הנוכחי.`;
+            el('marketInsight').innerHTML = `<strong>תמונת חדירה:</strong> מתוך ${schools.toLocaleString('he-IL')} בתי ספר, ההנהלה עומדת על ${penetrationManagement}% חדירה והמורים על ${penetrationTeachers}% חדירה. הרווח הכולל כרגע הוא ${money(totals.profit)}.`;
+        }
+
+        function updateCalculator() {
+            const schools = getValue('schoolsCount');
+            const units = getUnits();
+            const results = Object.keys(products).map((key) => getProductData(key, units));
+
+            results.forEach(updateProductCard);
+
+            const totals = results.reduce((acc, item) => ({
+                revenue: acc.revenue + item.totalRevenue,
+                cost: acc.cost + item.totalCost,
+                profit: acc.profit + item.totalProfit,
+                units: acc.units + item.quantity
+            }), { revenue: 0, cost: 0, profit: 0, units: 0 });
+
+            const margin = totals.revenue ? (totals.profit / totals.revenue) * 100 : 0;
+            const avgProfitPerUnit = totals.units ? totals.profit / totals.units : 0;
+            const avgRevenuePerUnit = totals.units ? totals.revenue / totals.units : 0;
+
+            el('totalRevenue').textContent = money(totals.revenue);
+            el('totalCost').textContent = money(totals.cost);
+            el('totalProfit').textContent = money(totals.profit);
+            el('profitMargin').textContent = `${number(margin).toLocaleString('he-IL')}%`;
+            el('totalUnits').textContent = totals.units.toLocaleString('he-IL');
+            el('avgProfitPerUnit').textContent = money(avgProfitPerUnit);
+            el('avgRevenuePerUnit').textContent = money(avgRevenuePerUnit);
+
+            el('tableTotalUnits').textContent = totals.units.toLocaleString('he-IL');
+            el('tableTotalRevenue').textContent = money(totals.revenue);
+            el('tableTotalCost').textContent = money(totals.cost);
+            el('tableTotalProfit').textContent = money(totals.profit);
+
+            updateInsights(results, totals, schools);
+        }
+
+        document.querySelectorAll('input').forEach((input) => {
+            input.addEventListener('input', updateCalculator);
+        });
+
+        document.querySelectorAll('[data-scenario]').forEach((button) => {
+            button.addEventListener('click', () => {
+                const scenario = scenarios[button.dataset.scenario];
+                el('schoolsCount').value = scenario.schools;
+                el('studentsGroups').value = scenario.studentsGroups;
+                el('managementRate').value = scenario.managementRate;
+                el('teachersRate').value = scenario.teachersRate;
+                updateCalculator();
+            });
+        });
+
+        updateCalculator();
+    </script>
+</body>
+</html>
