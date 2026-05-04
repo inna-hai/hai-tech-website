@@ -131,7 +131,14 @@
  .positive{border-right:4px solid var(--green)}
  .improve{border-right:4px solid var(--yellow)}
  .footerNote{margin-top:26px;color:var(--muted);font-size:13px;text-align:center}
+ .fieldGallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+ .fieldCard{border:1px solid #d8ddf0;border-radius:20px;overflow:hidden;background:#fff;box-shadow:var(--cardShadow)}
+ .fieldCard img{display:block;width:100%;height:240px;object-fit:cover}
+ .fieldCard .caption{padding:14px 16px}
+ .fieldCard .caption strong{display:block;margin-bottom:6px;color:#1f2430}
  @media(max-width:900px){
+ .fieldGallery{grid-template-columns:1fr}
+ .fieldCard img{height:220px}
  .heroSplit,.grid-4,.grid-3,.grid-2,.heroStats{grid-template-columns:1fr}
  h1{font-size:31px}
  .wrap{padding:16px 12px 44px}
@@ -245,6 +252,16 @@
  </div>
  </section>
 
+ <section class="card">
+ <h2>תוצרים מהשטח</h2>
+ <p>שלוש דוגמאות חזותיות מתוך השרתים מציגות את רוח התוכנית בפועל: יצירתיות אדריכלית, תכנון מרחבי, ועולמות שנבנו מתוך שיתוף פעולה ועקביות.</p>
+ <div class="fieldGallery">
+ <div class="fieldCard"><img src="/images/institutions/minecraft-report-field-modern.jpg" alt="מבנה מודרני במיינקראפט מתוך שרתי התוכנית"><div class="caption"><strong>בנייה אדריכלית מתקדמת</strong><span class="muted">תוצר שממחיש תכנון, ירידה לפרטים ועבודה עקבית על מרחב בנוי עשיר.</span></div></div>
+ <div class="fieldCard"><img src="/images/institutions/minecraft-report-field-village.jpg" alt="כפר ונוף במיינקראפט מתוך שרתי התוכנית"><div class="caption"><strong>תכנון סביבתי וקהילתי</strong><span class="muted">נוף כפרי רחב עם גשרים, צמחייה ומרחב שמרגיש חלק מעולם משותף ומתמשך.</span></div></div>
+ <div class="fieldCard"><img src="/images/institutions/minecraft-report-field-cherry.jpg" alt="יער דובדבן במיינקראפט מתוך שרתי התוכנית"><div class="caption"><strong>יצירתיות חזותית ובחירות עיצוב</strong><span class="muted">עבודה צבעונית ומרשימה שמדגימה ביטוי אישי, אסתטיקה וביטחון יצירתי בתוך העולם שנבנה.</span></div></div>
+ </div>
+ </section>
+
  <section class="grid grid-2">
  <div class="card">
  <h2>ניתוח נתוני שרתים</h2>
@@ -345,9 +362,9 @@
  <section class="card">
  <h2>אימפקט כללי עד כה</h2>
  <div class="grid grid-3">
- <div class="insight positive"><div class="icon">✓</div><div><strong>קהילה לומדת פעילה</strong><br><span class="muted">פעילות מתמשכת בשרתים גם מעבר לשעות הלימודים.</span></div></div>
+ <div class="insight positive"><div class="icon">✓</div><div><strong>קהילה לומדת פעילה</strong><br><span class="muted">2,312 סשנים בשרתים במדגם מרץ–אפריל 2026, עם 43 סשנים בממוצע ליום פעילות.</span></div></div>
  <div class="insight positive"><div class="icon">✓</div><div><strong>למידה מבוססת תוצרים</strong><br><span class="muted">104 תוצרים שהוגשו עד כה, עם איכות גבוהה ומדידה.</span></div></div>
- <div class="insight positive"><div class="icon">✓</div><div><strong>שיפור מוכח לאורך זמן</strong><br><span class="muted">דוגמת G#2 מדגימה השפעה של משוב, רפלקציה וליווי.</span></div></div>
+ <div class="insight positive"><div class="icon">✓</div><div><strong>שיפור מוכח לאורך זמן</strong><br><span class="muted">בקבוצת G#2 הוגשו באתגר הראשון 4 תוצרים מתוך 15 תלמידים, ובאתגר השני כבר 13 תלמידים השתתפו, עם ציון ממוצע 92.3.</span></div></div>
  </div>
  </section>
 
