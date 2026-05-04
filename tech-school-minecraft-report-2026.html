@@ -131,14 +131,13 @@
  .positive{border-right:4px solid var(--green)}
  .improve{border-right:4px solid var(--yellow)}
  .footerNote{margin-top:26px;color:var(--muted);font-size:13px;text-align:center}
- .fieldGallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
- .fieldCard{border:1px solid #d8ddf0;border-radius:20px;overflow:hidden;background:#fff;box-shadow:var(--cardShadow)}
- .fieldCard img{display:block;width:100%;height:240px;object-fit:cover}
- .fieldCard .caption{padding:14px 16px}
- .fieldCard .caption strong{display:block;margin-bottom:6px;color:#1f2430}
+ .fieldGallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:16px}
+ .galleryThumb{display:block;border:1px solid #d8ddf0;border-radius:18px;overflow:hidden;background:#fff;box-shadow:var(--cardShadow);text-decoration:none;color:inherit}
+ .galleryThumb img{display:block;width:100%;height:180px;object-fit:cover;background:#f4f6fb}
+ .galleryThumb span{display:block;padding:10px 12px;font-size:13px;font-weight:700;color:#3f4252}
  @media(max-width:900px){
- .fieldGallery{grid-template-columns:1fr}
- .fieldCard img{height:220px}
+ .fieldGallery{grid-template-columns:repeat(2,1fr)}
+ .galleryThumb img{height:150px}
  .heroSplit,.grid-4,.grid-3,.grid-2,.heroStats{grid-template-columns:1fr}
  h1{font-size:31px}
  .wrap{padding:16px 12px 44px}
@@ -254,11 +253,31 @@
 
  <section class="card">
  <h2>תוצרים מהשטח</h2>
- <p>שלוש התמונות האלה נותנות הצצה טובה למה שקורה בפועל בשרתים: בנייה מושקעת, חשיבה על מרחב, ועבודה שנבנית לאורך זמן ולא רק "מגישה" חד-פעמית.</p>
+ <p>כדי לתת תמונה רחבה יותר של העבודה בשרתים, צירפנו כאן גלריה מלאה מתוך שלושת קבצי התמונות. היא מציגה מגוון של סגנונות בנייה, רמות גיבוש שונות, ותוצרים שנבנו לאורך הדרך.</p>
  <div class="fieldGallery">
- <div class="fieldCard"><img src="/images/institutions/minecraft-report-field-modern.jpg" alt="מבנה מודרני במיינקראפט מתוך שרתי התוכנית"><div class="caption"><strong>בנייה אדריכלית מתקדמת</strong><span class="muted">כאן רואים השקעה אמיתית בפרטים, תכנון מסודר, ויכולת להפוך רעיון למרחב בנוי שלם.</span></div></div>
- <div class="fieldCard"><img src="/images/institutions/minecraft-report-field-village.jpg" alt="כפר ונוף במיינקראפט מתוך שרתי התוכנית"><div class="caption"><strong>תכנון סביבתי וקהילתי</strong><span class="muted">לא רק מבנה בודד, אלא עולם שמרגיש חי: גשרים, צמחייה, וחיבור טוב בין חלקים שונים של המרחב.</span></div></div>
- <div class="fieldCard"><img src="/images/institutions/minecraft-report-field-cherry.jpg" alt="יער דובדבן במיינקראפט מתוך שרתי התוכנית"><div class="caption"><strong>יצירתיות חזותית ובחירות עיצוב</strong><span class="muted">הצילום הזה מראה טעם חזותי, ביטחון בבחירות עיצוב, ורצון לייצר משהו שיש לו אופי.</span></div></div>
+ <a class="galleryThumb" href="/images/institutions/minecraft-report-gallery/server-3-p2.webp" target="_blank" rel="noopener"><img src="/images/institutions/minecraft-report-gallery/server-3-p2.webp" alt="שרת 3 · תמונה 1 מתוך שרתי תוכנית מיינקראפט"><span>שרת 3 · תמונה 1</span></a>
+ <a class="galleryThumb" href="/images/institutions/minecraft-report-gallery/server-3-p3.webp" target="_blank" rel="noopener"><img src="/images/institutions/minecraft-report-gallery/server-3-p3.webp" alt="שרת 3 · תמונה 2 מתוך שרתי תוכנית מיינקראפט"><span>שרת 3 · תמונה 2</span></a>
+ <a class="galleryThumb" href="/images/institutions/minecraft-report-gallery/server-3-p4.webp" target="_blank" rel="noopener"><img src="/images/institutions/minecraft-report-gallery/server-3-p4.webp" alt="שרת 3 · תמונה 3 מתוך שרתי תוכנית מיינקראפט"><span>שרת 3 · תמונה 3</span></a>
+ <a class="galleryThumb" href="/images/institutions/minecraft-report-gallery/server-3-p5.webp" target="_blank" rel="noopener"><img src="/images/institutions/minecraft-report-gallery/server-3-p5.webp" alt="שרת 3 · תמונה 4 מתוך שרתי תוכנית מיינקראפט"><span>שרת 3 · תמונה 4</span></a>
+ <a class="galleryThumb" href="/images/institutions/minecraft-report-gallery/server-3-p6.webp" target="_blank" rel="noopener"><img src="/images/institutions/minecraft-report-gallery/server-3-p6.webp" alt="שרת 3 · תמונה 5 מתוך שרתי תוכנית מיינקראפט"><span>שרת 3 · תמונה 5</span></a>
+ <a class="galleryThumb" href="/images/institutions/minecraft-report-gallery/server-3-p7.webp" target="_blank" rel="noopener"><img src="/images/institutions/minecraft-report-gallery/server-3-p7.webp" alt="שרת 3 · תמונה 6 מתוך שרתי תוכנית מיינקראפט"><span>שרת 3 · תמונה 6</span></a>
+ <a class="galleryThumb" href="/images/institutions/minecraft-report-gallery/server-3-p8.webp" target="_blank" rel="noopener"><img src="/images/institutions/minecraft-report-gallery/server-3-p8.webp" alt="שרת 3 · תמונה 7 מתוך שרתי תוכנית מיינקראפט"><span>שרת 3 · תמונה 7</span></a>
+ <a class="galleryThumb" href="/images/institutions/minecraft-report-gallery/server-3-p9.webp" target="_blank" rel="noopener"><img src="/images/institutions/minecraft-report-gallery/server-3-p9.webp" alt="שרת 3 · תמונה 8 מתוך שרתי תוכנית מיינקראפט"><span>שרת 3 · תמונה 8</span></a>
+ <a class="galleryThumb" href="/images/institutions/minecraft-report-gallery/server-4-p2.webp" target="_blank" rel="noopener"><img src="/images/institutions/minecraft-report-gallery/server-4-p2.webp" alt="שרת 4 · תמונה 1 מתוך שרתי תוכנית מיינקראפט"><span>שרת 4 · תמונה 1</span></a>
+ <a class="galleryThumb" href="/images/institutions/minecraft-report-gallery/server-4-p3.webp" target="_blank" rel="noopener"><img src="/images/institutions/minecraft-report-gallery/server-4-p3.webp" alt="שרת 4 · תמונה 2 מתוך שרתי תוכנית מיינקראפט"><span>שרת 4 · תמונה 2</span></a>
+ <a class="galleryThumb" href="/images/institutions/minecraft-report-gallery/server-4-p4.webp" target="_blank" rel="noopener"><img src="/images/institutions/minecraft-report-gallery/server-4-p4.webp" alt="שרת 4 · תמונה 3 מתוך שרתי תוכנית מיינקראפט"><span>שרת 4 · תמונה 3</span></a>
+ <a class="galleryThumb" href="/images/institutions/minecraft-report-gallery/server-4-p5.webp" target="_blank" rel="noopener"><img src="/images/institutions/minecraft-report-gallery/server-4-p5.webp" alt="שרת 4 · תמונה 4 מתוך שרתי תוכנית מיינקראפט"><span>שרת 4 · תמונה 4</span></a>
+ <a class="galleryThumb" href="/images/institutions/minecraft-report-gallery/server-4-p6.webp" target="_blank" rel="noopener"><img src="/images/institutions/minecraft-report-gallery/server-4-p6.webp" alt="שרת 4 · תמונה 5 מתוך שרתי תוכנית מיינקראפט"><span>שרת 4 · תמונה 5</span></a>
+ <a class="galleryThumb" href="/images/institutions/minecraft-report-gallery/server-4-p7.webp" target="_blank" rel="noopener"><img src="/images/institutions/minecraft-report-gallery/server-4-p7.webp" alt="שרת 4 · תמונה 6 מתוך שרתי תוכנית מיינקראפט"><span>שרת 4 · תמונה 6</span></a>
+ <a class="galleryThumb" href="/images/institutions/minecraft-report-gallery/server-4-p8.webp" target="_blank" rel="noopener"><img src="/images/institutions/minecraft-report-gallery/server-4-p8.webp" alt="שרת 4 · תמונה 7 מתוך שרתי תוכנית מיינקראפט"><span>שרת 4 · תמונה 7</span></a>
+ <a class="galleryThumb" href="/images/institutions/minecraft-report-gallery/server-5-p2.webp" target="_blank" rel="noopener"><img src="/images/institutions/minecraft-report-gallery/server-5-p2.webp" alt="שרת 5 · תמונה 1 מתוך שרתי תוכנית מיינקראפט"><span>שרת 5 · תמונה 1</span></a>
+ <a class="galleryThumb" href="/images/institutions/minecraft-report-gallery/server-5-p3.webp" target="_blank" rel="noopener"><img src="/images/institutions/minecraft-report-gallery/server-5-p3.webp" alt="שרת 5 · תמונה 2 מתוך שרתי תוכנית מיינקראפט"><span>שרת 5 · תמונה 2</span></a>
+ <a class="galleryThumb" href="/images/institutions/minecraft-report-gallery/server-5-p4.webp" target="_blank" rel="noopener"><img src="/images/institutions/minecraft-report-gallery/server-5-p4.webp" alt="שרת 5 · תמונה 3 מתוך שרתי תוכנית מיינקראפט"><span>שרת 5 · תמונה 3</span></a>
+ <a class="galleryThumb" href="/images/institutions/minecraft-report-gallery/server-5-p5.webp" target="_blank" rel="noopener"><img src="/images/institutions/minecraft-report-gallery/server-5-p5.webp" alt="שרת 5 · תמונה 4 מתוך שרתי תוכנית מיינקראפט"><span>שרת 5 · תמונה 4</span></a>
+ <a class="galleryThumb" href="/images/institutions/minecraft-report-gallery/server-5-p6.webp" target="_blank" rel="noopener"><img src="/images/institutions/minecraft-report-gallery/server-5-p6.webp" alt="שרת 5 · תמונה 5 מתוך שרתי תוכנית מיינקראפט"><span>שרת 5 · תמונה 5</span></a>
+ <a class="galleryThumb" href="/images/institutions/minecraft-report-gallery/server-5-p7.webp" target="_blank" rel="noopener"><img src="/images/institutions/minecraft-report-gallery/server-5-p7.webp" alt="שרת 5 · תמונה 6 מתוך שרתי תוכנית מיינקראפט"><span>שרת 5 · תמונה 6</span></a>
+ <a class="galleryThumb" href="/images/institutions/minecraft-report-gallery/server-5-p8.webp" target="_blank" rel="noopener"><img src="/images/institutions/minecraft-report-gallery/server-5-p8.webp" alt="שרת 5 · תמונה 7 מתוך שרתי תוכנית מיינקראפט"><span>שרת 5 · תמונה 7</span></a>
+ <a class="galleryThumb" href="/images/institutions/minecraft-report-gallery/server-5-p9.webp" target="_blank" rel="noopener"><img src="/images/institutions/minecraft-report-gallery/server-5-p9.webp" alt="שרת 5 · תמונה 8 מתוך שרתי תוכנית מיינקראפט"><span>שרת 5 · תמונה 8</span></a>
  </div>
  </section>
 
