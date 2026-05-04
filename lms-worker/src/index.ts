@@ -262,7 +262,7 @@ app.post('/lms/api/leads/submit', async (c) => {
         </div>
       `;
 
-      await fetch('https://notify.hai.tech/send-email', {
+      const emailRes = await fetch('https://notify.hai.tech/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -271,6 +271,13 @@ app.post('/lms/api/leads/submit', async (c) => {
           html: emailBody,
         }),
       });
+
+      if (!emailRes.ok) {
+        const emailErrText = await emailRes.text().catch(() => '');
+        console.error(`[LEAD-PROXY] Email notification failed: ${emailRes.status} ${emailErrText}`);
+      } else {
+        console.log(`[LEAD-PROXY] Email notification sent for ${name.trim()}`);
+      }
     } catch (emailErr) {
       console.error('[LEAD-PROXY] Email notification failed:', emailErr);
     }
