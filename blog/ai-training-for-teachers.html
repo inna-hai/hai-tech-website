@@ -195,12 +195,31 @@
             margin-top: 3rem;
         }
         .cta-section h2 {
+            position: relative;
+            z-index: 1;
             color: white;
             margin-bottom: 1rem;
         }
         .cta-section p {
+            position: relative;
+            z-index: 1;
             color: rgba(255,255,255,0.8);
             margin-bottom: 1.5rem;
+        }
+        .cta-actions {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        .cta-actions a {
+            position: relative;
+            z-index: 10;
+            pointer-events: auto;
+            cursor: pointer;
         }
         
         @media (max-width: 768px) {
@@ -373,8 +392,8 @@
                 <div class="cta-section">
                     <h2>רוצים לשמוע עוד על הכשרות AI לצוותים?</h2>
                     <p>נשמח לספר על התוכניות שלנו ולהתאים הצעה לבית הספר שלכם</p>
-                    <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:1rem;">
-                        <a href="../institutions.html#contact" style="display: inline-block; background: #f59e0b; color: #1e3a5f; padding: 15px 40px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(245,158,11,0.4); cursor: pointer; position: relative; z-index: 10;">להשארת פרטים</a>
+                    <div class="cta-actions">
+                        <a href="../institutions.html#contact" style="display: inline-block; background: #f59e0b; color: #1e3a5f; padding: 15px 40px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(245,158,11,0.4);">להשארת פרטים</a>
                         <a href="https://wa.me/972533009742?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%97%D7%A0%D7%95%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%A0%D7%99%D7%9D%20%D7%91%D7%94%D7%9B%D7%A9%D7%A8%D7%95%D7%AA%20AI%20%D7%9C%D7%A6%D7%95%D7%95%D7%AA%D7%99%20%D7%97%D7%99%D7%A0%D7%95%D7%9A" target="_blank" rel="noopener" style="display: inline-block; background: transparent; color: white; border: 1px solid rgba(255,255,255,0.35); padding: 15px 40px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 1.1rem;">לדבר איתנו בוואטסאפ</a>
                     </div>
                 </div>
