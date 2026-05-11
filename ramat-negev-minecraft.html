@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>תכנית החומש של רמת נגב — בתוך מיינקראפט | דרך ההייטק</title>
+<meta name="description" content="הצעה למועצה אזורית רמת נגב — פרויקט קיץ שבו ילדים בונים את תכנית החומש בתוך מיינקראפט.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=VT323&display=swap" rel="stylesheet">
+
+<script src="https://unpkg.com/lucide@latest" defer></script>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/png" href="/images/brand/logo.webp">
+
+<style>
+  :root {
+    --mc-grass: #5d9c3a;
+    --mc-grass-dark: #3e7d28;
+    --mc-dirt: #866043;
+    --mc-stone: #7a7a7a;
+    --mc-sky: #79b8ff;
+    --mc-diamond: #5dccd9;
+    --mc-gold: #fcc741;
+    --mc-redstone: #c63d3d;
+    --rn-bg: #0e1116;
+    --rn-bg-2: #161b22;
+    --rn-text: #e6edf3;
+    --rn-text-dim: #9aa6b2;
+    --rn-card: #1c2230;
+    --rn-line: #2a3142;
+  }
+
+  .rn-page { background: var(--rn-bg); color: var(--rn-text); font-family: 'Heebo', sans-serif; line-height: 1.7; }
+  .rn-page * { box-sizing: border-box; }
+
+  /* Pixel hero */
+  .rn-hero {
+    position: relative;
+    min-height: 88vh;
+    background:
+      linear-gradient(180deg, rgba(14,17,22,0.2) 0%, rgba(14,17,22,0.85) 80%, var(--rn-bg) 100%),
+      repeating-linear-gradient(0deg, #6cb049 0px, #6cb049 16px, #5d9c3a 16px, #5d9c3a 32px),
+      linear-gradient(180deg, #79b8ff 0%, #aedcff 60%, #5d9c3a 60%, #3e7d28 100%);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 100px 24px 80px;
+  }
+  .rn-hero::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 15% 30%, #ffffff 0 4px, transparent 5px),
+      radial-gradient(circle at 80% 20%, #ffffff 0 6px, transparent 7px),
+      radial-gradient(circle at 50% 12%, #ffffff 0 3px, transparent 4px),
+      radial-gradient(circle at 30% 18%, #ffffff 0 5px, transparent 6px),
+      radial-gradient(circle at 70% 35%, #ffffff 0 3px, transparent 4px);
+    opacity: 0.85;
+    pointer-events: none;
+  }
+  .rn-hero::after {
+    content: "";
+    position: absolute; left: 0; right: 0; bottom: 0; height: 280px;
+    background:
+      linear-gradient(180deg, transparent 0%, rgba(14,17,22,0.6) 60%, var(--rn-bg) 100%),
+      repeating-linear-gradient(90deg, transparent 0 96px, rgba(0,0,0,0.08) 96px 100px),
+      repeating-linear-gradient(0deg, transparent 0 64px, rgba(0,0,0,0.1) 64px 68px);
+    pointer-events: none;
+  }
+  .rn-hero-inner { position: relative; z-index: 2; max-width: 1000px; }
+  .rn-badge {
+    display: inline-block;
+    background: rgba(0,0,0,0.55);
+    border: 2px solid #fcc741;
+    color: #fcc741;
+    padding: 6px 14px;
+    font-family: 'VT323', monospace;
+    font-size: 22px;
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+    border-radius: 4px;
+  }
+  .rn-hero h1 {
+    font-family: 'VT323', monospace;
+    font-size: clamp(40px, 8vw, 96px);
+    line-height: 1.05;
+    color: #fff;
+    text-shadow: 4px 4px 0 #1a1a1a, 8px 8px 0 rgba(0,0,0,0.4);
+    margin: 0 0 24px;
+  }
+  .rn-hero h1 .accent { color: #fcc741; }
+  .rn-hero p.rn-lead {
+    font-size: clamp(18px, 2.2vw, 24px);
+    color: #e6edf3;
+    max-width: 760px;
+    margin: 0 auto 32px;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.6);
+  }
+  .rn-pixel-btn {
+    display: inline-block;
+    background: #5d9c3a;
+    color: #fff;
+    font-family: 'VT323', monospace;
+    font-size: 26px;
+    padding: 14px 32px;
+    border: none;
+    border-top: 4px solid #8acc5e;
+    border-left: 4px solid #8acc5e;
+    border-right: 4px solid #3e7d28;
+    border-bottom: 4px solid #2a5618;
+    letter-spacing: 2px;
+    text-decoration: none;
+  }
+
+  .rn-section { padding: 100px 24px; }
+  .rn-container { max-width: 1100px; margin: 0 auto; }
+  .rn-eyebrow {
+    font-family: 'VT323', monospace;
+    color: var(--mc-gold);
+    letter-spacing: 3px;
+    font-size: 20px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+  .rn-page h2 {
+    font-family: 'VT323', monospace;
+    font-size: clamp(32px, 5vw, 56px);
+    color: #fff;
+    margin: 0 0 24px;
+    line-height: 1.15;
+    display: block;
+  }
+  .rn-page h2 .accent { color: var(--mc-grass); }
+  .rn-section-lead {
+    font-size: 18px;
+    color: var(--rn-text-dim);
+    max-width: 720px;
+    margin: 0 0 56px;
+  }
+
+  .rn-concept {
+    background: var(--rn-bg-2);
+    border-top: 4px solid var(--mc-grass-dark);
+    border-bottom: 4px solid var(--mc-grass-dark);
+  }
+  .rn-concept-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .rn-concept-visual {
+    aspect-ratio: 4/3;
+    border-radius: 8px;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.0), rgba(0,0,0,0.6)),
+      url('https://images.unsplash.com/photo-1587573089734-09cb69c0f2b4?auto=format&fit=crop&w=1200&q=80') center/cover;
+    border: 4px solid #2a3142;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    position: relative;
+  }
+  .rn-concept-visual::before {
+    content: "🎮";
+    position: absolute;
+    top: -22px; right: -22px;
+    width: 64px; height: 64px;
+    background: var(--mc-gold);
+    color: #1a1a1a;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 32px;
+    box-shadow: 0 8px 20px rgba(252,199,65,0.4);
+  }
+  .rn-concept p {
+    font-size: 18px;
+    color: var(--rn-text);
+    margin: 0 0 16px;
+  }
+  .rn-concept p strong { color: var(--mc-gold); }
+
+  .rn-why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+  .rn-why-card {
+    background: var(--rn-card);
+    border: 1px solid var(--rn-line);
+    border-top: 4px solid var(--mc-grass);
+    padding: 28px 24px;
+    border-radius: 6px;
+    transition: transform 0.2s;
+  }
+  .rn-why-card:hover { transform: translateY(-4px); }
+  .rn-why-card .rn-icon {
+    width: 56px; height: 56px;
+    background: var(--mc-grass);
+    color: #fff;
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+    margin-bottom: 16px;
+    border-top: 3px solid #8acc5e;
+    border-bottom: 3px solid #2a5618;
+  }
+  .rn-why-card.gold .rn-icon { background: var(--mc-gold); color: #1a1a1a; border-top-color: #ffe089; border-bottom-color: #b88e1a; }
+  .rn-why-card.diamond .rn-icon { background: var(--mc-diamond); color: #0a3a40; border-top-color: #a0e8ef; border-bottom-color: #2a8a95; }
+  .rn-why-card.redstone .rn-icon { background: var(--mc-redstone); color: #fff; border-top-color: #e87575; border-bottom-color: #7a1f1f; }
+  .rn-why-card h3 { font-family: 'VT323', monospace; font-size: 26px; color: #fff; margin: 0 0 8px; }
+  .rn-why-card p { color: var(--rn-text-dim); font-size: 15px; margin: 0; }
+
+  .rn-process { background: var(--rn-bg-2); border-top: 4px solid var(--mc-grass-dark); border-bottom: 4px solid var(--mc-grass-dark); }
+  .rn-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-top: 24px;
+  }
+  .rn-step {
+    background: var(--rn-card);
+    border: 1px solid var(--rn-line);
+    border-radius: 6px;
+    padding: 32px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .rn-step .rn-num {
+    position: absolute;
+    top: -16px; right: 16px;
+    font-family: 'VT323', monospace;
+    font-size: 120px;
+    color: rgba(93,156,58,0.15);
+    line-height: 1;
+    font-weight: 900;
+  }
+  .rn-step .rn-label {
+    font-family: 'VT323', monospace;
+    color: var(--mc-gold);
+    letter-spacing: 2px;
+    font-size: 18px;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 2;
+  }
+  .rn-step h3 {
+    font-family: 'VT323', monospace;
+    font-size: 28px;
+    color: #fff;
+    margin: 0 0 12px;
+    position: relative;
+    z-index: 2;
+  }
+  .rn-step p { color: var(--rn-text-dim); font-size: 15px; position: relative; z-index: 2; margin: 0; }
+  .rn-step ul { color: var(--rn-text-dim); font-size: 15px; padding-right: 18px; margin: 8px 0 0; position: relative; z-index: 2; }
+  .rn-step ul li { margin-bottom: 4px; }
+
+  .rn-outcome-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .rn-outcome-card {
+    background: linear-gradient(160deg, var(--rn-card) 0%, #2a3142 100%);
+    border: 1px solid var(--rn-line);
+    border-right: 6px solid var(--mc-gold);
+    padding: 40px 32px;
+    border-radius: 8px;
+  }
+  .rn-outcome-card.primary { border-right-color: var(--mc-grass); }
+  .rn-outcome-card .rn-tag {
+    display: inline-block;
+    background: var(--mc-gold);
+    color: #1a1a1a;
+    padding: 4px 12px;
+    font-family: 'VT323', monospace;
+    font-size: 18px;
+    letter-spacing: 1px;
+    border-radius: 3px;
+    margin-bottom: 16px;
+  }
+  .rn-outcome-card.primary .rn-tag { background: var(--mc-grass); color: #fff; }
+  .rn-outcome-card h3 { font-family: 'VT323', monospace; font-size: 32px; color: #fff; margin: 0 0 16px; }
+  .rn-outcome-card p { color: var(--rn-text); font-size: 16px; margin: 0 0 12px; }
+
+  .rn-scenes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px; }
+  .rn-scene {
+    aspect-ratio: 4/3;
+    border-radius: 6px;
+    border: 3px solid #2a3142;
+    overflow: hidden;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+  }
+  .rn-scene .rn-caption {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(180deg, transparent, rgba(0,0,0,0.8));
+    color: #fff;
+    padding: 28px 14px 12px;
+    font-family: 'VT323', monospace;
+    font-size: 18px;
+    letter-spacing: 1px;
+  }
+  .rn-scene.s1 { background-image: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1606503153255-59d4b1aa9f72?auto=format&fit=crop&w=800&q=80'); }
+  .rn-scene.s2 { background-image: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80'); }
+  .rn-scene.s3 { background-image: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?auto=format&fit=crop&w=800&q=80'); }
+
+  .rn-timeline { margin-top: 32px; background: var(--rn-card); border: 1px solid var(--rn-line); border-radius: 8px; padding: 28px 32px; }
+  .rn-timeline-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 24px;
+    padding: 18px 0;
+    border-bottom: 1px dashed var(--rn-line);
+    align-items: start;
+  }
+  .rn-timeline-row:last-child { border-bottom: none; }
+  .rn-timeline-row .rn-when { font-family: 'VT323', monospace; color: var(--mc-gold); font-size: 22px; letter-spacing: 1px; }
+  .rn-timeline-row .rn-what strong { color: #fff; }
+  .rn-timeline-row .rn-what { color: var(--rn-text-dim); font-size: 16px; }
+
+  .rn-cta {
+    text-align: center;
+    background:
+      linear-gradient(180deg, rgba(14,17,22,0.85), rgba(14,17,22,0.92)),
+      repeating-linear-gradient(0deg, #5d9c3a 0px, #5d9c3a 32px, #4d8c2a 32px, #4d8c2a 64px);
+    padding: 120px 24px;
+  }
+  .rn-cta h2 { font-size: clamp(36px, 6vw, 64px); margin-bottom: 16px; }
+  .rn-cta p { color: var(--rn-text-dim); font-size: 18px; max-width: 600px; margin: 0 auto 32px; }
+  .rn-cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 8px; }
+  .rn-cta .rn-wa {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #25d366; color: #fff;
+    padding: 16px 28px; border-radius: 8px;
+    font-size: 18px; font-weight: 700;
+    text-decoration: none;
+  }
+  .rn-cta .rn-tel {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent; color: #fff;
+    border: 2px solid var(--mc-gold);
+    padding: 14px 28px; border-radius: 8px;
+    font-size: 18px; font-weight: 700;
+    text-decoration: none;
+  }
+
+  @media (max-width: 800px) {
+    .rn-concept-grid { grid-template-columns: 1fr; }
+    .rn-outcome-grid { grid-template-columns: 1fr; }
+    .rn-scenes { grid-template-columns: 1fr 1fr; }
+    .rn-timeline-row { grid-template-columns: 1fr; gap: 4px; }
+    .rn-section { padding: 64px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Student Banner -->
+<div class="student-banner">
+    <div class="container">
+        <span><i data-lucide="graduation-cap" class="icon-sm"></i> תלמידים רשומים? </span>
+        <a href="/lms/login.html" target="_blank">לחצו כאן לכניסה לקורסים שלכם <i data-lucide="arrow-left" class="icon-xs"></i></a>
+    </div>
+</div>
+
+<!-- Navigation -->
+<nav class="navbar" role="navigation" aria-label="תפריט ראשי">
+    <div class="container">
+        <a href="/" class="logo" aria-label="דרך ההייטק - דף הבית">
+            <img loading="lazy" src="images/brand/logo-haitech-transparent.webp" alt="דרך ההייטק - HAi.TECH" height="60">
+        </a>
+        <button class="mobile-menu-btn" aria-label="פתח תפריט" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="/#courses">קורסים דיגיטליים</a></li>
+            <li><a href="/#private">שיעורים פרטיים</a></li>
+            <li><a href="locations.html">מוקדים פרונטליים</a></li>
+            <li><a href="institutions.html" style="color: #f59e0b !important; font-weight: 600;">🏫 למוסדות חינוך</a></li>
+            <li><a href="/teacher-ai-training" style="color: #6366f1 !important; font-weight: 600;">🎓 הכשרת מורים</a></li>
+            <li><a href="ai-learning.html" style="color: #22c55e !important;">🤖 AI בלמידה</a></li>
+            <li><a href="blog.html">בלוג</a></li>
+            <li><a href="/#about">אודות</a></li>
+            <li><a href="/#faq">שאלות נפוצות</a></li>
+            <li><a href="/lms/login.html" class="nav-link-secondary">כניסה לתלמידים</a></li>
+            <li><a href="/#contact" class="btn btn-nav">התחילו עכשיו</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main class="rn-page">
+
+<!-- HERO -->
+<header class="rn-hero">
+  <div class="rn-hero-inner">
+    <span class="rn-badge">▶ הצעה למועצה אזורית רמת נגב</span>
+    <h1>תכנית החומש<br><span class="accent">בתוך מיינקראפט</span></h1>
+    <p class="rn-lead">פרויקט קיץ חווייתי שבו ילדי רמת נגב בונים את החזון של המועצה — בלוק אחר בלוק. תוצר ויזואלי, חינוכי וקהילתי, שיגיע ישירות לשולחנו של ראש המועצה.</p>
+    <span class="rn-pixel-btn">▣ הצעה ראשונית · דרך ההייטק</span>
+  </div>
+</header>
+
+<!-- CONCEPT -->
+<section class="rn-section rn-concept">
+  <div class="rn-container">
+    <div class="rn-concept-grid">
+      <div>
+        <div class="rn-eyebrow">// הקונספט</div>
+        <h2>הילדים <span class="accent">מתכננים</span><br>את העתיד של רמת נגב.</h2>
+        <p>במקום שילדים יראו את תכנית החומש כמסמך ביורוקרטי — הם <strong>חיים אותה</strong>. כל ישוב, כל שכונה, כל מבנה ציבורי, כל פינה ירוקה — מקבלים צורה במיינקראפט.</p>
+        <p>הילדים הופכים לשותפים אמיתיים בתכנון: הם מציעים רעיונות, מתכננים מבנים, ובונים יחד עולם שלם. בסוף הקיץ — <strong>ראש המועצה מקבל סיור וירטואלי</strong> בעולם שהילדים יצרו, ולוקח משם רעיונות אמיתיים.</p>
+        <p>זה לא רק חוג. זו <strong>חוויה אזרחית, חינוכית וטכנולוגית</strong> שמחברת בין דור הילדים לחזון הקהילה.</p>
+      </div>
+      <div class="rn-concept-visual" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY IT WORKS -->
+<section class="rn-section">
+  <div class="rn-container">
+    <div class="rn-eyebrow">// למה זה עובד</div>
+    <h2>חמישה דברים שקורים <span class="accent">בו זמנית</span>.</h2>
+    <p class="rn-section-lead">פעילות אחת — חמש שכבות של ערך. חינוך, קהילה, חזון, יצירה וטכנולוגיה במסגרת אחת ברורה.</p>
+    <div class="rn-why-grid">
+      <div class="rn-why-card">
+        <div class="rn-icon">🧠</div>
+        <h3>חשיבה מרחבית</h3>
+        <p>תכנון ערים, חישוב מידות, פתרון בעיות הנדסיות — מתמטיקה בידיים.</p>
+      </div>
+      <div class="rn-why-card gold">
+        <div class="rn-icon">🏛️</div>
+        <h3>אזרחות פעילה</h3>
+        <p>הילדים לומדים מה זו מועצה, איך נראית תכנית חומש, ומה זה לתכנן עתיד.</p>
+      </div>
+      <div class="rn-why-card diamond">
+        <div class="rn-icon">🤝</div>
+        <h3>עבודת צוות</h3>
+        <p>בנייה משותפת של עולם דורשת תיאום, מנהיגות, האזנה ופשרות אמיתיות.</p>
+      </div>
+      <div class="rn-why-card redstone">
+        <div class="rn-icon">⚙️</div>
+        <h3>טכנולוגיה</h3>
+        <p>חשיפה לעולמות וירטואליים, רדסטון (לוגיקה), ואפילו מודינג בסיסי.</p>
+      </div>
+      <div class="rn-why-card">
+        <div class="rn-icon">📣</div>
+        <h3>קול לדור הצעיר</h3>
+        <p>הילדים לא רק שומעים על החזון — הם <strong>מציעים</strong> אותו.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="rn-section rn-process">
+  <div class="rn-container">
+    <div class="rn-eyebrow">// איך זה עובד</div>
+    <h2>ארבעה <span class="accent">שלבים</span>, קיץ אחד.</h2>
+    <p class="rn-section-lead">תהליך מובנה שמתחיל בהיכרות עם תכנית החומש האמיתית של רמת נגב, ומסתיים בהצגה רשמית לראש המועצה.</p>
+    <div class="rn-steps">
+      <div class="rn-step">
+        <div class="rn-num">1</div>
+        <div class="rn-label">שלב ראשון</div>
+        <h3>הכרת השטח</h3>
+        <p>הילדים פוגשים את תכנית החומש האמיתית — לומדים את היישובים, את החזון, את האתגרים.</p>
+        <ul>
+          <li>סיורים קצרים ביישובי המועצה</li>
+          <li>מפגש עם נציג המועצה</li>
+          <li>מיפוי אזורי ההתפתחות</li>
+        </ul>
+      </div>
+      <div class="rn-step">
+        <div class="rn-num">2</div>
+        <div class="rn-label">שלב שני</div>
+        <h3>תכנון משותף</h3>
+        <p>חלוקה לצוותים. כל צוות מקבל אזור בתכנית — שכונה, פארק, מרכז קהילתי, אתר תיירות.</p>
+        <ul>
+          <li>סקיצות על נייר</li>
+          <li>הגדרת יעדים לבנייה</li>
+          <li>הצבעת רעיונות פנים-קבוצתית</li>
+        </ul>
+      </div>
+      <div class="rn-step">
+        <div class="rn-num">3</div>
+        <div class="rn-label">שלב שלישי</div>
+        <h3>בנייה במיינקראפט</h3>
+        <p>הלב של הפרויקט. שרת ייעודי של רמת נגב, מדריכים מקצועיים, ושעות בנייה אינטנסיביות.</p>
+        <ul>
+          <li>שרת פרטי למועצה</li>
+          <li>ליווי מדריכי דרך ההייטק</li>
+          <li>תיעוד ויזואלי לאורך הדרך</li>
+        </ul>
+      </div>
+      <div class="rn-step">
+        <div class="rn-num">4</div>
+        <div class="rn-label">שלב רביעי</div>
+        <h3>הצגה לראש המועצה</h3>
+        <p>אירוע סיום: סיור וירטואלי חי, מצגת מהילדים, וחוברת רעיונות שתעלה לדיון.</p>
+        <ul>
+          <li>סיור חי בעולם שנבנה</li>
+          <li>הצגת רעיונות מרכזיים</li>
+          <li>חוברת סיכום פיזית</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCENES -->
+<section class="rn-section">
+  <div class="rn-container">
+    <div class="rn-eyebrow">// איך זה ייראה</div>
+    <h2>סצנות מתוך <span class="accent">העולם החדש</span>.</h2>
+    <p class="rn-section-lead">דוגמאות לסוגי תוצרים שילדים יוצרים בפרויקטים דומים — מרשים גם למבוגרים.</p>
+    <div class="rn-scenes">
+      <div class="rn-scene s1"><div class="rn-caption">▣ שכונת מגורים חדשה</div></div>
+      <div class="rn-scene s2"><div class="rn-caption">▣ מרכז קהילתי</div></div>
+      <div class="rn-scene s3"><div class="rn-caption">▣ אתר תיירות אקולוגי</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="rn-section rn-process">
+  <div class="rn-container">
+    <div class="rn-eyebrow">// לוח זמנים מוצע</div>
+    <h2>קיץ <span class="accent">2026</span>.</h2>
+    <p class="rn-section-lead">מסגרת גמישה — ניתן להריץ במחנה קיץ, בחוג קבוע, או במתכונת מרוכזת של שבועיים.</p>
+    <div class="rn-timeline">
+      <div class="rn-timeline-row">
+        <div class="rn-when">שבוע 1</div>
+        <div class="rn-what"><strong>היכרות והשראה.</strong> מפגש פתיחה, היכרות עם תכנית החומש, סיור באזור, חלוקה לצוותים.</div>
+      </div>
+      <div class="rn-timeline-row">
+        <div class="rn-when">שבוע 2</div>
+        <div class="rn-what"><strong>תכנון.</strong> סקיצות, מחקר, הגדרת יעדים. כל צוות בוחר אזור ומציג לתת-ועדה של חבריו.</div>
+      </div>
+      <div class="rn-timeline-row">
+        <div class="rn-when">שבועות 3-5</div>
+        <div class="rn-what"><strong>בנייה.</strong> שעות בנייה אינטנסיביות בשרת המיינקראפט הייעודי, בליווי מדריכי דרך ההייטק.</div>
+      </div>
+      <div class="rn-timeline-row">
+        <div class="rn-when">שבוע 6</div>
+        <div class="rn-what"><strong>הכנת התוצר.</strong> סיור וירטואלי, סרטון תיעוד, חוברת סיכום עם המלצות הילדים.</div>
+      </div>
+      <div class="rn-timeline-row">
+        <div class="rn-when">אירוע סיום</div>
+        <div class="rn-what"><strong>הצגה לראש המועצה.</strong> הילדים מציגים, ראש המועצה לוקח רעיונות, ההורים והקהילה צופים.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOME -->
+<section class="rn-section">
+  <div class="rn-container">
+    <div class="rn-eyebrow">// התוצר</div>
+    <h2>שני דברים יוצאים <span class="accent">מהפרויקט</span>.</h2>
+    <p class="rn-section-lead">פעילות קיץ מצוינת לילדים — וחומר אמיתי לראש המועצה.</p>
+    <div class="rn-outcome-grid">
+      <div class="rn-outcome-card primary">
+        <span class="rn-tag">לילדים</span>
+        <h3>קיץ של יצירה</h3>
+        <p>חוויה בלתי נשכחת שמשלבת יצירה, טכנולוגיה ועבודת צוות. הילדים יוצאים עם מיומנויות חדשות, חברים חדשים, ותחושה אמיתית של "השפעתי".</p>
+        <p>בסוף הקיץ — לכל ילד יש חלק בעולם של רמת נגב.</p>
+      </div>
+      <div class="rn-outcome-card">
+        <span class="rn-tag">לראש המועצה</span>
+        <h3>מאגר רעיונות חי</h3>
+        <p>סיור וירטואלי + חוברת סיכום מודפסת + סרטון תיעוד. ראש המועצה רואה איך הדור הצעיר מדמיין את היישובים, ויכול לקחת רעיונות אמיתיים לתכנון.</p>
+        <p>מהלך מצולם — חומר מצוין לתקשורת, להורים, ולמשרדי הממשלה.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="rn-section rn-cta">
+  <div class="rn-container">
+    <div class="rn-eyebrow">// הצעד הבא</div>
+    <h2>נשמח <span class="accent">להציג בפירוט</span>.</h2>
+    <p>אנחנו ב-<strong style="color:#fcc741">דרך ההייטק</strong> מפעילים את הפרויקט מקצה לקצה: שרת, מדריכים, ציוד, תכנים, תיעוד וטקס סיום. נשמח לתאם פגישת המשך עם לי וצוות המועצה.</p>
+    <div class="rn-cta-buttons">
+      <a class="rn-wa" target="_blank" href="https://wa.me/972533009742?text=%D7%94%D7%99%D7%99%D7%9C%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%94%D7%A6%D7%A2%D7%94%20%D7%9C%D7%A8%D7%9E%D7%AA%20%D7%A0%D7%92%D7%91%20-%20%D7%9E%D7%99%D7%99%D7%A0%D7%A7%D7%A8%D7%90%D7%A4%D7%98">
+        <i data-lucide="message-circle"></i> לוואטסאפ — 053-300-9742
+      </a>
+      <a class="rn-tel" href="mailto:info@hai.tech"><i data-lucide="mail"></i> info@hai.tech</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer style="background: linear-gradient(180deg, #0f172a 0%, #020617 100%); padding: 4rem 2rem 2rem; border-top: 1px solid #1e293b;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem; text-align: right;">
+            <div>
+                <h3 style="color: #22c55e; font-size: 1.5rem; margin-bottom: 1rem; font-weight: 700;">דרך ההייטק</h3>
+                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem;">מלמדים טכנולוגיה, תכנות ובינה מלאכותית לילדים ונוער מאז 2019.</p>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="https://www.facebook.com/profile.php?id=61552415392453" target="_blank" rel="noopener" style="width: 40px; height: 40px; background: #1e293b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #94a3b8;"><i data-lucide="facebook" style="width: 20px; height: 20px;"></i></a>
+                    <a href="https://www.linkedin.com/company/hai-tech-way/" target="_blank" rel="noopener" style="width: 40px; height: 40px; background: #1e293b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #94a3b8;"><i data-lucide="linkedin" style="width: 20px; height: 20px;"></i></a>
+                    <a href="https://wa.me/972533009742" target="_blank" rel="noopener" style="width: 40px; height: 40px; background: #1e293b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #25d366;"><i data-lucide="message-circle" style="width: 20px; height: 20px;"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 style="color: white; font-size: 1.1rem; margin-bottom: 1rem; font-weight: 600;">קישורים מהירים</h4>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li style="margin-bottom: 0.75rem;"><a href="index.html" style="color: #94a3b8; text-decoration: none;">דף הבית</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="index.html#courses" style="color: #94a3b8; text-decoration: none;">קורסים</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="institutions.html" style="color: #94a3b8; text-decoration: none;">למוסדות חינוך</a></li>
+                    <li><a href="blog.html" style="color: #94a3b8; text-decoration: none;">בלוג</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: white; font-size: 1.1rem; margin-bottom: 1rem; font-weight: 600;">צרו קשר</h4>
+                <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                    <a target="_blank" href="https://wa.me/972533009742" style="color: #94a3b8; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="phone" style="width: 18px; height: 18px;"></i>053-300-9742</a>
+                    <a href="mailto:info@hai.tech" style="color: #94a3b8; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="mail" style="width: 18px; height: 18px;"></i>info@hai.tech</a>
+                </div>
+            </div>
+        </div>
+        <div style="border-top: 1px solid #1e293b; padding-top: 1.5rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
+            <p style="color: #64748b; font-size: 0.85rem; margin: 0;">© 2025 דרך ההייטק. כל הזכויות שמורות.</p>
+            <div style="display: flex; gap: 1.5rem;">
+                <a href="terms.html" style="color: #64748b; font-size: 0.85rem; text-decoration: none;">תנאי שימוש</a>
+                <a href="privacy.html" style="color: #64748b; font-size: 0.85rem; text-decoration: none;">מדיניות פרטיות</a>
+                <a href="accessibility.html" style="color: #64748b; font-size: 0.85rem; text-decoration: none;">נגישות</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    if (typeof lucide !== 'undefined') { lucide.createIcons(); }
+    const mb = document.querySelector('.mobile-menu-btn');
+    if (mb) {
+        mb.addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    }
+</script>
+
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/972533009742" class="whatsapp-float" target="_blank" aria-label="שלחו הודעה בוואטסאפ">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span class="whatsapp-float-text">דברו איתנו</span>
+</a>
+
+<!-- UserWay Accessibility Widget -->
+<script src="https://cdn.userway.org/widget.js" data-account="zBp6yPJpzr" data-position="4" async></script>
+<style>.userway_buttons_wrapper, div[data-userway-widget] { right: 20px !important; left: auto !important; bottom: 100px !important; position: fixed !important; }</style>
+<script src="/js/analytics.js?v=20260314"></script>
+</body>
+</html>
