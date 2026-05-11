@@ -1,0 +1,199 @@
+<!doctype html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>עדכון מערכת ניטור Minecraft — 04.05.2026</title>
+<link rel="canonical" href="https://hai.tech/update-2026-05-04.html">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif; }
+  .doc { max-width: 920px; margin: 0 auto; padding: 32px 24px 64px; }
+  h1, h2, h3 { font-weight: 700; }
+  h1 { font-size: 28px; }
+  h2 { font-size: 20px; margin-top: 28px; padding-bottom: 6px; border-bottom: 1px solid #e5e7eb; }
+  h3 { font-size: 16px; margin-top: 16px; }
+  p, li { line-height: 1.7; }
+  .pill { display: inline-block; padding: 2px 8px; border-radius: 9999px; font-size: 12px; }
+  .pill-blue { background: #dbeafe; color: #1e40af; }
+  .pill-orange { background: #fed7aa; color: #9a3412; }
+  .pill-gray { background: #e5e7eb; color: #374151; }
+  table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 14px; }
+  th, td { padding: 8px 10px; border: 1px solid #e5e7eb; text-align: right; vertical-align: top; }
+  th { background: #f9fafb; font-weight: 700; }
+  .num { text-align: center; font-variant-numeric: tabular-nums; }
+  .warn { background: #fef3c7; }
+  .lead-row { background: #ecfdf5; }
+  .meta { color: #6b7280; font-size: 13px; }
+  .quote { background: #f3f4f6; border-right: 4px solid #6366f1; padding: 10px 14px; margin: 10px 0; font-style: italic; color: #374151; }
+  ul.tight li { margin-bottom: 4px; }
+  @media print {
+    body { background: white; }
+    .doc { box-shadow: none; }
+    .no-print { display: none; }
+  }
+</style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+<div class="doc bg-white shadow-sm rounded-xl">
+
+  <header class="border-b border-gray-200 pb-4 mb-2">
+    <h1>📊 עדכון מערכת ניטור Minecraft Education</h1>
+    <div class="meta mt-2">
+      <span class="pill pill-gray">04.05.2026</span>
+      <span class="pill pill-gray">5 שרתים</span>
+      <span class="pill pill-gray">10 בתי ספר</span>
+      <span class="pill pill-blue">למנהלי הפרויקט</span>
+    </div>
+    <div class="meta mt-2">
+      🔗 <a href="http://187.124.2.69:3070" class="text-blue-600 underline">דשבורד חי</a>
+    </div>
+  </header>
+
+  <h2>למה שינינו</h2>
+  <p>
+    הניתוח הקודם דירג את השרתים בעיקר לפי <strong>מספר החיבורים היומי</strong>. המספר הזה מטעה —
+    שחקן אחד שמתנתק ומתחבר שוב נחשב פעמיים, ושרת עם הרבה התנתקויות נראה "פעיל" יותר ממה שהוא באמת.
+  </p>
+  <p>
+    בנוסף, לא הייתה הבחנה בין <strong>שעות הלימוד הרשמיות</strong> (כשמורה מנחה את הפעילות) לבין
+    <strong>שימוש פנאי</strong> (אחרי הצהריים / בערב). שתי תופעות שונות לחלוטין שצריכות להיבחן בנפרד.
+  </p>
+
+  <h2>מה השתנה — בקצרה</h2>
+
+  <h3>1. חלוקה לשני חלונות זמן</h3>
+  <table>
+    <thead><tr><th class="w-32">חלון</th><th>מתי</th></tr></thead>
+    <tbody>
+      <tr><td>🏫 <strong>בית ספר</strong></td><td>שני / שלישי / רביעי, 08:00 – 15:00</td></tr>
+      <tr><td>🌙 <strong>אחרי בית ספר</strong></td><td>כל שאר הזמן: 16:00 ואילך בימי לימוד + ראשון, חמישי, שישי, שבת (כל היום)</td></tr>
+      <tr><td>⚪ נייטרלי</td><td>15:00 – 16:00 בימי לימוד — שעת מעבר, לא נספרת באף חלון</td></tr>
+    </tbody>
+  </table>
+
+  <h3>2. מטריקות חדשות — לכל חלון, פר שרת</h3>
+  <ul class="tight list-disc pr-6">
+    <li><strong>Peak בו-זמני</strong> — שיא מחוברים ברגע נתון בחלון</li>
+    <li><strong>Avg בו-זמני</strong> — ממוצע מחוברים, משוקלל לפי זמן</li>
+    <li><strong>שחקנים ייחודיים</strong> — כמה ילדים שונים נכנסו</li>
+    <li><strong>דקות-משתמש</strong> — סכום משך כל הסשנים</li>
+  </ul>
+
+  <h3>3. דירוג שרתים מחושב מחדש</h3>
+  <p>הציון הכולל לפעילות שרת הוחלף — לא עוד מתבסס על מספר חיבורים:</p>
+  <ul class="tight list-disc pr-6">
+    <li><strong>40%</strong> — peak בו-זמני (החזק משני החלונות)</li>
+    <li><strong>30%</strong> — avg בו-זמני</li>
+    <li><strong>30%</strong> — סה"כ דקות-משתמש</li>
+  </ul>
+
+  <h3>4. AI Summary מעודכן</h3>
+  <p>ה-GPT עכשיו מקבל את הנתונים מחולקים לחלונות ומפיק תובנות ממוקדות. דוגמה אמיתית מהיום:</p>
+  <div class="quote">
+    "שרת 4 מנהיג גם בלימודים וגם אחרי שעות הלימוד. שרת 3 כמעט לא מנוצל בשעות הלימוד —
+    מצריך תשומת לב, ייתכן בעיית גישה או חוסר אינטגרציה בית-ספרית."
+  </div>
+
+  <h3>5. שינוי ויזואלי בדשבורד</h3>
+  <p>
+    כרטיס לכל שרת מציג עכשיו 2 עמודות (🏫 / 🌙) עם 4 מטריקות לכל חלון.
+    גרף העמודות הראשי מסודר לפי peak בו-זמני (במקום מספר חיבורים).
+  </p>
+
+  <h3>6. סיכום יומי בוואטסאפ</h3>
+  <p>
+    התווסף לסיכום היומי בלוק "השוואת שרתים — 7 ימים אחרונים" עם peak ומספר שחקנים פר שרת פר חלון.
+    מנהלי הפרויקט יראו מיד מי פעיל איפה, בלי להיכנס לדשבורד.
+  </p>
+
+  <h2>תמונת מצב — 7 ימים אחרונים</h2>
+  <p class="meta">נכון ל-04.05.2026 בבוקר. הנתונים מתעדכנים בזמן אמת בדשבורד.</p>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>שרת</th>
+        <th>בתי הספר</th>
+        <th class="num">🏫 peak</th>
+        <th class="num">🏫 שחקנים</th>
+        <th class="num">🌙 peak</th>
+        <th class="num">🌙 שחקנים</th>
+        <th>קריאה</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="lead-row">
+        <td class="num">1</td>
+        <td><strong>server4</strong></td>
+        <td>קאסם גאנם מע'אר + חט"ב קוגל</td>
+        <td class="num"><strong>21</strong></td>
+        <td class="num">32</td>
+        <td class="num">7</td>
+        <td class="num">56</td>
+        <td>מנהיג בשני החלונות</td>
+      </tr>
+      <tr>
+        <td class="num">2</td>
+        <td><strong>server1</strong></td>
+        <td>עירוני ח' ת"א + אלבירוני גדיר</td>
+        <td class="num">18</td>
+        <td class="num">115</td>
+        <td class="num">3</td>
+        <td class="num">51</td>
+        <td>חזק בלימודים, שקט בערב</td>
+      </tr>
+      <tr>
+        <td class="num">3</td>
+        <td><strong>server2</strong></td>
+        <td>שש שנתי יש"י + אלבירוני ניהאי</td>
+        <td class="num">12</td>
+        <td class="num">63</td>
+        <td class="num">2</td>
+        <td class="num">3</td>
+        <td>רק לימודים</td>
+      </tr>
+      <tr>
+        <td class="num">4</td>
+        <td><strong>server5</strong></td>
+        <td>ישיבת אביר יעקב + דרכא אשקלון</td>
+        <td class="num">9</td>
+        <td class="num">32</td>
+        <td class="num">4</td>
+        <td class="num">22</td>
+        <td>מאוזן</td>
+      </tr>
+      <tr class="warn">
+        <td class="num">5</td>
+        <td><strong>server3</strong></td>
+        <td>אמית אשדוד + אורט נהריה</td>
+        <td class="num">1</td>
+        <td class="num">4</td>
+        <td class="num">4</td>
+        <td class="num">27</td>
+        <td>⚠️ כמעט לא מנוצל בלימודים — דורש בדיקה</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>תועלת</h2>
+  <ul class="tight list-disc pr-6">
+    <li><strong>דיווח אמין יותר</strong> — peak/avg של מחוברים בו-זמנית נותנים תמונה מדויקת של "כמה ילדים באמת היו שם",
+        במקום להתבלבל ממספרי חיבורים מוגזמים בגלל התנתקויות.</li>
+    <li><strong>הבחנה בין שימוש מונחה לשימוש חופשי</strong> — רואים אם הפעילות בעיקר מהלימודים הרשמיים
+        או מהזמן הפנאי של הילדים אחרי הצהריים.</li>
+    <li><strong>זיהוי שרתים לא מנוצלים</strong> — server3 לדוגמה זוהה כדורש בדיקה: ייתכן שיש בעיית גישה,
+        חוסר אינטגרציה בית-ספרית, או צורך בליווי.</li>
+    <li><strong>קבלת החלטות מבוססת נתונים</strong> — מנהלי הפרויקט יכולים להחליט איפה להשקיע משאבי הדרכה,
+        איפה לאפשר שעות פנאי נוספות, ואיפה אולי לסגור / להעביר שרת.</li>
+  </ul>
+
+  <footer class="mt-10 pt-4 border-t border-gray-200 meta text-center">
+    הגרסה הזו של הניתוח מותקנת כעת על השרת. הדשבורד הציבורי:
+    <a href="http://187.124.2.69:3070" class="text-blue-600 underline">http://187.124.2.69:3070</a>
+  </footer>
+
+</div>
+</body>
+</html>
