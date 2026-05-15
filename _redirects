@@ -3,6 +3,10 @@
 /home / 301
 /home/ / 301
 
+# AI Agents page
+/ai-agents /ai-agents.html 200
+/ai-agents/ /ai-agents.html 200
+
 /courses /#courses 301
 /courses/ /#courses 301
 /online-courses-2-2 /#courses 301

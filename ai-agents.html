@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO -->
+    <title>בניית סוכני AI בעלות מינימלית | הכי זול בארץ | דרך ההייטק</title>
+    <meta name="description" content="רוצים לבנות סוכן AI לעסק שלכם? בדרך ההייטק עוזרים לכם להקים סוכן AI על שרת VPS בעלות מינימלית — החל מ-€9.87 לחודש. הכי זול בארץ, כולל תמיכה מלאה.">
+    <meta name="keywords" content="סוכן AI, בניית סוכן AI, AI agent, אוטומציה עסקית, VPS זול, שרת VPS, AI לעסקים, בינה מלאכותית לעסקים">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hai.tech/ai-agents">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hai.tech/ai-agents">
+    <meta property="og:title" content="בניית סוכני AI בעלות מינימלית | דרך ההייטק">
+    <meta property="og:description" content="הקימו סוכן AI לעסק שלכם על שרת VPS — הכי זול בארץ, כולל תמיכה מלאה מהצוות שלנו.">
+    <meta property="og:locale" content="he_IL">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/jpeg" href="images/brand/logo.webp">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "בניית סוכני AI בעלות מינימלית",
+        "description": "הקמת סוכני AI לעסקים על שרת VPS בעלות החל מ-€9.87 לחודש, כולל תמיכה מלאה",
+        "provider": {
+            "@type": "Organization",
+            "name": "דרך ההייטק",
+            "url": "https://hai.tech"
+        },
+        "areaServed": {"@type": "Country", "name": "ישראל"}
+    }
+    </script>
+
+    <style>
+        .agents-hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            padding: 140px 20px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        .agents-hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -10%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(34, 197, 94, 0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .agents-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -5%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .agents-hero .container {
+            position: relative;
+            z-index: 1;
+        }
+        .agents-hero h1 {
+            color: white;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        .agents-hero h1 span {
+            color: #22c55e;
+        }
+        .agents-hero p {
+            color: #94a3b8;
+            font-size: 1.2rem;
+            max-width: 650px;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        .price-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid rgba(34, 197, 94, 0.4);
+            color: #22c55e;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .agents-section {
+            padding: 80px 20px;
+        }
+        .agents-section.alt {
+            background: var(--bg-light);
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-header h2 {
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 680px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .agents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .agent-card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px 30px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .agent-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+            border-color: #22c55e;
+        }
+        .agent-card-icon {
+            width: 65px;
+            height: 65px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .agent-card-icon i {
+            width: 32px;
+            height: 32px;
+            color: white;
+        }
+        .agent-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+        .agent-card p {
+            color: var(--text-light);
+            line-height: 1.8;
+            font-size: 0.97rem;
+        }
+
+        /* VPS hosting block */
+        .vps-block {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            border-radius: 24px;
+            padding: 50px 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            border: 1px solid #334155;
+            position: relative;
+            overflow: hidden;
+        }
+        .vps-block::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(34,197,94,0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .vps-block h3 {
+            color: white;
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            margin-bottom: 15px;
+            position: relative;
+        }
+        .vps-block p {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 650px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+        .vps-price-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
+            position: relative;
+        }
+        .vps-price-tag {
+            background: rgba(34,197,94,0.15);
+            border: 1px solid rgba(34,197,94,0.5);
+            color: #22c55e;
+            padding: 10px 22px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.15rem;
+        }
+        .vps-feature-pill {
+            background: rgba(255,255,255,0.08);
+            color: #cbd5e1;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        .vps-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        .vps-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(34,197,94,0.4);
+        }
+        .vps-note {
+            color: #64748b;
+            font-size: 0.85rem;
+            margin-top: 15px;
+            position: relative;
+        }
+
+        /* Steps */
+        .steps-list {
+            max-width: 750px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            background: white;
+            border-radius: 16px;
+            padding: 28px 28px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border: 1px solid #f1f5f9;
+        }
+        .step-number {
+            min-width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: white;
+            font-weight: 800;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .step-content h4 {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+        .step-content p {
+            color: var(--text-light);
+            line-height: 1.7;
+            font-size: 0.97rem;
+            margin: 0;
+        }
+
+        /* CTA */
+        .cta-agents {
+            background: linear-gradient(135deg, #14532d 0%, #166534 100%);
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .cta-agents h2 {
+            color: white;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 15px;
+        }
+        .cta-agents p {
+            color: #bbf7d0;
+            font-size: 1.15rem;
+            margin-bottom: 35px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-agents .btn-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            color: #166534;
+            padding: 18px 45px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.15rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .cta-agents .btn-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
+
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="תפריט ראשי">
+        <div class="container">
+            <a href="/" class="logo" aria-label="דרך ההייטק - דף הבית">
+                <img loading="lazy" src="images/brand/logo-haitech-transparent.webp" alt="דרך ההייטק - HAi.TECH" height="60">
+            </a>
+            <button class="mobile-menu-btn" aria-label="פתח תפריט" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="/#courses">קורסים דיגיטליים</a></li>
+                <li><a href="/#private">שיעורים פרטיים</a></li>
+                <li><a href="locations.html">מוקדים פרונטליים</a></li>
+                <li><a href="institutions.html" style="color: #f59e0b !important; font-weight: 600;">🏫 למוסדות חינוך</a></li>
+                <li><a href="ai-learning.html" style="color: #22c55e !important;">🤖 AI בלמידה</a></li>
+                <li><a href="ai-agents.html" style="color: #a78bfa !important; font-weight: 600;">⚡ סוכני AI</a></li>
+                <li><a href="blog.html">בלוג</a></li>
+                <li><a href="/#about">אודות</a></li>
+                <li><a href="/#faq">שאלות נפוצות</a></li>
+                <li><a href="/lms/login.html" class="nav-link-secondary">כניסה לתלמידים</a></li>
+                <li><a href="/#contact" class="btn btn-nav">התחילו עכשיו</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="agents-hero" id="main-content">
+        <div class="container">
+            <span style="display: inline-block; background: rgba(34,197,94,0.15); color: #22c55e; padding: 8px 20px; border-radius: 20px; font-size: 0.9rem; font-weight: 600; margin-bottom: 20px;">⚡ פתרון AI לעסקים</span>
+            <h1>סוכן AI לעסק שלכם —<br><span>הכי זול בארץ</span></h1>
+            <p>בנו סוכן AI שעובד בשבילכם 24/7 — עונה ללקוחות, מבצע משימות, וחוסך שעות עבודה — על שרת ענן בעלות של פחות מ-₪40 לחודש.</p>
+            <div class="price-badge">
+                <i data-lucide="tag" style="width:20px;height:20px;"></i>
+                מחיר החל מ-€9.87 לחודש בלבד
+            </div>
+            <div>
+                <a href="#get-started" class="btn" style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#22c55e,#16a34a);color:white;padding:16px 38px;border-radius:30px;text-decoration:none;font-weight:700;font-size:1.1rem;margin-left:15px;">
+                    איך מתחילים?
+                    <i data-lucide="arrow-left" style="width:20px;height:20px;"></i>
+                </a>
+                <a href="#contact-us" class="btn" style="display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;padding:16px 38px;border-radius:30px;text-decoration:none;font-weight:600;font-size:1.05rem;">
+                    דברו איתנו
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- What is an AI agent -->
+    <section class="agents-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>מה זה בכלל סוכן AI?</h2>
+                <p>סוכן AI הוא תוכנה חכמה שמחוברת לכלי בינה מלאכותית (כמו ChatGPT או Claude) ועובדת בשבילכם ברקע — ללא הפסקה, ללא עייפות.</p>
+            </div>
+            <div class="agents-grid">
+                <div class="agent-card">
+                    <div class="agent-card-icon" style="background: linear-gradient(135deg, #22c55e, #16a34a);">
+                        <i data-lucide="message-square"></i>
+                    </div>
+                    <h3>בוט שירות לקוחות</h3>
+                    <p>סוכן שמגיב ללקוחות בוואטסאפ, באתר או בטלגרם — עונה על שאלות, מחזיר פרטים, מתאם פגישות, הכל אוטומטי.</p>
+                </div>
+                <div class="agent-card">
+                    <div class="agent-card-icon" style="background: linear-gradient(135deg, #6366f1, #4f46e5);">
+                        <i data-lucide="zap"></i>
+                    </div>
+                    <h3>אוטומציה עסקית</h3>
+                    <p>סוכן שמקבל מייל, מעבד מידע, מעדכן גיליון, שולח תזכורות ומדווח — בלי שתצטרכו לגעת בזה.</p>
+                </div>
+                <div class="agent-card">
+                    <div class="agent-card-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                        <i data-lucide="bar-chart-2"></i>
+                    </div>
+                    <h3>ניתוח נתונים</h3>
+                    <p>סוכן שאוסף מידע ממקורות שונים, מנתח מגמות ושולח לכם סיכום יומי — בלי BI יקר.</p>
+                </div>
+                <div class="agent-card">
+                    <div class="agent-card-icon" style="background: linear-gradient(135deg, #ec4899, #be185d);">
+                        <i data-lucide="globe"></i>
+                    </div>
+                    <h3>סוכן אינטרנט</h3>
+                    <p>סוכן שגולש באינטרנט, אוסף מידע, עוקב אחרי מחירים, מתחרים או כתבות — ומדווח בזמן אמת.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why VPS / cheapest -->
+    <section class="agents-section alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>למה VPS? למה הכי זול בארץ?</h2>
+                <p>רוב הפתרונות בשוק עולים מאות שקלים בחודש. אנחנו הראשונים שמביאים לכם את הפתרון הכי חסכוני — שרת VPS פרטי, שאתם הבעלים, במחיר שכולם יכולים להרשות לעצמם.</p>
+            </div>
+            <div class="vps-block">
+                <h3>🖥️ VPS Server — שרת ענן פרטי</h3>
+                <p>שרת ה-VPS הוא הבסיס שעליו רץ הסוכן שלכם. בניגוד לפלטפורמות אחרות — זה שלכם לגמרי: אתם שולטים בנתונים, בעלויות ובפרטיות.</p>
+                <div class="vps-price-row">
+                    <span class="vps-price-tag">€9.87 / חודש</span>
+                    <span class="vps-feature-pill">🔒 שרת פרטי</span>
+                    <span class="vps-feature-pill">🌍 Uptime 99.9%</span>
+                    <span class="vps-feature-pill">⚡ SSD מהיר</span>
+                    <span class="vps-feature-pill">🔧 גיבוי יומי</span>
+                </div>
+                <a href="https://vps-server.host/aff.php?aff=27" target="_blank" rel="noopener sponsored" class="vps-btn">
+                    <i data-lucide="server" style="width:22px;height:22px;"></i>
+                    VPS Server — Premium VPS Hosting from €9.87/mo
+                </a>
+                <p class="vps-note">* לחיצה על הקישור מעבירה לאתר VPS Server. המחירים עשויים להשתנות. אנחנו משתמשים בשירות זה בעצמנו.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works (steps) -->
+    <section class="agents-section" id="get-started">
+        <div class="container">
+            <div class="section-header">
+                <h2>איך מתחילים? 4 צעדים</h2>
+                <p>מאפס לסוכן AI עובד — תוך כמה שעות, בעלות מינימלית.</p>
+            </div>
+            <div class="steps-list">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>פותחים שרת VPS</h4>
+                        <p>נרשמים דרך <a href="https://vps-server.host/aff.php?aff=27" target="_blank" rel="noopener sponsored" style="color:#22c55e;font-weight:600;">VPS Server</a> ומקבלים שרת ענן תוך דקות. לא צריך ידע טכני — אנחנו עוזרים בכל שלב.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>מגדירים את הסוכן</h4>
+                        <p>בוחרים מה הסוכן יעשה — שירות לקוחות? ניהול לידים? אוטומציה? הצוות שלנו מתאים את הפתרון לעסק שלכם.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>מחברים לכלי ה-AI</h4>
+                        <p>מחברים את הסוכן ל-Claude, ChatGPT, Gemini או כל מודל אחר — תלוי בצורך ובתקציב שלכם.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>הסוכן עובד בשבילכם</h4>
+                        <p>מרגע שהסוכן עולה לאוויר — הוא עובד 24/7 ללא עצירה. אתם מקבלים דוחות, אנחנו מטפלים בתחזוקה.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why us -->
+    <section class="agents-section alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>למה דרך ההייטק?</h2>
+                <p>אנחנו לא רק מוכרים שרתים — אנחנו מלווים אתכם מהרעיון ועד לסוכן עובד.</p>
+            </div>
+            <div class="agents-grid">
+                <div class="agent-card" style="border-top: 3px solid #22c55e;">
+                    <div class="agent-card-icon" style="background: linear-gradient(135deg, #22c55e, #16a34a);">
+                        <i data-lucide="headphones"></i>
+                    </div>
+                    <h3>תמיכה מלאה</h3>
+                    <p>הצוות שלנו זמין לכל שאלה — מהרישום לשרת ועד לניפוי תקלות בסוכן. לא עוזבים אתכם לבד.</p>
+                </div>
+                <div class="agent-card" style="border-top: 3px solid #6366f1;">
+                    <div class="agent-card-icon" style="background: linear-gradient(135deg, #6366f1, #4f46e5);">
+                        <i data-lucide="wallet"></i>
+                    </div>
+                    <h3>העלות הכי נמוכה</h3>
+                    <p>שרת מ-€9.87 לחודש + API בתשלום לפי שימוש = פתרון שהכי קטן שבהם יכול להרשות לעצמו. אין עמלות מוסתרות.</p>
+                </div>
+                <div class="agent-card" style="border-top: 3px solid #f59e0b;">
+                    <div class="agent-card-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                        <i data-lucide="shield"></i>
+                    </div>
+                    <h3>הנתונים שלכם</h3>
+                    <p>הסוכן רץ על השרת שלכם, לא שלנו. הנתונים לא עוברים דרך צד שלישי — פרטיות מלאה ושליטה מלאה.</p>
+                </div>
+                <div class="agent-card" style="border-top: 3px solid #ec4899;">
+                    <div class="agent-card-icon" style="background: linear-gradient(135deg, #ec4899, #be185d);">
+                        <i data-lucide="settings"></i>
+                    </div>
+                    <h3>מותאם לעסק שלכם</h3>
+                    <p>כל עסק שונה. הסוכן שנבנה לכם מותאם לתהליכים, לשפה ולצורכי העסק שלכם ספציפית — לא תבנית גנרית.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-agents" id="contact-us">
+        <div class="container">
+            <h2>מוכנים לבנות את הסוכן שלכם?</h2>
+            <p>השאירו פרטים ונחזור אליכם עם הצעה מותאמת — בחינם, ללא התחייבות.</p>
+            <a href="https://wa.me/972533009742?text=היי!%20אני%20מעוניין/ת%20לבנות%20סוכן%20AI%20לעסק%20שלי%20בעלות%20מינימלית" target="_blank" rel="noopener" class="btn-cta">
+                <i data-lucide="message-circle" style="width:22px;height:22px;"></i>
+                שלחו לנו ב-WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: linear-gradient(180deg, #0f172a 0%, #020617 100%); padding: 4rem 2rem 2rem; border-top: 1px solid #1e293b;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem; text-align: right;">
+                <div>
+                    <h3 style="color: #22c55e; font-size: 1.5rem; margin-bottom: 1rem; font-weight: 700;">דרך ההייטק</h3>
+                    <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem;">מלמדים טכנולוגיה, תכנות ובינה מלאכותית לילדים ונוער מאז 2019. הופכים את זמן המסך להשקעה בעתיד.</p>
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="https://www.facebook.com/profile.php?id=61552415392453" target="_blank" rel="noopener" style="width: 40px; height: 40px; background: #1e293b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #94a3b8; text-decoration: none;">
+                            <i data-lucide="facebook" style="width: 20px; height: 20px;"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/hai-tech-way/" target="_blank" rel="noopener" style="width: 40px; height: 40px; background: #1e293b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #94a3b8; text-decoration: none;">
+                            <i data-lucide="linkedin" style="width: 20px; height: 20px;"></i>
+                        </a>
+                        <a href="https://youtube.com/channel/UCbBmDyoE0oy0yXuVAoXNp2Q" target="_blank" rel="noopener" style="width: 40px; height: 40px; background: #1e293b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #94a3b8; text-decoration: none;">
+                            <i data-lucide="youtube" style="width: 20px; height: 20px;"></i>
+                        </a>
+                        <a href="https://wa.me/972533009742" target="_blank" rel="noopener" style="width: 40px; height: 40px; background: #1e293b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #94a3b8; text-decoration: none;">
+                            <i data-lucide="message-circle" style="width: 20px; height: 20px;"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 style="color: white; font-size: 1.1rem; margin-bottom: 1rem; font-weight: 600;">קישורים מהירים</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 0.75rem;"><a href="index.html#courses" style="color: #94a3b8; text-decoration: none;">קורסים</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="index.html#private" style="color: #94a3b8; text-decoration: none;">שיעורים פרטיים</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="institutions.html" style="color: #94a3b8; text-decoration: none;">למוסדות חינוך</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="locations.html" style="color: #94a3b8; text-decoration: none;">מוקדים פרונטליים</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="ai-agents.html" style="color: #22c55e; text-decoration: none;">⚡ סוכני AI</a></li>
+                        <li><a href="blog.html" style="color: #94a3b8; text-decoration: none;">בלוג</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: white; font-size: 1.1rem; margin-bottom: 1rem; font-weight: 600;">צרו קשר</h4>
+                    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                        <a target="_blank" href="https://wa.me/972533009742" style="color: #94a3b8; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                            <i data-lucide="phone" style="width: 18px; height: 18px;"></i>
+                            053-300-9742
+                        </a>
+                        <a href="mailto:info@hai.tech" style="color: #94a3b8; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                            <i data-lucide="mail" style="width: 18px; height: 18px;"></i>
+                            info@hai.tech
+                        </a>
+                        <span style="color: #94a3b8; display: flex; align-items: center; gap: 0.5rem;">
+                            <i data-lucide="map-pin" style="width: 18px; height: 18px;"></i>
+                            באר שבע, עומר, חולון
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div style="border-top: 1px solid #1e293b; padding-top: 1.5rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
+                <p style="color: #64748b; font-size: 0.85rem; margin: 0;">© 2026 דרך ההייטק. כל הזכויות שמורות.</p>
+                <div style="display: flex; gap: 1.5rem;">
+                    <a href="terms.html" style="color: #64748b; font-size: 0.85rem; text-decoration: none;">תנאי שימוש</a>
+                    <a href="privacy.html" style="color: #64748b; font-size: 0.85rem; text-decoration: none;">מדיניות פרטיות</a>
+                    <a href="accessibility.html" style="color: #64748b; font-size: 0.85rem; text-decoration: none;">נגישות</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        mobileMenuBtn?.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+    <script src="/js/analytics.js?v=20260314"></script>
+</body>
+</html>
