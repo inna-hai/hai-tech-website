@@ -59,10 +59,12 @@
     .world{display:flex;gap:14px;align-items:flex-start}.world .icon{flex:none;width:46px;height:46px;border-radius:15px;display:grid;place-items:center;background:#edf7ff;font-size:22px}.world h3{margin-bottom:4px}.world p{font-size:14px;color:var(--muted)}
     .teacherBox{display:grid;grid-template-columns:.85fr 1.15fr;gap:18px;align-items:stretch}.quote{background:#0f1f3f;color:#fff;border-radius:26px;padding:26px}.quote p{color:#fff;font-size:1.3rem;font-weight:800;margin:0}.quote small{display:block;opacity:.72;margin-top:14px;line-height:1.7}.checkList{list-style:none;margin:0;padding:0}.checkList li{position:relative;padding:11px 34px 11px 0;border-bottom:1px solid #edf1f7;color:#40506a}.checkList li:last-child{border-bottom:0}.checkList li:before{content:"✓";position:absolute;right:0;top:10px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:#e9fbf4;color:var(--green2);font-weight:900}
     .evidence{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.evidence .card{min-height:230px}.tag{display:inline-flex;background:#f0f5ff;color:var(--blue2);border-radius:10px;padding:5px 9px;font-size:12px;font-weight:800;margin:0 0 8px}
+
+    .challengeStack{display:grid;gap:18px}.challenge{background:#fff;border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);overflow:hidden}.challengeTop{display:grid;grid-template-columns:86px 1fr;gap:0;background:linear-gradient(135deg,#f5fbff,#effbf5);border-bottom:1px solid var(--line)}.challengeNum{display:grid;place-items:center;background:linear-gradient(135deg,var(--blue2),var(--green2));color:#fff;font-size:2rem;font-weight:900}.challengeTitle{padding:20px 22px}.challengeTitle h3{font-size:1.45rem;margin:0 0 6px}.challengeTitle p{margin:0;color:var(--muted)}.challengeBody{padding:22px}.challengeGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.miniBlock{border:1px solid #e2eaf4;background:#fbfdff;border-radius:18px;padding:16px}.miniBlock h4{margin:0 0 8px;font-size:1rem;color:var(--blue2)}.miniBlock ul{margin:0;padding-right:19px;color:#44546b}.miniBlock li{margin:5px 0}.lessonFlow{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:14px}.lessonFlow div{background:#f3f8ff;border:1px solid #dcecff;border-radius:16px;padding:12px;font-size:13px;color:#41526b}.lessonFlow b{display:block;color:var(--blue2);margin-bottom:4px}.metricsGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}.metricChip{background:#eefbf5;border:1px solid #cdf0df;color:#0f684b;border-radius:14px;padding:10px;font-size:13px;font-weight:800}.promptBox{margin-top:14px;border:1px dashed #b8c9df;background:#f8fbff;border-radius:18px;padding:14px;color:#40506a}.promptBox b{color:var(--purple)}
     .cta{margin-top:28px;background:linear-gradient(135deg,var(--green2),var(--blue2));color:#fff;border-radius:32px;padding:34px;box-shadow:var(--shadow);display:grid;grid-template-columns:1fr auto;gap:22px;align-items:center}.cta h2,.cta p{color:#fff}.cta p{opacity:.9;margin:10px 0 0}.btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border-radius:999px;background:#fff;color:var(--blue2);font-weight:900;padding:14px 22px;white-space:nowrap}
     footer{text-align:center;color:var(--muted);font-size:13px;margin-top:28px}.printNote{font-size:12px;color:#77869a;margin-top:8px}
-    @media(max-width:980px){.heroGrid,.g2,.g3,.g4,.teacherBox,.evidence{grid-template-columns:1fr}.formula{grid-template-columns:1fr 1fr}.phase{grid-template-columns:1fr}.valueRow{grid-template-columns:1fr}.valueRow>div{border-left:0;border-bottom:1px solid var(--line)}.valueRow>div:last-child{border-bottom:0}.aiFlow{grid-template-columns:1fr 1fr}.cta{grid-template-columns:1fr}.nav{display:none}}
-    @media(max-width:620px){.wrap{padding:16px 12px 42px}.hero{padding:30px 20px;border-radius:26px}.formula,.outcomes,.aiFlow{grid-template-columns:1fr}.card{padding:20px}.vibe,.cta{padding:24px;border-radius:26px}h1{font-size:2.35rem}}
+    @media(max-width:980px){.heroGrid,.g2,.g3,.g4,.teacherBox,.evidence,.challengeGrid{grid-template-columns:1fr}.formula{grid-template-columns:1fr 1fr}.phase{grid-template-columns:1fr}.valueRow{grid-template-columns:1fr}.valueRow>div{border-left:0;border-bottom:1px solid var(--line)}.valueRow>div:last-child{border-bottom:0}.aiFlow{grid-template-columns:1fr 1fr}.lessonFlow,.metricsGrid{grid-template-columns:1fr 1fr}.cta{grid-template-columns:1fr}.nav{display:none}}
+    @media(max-width:620px){.wrap{padding:16px 12px 42px}.hero{padding:30px 20px;border-radius:26px}.formula,.outcomes,.aiFlow,.lessonFlow,.metricsGrid{grid-template-columns:1fr}.challengeTop{grid-template-columns:1fr}.challengeNum{min-height:72px}.card{padding:20px}.vibe,.cta{padding:24px;border-radius:26px}h1{font-size:2.35rem}}
     @media print{body{background:#fff}.nav,.btn{display:none}.card,.hero,.vibe,.cta{box-shadow:none}.wrap{max-width:none}.valueRow,.phase{break-inside:avoid}}
   </style>
 </head>
@@ -211,6 +213,131 @@
         <div class="card world"><div class="icon">🛡️</div><div><h3>חוסן אקלימי</h3><p>יישוב שמתמודד עם סופות וגלי חום. מדד: זמן תגובה ואחוז תושבים מוגנים.</p></div></div>
         <div class="card world"><div class="icon">🤝</div><div><h3>כפר הסיוע ההדדי</h3><p>עולם חברתי של משאבים, אמפתיה וקונפליקטים. מדד: הישרדות הקבוצה והוגנות חלוקה.</p></div></div>
         <div class="card world"><div class="icon">🚀</div><div><h3>עולם היזמות והפיץ׳</h3><p>הפיכת הפתרון למיזם: קהל יעד, ערך, סיפור, הצגה ושיפור לפי משוב.</p></div></div>
+      </div>
+    </section>
+
+
+    <section id="challenge-details">
+      <div class="sectionHead">
+        <h2>פירוט מלא של האתגרים: מה עושים בפועל בכל מפגש</h2>
+        <p>כל אתגר בנוי כתהליך סגור: סיפור בעיה, חקר עם AI, תכנון, בנייה ב־Minecraft, Vibe Coding, בדיקה, שיפור, הצגה ורפלקציה. אין “שחקו ותראו מה יוצא” — לכל פעילות יש תוצר ומדד.</p>
+      </div>
+      <div class="challengeStack">
+
+        <article class="challenge">
+          <div class="challengeTop"><div class="challengeNum">1</div><div class="challengeTitle"><h3>עיר הקיימות — עיר שלא מבזבזת יותר ממה שהיא מייצרת</h3><p>בעיה: העיר גדלה מהר, צורכת יותר מים ואנרגיה ממה שיש לה, והתושבים מתלוננים על עומס, זיהום וחוסר יעילות.</p></div></div>
+          <div class="challengeBody">
+            <div class="challengeGrid">
+              <div class="miniBlock"><h4>מה התלמידים בונים ב־Minecraft</h4><ul><li>רובע עירוני עם לפחות 6 מבנים: מגורים, בית ספר, חווה עירונית, תחנת אנרגיה, מאגר מים ומרכז מיחזור.</li><li>כבישים/שבילים שמחברים בין המבנים ומאפשרים “זרימת משאבים”.</li><li>מערכת אנרגיה סולארית או רוח שמספקת חשמל למבנים.</li><li>מערכת איסוף מי גשם והשקיה לחווה העירונית.</li><li>שלטים או NPC שמסבירים מה כל מערכת עושה.</li></ul></div>
+              <div class="miniBlock"><h4>עבודת AI של התלמידים</h4><ul><li>מבקשים מ־AI למפות צרכים של עיר: מים, אנרגיה, מזון, תחבורה ופסולת.</li><li>מבקשים 3 חלופות לתכנון רובע חסכוני ומשווים ביניהן.</li><li>מנסחים עם AI “חוקי עיר חכמה”: מה קורה כשיש מחסור במים או חשמל.</li><li>בודקים עם AI האם התכנון שלהם מאוזן ומה נקודות הכשל.</li></ul></div>
+              <div class="miniBlock"><h4>Vibe Coding / לוגיקה</h4><ul><li>התלמיד מתאר: “אם מאגר המים נמוך, תפסיק השקיה בגינות ותעדף שתייה”.</li><li>מתרגמים את המשפט לתרשים קלט→תנאי→פעולה.</li><li>מיישמים בלוגיקת רדסטון/פקודות/כללי משחק פשוטים: חיישן, מתג, נורה, שער.</li><li>כותבים פסאודו־קוד קצר ומדביקים ליד המערכת כשלט הסבר.</li></ul></div>
+              <div class="miniBlock"><h4>תפקיד המורה</h4><ul><li>פותח בשאלה: “איך יודעים שעיר היא בת־קיימא ולא רק יפה?”</li><li>מחלק תפקידים: מתכנן אנרגיה, מתכנן מים, מתכנן תחבורה, מתעד.</li><li>עוצר באמצע ל־Design Review של 7 דקות.</li><li>מוביל רפלקציה: מה ויתרנו עליו ולמה?</li></ul></div>
+            </div>
+            <div class="lessonFlow"><div><b>פתיחה</b>סיפור משבר עירוני ומדדי הצלחה.</div><div><b>חקר AI</b>מיפוי צרכים וחלופות תכנון.</div><div><b>תכנון</b>סקיצה של רובע וחלוקת תפקידים.</div><div><b>בנייה</b>הקמת מערכות וחיבור ביניהן.</div><div><b>בדיקה</b>האם העיר באיזון? מה נשבר?</div></div>
+            <div class="metricsGrid"><div class="metricChip">מאזן אנרגיה חיובי</div><div class="metricChip">לפחות 6 מבנים מחוברים</div><div class="metricChip">הסבר כתוב לכל מערכת</div><div class="metricChip">שיפור אחד אחרי בדיקה</div></div>
+            <div class="promptBox"><b>דוגמת פרומפט לתלמיד:</b> “אנחנו בונים רובע עירוני במיינקראפט עם מים, אנרגיה, מזון ופסולת. תעזור לי לפרק את העיר ל־5 מערכות, להסביר מה הקלט והפלט של כל מערכת, ולהציע איך לבדוק אם העיר באמת בת־קיימא.”</div>
+          </div>
+        </article>
+
+        <article class="challenge">
+          <div class="challengeTop"><div class="challengeNum">2</div><div class="challengeTitle"><h3>עולם האנרגיה — רשת חשמל שעובדת גם בלילה</h3><p>בעיה: ביום יש אנרגיה סולארית, בלילה העיר נופלת. צריך לבנות רשת שמייצרת, אוגרת ומחלקת חשמל לפי קדימויות.</p></div></div>
+          <div class="challengeBody">
+            <div class="challengeGrid">
+              <div class="miniBlock"><h4>מה בונים</h4><ul><li>מקור ייצור: שדה סולארי/טורבינות רוח.</li><li>תחנת אגירה שמייצגת סוללה.</li><li>שלושה צרכנים: בית חולים, בית ספר ותאורת רחוב.</li><li>לוח בקרה עם מתגים שמנתב אנרגיה.</li><li>מצב חירום שבו יש מחסור וצריך לתעדף צרכנים.</li></ul></div>
+              <div class="miniBlock"><h4>עבודת AI</h4><ul><li>שואלים מה ההבדל בין ייצור, אגירה וחלוקה.</li><li>מבקשים דוגמאות לתעדוף אנרגיה בזמן משבר.</li><li>מנסחים עם AI כללי החלטה לרשת: מי מקבל חשמל קודם?</li><li>מבקשים מ־AI לבדוק אם הכללים הוגנים והגיוניים.</li></ul></div>
+              <div class="miniBlock"><h4>Vibe Coding</h4><ul><li>משפט טבעי: “אם אין מספיק אנרגיה, בית החולים נשאר דולק, תאורת הרחוב נכבית”.</li><li>תרגום לתנאים: IF battery_low THEN hospital_on AND street_off.</li><li>מימוש ברדסטון: מתג מצב חירום, נתיבי חשמל, נורות מצב.</li><li>בדיקת תרחישים: יום, לילה, מחסור, עודף.</li></ul></div>
+              <div class="miniBlock"><h4>תפקיד המורה</h4><ul><li>מכניס אילוץ: “הסוללה מספיקה רק לשני צרכנים”.</li><li>מבקש מהצוות לנמק החלטה ערכית וטכנית.</li><li>בודק שהתלמידים לא רק בונים, אלא מסבירים לוגיקה.</li><li>מחבר לשיחה על תשתיות, אחריות וקבלת החלטות.</li></ul></div>
+            </div>
+            <div class="lessonFlow"><div><b>פתיחה</b>העיר נכבית בלילה.</div><div><b>AI</b>למידת מושגי אנרגיה.</div><div><b>תכנון</b>תרשים רשת וקדימויות.</div><div><b>בנייה</b>מקור, אגירה, צרכנים.</div><div><b>בדיקה</b>תרחישי מחסור ועודף.</div></div>
+            <div class="metricsGrid"><div class="metricChip">3 צרכנים מחוברים</div><div class="metricChip">כלל תעדוף כתוב</div><div class="metricChip">מצב חירום עובד</div><div class="metricChip">הסבר IF/THEN</div></div>
+            <div class="promptBox"><b>דוגמת פרומפט:</b> “תעזור לי לתכנן רשת חשמל לעיר במיינקראפט. יש לי בית חולים, בית ספר ותאורת רחוב. בלילה אין מספיק אנרגיה לכולם. תציע כללי תעדוף ותכתוב אותם כ־IF/THEN פשוט.”</div>
+          </div>
+        </article>
+
+        <article class="challenge">
+          <div class="challengeTop"><div class="challengeNum">3</div><div class="challengeTitle"><h3>עולם המים — עיר שמתמודדת עם בצורת ושיטפון</h3><p>בעיה: בחלק מהשנה אין מספיק מים, ובאירוע קיצון יש שיטפון. צריך לנהל מים בשגרה ובחירום.</p></div></div>
+          <div class="challengeBody">
+            <div class="challengeGrid">
+              <div class="miniBlock"><h4>מה בונים</h4><ul><li>מקור מים, מאגר, מערכת סינון ותעלות השקיה.</li><li>שדות/גינות שצריכים השקיה מדויקת.</li><li>סכרים ותעלות חירום שמסיטים שיטפון.</li><li>אזור מגורים שחייב להישאר יבש.</li><li>מד גובה מים חזותי עם בלוקים/שלטים.</li></ul></div>
+              <div class="miniBlock"><h4>עבודת AI</h4><ul><li>חקר: מה גורם לשיטפונות ומה ההבדל בין מניעה לתגובה?</li><li>AI מציע 3 תכנוני תעלות עם יתרונות וחסרונות.</li><li>התלמידים מבקשים רשימת בדיקות: איפה מים ייתקעו? איפה יש בזבוז?</li><li>AI עוזר לנסח תוכנית חירום לתושבים.</li></ul></div>
+              <div class="miniBlock"><h4>Vibe Coding</h4><ul><li>משפט: “אם מפלס המים עולה, שער החירום נפתח והתעלה מפנה מים מהעיר”.</li><li>תרשים: מפלס גבוה → פתיחת שער → זרימה לתעלת ספיגה.</li><li>מימוש: שער/מחסום רדסטון, מנגנון פתיחה, סימון מסלול מים.</li><li>בדיקת Fail Case: מה קורה אם שער אחד חסום?</li></ul></div>
+              <div class="miniBlock"><h4>תפקיד המורה</h4><ul><li>מייצר “אירוע שיטפון” באמצע הפעילות.</li><li>מחלק תפקידי חירום: מהנדס סכרים, מתאם פינוי, מתעד נזקים.</li><li>בודק עבודת צוות תחת לחץ.</li><li>מוביל דיון על חוסן קהילתי ואחריות.</li></ul></div>
+            </div>
+            <div class="metricsGrid"><div class="metricChip">כל השדות מושקים</div><div class="metricChip">אפס הצפה באזור מגורים</div><div class="metricChip">תוכנית חירום כתובה</div><div class="metricChip">בדיקת כשל אחת</div></div>
+            <div class="promptBox"><b>דוגמת פרומפט:</b> “אנחנו בונים מערכת מים לעיר במיינקראפט. תעזור לי לתכנן גם מערכת השקיה רגילה וגם מצב חירום לשיטפון. אילו חלקים צריך לבנות ואיך בודקים שהעיר לא מוצפת?”</div>
+          </div>
+        </article>
+
+        <article class="challenge">
+          <div class="challengeTop"><div class="challengeNum">4</div><div class="challengeTitle"><h3>חקלאות חכמה — להאכיל עיר בלי לבזבז משאבים</h3><p>בעיה: העיר צריכה מזון, אבל יש מעט מים, מעט שטח ומעט זמן. צריך לתכנן מערכת חקלאית יעילה.</p></div></div>
+          <div class="challengeBody">
+            <div class="challengeGrid">
+              <div class="miniBlock"><h4>מה בונים</h4><ul><li>חווה רגילה כבסיס להשוואה.</li><li>חווה אוטומטית עם מים, קציר/איסוף ושינוע.</li><li>מחסן תוצרת ומערכת חלוקה לעיר.</li><li>קומפוסטר/דשן שמחזיר פסולת למערכת.</li><li>לוח תפוקה: כמה מזון הופק בכל סבב.</li></ul></div>
+              <div class="miniBlock"><h4>עבודת AI</h4><ul><li>AI עוזר לחשב יחס תפוקה־משאב: כמה שטח ומים לכל יחידת מזון.</li><li>התלמידים מבקשים הצעות לשיפור יעילות.</li><li>AI מנסח ניסוי: חווה א׳ מול חווה ב׳.</li><li>AI עוזר להציג מסקנה מבוססת נתונים.</li></ul></div>
+              <div class="miniBlock"><h4>Vibe Coding</h4><ul><li>משפט: “כשתיבה מלאה, שלח את המזון למחסן העירוני”.</li><li>תרגום ללוגיקה: IF storage_full THEN transport_to_city.</li><li>מימוש בסימולציה: נתיב שינוע, שער, מתג או מערכת איסוף.</li><li>שיפור: מצמצמים זמן/מרחק/בזבוז.</li></ul></div>
+              <div class="miniBlock"><h4>תפקיד המורה</h4><ul><li>נותן יעד: “להאכיל 100 תושבים עם חצי מהשטח”.</li><li>דורש טבלת מדידה לפני ואחרי שיפור.</li><li>מנחה שיחה על יעילות מול קיימות.</li><li>מעודד תלמידים להסביר החלטות במספרים.</li></ul></div>
+            </div>
+            <div class="metricsGrid"><div class="metricChip">תפוקה נמדדת בשני סבבים</div><div class="metricChip">שיפור יעילות מוכח</div><div class="metricChip">מחזור פסולת לדשן</div><div class="metricChip">הסבר נתונים</div></div>
+            <div class="promptBox"><b>דוגמת פרומפט:</b> “יש לי חווה במיינקראפט ואני רוצה לשפר תפוקה בלי להגדיל שטח. תציע ניסוי השוואתי, אילו נתונים למדוד, ואיך להציג אם השיפור באמת עבד.”</div>
+          </div>
+        </article>
+
+        <article class="challenge">
+          <div class="challengeTop"><div class="challengeNum">5</div><div class="challengeTitle"><h3>מיחזור וכלכלה מעגלית — להפוך פסולת למשאב</h3><p>בעיה: הר אשפה גדל ליד העיר. המטרה היא לצמצם פסולת ולהחזיר חומרים לשימוש בעולמות אחרים.</p></div></div>
+          <div class="challengeBody">
+            <div class="challengeGrid">
+              <div class="miniBlock"><h4>מה בונים</h4><ul><li>מרכז מיון עם כניסת פסולת אחת ו־4 יציאות: עץ, מתכת, מזון, שונות.</li><li>מסלול שינוע לכל סוג חומר.</li><li>תחנת שימוש חוזר שמחזירה חומר לעולם האנרגיה/חקלאות/בנייה.</li><li>אזור “פסולת שלא טופלה” למדידה.</li><li>לוח נתונים: כמה נכנס, כמה מוין, כמה חזר לשימוש.</li></ul></div>
+              <div class="miniBlock"><h4>עבודת AI</h4><ul><li>AI מסביר מהי כלכלה מעגלית בשפה של תלמידים.</li><li>התלמידים מבקשים כללי מיון לחומרים שונים.</li><li>AI עוזר לזהות נקודות כשל במערכת מיון.</li><li>AI עוזר לנסח קמפיין עירוני שמעודד מיחזור.</li></ul></div>
+              <div class="miniBlock"><h4>Vibe Coding</h4><ul><li>משפט: “אם הפריט הוא עץ, שלח אותו לבנייה; אם מזון, שלח לקומפוסט”.</li><li>תרגום לסיווג: input → classify → route.</li><li>מימוש: שערים, שילוט, פקודות/כללי מיון או סימולציה ידנית עם תפקידים.</li><li>בדיקת דיוק: מכניסים 20 פריטים ובודקים טעויות.</li></ul></div>
+              <div class="miniBlock"><h4>תפקיד המורה</h4><ul><li>דורש מהצוות להגדיר קטגוריות לפני הבנייה.</li><li>מכניס “פריטים מבלבלים” כדי לבדוק כללי מיון.</li><li>מחבר לנושא דאטה: דיוק, אחוזי הצלחה, שגיאות.</li><li>מוביל רפלקציה על צריכה ואחריות.</li></ul></div>
+            </div>
+            <div class="metricsGrid"><div class="metricChip">80%+ דיוק מיון</div><div class="metricChip">4 זרמי חומרים</div><div class="metricChip">שימוש חוזר בחומר אחד</div><div class="metricChip">דוח שגיאות</div></div>
+            <div class="promptBox"><b>דוגמת פרומפט:</b> “תעזור לי לבנות מערכת מיון פסולת במיינקראפט. אילו קטגוריות כדאי ליצור, איזה כלל מיון מתאים לכל קטגוריה, ואיך מודדים דיוק של המערכת?”</div>
+          </div>
+        </article>
+
+        <article class="challenge">
+          <div class="challengeTop"><div class="challengeNum">6</div><div class="challengeTitle"><h3>חוסן אקלימי — יישוב שמוכן לאירוע קיצון</h3><p>בעיה: גל חום/סופה מאיים על היישוב. צריך לבנות התרעה, מקלטים, מסלולי פינוי ותפקוד קהילתי.</p></div></div>
+          <div class="challengeBody">
+            <div class="challengeGrid">
+              <div class="miniBlock"><h4>מה בונים</h4><ul><li>יישוב קטן עם בתים, בית ספר, מרכז קהילתי ומקלטים.</li><li>מערכת התרעה: מגדל תצפית, נורות/צלילים/שילוט.</li><li>מסלולי פינוי מסומנים מכל אזור למקלט.</li><li>מרכז שליטה עם תפקידי חירום.</li><li>תרחיש בדיקה: אירוע מתחיל ויש זמן מוגבל להגיב.</li></ul></div>
+              <div class="miniBlock"><h4>עבודת AI</h4><ul><li>AI עוזר לבנות רשימת סיכונים ליישוב.</li><li>AI מייצר תרחישי חירום בדרגות קושי.</li><li>התלמידים מבקשים ממנו לבדוק האם מסלולי הפינוי הגיוניים.</li><li>AI עוזר לנסח הוראות קצרות לתושבים.</li></ul></div>
+              <div class="miniBlock"><h4>Vibe Coding</h4><ul><li>משפט: “אם מזוהה סופה, הפעל אזעקה ופתח שערי מקלט”.</li><li>תרגום: sensor/event → alarm_on → shelters_open.</li><li>מימוש: מתג אירוע, נורות אזהרה, דלתות/שערים.</li><li>בדיקה עם טיימר: כמה מהר כולם מגיעים למקלט?</li></ul></div>
+              <div class="miniBlock"><h4>תפקיד המורה</h4><ul><li>נותן תפקידים: אחראי התרעה, פינוי, מקלט, תקשורת.</li><li>מריץ תרגול חירום ומודד זמן תגובה.</li><li>מוביל שיחה על מנהיגות, אחריות הדדית ואמפתיה.</li><li>דורש שיפור אחרי התרגול הראשון.</li></ul></div>
+            </div>
+            <div class="metricsGrid"><div class="metricChip">100% מבנים עם מסלול פינוי</div><div class="metricChip">התרעה עובדת</div><div class="metricChip">זמן תגובה נמדד</div><div class="metricChip">שיפור אחרי תרגול</div></div>
+            <div class="promptBox"><b>דוגמת פרומפט:</b> “אנחנו בונים יישוב עמיד לאירוע קיצון. תן לי רשימת סיכונים, מערכת התרעה אפשרית, תפקידי צוות, ומדדים לבדוק אם היישוב באמת מוכן.”</div>
+          </div>
+        </article>
+
+        <article class="challenge">
+          <div class="challengeTop"><div class="challengeNum">7</div><div class="challengeTitle"><h3>כפר הסיוע ההדדי — אף אחד לא שורד לבד</h3><p>בעיה: קבוצה מגיעה לאי ריק. לכל תלמיד יש רק חלק מהמשאבים. הצלחה אפשרית רק אם משתפים, מתאמים ופותרים קונפליקטים.</p></div></div>
+          <div class="challengeBody">
+            <div class="challengeGrid">
+              <div class="miniBlock"><h4>מה בונים</h4><ul><li>כפר משותף עם מים, מזון, מחסה והגנה.</li><li>מחסן משאבים משותף עם כללי שימוש.</li><li>תחנות תפקיד: חקלאות, בנייה, הגנה, מים, תקשורת.</li><li>לוח החלטות קבוצתי: מה בונים קודם ולמה.</li><li>מנגנון פתרון קונפליקטים: בקשה, דיון, החלטה.</li></ul></div>
+              <div class="miniBlock"><h4>עבודת AI</h4><ul><li>AI עוזר לקבוצה לבנות אמנה: איך מבקשים עזרה, איך מחלקים משאבים.</li><li>AI מציע תפקידים לפי חוזקות שונות.</li><li>התלמידים מבקשים סימולציות של קונפליקט ופתרונות אפשריים.</li><li>AI עוזר לכתוב רפלקציה אישית: איך תרמתי לצוות?</li></ul></div>
+              <div class="miniBlock"><h4>Vibe Coding חברתי</h4><ul><li>משפט: “אם שחקן מבקש עזרה ואין לו משאב, מי שיש לו עודף מקבל משימת סיוע”.</li><li>תרגום לכלל קהילתי: request_help → find_available_resource → assign_helper.</li><li>מימוש: לוח בקשות, תפקיד מתאם, סימון משאבים, משימת סיוע.</li><li>בדיקה: האם כולם קיבלו מה שהם צריכים? מי נשאר בחוץ?</li></ul></div>
+              <div class="miniBlock"><h4>תפקיד המורה</h4><ul><li>צופה בדינמיקה ולא רק בבנייה.</li><li>עוצר כשיש קונפליקט והופך אותו ללמידה.</li><li>שואל: מי לא נשמע? מי עזר? מי לקח אחריות?</li><li>מחבר לערכי שייכות, אמפתיה ו־Teamwork.</li></ul></div>
+            </div>
+            <div class="metricsGrid"><div class="metricChip">כל חברי הקבוצה שרדו</div><div class="metricChip">אמנת צוות כתובה</div><div class="metricChip">לפחות 3 בקשות עזרה</div><div class="metricChip">רפלקציה אישית</div></div>
+            <div class="promptBox"><b>דוגמת פרומפט:</b> “אנחנו צוות באי ריק ולכל אחד יש משאבים שונים. תעזור לנו לבנות אמנת שיתוף, תפקידים הוגנים, וכללים לפתרון קונפליקט כששני ילדים רוצים את אותו משאב.”</div>
+          </div>
+        </article>
+
+        <article class="challenge">
+          <div class="challengeTop"><div class="challengeNum">8</div><div class="challengeTitle"><h3>עולם היזמות והפיץ׳ — להפוך פתרון למיזם</h3><p>בעיה: בנינו פתרון, אבל עכשיו צריך להסביר למי הוא מיועד, למה הוא חשוב, איך הוא עובד ואיך משפרים אותו.</p></div></div>
+          <div class="challengeBody">
+            <div class="challengeGrid">
+              <div class="miniBlock"><h4>מה בונים</h4><ul><li>עמדת תצוגה בתוך Minecraft לפתרון שנבנה.</li><li>מסלול הדגמה למבקרים: הבעיה → הפתרון → המדד.</li><li>שלטי הסבר או NPC שמספרים את סיפור המיזם.</li><li>גרסת “לפני ואחרי” שמראה שיפור.</li><li>במת פיץ׳ להצגת התוצר לנבחרות אחרות/מורים/הורים.</li></ul></div>
+              <div class="miniBlock"><h4>עבודת AI</h4><ul><li>AI עוזר להגדיר קהל יעד וכאב משתמש.</li><li>AI עוזר לכתוב פיץ׳ של 60 שניות.</li><li>AI שואל שאלות קשות כמו משקיע/מנטור.</li><li>AI עוזר לשפר את ההצגה לפי משוב.</li></ul></div>
+              <div class="miniBlock"><h4>Vibe Coding / מוצר</h4><ul><li>התלמיד מתאר פיצ׳ר חדש בשפה חופשית.</li><li>AI מפרק אותו ל־User Story: “כמשתמש אני רוצה...”</li><li>הצוות בוחר גרסה מינימלית לבנייה במיינקראפט.</li><li>בודקים מול משתמשים אחרים ומשפרים.</li></ul></div>
+              <div class="miniBlock"><h4>תפקיד המורה</h4><ul><li>מלמד איך נותנים ומקבלים משוב.</li><li>דורש הוכחה: מה המדד שמראה שהפתרון עובד?</li><li>מחבר בין תוצר, סיפור, קהל יעד וערך.</li><li>מוביל אירוע סיום עם הצגת תוצרים.</li></ul></div>
+            </div>
+            <div class="metricsGrid"><div class="metricChip">פיץ׳ 60 שניות</div><div class="metricChip">User Story אחת</div><div class="metricChip">מדד הצלחה ברור</div><div class="metricChip">שיפור לפי משוב</div></div>
+            <div class="promptBox"><b>דוגמת פרומפט:</b> “בנינו פתרון במיינקראפט לבעיה של מחסור במים. תעזור לנו להגדיר קהל יעד, לכתוב פיץ׳ של דקה, ולנסח 3 שאלות שמשקיע או מנטור ישאל אותנו.”</div>
+          </div>
+        </article>
+
       </div>
     </section>
 
