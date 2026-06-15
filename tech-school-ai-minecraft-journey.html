@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tech School × craftOm × Minecraft | מסע שנתי לתלמידים ולמורים</title>
+  <meta name="description" content="מודל שנתי לטק סקול: Minecraft כמרחב בנייה, AI כשותף חשיבה, craftOm כשכבת ליווי ומדידה, והמורה כמנחה תהליך טכנולוגי־חינוכי." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="canonical" href="https://hai.tech/tech-school-ai-minecraft-journey.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/images/brand/logo.webp" />
+  <style>
+    :root{
+      --ink:#172033; --muted:#5f6f85; --soft:#f5f8fc; --card:#ffffff; --line:#dbe4ef;
+      --blue:#1677ff; --blue2:#0b4fb3; --green:#15b87a; --green2:#087850; --purple:#7856ff;
+      --orange:#ffb020; --red:#ff5f73; --shadow:0 18px 45px rgba(16,31,63,.09);
+      --radius:26px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:"Heebo","Segoe UI",Arial,sans-serif;color:var(--ink);background:
+      radial-gradient(circle at 10% 0%, rgba(22,119,255,.11), transparent 28%),
+      radial-gradient(circle at 95% 8%, rgba(21,184,122,.12), transparent 24%),
+      linear-gradient(180deg,#fbfdff 0%,#f4f8fc 50%,#eef5f8 100%);line-height:1.72}
+    a{color:inherit}
+    .wrap{max-width:1180px;margin:0 auto;padding:24px 18px 64px}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:18px;flex-wrap:wrap}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:900;color:var(--ink)}
+    .brand img{width:56px;height:56px;object-fit:contain;background:#fff;border:1px solid var(--line);border-radius:16px;padding:8px;box-shadow:0 8px 20px rgba(16,31,63,.06)}
+    .nav{display:flex;gap:8px;flex-wrap:wrap}
+    .nav a{font-size:14px;text-decoration:none;padding:9px 14px;border:1px solid var(--line);background:rgba(255,255,255,.8);border-radius:999px;color:#2d3a4f;font-weight:700}
+    .hero{position:relative;overflow:hidden;border:1px solid #d9e4f2;border-radius:34px;background:
+      linear-gradient(135deg,rgba(255,255,255,.96),rgba(242,248,255,.94) 48%,rgba(235,255,246,.92));box-shadow:var(--shadow);padding:42px 38px}
+    .hero:before{content:"";position:absolute;inset:auto -90px -130px auto;width:320px;height:320px;border-radius:72px;background:linear-gradient(135deg,var(--green),var(--blue));opacity:.13;transform:rotate(18deg)}
+    .hero:after{content:"";position:absolute;top:-120px;left:-100px;width:300px;height:300px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--blue));opacity:.09}
+    .heroGrid{display:grid;grid-template-columns:1.08fr .92fr;gap:28px;align-items:center;position:relative;z-index:1}
+    .kicker{display:inline-flex;align-items:center;gap:8px;background:#edf6ff;color:var(--blue2);border:1px solid #cfe4ff;border-radius:999px;padding:8px 14px;font-weight:900;margin-bottom:16px;font-size:14px}
+    h1{font-size:clamp(2.25rem,5vw,4.35rem);line-height:1.04;margin:0 0 18px;font-weight:900;letter-spacing:-.035em}
+    .lead{font-size:1.18rem;color:#40506a;max-width:820px;margin:0 0 20px}
+    .formula{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:24px}
+    .formula div{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px 14px;box-shadow:0 10px 24px rgba(16,31,63,.06)}
+    .formula b{display:block;color:var(--blue2);font-size:15px;margin-bottom:4px}.formula span{display:block;color:var(--muted);font-size:13.5px;line-height:1.45}
+    .heroCard{background:#fff;border:1px solid var(--line);border-radius:28px;padding:24px;box-shadow:0 18px 40px rgba(16,31,63,.08)}
+    .heroCard h2{margin:0 0 12px;font-size:1.35rem}.heroCard p{margin:0;color:var(--muted)}
+    .outcomes{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}.outcome{border-radius:18px;padding:16px;border:1px solid var(--line);background:linear-gradient(180deg,#fff,#f8fbff)}
+    .outcome strong{font-size:1.65rem;color:var(--green2);display:block;line-height:1}.outcome span{font-size:13.5px;color:var(--muted)}
+    section{margin-top:24px}.sectionHead{display:flex;justify-content:space-between;align-items:end;gap:16px;margin:0 0 16px;flex-wrap:wrap}
+    h2{font-size:clamp(1.6rem,3vw,2.25rem);line-height:1.15;margin:0;font-weight:900;letter-spacing:-.02em} .sectionHead p{margin:0;color:var(--muted);max-width:640px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px}.softCard{background:linear-gradient(180deg,#fff,#f8fbff)}
+    .grid{display:grid;gap:16px}.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+    .pill{display:inline-flex;align-items:center;gap:7px;background:#eef7ff;border:1px solid #d6eaff;color:var(--blue2);border-radius:999px;padding:7px 12px;font-size:13px;font-weight:800;margin:0 0 12px}
+    .bigPoint h3,.card h3{font-size:1.25rem;margin:0 0 8px}.card p{margin:0 0 10px;color:#4f5f76}.muted{color:var(--muted)}
+    .timeline{display:grid;gap:14px}.phase{display:grid;grid-template-columns:150px 1fr 1fr;gap:14px;align-items:stretch}.phase>div{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px}.phase .time{background:linear-gradient(135deg,var(--blue2),var(--purple));color:#fff}.phase .time b{display:block;font-size:1.35rem}.phase .time span{opacity:.88;font-size:13px}.phase ul{margin:0;padding-right:20px;color:#4d5c72}.phase li{margin:4px 0}
+    .valueMap{display:grid;gap:12px}.valueRow{display:grid;grid-template-columns:1fr 1.15fr 1.15fr 1fr;gap:0;overflow:hidden;border:1px solid var(--line);border-radius:20px;background:#fff}.valueRow>div{padding:16px;border-left:1px solid var(--line)}.valueRow>div:last-child{border-left:0}.valueRow.head{background:linear-gradient(135deg,var(--blue2),var(--green2));color:#fff;font-weight:900}.valueRow.head>div{border-color:rgba(255,255,255,.24)}.valueName{font-weight:900;color:var(--blue2)}
+    .aiFlow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.aiStep{position:relative;background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px;min-height:160px}.aiStep .num{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--green),var(--blue));color:#fff;font-weight:900;margin-bottom:12px}.aiStep h3{font-size:1rem}.aiStep p{font-size:14px;color:var(--muted)}
+    .vibe{background:linear-gradient(135deg,#101f3f,#143e6f 48%,#0b6b52);color:#fff;border-radius:32px;padding:30px;box-shadow:var(--shadow);overflow:hidden;position:relative}.vibe:before{content:"";position:absolute;left:-80px;bottom:-110px;width:260px;height:260px;border-radius:65px;background:rgba(255,255,255,.09);transform:rotate(20deg)}.vibe h2,.vibe h3,.vibe p{color:#fff}.vibe .grid{position:relative;z-index:1}.vibeCard{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:22px;padding:20px}.vibeCard p{opacity:.86}
+    .world{display:flex;gap:14px;align-items:flex-start}.world .icon{flex:none;width:46px;height:46px;border-radius:15px;display:grid;place-items:center;background:#edf7ff;font-size:22px}.world h3{margin-bottom:4px}.world p{font-size:14px;color:var(--muted)}
+    .teacherBox{display:grid;grid-template-columns:.85fr 1.15fr;gap:18px;align-items:stretch}.quote{background:#0f1f3f;color:#fff;border-radius:26px;padding:26px}.quote p{color:#fff;font-size:1.3rem;font-weight:800;margin:0}.quote small{display:block;opacity:.72;margin-top:14px;line-height:1.7}.checkList{list-style:none;margin:0;padding:0}.checkList li{position:relative;padding:11px 34px 11px 0;border-bottom:1px solid #edf1f7;color:#40506a}.checkList li:last-child{border-bottom:0}.checkList li:before{content:"✓";position:absolute;right:0;top:10px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:#e9fbf4;color:var(--green2);font-weight:900}
+    .evidence{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.evidence .card{min-height:230px}.tag{display:inline-flex;background:#f0f5ff;color:var(--blue2);border-radius:10px;padding:5px 9px;font-size:12px;font-weight:800;margin:0 0 8px}
+    .cta{margin-top:28px;background:linear-gradient(135deg,var(--green2),var(--blue2));color:#fff;border-radius:32px;padding:34px;box-shadow:var(--shadow);display:grid;grid-template-columns:1fr auto;gap:22px;align-items:center}.cta h2,.cta p{color:#fff}.cta p{opacity:.9;margin:10px 0 0}.btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border-radius:999px;background:#fff;color:var(--blue2);font-weight:900;padding:14px 22px;white-space:nowrap}
+    footer{text-align:center;color:var(--muted);font-size:13px;margin-top:28px}.printNote{font-size:12px;color:#77869a;margin-top:8px}
+    @media(max-width:980px){.heroGrid,.g2,.g3,.g4,.teacherBox,.evidence{grid-template-columns:1fr}.formula{grid-template-columns:1fr 1fr}.phase{grid-template-columns:1fr}.valueRow{grid-template-columns:1fr}.valueRow>div{border-left:0;border-bottom:1px solid var(--line)}.valueRow>div:last-child{border-bottom:0}.aiFlow{grid-template-columns:1fr 1fr}.cta{grid-template-columns:1fr}.nav{display:none}}
+    @media(max-width:620px){.wrap{padding:16px 12px 42px}.hero{padding:30px 20px;border-radius:26px}.formula,.outcomes,.aiFlow{grid-template-columns:1fr}.card{padding:20px}.vibe,.cta{padding:24px;border-radius:26px}h1{font-size:2.35rem}}
+    @media print{body{background:#fff}.nav,.btn{display:none}.card,.hero,.vibe,.cta{box-shadow:none}.wrap{max-width:none}.valueRow,.phase{break-inside:avoid}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="brand" href="/">
+        <img src="/images/brand/logo-haitech-transparent.webp" alt="דרך ההייטק" />
+        <span>דרך ההייטק · Tech School Proposal</span>
+      </a>
+      <nav class="nav" aria-label="ניווט במסמך">
+        <a href="#journey">מסע שנתי</a><a href="#values">ערכי ליבה</a><a href="#ai">AI</a><a href="#vibe">Vibe Coding</a><a href="#teacher">מורה</a><a href="#measurement">מדידה</a>
+      </nav>
+    </div>
+
+    <header class="hero">
+      <div class="heroGrid">
+        <div>
+          <div class="kicker">🎮 Minecraft · 🤖 AI · 🧭 craftOm · 🧑‍🏫 Teacher as Facilitator</div>
+          <h1>מסע שנתי שמתרגם את חזון Tech School להתנסות חיה</h1>
+          <p class="lead">התוכנית אינה מתחילה מהמוצר. היא מתחילה מהשאלה שטק סקול שואלת: עם מה תלמיד ומורה מתחילים את השנה, ועם מה הם מסיימים אותה בידע, מיומנויות וציר מנטלי. Minecraft הוא מרחב הבנייה, AI הוא שותף החשיבה, craftOm הוא שכבת הליווי והמדידה, והמורה מוביל את התהליך כמנחה.</p>
+          <div class="formula" aria-label="ארבעת רכיבי המודל">
+            <div><b>Minecraft</b><span>מרחב משחקי לבניית פתרונות, סימולציות ומערכות.</span></div>
+            <div><b>AI</b><span>שותף חשיבה לחקר, תכנון, בדיקה, שיפור ורפלקציה.</span></div>
+            <div><b>craftOm</b><span>זיכרון, התאמה אישית, דוחות ומדדי התקדמות.</span></div>
+            <div><b>המורה</b><span>מנחה שמפתח מסוגלות, שייכות וחשיבה טכנולוגית.</span></div>
+          </div>
+        </div>
+        <aside class="heroCard">
+          <h2>שורת התכלית</h2>
+          <p>בסוף השנה תלמיד Tech School לא יוצא רק עם חוויית Minecraft. הוא יוצא עם שפה טכנולוגית, ניסיון עבודה עם AI, תוצר שהוא בנה, יכולת להסביר פתרון, ניסיון בעבודת צוות ותחושת שייכות לעולם ההייטק.</p>
+          <div class="outcomes">
+            <div class="outcome"><strong>3</strong><span>צירי התפתחות: ידע, Skills, ציר מנטלי</span></div>
+            <div class="outcome"><strong>7</strong><span>עולמות אתגר מבוססי בעיות אמיתיות</span></div>
+            <div class="outcome"><strong>AI</strong><span>בכל שלב: חקר, תכנון, קוד, שיפור והצגה</span></div>
+            <div class="outcome"><strong>מורה</strong><span>מתפתח ממקור ידע למנחה טכנולוגי</span></div>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <section id="why" class="card softCard">
+      <div class="sectionHead">
+        <h2>מה למדנו מהפיילוט ומהשיחה עם Tech School</h2>
+        <p>האתגר אינו להציג עוד פלטפורמה. האתגר הוא להראות תהליך שנתי של שינוי אצל תלמידים ומורים.</p>
+      </div>
+      <div class="grid g3">
+        <div class="bigPoint"><span class="pill">01 · לא מוצר</span><h3>תהליך התפתחות</h3><p>התוכנית מתארת מסע שנתי: נקודת פתיחה, תרגול מדורג, תוצרים, רפלקציה, מדדים וסיום ברור.</p></div>
+        <div class="bigPoint"><span class="pill">02 · לא משחק בלבד</span><h3>הייטק דרך בנייה</h3><p>התלמידים לומדים לחשוב כמו צוות מוצר קטן: להבין בעיה, לתכנן, לבנות, לבדוק, לשפר ולהציג.</p></div>
+        <div class="bigPoint"><span class="pill">03 · לא מורה טכני</span><h3>מורה כמנחה</h3><p>המורה לא צריך להיות מומחה Minecraft. הוא מוביל שאלות, תהליך, עבודת צוות, אתיקה ורפלקציה.</p></div>
+      </div>
+    </section>
+
+    <section id="journey">
+      <div class="sectionHead">
+        <h2>המסע השנתי: מאוריינות והתנסות לתוצר וזהות</h2>
+        <p>כל שלב מחבר בין ידע טכנולוגי, מיומנויות המאה ה־21 וציר מנטלי של מסוגלות ושייכות.</p>
+      </div>
+      <div class="timeline">
+        <div class="phase">
+          <div class="time"><b>שלב 1</b><span>חודש 1 · כניסה בטוחה</span></div>
+          <div><h3>תלמידים</h3><ul><li>נכנסים לעולם Minecraft מוכר ומפחית חרדה.</li><li>לומדים לעבוד עם AI בצורה אחראית: לשאול, לבדוק, לא להעתיק.</li><li>בונים משימות קצרות שמייצרות הצלחות ראשונות.</li></ul></div>
+          <div><h3>מורים</h3><ul><li>מקבלים פרוטוקול הנחיה פשוט.</li><li>מתנסים בשאלות מנחות ובשימוש ב־AI להכנת שיעור.</li><li>מזהים פערי פתיחה בלי לתייג תלמידים.</li></ul></div>
+        </div>
+        <div class="phase">
+          <div class="time"><b>שלב 2</b><span>חודשים 2-3 · בניית מערכות</span></div>
+          <div><h3>תלמידים</h3><ul><li>עוברים ממשימות ביצוע לתכנון מערכות: קלט, תהליך, פלט.</li><li>משתמשים ב־AI לחקר, רעיונות, פסאודו־קוד ולוגיקת פתרון.</li><li>מתחילים לתעד החלטות ולשפר אחרי כישלון.</li></ul></div>
+          <div><h3>מורים</h3><ul><li>מנחים למידה מבוססת פרויקטים.</li><li>לומדים לבדל משימות לפי רמות.</li><li>משתמשים בדוחות craftOm כדי לתת פיגום ואתגר.</li></ul></div>
+        </div>
+        <div class="phase">
+          <div class="time"><b>שלב 3</b><span>חודשים 4-6 · צוותים ונבחרות</span></div>
+          <div><h3>תלמידים</h3><ul><li>עובדים בזוגות וצוותים עם תפקידים.</li><li>מתרגלים תקשורת, בקשת עזרה, חלוקת משאבים ופתרון קונפליקטים.</li><li>בונים פתרון לאתגר אמיתי: מים, אנרגיה, קיימות, חוסן או קהילה.</li></ul></div>
+          <div><h3>מורים</h3><ul><li>עוברים מניהול כיתה לניהול פרויקט.</li><li>מתווכים ערכים כמו הוגנות, אחריות ושייכות.</li><li>מובילים רפלקציה אישית וצוותית.</li></ul></div>
+        </div>
+        <div class="phase">
+          <div class="time"><b>שלב 4</b><span>חודשים 7-9 · תוצר, הצגה ואימפקט</span></div>
+          <div><h3>תלמידים</h3><ul><li>מפתחים תוצר מסכם או עולם אתגר משופר.</li><li>מכינים פיץ׳ בעזרת AI ומסבירים את ההחלטות שלהם.</li><li>יוצאים עם תיק עבודות: תכנון, תוצר, מדדים ורפלקציה.</li></ul></div>
+          <div><h3>מורים</h3><ul><li>מסכמים התפתחות תלמידים בידע, Skills וציר מנטלי.</li><li>משתפים תובנות בקהילת מורי Tech School.</li><li>יוצאים עם מודל הנחיה שניתן לשכפל בשנים הבאות.</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="values">
+      <div class="sectionHead">
+        <h2>כיסוי מלא לערכי הליבה של Tech School</h2>
+        <p>כל ערך מקבל ביטוי מעשי, תוצר לתלמיד, תוצר למורה וסימן מדידה.</p>
+      </div>
+      <div class="valueMap">
+        <div class="valueRow head"><div>ערך / מטרה</div><div>איך התוכנית מפתחת את זה</div><div>עם מה תלמיד יוצא</div><div>עם מה מורה יוצא</div></div>
+        <div class="valueRow"><div class="valueName">צמצום פערים דיגיטליים</div><div>Minecraft ככניסה נגישה, AI כפיגום אישי, רמות אתגר באותו מרחב.</div><div>חוויית הצלחה ראשונה בטכנולוגיה והבנה שהוא מסוגל ליצור.</div><div>כלי לשילוב תלמידים עם פערי פתיחה בלי להוריד רף.</div></div>
+        <div class="valueRow"><div class="valueName">חיבור לעולם ההייטק</div><div>עבודה כמו צוות מוצר: בעיה, חקר, אב־טיפוס, בדיקה, שיפור, פיץ׳.</div><div>שפה של פתרון בעיות, מערכות, דאטה, AI ותוצר טכנולוגי.</div><div>יכולת לחבר פעילות כיתתית לעולם עבודה אמיתי.</div></div>
+        <div class="valueRow"><div class="valueName">התנסות בטכנולוגיות מתקדמות</div><div>AI, אוטומציה, רדסטון/לוגיקה, סימולציה, נתונים ודוחות craftOm.</div><div>יכולת להשתמש ב־AI ככלי חשיבה ויצירה, לא כמכונת תשובות.</div><div>ביטחון לשלב AI בלמידה מבוססת פרויקטים.</div></div>
+        <div class="valueRow"><div class="valueName">מסוגלות עצמית</div><div>סולם אתגר: חוקר מתחיל → מתכנן → ממציא ומייעל.</div><div>“הצלחתי לבנות, להסביר ולשפר פתרון”.</div><div>ראיות להתקדמות, לא רק ציון או תוצר יפה.</div></div>
+        <div class="valueRow"><div class="valueName">שייכות</div><div>נבחרת, תפקידים, זהות קבוצתית, שגרירים ושיתופי פעולה בין בתי ספר.</div><div>תחושה שהוא חלק מקהילת Tech School ולא רק ממשתתף בשיעור.</div><div>דרך לבנות קבוצה מגובשת סביב חדשנות וטכנולוגיה.</div></div>
+        <div class="valueRow"><div class="valueName">פתרון בעיות</div><div>כל עולם מתחיל מבעיה אמיתית: מים, אנרגיה, פסולת, חוסן, קהילה.</div><div>יכולת לפרק בעיה, לבחור פתרון, לבדוק ולשפר.</div><div>מתודולוגיה להנחות חשיבה, לא לתת הוראות בלבד.</div></div>
+        <div class="valueRow"><div class="valueName">יצירתיות ויוזמה</div><div>בעיות פתוחות, Vibe Coding, תכנון פתרון, ניסוי והצגת רעיון.</div><div>אומץ להציע רעיון מקורי ולהפוך אותו למודל עובד.</div><div>כלים לעודד שונות בין פתרונות ו־Ownership של תלמידים.</div></div>
+        <div class="valueRow"><div class="valueName">עבודת צוות ותקשורת</div><div>זוגות, צוותים, תפקידים, קהילה במשבר, משא ומתן ושיתוף משאבים.</div><div>ניסיון בבקשת עזרה, מתן עזרה, תיאום ופתרון קונפליקטים.</div><div>שפה וכלים להנחות ולמדוד עבודת צוות בפועל.</div></div>
+        <div class="valueRow"><div class="valueName">Growth Mindset</div><div>מדידה, כישלון בטוח, שיפור, סבבי Iteration ורפלקציה.</div><div>הבנה שכישלון הוא חלק מתהליך הנדסי ולא סוף הדרך.</div><div>פרקטיקות רפלקציה: מה ניסינו, מה למדנו, מה נשפר.</div></div>
+        <div class="valueRow"><div class="valueName">מורה כמנחה</div><div>פרוטוקול מורה: שואל, מכוון, מתווך, מחבר לערכים ולרפלקציה.</div><div>יותר עצמאות, אחריות ולמידה פעילה.</div><div>זהות מקצועית כמנחה טכנולוגי, גם בלי להיות “איש הייטק”.</div></div>
+      </div>
+    </section>
+
+    <section id="ai">
+      <div class="sectionHead">
+        <h2>AI כציר מרכזי: תלמידים ומורים עובדים עם AI לאורך כל השנה</h2>
+        <p>ה־AI אינו קישוט. הוא שותף חשיבה שמפתח אוריינות AI, חשיבה ביקורתית, תכנון, שיפור ואתיקה.</p>
+      </div>
+      <div class="aiFlow">
+        <div class="aiStep"><div class="num">1</div><h3>שואלים וחוקרים</h3><p>התלמידים לומדים לנסח שאלות טובות, להבין בעיה, למצוא מידע ולבדוק תשובות.</p></div>
+        <div class="aiStep"><div class="num">2</div><h3>מתכננים פתרון</h3><p>AI עוזר לפרק בעיה למשימות, להציע חלופות ולבנות תוכנית לפני שנכנסים לבנייה.</p></div>
+        <div class="aiStep"><div class="num">3</div><h3>בונים ומקודדים</h3><p>התלמידים מתרגמים רעיון ללוגיקה, פקודות, רדסטון, פסאודו־קוד או מבנה עולם.</p></div>
+        <div class="aiStep"><div class="num">4</div><h3>בודקים ומשפרים</h3><p>התלמידים מודדים אם הפתרון עובד, שואלים את AI מה לבדוק, ומשפרים בסבבים.</p></div>
+        <div class="aiStep"><div class="num">5</div><h3>מסבירים ומציגים</h3><p>AI עוזר להכין פיץ׳, רפלקציה ותיק עבודות, אבל ההחלטות וההסבר נשארים של התלמיד.</p></div>
+      </div>
+      <div class="grid g2" style="margin-top:16px">
+        <div class="card"><span class="pill">תלמידים</span><h3>עם מה יוצאים בתחום AI</h3><ul class="checkList"><li>יודעים להשתמש ב־AI ככלי חשיבה, לא כקיצור דרך.</li><li>יודעים לנסח פרומפט, לבדוק תשובה ולהשוות חלופות.</li><li>מבינים פרטיות, הטיות, אחריות ושימוש אתי.</li><li>יודעים להשתמש ב־AI לתכנון, קוד, שיפור והצגה.</li></ul></div>
+        <div class="card"><span class="pill">מורים</span><h3>עם מה יוצאים בתחום AI</h3><ul class="checkList"><li>ביטחון להנחות תלמידים בעבודה עם AI.</li><li>יכולת להכין משימות, שאלות ורפלקציות בעזרת AI.</li><li>שפה מקצועית סביב AI, אתיקה, פרומפטינג ומדידה.</li><li>יכולת לבדל משימות לפי רמת תלמיד וקבוצה.</li></ul></div>
+      </div>
+    </section>
+
+    <section id="vibe" class="vibe">
+      <div class="sectionHead">
+        <h2>Vibe Coding בתוך Minecraft</h2>
+        <p>דרך טבעית להכניס תלמידים לעולם הקוד: מתחילים מרעיון בשפה חופשית, עוברים לתכנון עם AI, ואז מיישמים בתוך Minecraft.</p>
+      </div>
+      <div class="grid g4">
+        <div class="vibeCard"><h3>1 · רעיון</h3><p>“אני רוצה עיר שיודעת לחסוך מים” או “מערכת שמדליקה אזעקה כשיש שיטפון”. התלמיד מתחיל מצורך, לא מתחביר.</p></div>
+        <div class="vibeCard"><h3>2 · שיחה עם AI</h3><p>התלמיד מבקש מה־AI לפרק את הרעיון: אילו רכיבים צריך, איזה קלט, איזה תהליך, איזה פלט.</p></div>
+        <div class="vibeCard"><h3>3 · לוגיקה וקוד</h3><p>מתרגמים יחד לפסאודו־קוד, פקודות, MakeCode/Code Builder, רדסטון או כללי עולם.</p></div>
+        <div class="vibeCard"><h3>4 · בנייה ושיפור</h3><p>בונים במיינקראפט, בודקים אם זה עובד, משפרים את הפרומפט, את הלוגיקה ואת המערכת.</p></div>
+      </div>
+      <p style="margin-top:18px;position:relative;z-index:1">המטרה אינה שהתלמיד “יקבל קוד מוכן”, אלא שילמד לחשוב עם AI: לתאר כוונה, לבדוק היגיון, לזהות טעויות, לשפר פתרון ולהבין את הקשר בין רעיון, אלגוריתם ותוצר.</p>
+    </section>
+
+    <section id="worlds">
+      <div class="sectionHead">
+        <h2>בנק עולמות אתגר: בעיות אמיתיות, תוצרים מדידים</h2>
+        <p>כל עולם בנוי בשלוש רמות אתגר ובכמה מצבי עבודה: יחיד, זוג, צוות ונבחרות.</p>
+      </div>
+      <div class="grid g2">
+        <div class="card world"><div class="icon">🌱</div><div><h3>עיר הקיימות</h3><p>תכנון עיר שמאזנת אנרגיה, מים, תחבורה וגידול מזון. מדד: מאזן משאבים וחיבור מערכות.</p></div></div>
+        <div class="card world"><div class="icon">⚡</div><div><h3>עולם האנרגיה</h3><p>רשת חשמל, אגירה ותעדוף צרכנים. מדד: אספקה רציפה ואפס נפילות לצרכנים קריטיים.</p></div></div>
+        <div class="card world"><div class="icon">💧</div><div><h3>עולם המים</h3><p>סינון, השקיה חכמה והתמודדות עם שיטפון. מדד: אפס בזבוז והגנה על העיר.</p></div></div>
+        <div class="card world"><div class="icon">🌾</div><div><h3>חקלאות חכמה</h3><p>חוות אוטומטיות, תפוקה ומשאבים. מדד: אוכלוסייה מוזנת ויחס תפוקה־משאב משתפר.</p></div></div>
+        <div class="card world"><div class="icon">♻️</div><div><h3>מיחזור וכלכלה מעגלית</h3><p>מיון פסולת והחזרת חומרים לייצור. מדד: אחוז פסולת שחזרה לשרשרת.</p></div></div>
+        <div class="card world"><div class="icon">🛡️</div><div><h3>חוסן אקלימי</h3><p>יישוב שמתמודד עם סופות וגלי חום. מדד: זמן תגובה ואחוז תושבים מוגנים.</p></div></div>
+        <div class="card world"><div class="icon">🤝</div><div><h3>כפר הסיוע ההדדי</h3><p>עולם חברתי של משאבים, אמפתיה וקונפליקטים. מדד: הישרדות הקבוצה והוגנות חלוקה.</p></div></div>
+        <div class="card world"><div class="icon">🚀</div><div><h3>עולם היזמות והפיץ׳</h3><p>הפיכת הפתרון למיזם: קהל יעד, ערך, סיפור, הצגה ושיפור לפי משוב.</p></div></div>
+      </div>
+    </section>
+
+    <section id="teacher">
+      <div class="sectionHead">
+        <h2>מסע המורה: ממומחה ידע למנחה טכנולוגי</h2>
+        <p>התוכנית נותנת למורה תפקיד ברור ובטוח, גם אם הוא לא איש פיתוח או מומחה Minecraft.</p>
+      </div>
+      <div class="teacherBox">
+        <div class="quote"><p>המורה לא צריך לדעת את כל התשובות. הוא צריך לדעת להחזיק תהליך: לשאול, לכוון, לתווך, לחבר לערכים ולייצר רפלקציה.</p><small>זה בדיוק המעבר שטק סקול מסמנת: from expert to facilitator.</small></div>
+        <div class="card"><h3>מה המורה מקבל לאורך השנה</h3><ul class="checkList"><li>מערכי פתיחה לכל עולם ואתגר.</li><li>בנק שאלות מנחות לפי רמות תלמידים.</li><li>פרוטוקול כניסה למשחק והנחיה בזמן אמת.</li><li>כלי AI להכנת שיעור, התאמות ורפלקציה.</li><li>דוחות craftOm שמראים התקדמות ולא רק תוצר סופי.</li><li>שפה קהילתית לשיתוף עם מורי Tech School אחרים.</li></ul></div>
+      </div>
+    </section>
+
+    <section id="measurement">
+      <div class="sectionHead">
+        <h2>מדידה: מה רואים בסוף שנה</h2>
+        <p>המדידה מחברת בין תוצר, תהליך והתפתחות אישית. כך אפשר לענות באופן ברור: מה האימפקט על תלמיד ומורה?</p>
+      </div>
+      <div class="evidence">
+        <div class="card"><span class="tag">ידע</span><h3>מה התלמיד יודע</h3><p>מושגי AI בסיסיים, חשיבה מערכתית, קלט־תהליך־פלט, לוגיקה, אוטומציה, תכנון פתרון, בדיקת חלופות והצגת תוצר.</p></div>
+        <div class="card"><span class="tag">Skills</span><h3>מה התלמיד יודע לעשות</h3><p>לשאול AI נכון, לעבוד בצוות, לתעד החלטות, לבנות אב־טיפוס, לבדוק אם עובד, לשפר אחרי כישלון ולהציג פיץ׳.</p></div>
+        <div class="card"><span class="tag">ציר מנטלי</span><h3>איך התלמיד תופס את עצמו</h3><p>מסוגלות, שייכות לעולם טכנולוגי, Ownership על תוצר, Growth Mindset ואמונה שיש לו מקום בעולם ההייטק.</p></div>
+        <div class="card"><span class="tag">מורה</span><h3>מה המורה יודע לעשות</h3><p>להנחות פרויקט טכנולוגי, לשלב AI, לתווך עבודת צוות, להוביל רפלקציה, לבדל משימות ולקרוא דוחות התקדמות.</p></div>
+        <div class="card"><span class="tag">בית ספר</span><h3>מה הארגון מקבל</h3><p>מודל לשכפול, תוצרים להצגה, שפה של חדשנות, חיבור לקהילת מורים ותהליך שמתאים לנבחרות שונות.</p></div>
+        <div class="card"><span class="tag">Tech School</span><h3>מה התוכנית מקבלת</h3><p>ראיות לערכי הליבה: צמצום פערים, שייכות, מסוגלות, עבודת צוות, יצירתיות, יוזמה והתנסות בטכנולוגיה מתקדמת.</p></div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div><h2>השאלה שהעמוד הזה עונה עליה</h2><p>לא “מה הכלי יודע לעשות?”, אלא “איך תלמיד ומורה משתנים לאורך שנה שלמה, ואיך Minecraft, AI ו־craftOm עוזרים לנו לראות את זה קורה?”.</p></div>
+      <a class="btn" href="mailto:info@hai.tech?subject=Tech%20School%20Minecraft%20AI%20Journey">לשיחה על המודל</a>
+    </section>
+
+    <footer>
+      craftOm × Minecraft × AI · דרך ההייטק · הצעת מודל פדגוגי עבור Tech School
+      <div class="printNote">עמוד עבודה להצגה ולדיון. לא לאינדוקס ציבורי.</div>
+    </footer>
+  </div>
+</body>
+</html>
