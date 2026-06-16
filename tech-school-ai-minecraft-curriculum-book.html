@@ -22,8 +22,10 @@
     .chapter{background:#fff;border:1px solid var(--line);border-radius:32px;box-shadow:var(--shadow);overflow:hidden}.chapter + .chapter{margin-top:22px}.chapterHead{display:grid;grid-template-columns:88px 1fr;gap:0;background:linear-gradient(135deg,#f5fbff,#effbf5);border-bottom:1px solid var(--line)}.chNum{display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--blue2),var(--green2));font-size:2rem;font-weight:900}.chTitle{padding:22px 24px}.chTitle h2{font-size:1.75rem;margin-bottom:8px}.chTitle p{margin:0;color:var(--muted)}.chapterBody{padding:24px}.chapterGrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.block{border:1px solid #e2ebf4;background:#fbfdff;border-radius:20px;padding:18px}.block h4{margin:0 0 8px;color:var(--blue2);font-size:1.05rem}.block ul,.block ol{margin:0;padding-right:21px;color:#405069}.block li{margin:6px 0}.lessonPlan{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-top:16px}.lessonPlan div{background:#f4f9ff;border:1px solid #dcecff;border-radius:16px;padding:12px;font-size:13.5px;color:#40516a}.lessonPlan b{display:block;color:var(--blue2);margin-bottom:4px}.outcomeGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}.outcome{border-radius:22px;padding:18px;border:1px solid var(--line)}.outcome.student{background:linear-gradient(180deg,#f8fbff,#eef7ff)}.outcome.teacher{background:linear-gradient(180deg,#fbfffd,#eefbf4)}.outcome h4{font-size:1.1rem;margin:0 0 8px}.outcome ul{margin:0;padding-right:21px}.outcome li{margin:6px 0;color:#405069}.metricRow{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}.metric{background:#eefbf5;border:1px solid #c9f0df;color:var(--green2);border-radius:14px;padding:10px;font-size:13px;font-weight:900}.prompt{margin-top:14px;background:#f8fbff;border:1px dashed #b9cbe0;border-radius:18px;padding:14px;color:#3f5068}.prompt b{color:var(--purple)}
     .bookTable{width:100%;border-collapse:collapse;border-radius:20px;overflow:hidden;background:#fff;box-shadow:var(--shadow);border:1px solid var(--line)}.bookTable th,.bookTable td{padding:14px 16px;text-align:right;border-bottom:1px solid var(--line);vertical-align:top}.bookTable th{background:linear-gradient(135deg,var(--blue2),var(--green2));color:#fff}.bookTable tr:nth-child(even) td{background:#fbfdff}.bookTable td:first-child{font-weight:900;color:var(--blue2)}
     .callout{background:linear-gradient(135deg,#102346,#123d70 54%,#0d7554);color:#fff;border-radius:28px;padding:28px;box-shadow:var(--shadow)}.callout h2,.callout p{color:#fff}.callout p{opacity:.92}.cta{margin-top:28px;background:linear-gradient(135deg,var(--green2),var(--blue2));color:#fff;border-radius:32px;padding:34px;box-shadow:var(--shadow)}.cta h2,.cta p{color:#fff}.cta p{opacity:.9;font-size:1.08rem}footer{text-align:center;color:var(--muted);font-size:13px;margin-top:28px}
-    @media(max-width:980px){.heroGrid,.g2,.g3,.g4,.toc,.chapterGrid,.outcomeGrid{grid-template-columns:1fr}.lessonPlan,.metricRow{grid-template-columns:1fr 1fr}.nav{display:none}.bookTable{font-size:14px}}@media(max-width:620px){.wrap{padding:16px 12px 44px}.hero{padding:30px 20px;border-radius:26px}.chapterHead{grid-template-columns:1fr}.chNum{min-height:70px}.lessonPlan,.metricRow{grid-template-columns:1fr}.chapterBody,.card{padding:20px}h1{font-size:2.35rem}}
-    @media print{body{background:#fff}.nav{display:none}.card,.chapter,.hero,.cta,.callout{box-shadow:none}.wrap{max-width:none}.chapter{break-inside:avoid}.chapter + .chapter{page-break-before:auto}}
+    .bookletControls{position:sticky;top:12px;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(255,255,255,.88);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:22px;padding:10px 12px;margin:0 0 18px;box-shadow:0 14px 34px rgba(17,33,64,.10)}.bookletControls .pager{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.bookletControls button{border:0;border-radius:999px;padding:10px 15px;font-family:inherit;font-weight:900;cursor:pointer;background:linear-gradient(135deg,var(--blue2),var(--green2));color:#fff;box-shadow:0 8px 18px rgba(11,75,168,.16)}.bookletControls button.secondary{background:#f4f8fc;color:#22344d;border:1px solid var(--line);box-shadow:none}.bookletControls button:disabled{opacity:.42;cursor:not-allowed}.bookletCounter{font-weight:900;color:var(--blue2);white-space:nowrap}.bookletProgress{height:8px;flex:1;min-width:120px;background:#e8f0f8;border-radius:999px;overflow:hidden}.bookletProgress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--green));border-radius:999px;transition:width .25s ease}.bookletHint{font-size:12px;color:var(--muted);font-weight:700}.booklet-mode .booklet-page{display:none;animation:pageIn .22s ease}.booklet-mode .booklet-page.active{display:block;min-height:calc(100vh - 190px)}.booklet-mode .booklet-page.active.card,.booklet-mode .booklet-page.active.hero,.booklet-mode .booklet-page.active.callout,.booklet-mode .booklet-page.active.cta,.booklet-mode .booklet-page.active.chapter,.booklet-mode .booklet-page.active#chapters{position:relative}.booklet-mode .booklet-page.active:before{content:"עמוד " attr(data-page-number);position:absolute;top:14px;left:18px;background:#eef7ff;color:var(--blue2);border:1px solid #d4e9ff;border-radius:999px;padding:4px 10px;font-size:12px;font-weight:900}.booklet-mode .booklet-page.active footer:before{display:none}@keyframes pageIn{from{opacity:0;transform:translateY(8px) scale(.995)}to{opacity:1;transform:none}}
+
+    @media(max-width:980px){.heroGrid,.g2,.g3,.g4,.toc,.chapterGrid,.outcomeGrid{grid-template-columns:1fr}.lessonPlan,.metricRow{grid-template-columns:1fr 1fr}.nav{display:none}.bookTable{font-size:14px}.bookletControls{position:static}.bookletHint{display:none}}@media(max-width:620px){.wrap{padding:16px 12px 44px}.hero{padding:30px 20px;border-radius:26px}.chapterHead{grid-template-columns:1fr}.chNum{min-height:70px}.lessonPlan,.metricRow{grid-template-columns:1fr}.chapterBody,.card{padding:20px}h1{font-size:2.35rem}.bookletControls{align-items:stretch;flex-direction:column}.bookletControls .pager{justify-content:space-between}.bookletControls button{flex:1}}
+    @media print{body{background:#fff}.nav,.bookletControls{display:none}.booklet-mode .booklet-page{display:block!important}.card,.chapter,.hero,.cta,.callout{box-shadow:none}.wrap{max-width:none}.chapter{break-inside:avoid}.chapter + .chapter{page-break-before:auto}}
   </style>
 </head>
 <body>
@@ -31,6 +33,12 @@
     <div class="topbar">
       <a class="brand" href="/"><img src="/images/brand/logo-haitech-transparent.webp" alt="דרך ההייטק" /><span>דרך ההייטק · Tech School Curriculum Booklet</span></a>
       <nav class="nav"><a href="#vision">חזון</a><a href="#toc">תוכן עניינים</a><a href="#year-plan">32 שבועות</a><a href="#weekly-engine">מנגנון שבועי</a><a href="#growth">קידום הילדים</a><a href="#values">ערכים</a><a href="#minecraft">למה Minecraft</a><a href="#craftom">craftOm</a><a href="#home-events">אירועי בית</a><a href="#scale70">70 נבחרות</a><a href="#chapters">אתגרים</a></nav>
+    </div>
+
+    <div class="bookletControls" aria-label="ניווט חוברת">
+      <div class="pager"><button id="bookPrev" type="button">‹ הקודם</button><button id="bookNext" type="button">הבא ›</button><button id="bookAll" class="secondary" type="button">תצוגה רציפה</button></div>
+      <div class="bookletProgress" aria-hidden="true"><span id="bookProgress"></span></div>
+      <div><div id="bookCounter" class="bookletCounter">עמוד 1</div><div class="bookletHint">אפשר לדפדף גם עם החצים במקלדת</div></div>
     </div>
 
     <header class="hero">
@@ -316,5 +324,44 @@
 
     <footer>Tech School × Minecraft × AI · חוברת לימודית מוצעת · דרך ההייטק / craftOm · noindex</footer>
   </div>
+
+  <script>
+    (function(){
+      const body=document.body;
+      const pages=[...document.querySelectorAll('.wrap > header, .wrap > section, .wrap > footer')];
+      const prev=document.getElementById('bookPrev');
+      const next=document.getElementById('bookNext');
+      const all=document.getElementById('bookAll');
+      const counter=document.getElementById('bookCounter');
+      const progress=document.getElementById('bookProgress');
+      let index=0;
+      let booklet=true;
+      pages.forEach((page,i)=>{page.classList.add('booklet-page');page.dataset.pageNumber=String(i+1);});
+      function titleOf(page){const h=page.querySelector('h1,h2');return h?h.textContent.trim():'סיום';}
+      function render(){
+        body.classList.toggle('booklet-mode',booklet);
+        pages.forEach((page,i)=>page.classList.toggle('active',!booklet||i===index));
+        if(booklet){
+          prev.disabled=index===0; next.disabled=index===pages.length-1;
+          counter.textContent=`עמוד ${index+1} מתוך ${pages.length} · ${titleOf(pages[index])}`;
+          progress.style.width=`${((index+1)/pages.length)*100}%`;
+          all.textContent='תצוגה רציפה';
+        }else{
+          prev.disabled=true; next.disabled=true; counter.textContent='תצוגה רציפה'; progress.style.width='100%'; all.textContent='חזרה לחוברת';
+        }
+      }
+      function go(to){if(!booklet)return; index=Math.max(0,Math.min(pages.length-1,to)); render(); window.scrollTo({top:0,behavior:'smooth'});}
+      prev.addEventListener('click',()=>go(index-1));
+      next.addEventListener('click',()=>go(index+1));
+      all.addEventListener('click',()=>{booklet=!booklet; render(); window.scrollTo({top:0,behavior:'smooth'});});
+      document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')go(index+1); if(e.key==='ArrowRight')go(index-1);});
+      document.querySelectorAll('.nav a,.toc a').forEach(a=>a.addEventListener('click',e=>{
+        const target=document.querySelector(a.getAttribute('href'));
+        const pageIndex=pages.findIndex(page=>page===target||page.contains(target));
+        if(pageIndex>=0){e.preventDefault(); index=pageIndex; booklet=true; render(); window.scrollTo({top:0,behavior:'smooth'});}
+      }));
+      render();
+    })();
+  </script>
 </body>
 </html>
