@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tech School Minecraft Esports League | וריאציה לתוכנית</title>
+  <meta name="description" content="וריאציה לתוכנית Tech School: ליגת Minecraft Esports חינוכית בהשראת NASEF ו-Minecraft Education, עם AI, עבודת צוות, מדידה, תפקידים וראיות למידה." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#111827; --muted:#64748b; --bg:#f7f8ff; --card:#ffffff; --line:#dbe3f0;
+      --blue:#2563eb; --purple:#7c3aed; --pink:#ec4899; --green:#10b981; --orange:#f97316; --dark:#0f172a;
+      --shadow:0 22px 70px rgba(15,23,42,.12); --radius:28px;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:Heebo,system-ui,sans-serif;background:radial-gradient(circle at top right,#e0e7ff,transparent 35%),radial-gradient(circle at top left,#fce7f3,transparent 32%),var(--bg);color:var(--ink);line-height:1.55}
+    a{color:inherit}.wrap{width:min(1160px,92vw);margin:auto}.hero{padding:44px 0 30px}.topbar{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:26px}.brand{display:flex;align-items:center;gap:12px;font-weight:900}.logo{width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,var(--blue),var(--purple),var(--pink));display:grid;place-items:center;color:white;box-shadow:var(--shadow)}.pill{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.7);font-weight:800;color:#334155;font-size:.92rem}.heroGrid{display:grid;grid-template-columns:1.08fr .92fr;gap:26px;align-items:stretch}.panel{background:rgba(255,255,255,.82);backdrop-filter:blur(18px);border:1px solid rgba(219,227,240,.9);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px}.kicker{color:var(--purple);font-weight:900;letter-spacing:.03em}.h1{font-family:Poppins,Heebo,sans-serif;font-size:clamp(2.4rem,6vw,5.6rem);line-height:.96;margin:10px 0 18px;letter-spacing:-.05em}.lead{font-size:1.25rem;color:#334155;margin:0 0 18px}.heroStats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}.stat{background:#f8fafc;border:1px solid var(--line);border-radius:20px;padding:16px}.stat b{display:block;font-size:1.7rem;color:var(--blue);font-family:Poppins}.stat span{color:var(--muted);font-weight:700;font-size:.95rem}.arena{min-height:460px;background:linear-gradient(145deg,#0f172a,#1e1b4b 55%,#581c87);color:white;position:relative;overflow:hidden}.arena:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,transparent,black 18%,black 82%,transparent)}.arena>*{position:relative}.scoreboard{display:grid;gap:12px;margin-top:24px}.score{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border:1px solid rgba(255,255,255,.18);border-radius:18px;background:rgba(255,255,255,.09)}.score strong{font-size:1.05rem}.tag{padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.16);font-weight:800}.nav{position:sticky;top:0;z-index:20;background:rgba(247,248,255,.85);backdrop-filter:blur(16px);border-block:1px solid var(--line)}.nav .wrap{display:flex;gap:10px;overflow:auto;padding:12px 0}.nav a{white-space:nowrap;text-decoration:none;border:1px solid var(--line);background:white;border-radius:999px;padding:8px 13px;font-weight:800;color:#334155}.section{padding:34px 0}.sectionHead{margin-bottom:18px}.sectionHead h2{font-size:clamp(1.8rem,3.5vw,3rem);line-height:1.05;margin:0 0 8px;letter-spacing:-.03em}.sectionHead p{margin:0;color:var(--muted);font-size:1.12rem}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.grid.two{grid-template-columns:repeat(2,1fr)}.card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:22px;box-shadow:0 10px 32px rgba(15,23,42,.07)}.card h3{margin:0 0 8px;font-size:1.25rem}.card p{margin:0;color:#475569}.icon{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:#eef2ff;margin-bottom:12px;font-size:1.35rem}.highlight{background:linear-gradient(135deg,#111827,#312e81);color:white;border-radius:30px;padding:28px;box-shadow:var(--shadow)}.highlight h2,.highlight h3{color:white}.highlight p,.highlight li{color:#dbeafe}.league{display:grid;grid-template-columns:1fr 1fr;gap:18px}.week{display:grid;grid-template-columns:90px 1fr;gap:14px;align-items:start;background:white;border:1px solid var(--line);border-radius:22px;padding:16px}.week b{background:#eff6ff;color:#1d4ed8;border-radius:16px;text-align:center;padding:10px;font-family:Poppins}.week h3{margin:0 0 4px}.week p{margin:0;color:#64748b}.roles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.role{background:white;border:1px solid var(--line);border-radius:22px;padding:18px}.role strong{display:block;margin-bottom:6px;color:#1e293b}.role span{color:#64748b}.table{overflow:hidden;border:1px solid var(--line);border-radius:24px;background:white}.row{display:grid;grid-template-columns:1fr 1.25fr 1.25fr}.row>div{padding:16px;border-bottom:1px solid var(--line)}.row.head{font-weight:900;background:#f1f5f9}.row:last-child>div{border-bottom:0}.sourceList{display:grid;gap:10px}.source{border:1px solid var(--line);border-radius:18px;background:white;padding:14px 16px;color:#475569}.cta{padding:36px 0 60px}.ctaBox{background:linear-gradient(135deg,#ec4899,#7c3aed,#2563eb);color:white;border-radius:34px;padding:34px;display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:center;box-shadow:var(--shadow)}.ctaBox h2{margin:0 0 8px;font-size:2.4rem;line-height:1}.ctaBox p{margin:0;color:#fce7f3;font-size:1.12rem}.button{display:inline-flex;justify-content:center;text-decoration:none;background:white;color:#312e81;border-radius:999px;padding:13px 18px;font-weight:900;margin:6px}.button.ghost{background:rgba(255,255,255,.14);color:white;border:1px solid rgba(255,255,255,.4)}
+    @media(max-width:900px){.heroGrid,.grid,.grid.two,.league,.ctaBox{grid-template-columns:1fr}.roles{grid-template-columns:repeat(2,1fr)}.heroStats{grid-template-columns:1fr}.row{grid-template-columns:1fr}.row.head{display:none}.row>div{border-bottom:0}.row{border-bottom:1px solid var(--line)}.arena{min-height:auto}.topbar{align-items:flex-start;flex-direction:column}.panel{padding:22px}.week{grid-template-columns:1fr}.h1{font-size:3rem}}
+    @media print{.nav{display:none}body{background:white}.panel,.card,.highlight,.ctaBox{box-shadow:none;break-inside:avoid}.section{padding:18px 0}}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="topbar">
+        <div class="brand"><div class="logo">🎮</div><div>Tech School<br><span style="color:#64748b;font-weight:700">Minecraft Esports Variation</span></div></div>
+        <div class="pill">וריאציה ליד החוברת הראשית · השראה מ־NASEF ו־Minecraft Education</div>
+      </div>
+      <div class="heroGrid">
+        <section class="panel">
+          <div class="kicker">תוכנית חלופית / שכבת הרחבה</div>
+          <h1 class="h1">ליגת Minecraft Esports חינוכית</h1>
+          <p class="lead">במקום להציג Minecraft רק כסביבת בנייה, מציגים אותו כליגה חינוכית: נבחרות, אתגרים, תפקידים, אימון, מדידה, שידור, דאטה ופיץ׳. האנרגיה היא תחרותית — אבל המטרה היא למידה.</p>
+          <div class="heroStats">
+            <div class="stat"><b>32</b><span>שבועות עונה</span></div>
+            <div class="stat"><b>70</b><span>נבחרות במקביל</span></div>
+            <div class="stat"><b>AI</b><span>מאמן + מדידה</span></div>
+          </div>
+        </section>
+        <aside class="panel arena">
+          <div class="pill" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);color:white">Live League Board</div>
+          <h2 style="font-size:2.15rem;line-height:1.05;margin:22px 0 8px">לא רק “מי ניצח” — אלא מי תכנן, שיתף פעולה, בדק ושיפר.</h2>
+          <p style="color:#c7d2fe;margin:0">craftOm מציג תמונת מצב: פעילות, תפקידים, משימות, חסמים, שיפור בין גרסאות, וראיות למיומנויות.</p>
+          <div class="scoreboard">
+            <div class="score"><strong>נבחרת הצפון</strong><span class="tag">שיפור +18%</span></div>
+            <div class="score"><strong>נבחרת המדבר</strong><span class="tag">QA מלא</span></div>
+            <div class="score"><strong>נבחרת העיר החכמה</strong><span class="tag">פיץ׳ מוכן</span></div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav"><div class="wrap"><a href="#inspiration">השראה</a><a href="#model">מודל הליגה</a><a href="#roles">תפקידים</a><a href="#season">מבנה עונה</a><a href="#challenges">אתגרים</a><a href="#measurement">מדידה</a><a href="#teachers">מורים</a><a href="#craftom">craftOm</a><a href="#sources">מקורות השראה</a></div></nav>
+
+  <main>
+    <section id="inspiration" class="section"><div class="wrap">
+      <div class="sectionHead"><h2>מה לקחנו מתוכניות Minecraft Esports בעולם</h2><p>הכיוון בעולם ברור: Esports בבית ספר לא נמדד רק במשחק. הוא הופך לכלי לפיתוח STEM, SEL, תקשורת, מנהיגות, קריירה וטכנולוגיה.</p></div>
+      <div class="grid">
+        <div class="card"><div class="icon">🌱</div><h3>Interest-Based Learning</h3><p>כמו NASEF: מתחילים מהעניין הטבעי של תלמידים במשחקים, ומשם מחברים לתוכן, מיומנויות ותוצרים.</p></div>
+        <div class="card"><div class="icon">🧭</div><h3>School-to-Career Pipeline</h3><p>כמו Minecraft Esports Teacher Academy: הליגה מחברת בין משחק לבין מקצועות עתיד — פיתוח, דאטה, עיצוב, הפקה, אימון ושיווק.</p></div>
+        <div class="card"><div class="icon">🏟️</div><h3>Playbook + Rubrics</h3><p>כמו Minecraft Education: לא “תחרות חופשית”, אלא אתגרים עם מחוונים, כללי משחק, תשתית, בטיחות ותוצרים ברורים.</p></div>
+      </div>
+    </div></section>
+
+    <section id="model" class="section"><div class="wrap highlight">
+      <div class="sectionHead"><h2>הרעיון המרכזי: ליגה חינוכית, לא טורניר גיימינג</h2><p>בכל מחזור יש אתגר Minecraft, אבל הניקוד מחולק בין ביצוע במשחק, תכנון, עבודת צוות, שימוש ב־AI, איכות התוצר, שיפור, הצגה ותרומה לקהילה.</p></div>
+      <div class="grid">
+        <div><h3>לפני המשחק</h3><p>הצוות מקבל בריף, חוקר בעיה, מגדיר תפקידים, כותב Prompt, מתכנן MVP ומגדיר מדד הצלחה.</p></div>
+        <div><h3>בזמן המשחק</h3><p>הצוות בונה, מתנסה, מתעד, מקבל משוב מ־craftOm, פותר חסמים ומנהל משאבים/זמן כמו צוות מוצר.</p></div>
+        <div><h3>אחרי המשחק</h3><p>הצוות מציג דמו, מסביר החלטות, מנתח מדדים, מקבל ניקוד מיומנויות ומגדיר שיפור לסיבוב הבא.</p></div>
+      </div>
+    </div></section>
+
+    <section id="roles" class="section"><div class="wrap">
+      <div class="sectionHead"><h2>כל תלמיד מוצא תפקיד — לא כולם חייבים להיות “הגיימר הכי טוב”</h2><p>זו נקודה חזקה מאוד ללקוח: Esports חינוכי מאפשר השתתפות רחבה, כולל ילדים שלא רואים עצמם מצטיינים במשחק.</p></div>
+      <div class="roles">
+        <div class="role"><strong>Builder</strong><span>בונה את העולם, המבנים והמערכות.</span></div>
+        <div class="role"><strong>Strategist</strong><span>מתכנן מהלך, משאבים, חלוקת משימות.</span></div>
+        <div class="role"><strong>AI Prompt Lead</strong><span>מנסח שאלות ל־AI והופך תשובות לפעולות.</span></div>
+        <div class="role"><strong>QA Tester</strong><span>בודק תקלות, הוגנות, זרימה וחוויית משתמש.</span></div>
+        <div class="role"><strong>Data Analyst</strong><span>קורא מדדים ומזהה מה השתפר.</span></div>
+        <div class="role"><strong>Coach</strong><span>מוביל רפלקציה, תקשורת ומורל.</span></div>
+        <div class="role"><strong>Caster / Presenter</strong><span>מסביר מה קורה, משדר, מציג ופיץ׳.</span></div>
+        <div class="role"><strong>Producer</strong><span>מתעד, מכין חומרים, מארגן אירוע ודמו.</span></div>
+      </div>
+    </div></section>
+
+    <section id="season" class="section"><div class="wrap">
+      <div class="sectionHead"><h2>מבנה עונה: 32 שבועות בארבעה Splitים</h2><p>כל Split הוא אתגר ליגה. בכל Split יש אימונים, מקצים, דמו, שיפור, וגמר קטן. בסוף השנה — אליפות Tech School.</p></div>
+      <div class="league">
+        <div class="week"><b>1–8</b><div><h3>Foundations League</h3><p>הקמת נבחרות, תפקידים, כללי בטיחות, Mini Build Battles, שפה של AI ו־Minecraft כזירת למידה.</p></div></div>
+        <div class="week"><b>9–16</b><div><h3>City Challenge Split</h3><p>בניית עיר/אזור עם צרכים אמיתיים: תחבורה, אנרגיה, תיירות, שירותים, חוויית משתמש ומדדי הצלחה.</p></div></div>
+        <div class="week"><b>17–24</b><div><h3>Resource & Strategy Split</h3><p>אתגרי משאבים, קיימות, אוטומציה, נתונים ושיפור בין גרסאות. הדגש: החלטות מבוססות מדידה.</p></div></div>
+        <div class="week"><b>25–32</b><div><h3>Inter-School Championship</h3><p>אירוע בין נבחרות/בתי ספר: חיבורים בין עולמות, פיץ׳, שידור, ניקוד מיומנויות ואליפות מסכמת.</p></div></div>
+      </div>
+    </div></section>
+
+    <section id="challenges" class="section"><div class="wrap">
+      <div class="sectionHead"><h2>פורמטים של אתגרים</h2><p>השראה מהעולם, מותאם לבית ספר: תחרותיות בריאה, ללא אלימות, עם תוצרים חינוכיים ברורים.</p></div>
+      <div class="grid">
+        <div class="card"><div class="icon">⚡</div><h3>Build Battle לימודי</h3><p>בונים פתרון לבעיה בזמן מוגבל: כיתה ירוקה, מרכז מבקרים, תחנת חלל, עיר נגישה.</p></div>
+        <div class="card"><div class="icon">🗺️</div><h3>Treasure Hunt / Data Hunt</h3><p>צוותים פותרים רמזים, קוראים מידע, משתמשים ב־AI ומציגים מסקנה — לא רק מוצאים אוצר.</p></div>
+        <div class="card"><div class="icon">🧪</div><h3>Rescue Mission</h3><p>משימת חילוץ/תיקון מערכת: לזהות בעיה, לבנות פתרון, לבדוק אותו ולהוכיח שהוא עובד.</p></div>
+        <div class="card"><div class="icon">🏗️</div><h3>Arena Design</h3><p>התלמידים לא רק משחקים בזירה — הם מתכננים זירה הוגנת, מעניינת ומדידה.</p></div>
+        <div class="card"><div class="icon">🌍</div><h3>Social Impact Challenge</h3><p>אתגר קהילתי: נגישות, סביבה, חוסן קהילתי, עיר חכמה. הפיץ׳ חשוב כמו הבנייה.</p></div>
+        <div class="card"><div class="icon">🎙️</div><h3>Demo Day / Casting</h3><p>תלמידים משדרים, מסבירים, מצלמים, מציגים תוצר ומתרגלים שפה מקצועית מול קהל.</p></div>
+      </div>
+    </div></section>
+
+    <section id="measurement" class="section"><div class="wrap">
+      <div class="sectionHead"><h2>ניקוד חינוכי: איך מודדים בלי להפוך את זה רק לתחרות</h2><p>הניצחון הוא לא רק מקום ראשון. הניצחון הוא ראיות להתקדמות.</p></div>
+      <div class="table">
+        <div class="row head"><div>תחום</div><div>מה מודדים</div><div>ראיה ללקוח/מורה</div></div>
+        <div class="row"><div><b>בנייה ותוצר</b></div><div>איכות פתרון, יצירתיות, התאמה לבריף, שימוש במערכות.</div><div>צילום/וידאו, עולם Minecraft, דמו קצר.</div></div>
+        <div class="row"><div><b>AI Literacy</b></div><div>שימוש בפרומפטים, בדיקת תשובות, הפיכת רעיון לפעולה.</div><div>יומן פרומפטים ותיעוד החלטות.</div></div>
+        <div class="row"><div><b>עבודת צוות</b></div><div>חלוקת תפקידים, תקשורת, אחריות, עזרה הדדית.</div><div>תפקידים מתועדים, רפלקציה, תצפית מורה.</div></div>
+        <div class="row"><div><b>Data & Iteration</b></div><div>השוואה בין גרסאות, תיקון באגים, שיפור מדד.</div><div>לפני/אחרי, צ׳ק־ליסט QA, תובנת craftOm.</div></div>
+        <div class="row"><div><b>Presentation</b></div><div>הסבר בעיה־פתרון־מדד, דמו ופיץ׳.</div><div>הקלטת הצגה, מחוון, משוב עמיתים.</div></div>
+      </div>
+    </div></section>
+
+    <section id="teachers" class="section"><div class="wrap">
+      <div class="sectionHead"><h2>מה המורה מקבלת</h2><p>בהשראת Teacher Academy ו־NASEF Fellows: המורה לא צריכה להיות גיימרית. היא מקבלת Playbook, כללים, מחוונים ותסריטי הנחיה.</p></div>
+      <div class="grid">
+        <div class="card"><h3>Playbook לכל Split</h3><p>בריף, מטרות, תפקידים, כללי משחק, שאלות AI, מחוון, דמו וסיכום.</p></div>
+        <div class="card"><h3>Bootcamp קצר</h3><p>המורה מתנסה בתפקיד תלמידה: בונה, כותבת Prompt, בודקת, מציגה ומקבלת משוב.</p></div>
+        <div class="card"><h3>ניהול כיתה בטוח</h3><p>כללי שיח, מניעת רעילות, שוויון הזדמנויות, תפקידים לילדים שונים וסגירת שיעור רגועה.</p></div>
+      </div>
+    </div></section>
+
+    <section id="craftom" class="section"><div class="wrap highlight">
+      <div class="sectionHead"><h2>התפקיד של craftOm: מערכת ניהול ליגה חינוכית</h2><p>כאן יש בידול חזק מול תוכניות רגילות: לא רק Minecraft + מורה, אלא שכבת AI שמנהלת, מודדת, מתריעה ומייצרת ראיות.</p></div>
+      <div class="grid">
+        <div><h3>League Ops</h3><p>פתיחת עולמות זמניים, שיוך נבחרות, לוח משחקים, תפקידים, הרשאות וחדרי אימון.</p></div>
+        <div><h3>Coach AI</h3><p>שאלות מנחות, משוב תוך כדי, זיהוי צוות תקוע, הצעת שיפור ותזכורות למשימה הבאה.</p></div>
+        <div><h3>Evidence Dashboard</h3><p>דוחות לתלמיד, למורה, לבית הספר ולהנהלת התוכנית: פעילות, Skills, תוצרים, מגמות וסיכונים.</p></div>
+      </div>
+    </div></section>
+
+    <section id="sources" class="section"><div class="wrap">
+      <div class="sectionHead"><h2>מקורות השראה שנבדקו</h2><p>לא מעתיקים תוכנית קיימת — לוקחים עקרונות מוכחים ומתרגמים אותם למודל מקומי של Tech School.</p></div>
+      <div class="sourceList">
+        <div class="source"><b>NASEF Curriculum</b> — שימוש ב־Scholastic Esports כדי ללמד STEM, ELA, ISTE, SEL ו־Career Technical Education דרך עניין טבעי של תלמידים.</div>
+        <div class="source"><b>Minecraft Education Esports</b> — Playbook, rubrics, אתגרי בנייה, Lesson Plans, הכשרת מורים ותשתיות Dedicated Servers לאירועים גדולים.</div>
+        <div class="source"><b>Minecraft Esports Teacher Academy</b> — הכשרת מורים להקמה, שילוב וניהול של תוכנית Esports בבית ספר, כולל Skills ו־school-to-career pipeline.</div>
+        <div class="source"><b>NASEF / Skillshot Academy</b> — דגש על אימון, ניהול מועדון, קהילה, תפקידי צוות ותוכנית שמחזיקה לאורך זמן.</div>
+      </div>
+    </div></section>
+  </main>
+
+  <section class="cta"><div class="wrap"><div class="ctaBox">
+    <div><h2>השורה התחתונה</h2><p>זו וריאציה יותר “ליגתית”, תחרותית ומלהיבה. היא יכולה לעמוד כדף נפרד, או להפוך לשכבת פרימיום/אירוע שיא מעל החוברת הראשית.</p></div>
+    <div style="text-align:left"><a class="button" href="tech-school-ai-minecraft-curriculum-book.html">לחוברת הראשית</a><a class="button ghost" href="#season">מבנה העונה</a></div>
+  </div></div></section>
+</body>
+</html>
