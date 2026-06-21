@@ -414,43 +414,28 @@
 
 <script>
   document.getElementById('yr').textContent=new Date().getFullYear();
-  async function craftomLead(e){
+  function craftomLead(e){
     e.preventDefault();
     const form = e.target;
     const status = document.getElementById('craftomLeadStatus');
-    const button = form.querySelector('button[type="submit"]');
     const lead = {
       name: form.name.value.trim(),
       phone: form.phone.value.trim(),
-      interest: 'craftOm לבתי ספר - דמו',
-      source: 'craftom-schools',
-      message: [
-        'פנייה מדף craftOm למוסדות',
-        'תפקיד: ' + form.role.value,
-        'מוסד: ' + form.org.value.trim()
-      ].join('\n')
+      role: form.role.value,
+      org: form.org.value.trim()
     };
 
-    button.disabled = true;
-    button.textContent = 'שולח...';
-    status.textContent = '';
+    const message = [
+      'היי, אשמח לקבוע דמו ל-craftOm למוסדות חינוך',
+      'שם: ' + lead.name,
+      'טלפון: ' + lead.phone,
+      'תפקיד: ' + lead.role,
+      'מוסד: ' + lead.org
+    ].join('\n');
 
-    try {
-      const response = await fetch('/api/lead', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(lead)
-      });
-
-      if (!response.ok) throw new Error('lead-submit-failed');
-      status.textContent = 'תודה ' + (lead.name || '') + '! קיבלנו את הפנייה ונחזור אליכם בהקדם.';
-      form.reset();
-    } catch (error) {
-      status.textContent = 'לא הצלחנו לשלוח כרגע. אפשר לפנות גם בוואטסאפ: 053-300-9742.';
-    } finally {
-      button.disabled = false;
-      button.textContent = 'שליחה — קביעת דמו';
-    }
+    window.open('https://wa.me/972533009742?text=' + encodeURIComponent(message), '_blank');
+    status.textContent = 'פתחנו וואטסאפ עם הפרטים. אפשר לשלוח משם ונחזור אליכם בהקדם.';
+    form.reset();
     return false;
   }
 </script>
