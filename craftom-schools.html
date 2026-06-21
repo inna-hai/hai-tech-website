@@ -170,8 +170,10 @@
     <a href="/" class="logo" aria-label="דרך ההייטק - דף הבית">
       <img loading="lazy" src="images/brand/logo-haitech-transparent.webp" alt="דרך ההייטק - HAi.TECH" height="60">
     </a>
-    <button class="mobile-menu-btn" aria-label="פתח תפריט" aria-expanded="false" onclick="document.querySelector('.nav-links').classList.toggle('open')">
-      <span></span><span></span><span></span>
+    <button class="mobile-menu-btn" aria-label="פתח תפריט" aria-expanded="false" onclick="document.querySelector('.nav-links').classList.toggle('active'); this.classList.toggle('active'); this.setAttribute('aria-expanded', this.classList.contains('active'))">
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
     <ul class="nav-links">
       <li><a href="/#courses">קורסים דיגיטליים</a></li>
@@ -179,8 +181,13 @@
       <li><a href="locations.html">מוקדים פרונטליים</a></li>
       <li><a href="institutions.html">למוסדות חינוך</a></li>
       <li><a href="ai-learning.html">AI בלמידה</a></li>
+      <li><a href="craftom-schools.html" style="color: #22c55e !important; font-weight: 600;">🎮 Craftom</a></li>
+      <li><a href="/teacher-ai-training">הכשרת מורים</a></li>
       <li><a href="blog.html">בלוג</a></li>
-      <li><a href="#lead" class="btn btn-nav">קביעת דמו</a></li>
+      <li><a href="/#about">אודות</a></li>
+      <li><a href="/#faq">שאלות נפוצות</a></li>
+      <li><a href="/lms/login.html" class="nav-link-secondary">כניסה לתלמידים</a></li>
+      <li><a href="#lead" class="btn btn-nav">התחילו עכשיו</a></li>
     </ul>
   </div>
 </nav>
