@@ -161,26 +161,31 @@
 <body>
     <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
         <nav class="navbar" role="navigation" aria-label="תפריט ראשי">
-        <div class="container">
-            <a href="/" class="logo" aria-label="דרך ההייטק - דף הבית">
-                <img loading="lazy" src="../../images/brand/logo-haitech-transparent.webp" alt="דרך ההייטק - HAi.TECH" height="60">
-            </a>
-            <button class="mobile-menu-btn" aria-label="פתח תפריט" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-links">
-                <li><a href="/#courses">קורסים דיגיטליים</a></li>
-                <li><a href="/teacher-ai-training" aria-current="true" style="color: #6366f1 !important; font-weight: 600;">הכשרת AI למורים</a></li>
-                <li><a href="/locations.html">מוקדים פרונטליים</a></li>
-                <li><a href="/institutions.html" style="color: #f59e0b !important; font-weight: 600;">למוסדות חינוך</a></li>
-                <li><a href="/ai-learning.html" style="color: #22c55e !important;">AI בלמידה</a></li>
-                <li><a href="/blog.html">בלוג</a></li>
-                <li><a href="/#contact" class="btn btn-nav">התחילו עכשיו</a></li>
-            </ul>
-        </div>
-    </nav>
+  <div class="container">
+    <a href="/" class="logo" aria-label="דרך ההייטק - דף הבית">
+      <img loading="lazy" src="/images/brand/logo-haitech-transparent.webp" alt="דרך ההייטק - HAi.TECH" height="60">
+    </a>
+    <button class="mobile-menu-btn" aria-label="פתח תפריט" aria-expanded="false" onclick="event.stopImmediatePropagation(); const nav=this.closest('nav').querySelector('.nav-links'); nav.classList.toggle('active'); this.classList.toggle('active'); this.setAttribute('aria-expanded', this.classList.contains('active') ? 'true' : 'false')">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="/#courses">קורסים דיגיטליים</a></li>
+      <li><a href="/#private">שיעורים פרטיים</a></li>
+      <li><a href="/locations.html">מוקדים פרונטליים</a></li>
+      <li><a href="/institutions.html">למוסדות חינוך</a></li>
+      <li><a href="/ai-learning.html">AI בלמידה</a></li>
+      <li><a href="/craftom-schools.html" style="color: #22c55e !important; font-weight: 600;">🎮 Craftom</a></li>
+      <li><a href="/teacher-ai-training">הכשרת מורים</a></li>
+      <li><a href="/blog.html">בלוג</a></li>
+      <li><a href="/#about">אודות</a></li>
+      <li><a href="/#faq">שאלות נפוצות</a></li>
+      <li><a href="/lms/login.html" class="nav-link-secondary">כניסה לתלמידים</a></li>
+      <li><a href="/#contact" class="btn btn-nav">התחילו עכשיו</a></li>
+    </ul>
+  </div>
+</nav>
 
     <header class="session-hero">
         <nav class="breadcrumb" aria-label="ניווט פירורי לחם"><a href="/teacher-ai-training">הכשרת AI למורים</a> / מפגש 5</nav>
