@@ -456,6 +456,10 @@
         }
         .card h3, .journey-card h3, .pricing-card h3, .schedule-box h3 { margin: 0 0 10px; font-size: 1.26rem; color: #f8fbff; }
         .card p, .journey-card p, .pricing-card p, .schedule-box p, .faq-answer { color: var(--muted); }
+        .card-link { display:block; text-decoration:none; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; cursor:pointer; }
+        .card-link:hover { transform: translateY(-4px); border-color: rgba(76,195,107,.9); box-shadow: inset -6px -6px 0 rgba(0,0,0,.22), inset 6px 6px 0 rgba(255,255,255,.05), 12px 14px 0 rgba(0,0,0,.18); }
+        .card-link:active { transform: translateY(-1px); }
+        .card-link:focus-visible { outline: 3px solid #4cc36b; outline-offset: 4px; }
         .icon { font-size: 2rem; margin-bottom: 12px; }
         .label {
             display: inline-block; margin-bottom: 12px; padding: 7px 12px; font-size: .9rem; font-weight: 800; border: 3px solid rgba(42,42,42,.95); box-shadow: inset -3px -3px 0 rgba(0,0,0,.16), inset 3px 3px 0 rgba(255,255,255,.08);
@@ -849,31 +853,31 @@
                 <h2 class="section-title">קיץ במיינקראפט — בוחרים מסלול ונרשמים</h2>
                 <p class="section-subtitle">5 מסלולים שונים, כדי שלא כל ילד יקבל את אותו הדבר. אתם בוחרים את התחום שהכי מדליק את הילד או הילדה — ואנחנו דואגים למסגרת, להדרכה ולחוויה.</p>
                 <div class="grid-4 tracks-overview-grid">
-                    <div class="card">
+                    <a class="card card-link" href="/buy/minecraft-summer-english">
                         <div class="icon">🇬🇧</div>
                         <h3>אנגלית במיינקראפט</h3>
                         <p>אוצר מילים, הבנת הוראות, דיבור, הקשבה וביטחון באנגלית — דרך משימות חיות בתוך Minecraft.</p>
-                    </div>
-                    <div class="card">
+                    </a>
+                    <a class="card card-link" href="/buy/minecraft-summer-math">
                         <div class="icon">➗</div>
                         <h3>מתמטיקה במיינקראפט</h3>
                         <p>חישוב, מדידה, תכנון, היגיון ופתרון בעיות — בדרך שמרגישה חכמה ומשחקית יותר.</p>
-                    </div>
-                    <div class="card">
+                    </a>
+                    <a class="card card-link" href="/buy/minecraft-summer-astronomy">
                         <div class="icon">🌌</div>
                         <h3>אסטרונומיה במיינקראפט</h3>
                         <p>חלל, כוכבים, כוכבי לכת ומשימות מדעיות — מסלול מסקרן לילדים סקרנים שאוהבים לגלות.</p>
-                    </div>
-                    <div class="card">
+                    </a>
+                    <a class="card card-link" href="/buy/minecraft-summer-coding">
                         <div class="icon">💻</div>
                         <h3>תכנות במיינקראפט</h3>
                         <p>לוגיקה, פקודות, חשיבה תכנותית ופתרון בעיות — מסלול טכנולוגי לילדים שאוהבים להבין איך דברים עובדים.</p>
-                    </div>
-                    <div class="card">
+                    </a>
+                    <a class="card card-link" href="/buy/minecraft-summer-football">
                         <div class="icon">⚽</div>
                         <h3>כדורגל במיינקראפט</h3>
                         <p>תכנון ובניית איצטדיון מהעתיד, יציעים, מגרש, כניסות וחוויית משחק — מסלול יצירתי לילדים שאוהבים כדורגל ובנייה.</p>
-                    </div>
+                    </a>
                 </div>
             </div>
         </section>
