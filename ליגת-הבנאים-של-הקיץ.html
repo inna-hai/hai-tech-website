@@ -579,6 +579,9 @@
         .hero-contact-band { padding: 46px 0 24px; background: linear-gradient(180deg, rgba(10,16,24,.98), rgba(15,23,42,.98)); }
         .hero-contact-box { max-width: 980px; margin: 0 auto; display:grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: stretch; }
         .hero-contact-copy, .hero-contact-form { background: rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.1); border-radius: 28px; padding: 28px; }
+        .hero-contact-box-single { grid-template-columns: 1fr; max-width: 720px; }
+        .hero-contact-copy-single { text-align: center; }
+        .hero-contact-copy-single .hero-contact-list { justify-items: center; }
         .hero-contact-copy h3, .hero-contact-form h3 { margin:0 0 10px; color:#fff; font-size:1.55rem; }
         .hero-contact-copy p, .hero-contact-form p { color:#aab5cd; margin:0 0 16px; }
         .hero-contact-list { list-style:none; padding:0; margin:18px 0 0; display:grid; gap:10px; }
@@ -793,39 +796,15 @@
 
         <section class="hero-contact-band" id="contact">
             <div class="container">
-                <div class="hero-contact-box">
-                    <div class="hero-contact-copy">
+                <div class="hero-contact-box hero-contact-box-single">
+                    <div class="hero-contact-copy hero-contact-copy-single">
                         <h3>איך זה עובד?</h3>
-                        <p>בוחרים את המסלול שהכי מתאים לילד או לילדה, רואים את השעה, ומתקדמים להרשמה.</p>
+                        <p>בוחרים את המסלול שהכי מתאים לילד או לילדה, רואים את השעה, ומתקדמים להרשמה ולתשלום.</p>
                         <ul class="hero-contact-list">
                             <li>✅ 5 מסלולים לבחירה</li>
                             <li>✅ 5 מפגשים חיים בכל מסלול</li>
                             <li>✅ פתיחת מחזורים החל מ־19.07</li>
                         </ul>
-                    </div>
-                    <div class="hero-contact-form">
-                        <h3>רוצים שנעזור לבחור?</h3>
-                        <p>אם עדיין לא ברור לכם איזה מסלול הכי מתאים, אפשר להשאיר פרטים ונעזור לכם לבחור לפי גיל, תחומי עניין ורמה.</p>
-                        <form onsubmit="return submitLead(event)">
-                            <input type="text" id="name" name="name" placeholder="שם ההורה" required>
-                            <input type="tel" id="phone" name="phone" placeholder="טלפון" required inputmode="numeric" oninput="this.value=this.value.replace(/[^0-9\-\+]/g,'')" pattern="[0-9-+]{9,15}">
-                            <select id="age" name="age" required>
-                                <option value="">גיל הילד/ה</option>
-                                <option>8-9</option>
-                                <option>10-11</option>
-                                <option>12-13</option>
-                            </select>
-                            <select id="level" name="level" required>
-                                <option value="">מסלול מועדף</option>
-                                <option>אנגלית</option>
-                                <option>מתמטיקה</option>
-                                <option>אסטרונומיה</option>
-                                <option>תכנות</option>
-                                <option>כדורגל</option>
-                            </select>
-                            <button type="submit">🚀 דברו איתי על המסלול המתאים</button>
-                        </form>
-                        <div class="success" id="success">✅ קיבלנו! נחזור אליכם עם המסלול והשעה שהכי מתאימים</div>
                     </div>
                 </div>
             </div>
