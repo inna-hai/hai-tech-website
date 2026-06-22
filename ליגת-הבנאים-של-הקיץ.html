@@ -139,6 +139,42 @@
             background: radial-gradient(circle at top right, rgba(255,255,255,.16), transparent 30%), radial-gradient(circle at bottom left, rgba(255,255,255,.08), transparent 26%);
         }
         .hero .container { position: relative; z-index: 1; }
+        .hero-decor {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .floating-cube {
+            position: absolute;
+            width: var(--size, 88px);
+            height: var(--size, 88px);
+            transform-style: preserve-3d;
+            animation: floatCube var(--duration, 9s) ease-in-out infinite;
+            opacity: .88;
+        }
+        .floating-cube .face {
+            position: absolute;
+            inset: 0;
+            border: 2px solid rgba(255,255,255,.16);
+            box-shadow: inset 0 0 0 1px rgba(0,0,0,.08);
+            background-size: cover;
+            background-position: center;
+        }
+        .floating-cube.grass .face.front,
+        .floating-cube.grass .face.back,
+        .floating-cube.grass .face.left,
+        .floating-cube.grass .face.right { background: linear-gradient(180deg, #7ccf51 0 24%, #8b5a2b 24% 100%); }
+        .floating-cube.grass .face.top { background: linear-gradient(135deg, #9ae66d, #63b43d); }
+        .floating-cube.grass .face.bottom { background: #6f4925; }
+        .floating-cube.stone .face { background: linear-gradient(135deg, #cbd5e1, #94a3b8); }
+        .floating-cube.gold .face { background: linear-gradient(135deg, #fde68a, #f59e0b); }
+        .floating-cube .front { transform: translateZ(calc(var(--size, 88px) / 2)); }
+        .floating-cube .back { transform: rotateY(180deg) translateZ(calc(var(--size, 88px) / 2)); }
+        .floating-cube .right { transform: rotateY(90deg) translateZ(calc(var(--size, 88px) / 2)); }
+        .floating-cube .left { transform: rotateY(-90deg) translateZ(calc(var(--size, 88px) / 2)); }
+        .floating-cube .top { transform: rotateX(90deg) translateZ(calc(var(--size, 88px) / 2)); }
+        .floating-cube .bottom { transform: rotateX(-90deg) translateZ(calc(var(--size, 88px) / 2)); }
         .hero-grid {
             display: grid;
             grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
@@ -208,6 +244,45 @@
             border-radius: 28px;
             padding: 24px;
             box-shadow: 0 18px 60px rgba(0,0,0,.18);
+            position: relative;
+            z-index: 2;
+        }
+        .hero-visual {
+            margin-top: 22px;
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            gap: 14px;
+            align-items: stretch;
+        }
+        .hero-image-card {
+            position: relative;
+            min-height: 170px;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,.18);
+            box-shadow: 0 18px 40px rgba(15,23,42,.18);
+            background: rgba(255,255,255,.08);
+        }
+        .hero-image-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .hero-image-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(15,23,42,.08), rgba(15,23,42,.55));
+        }
+        .hero-image-label {
+            position: absolute;
+            right: 14px;
+            bottom: 14px;
+            z-index: 1;
+            color: white;
+            font-weight: 800;
+            font-size: .95rem;
         }
         .hero-panel h3 { margin: 0 0 8px; color: white; font-size: 1.45rem; }
         .hero-panel p { margin: 0 0 16px; color: rgba(255,255,255,.86); }
@@ -224,6 +299,46 @@
 
         .section { padding: 84px 0; }
         .alt { background: var(--soft); }
+        .showcase-band {
+            background: linear-gradient(180deg, #eef6ff 0%, #ffffff 100%);
+            border-top: 1px solid #dbeafe;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: 1.1fr .9fr .9fr;
+            gap: 18px;
+            align-items: stretch;
+        }
+        .showcase-card {
+            position: relative;
+            min-height: 250px;
+            overflow: hidden;
+            border-radius: 28px;
+            background: #0f172a;
+            box-shadow: 0 16px 40px rgba(15,23,42,.12);
+        }
+        .showcase-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .showcase-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(15,23,42,.06), rgba(15,23,42,.65));
+        }
+        .showcase-card .caption {
+            position: absolute;
+            right: 18px;
+            bottom: 16px;
+            z-index: 1;
+            color: white;
+            font-weight: 800;
+            line-height: 1.4;
+        }
         .section-title { text-align: center; font-size: clamp(2rem, 4vw, 3rem); margin: 0 0 12px; }
         .section-subtitle { text-align: center; max-width: 840px; margin: 0 auto 38px; color: var(--muted); font-size: 1.08rem; }
         .grid-3, .grid-4, .grid-2, .journey-grid, .pricing-grid, .proof-grid {
@@ -289,8 +404,12 @@
         .sticky-inner a { flex: 1; text-decoration: none; text-align: center; border-radius: 999px; padding: 12px 16px; font-weight: 900; }
         .sticky-primary { background: #16a34a; color: white; }
         .sticky-secondary { background: #25D366; color: white; }
+        @keyframes floatCube {
+            0%, 100% { transform: translateY(0) rotateX(-18deg) rotateY(22deg); }
+            50% { transform: translateY(-16px) rotateX(-18deg) rotateY(42deg); }
+        }
         @media (max-width: 1100px) {
-            .hero-grid, .schedule-grid, .cta-grid, .grid-2, .pricing-grid { grid-template-columns: 1fr; }
+            .hero-grid, .schedule-grid, .cta-grid, .grid-2, .pricing-grid, .showcase-grid, .hero-visual { grid-template-columns: 1fr; }
             .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .grid-3, .journey-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         }
@@ -298,6 +417,8 @@
             .hero { padding-top: 108px; }
             .grid-4, .grid-3, .journey-grid { grid-template-columns: 1fr; }
             .card, .journey-card, .pricing-card, .schedule-box, .faq-item, .cta-box, .hero-panel { padding: 20px; }
+            .floating-cube { opacity: .55; }
+            .showcase-card { min-height: 220px; }
             .sticky { display: block; }
         }
     </style>
@@ -327,6 +448,20 @@
 
     <main id="main-content">
         <section class="hero">
+            <div class="hero-decor" aria-hidden="true">
+                <div class="floating-cube grass" style="--size:96px; --duration:10s; top:12%; right:6%;">
+                    <span class="face front"></span><span class="face back"></span><span class="face right"></span><span class="face left"></span><span class="face top"></span><span class="face bottom"></span>
+                </div>
+                <div class="floating-cube stone" style="--size:72px; --duration:8.5s; top:58%; right:14%;">
+                    <span class="face front"></span><span class="face back"></span><span class="face right"></span><span class="face left"></span><span class="face top"></span><span class="face bottom"></span>
+                </div>
+                <div class="floating-cube gold" style="--size:58px; --duration:7.5s; top:18%; left:9%;">
+                    <span class="face front"></span><span class="face back"></span><span class="face right"></span><span class="face left"></span><span class="face top"></span><span class="face bottom"></span>
+                </div>
+                <div class="floating-cube grass" style="--size:52px; --duration:9.5s; bottom:12%; left:16%;">
+                    <span class="face front"></span><span class="face back"></span><span class="face right"></span><span class="face left"></span><span class="face top"></span><span class="face bottom"></span>
+                </div>
+            </div>
             <div class="container">
                 <div class="hero-grid">
                     <div>
@@ -371,7 +506,36 @@
                         </form>
                         <div class="success" id="success">✅ קיבלנו! נחזור אליכם עם קבוצה מתאימה</div>
                         <small>אפשר לשמור מקום עכשיו ולבחור את המחזור המדויק אחר כך.</small>
+                        <div class="hero-visual" aria-hidden="true">
+                            <div class="hero-image-card">
+                                <img src="/images/institutions/minecraft-report-gallery/server-4-p5.webp" alt="">
+                                <div class="hero-image-label">בונים, יוצרים, מציגים</div>
+                            </div>
+                            <div class="hero-image-card">
+                                <img src="/images/institutions/minecraft-report-gallery/server-5-p4.webp" alt="">
+                                <div class="hero-image-label">משימות קבוצתיות</div>
+                            </div>
+                        </div>
                     </aside>
+                </div>
+            </div>
+        </section>
+
+        <section class="section showcase-band">
+            <div class="container">
+                <div class="showcase-grid">
+                    <div class="showcase-card">
+                        <img src="/images/institutions/minecraft-report-gallery/server-3-p7.webp" alt="עולם מיינקראפט צבעוני עם מבנים מרשימים">
+                        <div class="caption">עולמות מרשימים<br>שהילדים בונים בעצמם</div>
+                    </div>
+                    <div class="showcase-card">
+                        <img src="/images/institutions/minecraft-report-gallery/server-4-p7.webp" alt="מיינקראפט עם אזורי בנייה יצירתיים">
+                        <div class="caption">אתגרי בנייה<br>ומשימות חכמות</div>
+                    </div>
+                    <div class="showcase-card">
+                        <img src="/images/institutions/minecraft-report-gallery/server-5-p8.webp" alt="מבנה מיינקראפט גדול ומעוצב">
+                        <div class="caption">קבוצה, יצירה<br>וגמר גדול</div>
+                    </div>
                 </div>
             </div>
         </section>
