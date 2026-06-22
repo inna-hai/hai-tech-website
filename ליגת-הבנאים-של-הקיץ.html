@@ -575,6 +575,9 @@
         .hero-contact-form form { display:grid; gap:10px; }
         .hero-contact-form input, .hero-contact-form select { width:100%; border:1px solid rgba(255,255,255,.12); border-radius:14px; padding:14px 16px; font:inherit; background:#0c1326; color:#e7ecf6; }
         .hero-contact-form button { border:none; border-radius:14px; padding:14px 16px; font:inherit; font-weight:900; cursor:pointer; background:linear-gradient(180deg,#4cc36b,#329f56); color:#07110b; }
+        .tracks-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 1100px; margin: 0 auto; }
+        .track-card .hero-actions { margin-top: 18px; }
+        .track-card .btn-primary { width: 100%; justify-content: center; }
         @media (max-width: 1100px) { .hero-inner, .hero-contact-box { grid-template-columns: 1fr; } .hero-copy .kicker, .hero-copy h1, .hero-copy p, .hero-cta, .hero .chips { text-align:center; justify-content:center; } .hero-inner .hero-copy { margin:0 auto; } }
         @media (max-width: 720px) {
             .hero {
@@ -642,11 +645,28 @@
             .pricing-grid,
             .proof-grid,
             .cta-grid,
-            .hero-contact-box {
+            .hero-contact-box,
+            .tracks-grid {
                 grid-template-columns: 1fr;
             }
             .showcase-card {
                 min-height: 180px;
+            }
+            .showcase-card .caption {
+                right: 14px;
+                bottom: 12px;
+                font-size: .95rem;
+            }
+            .card,
+            .journey-card,
+            .pricing-card,
+            .schedule-box,
+            .faq-item,
+            .cta-box {
+                padding: 18px;
+            }
+            .pricing-card .price {
+                font-size: 2.3rem;
             }
             .hero-contact-band {
                 padding-top: 20px;
@@ -662,10 +682,18 @@
             .section-title {
                 font-size: 1.8rem;
                 gap: 10px;
+                line-height: 1.25;
             }
             .section-subtitle {
                 font-size: .98rem;
                 margin-bottom: 24px;
+            }
+            .track-card .btn-primary,
+            .sticky-inner a {
+                width: 100%;
+            }
+            .sticky {
+                padding: 10px 10px calc(10px + env(safe-area-inset-bottom));
             }
         }
 
@@ -704,12 +732,12 @@
                     <p class="lead"><b>5 מפגשים חיים ב־₪497</b> עם 4 מסלולים לבחירה: אנגלית, מתמטיקה, אסטרונומיה ותכנות — כך שכל הורה יכול לבחור את העולם שהכי מתאים לילד או לילדה.</p>
                     <div class="hero-cta">
                         <a href="#contact" class="btn-primary">📋 בדיקת התאמה ושיבוץ</a>
-                        <a target="_blank" href="https://wa.me/972533009742?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%AA%D7%A2%D7%A0%D7%99%D7%99%D7%A0%D7%AA%20%D7%91%D7%9C%D7%99%D7%92%D7%AA%20%D7%94%D7%91%D7%A0%D7%90%D7%99%D7%9D%20%D7%A9%D7%9C%20%D7%94%D7%A7%D7%99%D7%A5%20%D7%91%D7%9E%D7%99%D7%99%D7%A0%D7%A7%D7%A8%D7%90%D7%A4%D7%98" class="btn-secondary">💬 דברו איתנו בוואטסאפ</a>
+                        <a target="_blank" href="https://wa.me/972533009742?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%A0%D7%AA%20%D7%91%D7%9E%D7%A1%D7%9C%D7%95%D7%9C%D7%99%20%D7%94%D7%A7%D7%99%D7%A5%20%D7%91%D7%9E%D7%99%D7%99%D7%A0%D7%A7%D7%A8%D7%90%D7%A4%D7%98" class="btn-secondary">💬 דברו איתנו בוואטסאפ</a>
                     </div>
                     <div class="chips">
                         <span class="chip"><strong>8-13</strong> גילאי יעד</span>
-                        <span class="chip"><strong>5</strong> מפגשי אנגלית</span>
-                        <span class="chip"><strong>₪497</strong> למחזור מלא</span>
+                        <span class="chip"><strong>4</strong> מסלולים לבחירה</span>
+                        <span class="chip"><strong>₪497</strong> לכל מסלול</span>
                     </div>
                 </div>
                 <div></div>
@@ -817,8 +845,8 @@
             <div class="container">
                 <h2 class="section-title">המסלולים לבחירה</h2>
                 <p class="section-subtitle">כל מסלול כולל 5 מפגשים חיים במחיר אחד ברור. בוחרים את המסלול שמתאים לילד או לילדה — ועוברים להרשמה.</p>
-                <div class="pricing-grid" style="grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 1100px; margin: 0 auto;">
-                    <div class="pricing-card featured">
+                <div class="pricing-grid tracks-grid">
+                    <div class="pricing-card featured track-card">
                         <span class="label green">מסלול 1</span>
                         <h3>אנגלית במיינקראפט</h3>
                         <div class="price">₪497</div>
@@ -833,7 +861,7 @@
                             <a href="#payment-links" class="btn-primary">הרשמה ותשלום — אנגלית</a>
                         </div>
                     </div>
-                    <div class="pricing-card featured">
+                    <div class="pricing-card featured track-card">
                         <span class="label blue">מסלול 2</span>
                         <h3>מתמטיקה במיינקראפט</h3>
                         <div class="price">₪497</div>
@@ -848,7 +876,7 @@
                             <a href="#payment-links" class="btn-primary">הרשמה ותשלום — מתמטיקה</a>
                         </div>
                     </div>
-                    <div class="pricing-card featured">
+                    <div class="pricing-card featured track-card">
                         <span class="label purple">מסלול 3</span>
                         <h3>אסטרונומיה במיינקראפט</h3>
                         <div class="price">₪497</div>
@@ -863,7 +891,7 @@
                             <a href="#payment-links" class="btn-primary">הרשמה ותשלום — אסטרונומיה</a>
                         </div>
                     </div>
-                    <div class="pricing-card featured">
+                    <div class="pricing-card featured track-card">
                         <span class="label orange">מסלול 4</span>
                         <h3>תכנות במיינקראפט</h3>
                         <div class="price">₪497</div>
@@ -955,14 +983,14 @@
         </div>
     </footer>
 
-    <a class="floating-wa" href="https://wa.me/972533009742?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%AA%D7%A2%D7%A0%D7%99%D7%99%D7%A0%D7%AA%20%D7%91%D7%9C%D7%99%D7%92%D7%AA%20%D7%94%D7%91%D7%A0%D7%90%D7%99%D7%9D%20%D7%A9%D7%9C%20%D7%94%D7%A7%D7%99%D7%A5" target="_blank" aria-label="WhatsApp">
+    <a class="floating-wa" href="https://wa.me/972533009742?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%A0%D7%AA%20%D7%91%D7%9E%D7%A1%D7%9C%D7%95%D7%9C%D7%99%20%D7%94%D7%A7%D7%99%D7%A5%20%D7%91%D7%9E%D7%99%D7%99%D7%A0%D7%A7%D7%A8%D7%90%D7%A4%D7%98" target="_blank" aria-label="WhatsApp">
         <svg width="34" height="34" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     </a>
 
     <div class="sticky">
         <div class="sticky-inner">
-            <a href="#contact" class="sticky-primary">📋 השאירו פרטים</a>
-            <a target="_blank" href="https://wa.me/972533009742?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%AA%D7%A2%D7%A0%D7%99%D7%99%D7%A0%D7%AA%20%D7%91%D7%9C%D7%99%D7%92%D7%AA%20%D7%94%D7%91%D7%A0%D7%90%D7%99%D7%9D%20%D7%A9%D7%9C%20%D7%94%D7%A7%D7%99%D7%A5" class="sticky-secondary">💬 וואטסאפ</a>
+            <a href="#payment-links" class="sticky-primary">🎯 בחרו מסלול</a>
+            <a target="_blank" href="https://wa.me/972533009742?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%A0%D7%AA%20%D7%91%D7%9E%D7%A1%D7%9C%D7%95%D7%9C%D7%99%20%D7%94%D7%A7%D7%99%D7%A5%20%D7%91%D7%9E%D7%99%D7%99%D7%A0%D7%A7%D7%A8%D7%90%D7%A4%D7%98" class="sticky-secondary">💬 וואטסאפ</a>
         </div>
     </div>
 
