@@ -576,6 +576,9 @@
         .hero-contact-form input, .hero-contact-form select { width:100%; border:1px solid rgba(255,255,255,.12); border-radius:14px; padding:14px 16px; font:inherit; background:#0c1326; color:#e7ecf6; }
         .hero-contact-form button { border:none; border-radius:14px; padding:14px 16px; font:inherit; font-weight:900; cursor:pointer; background:linear-gradient(180deg,#4cc36b,#329f56); color:#07110b; }
         .tracks-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 1100px; margin: 0 auto; }
+        .tracks-overview-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+        .choice-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+        .schedule-cards-grid { margin-bottom: 28px; grid-template-columns: repeat(5, minmax(0, 1fr)); }
         .track-card .hero-actions { margin-top: 18px; }
         .track-card .btn-primary { width: 100%; justify-content: center; }
         @media (max-width: 1100px) { .hero-inner, .hero-contact-box { grid-template-columns: 1fr; } .hero-copy .kicker, .hero-copy h1, .hero-copy p, .hero-cta, .hero .chips { text-align:center; justify-content:center; } .hero-inner .hero-copy { margin:0 auto; } }
@@ -646,8 +649,11 @@
             .proof-grid,
             .cta-grid,
             .hero-contact-box,
-            .tracks-grid {
-                grid-template-columns: 1fr;
+            .tracks-grid,
+            .tracks-overview-grid,
+            .choice-grid,
+            .schedule-cards-grid {
+                grid-template-columns: 1fr !important;
             }
             .showcase-card {
                 min-height: 180px;
@@ -816,7 +822,7 @@
             <div class="container">
                 <h2 class="section-title">קיץ במיינקראפט — בוחרים מסלול ונרשמים</h2>
                 <p class="section-subtitle">5 מסלולים שונים, כדי שלא כל ילד יקבל את אותו הדבר. אתם בוחרים את התחום שהכי מדליק את הילד או הילדה — ואנחנו דואגים למסגרת, להדרכה ולחוויה.</p>
-                <div class="grid-4" style="grid-template-columns: repeat(5, minmax(0, 1fr));">
+                <div class="grid-4 tracks-overview-grid">
                     <div class="card">
                         <div class="icon">🇬🇧</div>
                         <h3>אנגלית במיינקראפט</h3>
@@ -850,7 +856,7 @@
             <div class="container">
                 <h2 class="section-title">המסלולים לבחירה</h2>
                 <p class="section-subtitle">כל מסלול כולל 5 מפגשים חיים במחיר אחד ברור. המחזורים נפתחים החל מ־19.07, כך שאפשר פשוט לבחור את התחום ואת השעה שהכי מתאימים לכם.</p>
-                <div class="pricing-grid tracks-grid" style="grid-template-columns: repeat(3, minmax(0, 1fr));">
+                <div class="pricing-grid tracks-grid">
                     <div class="pricing-card featured track-card">
                         <span class="label green">מסלול 1</span>
                         <h3>אנגלית במיינקראפט</h3>
@@ -939,7 +945,7 @@
             <div class="container">
                 <h2 class="section-title">איך בוחרים?</h2>
                 <p class="section-subtitle">אם כבר ברור לכם מה מושך את הילד או הילדה — פשוט בוחרים. אם לא, הנה דרך קצרה להבין מה הכי יתאים:</p>
-                <div class="grid-4" style="grid-template-columns: repeat(5, minmax(0, 1fr));">
+                <div class="grid-4 choice-grid">
                     <div class="journey-card">
                         <div class="journey-step">1</div>
                         <h3>אנגלית</h3>
@@ -973,7 +979,7 @@
             <div class="container">
                 <h2 class="section-title">שעות המסלולים והרשמה</h2>
                 <p class="section-subtitle">המסלולים רצים בזה אחר זה, כך שאפשר לראות בקלות איזו שעה מתאימה לכם. כל מסלול נמשך 75 דקות, ובין מסלול למסלול יש 15 דקות הפסקה.</p>
-                <div class="grid-4" style="margin-bottom:28px; grid-template-columns: repeat(5, minmax(0, 1fr));">
+                <div class="grid-4 schedule-cards-grid">
                                         <div class="card"><h3>11:30</h3><p>מתמטיקה במיינקראפט</p></div>
                     <div class="card"><h3>13:00</h3><p>אסטרונומיה במיינקראפט</p></div>
                     <div class="card"><h3>14:30</h3><p>תכנות במיינקראפט</p></div>
