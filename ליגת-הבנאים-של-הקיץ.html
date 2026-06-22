@@ -981,6 +981,14 @@
                 });
             });
         }
+
+        document.querySelectorAll('.faq-item').forEach(item => {
+            const question = item.querySelector('.faq-question');
+            if (!question) return;
+            question.addEventListener('click', () => {
+                item.classList.toggle('open');
+            });
+        });
     </script>
 </body>
 </html>
