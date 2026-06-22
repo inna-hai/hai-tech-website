@@ -504,6 +504,21 @@
         }
         .card h3, .journey-card h3, .pricing-card h3, .schedule-box h3 { margin: 0 0 10px; font-size: 1.26rem; color: #f8fbff; }
         .card p, .journey-card p, .pricing-card p, .schedule-box p, .faq-answer { color: var(--muted); }
+        .schedule-cards-grid .card {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+        }
+        .schedule-cards-grid .card p {
+            min-height: 44px;
+            margin-bottom: 18px;
+        }
+        .schedule-cards-grid .card .btn-primary {
+            margin-top: auto;
+            align-self: center;
+            width: 100%;
+            justify-content: center;
+        }
         .card-link { display:block; text-decoration:none; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; cursor:pointer; }
         .card-link:hover { transform: translateY(-4px); border-color: rgba(76,195,107,.9); box-shadow: inset -6px -6px 0 rgba(0,0,0,.22), inset 6px 6px 0 rgba(255,255,255,.05), 12px 14px 0 rgba(0,0,0,.18); }
         .card-link:active { transform: translateY(-1px); }
