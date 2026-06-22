@@ -22,7 +22,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Press+Start+2P&family=Rubik:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/css/cookie-consent.css">
     <link rel="icon" type="image/webp" href="/images/brand/logo.webp">
@@ -515,6 +515,69 @@
             .showcase-card { min-height: 220px; }
             .sticky { display: block; }
         }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 130px clamp(16px,5vw,64px) 80px;
+            background:
+              radial-gradient(1100px 600px at 80% -10%, rgba(46,134,193,.18), transparent 60%),
+              radial-gradient(900px 700px at 10% 110%, rgba(61,163,93,.14), transparent 60%),
+              #0a1018;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+        .hero::before { display:none; }
+        .grass-strip { display:none; }
+        #voxels { position:absolute; inset:0; z-index:1; }
+        #voxels canvas { cursor:grab; touch-action:pan-y; display:block; }
+        #voxels canvas.dragging { cursor:grabbing; }
+        .hero-inner {
+            position:relative; z-index:2; max-width:1240px; margin:0 auto; width:100%;
+            display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr); gap:40px; align-items:center;
+            pointer-events:none;
+        }
+        .hero-inner .hero-copy { pointer-events:auto; max-width: 560px; margin-inline-start:auto; }
+        .hero-copy .kicker {
+            display:inline-flex; align-items:center; gap:10px; border:1px solid rgba(255,255,255,.12);
+            border-radius:999px; padding:7px 16px; font-size:13px; color:#b8c2d9; background:rgba(255,255,255,.03); margin-bottom:26px; box-shadow:none;
+        }
+        .hero-copy .kicker .dot { width:8px; height:8px; background:#4cc36b; border-radius:2px; box-shadow:0 0 10px #4cc36b; animation:blink 2.2s infinite; }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.35} }
+        .hero-copy h1 { font-size:clamp(34px,5.4vw,66px); line-height:1.12; font-weight:900; letter-spacing:-.5px; margin-bottom:22px; text-shadow:none; }
+        .hero-copy h1 .play { color:#f3f7ff; position:relative; white-space:nowrap; }
+        .hero-copy h1 .learn { background:linear-gradient(110deg,#55b6ff 10%,#ffd166 90%); -webkit-background-clip:text; background-clip:text; color:transparent; white-space:nowrap; }
+        .hero-copy p.lead { font-size:clamp(16px,1.6vw,19px); color:#b8c2d9; max-width:560px; margin-bottom:22px; font-weight:400; }
+        .hero-copy p.lead b { color:#f8fbff; font-weight:700; }
+        .hero-copy .hero-sub { color:#8f9db7; margin:0 0 28px; font-size:1rem; }
+        .hero-cta { display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
+        .hero .btn-primary, .hero .btn-secondary { border-radius:999px; border:1px solid rgba(255,255,255,.12); box-shadow:none; padding:14px 22px; }
+        .hero .btn-primary { background:linear-gradient(180deg,#4cc36b 0%,#329f56 100%); color:#07110b; }
+        .hero .btn-secondary { background:rgba(255,255,255,.04); color:#f5f7fb; }
+        .hero .chips { gap:12px; margin-top:28px; }
+        .hero .chip { background:transparent; border:none; box-shadow:none; padding:0; color:#c7d0e2; font-family:'Rubik',sans-serif; font-size:.96rem; }
+        .hero .chip strong { color:#fff; display:block; font-size:1.2rem; margin-bottom:4px; }
+        .mc-chars { position:absolute; bottom:-2px; left:clamp(8px,3.5vw,56px); z-index:3; display:flex; align-items:flex-end; gap:clamp(8px,1.6vw,22px); pointer-events:none; }
+        .mc-char { display:flex; flex-direction:column; align-items:center; gap:7px; will-change:transform; }
+        .mc-char .tag { font-family:'Press Start 2P'; font-size:8px; color:#fff7df; background:rgba(10,16,24,.72); border:1px solid rgba(255,255,255,.12); border-radius:5px; padding:4px 8px; direction:ltr; box-shadow:0 4px 12px rgba(0,0,0,.4); }
+        .mc-char img { width:clamp(70px,8vw,110px); height:auto; display:block; filter:drop-shadow(0 16px 18px rgba(0,0,0,.55)); }
+        .mc-char.steve { animation:mcbob 3.4s ease-in-out infinite; }
+        .mc-char.alex { animation:mcbob 3.4s ease-in-out infinite; animation-delay:-1.7s; }
+        @keyframes mcbob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-9px)} }
+        .hero-contact-band { padding: 46px 0 24px; background: linear-gradient(180deg, rgba(10,16,24,.98), rgba(15,23,42,.98)); }
+        .hero-contact-box { max-width: 980px; margin: 0 auto; display:grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: stretch; }
+        .hero-contact-copy, .hero-contact-form { background: rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.1); border-radius: 28px; padding: 28px; }
+        .hero-contact-copy h3, .hero-contact-form h3 { margin:0 0 10px; color:#fff; font-size:1.55rem; }
+        .hero-contact-copy p, .hero-contact-form p { color:#aab5cd; margin:0 0 16px; }
+        .hero-contact-list { list-style:none; padding:0; margin:18px 0 0; display:grid; gap:10px; }
+        .hero-contact-list li { color:#dfe8f6; }
+        .hero-contact-form form { display:grid; gap:10px; }
+        .hero-contact-form input, .hero-contact-form select { width:100%; border:1px solid rgba(255,255,255,.12); border-radius:14px; padding:14px 16px; font:inherit; background:#0c1326; color:#e7ecf6; }
+        .hero-contact-form button { border:none; border-radius:14px; padding:14px 16px; font:inherit; font-weight:900; cursor:pointer; background:linear-gradient(180deg,#4cc36b,#329f56); color:#07110b; }
+        @media (max-width: 1100px) { .hero-inner, .hero-contact-box { grid-template-columns: 1fr; } .hero-copy .kicker, .hero-copy h1, .hero-copy p, .hero-cta, .hero .chips { text-align:center; justify-content:center; } .hero-inner .hero-copy { margin:0 auto; } }
+        @media (max-width: 720px) { .hero { min-height:auto; padding:110px 20px 120px; } .mc-chars { left:16px; gap:10px; } .hero-contact-copy, .hero-contact-form { padding:22px; } }
+
     </style>
 </head>
 <body>
@@ -542,50 +605,52 @@
 
     <main id="main-content">
         <section class="hero">
-            <div class="grass-strip" aria-hidden="true"></div>
-            <div class="hero-decor" aria-hidden="true">
-                <div class="floating-cube grass" style="--size:96px; --duration:10s; top:12%; right:6%;">
-                    <span class="face front"></span><span class="face back"></span><span class="face right"></span><span class="face left"></span><span class="face top"></span><span class="face bottom"></span>
-                </div>
-                <div class="floating-cube stone" style="--size:72px; --duration:8.5s; top:58%; right:14%;">
-                    <span class="face front"></span><span class="face back"></span><span class="face right"></span><span class="face left"></span><span class="face top"></span><span class="face bottom"></span>
-                </div>
-                <div class="floating-cube gold" style="--size:58px; --duration:7.5s; top:18%; left:9%;">
-                    <span class="face front"></span><span class="face back"></span><span class="face right"></span><span class="face left"></span><span class="face top"></span><span class="face bottom"></span>
-                </div>
-                <div class="floating-cube grass" style="--size:52px; --duration:9.5s; bottom:12%; left:16%;">
-                    <span class="face front"></span><span class="face back"></span><span class="face right"></span><span class="face left"></span><span class="face top"></span><span class="face bottom"></span>
-                </div>
-            </div>
-            <div class="container">
-                <div class="hero-grid">
-                    <div>
-                        <div class="kicker">🏆 קיץ 2026 · ליגת בנייה לילדים · אונליין מהבית</div>
-                        <h1>הילד אוהב מיינקראפט?<br>זה השבוע שהוא לא ירצה לפספס</h1>
-                        <p class="hero-lead"><strong>5 מפגשים חיים ב־₪497</strong> של שרת פרטי, משימות בנייה, צוותים, ניקוד, מנגנונים חכמים וגמר גדול — חוויית קיץ שהילדים רוצים להיכנס אליה, וההורים שמחים לשלם עליה כי יש בה גם כיף, גם מסגרת וגם ערך.</p>
-                        <p class="hero-sub">במילים פשוטות: הילד קונה התרגשות, חברים ותחרות. ההורה קונה שבוע קיץ מסודר, בטוח ומלא עניין.</p>
-
-                        <div class="chips">
-                            <span class="chip">👦 גילאי 8-13</span>
-                            <span class="chip">📅 5 מפגשים</span>
-                            <span class="chip">🗓️ ראשון–חמישי</span>
-                            <span class="chip">⏱️ 75–90 דקות</span>
-                            <span class="chip">💸 ₪497</span>
-                        </div>
-
-                        <div class="hero-actions">
-                            <a href="#contact" class="btn-primary">📋 בדיקת התאמה ושיבוץ</a>
-                            <a target="_blank" href="https://wa.me/972533009742?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%AA%D7%A2%D7%A0%D7%99%D7%99%D7%A0%D7%AA%20%D7%91%D7%9C%D7%99%D7%92%D7%AA%20%D7%94%D7%91%D7%A0%D7%90%D7%99%D7%9D%20%D7%A9%D7%9C%20%D7%94%D7%A7%D7%99%D7%A5%20%D7%91%D7%9E%D7%99%D7%99%D7%A0%D7%A7%D7%A8%D7%90%D7%A4%D7%98" class="btn-secondary">💬 דברו איתנו בוואטסאפ</a>
-                        </div>
-                        <div class="chips" style="margin-top:14px; opacity:.96;">
-                            <span class="chip">⭐ מקומות מוגבלים בכל קבוצה</span>
-                            <span class="chip">🎁 גמר עם פרסים ותעודה</span>
-                        </div>
+            <div id="voxels" aria-hidden="true"></div>
+            <div class="container hero-inner">
+                <div class="hero-copy">
+                    <span class="kicker"><i class="dot"></i> ליגת הבנאים של הקיץ · Minecraft · דרך ההייטק</span>
+                    <h1><span class="play">הילד נכנס לעולם.</span><br><span class="learn">את רואה את ההתלהבות.</span></h1>
+                    <p class="lead"><b>5 מפגשים חיים ב־₪497</b> של שרת פרטי, משימות בנייה, צוותים, ניקוד, מנגנונים חכמים וגמר גדול — בתוך חוויית Minecraft שנראית ומרגישה כמו עולם שהילדים פשוט חייבים להיכנס אליו.</p>
+                    <p class="hero-sub">בדיוק כמו בתמונה ששלחת: פחות “עמוד”, יותר עולם. יותר וואו, יותר משחק, יותר רצון להירשם.</p>
+                    <div class="hero-cta">
+                        <a href="#contact" class="btn-primary">📋 בדיקת התאמה ושיבוץ</a>
+                        <a target="_blank" href="https://wa.me/972533009742?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%AA%D7%A2%D7%A0%D7%99%D7%99%D7%A0%D7%AA%20%D7%91%D7%9C%D7%99%D7%92%D7%AA%20%D7%94%D7%91%D7%A0%D7%90%D7%99%D7%9D%20%D7%A9%D7%9C%20%D7%94%D7%A7%D7%99%D7%A5%20%D7%91%D7%9E%D7%99%D7%99%D7%A0%D7%A7%D7%A8%D7%90%D7%A4%D7%98" class="btn-secondary">💬 דברו איתנו בוואטסאפ</a>
                     </div>
+                    <div class="chips">
+                        <span class="chip"><strong>8-13</strong> גילאי יעד</span>
+                        <span class="chip"><strong>5</strong> מפגשים חיים</span>
+                        <span class="chip"><strong>₪497</strong> למחזור מלא</span>
+                    </div>
+                </div>
+                <div></div>
+            </div>
+            <div class="mc-chars" aria-hidden="true">
+                <figure class="mc-char alex">
+                    <figcaption class="tag">Alex</figcaption>
+                    <img src="/images/craftom/alex.png" alt="Alex" loading="lazy">
+                </figure>
+                <figure class="mc-char steve">
+                    <figcaption class="tag">Steve</figcaption>
+                    <img src="/images/craftom/steve.png" alt="Steve" loading="lazy">
+                </figure>
+            </div>
+        </section>
 
-                    <aside class="hero-panel" id="contact">
+        <section class="hero-contact-band" id="contact">
+            <div class="container">
+                <div class="hero-contact-box">
+                    <div class="hero-contact-copy">
                         <h3>רוצים מקום במחזור הקרוב?</h3>
                         <p>השאירו פרטים ונחזור אליכם עם מחזור מתאים לפי גיל, רמה ושעה.</p>
+                        <ul class="hero-contact-list">
+                            <li>✅ קבוצה קטנה ומנוהלת</li>
+                            <li>✅ שרת פרטי עם משימות ואתגרים</li>
+                            <li>✅ גמר גדול, ניקוד ותחושת הישג אמיתית</li>
+                        </ul>
+                    </div>
+                    <div class="hero-contact-form">
+                        <h3>שמרו מקום</h3>
+                        <p>אפשר לשמור מקום עכשיו ולבחור את המחזור המדויק אחר כך.</p>
                         <form onsubmit="return submitLead(event)">
                             <input type="text" id="name" placeholder="שם ההורה" required>
                             <input type="tel" id="phone" placeholder="טלפון" required inputmode="numeric" oninput="this.value=this.value.replace(/[^0-9\-\+]/g,'')" pattern="[0-9-+]{9,15}">
@@ -604,18 +669,7 @@
                             <button type="submit">🚀 שמרו לי מקום</button>
                         </form>
                         <div class="success" id="success">✅ קיבלנו! נחזור אליכם עם קבוצה מתאימה</div>
-                        <small>אפשר לשמור מקום עכשיו ולבחור את המחזור המדויק אחר כך.</small>
-                        <div class="hero-visual" aria-hidden="true">
-                            <div class="hero-image-card">
-                                <img src="/images/institutions/minecraft-report-gallery/server-4-p5.webp" alt="">
-                                <div class="hero-image-label">בונים, יוצרים, מציגים</div>
-                            </div>
-                            <div class="hero-image-card">
-                                <img src="/images/institutions/minecraft-report-gallery/server-5-p4.webp" alt="">
-                                <div class="hero-image-label">משימות קבוצתיות</div>
-                            </div>
-                        </div>
-                    </aside>
+                    </div>
                 </div>
             </div>
         </section>
@@ -918,6 +972,53 @@
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        (function(){
+          const holder = document.getElementById('voxels');
+          if(!holder || !window.THREE) return;
+          const prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+          const scene = new THREE.Scene();
+          const camera = new THREE.PerspectiveCamera(42, holder.offsetWidth / Math.max(holder.offsetHeight, 1), .1, 100);
+          camera.position.set(0, 5.4, 12.2);
+          const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
+          renderer.setPixelRatio(Math.min(devicePixelRatio, 1.8));
+          renderer.setSize(holder.offsetWidth, holder.offsetHeight);
+          holder.appendChild(renderer.domElement);
+          scene.add(new THREE.AmbientLight(0x9db4ab, .55));
+          const sun = new THREE.DirectionalLight(0xfff2d8, 1.05); sun.position.set(6,12,4); scene.add(sun);
+          const rim = new THREE.PointLight(0x3fa3e8, .9, 30); rim.position.set(-8,3,-6); scene.add(rim);
+          const island = new THREE.Group(); scene.add(island);
+          const geo = new THREE.BoxGeometry(1,1,1);
+          const mats = {
+            grass:new THREE.MeshLambertMaterial({color:0x4cc36b}), grassL:new THREE.MeshLambertMaterial({color:0x63d883}),
+            dirt:new THREE.MeshLambertMaterial({color:0x7a5230}), dirtD:new THREE.MeshLambertMaterial({color:0x5e3f24}),
+            stone:new THREE.MeshLambertMaterial({color:0x6e7d8a}), gold:new THREE.MeshLambertMaterial({color:0xe8a33d, emissive:0x5e3c08}),
+            gem:new THREE.MeshLambertMaterial({color:0x3fe8c0, emissive:0x0a4034}), water:new THREE.MeshLambertMaterial({color:0x2e86c1, transparent:true, opacity:.85})
+          };
+          const cubes=[];
+          function addCube(x,y,z,mat,scale){ const m=new THREE.Mesh(geo,mat); m.position.set(x,y,z); if(scale) m.scale.setScalar(scale); m.userData.ty=y; island.add(m); cubes.push(m); return m; }
+          const R=4;
+          for(let gx=-R; gx<=R; gx++){ for(let gz=-R; gz<=R; gz++){ const d=Math.sqrt(gx*gx+gz*gz); if(d > R + (Math.sin(gx*2.1)+Math.cos(gz*1.7))*.45) continue; const h=Math.max(0, Math.round((R-d)*.55 + (Math.sin(gx*1.3)*Math.cos(gz*1.1))*.7)); for(let y=-2; y<=h; y++){ const isTop=(y===h); const isEdge = d > R - 1.6 || y === -2; if(!isTop && !isEdge && y > -2) continue; let mat; if(isTop) mat=Math.random()<.18?mats.grassL:mats.grass; else if(y>=h-1) mat=mats.dirt; else if(y<=-2) mat=Math.random()<.5?mats.stone:mats.dirtD; else mat=Math.random()<.85?mats.dirt:mats.dirtD; if(!isTop && Math.random()<.04) mat = Math.random()<.5 ? mats.gold : mats.gem; addCube(gx,y,gz,mat); } } }
+          addCube(1,1.01,0,mats.water,.98); addCube(2,1.01,0,mats.water,.98); addCube(1,1.01,1,mats.water,.98);
+          const trunkMat = new THREE.MeshLambertMaterial({color:0x5e3f24}); const leafMat = new THREE.MeshLambertMaterial({color:0x2f9e54});
+          addCube(-2,2,-1,trunkMat,.55); addCube(-2,2.55,-1,trunkMat,.55); [[-2,3.2,-1],[-2.7,3.2,-1],[-1.3,3.2,-1],[-2,3.2,-1.7],[-2,3.2,-0.3],[-2,3.9,-1]].forEach(p=>addCube(p[0],p[1],p[2],leafMat,.7));
+          const floaters=[]; const floatMats=[mats.gold,mats.gem,mats.grassL,new THREE.MeshLambertMaterial({color:0x3fa3e8, emissive:0x10293c})];
+          for(let i=0;i<10;i++){ const a=Math.random()*Math.PI*2, r=5.4+Math.random()*1.8; const f=addCube(Math.cos(a)*r, 1.5+Math.random()*3.4, Math.sin(a)*r, floatMats[i%4], .32+Math.random()*.3); f.userData.orbit={a,r,s:.12+Math.random()*.22,y:f.position.y}; floaters.push(f); }
+          island.position.set(-5.4,-.8,0); island.rotation.y=.5;
+          let py=0; addEventListener('pointermove', e=>{ py=(e.clientY / innerHeight - .5); }, {passive:true});
+          let dragging=false,lastX=0,lastY=0,userRotY=0,userRotX=0,velY=0,autoSpin=true;
+          const cv=renderer.domElement;
+          cv.addEventListener('pointerdown', e=>{ dragging=true; autoSpin=false; velY=0; lastX=e.clientX; lastY=e.clientY; cv.classList.add('dragging'); cv.setPointerCapture(e.pointerId); });
+          cv.addEventListener('pointermove', e=>{ if(!dragging) return; const dx=e.clientX-lastX, dy=e.clientY-lastY; lastX=e.clientX; lastY=e.clientY; userRotY += dx*.006; velY = dx*.006; userRotX = Math.max(-.45, Math.min(.5, userRotX + dy*.003)); });
+          function endDrag(){ if(!dragging) return; dragging=false; cv.classList.remove('dragging'); clearTimeout(endDrag.t); endDrag.t=setTimeout(()=>{autoSpin=true;}, 4000); }
+          cv.addEventListener('pointerup', endDrag); cv.addEventListener('pointercancel', endDrag); cv.addEventListener('pointerleave', endDrag);
+          const clock=new THREE.Clock(); let spin=.5;
+          cubes.forEach(m=>{ m.position.y = m.userData.ty + 9 + Math.random()*7; });
+          const tick=()=>{ const t=clock.getElapsedTime(); cubes.forEach(m=>{ m.position.y += (m.userData.ty - m.position.y) * 0.08; }); if(!prefersReduced){ if(autoSpin && !dragging) spin += .0009; if(!dragging){ userRotY += velY; velY *= .94; } island.rotation.y = spin + userRotY; island.rotation.x = userRotX * .6; island.position.y = -.8 + Math.sin(t*.8)*.12; camera.position.y = 5.4 - py*1.1; camera.lookAt(-1.2,.4,0); floaters.forEach(f=>{ const o=f.userData.orbit; o.a += o.s*.008; f.position.x=Math.cos(o.a)*o.r; f.position.z=Math.sin(o.a)*o.r; f.position.y=o.y + Math.sin(t*1.3 + o.r)*.25; f.rotation.x += .004; f.rotation.y += .006; }); } else { island.rotation.y = spin + userRotY; island.rotation.x = userRotX * .6; } renderer.render(scene,camera); requestAnimationFrame(tick); }; tick();
+          addEventListener('resize', ()=>{ camera.aspect = holder.offsetWidth / Math.max(holder.offsetHeight,1); camera.updateProjectionMatrix(); renderer.setSize(holder.offsetWidth, holder.offsetHeight); });
+        })();
+    </script>
     <script src="/js/analytics.js?v=20260314"></script>
     <script src="/js/cookie-consent.js?v=20260318"></script>
     <script>
