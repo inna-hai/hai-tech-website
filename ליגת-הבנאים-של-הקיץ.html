@@ -575,14 +575,6 @@
         .final-help-form button:hover { transform: translateY(-1px); }
         .final-help-card .success { display:none; margin-top:16px; text-align:center; }
         .footer { background: #0c1326; color: var(--muted); text-align: center; padding: 28px 16px 90px; border-top: 4px solid var(--dirt-dark); }
-        .sticky {
-            position: fixed; right: 0; left: 0; bottom: 0; background: rgba(255,255,255,.96); backdrop-filter: blur(12px); box-shadow: 0 -10px 30px rgba(15,23,42,.12);
-            padding: 10px 12px; z-index: 999; display: none;
-        }
-        .sticky-inner { max-width: 560px; margin: 0 auto; display: flex; gap: 10px; justify-content:center; }
-        .sticky-inner a { flex: 1; text-decoration: none; text-align: center; padding: 12px 16px; font-weight: 900; border: 3px solid rgba(42,42,42,.95); box-shadow: inset -3px -3px 0 rgba(0,0,0,.16), inset 3px 3px 0 rgba(255,255,255,.08); }
-        .sticky-primary { background: linear-gradient(180deg, #22c55e, #15803d); color: white; }
-        .sticky-secondary { background: linear-gradient(180deg, #34d399, #059669); color: white; }
         @keyframes floatCube {
             0%, 100% { transform: translateY(0) rotateX(-18deg) rotateY(22deg); }
             50% { transform: translateY(-16px) rotateX(-18deg) rotateY(42deg); }
@@ -786,12 +778,8 @@
                 font-size: .98rem;
                 margin-bottom: 24px;
             }
-            .track-card .btn-primary,
-            .sticky-inner a {
+            .track-card .btn-primary {
                 width: 100%;
-            }
-            .sticky {
-                padding: 10px 10px calc(10px + env(safe-area-inset-bottom));
             }
             .final-help-band {
                 padding: 0 0 56px;
@@ -1145,12 +1133,6 @@
             <p style="margin:0;">טכנולוגיה, תכנות ו-AI לילדים ונוער</p>
         </div>
     </footer>
-
-    <div class="sticky">
-        <div class="sticky-inner">
-            <a href="#payment-links" class="sticky-primary">🎯 בחרו מסלול</a>
-        </div>
-    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
