@@ -66,6 +66,9 @@
 # No rewrite rules needed — Cloudflare auto-strips .html and serves the correct file
 # Example: קורס-תכנות-לילדים.html is served at /קורס-תכנות-לילדים
 
+/קייטנת-קיץ-מיינקראפט /ליגת-הבנאים-של-הקיץ 301
+/קייטנת-קיץ-מיינקראפט/ /ליגת-הבנאים-של-הקיץ 301
+
 # Old English URLs redirect to Hebrew canonical (301)
 /programming-course-kids /קורס-תכנות-לילדים 301
 /programming-course-kids/ /קורס-תכנות-לילדים 301
