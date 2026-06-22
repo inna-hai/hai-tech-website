@@ -555,9 +555,9 @@
         .hero .btn-primary, .hero .btn-secondary { border-radius:999px; border:1px solid rgba(255,255,255,.12); box-shadow:none; padding:14px 22px; }
         .hero .btn-primary { background:linear-gradient(180deg,#4cc36b 0%,#329f56 100%); color:#07110b; }
         .hero .btn-secondary { background:rgba(255,255,255,.04); color:#f5f7fb; }
-        .hero .chips { gap:12px; margin-top:28px; }
-        .hero .chip { background:transparent; border:none; box-shadow:none; padding:0; color:#c7d0e2; font-family:'Rubik',sans-serif; font-size:.96rem; }
-        .hero .chip strong { color:#fff; display:block; font-size:1.2rem; margin-bottom:4px; }
+        .hero .chips { gap:14px; margin-top:28px; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); width:min(100%,560px); }
+        .hero .chip { background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08); box-shadow:none; padding:14px 12px; color:#c7d0e2; font-family:'Rubik',sans-serif; font-size:.95rem; text-align:center; border-radius:18px; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:84px; line-height:1.25; }
+        .hero .chip strong { color:#fff; display:block; font-size:2rem; line-height:1; margin-bottom:8px; direction:ltr; }
         .mc-chars { position:absolute; bottom:-2px; left:clamp(8px,3.5vw,56px); z-index:3; display:flex; align-items:flex-end; gap:clamp(8px,1.6vw,22px); pointer-events:none; }
         .mc-char { display:flex; flex-direction:column; align-items:center; gap:7px; will-change:transform; }
         .mc-char .tag { font-family:'Press Start 2P'; font-size:8px; color:#fff7df; background:rgba(10,16,24,.72); border:1px solid rgba(255,255,255,.12); border-radius:5px; padding:4px 8px; direction:ltr; box-shadow:0 4px 12px rgba(0,0,0,.4); }
@@ -576,7 +576,7 @@
         .hero-contact-form input, .hero-contact-form select { width:100%; border:1px solid rgba(255,255,255,.12); border-radius:14px; padding:14px 16px; font:inherit; background:#0c1326; color:#e7ecf6; }
         .hero-contact-form button { border:none; border-radius:14px; padding:14px 16px; font:inherit; font-weight:900; cursor:pointer; background:linear-gradient(180deg,#4cc36b,#329f56); color:#07110b; }
         @media (max-width: 1100px) { .hero-inner, .hero-contact-box { grid-template-columns: 1fr; } .hero-copy .kicker, .hero-copy h1, .hero-copy p, .hero-cta, .hero .chips { text-align:center; justify-content:center; } .hero-inner .hero-copy { margin:0 auto; } }
-        @media (max-width: 720px) { .hero { min-height:auto; padding:110px 20px 120px; } .mc-chars { left:16px; gap:10px; } .hero-contact-copy, .hero-contact-form { padding:22px; } }
+        @media (max-width: 720px) { .hero { min-height:auto; padding:110px 20px 120px; } .mc-chars { left:16px; gap:10px; } .hero-contact-copy, .hero-contact-form { padding:22px; } .hero .chips { grid-template-columns:1fr; max-width:260px; margin-inline:auto; } .hero .chip { min-height:72px; } .hero .chip strong { font-size:1.7rem; } }
 
     </style>
 </head>
