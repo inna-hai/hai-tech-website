@@ -1,5 +1,8 @@
 # Redirects from old WordPress URLs to new pages
 
+/craftom-schools https://craftom.orma-ai.com/ 301
+/craftom-schools.html https://craftom.orma-ai.com/ 301
+
 /home / 301
 /home/ / 301
 
