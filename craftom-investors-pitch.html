@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Craftom — Pitch למשקיעים</title>
+  <meta name="description" content="Craftom — שכבת AI מעל Minecraft שמחזקת מיומנויות חברתיות, שייכות והתפתחות אישית דרך משחק משותף." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800;900&family=Heebo:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#08111a;
+      --bg2:#0d1824;
+      --panel:#111f2d;
+      --panel2:#162739;
+      --line:rgba(151,184,201,.16);
+      --text:#ecf5f7;
+      --muted:#9cb4c1;
+      --green:#53d67f;
+      --green2:#33b665;
+      --blue:#47a6ff;
+      --gold:#ffbe55;
+      --shadow:0 20px 60px rgba(0,0,0,.35);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Heebo","Rubik",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(900px 500px at 10% 0%, rgba(71,166,255,.12), transparent 60%),
+        radial-gradient(900px 600px at 100% 10%, rgba(83,214,127,.10), transparent 60%),
+        linear-gradient(180deg,var(--bg),var(--bg2));
+      line-height:1.8;
+    }
+    .progress{position:fixed;top:0;right:0;left:0;height:5px;background:rgba(255,255,255,.06);z-index:50}
+    .progress > span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--green),var(--blue),var(--gold))}
+    .nav{
+      position:sticky;top:5px;z-index:40;
+      display:flex;justify-content:space-between;align-items:center;gap:16px;
+      width:min(1180px,calc(100% - 28px));margin:18px auto 0;
+      padding:14px 18px;border:1px solid var(--line);border-radius:18px;
+      background:rgba(8,17,26,.72);backdrop-filter:blur(12px);
+    }
+    .brand{font-family:"Rubik",sans-serif;font-weight:900;font-size:22px;letter-spacing:.2px}
+    .brand b{color:var(--green)}
+    .nav small{color:var(--muted);font-size:13px}
+    .hero,.slide{
+      width:min(1180px,calc(100% - 28px));
+      margin:18px auto;
+      border:1px solid var(--line);
+      border-radius:28px;
+      background:linear-gradient(180deg,rgba(17,31,45,.92),rgba(12,23,35,.92));
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero::before,.slide::before{
+      content:"";position:absolute;inset:0 auto auto 0;width:100%;height:1px;
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);
+    }
+    .hero{padding:90px 56px 70px;min-height:88vh;display:flex;align-items:center}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center;width:100%}
+    .kicker{
+      display:inline-flex;align-items:center;gap:10px;padding:8px 14px;border-radius:999px;
+      border:1px solid rgba(83,214,127,.28);background:rgba(83,214,127,.08);color:#cbf9d8;
+      font-size:13px;font-weight:700;margin-bottom:22px;
+    }
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)}
+    h1{font-family:"Rubik",sans-serif;font-size:clamp(38px,6vw,78px);line-height:1.08;margin:0 0 20px;font-weight:900}
+    h1 .accent{color:var(--green)}
+    .lead{font-size:clamp(18px,2vw,24px);color:var(--muted);max-width:660px}
+    .hero-card{
+      background:linear-gradient(180deg,rgba(22,39,57,.95),rgba(11,21,31,.95));
+      border:1px solid var(--line);border-radius:24px;padding:26px;
+    }
+    .hero-card h3{margin:0 0 12px;font-family:"Rubik";font-size:24px}
+    .hero-card p{margin:0;color:var(--muted);font-size:16px}
+    .hero-list{display:grid;gap:12px;margin-top:18px}
+    .hero-item{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;border-radius:16px;background:rgba(255,255,255,.03)}
+    .hero-item strong{display:block;font-size:15px}
+    .hero-item span{color:var(--muted);font-size:14px}
+    .num{
+      flex:none;width:32px;height:32px;border-radius:10px;display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--green2),var(--blue));font-weight:800;font-family:"Rubik";
+    }
+    .slide{padding:34px}
+    .slide-inner{
+      min-height:78vh;padding:26px;
+      border-radius:22px;
+      background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));
+      border:1px solid rgba(255,255,255,.04);
+      display:grid;grid-template-columns:140px 1fr;gap:28px;align-items:start;
+    }
+    .slide-no{position:sticky;top:104px}
+    .slide-no .pill{
+      display:inline-block;padding:10px 14px;border-radius:999px;background:rgba(71,166,255,.12);
+      border:1px solid rgba(71,166,255,.26);color:#cfe7ff;font-weight:800;font-family:"Rubik";
+    }
+    .slide-no .label{margin-top:14px;color:var(--muted);font-size:13px;line-height:1.6}
+    .slide h2{font-family:"Rubik";font-size:clamp(28px,4vw,52px);line-height:1.2;margin:0 0 20px;font-weight:900}
+    .slide h2 .accent{color:var(--green)}
+    .content{max-width:860px}
+    .story{font-size:clamp(20px,2.6vw,34px);line-height:1.65;font-weight:500}
+    .story p{margin:0 0 14px}
+    .story .big{font-size:1.2em;font-weight:900;color:#fff}
+    .story .soft{color:var(--muted)}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+    .card{
+      padding:22px;border-radius:18px;background:var(--panel2);border:1px solid var(--line);
+      box-shadow:0 10px 30px rgba(0,0,0,.18)
+    }
+    .card h3{margin:0 0 10px;font-size:20px;font-family:"Rubik"}
+    .card p,.card li{color:var(--muted);font-size:16px}
+    .card ul{margin:0;padding-right:18px}
+    .quote{
+      margin-top:22px;padding:22px 24px;border-right:4px solid var(--gold);
+      background:rgba(255,190,85,.08);border-radius:18px;color:#fff;font-size:22px;font-weight:700
+    }
+    .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:22px}
+    .step{padding:18px;border-radius:18px;background:var(--panel2);border:1px solid var(--line)}
+    .step b{display:block;color:var(--green);font-family:"Rubik";margin-bottom:8px}
+    .step span{color:var(--muted);font-size:15px}
+    .skills{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+    .skill{padding:18px;border-radius:18px;background:rgba(255,255,255,.03);border:1px solid var(--line);text-align:center;font-weight:700}
+    .skill small{display:block;margin-top:6px;color:var(--muted);font-weight:500}
+    .timeline{display:grid;gap:14px;margin-top:22px}
+    .tl{display:grid;grid-template-columns:180px 1fr;gap:16px;align-items:start}
+    .tl b{color:#fff;font-family:"Rubik"}
+    .tl div:last-child{color:var(--muted)}
+    .closing{
+      min-height:82vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px;
+      background:
+        radial-gradient(700px 380px at 50% 30%, rgba(83,214,127,.13), transparent 60%),
+        linear-gradient(180deg,rgba(17,31,45,.95),rgba(8,17,26,.98));
+    }
+    .closing h2{font-size:clamp(34px,5vw,72px);margin-bottom:16px}
+    .closing p{font-size:clamp(19px,2vw,26px);color:var(--muted);max-width:820px;margin:0 auto}
+    .closing .final{margin-top:28px;font-size:clamp(28px,3.8vw,52px);font-family:"Rubik";font-weight:900;color:#fff}
+    .closing .final span{color:var(--gold)}
+    @media (max-width:900px){
+      .hero{padding:72px 24px 44px}
+      .hero-grid,.grid-2,.skills,.steps{grid-template-columns:1fr}
+      .slide{padding:18px}
+      .slide-inner{grid-template-columns:1fr;min-height:auto;padding:18px}
+      .slide-no{position:static}
+      .tl{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="progress"><span id="bar"></span></div>
+
+  <div class="nav">
+    <div class="brand">craft<b>Om</b></div>
+    <small>Investor Pitch · AI + Minecraft + Social Growth</small>
+  </div>
+
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="kicker"><span class="dot"></span> Pitch למשקיעים</div>
+        <h1>לא משנים לילדים את המשחק.<br>מוסיפים לו <span class="accent">שכבת משמעות</span>.</h1>
+        <p class="lead">Craftom מוסיפה ל־Minecraft שכבת AI שמחזקת קשרים חברתיים, שייכות, ביטחון עצמי ומיומנויות אישיות — דרך המשחק שילדים כבר אוהבים.</p>
+      </div>
+      <div class="hero-card">
+        <h3>למה זה מעניין?</h3>
+        <p>כי ילדים כבר נמצאים שם. השאלה היא איך הופכים את הזמן הזה להזדמנות לצמיחה אמיתית.</p>
+        <div class="hero-list">
+          <div class="hero-item"><div class="num">1</div><div><strong>Minecraft כבר מחבר ילדים</strong><span>Craftom מבינה מה קורה בתוך החיבור הזה.</span></div></div>
+          <div class="hero-item"><div class="num">2</div><div><strong>AI בזמן אמת</strong><span>ליווי אישי, התאמת אתגר וניתוח התקדמות תוך כדי משחק.</span></div></div>
+          <div class="hero-item"><div class="num">3</div><div><strong>ערך להורים ולאנשי מקצוע</strong><span>לא רק תוצאה — אלא הבנה של הדרך, ההתנהגות והצמיחה.</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <aside class="slide-no"><span class="pill">01</span><div class="label">פתיחה</div></aside>
+      <div class="content story">
+        <h2>הוא נכנס ל־<span class="accent">Minecraft</span>.</h2>
+        <p>שם הוא יכול לבנות כל דבר שהוא מדמיין.</p>
+        <p class="big">טירות. ערים. עולמות שלמים.</p>
+        <p>אבל יש דבר אחד שהוא לא תמיד יודע לבנות לבד.</p>
+        <p class="big">קשר עם ילד אחר.</p>
+        <div class="quote">כאן מתחיל הסיפור של Craftom.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <aside class="slide-no"><span class="pill">02</span><div class="label">למה?</div></aside>
+      <div class="content story">
+        <h2>במקום לבנות משחק חדש,<br>שאלנו שאלה <span class="accent">פשוטה</span>.</h2>
+        <p>איך אפשר להפוך את המשחק שילדים כבר אוהבים למקום שבו הם יכולים גם ליצור חברויות, לפתח מיומנויות חברתיות ולהרגיש שייכים?</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <aside class="slide-no"><span class="pill">03</span><div class="label">הפתרון</div></aside>
+      <div class="content story">
+        <h2>התשובה היא <span class="accent">Craftom</span>.</h2>
+        <p>Craftom מוסיפה ל־Minecraft שכבת AI שהופכת משחק משותף להזדמנות להתפתחות אישית וחברתית.</p>
+        <div class="grid-2">
+          <div class="card"><h3>Minecraft יודעת לחבר ילדים</h3><p>היא מספקת עולם משותף, משימות, יצירה, חקר ושיתוף פעולה טבעי.</p></div>
+          <div class="card"><h3>Craftom יודעת להבין כל ילד</h3><p>היא מוסיפה הקשר, התאמה אישית, תמיכה בזמן אמת ומדידה של התהליך.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <aside class="slide-no"><span class="pill">04</span><div class="label">מה באמת חדש?</div></aside>
+      <div class="content story">
+        <h2>Craftom היא <span class="accent">שכבת AI שלמה</span> שפועלת מעל המשחק.</h2>
+        <p>השכבה הזו מאפשרת ליצור חוויות מותאמות אישית, ללוות כל ילד בזמן אמת ולהבין את תהליך ההתקדמות שלו — תוך כדי המשחק.</p>
+        <div class="quote">לא עוד רק gameplay. אלא gameplay עם הבנה, כוונה והתאמה אישית.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <aside class="slide-no"><span class="pill">05</span><div class="label">איך זה עובד?</div></aside>
+      <div class="content">
+        <h2>יוצרים <span class="accent">סשן חדש</span> בכמה צעדים פשוטים</h2>
+        <p class="lead">הורה, מחנך, מדריך או איש מקצוע יכולים להגדיר פעילות מדויקת בקלות — ולבנות חוויה שמתאימה לילד אחד או לקבוצה.</p>
+        <div class="steps">
+          <div class="step"><b>01 · מטרה</b><span>מגדירים מה רוצים להשיג בפעילות.</span></div>
+          <div class="step"><b>02 · מיומנויות</b><span>בוחרים אילו יכולות רוצים לחזק.</span></div>
+          <div class="step"><b>03 · משימות</b><span>יוצרים אתגרים ותרחישים מתאימים.</span></div>
+          <div class="step"><b>04 · הצלחה</b><span>מגדירים מה נחשב להתקדמות או הצלחה.</span></div>
+          <div class="step"><b>05 · התאמה</b><span>מתאימים את החוויה לכל ילד או קבוצה.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <aside class="slide-no"><span class="pill">06</span><div class="label">במהלך המשחק</div></aside>
+      <div class="content story">
+        <h2>בזמן שהילדים משחקים,<br>פועלים ברקע <span class="accent">סוכני AI</span>.</h2>
+        <p>כל ילד מקבל ליווי אישי.</p>
+        <p>סוכני ה־AI מעודדים, מכוונים, מספקים רמזים בעת הצורך ומתאימים את רמת האתגר בהתאם להתקדמות ולמטרות שהוגדרו.</p>
+        <div class="grid-2">
+          <div class="card"><h3>מה ה־AI עושה?</h3><ul><li>מעודד ומכוון</li><li>נותן רמזים בזמן הנכון</li><li>מתאים קצב ורמת אתגר</li><li>מזהה התקדמות ודפוסים</li></ul></div>
+          <div class="card"><h3>מה ה־AI לא עושה?</h3><p>הוא לא מחליף את המבוגר. הוא נותן לכל ילד ליווי אישי — גם בתוך פעילות קבוצתית.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <aside class="slide-no"><span class="pill">07</span><div class="label">מה הילדים באמת עושים?</div></aside>
+      <div class="content">
+        <h2>מבחינת הילדים — הם <span class="accent">פשוט משחקים</span>.</h2>
+        <p class="lead">אבל תוך כדי המשחק הם מתרגלים את המיומנויות שהכי קשה ללמד בצורה ישירה.</p>
+        <div class="skills">
+          <div class="skill">שיתוף פעולה<small>לבנות ולעבוד יחד</small></div>
+          <div class="skill">הקשבה<small>להבין אחרים בזמן אמת</small></div>
+          <div class="skill">קבלת החלטות<small>לבחור כקבוצה</small></div>
+          <div class="skill">פתרון בעיות<small>למצוא דרך קדימה</small></div>
+          <div class="skill">תקשורת<small>להסביר, לבקש, להציע</small></div>
+          <div class="skill">אחריות הדדית<small>לעזור אחד לשני</small></div>
+        </div>
+        <div class="quote">הם אפילו לא מרגישים שהם מתרגלים מיומנויות.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <aside class="slide-no"><span class="pill">08</span><div class="label">מה מקבלים ההורים ואנשי המקצוע?</div></aside>
+      <div class="content">
+        <h2>בסיום כל פעילות נוצרת <span class="accent">תמונת התקדמות אישית</span>.</h2>
+        <div class="timeline">
+          <div class="tl"><b>לא רק אם הצליח</b><div>אלא גם איך הילד פעל לאורך הדרך.</div></div>
+          <div class="tl"><b>איך שיתף פעולה</b><div>איך השתלב, הקשיב, יזם והגיב לאחרים.</div></div>
+          <div class="tl"><b>איך התמודד עם אתגרים</b><div>איפה התעקש, איפה נתקע, ואיך התקדם.</div></div>
+          <div class="tl"><b>איפה כדאי לחזק</b><div>כדי לתכנן את הפעילות הבאה בצורה מדויקת יותר.</div></div>
+        </div>
+        <div class="quote">כך המשחק הופך לא רק לחוויה — אלא גם לכלי עבודה משמעותי.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide closing">
+    <div>
+      <h2>החזון</h2>
+      <p>אנחנו מאמינים שלכל ילד מגיע מקום שבו הוא יכול להרגיש שייך. מקום שבו הוא יכול להכיר חברים, לפתח ביטחון עצמי ולגדול בקצב שלו.</p>
+      <p>אנחנו לא משנים את הדרך שבה ילדים משחקים. אנחנו מוסיפים למשחק שהם כבר אוהבים שכבת AI שמאפשרת להפוך כל מפגש להזדמנות לחיבור, לצמיחה ולהתפתחות.</p>
+      <div class="final">כי לפעמים…<br><span>חבר אחד יכול לשנות חיים.</span></div>
+    </div>
+  </section>
+
+  <script>
+    const bar = document.getElementById('bar');
+    addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const p = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+      bar.style.width = p + '%';
+    }, { passive: true });
+  </script>
+</body>
+</html>
