@@ -186,6 +186,11 @@
         gap:24px;
         align-items:center;
       }
+      .content.text-only{
+        direction:rtl;
+        display:flex;
+        flex-direction:column;
+      }
       .content > .slide-media{
         grid-column:1;
         grid-row:1 / span 20;
@@ -194,6 +199,9 @@
       .content > :not(.slide-media){
         grid-column:2;
         direction:rtl;
+      }
+      .content.text-only > *{
+        grid-column:auto;
       }
       .slide-media img{object-position:center}
       .quote{font-size:20px}
@@ -221,7 +229,7 @@
         <div class="hero-list">
           <div class="hero-item"><div class="num">1</div><div><strong>Minecraft כבר מחבר ילדים</strong><span>Craftom מבינה מה קורה בתוך החיבור הזה.</span></div></div>
           <div class="hero-item"><div class="num">2</div><div><strong>AI בזמן אמת</strong><span>ליווי אישי, התאמת אתגר וניתוח התקדמות תוך כדי משחק.</span></div></div>
-          <div class="hero-item"><div class="num">3</div><div><strong>ערך להורים ולאנשי מקצוע</strong><span>לא רק תוצאה — אלא הבנה של הדרך, ההתנהגות והצמיחה.</span></div></div>
+          <div class="hero-item"><div class="num">3</div><div><strong>7 שנות ניסיון בשטח</strong><span>אנחנו עובדים כבר 7 שנים בגיימינג בחינוך, עם לקוחות גדולים והרבה בתי ספר.</span></div></div>
         </div>
       </div>
     </div>
@@ -231,7 +239,7 @@
     <div class="slide-inner">
       <aside class="slide-no"><span class="pill">01</span><div class="label">פתיחה</div></aside>
       <div class="content story">
-        <h2>הוא נכנס ל־<span class="accent">Minecraft</span>.</h2>
+        <h2>הילד נכנס ל־<span class="accent">Minecraft</span>.</h2>
         <p>שם הוא יכול לבנות כל דבר שהוא מדמיין.</p>
         <p class="big">טירות. ערים. עולמות שלמים.</p>
         <p>אבל יש דבר אחד שהוא לא תמיד יודע לבנות לבד.</p>
@@ -262,27 +270,31 @@
 
   <section class="slide">
     <div class="slide-inner">
-      <aside class="slide-no"><span class="pill">03</span><div class="label">הפתרון</div></aside>
-      <div class="content story">
-        <h2>התשובה היא <span class="accent">Craftom</span>.</h2>
-        <p>Craftom מוסיפה ל־Minecraft שכבת AI שהופכת משחק משותף להזדמנות להתפתחות אישית וחברתית.</p>
+      <aside class="slide-no"><span class="pill">03</span><div class="label">למה דווקא Minecraft?</div></aside>
+      <div class="content story with-media">
+        <h2>בחרנו ב־<span class="accent">Minecraft</span> כי זה לא עוד משחק.</h2>
+        <p>Minecraft היא סביבה שילדים כבר אוהבים, מכירים ורוצים לחזור אליה שוב ושוב.</p>
         <div class="grid-2">
-          <div class="card"><h3>Minecraft יודעת לחבר ילדים</h3><p>היא מספקת עולם משותף, משימות, יצירה, חקר ושיתוף פעולה טבעי.</p></div>
-          <div class="card"><h3>Craftom יודעת להבין כל ילד</h3><p>היא מוסיפה הקשר, התאמה אישית, תמיכה בזמן אמת ומדידה של התהליך.</p></div>
+          <div class="card"><h3>סביבה טבעית לשיתוף פעולה</h3><p>הילדים בונים יחד, מקבלים החלטות יחד, פותרים בעיות יחד ומדברים תוך כדי פעולה אמיתית.</p></div>
+          <div class="card"><h3>התנגדות נמוכה, מעורבות גבוהה</h3><p>במקום לשכנע ילד להיכנס לעוד כלי טיפולי — אנחנו פוגשים אותו במקום שבו כבר יש לו מוטיבציה, ביטחון וסקרנות.</p></div>
         </div>
-        <div class="slide-media"><img loading="lazy" src="/images/craftom/investors-pitch/slide-03-solution.png" alt="שני ילדים מתחברים ומשתפים פעולה בעולם Minecraft עם שכבת AI תומכת" /></div>
+        <div class="quote">במילים אחרות: Minecraft כבר מביאה את הילד פנימה. Craftom הופכת את הזמן שם להזדמנות להתפתחות חברתית.</div>
+        <div class="slide-media"><img loading="lazy" src="/images/craftom/investors-pitch/slide-03-solution.png" alt="ילדים פועלים יחד בעולם Minecraft עם שכבת AI תומכת" /></div>
       </div>
     </div>
   </section>
 
   <section class="slide">
     <div class="slide-inner">
-      <aside class="slide-no"><span class="pill">04</span><div class="label">מה באמת חדש?</div></aside>
-      <div class="content story">
-        <h2>Craftom היא <span class="accent">שכבת AI שלמה</span> שפועלת מעל המשחק.</h2>
-        <p>השכבה הזו מאפשרת ליצור חוויות מותאמות אישית, ללוות כל ילד בזמן אמת ולהבין את תהליך ההתקדמות שלו — תוך כדי המשחק.</p>
-        <div class="quote">לא עוד רק gameplay. אלא gameplay עם הבנה, כוונה והתאמה אישית.</div>
-        <div class="slide-media"><img loading="lazy" src="/images/craftom/investors-pitch/slide-04-ai-layer.png" alt="המחשה של שכבת AI מעל עולם Minecraft" /></div>
+      <aside class="slide-no"><span class="pill">04</span><div class="label">הפתרון</div></aside>
+      <div class="content story with-media">
+        <h2>התשובה היא <span class="accent">Craftom</span>.</h2>
+        <p>Craftom מוסיפה ל־Minecraft שכבת AI שהופכת משחק משותף להזדמנות להתפתחות אישית וחברתית.</p>
+        <div class="grid-2">
+          <div class="card"><h3>Minecraft יודעת לחבר ילדים</h3><p>היא מספקת עולם משותף, משימות, יצירה, חקר ושיתוף פעולה טבעי.</p></div>
+          <div class="card"><h3>Craftom יודעת להבין כל ילד</h3><p>היא מוסיפה הקשר, התאמה אישית, תמיכה בזמן אמת ומדידה של התהליך.</p></div>
+        </div>
+        <div class="slide-media"><img loading="lazy" src="/images/craftom/investors-pitch/slide-04-ai-layer.png" alt="שני ילדים מתחברים ומשתפים פעולה בעולם Minecraft עם שכבת AI תומכת" /></div>
       </div>
     </div>
   </section>
@@ -410,14 +422,14 @@
   <section class="slide">
     <div class="slide-inner">
       <aside class="slide-no"><span class="pill">12</span><div class="label">בקשת השקעה</div></aside>
-      <div class="content">
+      <div class="content text-only">
         <h2>אנחנו מגייסים <span class="accent">$500K Pre-Seed</span></h2>
         <p class="lead">המטרה של הסבב היא לקחת את Craftom מ־POC ו־MVP עובדים — למוצר מסחרי מוכח עם משתמשים פעילים, פיילוטים ולקוחות משלמים ראשונים.</p>
         <div class="timeline">
           <div class="tl"><b>למה עכשיו</b><div>יש חיבור נדיר בין צורך אמיתי של הורים ואנשי מקצוע, פלטפורמת משחק שילדים כבר אוהבים, ויכולת AI שמאפשרת התאמה אישית בזמן אמת.</div></div>
-          <div class="tl"><b>מה ההשקעה תאפשר</b><div>לחזק את המוצר הקיים, להפעיל פיילוטים מסודרים, למדוד תוצאות, ולהגיע להוכחת Product-Market Fit ראשונית.</div></div>
-          <div class="tl"><b>Traction מיידי</b><div>כבר בשבוע הבא מתוכננים שני פיילוטים קטנים עם שתי קבוצות של ילדים אוטיסטים בתפקוד גבוה — צעד ראשון חשוב לבדיקת שימוש, ערך ומעורבות בעולם אמיתי.</div></div>
-          <div class="tl"><b>מה אנחנו מחפשים</b><div>שותפים שמבינים EdTech, AI, gaming for good, ויודעים לעזור בחיבור למטפלים, מוסדות חינוך ושווקים בינלאומיים.</div></div>
+          <div class="tl"><b>למה אנחנו</b><div>אנחנו עובדים כבר 7 שנים בגיימינג בחינוך, עם לקוחות גדולים והרבה בתי ספר שבהם הפעלנו תוכניות בפועל — כלומר, אנחנו מכירים גם את הילדים וגם את המערכת.</div></div>
+          <div class="tl"><b>מה כבר הוכחנו</b><div>יש לנו POC, יש לנו MVP, יש POC סגור עם חברה גדולה, ויש פיילוט עם מטפל קליני לילדים על הספקטרום. בנוסף, כבר בשבוע הבא מתחילים שני פיילוטים קטנים עם שתי קבוצות של ילדים אוטיסטים בתפקוד גבוה.</div></div>
+          <div class="tl"><b>מחויבות מייסדים</b><div>כבר השקענו $100K מהבית בפיתוח, כדי להביא את Craftom עד לנקודה הזו לפני הגיוס.</div></div>
         </div>
         <div class="quote">אנחנו מבקשים $500K כדי לקחת את Craftom מ־MVP ו־POC למוצר מסחרי יציב עם traction ראשוני בשוק.</div>
       </div>
@@ -427,16 +439,15 @@
   <section class="slide">
     <div class="slide-inner">
       <aside class="slide-no"><span class="pill">13</span><div class="label">שימוש בכסף</div></aside>
-      <div class="content">
-        <h2>לאן ילך <span class="accent">הכסף</span></h2>
+      <div class="content text-only">
+        <h2>לאן ילכו <span class="accent">$500K</span></h2>
         <div class="grid-2">
-          <div class="card"><h3>פיתוח מוצר</h3><ul><li>מנוע AI לליווי בזמן אמת</li><li>מערכת יצירת סשנים ומשימות</li><li>דוחות והערכת התקדמות</li><li>UX פשוט וברור להורים ואנשי מקצוע</li></ul></div>
-          <div class="card"><h3>Go To Market</h3><ul><li>פיילוטים עם משפחות ואנשי מקצוע</li><li>תוכן onboarding והטמעה</li><li>שיווק ראשוני ורכישת לקוחות</li><li>שותפויות עם קליניקות ומסגרות חינוך</li></ul></div>
+          <div class="card"><h3>$220K · מוצר ו־AI</h3><ul><li>חיזוק מנוע ה־AI לליווי בזמן אמת</li><li>מערכת יצירת סשנים, משימות ופרופילי משתמש</li><li>דוחות התקדמות וניתוח התנהגותי</li><li>תשתיות, אבטחה, שרתים ויציבות מוצר</li></ul></div>
+          <div class="card"><h3>$110K · פיילוטים וולידציה</h3><ul><li>הרצת פיילוטים עם משפחות ואנשי מקצוע</li><li>עבודה עם מטפלים קליניים וילדים על הספקטרום</li><li>מדידה, איסוף דאטה והוכחת ערך</li><li>שיפור המוצר לפי שימוש אמיתי</li></ul></div>
+          <div class="card"><h3>$90K · Go To Market</h3><ul><li>onboarding להורים, מטפלים ובתי ספר</li><li>שיווק ראשוני ורכישת לקוחות</li><li>שותפויות עם קליניקות ומסגרות חינוך</li><li>חומרי מכירה, הטמעה ותמיכה</li></ul></div>
+          <div class="card"><h3>$80K · צוות ו־Runway</h3><ul><li>עיצוב מוצר וחוויית משתמש</li><li>תוכן מקצועי ותרחישי פעילות</li><li>תפעול שוטף, בדיקות ושיפור מתמיד</li><li>Runway שמאפשר להגיע ליעדים בלי לעצור באמצע</li></ul></div>
         </div>
-        <div class="timeline">
-          <div class="tl"><b>מדידה והוכחת ערך</b><div>בניית תשתית למדידת שימוש, engagement ותוצאות התפתחותיות.</div></div>
-          <div class="tl"><b>בסיס לצמיחה</b><div>יצירת תשתית שמאפשרת להתרחב מ־B2C ל־B2B ולמסגרות חינוכיות.</div></div>
-        </div>
+        <div class="quote">ההשקעה מיועדת לא לבנות רעיון — אלא להמיר מוצר שכבר קיים לחברה עם traction, פיילוטים מוכחים ולקוחות משלמים ראשונים.</div>
       </div>
     </div>
   </section>
@@ -444,15 +455,16 @@
   <section class="slide">
     <div class="slide-inner">
       <aside class="slide-no"><span class="pill">14</span><div class="label">Roadmap</div></aside>
-      <div class="content">
+      <div class="content with-media">
         <h2>ה־<span class="accent">Roadmap</span> שלנו</h2>
         <div class="timeline">
-          <div class="tl"><b>שלב 1 · MVP</b><div>בניית גרסה ראשונה עם סשנים מובנים, ליווי AI בסיסי, ודוחות ראשוניים להורים ואנשי מקצוע.</div></div>
-          <div class="tl"><b>שלב 2 · פיילוטים</b><div>הרצת פיילוטים עם משפחות, מטפלים וקבוצות קטנות כדי ללמוד שימוש אמיתי ולדייק את המוצר. כבר בשבוע הבא מתוכננים שני פיילוטים קטנים עם שתי קבוצות של ילדים אוטיסטים בתפקוד גבוה.</div></div>
-          <div class="tl"><b>שלב 3 · מוצר מסחרי</b><div>פתיחת מנויים, onboarding מסודר, dashboard מקצועי ותשתית לתשלום וריטנשן.</div></div>
-          <div class="tl"><b>שלב 4 · Scale</b><div>התרחבות לבתי ספר, חינוך מיוחד, קבוצות SEL ושווקים בינלאומיים.</div></div>
+          <div class="tl"><b>כבר הושלם</b><div>MVP קיים, POC קיים, והושקעו כבר $100K מהבית בפיתוח.</div></div>
+          <div class="tl"><b>כבר נסגר</b><div>POC עם חברה גדולה, ופיילוט עם מטפל קליני לילדים על הספקטרום.</div></div>
+          <div class="tl"><b>השלב הבא</b><div>כבר בשבוע הבא: שני פיילוטים קטנים עם שתי קבוצות של ילדים אוטיסטים בתפקוד גבוה.</div></div>
+          <div class="tl"><b>אחרי ההשקעה</b><div>לחדד את המוצר, להרחיב פיילוטים, לפתוח לקוחות משלמים, ולהיכנס למסגרות טיפול וחינוך בקנה מידה רחב יותר.</div></div>
         </div>
-        <div class="quote">המטרה: לעבור ממוצר מרגש לרכיב קבוע בתהליך ההתפתחות החברתית של ילדים.</div>
+        <div class="quote">המטרה: לעבור ממוצר עובד עם הוכחות ראשונות — למוצר מסחרי עם traction ברור.</div>
+        <div class="slide-media"><img loading="lazy" src="/images/craftom/investors-pitch/slide-14-roadmap.png" alt="מפת דרכים ויזואלית של Craftom שמראה MVP, POC, פיילוטים ושלב מסחרי" /></div>
       </div>
     </div>
   </section>
