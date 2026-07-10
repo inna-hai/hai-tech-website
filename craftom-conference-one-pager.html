@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Craftom — One Pager לכנס שותפים</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#08111a;
+      --panel:#0f1c29;
+      --panel2:#132434;
+      --line:rgba(151,184,201,.18);
+      --text:#ecf5f7;
+      --muted:#a8bfcb;
+      --green:#53d67f;
+      --blue:#47a6ff;
+      --gold:#ffbe55;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:#e8eef2;font-family:"Heebo",sans-serif;color:var(--text)}
+    .page{
+      width:210mm; min-height:297mm; margin:0 auto; background:
+      radial-gradient(600px 350px at 0% 0%, rgba(71,166,255,.12), transparent 60%),
+      radial-gradient(600px 350px at 100% 0%, rgba(83,214,127,.12), transparent 60%),
+      linear-gradient(180deg, var(--bg), #0c1723);
+      padding:18mm;
+      display:grid;
+      grid-template-rows:auto auto 1fr auto;
+      gap:14mm;
+    }
+    .topbar{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+    .brand{font-size:16px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--green)}
+    h1{margin:8px 0 10px;font-size:34px;line-height:1.15;max-width:600px}
+    .sub{margin:0;color:var(--muted);font-size:17px;line-height:1.7;max-width:640px}
+    .pillbox{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-start}
+    .pill{padding:8px 12px;border:1px solid rgba(255,255,255,.14);border-radius:999px;background:rgba(255,255,255,.03);font-size:13px;color:#d8e6ec}
+    .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:12mm}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));border:1px solid var(--line);border-radius:22px;padding:18px}
+    .card h2{margin:0 0 10px;font-size:20px}
+    .card p,.card li{font-size:15px;line-height:1.7;color:#dbe8ee}
+    .card ul{margin:0;padding:0 18px 0 0}
+    .statline{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .stat{padding:14px;border-radius:18px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1)}
+    .stat strong{display:block;font-size:24px;color:white;margin-bottom:6px}
+    .stat span{font-size:13px;color:var(--muted)}
+    .flow{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .step{padding:14px;border-radius:18px;background:rgba(71,166,255,.08);border:1px solid rgba(71,166,255,.18)}
+    .step strong{display:block;margin-bottom:6px;color:white}
+    .step span{font-size:14px;color:#d8e6ec;line-height:1.6}
+    .footer{display:grid;grid-template-columns:1.1fr .9fr;gap:12mm;align-items:end}
+    .cta{padding:18px 20px;border-radius:22px;background:linear-gradient(135deg, rgba(83,214,127,.16), rgba(71,166,255,.12));border:1px solid rgba(255,255,255,.12)}
+    .cta h3{margin:0 0 8px;font-size:22px}
+    .cta p{margin:0;color:#def0e6;font-size:15px;line-height:1.7}
+    .contact{display:grid;gap:8px;text-align:left;direction:ltr}
+    .contact .line{padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);font-size:14px}
+    .small{font-size:12px;color:var(--muted)}
+    @media print {
+      body{background:white}
+      .page{margin:0;box-shadow:none}
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="topbar">
+      <div>
+        <div class="brand">Craftom</div>
+        <h1>שכבת AI מעל Minecraft שמחזקת שייכות, מיומנויות חברתיות והתפתחות אישית דרך משחק משותף.</h1>
+        <p class="sub">Craftom לא משנה לילדים את המשחק שהם כבר אוהבים — הוא מוסיף שכבת משמעות, הנחיה ותובנות להורים, למסגרות חינוכיות ולשותפים שמחפשים פתרון חדשני עם ערך אמיתי.</p>
+      </div>
+      <div class="pillbox">
+        <div class="pill">Minecraft-native</div>
+        <div class="pill">AI Agents</div>
+        <div class="pill">Social Growth</div>
+        <div class="pill">Parent Insight</div>
+        <div class="pill">Education-ready</div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h2>מה הבעיה שאנחנו פותרים</h2>
+        <ul>
+          <li>הרבה ילדים משחקים שעות — אבל ההורה לא תמיד יודע אם יש שם ערך, קשר או התקדמות.</li>
+          <li>מסגרות חינוכיות מחפשות חוויית STEM/SEL שמרגישה טבעית לילדים ולא "עוד שיעור".</li>
+          <li>שותפים מסחריים מחפשים מוצר שאפשר להטמיע, למתג ולהרחיב במספר ערוצים.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>מה הפתרון</h2>
+        <p>Craftom מפעיל חוויות קבוצתיות בתוך Minecraft, עם סוכני AI ברקע שמובילים משימות, בונים שיתוף פעולה, מזהים דפוסי אינטראקציה ומייצרים תמונת התקדמות פשוטה וברורה.</p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>איך זה עובד</h2>
+      <div class="flow">
+        <div class="step">
+          <strong>1. פותחים סשן</strong>
+          <span>יוצרים פעילות מותאמת למסגרת, גיל או מטרה.</span>
+        </div>
+        <div class="step">
+          <strong>2. הילדים משחקים</strong>
+          <span>מבחינתם זו חוויית Minecraft טבעית, משימתית וחברתית.</span>
+        </div>
+        <div class="step">
+          <strong>3. מקבלים תובנות</strong>
+          <span>בסיום מתקבלת תמונת התקדמות אישית וקבוצתית.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h2>מודלי שותפות אפשריים</h2>
+        <ul>
+          <li><strong>רשויות / בתי ספר</strong> — תוכניות העשרה, קבוצות מצוינות, חינוך חברתי-טכנולוגי.</li>
+          <li><strong>מרכזי חדשנות / קהילות</strong> — פעילות ממותגת, אירועים, ליגות ואתגרי קיץ.</li>
+          <li><strong>שותפים אסטרטגיים</strong> — הטמעה, white-label, פיילוטים ומסלולי צמיחה משותפים.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>למה זה מעניין עכשיו</h2>
+        <div class="statline">
+          <div class="stat"><strong>ילדים כבר שם</strong><span>לא צריך לשכנע אותם להיכנס לפלטפורמה חדשה.</span></div>
+          <div class="stat"><strong>AI עם ערך</strong><span>לא AI לשם ה-AI — אלא תועלת חינוכית וחברתית.</span></div>
+          <div class="stat"><strong>סקייל</strong><span>מתאים להתרחבות דרך B2B, חינוך, קהילות ומותגים.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="footer">
+      <div class="cta">
+        <h3>מחפשים שותפים לפיילוטים, הטמעות וערוצי צמיחה</h3>
+        <p>אם יש לכם קהילה, מסגרת חינוכית, רשת, מותג או פלטפורמה שיכולים להרוויח מחוויית Minecraft עם ערך אמיתי — בואו נדבר.</p>
+      </div>
+      <div class="contact">
+        <div class="line">craftom@hai.tech</div>
+        <div class="line">https://hai.tech/craftom-investors-pitch.html</div>
+        <div class="small">מומלץ להדפיס על דף עבה / כרומו מט. אפשר גם לשמור ל-PDF ולשלוח דיגיטלית.</div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
