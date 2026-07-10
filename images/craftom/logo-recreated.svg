@@ -1,0 +1,52 @@
+<svg width="1200" height="360" viewBox="0 0 1200 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="craftGrad" x1="250" y1="80" x2="250" y2="220" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#57D2FF"/>
+      <stop offset="1" stop-color="#2E7BFF"/>
+    </linearGradient>
+    <linearGradient id="omGrad" x1="780" y1="80" x2="780" y2="220" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFCB52"/>
+      <stop offset="1" stop-color="#FF6A2D"/>
+    </linearGradient>
+    <linearGradient id="greenFace" x1="90" y1="104" x2="90" y2="228" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#83F267"/>
+      <stop offset="1" stop-color="#35B44B"/>
+    </linearGradient>
+    <linearGradient id="blueFace" x1="112" y1="48" x2="112" y2="118" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#66E1FF"/>
+      <stop offset="1" stop-color="#27B6F6"/>
+    </linearGradient>
+    <linearGradient id="orangeFace" x1="165" y1="103" x2="165" y2="228" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFB347"/>
+      <stop offset="1" stop-color="#F05B2A"/>
+    </linearGradient>
+    <linearGradient id="swoosh" x1="38" y1="266" x2="1080" y2="266" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#35B44B"/>
+      <stop offset="0.55" stop-color="#35B44B"/>
+      <stop offset="0.78" stop-color="#FFB347"/>
+      <stop offset="1" stop-color="#F05B2A"/>
+    </linearGradient>
+    <filter id="shadow" x="0" y="0" width="1200" height="360" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000000" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#shadow)">
+    <path d="M42 101L112 61L182 101L112 142L42 101Z" fill="url(#blueFace)"/>
+    <path d="M42 101V184L112 225V142L42 101Z" fill="url(#greenFace)"/>
+    <path d="M182 101V184L112 225V142L182 101Z" fill="url(#orangeFace)"/>
+
+    <path d="M170 54L198 39L226 54L198 69L170 54Z" fill="#FFD05C"/>
+    <path d="M170 54V82L198 97V69L170 54Z" fill="#F6A72B"/>
+    <path d="M226 54V82L198 97V69L226 54Z" fill="#F46B30"/>
+
+    <path d="M205 25L225 14L245 25L225 36L205 25Z" fill="#FFE27A"/>
+    <path d="M205 25V45L225 56V36L205 25Z" fill="#F9BA3C"/>
+    <path d="M245 25V45L225 56V36L245 25Z" fill="#F6892E"/>
+
+    <text x="242" y="176" font-family="Arial Rounded MT Bold, Arial Black, sans-serif" font-size="152" font-weight="900" fill="url(#craftGrad)">Craft</text>
+    <text x="682" y="176" font-family="Arial Rounded MT Bold, Arial Black, sans-serif" font-size="152" font-weight="900" fill="url(#omGrad)">om</text>
+
+    <path d="M38 248C97 236 172 237 234 245C350 260 438 279 590 282C757 286 877 271 1069 241" stroke="url(#swoosh)" stroke-width="16" stroke-linecap="round"/>
+  </g>
+</svg>
