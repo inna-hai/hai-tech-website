@@ -73,21 +73,27 @@
     h1{font-family:"Rubik",sans-serif;font-size:clamp(38px,6vw,78px);line-height:1.08;margin:0 0 20px;font-weight:900}
     h1 .accent{color:var(--green)}
     .lead{font-size:clamp(18px,2vw,24px);color:var(--muted);max-width:660px}
-    .hero-card{
+    .hero-visual{
+      position:relative;overflow:hidden;min-height:460px;
+      border:1px solid var(--line);border-radius:24px;
       background:linear-gradient(180deg,rgba(22,39,57,.95),rgba(11,21,31,.95));
-      border:1px solid var(--line);border-radius:24px;padding:26px;
+      box-shadow:0 18px 40px rgba(0,0,0,.24);
     }
-    .hero-card h3{margin:0 0 12px;font-family:"Rubik";font-size:24px}
-    .hero-card p{margin:0;color:var(--muted);font-size:16px}
+    .hero-visual img{width:100%;height:100%;display:block;object-fit:cover}
+    .hero-visual::after{
+      content:"";position:absolute;inset:auto 0 0 0;height:35%;
+      background:linear-gradient(180deg,transparent,rgba(8,17,26,.72));
+    }
+    .hero-badges{
+      position:absolute;left:18px;right:18px;bottom:18px;z-index:2;
+      display:flex;flex-wrap:wrap;gap:10px;
+    }
+    .hero-badges span{
+      display:inline-flex;align-items:center;padding:10px 14px;border-radius:999px;
+      background:rgba(8,17,26,.72);border:1px solid rgba(255,255,255,.12);
+      color:#eef7f4;font-size:13px;font-weight:700;backdrop-filter:blur(8px);
+    }
     .lead{font-size:clamp(16px,1.5vw,20px);color:var(--muted);max-width:660px}
-    .hero-list{display:grid;gap:12px;margin-top:18px}
-    .hero-item{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;border-radius:16px;background:rgba(255,255,255,.03)}
-    .hero-item strong{display:block;font-size:15px}
-    .hero-item span{color:var(--muted);font-size:14px}
-    .num{
-      flex:none;width:32px;height:32px;border-radius:10px;display:grid;place-items:center;
-      background:linear-gradient(135deg,var(--green2),var(--blue));font-weight:800;font-family:"Rubik";
-    }
     .slide{padding:18px}
     .slide-inner{
       min-height:calc(100vh - 120px);padding:22px;
@@ -216,13 +222,12 @@
         <h1>Craftom adds an AI layer to <span class="accent">Minecraft</span> for belonging, confidence, and <span class="accent">social growth</span>.</h1>
         <p class="lead">We’re not changing the game kids love. We’re adding a <span class="accent">layer of meaning</span>.</p>
       </div>
-      <div class="hero-card">
-        <h3>Why is this exciting?</h3>
-        <p>Because kids are already there. The real question is how to turn that time into an opportunity for meaningful growth.</p>
-        <div class="hero-list">
-          <div class="hero-item"><div class="num">1</div><div><strong>Minecraft already brings kids together</strong><span>Craftom understands what happens inside that interaction.</span></div></div>
-          <div class="hero-item"><div class="num">2</div><div><strong>Real-time AI support</strong><span>Personal guidance, adaptive challenge, and progress insights during play.</span></div></div>
-          <div class="hero-item"><div class="num">3</div><div><strong>7 years of field experience</strong><span>We’ve been working in gaming-based education for 7 years with major clients and many schools.</span></div></div>
+      <div class="hero-visual">
+        <img loading="eager" src="/images/craftom/investors-pitch/slide-04-ai-layer.png" alt="Children connecting and collaborating in Minecraft with a supportive AI layer" />
+        <div class="hero-badges">
+          <span>Minecraft-native experience</span>
+          <span>Real-time AI guidance</span>
+          <span>Built for social growth</span>
         </div>
       </div>
     </div>
