@@ -154,6 +154,32 @@
     .tl{display:grid;grid-template-columns:160px 1fr;gap:12px;align-items:start}
     .tl b{color:#fff;font-family:"Rubik"}
     .tl div:last-child{color:var(--muted)}
+    .roadmap-content{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
+    }
+    .roadmap-content .timeline{
+      width:100%;
+      max-width:920px;
+      margin:20px auto 0;
+      gap:14px;
+    }
+    .roadmap-content .tl{
+      grid-template-columns:1fr;
+      justify-items:center;
+      text-align:center;
+      padding:18px 20px;
+      border-radius:18px;
+      background:rgba(255,255,255,.03);
+      border:1px solid var(--line);
+    }
+    .roadmap-content .quote{
+      max-width:920px;
+      margin:20px auto 0;
+      text-align:center;
+    }
     .closing{
       min-height:82vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px;
       background:
@@ -437,7 +463,7 @@
 
   <section class="slide">
     <div class="slide-inner">
-      <div class="content with-media">
+      <div class="content text-only roadmap-content">
         <h2>ה־<span class="accent">Roadmap</span> שלנו</h2>
         <div class="timeline">
           <div class="tl"><b>Q2 2026</b><div>הושלמו POC ו־MVP, הושקעו כבר $100K מהבית בפיתוח, ונבנתה גרסה ראשונה עובדת של Craftom.</div></div>
