@@ -180,6 +180,11 @@
     .tl{display:grid;grid-template-columns:160px 1fr;gap:12px;align-items:start}
     .tl b{color:#fff;font-family:"Rubik"}
     .tl div:last-child{color:var(--muted)}
+    .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
+    .team-card{padding:18px;border-radius:18px;background:var(--panel2);border:1px solid var(--line);box-shadow:0 10px 30px rgba(0,0,0,.18)}
+    .team-card img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px;display:block;margin-bottom:14px}
+    .team-card h3{margin:0 0 6px;font-size:22px;font-family:"Rubik"}
+    .team-card p{margin:0;color:var(--muted);font-size:15px;line-height:1.55}
     .closing{
       min-height:82vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px;
       background:
@@ -192,7 +197,7 @@
     .closing .final span{color:var(--gold)}
     @media (max-width:900px){
       .hero{padding:72px 24px 44px}
-      .hero-grid,.grid-2,.skills,.steps{grid-template-columns:1fr}
+      .hero-grid,.grid-2,.skills,.steps,.team-grid{grid-template-columns:1fr}
       .slide{padding:14px}
       .slide-inner{grid-template-columns:1fr;min-height:auto;padding:18px}
       .slide-no{position:static}
@@ -304,15 +309,16 @@
 
   <section class="slide">
     <div class="slide-inner">
-      <aside class="slide-no"><span class="pill">04</span><div class="label">The solution</div></aside>
-      <div class="content story with-media">
-        <h2>The answer is <span class="accent">Craftom</span>.</h2>
-        <p>Craftom adds an AI layer to Minecraft that turns shared play into an opportunity for personal and social growth.</p>
-        <div class="grid-2">
-          <div class="card"><h3>Minecraft knows how to connect children</h3><p>It provides a shared world, missions, creativity, exploration, and natural cooperation.</p></div>
-          <div class="card"><h3>Craftom knows how to understand each child</h3><p>It adds context, personalization, real-time support, and measurable progress.</p></div>
+      <aside class="slide-no"><span class="pill">04</span><div class="label">Why us?</div></aside>
+      <div class="content text-only">
+        <h2>Why <span class="accent">we</span> are the right team to build this.</h2>
+        <p class="lead">We have already spent 7 years building successful gaming-based educational programs, including real activity built on Minecraft. Craftom is the next step: bringing AI into that experience.</p>
+        <div class="team-grid">
+          <div class="team-card"><img loading="lazy" src="/images/craftom/investors-pitch/team/ami-meidar.jpg" alt="Ami Meidar" /><h3>Ami Meidar</h3><p>Co-Founder</p></div>
+          <div class="team-card"><img loading="lazy" src="/images/craftom/investors-pitch/team/kim-nave.jpg" alt="Kim Nave" /><h3>Kim Nave</h3><p>Co-Founder</p></div>
+          <div class="team-card"><img loading="lazy" src="/images/craftom/investors-pitch/team/inna-grois.jpg" alt="Inna Grois" /><h3>Inna Grois</h3><p>Co-Founder</p></div>
         </div>
-        <div class="slide-media"><img loading="lazy" src="/images/craftom/investors-pitch/slide-04-ai-layer.png" alt="Two children connecting and collaborating in Minecraft with a supportive AI layer" /></div>
+        <div class="quote">For 7 years, we have been building educational experiences through gaming. Now we are turning that deep Minecraft-based experience into an AI-powered product.</div>
       </div>
     </div>
   </section>
