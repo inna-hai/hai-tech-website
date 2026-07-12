@@ -154,6 +154,25 @@
     .tl{display:grid;grid-template-columns:160px 1fr;gap:12px;align-items:start}
     .tl b{color:#fff;font-family:"Rubik"}
     .tl div:last-child{color:var(--muted)}
+    .flow-steps .steps{
+      width:100%;
+      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+      gap:14px;
+      align-items:stretch;
+    }
+    .flow-steps .step{
+      min-height:170px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-start;
+    }
+    .flow-steps .slide-media{
+      width:100%;
+      max-width:920px;
+      min-height:320px;
+      margin-top:24px;
+      align-self:center;
+    }
     .roadmap-content{
       display:flex;
       flex-direction:column;
@@ -319,7 +338,7 @@
 
   <section class="slide">
     <div class="slide-inner">
-      <div class="content">
+      <div class="content text-only flow-steps">
         <h2>יוצרים <span class="accent">סשן חדש</span> בכמה צעדים פשוטים</h2>
         <p class="lead">הורה, מחנך, מדריך או איש מקצוע יכולים להגדיר פעילות מדויקת בקלות — ולבנות חוויה שמתאימה לילד אחד או לקבוצה.</p>
         <div class="steps">
