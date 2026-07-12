@@ -100,15 +100,9 @@
       border-radius:22px;
       background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));
       border:1px solid rgba(255,255,255,.04);
-      display:grid;grid-template-columns:100px minmax(0,1fr);gap:24px;align-items:stretch;
+      display:grid;grid-template-columns:minmax(0,1fr);gap:24px;align-items:stretch;
       position:relative;overflow:hidden;
     }
-    .slide-no{position:sticky;top:104px;z-index:2}
-    .slide-no .pill{
-      display:inline-block;padding:10px 14px;border-radius:999px;background:rgba(71,166,255,.12);
-      border:1px solid rgba(71,166,255,.26);color:#cfe7ff;font-weight:800;font-family:"Rubik";
-    }
-    .slide-no .label{margin-top:14px;color:var(--muted);font-size:13px;line-height:1.6}
     .slide h2{font-family:"Rubik";font-size:clamp(28px,2.8vw,44px);line-height:1.14;margin:0 0 14px;font-weight:900}
     .slide h2 .accent{color:var(--green)}
     .content{
@@ -175,7 +169,6 @@
       .hero-grid,.grid-2,.skills,.steps{grid-template-columns:1fr}
       .slide{padding:14px}
       .slide-inner{grid-template-columns:1fr;min-height:auto;padding:18px}
-      .slide-no{position:static}
       .content{max-width:none;padding:20px 18px;order:2}
       .slide-media{order:1;min-height:260px}
       .tl{grid-template-columns:1fr}
@@ -184,7 +177,6 @@
       .nav{width:min(1320px,calc(100% - 40px));padding:16px 22px}
       .hero,.slide{width:min(1320px,calc(100% - 40px))}
       .slide{scroll-margin-top:18px}
-      .slide-inner > .content{grid-column:2}
       .content{
         direction:ltr;
         display:grid;
@@ -241,7 +233,6 @@
 
   <section class="slide">
     <div class="slide-inner">
-      <aside class="slide-no"><span class="pill">01</span><div class="label">פתיחה</div></aside>
       <div class="content story">
         <h2>הילד נכנס ל־<span class="accent">Minecraft</span>.</h2>
         <p>שם הוא יכול לבנות כל דבר שהוא מדמיין.</p>
@@ -256,7 +247,6 @@
 
   <section class="slide">
     <div class="slide-inner">
-      <aside class="slide-no"><span class="pill">02</span><div class="label">למה?</div></aside>
       <div class="content story">
         <h2>מאחורי כל ילד שמשחק לבד,<br>יש לעיתים <span class="accent">הורה מודאג</span>.</h2>
         <p>הורה שרואה את הילד שלו אוהב את Minecraft — אבל גם מפחד.</p>
@@ -274,7 +264,6 @@
 
   <section class="slide">
     <div class="slide-inner">
-      <aside class="slide-no"><span class="pill">03</span><div class="label">למה דווקא Minecraft?</div></aside>
       <div class="content story with-media">
         <h2>בחרנו ב־<span class="accent">Minecraft</span> כי זה לא עוד משחק.</h2>
         <p>Minecraft היא סביבה שילדים כבר אוהבים, מכירים ורוצים לחזור אליה שוב ושוב.</p>
@@ -290,7 +279,6 @@
 
   <section class="slide">
     <div class="slide-inner">
-      <aside class="slide-no"><span class="pill">04</span><div class="label">הפתרון</div></aside>
       <div class="content story with-media">
         <h2>התשובה היא <span class="accent">Craftom</span>.</h2>
         <p>Craftom מוסיפה ל־Minecraft שכבת AI שהופכת משחק משותף להזדמנות להתפתחות אישית וחברתית.</p>
@@ -305,7 +293,6 @@
 
   <section class="slide">
     <div class="slide-inner">
-      <aside class="slide-no"><span class="pill">05</span><div class="label">איך זה עובד?</div></aside>
       <div class="content">
         <h2>יוצרים <span class="accent">סשן חדש</span> בכמה צעדים פשוטים</h2>
         <p class="lead">הורה, מחנך, מדריך או איש מקצוע יכולים להגדיר פעילות מדויקת בקלות — ולבנות חוויה שמתאימה לילד אחד או לקבוצה.</p>
@@ -323,7 +310,6 @@
 
   <section class="slide">
     <div class="slide-inner">
-      <aside class="slide-no"><span class="pill">06</span><div class="label">במהלך המשחק</div></aside>
       <div class="content story">
         <h2>בזמן שהילדים משחקים,<br>פועלים ברקע <span class="accent">סוכני AI</span>.</h2>
         <p>כל ילד מקבל ליווי אישי.</p>
@@ -339,7 +325,6 @@
 
   <section class="slide">
     <div class="slide-inner">
-      <aside class="slide-no"><span class="pill">07</span><div class="label">מה הילדים באמת עושים?</div></aside>
       <div class="content">
         <h2>מבחינת הילדים — הם <span class="accent">פשוט משחקים</span>.</h2>
         <p class="lead">אבל תוך כדי המשחק הם מתרגלים את המיומנויות שהכי קשה ללמד בצורה ישירה.</p>
@@ -359,7 +344,6 @@
 
   <section class="slide">
     <div class="slide-inner">
-      <aside class="slide-no"><span class="pill">08</span><div class="label">מה מקבלים ההורים ואנשי המקצוע?</div></aside>
       <div class="content">
         <h2>בסיום כל פעילות נוצרת <span class="accent">תמונת התקדמות אישית</span>.</h2>
         <div class="timeline">
@@ -376,7 +360,6 @@
 
   <section class="slide">
     <div class="slide-inner">
-      <aside class="slide-no"><span class="pill">09</span><div class="label">גודל השוק הפוטנציאלי</div></aside>
       <div class="content">
         <h2>אנחנו יושבים בצומת של <span class="accent">3 שווקים גדולים</span></h2>
         <div class="grid-2">
@@ -395,7 +378,6 @@
 
   <section class="slide">
     <div class="slide-inner">
-      <aside class="slide-no"><span class="pill">10</span><div class="label">לקוחות</div></aside>
       <div class="content">
         <h2>יש לנו <span class="accent">כמה סוגי לקוחות</span></h2>
         <div class="grid-2">
@@ -410,7 +392,6 @@
 
   <section class="slide">
     <div class="slide-inner">
-      <aside class="slide-no"><span class="pill">11</span><div class="label">מודל עסקי</div></aside>
       <div class="content">
         <h2>המודל בנוי על <span class="accent">הכנסות חוזרות</span> והתרחבות רב־ערוצית</h2>
         <div class="grid-2">
@@ -425,7 +406,6 @@
 
   <section class="slide">
     <div class="slide-inner">
-      <aside class="slide-no"><span class="pill">12</span><div class="label">בקשת השקעה</div></aside>
       <div class="content text-only">
         <h2>אנחנו מגייסים <span class="accent">$500K Pre-Seed</span></h2>
         <p class="lead">המטרה של הסבב היא לקחת את Craftom מ־POC ו־MVP עובדים — למוצר מסחרי מוכח עם משתמשים פעילים, פיילוטים ולקוחות משלמים ראשונים.</p>
@@ -442,7 +422,6 @@
 
   <section class="slide">
     <div class="slide-inner">
-      <aside class="slide-no"><span class="pill">13</span><div class="label">שימוש בכסף</div></aside>
       <div class="content text-only">
         <h2>לאן ילכו <span class="accent">$500K</span></h2>
         <div class="grid-2">
@@ -458,7 +437,6 @@
 
   <section class="slide">
     <div class="slide-inner">
-      <aside class="slide-no"><span class="pill">14</span><div class="label">Roadmap</div></aside>
       <div class="content with-media">
         <h2>ה־<span class="accent">Roadmap</span> שלנו</h2>
         <div class="timeline">

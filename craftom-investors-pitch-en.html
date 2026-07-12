@@ -123,15 +123,9 @@
       border-radius:22px;
       background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));
       border:1px solid rgba(255,255,255,.04);
-      display:grid;grid-template-columns:100px minmax(0,1fr);gap:24px;align-items:stretch;
+      display:grid;grid-template-columns:minmax(0,1fr);gap:24px;align-items:stretch;
       position:relative;overflow:hidden;
     }
-    .slide-no{position:sticky;top:104px;z-index:2}
-    .slide-no .pill{
-      display:inline-block;padding:10px 14px;border-radius:999px;background:rgba(71,166,255,.12);
-      border:1px solid rgba(71,166,255,.26);color:#cfe7ff;font-weight:800;font-family:"Rubik";
-    }
-    .slide-no .label{margin-top:14px;color:var(--muted);font-size:13px;line-height:1.6}
     .slide h2{font-family:"Rubik";font-size:clamp(28px,2.8vw,44px);line-height:1.14;margin:0 0 14px;font-weight:900}
     .slide h2 .accent{color:var(--green)}
     .content{
@@ -209,7 +203,6 @@
       .team-card.kim-card{order:3}
       .slide{padding:14px}
       .slide-inner{grid-template-columns:1fr;min-height:auto;padding:18px}
-      .slide-no{position:static}
       .content{max-width:none;padding:20px 18px;order:2}
       .slide-media{order:1;min-height:260px}
       .tl{grid-template-columns:1fr}
@@ -218,7 +211,6 @@
       .nav{width:min(1320px,calc(100% - 40px));padding:16px 22px}
       .hero,.slide{width:min(1320px,calc(100% - 40px))}
       .slide{scroll-margin-top:18px}
-      .slide-inner > .content{grid-column:2}
       .content{
         direction:ltr;
         display:grid;
@@ -271,7 +263,6 @@
 
   <section class="slide">
     <div class="slide-inner">
-      <aside class="slide-no"><span class="pill">01</span><div class="label">Opening</div></aside>
       <div class="content story">
         <h2>A child enters <span class="accent">Minecraft</span>.</h2>
         <p>There, they can build anything they imagine.</p>
@@ -286,7 +277,6 @@
 
   <section class="slide">
     <div class="slide-inner">
-      <aside class="slide-no"><span class="pill">02</span><div class="label">Loneliness</div></aside>
       <div class="content story">
         <h2>For many children, the real pain is <span class="accent">loneliness</span>.</h2>
         <p>Craftom uses Minecraft as the platform, and an AI-powered software layer, to help children build connection, belonging, and social confidence.</p>
@@ -302,7 +292,6 @@
 
   <section class="slide">
     <div class="slide-inner">
-      <aside class="slide-no"><span class="pill">03</span><div class="label">Why Minecraft?</div></aside>
       <div class="content story with-media">
         <h2>Why <span class="accent">Minecraft</span> is the right place to solve this.</h2>
         <p>Minecraft is not just where children play. It is where connection can naturally happen — and it is a platform we have already worked with for 7 years in gaming-based education.</p>
@@ -318,7 +307,6 @@
 
   <section class="slide">
     <div class="slide-inner">
-      <aside class="slide-no"><span class="pill">04</span><div class="label">Why us?</div></aside>
       <div class="content text-only">
         <h2>Why <span class="accent">we</span> are the right team to build this.</h2>
         <p class="lead">We bring 7 years of successful gaming-based educational experience, deep hands-on work around Minecraft, strong software development expertise, and real experience building AI-powered solutions.</p>
@@ -334,7 +322,6 @@
 
   <section class="slide">
     <div class="slide-inner">
-      <aside class="slide-no"><span class="pill">05</span><div class="label">How it works</div></aside>
       <div class="content">
         <h2>Create a <span class="accent">new session</span> in just a few simple steps</h2>
         <p class="lead">A parent, educator, guide, or therapist can define a precise activity with ease — and build an experience for one child or a whole group.</p>
@@ -352,7 +339,6 @@
 
   <section class="slide">
     <div class="slide-inner">
-      <aside class="slide-no"><span class="pill">06</span><div class="label">During play</div></aside>
       <div class="content story">
         <h2>While children play,<br><span class="accent">AI agents</span> are active in the background.</h2>
         <p>Each child receives personal guidance.</p>
@@ -365,7 +351,6 @@
 
   <section class="slide">
     <div class="slide-inner">
-      <aside class="slide-no"><span class="pill">07</span><div class="label">What do kids actually do?</div></aside>
       <div class="content">
         <h2>From the child’s point of view — they are <span class="accent">just playing</span>.</h2>
         <p class="lead">But while they play, they practice the very skills that are hardest to teach directly.</p>
@@ -385,7 +370,6 @@
 
   <section class="slide">
     <div class="slide-inner">
-      <aside class="slide-no"><span class="pill">08</span><div class="label">What do parents and professionals get?</div></aside>
       <div class="content">
         <h2>At the end of every session, a <span class="accent">personal progress picture</span> is created.</h2>
         <div class="timeline">
@@ -402,7 +386,6 @@
 
   <section class="slide">
     <div class="slide-inner">
-      <aside class="slide-no"><span class="pill">09</span><div class="label">Market opportunity</div></aside>
       <div class="content">
         <h2>We sit at the intersection of <span class="accent">3 major markets</span></h2>
         <div class="grid-2">
@@ -421,7 +404,6 @@
 
   <section class="slide">
     <div class="slide-inner">
-      <aside class="slide-no"><span class="pill">10</span><div class="label">Customers</div></aside>
       <div class="content">
         <h2>We serve <span class="accent">multiple customer groups</span></h2>
         <div class="grid-2">
@@ -436,7 +418,6 @@
 
   <section class="slide">
     <div class="slide-inner">
-      <aside class="slide-no"><span class="pill">11</span><div class="label">Business model</div></aside>
       <div class="content">
         <h2>The model is built on <span class="accent">recurring revenue</span> and multi-channel expansion</h2>
         <div class="grid-2">
@@ -451,7 +432,6 @@
 
   <section class="slide">
     <div class="slide-inner">
-      <aside class="slide-no"><span class="pill">12</span><div class="label">Investment ask</div></aside>
       <div class="content text-only">
         <h2>We are raising <span class="accent">$500K Pre-Seed</span></h2>
         <p class="lead">The goal of this round is to take Craftom from a working POC and MVP to a validated commercial product with active users, pilots, and first paying customers.</p>
@@ -468,7 +448,6 @@
 
   <section class="slide">
     <div class="slide-inner">
-      <aside class="slide-no"><span class="pill">13</span><div class="label">Use of funds</div></aside>
       <div class="content text-only">
         <h2>Where the <span class="accent">$500K</span> will go</h2>
         <div class="grid-2">
@@ -484,7 +463,6 @@
 
   <section class="slide">
     <div class="slide-inner">
-      <aside class="slide-no"><span class="pill">14</span><div class="label">Roadmap</div></aside>
       <div class="content with-media">
         <h2>Our <span class="accent">roadmap</span></h2>
         <div class="timeline">
