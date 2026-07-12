@@ -72,6 +72,29 @@
     .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)}
     h1{font-family:"Rubik",sans-serif;font-size:clamp(38px,6vw,78px);line-height:1.08;margin:0 0 20px;font-weight:900}
     h1 .accent{color:var(--green)}
+    h1 .minecraft-word{
+      color:#7CFF8A;
+      text-shadow:0 0 18px rgba(83,214,127,.28), 0 0 34px rgba(71,166,255,.12);
+      position:relative;
+      display:inline-block;
+    }
+    h1 .minecraft-word::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:.06em;
+      height:.16em;
+      border-radius:999px;
+      background:linear-gradient(90deg, rgba(83,214,127,.0), rgba(83,214,127,.45), rgba(71,166,255,.22), rgba(83,214,127,.0));
+      z-index:-1;
+      filter:blur(2px);
+    }
+    .lead .craftom-word{
+      color:#ffd06a;
+      font-weight:800;
+      text-shadow:0 0 16px rgba(255,190,85,.18);
+    }
     .lead{font-size:clamp(18px,2vw,24px);color:var(--muted);max-width:660px}
     .hero-visual{
       position:relative;overflow:hidden;min-height:460px;
@@ -218,8 +241,8 @@
   <section class="hero">
     <div class="hero-grid">
       <div>
-        <h1>Children already come to <span class="accent">Minecraft</span> with motivation, curiosity, and a natural desire to play.</h1>
-        <p class="lead">Craftom adds an <span class="accent">AI-powered software layer</span> that turns that engagement into connection, belonging, and social growth.</p>
+        <h1>Children already come to <span class="accent minecraft-word">Minecraft</span> with motivation, curiosity, and a natural desire to play.</h1>
+        <p class="lead"><span class="craftom-word">Craftom</span> adds an <span class="accent">AI-powered software layer</span> that turns that engagement into connection, belonging, and social growth.</p>
       </div>
       <div class="hero-visual">
         <img loading="eager" src="/images/craftom/investors-pitch/slide-04-ai-layer.png" alt="Children connecting and collaborating in Minecraft with a supportive AI layer" />
