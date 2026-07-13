@@ -154,6 +154,17 @@
     .tl{display:grid;grid-template-columns:160px 1fr;gap:12px;align-items:start}
     .tl b{color:#fff;font-family:"Rubik"}
     .tl div:last-child{color:var(--muted)}
+    .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
+    .team-card{padding:18px;border-radius:18px;background:var(--panel2);border:1px solid var(--line);box-shadow:0 10px 30px rgba(0,0,0,.18);text-align:center}
+    .team-card.kim-card{order:1}
+    .team-card.inna-card{order:2}
+    .team-card.ami-card{order:3}
+    .team-card img{width:min(220px,100%);aspect-ratio:1/1;object-fit:cover;border-radius:50%;display:block;margin:0 auto 14px;border:4px solid rgba(255,255,255,.08)}
+    .team-card img.inna-photo{object-position:center 16%}
+    .team-card img.ami-photo{object-position:center top;transform:scale(1.14)}
+    .team-card img.kim-photo{object-position:center 24%;transform:scale(1.12)}
+    .team-card h3{margin:0 0 6px;font-size:22px;font-family:"Rubik"}
+    .team-card p{margin:0;color:var(--muted);font-size:15px;line-height:1.55}
     .flow-steps .steps{
       width:100%;
       grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
@@ -211,7 +222,10 @@
     .closing .final span{color:var(--gold)}
     @media (max-width:900px){
       .hero{padding:72px 24px 44px}
-      .hero-grid,.grid-2,.skills,.steps{grid-template-columns:1fr}
+      .hero-grid,.grid-2,.skills,.steps,.team-grid{grid-template-columns:1fr}
+      .team-card.ami-card{order:1}
+      .team-card.inna-card{order:2}
+      .team-card.kim-card{order:3}
       .slide{padding:14px}
       .slide-inner{grid-template-columns:1fr;min-height:auto;padding:18px}
       .content{max-width:none;padding:20px 18px;order:2}
@@ -293,16 +307,14 @@
   <section class="slide">
     <div class="slide-inner">
       <div class="content story">
-        <h2>מאחורי כל ילד שמשחק לבד,<br>יש לעיתים <span class="accent">הורה מודאג</span>.</h2>
-        <p>הורה שרואה את הילד שלו אוהב את Minecraft — אבל גם מפחד.</p>
-        <p class="big">מפחד שהוא נשאר לבד.</p>
-        <p class="big">מתוסכל מזה שקשה לו ליצור קשרים.</p>
-        <p class="big">וחושש שהוא לא באמת מרגיש שייך.</p>
-        <p>במיוחד אצל הורים לילדים על הרצף, הכאב הזה יומיומי.</p>
-        <p>הם לא מחפשים רק עוד משחק.</p>
-        <p>הם מחפשים מקום בטוח שבו הילד שלהם יוכל להתקרב לאחרים, לתרגל קשרים חברתיים, ולהרגיש הצלחה אמיתית מול ילדים אחרים.</p>
-        <div class="quote">זאת הסיבה שבגללה בנינו את Craftom.</div>
-        <div class="slide-media"><img loading="lazy" src="/images/craftom/investors-pitch/slide-02-why-parents-pain.png" alt="הורים מודאגים צופים בילד משחק לבד ב-Minecraft" /></div>
+        <h2>עבור ילדים רבים, הכאב האמיתי הוא <span class="accent">בדידות</span>.</h2>
+        <p>Craftom משתמשת ב־Minecraft כפלטפורמה, ומוסיפה שכבת תוכנה מבוססת AI כדי לעזור לילדים לבנות חיבור, תחושת שייכות וביטחון חברתי.</p>
+        <p class="big">אנחנו לא משנים את המשחק שילדים כבר אוהבים.</p>
+        <p class="big">אנחנו הופכים אותו לסביבה מובנית לצמיחה חברתית.</p>
+        <p>עבור ילדים על הרצף, זה יכול ליצור דרך בטוחה וטבעית יותר להיכנס לאינטראקציה.</p>
+        <p>במקום לבקש מהילד להיכנס לעוד כלי חיצוני, אנחנו פוגשים אותו בעולם שהוא כבר רוצה להיות בו.</p>
+        <div class="quote">Minecraft היא הפלטפורמה. Craftom היא שכבת ה־AI שהופכת משחק לחיבור.</div>
+        <div class="slide-media"><img loading="lazy" src="/images/craftom/investors-pitch/slide-02-why-parents-pain.png" alt="ילד שמרגיש לבד בתוך עולם משחק" /></div>
       </div>
     </div>
   </section>
@@ -310,28 +322,29 @@
   <section class="slide">
     <div class="slide-inner">
       <div class="content story with-media">
-        <h2>בחרנו ב־<span class="accent">Minecraft</span> כי זה לא עוד משחק.</h2>
-        <p>Minecraft היא סביבה שילדים כבר אוהבים, מכירים ורוצים לחזור אליה שוב ושוב.</p>
+        <h2>למה <span class="accent">Minecraft</span> היא המקום הנכון לפתור את זה.</h2>
+        <p>Minecraft היא לא רק המקום שבו ילדים משחקים. זה מקום שבו חיבור יכול לקרות בצורה טבעית — וזה גם עולם שאנחנו כבר עובדים איתו 7 שנים במסגרת חינוך מבוסס משחק.</p>
         <div class="grid-2">
-          <div class="card"><h3>סביבה טבעית לשיתוף פעולה</h3><p>הילדים בונים יחד, מקבלים החלטות יחד, פותרים בעיות יחד ומדברים תוך כדי פעולה אמיתית.</p></div>
-          <div class="card"><h3>התנגדות נמוכה, מעורבות גבוהה</h3><p>במקום לשכנע ילד להיכנס לעוד כלי טיפולי — אנחנו פוגשים אותו במקום שבו כבר יש לו מוטיבציה, ביטחון וסקרנות.</p></div>
+          <div class="card"><h3>סביבה טבעית לשיתוף פעולה</h3><p>ילדים בונים יחד, מקבלים החלטות יחד, פותרים בעיות יחד ומתקשרים דרך פעולה אמיתית.</p></div>
+          <div class="card"><h3>התנגדות נמוכה, מעורבות גבוהה</h3><p>במקום לבקש מילד להיכנס לעוד כלי טיפולי, אנחנו פוגשים אותו בעולם שהוא כבר אוהב, מבין ורוצה לחזור אליו.</p></div>
         </div>
-        <div class="quote">במילים אחרות: Minecraft כבר מביאה את הילד פנימה. Craftom הופכת את הזמן שם להזדמנות להתפתחות חברתית.</div>
-        <div class="slide-media"><img loading="lazy" src="/images/craftom/investors-pitch/slide-03-solution.png" alt="ילדים פועלים יחד בעולם Minecraft עם שכבת AI תומכת" /></div>
+        <div class="quote">אחרי 7 שנים של פעילות חינוכית סביב Minecraft, Craftom היא הצעד הבא שלנו: להוסיף AI ולהפוך את ההקשר הזה לשייכות, תקשורת וצמיחה חברתית.</div>
+        <div class="slide-media"><img loading="lazy" src="/images/craftom/investors-pitch/slide-03-solution.png" alt="ילדים משתפים פעולה בעולם Minecraft עם שכבת AI תומכת" /></div>
       </div>
     </div>
   </section>
 
   <section class="slide">
     <div class="slide-inner">
-      <div class="content story with-media">
-        <h2>התשובה היא <span class="accent">Craftom</span>.</h2>
-        <p>Craftom מוסיפה ל־Minecraft שכבת AI שהופכת משחק משותף להזדמנות להתפתחות אישית וחברתית.</p>
-        <div class="grid-2">
-          <div class="card"><h3>Minecraft יודעת לחבר ילדים</h3><p>היא מספקת עולם משותף, משימות, יצירה, חקר ושיתוף פעולה טבעי.</p></div>
-          <div class="card"><h3>Craftom יודעת להבין כל ילד</h3><p>היא מוסיפה הקשר, התאמה אישית, תמיכה בזמן אמת ומדידה של התהליך.</p></div>
+      <div class="content text-only">
+        <h2>למה <span class="accent">אנחנו</span> הצוות הנכון לבנות את זה.</h2>
+        <p class="lead">אנחנו מביאים 7 שנות ניסיון מוכח בחינוך מבוסס משחק, עבודה מעשית עמוקה סביב Minecraft, מומחיות חזקה בפיתוח תוכנה, וניסיון אמיתי בבניית פתרונות מבוססי AI.</p>
+        <div class="team-grid">
+          <div class="team-card kim-card"><img class="kim-photo" loading="lazy" src="/images/craftom/investors-pitch/team/kim-nave.jpg" alt="Kim Nave" /><h3>Kim Nave</h3><p>Co-Founder</p></div>
+          <div class="team-card inna-card"><img class="inna-photo" loading="lazy" src="/images/craftom/investors-pitch/team/inna-grois.jpg" alt="Inna Grois" /><h3>Inna Grois</h3><p>Co-Founder</p></div>
+          <div class="team-card ami-card"><img class="ami-photo" loading="lazy" src="/images/craftom/investors-pitch/team/ami-meidar.jpg" alt="Ami Meidar" /><h3>Ami Meidar</h3><p>Co-Founder</p></div>
         </div>
-        <div class="slide-media"><img loading="lazy" src="/images/craftom/investors-pitch/slide-04-ai-layer.png" alt="שני ילדים מתחברים ומשתפים פעולה בעולם Minecraft עם שכבת AI תומכת" /></div>
+        <div class="quote">אנחנו משלבים ניסיון בחינוך דרך משחק, מומחיות בפיתוח תוכנה, ובנייה של פתרונות AI — על בסיס שנים של פעילות אמיתית סביב Minecraft.</div>
       </div>
     </div>
   </section>
