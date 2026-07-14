@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex" />
+  <meta name="googlebot" content="noindex,nofollow,noarchive,nosnippet,noimageindex" />
+  <title>CareerOS: הצעת MVP למערכת Agentic AI לחיפוש עבודה | Forward</title>
+  <meta name="description" content="הצעת MVP ממוקדת ל-CareerOS: מערכת Agentic AI שמנהלת חיפוש עבודה, מדרגת משרות, מסבירה התאמה ומובילה את המשתמש לפעולה." />
+  <meta property="og:title" content="CareerOS: הצעת MVP למערכת Agentic AI לחיפוש עבודה | Forward" />
+  <meta property="og:description" content="הצעה לבניית MVP ל-CareerOS: פרופיל קריירה, אסטרטגיית חיפוש, Job Radar, Matching והסבר התאמה — עם Scope ממוקד ומהיר לעלייה." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hai.tech/careeros-mvp-proposal-private" />
+  <meta property="og:image" content="https://forward.hai.tech/logo-512.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Assistant:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #101828;
+      --ink-2: #253044;
+      --muted: #667085;
+      --card: rgba(255,255,255,.92);
+      --border: rgba(60,52,102,.14);
+      --purple: #8b5cf6;
+      --purple-dark: #3c3466;
+      --violet: #7d3c98;
+      --green: #10a37f;
+      --bg1: #fbfaff;
+      --bg2: #f4f1fb;
+      --shadow: 0 24px 80px rgba(31, 24, 62, .14);
+      --radius: 26px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Heebo", "Assistant", Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top right, rgba(139,92,246,.22), transparent 34rem),
+        radial-gradient(circle at 10% 18%, rgba(16,163,127,.12), transparent 28rem),
+        linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 46%, #ffffff 100%);
+      line-height: 1.72;
+    }
+    a { color: inherit; }
+    .page { max-width: 1120px; margin: 0 auto; padding: 28px 18px 64px; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
+    .logo { display: flex; align-items: center; gap: 12px; font-weight: 900; color: var(--purple-dark); }
+    .logo img { height: 64px; width: auto; max-width: 190px; object-fit: contain; display: block; }
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .pill-top { display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(16,163,127,.18); background: #ecfdf5; color: #065f46; border-radius: 999px; padding: 9px 14px; font-weight: 900; font-size: 13px; }
+    .btn { border: 1px solid var(--border); background: rgba(255,255,255,.78); color: var(--purple-dark); border-radius: 999px; padding: 10px 16px; font-weight: 800; font-size: 14px; text-decoration: none; cursor: pointer; backdrop-filter: blur(10px); }
+    .btn.primary { background: var(--purple-dark); color: #fff; border-color: var(--purple-dark); }
+    .hero { position: relative; overflow: hidden; background: radial-gradient(circle at 14% 18%, rgba(255,255,255,.22), transparent 18rem), radial-gradient(circle at 80% 28%, rgba(16,163,127,.24), transparent 22rem), linear-gradient(135deg, #231a3f 0%, #3c3466 44%, #7d3c98 100%); color: #fff; border-radius: 34px; padding: clamp(30px, 5vw, 58px); box-shadow: var(--shadow); margin-bottom: 18px; }
+    .hero:after { content: ""; position: absolute; inset: auto -80px -110px auto; width: 360px; height: 360px; background: conic-gradient(from 180deg, rgba(255,255,255,.18), rgba(16,163,127,.32), rgba(255,255,255,.08)); border-radius: 50%; opacity: .7; }
+    .kicker { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 10px; border: 1px solid rgba(255,255,255,.22); background: rgba(255,255,255,.11); padding: 8px 13px; border-radius: 999px; color: #e9d5ff; font-weight: 900; font-size: 13px; margin-bottom: 20px; }
+    h1 { position: relative; z-index: 1; font-size: clamp(34px, 5.3vw, 60px); line-height: 1.08; letter-spacing: -.04em; margin: 0 0 18px; max-width: 850px; }
+    .subtitle { position: relative; z-index: 1; color: rgba(255,255,255,.90); font-size: clamp(17px, 2.2vw, 22px); max-width: 920px; margin: 0; }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 34px; }
+    .hero-stat { border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.10); border-radius: 18px; padding: 15px 16px; min-height: 92px; }
+    .hero-stat span { display: block; color: rgba(255,255,255,.66); font-size: 12px; font-weight: 900; text-transform: uppercase; }
+    .hero-stat strong { display: block; margin-top: 6px; font-size: 18px; color: #fff; }
+    .layout { display: grid; grid-template-columns: 270px 1fr; gap: 18px; align-items: start; }
+    .toc { position: sticky; top: 18px; background: rgba(255,255,255,.78); border: 1px solid var(--border); border-radius: 22px; padding: 16px; backdrop-filter: blur(12px); }
+    .toc h3 { margin: 0 0 10px; font-size: 15px; color: var(--purple-dark); }
+    .toc a { display: block; text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 700; padding: 8px 10px; border-radius: 12px; }
+    .toc a:hover { background: #fff; color: var(--purple-dark); }
+    section, .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: clamp(20px, 3vw, 32px); margin-bottom: 16px; box-shadow: 0 10px 35px rgba(31, 24, 62, .055); }
+    h2 { margin: 0 0 12px; font-size: clamp(24px, 3vw, 34px); line-height: 1.18; color: var(--purple-dark); }
+    h3 { margin: 24px 0 10px; font-size: 20px; color: var(--ink); }
+    p { margin: 0 0 12px; }
+    .lead { font-size: 18px; color: var(--ink-2); }
+    .muted { color: var(--muted); }
+    ul { margin: 8px 0 0; padding-right: 22px; }
+    li { margin: 6px 0; }
+    .callout { border-radius: 18px; padding: 16px 18px; border: 1px solid rgba(16,163,127,.22); background: #ecfdf5; color: #064e3b; font-weight: 800; margin-top: 14px; }
+    .warning { border-radius: 18px; padding: 16px 18px; border: 1px solid #fde68a; background: #fffbeb; color: #78350f; margin-top: 14px; }
+    .mini-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 16px; }
+    .mini { border: 1px solid var(--border); background: linear-gradient(180deg, #fff 0%, #fbfaff 100%); border-radius: 20px; padding: 18px; }
+    .mini .icon { width: 38px; height: 38px; border-radius: 13px; display: grid; place-items: center; color: #fff; background: linear-gradient(135deg, var(--purple), var(--purple-dark)); font-weight: 900; margin-bottom: 12px; }
+    .mini strong { display: block; color: var(--ink); font-size: 17px; margin-bottom: 6px; }
+    .summary-box { display: grid; grid-template-columns: 1.1fr .9fr; gap: 16px; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; margin-top: 16px; }
+    .price-card { border-radius: 22px; padding: 22px; border: 1px solid var(--border); background: linear-gradient(180deg, #fff 0%, #fbfaff 100%); }
+    .price-card.featured { background: linear-gradient(135deg, #101828 0%, #24183f 55%, #3c3466 100%); color: #fff; border-color: transparent; box-shadow: var(--shadow); }
+    .price-label { font-size: 13px; font-weight: 900; color: var(--muted); margin-bottom: 8px; }
+    .featured .price-label { color: rgba(255,255,255,.72); }
+    .price-value { font-size: clamp(30px, 4vw, 46px); line-height: 1.02; font-weight: 900; margin-bottom: 10px; direction: ltr; text-align: right; }
+    .featured .price-value { color: #fff; }
+    .price-card ul { margin-top: 12px; }
+    table { width: 100%; border-collapse: separate; border-spacing: 0; border: 1px solid var(--border); border-radius: 20px; overflow: hidden; margin: 16px 0 0; background: #fff; }
+    th, td { padding: 14px 16px; border-bottom: 1px solid var(--border); text-align: right; vertical-align: top; }
+    th { background: #f3f0fb; color: var(--purple-dark); font-size: 13px; font-weight: 900; }
+    tr:last-child td { border-bottom: 0; }
+    .timeline { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
+    .step { border: 1px solid var(--border); border-radius: 18px; background: #fff; padding: 16px; }
+    .step span { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--purple-dark); color: #fff; font-weight: 900; margin-bottom: 8px; }
+    .footer { text-align: center; color: var(--muted); font-size: 13px; padding: 20px 0 0; }
+    #auth-overlay {
+      position: fixed; inset: 0; z-index: 9999;
+      background: linear-gradient(135deg, rgba(16,24,40,.94) 0%, rgba(36,24,63,.95) 48%, rgba(60,52,102,.95) 100%);
+      display: none; align-items: center; justify-content: center; padding: 24px;
+    }
+    .auth-card {
+      width: min(460px, 100%); background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14);
+      border-radius: 28px; padding: 28px; color: #fff; box-shadow: 0 24px 80px rgba(0,0,0,.28); backdrop-filter: blur(14px);
+    }
+    .auth-card img { height: 58px; width: auto; display: block; margin-bottom: 16px; }
+    .auth-card h2 { color: #fff; margin-bottom: 8px; }
+    .auth-card p { color: rgba(255,255,255,.82); margin-bottom: 18px; }
+    .auth-field { margin-bottom: 12px; }
+    .auth-field label { display: block; font-size: 13px; font-weight: 800; margin-bottom: 6px; }
+    .auth-field input {
+      width: 100%; border-radius: 14px; border: 1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.1);
+      color: #fff; padding: 14px 16px; font: inherit;
+    }
+    .auth-field input::placeholder { color: rgba(255,255,255,.5); }
+    .auth-submit {
+      width: 100%; border: 0; border-radius: 14px; padding: 14px 16px; font: inherit; font-weight: 900;
+      background: linear-gradient(135deg, #10a37f, #8b5cf6); color: #fff; cursor: pointer; margin-top: 8px;
+    }
+    .auth-error { color: #fecaca; font-size: 13px; font-weight: 700; min-height: 18px; margin-top: 10px; }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .toc { position: static; }
+      .hero-grid, .timeline, .summary-box, .pricing-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 650px) {
+      .page { padding: 16px 12px 44px; }
+      .topbar { align-items: flex-start; flex-direction: column; }
+      .hero { border-radius: 24px; }
+      .hero-grid, .mini-grid, .timeline, .summary-box, .pricing-grid { grid-template-columns: 1fr; }
+      table { display: block; overflow-x: auto; }
+    }
+    @media print {
+      body { background: #fff; }
+      .page { max-width: none; padding: 0; }
+      .topbar, .toc, #auth-overlay { display: none !important; }
+      .hero, section, .card { box-shadow: none; break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div id="auth-overlay" aria-hidden="true">
+    <div class="auth-card">
+      <img src="./logo-dark.png" alt="Forward" />
+      <h2>כניסה לעמוד ההצעה</h2>
+      <p>העמוד הזה מוגן בסיסמה פשוטה לצפייה פרטית.</p>
+      <div class="auth-field">
+        <label for="username">שם משתמש</label>
+        <input id="username" type="text" autocomplete="username" placeholder="הקלידי שם משתמש" />
+      </div>
+      <div class="auth-field">
+        <label for="password">סיסמה</label>
+        <input id="password" type="password" autocomplete="current-password" placeholder="הקלידי סיסמה" />
+      </div>
+      <button class="auth-submit" id="auth-submit">כניסה לעמוד</button>
+      <div class="auth-error" id="auth-error"></div>
+    </div>
+  </div>
+
+  <main class="page" id="protected-content">
+    <div class="topbar">
+      <div class="logo"><img src="./logo-dark.png" alt="Forward" /> <span>Forward × CareerOS</span></div>
+      <div class="actions">
+        <span class="pill-top">הצעת MVP · מוצר + תכולה</span>
+        <button class="btn" onclick="window.print()">הדפסה / PDF</button>
+        <a class="btn primary" href="#roadmap">ל-Roadmap</a>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div class="kicker">Agentic AI · Career Search Manager · MVP Proposal</div>
+      <h1>הצעת MVP ל־CareerOS: מערכת AI שמנהלת חיפוש עבודה בצורה פרואקטיבית, ברורה ושימושית.</h1>
+      <p class="subtitle">במקום עוד לוח דרושים או עוד כלי פסיבי — CareerOS יכולה להיות מערכת שמכירה את המשתמש, סורקת עבורו משרות, מדרגת התאמה, מסבירה פערים, ומובילה אותו לפעולה הבאה.</p>
+      <div class="hero-grid">
+        <div class="hero-stat"><span>מיקוד המוצר</span><strong>AI Career Search Manager</strong></div>
+        <div class="hero-stat"><span>לב ה-MVP</span><strong>פרופיל + Job Radar + Matching</strong></div>
+        <div class="hero-stat"><span>מודל עבודה</span><strong>Human in the loop</strong></div>
+        <div class="hero-stat"><span>יעד עסקי</span><strong>ערך יומיומי ושימוש חוזר</strong></div>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="toc">
+        <h3>תוכן ההצעה</h3>
+        <a href="#summary">מה המוצר</a>
+        <a href="#audience">למי זה מיועד</a>
+        <a href="#scope">מה מקבלים בגרסה הראשונה</a>
+        <a href="#flow">איך זה עובד</a>
+        <a href="#next-steps">איך מתקדמים</a>
+      </aside>
+
+      <div>
+        <section id="summary">
+          <h2>מה המוצר</h2>
+          <p class="lead">CareerOS היא מערכת AI שמנהלת חיפוש עבודה בצורה מסודרת: היא בונה פרופיל קריירה, מאתרת משרות רלוונטיות, מדרגת התאמה, וממליצה מה לעשות עכשיו.</p>
+          <div class="callout">המטרה בגרסה הראשונה היא פשוטה: לתת למשתמש תחושה שיש לו מנהל חיפוש עבודה אישי — ברור, שימושי ופרקטי.</div>
+          <div class="summary-box">
+            <div class="mini">
+              <div class="icon">01</div>
+              <strong>מה המשתמש מקבל</strong>
+              <p>פרופיל קריירה ברור, משרות רלוונטיות, ציון התאמה, פערים מרכזיים ופעולה הבאה המומלצת.</p>
+            </div>
+            <div class="mini">
+              <div class="icon">02</div>
+              <strong>מה הערך העסקי</strong>
+              <p>מוצר חד, ברור ומהיר לעלייה, שאפשר לבדוק איתו שימוש אמיתי וללמוד מהר מה עובד.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="audience">
+          <h2>למי זה מיועד</h2>
+          <div class="mini-grid">
+            <div class="mini">
+              <div class="icon">A</div>
+              <strong>קהל יעד ראשוני</strong>
+              <p>מחפשי עבודה מנוסים, עם קורות חיים קיימים, שמחפשים תפקיד חדש או שינוי כיוון.</p>
+            </div>
+            <div class="mini">
+              <div class="icon">B</div>
+              <strong>הצורך המרכזי</strong>
+              <p>לחסוך זמן, להבין למה להגיש, ולקבל תהליך חיפוש מסודר במקום חיפוש ידני ומבולגן.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="scope">
+          <h2>מה מקבלים בגרסה הראשונה</h2>
+          <div class="mini-grid">
+            <div class="mini"><div class="icon">1</div><strong>פרופיל קריירה</strong><p>המערכת קוראת קו״ח, מסדרת ניסיון וכישורים, ומייצרת פרופיל ברור לאישור המשתמש.</p></div>
+            <div class="mini"><div class="icon">2</div><strong>אסטרטגיית חיפוש</strong><p>הגדרת תפקידי יעד, מיקום, בכירות והעדפות חיפוש בצורה ברורה.</p></div>
+            <div class="mini"><div class="icon">3</div><strong>Job Radar</strong><p>איתור משרות רלוונטיות, ניקוי כפילויות, והצגת הזדמנויות מסודרות במקום אחד.</p></div>
+            <div class="mini"><div class="icon">4</div><strong>הסבר התאמה</strong><p>לכל משרה מוצגים ציון התאמה, חוזקות, פערים, והצעד הבא המומלץ.</p></div>
+            <div class="mini"><div class="icon">5</div><strong>ניהול תהליך</strong><p>שמירה, פידבק, Pipeline בסיסי ופעולות המשך פשוטות.</p></div>
+            <div class="mini"><div class="icon">6</div><strong>Tailoring בסיסי</strong><p>התאמה ראשונית של קורות חיים ויצירת חומרי הגשה בסיסיים.</p></div>
+          </div>
+        </section>
+
+        <section id="flow">
+          <h2>איך זה עובד</h2>
+          <div class="timeline">
+            <div class="step"><span>1</span><strong>העלאת קו״ח</strong><p>המשתמש מעלה קורות חיים ומתחיל תהליך.</p></div>
+            <div class="step"><span>2</span><strong>בניית פרופיל</strong><p>המערכת מייצרת פרופיל קריירה ברור לאישור.</p></div>
+            <div class="step"><span>3</span><strong>חיפוש חכם</strong><p>המערכת מאתרת ומדרגת משרות רלוונטיות.</p></div>
+            <div class="step"><span>4</span><strong>המלצה לפעולה</strong><p>המשתמש רואה למה זה מתאים ומה כדאי לעשות עכשיו.</p></div>
+          </div>
+          <div class="callout">במקום לעבור ידנית על עשרות משרות, המשתמש מקבל רשימה מסודרת עם עדיפות ברורה והמלצה פרקטית.</div>
+        </section>
+
+        <section id="next-steps">
+          <h2>איך מתקדמים</h2>
+          <div class="mini-grid">
+            <div class="mini"><div class="icon">1</div><strong>דיוק קצר</strong><p>מחדדים קהל יעד, מקורות משרות וזרימת משתמש.</p></div>
+            <div class="mini"><div class="icon">2</div><strong>בניית MVP</strong><p>מעמידים את הליבה: פרופיל, חיפוש, דירוג והסבר התאמה.</p></div>
+            <div class="mini"><div class="icon">3</div><strong>למידה והרחבה</strong><p>בודקים שימוש אמיתי ומרחיבים לפי מה שנותן ערך בפועל.</p></div>
+          </div>
+          <table>
+            <thead><tr><th>שלב</th><th>מטרה</th><th>משך משוער</th></tr></thead>
+            <tbody>
+              <tr><td>Discovery</td><td>דיוק המוצר, הקהל והזרימה</td><td>2–3 שבועות</td></tr>
+              <tr><td>MVP Core</td><td>העמדת גרסה עובדת</td><td>6–8 שבועות</td></tr>
+              <tr><td>הרחבה</td><td>שיפור יכולות לפי שימוש</td><td>3–4 שבועות</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+
+    <div class="footer">Forward · CareerOS MVP Proposal</div>
+  </main>
+
+  <script>
+    (function () {
+      var USERNAME = 'Career';
+      var PASSWORD = 'Career123';
+      var STORAGE_KEY = 'careeros_mvp_auth_v1';
+      var bypass = new URLSearchParams(window.location.search).get('preview') === '1';
+      var overlay = document.getElementById('auth-overlay');
+      var submit = document.getElementById('auth-submit');
+      var usernameInput = document.getElementById('username');
+      var passwordInput = document.getElementById('password');
+      var error = document.getElementById('auth-error');
+
+      function unlock() {
+        overlay.style.display = 'none';
+        overlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+      function lock() {
+        overlay.style.display = 'flex';
+        overlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        setTimeout(function(){ usernameInput.focus(); }, 30);
+      }
+      if (bypass || sessionStorage.getItem(STORAGE_KEY) === 'ok') {
+        unlock();
+      } else {
+        lock();
+      }
+      submit.addEventListener('click', function () {
+        if (usernameInput.value === USERNAME && passwordInput.value === PASSWORD) {
+          sessionStorage.setItem(STORAGE_KEY, 'ok');
+          unlock();
+        } else {
+          error.textContent = 'שם המשתמש או הסיסמה שגויים.';
+        }
+      });
+      passwordInput.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') submit.click();
+      });
+      usernameInput.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') submit.click();
+      });
+    })();
+  </script>
+</body>
+</html>
