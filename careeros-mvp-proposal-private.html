@@ -185,84 +185,166 @@
     <div class="layout">
       <aside class="toc">
         <h3>תוכן ההצעה</h3>
-        <a href="#summary">מה המוצר</a>
-        <a href="#audience">למי זה מיועד</a>
-        <a href="#scope">מה מקבלים בגרסה הראשונה</a>
-        <a href="#flow">איך זה עובד</a>
-        <a href="#next-steps">איך מתקדמים</a>
+        <a href="#summary">תקציר</a>
+        <a href="#value">הצעת הערך</a>
+        <a href="#audience">קהל יעד</a>
+        <a href="#scope">מה נכנס ל-MVP</a>
+        <a href="#agents">ארכיטקטורת הסוכנים</a>
+        <a href="#flow">מסע משתמש</a>
+        <a href="#screens">מסכים חיוניים</a>
+        <a href="#stack">סטאק מומלץ</a>
+                <a href="#roadmap">Roadmap</a>
       </aside>
 
       <div>
         <section id="summary">
-          <h2>מה המוצר</h2>
-          <p class="lead">CareerOS היא מערכת AI שמנהלת חיפוש עבודה בצורה מסודרת: היא בונה פרופיל קריירה, מאתרת משרות רלוונטיות, מדרגת התאמה, וממליצה מה לעשות עכשיו.</p>
-          <div class="callout">המטרה בגרסה הראשונה היא פשוטה: לתת למשתמש תחושה שיש לו מנהל חיפוש עבודה אישי — ברור, שימושי ופרקטי.</div>
+          <h2>תקציר</h2>
+          <p class="lead">ההמלצה היא להתחיל ב-MVP חד וממוקד שמוכיח במהירות ארבעה דברים: שהמערכת מוצאת משרות רלוונטיות, חוסכת זמן, מסבירה התאמה בצורה אמינה, ומובילה את המשתמש לפעולה.</p>
+          <div class="callout">מה הלקוח מקבל בפועל: מערכת ראשונה עובדת עם Career Profile, Search Strategy, Job Radar, Match Score, הסבר התאמה, ופייפליין בסיסי לניהול תהליך — בתוך מסלול עלייה מדורג וברור.</div>
           <div class="summary-box">
             <div class="mini">
               <div class="icon">01</div>
-              <strong>מה המשתמש מקבל</strong>
-              <p>פרופיל קריירה ברור, משרות רלוונטיות, ציון התאמה, פערים מרכזיים ופעולה הבאה המומלצת.</p>
+              <strong>מה המשתמש יקבל</strong>
+              <p>פרופיל קריירה מובנה, אסטרטגיית חיפוש, Job Radar אישי, ציון התאמה ברור, פערים, חוזקות, ופעולה הבאה המומלצת.</p>
             </div>
             <div class="mini">
               <div class="icon">02</div>
-              <strong>מה הערך העסקי</strong>
-              <p>מוצר חד, ברור ומהיר לעלייה, שאפשר לבדוק איתו שימוש אמיתי וללמוד מהר מה עובד.</p>
+              <strong>מה מתמקד בגרסה הראשונה</strong>
+              <p>גרסה ראשונה ממוקדת, שימושית ומהירה לעלייה, שנותנת למשתמש חוויית חיפוש עבודה ברורה, מסודרת ופרקטית מהיום הראשון.</p>
             </div>
           </div>
+          <div class="callout">הגרסה הראשונה צריכה להרגיש כמו “מנהל חיפוש עבודה אישי” — מוצר ברור, עובד ושימושי מהיום הראשון.</div>
+        </section>
+
+        <section id="value">
+          <h2>הצעת הערך של CareerOS</h2>
+          <p>CareerOS נבנית כמערכת יזומה שמכירה את המשתמש ופועלת עבורו בצורה חכמה:</p>
+          <ul>
+            <li>להבין מי המשתמש ומה הוא באמת מחפש.</li>
+            <li>לסרוק את השוק במקומו.</li>
+            <li>לסנן רעש וכפילויות.</li>
+            <li>להציג רק הזדמנויות עם סיכוי אמיתי.</li>
+            <li>להסביר למה זה מתאים, מה חסר, ומה כדאי לעשות עכשיו.</li>
+          </ul>
+          <div class="warning">במילים פשוטות: המשתמש רוצה שמישהו ינהל עבורו את תהליך חיפוש העבודה בצורה מסודרת, חכמה ומעשית.</div>
         </section>
 
         <section id="audience">
-          <h2>למי זה מיועד</h2>
+          <h2>קהל היעד הראשוני</h2>
           <div class="mini-grid">
             <div class="mini">
               <div class="icon">A</div>
-              <strong>קהל יעד ראשוני</strong>
-              <p>מחפשי עבודה מנוסים, עם קורות חיים קיימים, שמחפשים תפקיד חדש או שינוי כיוון.</p>
+              <strong>Persona ראשונית</strong>
+              <p>מחפשת עבודה מנוסה בגיל 30–50, עם ניסיון מקצועי וקורות חיים קיימים, שמחפשת תפקיד חדש או שינוי כיוון.</p>
             </div>
             <div class="mini">
               <div class="icon">B</div>
-              <strong>הצורך המרכזי</strong>
-              <p>לחסוך זמן, להבין למה להגיש, ולקבל תהליך חיפוש מסודר במקום חיפוש ידני ומבולגן.</p>
+              <strong>הכאב המרכזי</strong>
+              <p>היא לא בטוחה למה נכון לה להגיש, מבזבזת זמן על סינון ידני, ורוצה להגדיל את הסיכוי להגיע לראיונות.</p>
             </div>
           </div>
+          <div class="callout">זה קהל מצוין ל-MVP כי הכאב שלו ברור, והוא מוכן להעריך מערכת שמסדרת, מדרגת ומפחיתה רעש.</div>
         </section>
 
         <section id="scope">
-          <h2>מה מקבלים בגרסה הראשונה</h2>
+          <h2>מה כולל ה-MVP</h2>
+          <table>
+            <thead><tr><th>יכולות הליבה בגרסה הראשונה</th><th>הערך למשתמש</th></tr></thead>
+            <tbody>
+              <tr><td>הרשמה, העלאת קו״ח, חילוץ מידע מ-PDF/DOCX</td><td>כניסה מהירה לתהליך עבודה מסודר ולפרופיל קריירה ראשוני.</td></tr>
+              <tr><td>Career Profile Agent עם אישור משתמש</td><td>פרופיל קריירה ברור, מדויק ומבוסס על ניסיון אמיתי.</td></tr>
+              <tr><td>Search Strategy + Search Preferences</td><td>מיקוד חיפוש נכון לפי תפקידים, מיקום, בכירות והעדפות.</td></tr>
+              <tr><td>סריקה מחזורית של 2–3 מקורות חוקיים ומוגדרים</td><td>איתור עקבי של משרות חדשות ורלוונטיות עם פחות רעש.</td></tr>
+              <tr><td>Job Radar, ניקוי כפילויות, Match Score והסבר</td><td>תמונה ברורה של ההתאמה, החוזקות והפעולה הבאה המומלצת.</td></tr>
+              <tr><td>שמירה, פידבק, Pipeline בסיסי, CV tailoring בסיסי</td><td>ניהול תהליך פשוט, חכם ומעשי שמקדם את המשתמש קדימה.</td></tr>
+            </tbody>
+          </table>
+          <h3>הגרעין המומלץ לגרסה הראשונה</h3>
           <div class="mini-grid">
-            <div class="mini"><div class="icon">1</div><strong>פרופיל קריירה</strong><p>המערכת קוראת קו״ח, מסדרת ניסיון וכישורים, ומייצרת פרופיל ברור לאישור המשתמש.</p></div>
-            <div class="mini"><div class="icon">2</div><strong>אסטרטגיית חיפוש</strong><p>הגדרת תפקידי יעד, מיקום, בכירות והעדפות חיפוש בצורה ברורה.</p></div>
-            <div class="mini"><div class="icon">3</div><strong>Job Radar</strong><p>איתור משרות רלוונטיות, ניקוי כפילויות, והצגת הזדמנויות מסודרות במקום אחד.</p></div>
-            <div class="mini"><div class="icon">4</div><strong>הסבר התאמה</strong><p>לכל משרה מוצגים ציון התאמה, חוזקות, פערים, והצעד הבא המומלץ.</p></div>
-            <div class="mini"><div class="icon">5</div><strong>ניהול תהליך</strong><p>שמירה, פידבק, Pipeline בסיסי ופעולות המשך פשוטות.</p></div>
-            <div class="mini"><div class="icon">6</div><strong>Tailoring בסיסי</strong><p>התאמה ראשונית של קורות חיים ויצירת חומרי הגשה בסיסיים.</p></div>
+            <div class="mini"><div class="icon">1</div><strong>Career Profile Agent</strong><p>מחלץ פרופיל קריירה, מזהה תפקידים, כישורים, הישגים, חוסרים ו-Confidence.</p></div>
+            <div class="mini"><div class="icon">2</div><strong>Search & Discovery</strong><p>מייצר אסטרטגיית חיפוש, מגדיר מקורות, וסורק משרות חדשות בתדירות קבועה.</p></div>
+            <div class="mini"><div class="icon">3</div><strong>Matching & Explanation</strong><p>נותן ציון שקוף, חוזקות, פערים, Must-have מול Nice-to-have והמלצת פעולה.</p></div>
+            <div class="mini"><div class="icon">4</div><strong>Job Radar Dashboard</strong><p>המסך המרכזי: משרות רלוונטיות, עדיפות, סטטוסים, פידבק ו-Best Next Action.</p></div>
           </div>
+        </section>
+
+        <section id="agents">
+          <h2>ארכיטקטורת הסוכנים ב-MVP</h2>
+          <p class="lead">המערכת בנויה נכון כקבוצה של סוכנים מתמחים, שמנוהלים על ידי Orchestrator אחד ששומר State, מנהל תזמון, ומוודא שכל פעולה רגישה עוברת דרך אישור משתמש.</p>
+          <table>
+            <thead><tr><th>Agent</th><th>אחריות בגרסה הראשונה</th><th>גבול ברור</th></tr></thead>
+            <tbody>
+              <tr><td>Career Profile Agent</td><td>לקרוא קו״ח, לחלץ נתונים, לבנות CareerProfile ולהעלות שאלות הבהרה.</td><td>לא ממציא ניסיון, תאריכים או כישורים.</td></tr>
+              <tr><td>Search Strategy Agent</td><td>לתרגם פרופיל והעדפות ל-Search Plan ברור.</td><td>לא משנה יעד קריירה בלי אישור משתמש.</td></tr>
+              <tr><td>Job Discovery Agent</td><td>לסרוק מקורות משרות מוגדרים ולשמור מקור, URL ותאריך.</td><td>לא עובד מול מקורות אסורים או לא יציבים.</td></tr>
+              <tr><td>Job Normalization Agent</td><td>להפוך משרות ממקורות שונים למבנה אחיד ולזהות כפילויות.</td><td>לא מסיק נתונים שלא מופיעים.</td></tr>
+              <tr><td>Matching Agent</td><td>להשוות בין הפרופיל לבין המשרה, להסביר התאמה ולהמליץ.</td><td>לא מציג ציון בלי הסבר ולא משתמש במידע רגיש.</td></tr>
+              <tr><td>Recommendation Agent</td><td>לתעדף משרות ולהציג Next Action ברור.</td><td>לא מגיש מועמדות לבד.</td></tr>
+            </tbody>
+          </table>
+          <div class="callout">Human in the loop הוא חלק מהאסטרטגיה: המשתמש מאשר פרופיל, מאשר שינויים בקו״ח, ומחליט אם ומתי להגיש.</div>
         </section>
 
         <section id="flow">
-          <h2>איך זה עובד</h2>
+          <h2>מסע המשתמש</h2>
           <div class="timeline">
-            <div class="step"><span>1</span><strong>העלאת קו״ח</strong><p>המשתמש מעלה קורות חיים ומתחיל תהליך.</p></div>
-            <div class="step"><span>2</span><strong>בניית פרופיל</strong><p>המערכת מייצרת פרופיל קריירה ברור לאישור.</p></div>
-            <div class="step"><span>3</span><strong>חיפוש חכם</strong><p>המערכת מאתרת ומדרגת משרות רלוונטיות.</p></div>
-            <div class="step"><span>4</span><strong>המלצה לפעולה</strong><p>המשתמש רואה למה זה מתאים ומה כדאי לעשות עכשיו.</p></div>
+            <div class="step"><span>1</span><strong>Upload</strong><p>העלאת קו״ח והסכמה לעיבוד מידע.</p></div>
+            <div class="step"><span>2</span><strong>Profile</strong><p>חילוץ פרופיל קריירה, תיקון ואישור משתמש.</p></div>
+            <div class="step"><span>3</span><strong>Search Plan</strong><p>בחירת תפקידי יעד, מיקום, בכירות, שכר והעדפות.</p></div>
+            <div class="step"><span>4</span><strong>Radar</strong><p>סריקה, ניקוי כפילויות ודירוג משרות רלוונטיות.</p></div>
           </div>
-          <div class="callout">במקום לעבור ידנית על עשרות משרות, המשתמש מקבל רשימה מסודרת עם עדיפות ברורה והמלצה פרקטית.</div>
+          <div class="timeline">
+            <div class="step"><span>5</span><strong>Explain</strong><p>הסבר התאמה, חוזקות, פערים ו-Next Action.</p></div>
+            <div class="step"><span>6</span><strong>Act</strong><p>שמירה, דחייה, Tailor CV או מעבר לתהליך.</p></div>
+            <div class="step"><span>7</span><strong>Prepare</strong><p>גרסת CV מותאמת + Cover Letter להורדה.</p></div>
+            <div class="step"><span>8</span><strong>Learn</strong><p>פידבק משתמש נשמר ומשפר את הסבב הבא.</p></div>
+          </div>
+        </section>
+
+        <section id="screens">
+          <h2>המסכים החיוניים</h2>
+          <div class="mini-grid">
+            <div class="mini"><div class="icon">01</div><strong>Login / Signup</strong><p>הרשמה, כניסה, שחזור סיסמה והסכמות פרטיות.</p></div>
+            <div class="mini"><div class="icon">02</div><strong>Onboarding Wizard</strong><p>העלאת קו״ח, תיקון פרופיל, יעד והעדפות חיפוש.</p></div>
+            <div class="mini"><div class="icon">03</div><strong>Career Profile</strong><p>תפקידים, כישורים, הישגים, יעדים, העדפות ופערים.</p></div>
+            <div class="mini"><div class="icon">04</div><strong>Job Radar Dashboard</strong><p>משרות מומלצות, פילטרים, ציון התאמה ועדיפות.</p></div>
+            <div class="mini"><div class="icon">05</div><strong>Job Detail</strong><p>תיאור משרה, הסבר התאמה, חוזקות, פערים ופעולה הבאה.</p></div>
+            <div class="mini"><div class="icon">06</div><strong>Pipeline</strong><p>New, Saved, Reviewed, Tailoring, Applied, Interview.</p></div>
+          </div>
+        </section>
+
+        <section id="stack">
+          <h2>סטאק מומלץ ל-MVP מהיר</h2>
+          <div class="mini-grid">
+            <div class="mini"><div class="icon">FE</div><strong>Frontend</strong><p>Next.js או React, עם Responsive Web App מלא ו-RTL תקין.</p></div>
+            <div class="mini"><div class="icon">BE</div><strong>Backend</strong><p>Node.js / TypeScript, Background Jobs, Queue ו-Webhooks.</p></div>
+            <div class="mini"><div class="icon">DB</div><strong>Data</strong><p>PostgreSQL / Supabase, Storage, RLS, Audit Logs ו-pgvector.</p></div>
+            <div class="mini"><div class="icon">AI</div><strong>AI Layer</strong><p>Structured outputs, function calling, prompt contracts, guardrails ו-evaluation.</p></div>
+          </div>
+          <div class="warning">המלצה חשובה: להתחיל עם פחות מקורות משרות ויותר אמינות. זה נכון גם מוצרית, גם משפטית וגם תפעולית.</div>
         </section>
 
         <section id="next-steps">
-          <h2>איך מתקדמים</h2>
+          <h2>איך נכון להתקדם מכאן</h2>
+          <p class="lead">כדי לעלות מהר אבל נכון, ההמלצה היא לעבוד בשלבים: קודם לחדד את המוצר והחוקיות, אחר כך להעמיד ליבה עובדת, ואז להרחיב רק את מה שמוכיח שימוש וערך בפועל.</p>
           <div class="mini-grid">
-            <div class="mini"><div class="icon">1</div><strong>דיוק קצר</strong><p>מחדדים קהל יעד, מקורות משרות וזרימת משתמש.</p></div>
-            <div class="mini"><div class="icon">2</div><strong>בניית MVP</strong><p>מעמידים את הליבה: פרופיל, חיפוש, דירוג והסבר התאמה.</p></div>
-            <div class="mini"><div class="icon">3</div><strong>למידה והרחבה</strong><p>בודקים שימוש אמיתי ומרחיבים לפי מה שנותן ערך בפועל.</p></div>
+            <div class="mini"><div class="icon">1</div><strong>Discovery ממוקד</strong><p>דיוק ה-persona, בחירת מקורות חוקיים, data schema, prompt contracts ו-wireframes.</p></div>
+            <div class="mini"><div class="icon">2</div><strong>MVP Core</strong><p>Auth, העלאת קו״ח, Career Profile Agent, Search & Discovery, Matching ו-Job Radar Dashboard.</p></div>
+            <div class="mini"><div class="icon">3</div><strong>שכבת הרחבה</strong><p>CV Tailoring, Cover Letter, Pipeline, Tasks ויכולות המשך בהתאם לשימוש אמיתי.</p></div>
+            <div class="mini"><div class="icon">4</div><strong>Principle</strong><p>מתחילים קטן, אמין ושימושי — ואז מרחיבים לפי למידה, פידבק ונתוני שימוש.</p></div>
           </div>
+          <div class="callout">המטרה היא להציג ללקוח מסלול עבודה ברור והגיוני, בלי להעמיס מוקדם מדי על scope, זמן או מורכבות.</div>
+        </section>
+
+        <section id="roadmap">
+          <h2>Roadmap מוצע</h2>
           <table>
-            <thead><tr><th>שלב</th><th>מטרה</th><th>משך משוער</th></tr></thead>
+            <thead><tr><th>שלב</th><th>מטרה</th><th>תוצרים</th><th>משך</th></tr></thead>
             <tbody>
-              <tr><td>Discovery</td><td>דיוק המוצר, הקהל והזרימה</td><td>2–3 שבועות</td></tr>
-              <tr><td>MVP Core</td><td>העמדת גרסה עובדת</td><td>6–8 שבועות</td></tr>
-              <tr><td>הרחבה</td><td>שיפור יכולות לפי שימוש</td><td>3–4 שבועות</td></tr>
+              <tr><td>Discovery</td><td>דיוק המוצר והחוקיות</td><td>איפיון, schema, contracts, wireframes</td><td>2–3 שבועות</td></tr>
+              <tr><td>MVP Core</td><td>העמדת הליבה</td><td>Profile, Discovery, Matching, Job Radar</td><td>6–8 שבועות</td></tr>
+              <tr><td>Application Tools</td><td>העמקת שימוש</td><td>CV tailoring, Cover Letter, Pipeline</td><td>3–4 שבועות</td></tr>
+              <tr><td>Interview Prep</td><td>המשך הערך אחרי Apply</td><td>שאלות, STAR, checklist</td><td>2–3 שבועות</td></tr>
             </tbody>
           </table>
         </section>
