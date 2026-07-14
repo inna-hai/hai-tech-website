@@ -92,3 +92,8 @@
 /courses/roblox-lua /קורס-רובלוקס-לילדים 301
 /courses/web-development-ai.html /#courses 301
 /courses/web-development-ai /#courses 301
+
+# Force old private CareerOS link to clean version
+/careeros-mvp-proposal-private /careeros-proposal-clean/index.html 200
+/careeros-mvp-proposal-private/ /careeros-proposal-clean/index.html 200
+/careeros-mvp-proposal-private.html /careeros-proposal-clean/index.html 200
