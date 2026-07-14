@@ -143,11 +143,56 @@
       .hero-grid, .mini-grid, .timeline, .summary-box { grid-template-columns: 1fr; }
       table { display: block; overflow-x: auto; }
     }
+    body.pdf-mode { background: #fff; }
+    body.pdf-mode .page { max-width: 920px; padding: 0; }
+    body.pdf-mode .topbar, body.pdf-mode .toc { display: none !important; }
+    body.pdf-mode .hero,
+    body.pdf-mode section,
+    body.pdf-mode .card {
+      box-shadow: none;
+      border-color: #d0d5dd;
+      border-radius: 14px;
+      margin-bottom: 10px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    body.pdf-mode .hero { padding: 24px 26px; margin-bottom: 12px; }
+    body.pdf-mode .hero-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 18px; }
+    body.pdf-mode .mini-grid,
+    body.pdf-mode .summary-box,
+    body.pdf-mode .timeline { grid-template-columns: 1fr 1fr; gap: 10px; }
+    body.pdf-mode h1 { font-size: 34px; }
+    body.pdf-mode h2 { font-size: 24px; }
+    body.pdf-mode .subtitle,
+    body.pdf-mode .lead,
+    body.pdf-mode p,
+    body.pdf-mode li,
+    body.pdf-mode td,
+    body.pdf-mode th { font-size: 14px; line-height: 1.6; }
+    body.pdf-mode .mini,
+    body.pdf-mode .step { padding: 14px; }
+    body.pdf-mode .callout,
+    body.pdf-mode .warning { padding: 12px 14px; }
+    body.pdf-mode .footer { padding-top: 8px; }
     @media print {
       body { background: #fff; }
       .page { max-width: none; padding: 0; }
       .topbar, .toc, #auth-overlay { display: none !important; }
-      .hero, section, .card { box-shadow: none; break-inside: avoid; }
+      .hero, section, .card {
+        box-shadow: none;
+        border-color: #d0d5dd;
+        border-radius: 14px;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .hero { padding: 24px 26px; }
+      .hero-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 18px; }
+      .mini-grid, .summary-box, .timeline { grid-template-columns: 1fr 1fr; gap: 10px; }
+      h1 { font-size: 34px; }
+      h2 { font-size: 24px; }
+      .subtitle, .lead, p, li, td, th { font-size: 14px; line-height: 1.6; }
+      .mini, .step { padding: 14px; }
+      .callout, .warning { padding: 12px 14px; }
     }
   </style>
 </head>
@@ -369,12 +414,18 @@
       var USERNAME = 'Career';
       var PASSWORD = 'Career123';
       var STORAGE_KEY = 'careeros_mvp_auth_v1';
-      var bypass = new URLSearchParams(window.location.search).get('preview') === '1';
+      var params = new URLSearchParams(window.location.search);
+      var bypass = params.get('preview') === '1' || params.get('pdf') === '1';
+      var pdfMode = params.get('pdf') === '1';
       var overlay = document.getElementById('auth-overlay');
       var submit = document.getElementById('auth-submit');
       var usernameInput = document.getElementById('username');
       var passwordInput = document.getElementById('password');
       var error = document.getElementById('auth-error');
+
+      if (pdfMode) {
+        document.body.classList.add('pdf-mode');
+      }
 
       function unlock() {
         overlay.style.display = 'none';
