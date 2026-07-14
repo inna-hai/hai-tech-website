@@ -69,6 +69,10 @@
 # No rewrite rules needed — Cloudflare auto-strips .html and serves the correct file
 # Example: קורס-תכנות-לילדים.html is served at /קורס-תכנות-לילדים
 
+# Hidden private proposal page
+/careeros-mvp-proposal-private /careeros-mvp-proposal-private.html 200
+/careeros-mvp-proposal-private/ /careeros-mvp-proposal-private.html 200
+
 /קייטנת-קיץ-מיינקראפט /ליגת-הבנאים-של-הקיץ 301
 /קייטנת-קיץ-מיינקראפט/ /ליגת-הבנאים-של-הקיץ 301
 
