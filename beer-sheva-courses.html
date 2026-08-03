@@ -37,15 +37,10 @@ a{color:inherit}
 .bs-hero:after{content:"";position:absolute;inset:auto -90px -110px auto;width:310px;height:310px;border-radius:50%;background:rgba(31,111,235,.10)}
 .eyebrow{display:inline-flex;gap:8px;align-items:center;background:#e8fbf7;color:#006d6d;border:1px solid rgba(0,166,166,.22);padding:7px 15px;border-radius:999px;font-size:.95rem;font-weight:800;margin-bottom:14px;position:relative;z-index:1}
 .bs-hero h1{margin:0 0 10px;font-size:clamp(2.2rem,5vw,4.25rem);line-height:1.05;color:var(--blue2);letter-spacing:-.045em;position:relative;z-index:1}
-.bs-subtitle{max-width:920px;margin:0;color:var(--muted);font-size:1.02rem;font-weight:700;position:relative;z-index:1}
-.bs-subtitle-topics{margin-top:14px}
-.bs-top-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px;position:relative;z-index:1}
-.bs-btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;background:var(--blue);color:#fff;border-radius:999px;padding:11px 18px;font-weight:900;box-shadow:0 12px 24px rgba(31,111,235,.18)}
-.bs-btn.secondary{background:#fff;color:var(--blue2);border:1px solid var(--border);box-shadow:none}
+.bs-subtitle{max-width:920px;margin:14px 0 0;color:var(--muted);font-size:1.02rem;font-weight:700;position:relative;z-index:1}
 .bs-nav{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:18px 0}
 .bs-nav a{text-decoration:none;text-align:center;background:rgba(255,255,255,.82);border:1px solid var(--border);border-radius:18px;padding:11px 8px;font-weight:900;color:var(--blue2);box-shadow:var(--soft)}
-.bs-intro{background:#fff;border:1px solid var(--border);border-radius:26px;padding:22px 26px;margin:18px 0 24px;box-shadow:var(--soft);font-size:1.04rem;color:var(--muted);font-weight:700}
-.bs-schedule{background:#fff;border:1px solid var(--border);border-radius:30px;padding:26px;margin:0 0 24px;box-shadow:var(--shadow)}
+.bs-schedule{background:#fff;border:1px solid var(--border);border-radius:30px;padding:26px;margin:24px 0;box-shadow:var(--shadow)}
 .bs-section-title{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:18px}
 .bs-section-title h2{margin:0;color:var(--blue2);font-size:clamp(1.8rem,3vw,2.65rem);line-height:1.08;letter-spacing:-.035em}
 .bs-section-title p{margin:0;color:var(--muted);font-weight:800;max-width:640px}
@@ -76,62 +71,25 @@ a{color:inherit}
 .bs-tagline h3{margin:0 0 8px;font-size:1.7rem;color:#fff}
 .bs-tagline p{margin:0;font-size:1.05rem;font-weight:700;opacity:.95}
 @media(max-width:940px){.bs-nav{grid-template-columns:repeat(3,1fr)}.bs-schedule-grid{grid-template-columns:1fr}.bs-course-card,.bs-course-card:nth-child(even){grid-template-columns:1fr}.bs-course-card:nth-child(even) .bs-content,.bs-course-card:nth-child(even) .bs-visual{order:initial}.bs-visual{min-height:230px}}
-@media(max-width:620px){.bs-page{width:min(100% - 22px,1180px);padding:112px 0 30px}.bs-hero{padding:28px 22px;border-radius:26px}.bs-nav{grid-template-columns:repeat(2,1fr)}.bs-section-title{display:block}.bs-schedule{padding:20px 16px}.bs-content{padding:23px 20px}.bs-course-card{border-radius:24px}.bs-visual{min-height:190px}.bs-top-actions .bs-btn{width:100%}}
-@media print{body{background:#fff}.bs-page{width:100%;padding:0}.bs-hero,.bs-course-card,.bs-intro,.bs-schedule,.bs-tagline{box-shadow:none;break-inside:avoid}.bs-nav,.bs-top-actions,footer{display:none}.bs-course-card,.bs-course-card:nth-child(even){grid-template-columns:1fr 270px;margin-bottom:12px}.bs-content{padding:18px}.bs-visual{min-height:180px}.bs-text,.bs-fit{font-size:.98rem}.bs-schedule-grid{grid-template-columns:1fr 1fr}.bs-slot{break-inside:avoid}}
+@media(max-width:620px){.bs-page{width:min(100% - 22px,1180px);padding:42px 0 30px}.bs-hero{padding:28px 22px;border-radius:26px}.bs-nav{grid-template-columns:repeat(2,1fr)}.bs-section-title{display:block}.bs-schedule{padding:20px 16px}.bs-content{padding:23px 20px}.bs-course-card{border-radius:24px}.bs-visual{min-height:190px}}
+@media print{body{background:#fff}.bs-page{width:100%;padding:0}.bs-hero,.bs-course-card,.bs-schedule{box-shadow:none;break-inside:avoid}.bs-nav{display:none}.bs-course-card,.bs-course-card:nth-child(even){grid-template-columns:1fr 270px;margin-bottom:12px}.bs-content{padding:18px}.bs-visual{min-height:180px}.bs-text,.bs-fit{font-size:.98rem}.bs-schedule-grid{grid-template-columns:1fr 1fr}.bs-slot{break-inside:avoid}}
 </style>
 </head>
 <body>
-    <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
-    <nav class="navbar" role="navigation" aria-label="תפריט ראשי">
-      <div class="container">
-        <a href="/" class="logo" aria-label="דרך ההייטק - דף הבית">
-          <img loading="lazy" src="/images/brand/logo-haitech-transparent.webp" alt="דרך ההייטק - HAi.TECH" height="60">
-        </a>
-        <button class="mobile-menu-btn" aria-label="פתח תפריט" aria-expanded="false" onclick="event.stopImmediatePropagation(); const nav=this.closest('nav').querySelector('.nav-links'); nav.classList.toggle('active'); this.classList.toggle('active'); this.setAttribute('aria-expanded', this.classList.contains('active') ? 'true' : 'false')">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <ul class="nav-links">
-          <li><a href="/#courses">קורסים דיגיטליים</a></li>
-          <li><a href="/לומדות-טכנולוגיה-לילדים.html" style="background: linear-gradient(135deg, #7c3aed, #2563eb); color: #fff; padding: 10px 16px; border-radius: 999px; font-weight: 800; box-shadow: 0 10px 24px rgba(37, 99, 235, 0.25);">לומדות טכנולוגיה ✨</a></li>
-          <li><a href="/#private">שיעורים פרטיים</a></li>
-          <li><a href="/locations.html">מוקדים פרונטליים</a></li>
-          <li><a href="/institutions.html">למוסדות חינוך</a></li>
-          <li><a href="/teacher-ai-training">הכשרת מורים</a></li>
-          <li><a href="/blog.html">בלוג</a></li>
-          <li><a href="/#about">אודות</a></li>
-          <li><a href="/#faq">שאלות נפוצות</a></li>
-          <li><a href="/lms/login.html" class="nav-link-secondary">כניסה לתלמידים</a></li>
-          <li><a href="/#contact" class="btn btn-nav">התחילו עכשיו</a></li>
-        </ul>
-      </div>
-    </nav>
-
 <main id="main-content" class="page bs-page">
   <header class="bs-hero">
-    <span class="eyebrow">באר שבע · כיוונים 2026-2027 · חוגי טכנולוגיה לילדים</span>
-    <h1>חוגים טכנולוגיים לילדים בבאר שבע<br>במסגרת כיוונים</h1>
-    <p class="bs-subtitle bs-subtitle-topics">סקרץ׳, מיינקראפט, רובלוקס, סייבר, רובוטיקה, פייתון, פיתוח אפליקציות ואתרים, ופיתוח משחקים ואפליקציות עם AI.</p>
-    <div class="bs-top-actions">
-      <a class="bs-btn" href="#schedule">למערכת החוגים</a>
-      <a class="bs-btn secondary" href="#courses">לפירוט החוגים</a>
-      <a class="bs-btn secondary" href="https://hai.tech" target="_blank" rel="noopener">לאתר החברה: hai.tech</a>
-    </div>
+    <span class="eyebrow">באר שבע · כיוונים 2026-2027</span>
+    <h1>חוגי טכנולוגיה לילדים</h1>
+    <p class="bs-subtitle">כל החוגים, המרכזים, הימים והשעות — בלי מידע נוסף.</p>
   </header>
 
   <nav class="bs-nav" aria-label="ניווט בין חוגים">
-    <a href="#schedule">מערכת</a><a href="#scratch">סקרץ׳</a><a href="#minecraft">מיינקראפט</a><a href="#roblox">רובלוקס</a><a href="#cyber">סייבר</a><a href="#ai-games">משחקים ואפליקציות AI</a>
+    <a href="#schedule">מערכת</a><a href="#scratch">סקרץ׳</a><a href="#minecraft">מיינקראפט</a><a href="#roblox">רובלוקס</a><a href="#cyber">סייבר</a><a href="#ai-games">AI</a>
   </nav>
-
-  <section class="bs-intro">
-    החוגים בנויים כדי לקחת ילדים צעד אחד קדימה: ממשחק וסקרנות — ליצירה, תכנון, חשיבה לוגית, פתרון בעיות ובניית תוצרים דיגיטליים שהם יכולים להציג בגאווה. בכל מרכז נבנה רצף ברור: החוג הראשון בשעה 16:30, השני בשעה 17:30 והשלישי בשעה 18:30, למעט רמות ספורטיב ביום רביעי שמתחיל ב־17:30.
-  </section>
 
   <section id="schedule" class="bs-schedule" aria-label="מערכת חוגים לפי מרכזים, ימים ושעות">
     <div class="bs-section-title">
       <h2>מערכת חוגים לפי מרכז</h2>
-      <p>כל יום מסודר לפי סדר החוגים בפועל: 16:30 חוג ראשון, 17:30 חוג שני, 18:30 חוג שלישי. ברמות ספורטיב ביום רביעי הפעילות מתחילה ב־17:30.</p>
     </div>
     <div class="bs-schedule-grid">
       <div class="bs-center-card">
@@ -156,7 +114,7 @@ a{color:inherit}
           <div class="bs-slot"><span class="bs-time">17:30</span><span class="bs-name">רובלוקס</span></div>
           <div class="bs-slot"><span class="bs-time">18:30</span><span class="bs-name">פיתוח משחקים ואפליקציות עם AI</span></div>
         </div>
-        <div class="bs-note">ביום זה אין חוג ב־16:30.</div>
+
       </div>
       <div class="bs-center-card">
         <div class="bs-center-head"><h3>שכונת הפארק</h3><span class="bs-day">ימי שני</span></div>
@@ -186,77 +144,32 @@ a{color:inherit}
 
   <section id="courses" class="bs-courses" aria-label="רשימת חוגים מלאה">
     <article id="scratch" class="bs-course-card">
-      <div class="bs-content"><h2>סקרץ׳</h2><div class="bs-age">גילאי 6–7</div><p class="bs-text">חוג פתיחה לעולם התכנות דרך יצירת משחקים, דמויות ואנימציות בסביבה ברורה ונגישה. הילדים לומדים לחשוב בצורה לוגית, לבנות רצף פעולות, לפתור בעיות וליצור תוצר שהם גאים להציג.</p><p class="bs-fit">מתאים לילדים וילדות שאוהבים ליצור, לספר סיפור, להזיז דמויות על המסך ולהתחיל להבין איך מחשב ‘חושב’ — בלי קוד מסובך ובלי לחץ.</p></div>
+      <div class="bs-content"><h2>סקרץ׳</h2><div class="bs-age">גילאי 6–7</div><p class="bs-text">חוג התחלה לתכנות דרך משחקים, דמויות ואנימציות בסביבת בלוקים פשוטה וברורה.</p></div>
       <div class="bs-visual"><img src="https://lunar-prism-errb.here.now/scratch-front-screen.png" alt="ילדים לומדים תכנות בלוקים בסקרץ׳"></div>
     </article>
 
     <article id="minecraft" class="bs-course-card">
-      <div class="bs-content"><h2>מיינקראפט</h2><div class="bs-age">גילאי 8–10</div><p class="bs-text">החוג לוקח עולם שילדים כבר מכירים והופך אותו לכלי ללמידת תכנון, בנייה וחשיבה תכנותית. הילדים יוצרים עולמות, מגדירים חוקים, מתמודדים עם אתגרים ולומדים איך רעיון הופך למבנה עובד.</p><p class="bs-fit">מתאים לילדים וילדות שאוהבים מיינקראפט ורוצים לעבור ממשחק בלבד לחשיבה של מתכננים, בונים ופותרים בעיות.</p></div>
+      <div class="bs-content"><h2>מיינקראפט</h2><div class="bs-age">גילאי 8–10</div><p class="bs-text">חוג לבנייה, תכנון וחשיבה תכנותית בתוך עולם מיינקראפט המוכר והאהוב.</p></div>
       <div class="bs-visual"><img src="https://gleaming-acorn-mbf6.here.now/minecraft.png" alt="מיינקראפט ככלי לבנייה ותכנות"></div>
     </article>
 
     <article id="roblox" class="bs-course-card">
-      <div class="bs-content"><h2>רובלוקס</h2><div class="bs-age">גילאי 8–10</div><p class="bs-text">בחוג רובלוקס הילדים עוברים משחקנים ליוצרים. הם מתכננים עולמות, בונים חוויות משחק, מכירים לוגיקה בסיסית וקוד, ומבינים איך רעיון הופך למשחק אינטראקטיבי שאחרים יכולים לחוות.</p><p class="bs-fit">מתאים לילדים וילדות יצירתיים שאוהבים משחקים ורוצים ללמוד איך בונים חוויה דיגיטלית, שלב אחר שלב.</p></div>
+      <div class="bs-content"><h2>רובלוקס</h2><div class="bs-age">גילאי 8–10</div><p class="bs-text">חוג ליצירת עולמות וחוויות משחק ברובלוקס, עם היכרות ראשונה ללוגיקה ולקוד.</p></div>
       <div class="bs-visual"><img src="https://granite-dahlia-pwdj.here.now/roblox.png" alt="ילדים יוצרים משחקים ברובלוקס"></div>
     </article>
 
     <article id="cyber" class="bs-course-card">
-      <div class="bs-content"><h2>סייבר</h2><div class="bs-age">גילאי 10–12</div><p class="bs-text">חוג שמכניס את הילדים לעולם של עקבות דיגיטליים, סודות ברשת, פריצות, הגנות ופענוח מצבים חשודים. הילדים לומדים לזהות סכנות, להבין פרטיות וסיסמאות, ולחשוב כמו חוקרי סייבר אחראיים.</p><p class="bs-fit">מתאים לילדים וילדות סקרנים שאוהבים להבין מה קורה מאחורי המסך, ורוצים לקבל כלים אמיתיים להתנהלות חכמה ובטוחה בעולם הדיגיטלי.</p></div>
+      <div class="bs-content"><h2>סייבר</h2><div class="bs-age">גילאי 10–12</div><p class="bs-text">חוג שמלמד פרטיות, סיסמאות, זיהוי סיכונים והתנהלות חכמה ובטוחה בעולם הדיגיטלי.</p></div>
       <div class="bs-visual"><img src="https://boreal-sketch-wxyg.here.now/cyber.png" alt="מסכי סייבר וקוד"></div>
     </article>
 
     <article id="ai-games" class="bs-course-card">
-      <div class="bs-content"><h2>פיתוח משחקים ואפליקציות עם AI</h2><div class="bs-age">גילאי 10–12</div><p class="bs-text">חוג מתקדם שבו הילדים בונים משחקים, אפליקציות וכלים דיגיטליים בעזרת קוד ובינה מלאכותית. הדגש הוא על חשיבה: לפרק בעיה, לתכנן פתרון, להשתמש נכון ב-AI, לבדוק, לשפר ולהגיע לתוצר אמיתי.</p><p class="bs-fit">מתאים לילדים וילדות שרוצים ליצור מוצר דיגיטלי ולא רק להשתמש באפליקציות — עם שילוב של יצירתיות, חשיבה מסודרת וכלים עדכניים.</p></div>
+      <div class="bs-content"><h2>פיתוח משחקים ואפליקציות עם AI</h2><div class="bs-age">גילאי 10–12</div><p class="bs-text">חוג מתקדם לבניית משחקים ואפליקציות עם קוד וכלי AI.</p></div>
       <div class="bs-visual"><img src="https://jazzy-dory-hc9t.here.now/ai-games-apps.png" alt="פיתוח משחקים ואפליקציות עם AI"></div>
     </article>
   </section>
 
-  <section class="bs-tagline">
-    <h3>טכנולוגיה שילדים מבינים דרך עשייה</h3>
-    <p>יוצרים, מתכננים, מנסים, משפרים — ומגיעים לתוצר שאפשר להראות.</p>
-  </section>
 </main>
-
-    <footer style="background: linear-gradient(180deg, #0f172a 0%, #020617 100%); padding: 4rem 2rem 2rem; border-top: 1px solid #1e293b;">
-        <div style="max-width: 1200px; margin: 0 auto;">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem; text-align: right;">
-                <div>
-                    <h3 style="color: #22c55e; font-size: 1.5rem; margin-bottom: 1rem; font-weight: 700;">דרך ההייטק</h3>
-                    <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem;">מלמדים טכנולוגיה, תכנות ובינה מלאכותית לילדים ונוער מאז 2019.</p>
-                    <div style="display: flex; gap: 1rem;">
-                        <a href="https://www.facebook.com/profile.php?id=61552415392453" target="_blank" rel="noopener" style="width: 40px; height: 40px; background: #1e293b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #94a3b8;"><i data-lucide="facebook" style="width: 20px; height: 20px;"></i></a>
-                        <a href="https://www.linkedin.com/company/hai-tech-way/" target="_blank" rel="noopener" style="width: 40px; height: 40px; background: #1e293b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #94a3b8;"><i data-lucide="linkedin" style="width: 20px; height: 20px;"></i></a>
-                        <a href="https://youtube.com/channel/UCbBmDyoE0oy0yXuVAoXNp2Q" target="_blank" rel="noopener" style="width: 40px; height: 40px; background: #1e293b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #94a3b8;"><i data-lucide="youtube" style="width: 20px; height: 20px;"></i></a>
-                        <a href="https://wa.me/972533009742" target="_blank" rel="noopener" style="width: 40px; height: 40px; background: #1e293b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #25d366;"><i data-lucide="message-circle" style="width: 20px; height: 20px;"></i></a>
-                    </div>
-                </div>
-                <div>
-                    <h4 style="color: white; font-size: 1.1rem; margin-bottom: 1rem; font-weight: 600;">קישורים מהירים</h4>
-                    <ul style="list-style: none; padding: 0; margin: 0;">
-                        <li style="margin-bottom: 0.75rem;"><a href="/" style="color: #94a3b8; text-decoration: none;">דף הבית</a></li>
-                        <li style="margin-bottom: 0.75rem;"><a href="/#courses" style="color: #94a3b8; text-decoration: none;">קורסים</a></li>
-                        <li style="margin-bottom: 0.75rem;"><a href="/institutions.html" style="color: #94a3b8; text-decoration: none;">למוסדות חינוך</a></li>
-                        <li><a href="/blog.html" style="color: #94a3b8; text-decoration: none;">בלוג</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 style="color: white; font-size: 1.1rem; margin-bottom: 1rem; font-weight: 600;">צרו קשר</h4>
-                    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-                        <a target="_blank" href="https://wa.me/972533009742" style="color: #94a3b8; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="phone" style="width: 18px; height: 18px;"></i>053-300-9742</a>
-                        <a href="mailto:info@hai.tech" style="color: #94a3b8; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="mail" style="width: 18px; height: 18px;"></i>info@hai.tech</a>
-                    </div>
-                </div>
-            </div>
-            <div style="border-top: 1px solid #1e293b; padding-top: 1.5rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
-                <p style="color: #64748b; font-size: 0.85rem; margin: 0;">© 2025 דרך ההייטק. כל הזכויות שמורות.</p>
-                <div style="display: flex; gap: 1.5rem;">
-                    <a href="/terms.html" style="color: #64748b; font-size: 0.85rem; text-decoration: none;">תנאי שימוש</a>
-                    <a href="/privacy.html" style="color: #64748b; font-size: 0.85rem; text-decoration: none;">מדיניות פרטיות</a>
-                    <a href="/accessibility.html" style="color: #64748b; font-size: 0.85rem; text-decoration: none;">נגישות</a>
-                </div>
-            </div>
-        </div>
-    </footer>
 
     <script>
       document.addEventListener('DOMContentLoaded', function(){
