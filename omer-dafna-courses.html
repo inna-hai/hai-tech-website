@@ -49,14 +49,15 @@ a{color:inherit}.od-page{width:min(1180px,calc(100% - 32px));margin:0 auto;paddi
 .od-section{margin-top:24px;background:#fff;border:1px solid var(--line);border-radius:30px;padding:28px;box-shadow:var(--shadow)}
 .od-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:18px}.od-head h2{margin:0;font-size:clamp(1.7rem,3vw,2.5rem);color:var(--blue2)}.od-head p{margin:0;color:var(--muted);font-weight:700;max-width:650px}
 .od-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.od-meta-card{background:linear-gradient(180deg,#fbfdff,#f5f9ff);border:1px solid var(--line);border-radius:22px;padding:18px}.od-meta-card strong{display:block;color:var(--blue2);margin-bottom:6px}.od-meta-card span{color:var(--muted);font-weight:700}
+.od-schedule-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.od-schedule-card{background:linear-gradient(180deg,#fbfdff,#f5f9ff);border:1px solid var(--line);border-radius:24px;padding:20px}.od-schedule-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}.od-schedule-top h3{margin:0;color:var(--blue2);font-size:1.35rem}.od-day{display:inline-flex;background:#eef4ff;color:var(--blue2);padding:6px 12px;border-radius:999px;font-weight:900}.od-slots{display:grid;gap:10px}.od-slot{display:grid;grid-template-columns:78px 1fr;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px 12px}.od-time{direction:ltr;text-align:center;background:#eef4ff;color:var(--blue2);border-radius:999px;padding:6px;font-weight:900}.od-name{font-weight:900;color:#334155}
 .od-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}.od-card{background:var(--paper);border:1px solid var(--line);border-radius:28px;padding:24px;box-shadow:0 14px 34px rgba(37,99,235,.07)}
 .od-card img{width:100%;display:block;aspect-ratio:16/10;object-fit:cover;border-radius:20px;margin-bottom:16px}
 .od-top{display:flex;justify-content:space-between;gap:12px;align-items:start;margin-bottom:12px}.od-top h3{margin:0;font-size:1.8rem;color:var(--blue2);line-height:1.08}.od-grade{display:inline-flex;background:#eef4ff;color:var(--blue2);padding:7px 12px;border-radius:999px;font-weight:900}
 .od-tag{display:inline-flex;padding:7px 12px;border-radius:999px;font-weight:900;font-size:.92rem}.tag-blue{background:#dbeafe;color:#1d4ed8}.tag-green{background:#dcfce7;color:#15803d}.tag-purple{background:#f3e8ff;color:#7e22ce}.tag-orange{background:#ffedd5;color:#c2410c}
 .od-card p{margin:0 0 12px;color:#334155;font-weight:650}.od-list{margin:0;padding-right:18px;color:var(--muted)}.od-list li{margin-bottom:7px}.od-result{margin-top:14px;background:#f8fbff;border:1px solid var(--line);border-radius:18px;padding:14px;color:#334155;font-weight:800}
 .od-cta{background:linear-gradient(135deg,#1d4ed8,#7c3aed);color:#fff;text-align:center}.od-cta h2{color:#fff}.od-cta p{color:#e9edff;max-width:760px;margin:0 auto 18px}
-@media(max-width:980px){.od-hero-grid,.od-highlights,.od-meta,.od-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:680px){.od-page{width:min(100% - 22px,1180px);padding:112px 0 30px}.od-hero,.od-section{padding:24px}.od-hero-grid,.od-highlights,.od-meta,.od-grid{grid-template-columns:1fr}.od-head{display:block}.od-actions .od-btn{width:100%}}
+@media(max-width:980px){.od-hero-grid,.od-highlights,.od-meta,.od-schedule-grid,.od-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:680px){.od-page{width:min(100% - 22px,1180px);padding:112px 0 30px}.od-hero,.od-section{padding:24px}.od-hero-grid,.od-highlights,.od-meta,.od-schedule-grid,.od-grid{grid-template-columns:1fr}.od-head{display:block}.od-actions .od-btn{width:100%}}
 </style>
 </head>
 <body>
@@ -114,6 +115,31 @@ a{color:inherit}.od-page{width:min(1180px,calc(100% - 32px));margin:0 auto;paddi
       <div class="od-meta-card"><strong>מיקום</strong><span>סטודיו 4, המרכז בדפנה לאומנויות וחדשנות</span></div>
       <div class="od-meta-card"><strong>סגנון הלמידה</strong><span>למידה חווייתית, תוצרים אמיתיים, שילוב תכנות, יצירה ו־AI</span></div>
       <div class="od-meta-card"><strong>פתיחה</strong><span>ספטמבר · מספר המקומות מוגבל</span></div>
+    </div>
+  </section>
+
+  <section class="od-section">
+    <div class="od-head">
+      <h2>ימים ושעות</h2>
+      <p>אנחנו פותחים 3 קבוצות של שעה בכל יום פעילות, כדי לאפשר התאמה נוחה יותר לפי גיל ורמת ניסיון.</p>
+    </div>
+    <div class="od-schedule-grid">
+      <div class="od-schedule-card">
+        <div class="od-schedule-top"><h3>יום ראשון</h3><span class="od-day">3 קבוצות</span></div>
+        <div class="od-slots">
+          <div class="od-slot"><span class="od-time">16:30</span><span class="od-name">קבוצה 1</span></div>
+          <div class="od-slot"><span class="od-time">17:30</span><span class="od-name">קבוצה 2</span></div>
+          <div class="od-slot"><span class="od-time">18:30</span><span class="od-name">קבוצה 3</span></div>
+        </div>
+      </div>
+      <div class="od-schedule-card">
+        <div class="od-schedule-top"><h3>יום חמישי</h3><span class="od-day">3 קבוצות</span></div>
+        <div class="od-slots">
+          <div class="od-slot"><span class="od-time">16:30</span><span class="od-name">קבוצה 1</span></div>
+          <div class="od-slot"><span class="od-time">17:30</span><span class="od-name">קבוצה 2</span></div>
+          <div class="od-slot"><span class="od-time">18:30</span><span class="od-name">קבוצה 3</span></div>
+        </div>
+      </div>
     </div>
   </section>
 
