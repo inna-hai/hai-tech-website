@@ -1,754 +1,143 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="he" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>חוגי טכנולוגיה לילדים בבאר שבע | דרך ההייטק</title>
-    <meta name="description" content="חוגי טכנולוגיה לילדים בבאר שבע לשנת 2026-2027: סקרץ׳, מיינקראפט, רובלוקס, סייבר ופיתוח משחקים ואפליקציות עם AI, לפי מרכזים, ימים ושעות.">
-    <link rel="canonical" href="https://hai.tech/beer-sheva-courses.html">
-
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://hai.tech/beer-sheva-courses.html">
-    <meta property="og:title" content="חוגי טכנולוגיה לילדים בבאר שבע | דרך ההייטק">
-    <meta property="og:description" content="כל חוגי הטכנולוגיה לילדים בבאר שבע במקום אחד — מרכזים, ימים, שעות והסבר ברור על כל מסלול.">
-    <meta property="og:image" content="https://hai.tech/images/brand/logo-haitech-transparent.webp">
-    <meta property="og:locale" content="he_IL">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="חוגי טכנולוגיה לילדים בבאר שבע | דרך ההייטק">
-    <meta name="twitter:description" content="סקרץ׳, מיינקראפט, רובלוקס, סייבר ו-AI לילדים בבאר שבע — לפי ימים, שעות ומרכזים.">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      "name": "חוגי טכנולוגיה לילדים בבאר שבע",
-      "url": "https://hai.tech/beer-sheva-courses.html",
-      "description": "עמוד מרכז לחוגי הטכנולוגיה לילדים בבאר שבע לשנת 2026-2027, בשיתוף כיוונים.",
-      "inLanguage": "he-IL",
-      "isPartOf": {
-        "@type": "WebSite",
-        "name": "דרך ההייטק",
-        "url": "https://hai.tech"
-      }
-    }
-    </script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest" defer></script>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/jpeg" href="images/brand/logo.webp">
-    <link rel="stylesheet" href="css/cookie-consent.css">
-
-    <style>
-        :root {
-            --hero-bg-1: #312e81;
-            --hero-bg-2: #4f46e5;
-            --hero-bg-3: #06b6d4;
-            --card-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
-            --card-radius: 24px;
-        }
-
-        .hero {
-            position: relative;
-            overflow: hidden;
-            background:
-                radial-gradient(circle at top right, rgba(255,255,255,0.16), transparent 28%),
-                radial-gradient(circle at bottom left, rgba(34,197,94,0.14), transparent 30%),
-                linear-gradient(135deg, var(--hero-bg-1) 0%, var(--hero-bg-2) 52%, var(--hero-bg-3) 100%);
-            padding: 120px 20px 88px;
-            color: white;
-        }
-
-        .hero::after {
-            content: "";
-            position: absolute;
-            inset: auto 0 0 0;
-            height: 90px;
-            background: linear-gradient(to top, #f8fafc, transparent);
-        }
-
-        .hero-inner {
-            position: relative;
-            z-index: 1;
-            max-width: 1180px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .hero-copy h1 {
-            font-size: 3rem;
-            line-height: 1.12;
-            margin-bottom: 1rem;
-            color: white;
-        }
-
-        .hero-copy p {
-            font-size: 1.12rem;
-            line-height: 1.9;
-            max-width: 760px;
-            opacity: 0.96;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-badges,
-        .hero-stats {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-        }
-
-        .hero-badge {
-            background: rgba(255,255,255,0.12);
-            border: 1px solid rgba(255,255,255,0.18);
-            padding: 0.65rem 1rem;
-            border-radius: 999px;
-            font-size: 0.95rem;
-            backdrop-filter: blur(10px);
-        }
-
-        .hero-panel {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.16);
-            border-radius: 28px;
-            padding: 1.5rem;
-            backdrop-filter: blur(12px);
-            box-shadow: 0 18px 50px rgba(0,0,0,0.12);
-        }
-
-        .hero-panel h2 {
-            font-size: 1.15rem;
-            margin-bottom: 1rem;
-            color: white;
-        }
-
-        .hero-stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.9rem;
-        }
-
-        .hero-stat {
-            background: rgba(255,255,255,0.08);
-            border-radius: 18px;
-            padding: 1rem;
-        }
-
-        .hero-stat strong {
-            display: block;
-            font-size: 1.45rem;
-            color: white;
-            margin-bottom: 0.2rem;
-        }
-
-        .hero-stat span {
-            font-size: 0.93rem;
-            opacity: 0.92;
-        }
-
-        .page-section {
-            padding: 2.5rem 1.5rem 4.5rem;
-            background: #f8fafc;
-        }
-
-        .page-wrap {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .notice {
-            background: linear-gradient(135deg, #eef2ff, #f8fafc);
-            color: #3730a3;
-            border: 1px solid #c7d2fe;
-            border-radius: 18px;
-            padding: 1rem 1.2rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-
-        .section-card {
-            background: white;
-            border-radius: var(--card-radius);
-            box-shadow: var(--card-shadow);
-            padding: 1.5rem;
-            margin-bottom: 1.8rem;
-        }
-
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-        }
-
-        .section-title h2 {
-            margin: 0;
-            color: #0f172a;
-            font-size: 1.55rem;
-        }
-
-        .section-title p {
-            margin: 0.2rem 0 0;
-            color: #64748b;
-        }
-
-        .summary-table-wrap {
-            overflow-x: auto;
-            border-radius: 18px;
-            border: 1px solid #e2e8f0;
-        }
-
-        table.summary-table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 880px;
-            background: white;
-        }
-
-        .summary-table th,
-        .summary-table td {
-            text-align: right;
-            padding: 1rem 0.95rem;
-            border-bottom: 1px solid #e2e8f0;
-            vertical-align: top;
-        }
-
-        .summary-table th {
-            background: #f8fafc;
-            color: #0f172a;
-            font-size: 0.95rem;
-            font-weight: 800;
-            white-space: nowrap;
-        }
-
-        .summary-table td {
-            color: #334155;
-            line-height: 1.7;
-        }
-
-        .summary-table tr:last-child td {
-            border-bottom: 0;
-        }
-
-        .tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-            background: #eef2ff;
-            color: #4338ca;
-            border-radius: 999px;
-            padding: 0.35rem 0.7rem;
-            font-size: 0.84rem;
-            font-weight: 700;
-        }
-
-        .summary-link {
-            color: #4338ca;
-            font-weight: 700;
-            text-decoration: none;
-        }
-
-        .summary-link:hover { text-decoration: underline; }
-
-        .courses-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .course-card {
-            background: white;
-            border-radius: var(--card-radius);
-            box-shadow: var(--card-shadow);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid #e2e8f0;
-        }
-
-        .course-head {
-            padding: 1.5rem;
-            color: white;
-            background: linear-gradient(135deg, #4f46e5, #7c3aed 72%);
-        }
-
-        .course-head h3 {
-            margin: 0 0 0.55rem;
-            font-size: 1.45rem;
-            color: white;
-        }
-
-        .course-head p {
-            margin: 0;
-            opacity: 0.95;
-            line-height: 1.7;
-        }
-
-        .course-body {
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            height: 100%;
-        }
-
-        .info-list {
-            display: grid;
-            gap: 0.85rem;
-        }
-
-        .info-item {
-            display: flex;
-            gap: 0.8rem;
-            align-items: flex-start;
-            color: #475569;
-            padding-bottom: 0.75rem;
-            border-bottom: 1px dashed #e2e8f0;
-        }
-
-        .info-item:last-child {
-            border-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .info-item i {
-            color: #4f46e5;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-
-        .info-item strong {
-            display: block;
-            color: #0f172a;
-            margin-bottom: 0.1rem;
-        }
-
-        .desc-box {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 16px;
-            padding: 1rem;
-            color: #334155;
-            line-height: 1.8;
-        }
-
-        .desc-box strong { color: #0f172a; }
-
-        .card-actions {
-            display: flex;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-            margin-top: auto;
-        }
-
-        .btn-card {
-            text-decoration: none;
-            font-weight: 800;
-            border-radius: 14px;
-            padding: 0.95rem 1rem;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.45rem;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .btn-card:hover {
-            transform: translateY(-1px);
-        }
-
-        .btn-card.primary {
-            background: #25D366;
-            color: white;
-            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
-        }
-
-        .btn-card.secondary {
-            background: #eef2ff;
-            color: #4338ca;
-        }
-
-        .summary-box {
-            background: white;
-            border-radius: var(--card-radius);
-            padding: 1.5rem;
-            margin-top: 1.8rem;
-            box-shadow: var(--card-shadow);
-        }
-
-        .summary-box h3 {
-            margin-top: 0;
-            color: #0f172a;
-            font-size: 1.35rem;
-        }
-
-        .summary-box ul {
-            margin: 0;
-            padding-right: 1.2rem;
-            color: #334155;
-            line-height: 1.9;
-        }
-
-        .cta-section {
-            background: linear-gradient(135deg, #059669, #10b981);
-            color: white;
-            text-align: center;
-            padding: 4.25rem 1.5rem;
-        }
-
-        .cta-section h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: white;
-        }
-
-        .cta-section p {
-            max-width: 700px;
-            margin: 0 auto 1.5rem;
-            opacity: 0.95;
-            line-height: 1.8;
-        }
-
-        .btn-cta {
-            background: white;
-            color: #059669;
-            text-decoration: none;
-            font-weight: 800;
-            padding: 1rem 2rem;
-            border-radius: 999px;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        @media (max-width: 900px) {
-            .hero-inner {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-copy h1 {
-                font-size: 2.25rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                padding: 108px 20px 70px;
-            }
-
-            .hero-copy h1 {
-                font-size: 1.9rem;
-            }
-
-            .hero-copy p {
-                font-size: 1rem;
-            }
-
-            .hero-stats {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .section-title {
-                align-items: flex-start;
-            }
-
-            .card-actions {
-                flex-direction: column;
-            }
-
-            .btn-card {
-                width: 100%;
-            }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>חוגי טכנולוגיה לילדים | כיוונים 2026-2027</title>
+<meta name="description" content="כל חוגי הטכנולוגיה לילדים בכיוונים לשנת 2026-2027 בדף אחד: סקרץ׳, מיינקראפט, רובלוקס, סייבר ופיתוח משחקים ואפליקציות עם AI — כולל מרכזים, ימים ושעות.">
+<style>
+:root{
+  --bg:#f4f8ff;--paper:#ffffff;--text:#172033;--muted:#5b6880;--blue:#1f6feb;--blue2:#174ea6;--cyan:#00a6a6;--green:#22a06b;--orange:#f59e0b;--purple:#7c3aed;--border:#dce7f5;
+  --shadow:0 22px 60px rgba(23,32,51,.11);--soft:0 12px 32px rgba(31,111,235,.10)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,'Noto Sans Hebrew','Segoe UI',sans-serif;background:radial-gradient(circle at 96% 0,rgba(31,111,235,.16),transparent 32%),radial-gradient(circle at 0 100%,rgba(0,166,166,.14),transparent 30%),linear-gradient(180deg,#f7fbff 0%,#edf6ff 100%);color:var(--text);line-height:1.7}
+a{color:inherit}.page{width:min(1180px,calc(100% - 32px));margin:0 auto;padding:32px 0 42px}
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#fff 0%,#eaf3ff 58%,#e8fbf7 100%);border:1px solid var(--border);border-radius:34px;padding:42px;box-shadow:var(--shadow)}
+.hero:after{content:"";position:absolute;inset:auto -90px -110px auto;width:310px;height:310px;border-radius:50%;background:rgba(31,111,235,.10)}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;background:#e8fbf7;color:#006d6d;border:1px solid rgba(0,166,166,.22);padding:7px 15px;border-radius:999px;font-size:.95rem;font-weight:800;margin-bottom:14px}
+h1{margin:0 0 10px;font-size:clamp(2.2rem,5vw,4.25rem);line-height:1.05;color:var(--blue2);letter-spacing:-.045em}.subtitle{max-width:800px;margin:0;color:var(--muted);font-size:1.18rem;font-weight:700}.top-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;background:var(--blue);color:#fff;border-radius:999px;padding:11px 18px;font-weight:900;box-shadow:0 12px 24px rgba(31,111,235,.18)}.btn.secondary{background:#fff;color:var(--blue2);border:1px solid var(--border);box-shadow:none}
+.nav{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:18px 0}.nav a{text-decoration:none;text-align:center;background:rgba(255,255,255,.82);border:1px solid var(--border);border-radius:18px;padding:11px 8px;font-weight:900;color:var(--blue2);box-shadow:var(--soft)}
+.intro{background:#fff;border:1px solid var(--border);border-radius:26px;padding:22px 26px;margin:18px 0 24px;box-shadow:var(--soft);font-size:1.04rem;color:var(--muted);font-weight:700}
+.schedule{background:#fff;border:1px solid var(--border);border-radius:30px;padding:26px;margin:0 0 24px;box-shadow:var(--shadow)}.section-title{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:18px}.section-title h2{font-size:clamp(1.8rem,3vw,2.65rem)}.section-title p{margin:0;color:var(--muted);font-weight:800;max-width:640px}.schedule-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.center-card{border:1px solid var(--border);border-radius:22px;background:linear-gradient(180deg,#fbfdff,#f6fbff);padding:18px}.center-card.wide{grid-column:1/-1}.center-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}.center-head h3{margin:0;color:var(--blue2);font-size:1.35rem}.day{display:inline-flex;background:#e8fbf7;color:#006d6d;border:1px solid rgba(0,166,166,.22);border-radius:999px;padding:5px 11px;font-weight:900}.slots{display:grid;gap:8px}.slot{display:grid;grid-template-columns:72px 1fr;gap:10px;align-items:center;background:#fff;border:1px solid #e4edf8;border-radius:16px;padding:9px 11px}.time{direction:ltr;text-align:center;color:#174ea6;font-weight:950;background:#edf5ff;border-radius:999px;padding:5px}.name{font-weight:900;color:#26344d}.note{margin-top:12px;color:#6b7890;font-size:.95rem;font-weight:800}.empty{opacity:.55}
+.courses{display:grid;gap:22px}.course-card{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(300px,.88fr);gap:0;overflow:hidden;background:var(--paper);border:1px solid var(--border);border-radius:30px;box-shadow:var(--shadow)}.course-card:nth-child(even){grid-template-columns:minmax(300px,.88fr) minmax(0,1.12fr)}.course-card:nth-child(even) .content{order:2}.course-card:nth-child(even) .visual{order:1}
+.content{padding:30px}.visual{min-height:280px;background:linear-gradient(135deg,#dbeafe,#ecfeff);display:flex;align-items:center;justify-content:center;padding:20px;position:relative;overflow:hidden}.visual:before{content:"";position:absolute;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,.55);filter:blur(.2px)}.visual img{position:relative;width:100%;height:100%;max-height:310px;object-fit:contain;border-radius:22px;filter:drop-shadow(0 18px 28px rgba(23,32,51,.15))}
+h2{margin:0;color:var(--blue2);font-size:clamp(1.85rem,3.4vw,2.8rem);line-height:1.08;letter-spacing:-.035em}.age{display:inline-flex;margin:12px 0 16px;background:#eefbf7;color:#00796f;border:1px solid rgba(0,166,166,.22);border-radius:999px;padding:6px 13px;font-weight:900}.text{margin:0 0 14px;color:#283449;font-size:1.08rem;font-weight:650}.fit{margin:0;background:#f7faff;border:1px solid var(--border);border-radius:20px;padding:16px;color:var(--muted);font-weight:800}.mini-link{display:inline-flex;margin-top:16px;text-decoration:none;color:var(--blue);font-weight:900}.tagline{margin-top:22px;background:linear-gradient(135deg,#174ea6,#1f6feb);color:#fff;border-radius:28px;padding:28px;text-align:center;box-shadow:var(--shadow)}.tagline h3{margin:0 0 8px;font-size:1.7rem}.tagline p{margin:0;font-size:1.05rem;font-weight:700;opacity:.95}footer{text-align:center;margin-top:22px;color:var(--muted);font-weight:800;font-size:.95rem}
+@media(max-width:940px){.nav{grid-template-columns:repeat(3,1fr)}.schedule-grid{grid-template-columns:1fr}.course-card,.course-card:nth-child(even){grid-template-columns:1fr}.course-card:nth-child(even) .content,.course-card:nth-child(even) .visual{order:initial}.visual{min-height:230px}}
+@media(max-width:620px){.page{width:min(100% - 22px,1180px);padding:18px 0 30px}.hero{padding:28px 22px;border-radius:26px}.nav{grid-template-columns:repeat(2,1fr)}.section-title{display:block}.schedule{padding:20px 16px}.content{padding:23px 20px}.course-card{border-radius:24px}.visual{min-height:190px}.top-actions .btn{width:100%}}
+@media print{body{background:#fff}.page{width:100%;padding:0}.hero,.course-card,.intro,.schedule,.tagline{box-shadow:none;break-inside:avoid}.nav,.top-actions,.mini-link,footer{display:none}.course-card,.course-card:nth-child(even){grid-template-columns:1fr 270px;margin-bottom:12px}.content{padding:18px}.visual{min-height:180px}.text,.fit{font-size:.98rem}.schedule-grid{grid-template-columns:1fr 1fr}.slot{break-inside:avoid}}
+</style>
 </head>
 <body>
-    <nav class="navbar" role="navigation" aria-label="תפריט ראשי">
-      <div class="container">
-        <a href="/" class="logo" aria-label="דרך ההייטק - דף הבית">
-          <img loading="lazy" src="/images/brand/logo-haitech-transparent.webp" alt="דרך ההייטק - HAi.TECH" height="60">
-        </a>
-        <button class="mobile-menu-btn" aria-label="פתח תפריט" aria-expanded="false" onclick="event.stopImmediatePropagation(); const nav=this.closest('nav').querySelector('.nav-links'); nav.classList.toggle('active'); this.classList.toggle('active'); this.setAttribute('aria-expanded', this.classList.contains('active') ? 'true' : 'false')">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <ul class="nav-links">
-          <li><a href="/#courses">קורסים דיגיטליים</a></li>
-          <li><a href="/#private">שיעורים פרטיים</a></li>
-          <li><a href="/locations.html">מוקדים פרונטליים</a></li>
-          <li><a href="/institutions.html">למוסדות חינוך</a></li>
-          <li><a href="/teacher-ai-training">הכשרת מורים</a></li>
-          <li><a href="/blog.html">בלוג</a></li>
-          <li><a href="/#about">אודות</a></li>
-          <li><a href="/#faq">שאלות נפוצות</a></li>
-          <li><a href="/lms/login.html" class="nav-link-secondary">כניסה לתלמידים</a></li>
-          <li><a href="/#contact" class="btn btn-nav">התחילו עכשיו</a></li>
-        </ul>
+<main class="page">
+  <header class="hero">
+    <span class="eyebrow">כיוונים 2026-2027 · חוגי טכנולוגיה לילדים</span>
+    <h1>כל החוגים בדף אחד</h1>
+    <p class="subtitle">דף מרוכז לשליחה נוחה להורים: מסלולי הטכנולוגיה, הגילים, המרכזים, הימים והשעות — עם הסבר קצר וברור על כל חוג.</p>
+    <div class="top-actions">
+      <a class="btn" href="#schedule">למערכת החוגים</a>
+      <a class="btn secondary" href="#courses">לפירוט החוגים</a>
+      <a class="btn secondary" href="https://hai.tech" target="_blank" rel="noopener">לאתר החברה: hai.tech</a>
+    </div>
+  </header>
+
+  <nav class="nav" aria-label="ניווט בין חוגים">
+    <a href="#schedule">מערכת</a><a href="#scratch">סקרץ׳</a><a href="#minecraft">מיינקראפט</a><a href="#roblox">רובלוקס</a><a href="#cyber">סייבר</a><a href="#ai-games">משחקים ואפליקציות AI</a>
+  </nav>
+
+  <section class="intro">
+    החוגים בנויים כדי לקחת ילדים צעד אחד קדימה: ממשחק וסקרנות — ליצירה, תכנון, חשיבה לוגית, פתרון בעיות ובניית תוצרים דיגיטליים שהם יכולים להציג בגאווה. בכל מרכז נבנה רצף ברור: החוג הראשון בשעה 16:30, השני בשעה 17:30 והשלישי בשעה 18:30, למעט רמות ספורטיב ביום רביעי שמתחיל ב־17:30.
+  </section>
+
+  <section id="schedule" class="schedule" aria-label="מערכת חוגים לפי מרכזים, ימים ושעות">
+    <div class="section-title">
+      <h2>מערכת חוגים לפי מרכז</h2>
+      <p>כל יום מסודר לפי סדר החוגים בפועל: 16:30 חוג ראשון, 17:30 חוג שני, 18:30 חוג שלישי. ברמות ספורטיב ביום רביעי הפעילות מתחילה ב־17:30.</p>
+    </div>
+    <div class="schedule-grid">
+      <div class="center-card">
+        <div class="center-head"><h3>מרכזים פלח 5</h3><span class="day">ימי רביעי</span></div>
+        <div class="slots">
+          <div class="slot"><span class="time">16:30</span><span class="name">סקרץ׳</span></div>
+          <div class="slot"><span class="time">17:30</span><span class="name">מיינקראפט</span></div>
+          <div class="slot"><span class="time">18:30</span><span class="name">פיתוח משחקים ואפליקציות עם AI</span></div>
+        </div>
       </div>
-    </nav>
-
-    <section class="hero">
-        <div class="hero-inner">
-            <div class="hero-copy">
-                <div class="hero-badges" style="margin-bottom: 1rem;">
-                    <span class="hero-badge">כיוונים 2026-2027</span>
-                    <span class="hero-badge">חוגי טכנולוגיה לילדים</span>
-                    <span class="hero-badge">כל החוגים בדף אחד</span>
-                </div>
-                <h1>חוגי טכנולוגיה לילדים<br>בבאר שבע</h1>
-                <p>דף מרוכז לשליחה נוחה להורים: מסלולי הטכנולוגיה, הגילים, המרכזים, הימים והשעות — עם הסבר קצר וברור על כל חוג.</p>
-                <div class="hero-badges">
-                    <span class="hero-badge">סקרץ׳</span>
-                    <span class="hero-badge">מיינקראפט</span>
-                    <span class="hero-badge">רובלוקס</span>
-                    <span class="hero-badge">סייבר</span>
-                    <span class="hero-badge">משחקים ואפליקציות AI</span>
-                </div>
-            </div>
-            <div class="hero-panel">
-                <h2>מה יש בעמוד הזה?</h2>
-                <div class="hero-stats">
-                    <div class="hero-stat">
-                        <strong>5</strong>
-                        <span>מרכזים פעילים</span>
-                    </div>
-                    <div class="hero-stat">
-                        <strong>14</strong>
-                        <span>קבוצות לפי יום ושעה</span>
-                    </div>
-                    <div class="hero-stat">
-                        <strong>6–12</strong>
-                        <span>טווח גילאים</span>
-                    </div>
-                    <div class="hero-stat">
-                        <strong>5</strong>
-                        <span>מסלולי טכנולוגיה</span>
-                    </div>
-                </div>
-            </div>
+      <div class="center-card">
+        <div class="center-head"><h3>רמות ספורטיב</h3><span class="day">ימי ראשון</span></div>
+        <div class="slots">
+          <div class="slot"><span class="time">16:30</span><span class="name">סקרץ׳</span></div>
+          <div class="slot"><span class="time">17:30</span><span class="name">מיינקראפט</span></div>
+          <div class="slot"><span class="time">18:30</span><span class="name">סייבר</span></div>
         </div>
-    </section>
-
-    <section class="page-section">
-        <div class="page-wrap">
-            <div class="notice">
-                <strong>חשוב לדעת:</strong> החוגים בנויים כדי לקחת ילדים צעד אחד קדימה: ממשחק וסקרנות — ליצירה, תכנון, חשיבה לוגית, פתרון בעיות ובניית תוצרים דיגיטליים שהם יכולים להציג בגאווה. בכל מרכז נבנה רצף ברור: החוג הראשון בשעה 16:30, השני בשעה 17:30 והשלישי בשעה 18:30, למעט רמות ספורטיב ביום רביעי שמתחיל ב־17:30.
-            </div>
-
-            <section class="section-card">
-                <div class="section-title">
-                    <i data-lucide="table-2" style="width:28px;height:28px;color:#4f46e5;"></i>
-                    <div>
-                        <h2>מערכת חוגים לפי מרכז</h2>
-                        <p>כל יום מסודר לפי סדר החוגים בפועל.</p>
-                    </div>
-                </div>
-                <div class="summary-table-wrap">
-                    <table class="summary-table">
-                        <thead>
-                            <tr>
-                                <th>מרכז</th>
-                                <th>יום</th>
-                                <th>שעה</th>
-                                <th>חוג</th>
-                                <th>גילאים</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>פלח 5</td><td>ימי רביעי</td><td>16:30</td><td><span class="tag">סקרץ׳</span></td><td>6–7</td></tr>
-                            <tr><td>פלח 5</td><td>ימי רביעי</td><td>17:30</td><td><span class="tag">מיינקראפט</span></td><td>8–10</td></tr>
-                            <tr><td>פלח 5</td><td>ימי רביעי</td><td>18:30</td><td><span class="tag">פיתוח משחקים ואפליקציות עם AI</span></td><td>10–12</td></tr>
-                            <tr><td>רמות ספורטיב</td><td>ימי ראשון</td><td>16:30</td><td><span class="tag">סקרץ׳</span></td><td>6–7</td></tr>
-                            <tr><td>רמות ספורטיב</td><td>ימי ראשון</td><td>17:30</td><td><span class="tag">מיינקראפט</span></td><td>8–10</td></tr>
-                            <tr><td>רמות ספורטיב</td><td>ימי ראשון</td><td>18:30</td><td><span class="tag">סייבר</span></td><td>10–12</td></tr>
-                            <tr><td>רמות ספורטיב</td><td>ימי רביעי</td><td>17:30</td><td><span class="tag">רובלוקס</span></td><td>8–10</td></tr>
-                            <tr><td>רמות ספורטיב</td><td>ימי רביעי</td><td>18:30</td><td><span class="tag">פיתוח משחקים ואפליקציות עם AI</span></td><td>10–12</td></tr>
-                            <tr><td>שכונת הפארק</td><td>ימי שני</td><td>16:30</td><td><span class="tag">סקרץ׳</span></td><td>6–7</td></tr>
-                            <tr><td>שכונת הפארק</td><td>ימי שני</td><td>17:30</td><td><span class="tag">מיינקראפט</span></td><td>8–10</td></tr>
-                            <tr><td>שכונת הפארק</td><td>ימי שני</td><td>18:30</td><td><span class="tag">פיתוח משחקים ואפליקציות עם AI</span></td><td>10–12</td></tr>
-                            <tr><td>כלניות</td><td>ימי שלישי</td><td>16:30</td><td><span class="tag">סקרץ׳</span></td><td>6–7</td></tr>
-                            <tr><td>כלניות</td><td>ימי שלישי</td><td>17:30</td><td><span class="tag">מיינקראפט</span></td><td>8–10</td></tr>
-                            <tr><td>כלניות</td><td>ימי שלישי</td><td>18:30</td><td><span class="tag">פיתוח משחקים ואפליקציות עם AI</span></td><td>10–12</td></tr>
-                            <tr><td>בית יהדות איראן</td><td>ימי חמישי</td><td>16:30</td><td><span class="tag">פיתוח משחקים ואפליקציות עם AI</span></td><td>10–12</td></tr>
-                            <tr><td>בית יהדות איראן</td><td>ימי חמישי</td><td>17:30</td><td><span class="tag">סייבר</span></td><td>10–12</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-
-            <section class="section-card">
-                <div class="section-title">
-                    <i data-lucide="layout-grid" style="width:28px;height:28px;color:#4f46e5;"></i>
-                    <div>
-                        <h2>החוגים עצמם</h2>
-                        <p>הסבר קצר וברור על כל מסלול, כדי שיהיה קל להבין מה מתאים לכל ילד או ילדה.</p>
-                    </div>
-                </div>
-
-                <div class="courses-grid">
-                    <article class="course-card">
-                        <div class="course-head">
-                            <h3>סקרץ׳</h3>
-                            <p>גילאי 6–7</p>
-                        </div>
-                        <div class="course-body">
-                            <div class="desc-box">
-                                <strong>מה לומדים?</strong><br>
-                                חוג פתיחה לעולם התכנות דרך יצירת משחקים, דמויות ואנימציות בסביבה ברורה ונגישה. הילדים לומדים לחשוב בצורה לוגית, לבנות רצף פעולות, לפתור בעיות וליצור תוצר שהם גאים להציג.
-                            </div>
-                            <div class="desc-box">
-                                <strong>למי זה מתאים?</strong><br>
-                                לילדים וילדות שאוהבים ליצור, לספר סיפור, להזיז דמויות על המסך ולהתחיל להבין איך מחשב "חושב" — בלי קוד מסובך ובלי לחץ.
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="course-card">
-                        <div class="course-head">
-                            <h3>מיינקראפט</h3>
-                            <p>גילאי 8–10</p>
-                        </div>
-                        <div class="course-body">
-                            <div class="desc-box">
-                                <strong>מה לומדים?</strong><br>
-                                החוג לוקח עולם שילדים כבר מכירים והופך אותו לכלי ללמידת תכנון, בנייה וחשיבה תכנותית. הילדים יוצרים עולמות, מגדירים חוקים, מתמודדים עם אתגרים ולומדים איך רעיון הופך למבנה עובד.
-                            </div>
-                            <div class="desc-box">
-                                <strong>למי זה מתאים?</strong><br>
-                                לילדים וילדות שאוהבים מיינקראפט ורוצים לעבור ממשחק בלבד לחשיבה של מתכננים, בונים ופותרים בעיות.
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="course-card">
-                        <div class="course-head">
-                            <h3>רובלוקס</h3>
-                            <p>גילאי 8–10</p>
-                        </div>
-                        <div class="course-body">
-                            <div class="desc-box">
-                                <strong>מה לומדים?</strong><br>
-                                בחוג רובלוקס הילדים עוברים משחקנים ליוצרים. הם מתכננים עולמות, בונים חוויות משחק, מכירים לוגיקה בסיסית וקוד, ומבינים איך רעיון הופך למשחק אינטראקטיבי שאחרים יכולים לחוות.
-                            </div>
-                            <div class="desc-box">
-                                <strong>למי זה מתאים?</strong><br>
-                                לילדים וילדות יצירתיים שאוהבים משחקים ורוצים ללמוד איך בונים חוויה דיגיטלית, שלב אחר שלב.
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="course-card">
-                        <div class="course-head">
-                            <h3>סייבר</h3>
-                            <p>גילאי 10–12</p>
-                        </div>
-                        <div class="course-body">
-                            <div class="desc-box">
-                                <strong>מה לומדים?</strong><br>
-                                חוג שמכניס את הילדים לעולם של עקבות דיגיטליים, סודות ברשת, פריצות, הגנות ופענוח מצבים חשודים. הילדים לומדים לזהות סכנות, להבין פרטיות וסיסמאות, ולחשוב כמו חוקרי סייבר אחראיים.
-                            </div>
-                            <div class="desc-box">
-                                <strong>למי זה מתאים?</strong><br>
-                                לילדים וילדות סקרנים שאוהבים להבין מה קורה מאחורי המסך, ורוצים לקבל כלים אמיתיים להתנהלות חכמה ובטוחה בעולם הדיגיטלי.
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="course-card">
-                        <div class="course-head">
-                            <h3>פיתוח משחקים ואפליקציות עם AI</h3>
-                            <p>גילאי 10–12</p>
-                        </div>
-                        <div class="course-body">
-                            <div class="desc-box">
-                                <strong>מה לומדים?</strong><br>
-                                חוג מתקדם שבו הילדים בונים משחקים, אפליקציות וכלים דיגיטליים בעזרת קוד ובינה מלאכותית. הדגש הוא על חשיבה: לפרק בעיה, לתכנן פתרון, להשתמש נכון ב-AI, לבדוק, לשפר ולהגיע לתוצר אמיתי.
-                            </div>
-                            <div class="desc-box">
-                                <strong>למי זה מתאים?</strong><br>
-                                לילדים וילדות שרוצים ליצור מוצר דיגיטלי ולא רק להשתמש באפליקציות — עם שילוב של יצירתיות, חשיבה מסודרת וכלים עדכניים.
-                            </div>
-                        </div>
-                    </article>
-                </div>
-            </section>
-
-            <div class="summary-box">
-                <h3>טכנולוגיה שילדים מבינים דרך עשייה</h3>
-                <ul>
-                    <li>יוצרים, מתכננים, מנסים, משפרים — ומגיעים לתוצר שאפשר להראות.</li>
-                    <li>הרצף במרכזים בנוי כך שקל להורה להבין איזה חוג מתאים לפי גיל ושעה.</li>
-                    <li>זה עמוד מרוכז ונוח לשליחה להורים שמחפשים להבין מהר מה קורה בכל מרכז.</li>
-                </ul>
-            </div>
+      </div>
+      <div class="center-card">
+        <div class="center-head"><h3>רמות ספורטיב</h3><span class="day">ימי רביעי</span></div>
+        <div class="slots">
+          <div class="slot"><span class="time">17:30</span><span class="name">רובלוקס</span></div>
+          <div class="slot"><span class="time">18:30</span><span class="name">פיתוח משחקים ואפליקציות עם AI</span></div>
         </div>
-    </section>
-
-    <section class="cta-section">
-        <h2>רוצים עזרה לבחור חוג?</h2>
-        <p>ספרו לנו על הגיל, הניסיון והתחום שמעניין את הילד או הילדה — ונעזור לכם לבחור את הקבוצה והמוקד הכי מתאימים.</p>
-        <a class="btn-cta" href="https://wa.me/972533009742" target="_blank" rel="noopener"><i data-lucide="message-circle"></i>דברו איתנו בוואטסאפ</a>
-    </section>
-
-    <footer style="background: linear-gradient(180deg, #0f172a 0%, #020617 100%); padding: 4rem 2rem 2rem; border-top: 1px solid #1e293b;">
-        <div style="max-width: 1200px; margin: 0 auto;">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem; text-align: right;">
-                <div>
-                    <h3 style="color: #22c55e; font-size: 1.5rem; margin-bottom: 1rem; font-weight: 700;">דרך ההייטק</h3>
-                    <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem;">מלמדים טכנולוגיה, תכנות ובינה מלאכותית לילדים ונוער מאז 2019.</p>
-                </div>
-                <div>
-                    <h4 style="color: white; font-size: 1.1rem; margin-bottom: 1rem; font-weight: 600;">קישורים מהירים</h4>
-                    <ul style="list-style: none; padding: 0; margin: 0;">
-                        <li style="margin-bottom: 0.75rem;"><a href="index.html" style="color: #94a3b8; text-decoration: none;">דף הבית</a></li>
-                        <li style="margin-bottom: 0.75rem;"><a href="locations.html" style="color: #94a3b8; text-decoration: none;">מוקדים פרונטליים</a></li>
-                        <li style="margin-bottom: 0.75rem;"><a href="institutions.html" style="color: #94a3b8; text-decoration: none;">למוסדות חינוך</a></li>
-                        <li><a href="blog.html" style="color: #94a3b8; text-decoration: none;">בלוג</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 style="color: white; font-size: 1.1rem; margin-bottom: 1rem; font-weight: 600;">צרו קשר</h4>
-                    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-                        <a target="_blank" href="https://wa.me/972533009742" style="color: #94a3b8; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="phone" style="width: 18px; height: 18px;"></i>053-300-9742</a>
-                        <a href="mailto:info@hai.tech" style="color: #94a3b8; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="mail" style="width: 18px; height: 18px;"></i>info@hai.tech</a>
-                    </div>
-                </div>
-            </div>
-            <div style="border-top: 1px solid #1e293b; padding-top: 1.5rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
-                <p style="color: #64748b; font-size: 0.85rem; margin: 0;">© 2025 דרך ההייטק. כל הזכויות שמורות.</p>
-                <div style="display: flex; gap: 1.5rem;">
-                    <a href="terms.html" style="color: #64748b; font-size: 0.85rem; text-decoration: none;">תנאי שימוש</a>
-                    <a href="privacy.html" style="color: #64748b; font-size: 0.85rem; text-decoration: none;">מדיניות פרטיות</a>
-                    <a href="accessibility.html" style="color: #64748b; font-size: 0.85rem; text-decoration: none;">נגישות</a>
-                </div>
-            </div>
+        <div class="note">ביום זה אין חוג ב־16:30.</div>
+      </div>
+      <div class="center-card">
+        <div class="center-head"><h3>שכונת הפארק</h3><span class="day">ימי שני</span></div>
+        <div class="slots">
+          <div class="slot"><span class="time">16:30</span><span class="name">סקרץ׳</span></div>
+          <div class="slot"><span class="time">17:30</span><span class="name">מיינקראפט</span></div>
+          <div class="slot"><span class="time">18:30</span><span class="name">פיתוח משחקים ואפליקציות עם AI</span></div>
         </div>
-    </footer>
+      </div>
+      <div class="center-card">
+        <div class="center-head"><h3>כלניות</h3><span class="day">ימי שלישי</span></div>
+        <div class="slots">
+          <div class="slot"><span class="time">16:30</span><span class="name">סקרץ׳</span></div>
+          <div class="slot"><span class="time">17:30</span><span class="name">מיינקראפט</span></div>
+          <div class="slot"><span class="time">18:30</span><span class="name">פיתוח משחקים ואפליקציות עם AI</span></div>
+        </div>
+      </div>
+      <div class="center-card">
+        <div class="center-head"><h3>בית יהדות איראן</h3><span class="day">ימי חמישי</span></div>
+        <div class="slots">
+          <div class="slot"><span class="time">16:30</span><span class="name">פיתוח משחקים ואפליקציות עם AI</span></div>
+          <div class="slot"><span class="time">17:30</span><span class="name">סייבר</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        lucide.createIcons();
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navLinks = document.querySelector('.nav-links');
-        if (mobileMenuBtn && navLinks) {
-            mobileMenuBtn.addEventListener('click', function() {
-                navLinks.classList.toggle('active');
-                this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
-            });
-            navLinks.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', function() {
-                    navLinks.classList.remove('active');
-                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
-                });
-            });
-        }
-    </script>
-    <script src="/js/analytics.js?v=20260314"></script>
+  <section id="courses" class="courses" aria-label="רשימת חוגים מלאה">
+    <article id="scratch" class="course-card">
+      <div class="content"><h2>סקרץ׳</h2><div class="age">גילאי 6–7</div><p class="text">חוג פתיחה לעולם התכנות דרך יצירת משחקים, דמויות ואנימציות בסביבה ברורה ונגישה. הילדים לומדים לחשוב בצורה לוגית, לבנות רצף פעולות, לפתור בעיות וליצור תוצר שהם גאים להציג.</p><p class="fit">מתאים לילדים וילדות שאוהבים ליצור, לספר סיפור, להזיז דמויות על המסך ולהתחיל להבין איך מחשב ‘חושב’ — בלי קוד מסובך ובלי לחץ.</p></div>
+      <div class="visual"><img src="https://lunar-prism-errb.here.now/scratch-front-screen.png" alt="ילדים לומדים תכנות בלוקים בסקרץ׳"></div>
+    </article>
+
+    <article id="minecraft" class="course-card">
+      <div class="content"><h2>מיינקראפט</h2><div class="age">גילאי 8–10</div><p class="text">החוג לוקח עולם שילדים כבר מכירים והופך אותו לכלי ללמידת תכנון, בנייה וחשיבה תכנותית. הילדים יוצרים עולמות, מגדירים חוקים, מתמודדים עם אתגרים ולומדים איך רעיון הופך למבנה עובד.</p><p class="fit">מתאים לילדים וילדות שאוהבים מיינקראפט ורוצים לעבור ממשחק בלבד לחשיבה של מתכננים, בונים ופותרים בעיות.</p></div>
+      <div class="visual"><img src="https://gleaming-acorn-mbf6.here.now/minecraft.png" alt="מיינקראפט ככלי לבנייה ותכנות"></div>
+    </article>
+
+    <article id="roblox" class="course-card">
+      <div class="content"><h2>רובלוקס</h2><div class="age">גילאי 8–10</div><p class="text">בחוג רובלוקס הילדים עוברים משחקנים ליוצרים. הם מתכננים עולמות, בונים חוויות משחק, מכירים לוגיקה בסיסית וקוד, ומבינים איך רעיון הופך למשחק אינטראקטיבי שאחרים יכולים לחוות.</p><p class="fit">מתאים לילדים וילדות יצירתיים שאוהבים משחקים ורוצים ללמוד איך בונים חוויה דיגיטלית, שלב אחר שלב.</p></div>
+      <div class="visual"><img src="https://granite-dahlia-pwdj.here.now/roblox.png" alt="ילדים יוצרים משחקים ברובלוקס"></div>
+    </article>
+
+    <article id="cyber" class="course-card">
+      <div class="content"><h2>סייבר</h2><div class="age">גילאי 10–12</div><p class="text">חוג שמכניס את הילדים לעולם של עקבות דיגיטליים, סודות ברשת, פריצות, הגנות ופענוח מצבים חשודים. הילדים לומדים לזהות סכנות, להבין פרטיות וסיסמאות, ולחשוב כמו חוקרי סייבר אחראיים.</p><p class="fit">מתאים לילדים וילדות סקרנים שאוהבים להבין מה קורה מאחורי המסך, ורוצים לקבל כלים אמיתיים להתנהלות חכמה ובטוחה בעולם הדיגיטלי.</p></div>
+      <div class="visual"><img src="https://boreal-sketch-wxyg.here.now/cyber.png" alt="מסכי סייבר וקוד"></div>
+    </article>
+
+    <article id="ai-games" class="course-card">
+      <div class="content"><h2>פיתוח משחקים ואפליקציות עם AI</h2><div class="age">גילאי 10–12</div><p class="text">חוג מתקדם שבו הילדים בונים משחקים, אפליקציות וכלים דיגיטליים בעזרת קוד ובינה מלאכותית. הדגש הוא על חשיבה: לפרק בעיה, לתכנן פתרון, להשתמש נכון ב-AI, לבדוק, לשפר ולהגיע לתוצר אמיתי.</p><p class="fit">מתאים לילדים וילדות שרוצים ליצור מוצר דיגיטלי ולא רק להשתמש באפליקציות — עם שילוב של יצירתיות, חשיבה מסודרת וכלים עדכניים.</p></div>
+      <div class="visual"><img src="https://jazzy-dory-hc9t.here.now/ai-games-apps.png" alt="פיתוח משחקים ואפליקציות עם AI"></div>
+    </article>
+  </section>
+
+  <section class="tagline">
+    <h3>טכנולוגיה שילדים מבינים דרך עשייה</h3>
+    <p>יוצרים, מתכננים, מנסים, משפרים — ומגיעים לתוצר שאפשר להראות.</p>
+  </section>
+  <footer>חוגי טכנולוגיה לילדים · כיוונים 2026-2027</footer>
+</main>
 </body>
 </html>
