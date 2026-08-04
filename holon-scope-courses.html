@@ -54,7 +54,7 @@ a{color:inherit}.hs-page{width:min(1180px,calc(100% - 32px));margin:0 auto;paddi
 .hs-tag{display:inline-flex;padding:7px 12px;border-radius:999px;font-weight:900;font-size:.92rem}.tag-blue{background:#dbeafe;color:#1d4ed8}.tag-green{background:#dcfce7;color:#15803d}
 .hs-card p{margin:0 0 12px;color:#334155;font-weight:650}.hs-list{margin:0;padding-right:18px;color:var(--muted)}.hs-list li{margin-bottom:7px}.hs-result{margin-top:14px;background:#f8fbff;border:1px solid var(--line);border-radius:18px;padding:14px;color:#334155;font-weight:800}
 .hs-progress{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.hs-step{background:linear-gradient(180deg,#fbfdff,#f5f9ff);border:1px solid var(--line);border-radius:24px;padding:20px}.hs-step h3{margin:0 0 10px;color:var(--blue2)}
-.hs-gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.hs-gallery-card{background:linear-gradient(180deg,#fbfdff,#f5f9ff);border:1px solid var(--line);border-radius:24px;padding:16px}.hs-gallery-card img{width:100%;display:block;border-radius:18px;border:1px solid var(--line);box-shadow:0 12px 30px rgba(37,99,235,.08)}.hs-gallery-card h3{margin:14px 0 6px;color:var(--blue2);font-size:1.15rem}.hs-gallery-card p{margin:0;color:var(--muted);font-weight:700}
+.hs-gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.hs-gallery-card{background:linear-gradient(180deg,#fbfdff,#f5f9ff);border:1px solid var(--line);border-radius:24px;padding:16px}.hs-gallery-card img{width:100%;display:block;border-radius:18px;border:1px solid var(--line);box-shadow:0 12px 30px rgba(37,99,235,.08)}.hs-gallery-card .lesson-shot{height:430px;object-fit:cover}.hs-gallery-card .lesson-shot.grade2{object-position:center 82%}.hs-gallery-card .lesson-shot.grade3{object-position:center 80%}.hs-gallery-card h3{margin:14px 0 6px;color:var(--blue2);font-size:1.15rem}.hs-gallery-card p{margin:0;color:var(--muted);font-weight:700}
 .hs-cta{background:linear-gradient(135deg,#1d4ed8,#7c3aed);color:#fff;text-align:center}.hs-cta h2{color:#fff}.hs-cta p{color:#e9edff;max-width:760px;margin:0 auto 18px}
 @media(max-width:980px){.hs-hero-grid,.hs-highlights,.hs-meta,.hs-grid,.hs-progress,.hs-gallery{grid-template-columns:1fr 1fr}}
 @media(max-width:680px){.hs-page{width:min(100% - 22px,1180px);padding:112px 0 30px}.hs-hero,.hs-section{padding:24px}.hs-hero-grid,.hs-highlights,.hs-meta,.hs-grid,.hs-progress,.hs-gallery{grid-template-columns:1fr}.hs-head{display:block}.hs-actions .hs-btn{width:100%}}
@@ -113,12 +113,12 @@ a{color:inherit}.hs-page{width:min(1180px,calc(100% - 32px));margin:0 auto;paddi
     </div>
     <div class="hs-gallery">
       <article class="hs-gallery-card">
-        <img src="/images/holon-scope-lessons/sisi-shot.png" alt="תצוגת שיעורים מתוך הלומדה של כיתה ב׳">
+        <img class="lesson-shot grade2" src="/images/holon-scope-lessons/sisi-shot.png" alt="תצוגת שיעורים מתוך הלומדה של כיתה ב׳">
         <h3>כיתה ב׳ · חשיבה מחשובית ויצירה</h3>
         <p>משימות קצרות, עולמות תוכן, ויחידות שמתקדמות לבנייה ויצירה.</p>
       </article>
       <article class="hs-gallery-card">
-        <img src="/images/holon-scope-lessons/gamelab-shot.png" alt="תצוגת שיעורים מתוך הלומדה של כיתה ג׳">
+        <img class="lesson-shot grade3" src="/images/holon-scope-lessons/gamelab-shot.png" alt="תצוגת שיעורים מתוך הלומדה של כיתה ג׳">
         <h3>כיתה ג׳ · מערכות חכמות ופיתוח משחקים</h3>
         <p>רצף שיעורים שמוביל מחשיבה מערכתית לבניית משחק.</p>
       </article>
@@ -130,9 +130,14 @@ a{color:inherit}.hs-page{width:min(1180px,calc(100% - 32px));margin:0 auto;paddi
       <h2>החוגים במרכז סקו״פ</h2>
       <p>רק כיתות ב׳–ג׳, עם פירוט מדויק של מה הילדים לומדים בכל מחצית לאורך השנה.</p>
     </div>
+    <div class="hs-meta" style="margin-bottom:18px;">
+      <div class="hs-meta-card"><strong>כיתות ב׳</strong><span>ימי שני · 16:30–17:30, 17:30–18:30</span></div>
+      <div class="hs-meta-card"><strong>כיתות ג׳</strong><span>ימי ד׳ · 16:30–17:30, 17:30–18:30</span></div>
+      <div class="hs-meta-card"><strong>מיקום</strong><span>מרכז סקו״פ, חולון</span></div>
+    </div>
     <div class="hs-grid">
       <article class="hs-card">
-        <img src="/blog/images/how-to-teach-kids-programming.webp" alt="ילדים צעירים בכיתות ב׳ לומדים חשיבה מחשובית ויצירה דיגיטלית בחולון">
+        <img src="/images/holon-scope-lessons/grade2-classroom.png" alt="ילדים צעירים בכיתה ב׳ לומדים חשיבה מחשובית מול מחשבים בכיתה בחולון">
         <div class="hs-top">
           <div>
             <h3>חושבים בקוד: אלגוריתמיקה יצירתית</h3>
@@ -150,7 +155,7 @@ a{color:inherit}.hs-page{width:min(1180px,calc(100% - 32px));margin:0 auto;paddi
       </article>
 
       <article class="hs-card">
-        <img src="/blog/images/coding-benefits-kids.png" alt="ילדים בכיתות ג׳ לומדים מערכות חכמות ופיתוח משחקים בחולון">
+        <img src="/images/holon-scope-lessons/grade3-classroom.png" alt="ילדים צעירים בכיתה ג׳ לומדים פיתוח משחקים ומערכות חכמות מול מחשבים בכיתה בחולון">
         <div class="hs-top">
           <div>
             <h3>מערכות חכמות ופיתוח משחקים</h3>
