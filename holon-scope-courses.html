@@ -54,9 +54,10 @@ a{color:inherit}.hs-page{width:min(1180px,calc(100% - 32px));margin:0 auto;paddi
 .hs-tag{display:inline-flex;padding:7px 12px;border-radius:999px;font-weight:900;font-size:.92rem}.tag-blue{background:#dbeafe;color:#1d4ed8}.tag-green{background:#dcfce7;color:#15803d}
 .hs-card p{margin:0 0 12px;color:#334155;font-weight:650}.hs-list{margin:0;padding-right:18px;color:var(--muted)}.hs-list li{margin-bottom:7px}.hs-result{margin-top:14px;background:#f8fbff;border:1px solid var(--line);border-radius:18px;padding:14px;color:#334155;font-weight:800}
 .hs-progress{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.hs-step{background:linear-gradient(180deg,#fbfdff,#f5f9ff);border:1px solid var(--line);border-radius:24px;padding:20px}.hs-step h3{margin:0 0 10px;color:var(--blue2)}
+.hs-gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.hs-gallery-card{background:linear-gradient(180deg,#fbfdff,#f5f9ff);border:1px solid var(--line);border-radius:24px;padding:16px}.hs-gallery-card img{width:100%;display:block;border-radius:18px;border:1px solid var(--line);box-shadow:0 12px 30px rgba(37,99,235,.08)}.hs-gallery-card h3{margin:14px 0 6px;color:var(--blue2);font-size:1.15rem}.hs-gallery-card p{margin:0;color:var(--muted);font-weight:700}
 .hs-cta{background:linear-gradient(135deg,#1d4ed8,#7c3aed);color:#fff;text-align:center}.hs-cta h2{color:#fff}.hs-cta p{color:#e9edff;max-width:760px;margin:0 auto 18px}
-@media(max-width:980px){.hs-hero-grid,.hs-highlights,.hs-meta,.hs-grid,.hs-progress{grid-template-columns:1fr 1fr}}
-@media(max-width:680px){.hs-page{width:min(100% - 22px,1180px);padding:112px 0 30px}.hs-hero,.hs-section{padding:24px}.hs-hero-grid,.hs-highlights,.hs-meta,.hs-grid,.hs-progress{grid-template-columns:1fr}.hs-head{display:block}.hs-actions .hs-btn{width:100%}}
+@media(max-width:980px){.hs-hero-grid,.hs-highlights,.hs-meta,.hs-grid,.hs-progress,.hs-gallery{grid-template-columns:1fr 1fr}}
+@media(max-width:680px){.hs-page{width:min(100% - 22px,1180px);padding:112px 0 30px}.hs-hero,.hs-section{padding:24px}.hs-hero-grid,.hs-highlights,.hs-meta,.hs-grid,.hs-progress,.hs-gallery{grid-template-columns:1fr}.hs-head{display:block}.hs-actions .hs-btn{width:100%}}
 </style>
 </head>
 <body>
@@ -157,6 +158,25 @@ a{color:inherit}.hs-page{width:min(1180px,calc(100% - 32px));margin:0 auto;paddi
           <li>למידה דרך תכנון, בדיקה, שיפור והצגת תוצר</li>
         </ul>
         <div class="hs-result">תוצרים: פרויקט עיר חכמה, משחק אישי ויום הצגת תוצרים בסוף התהליך</div>
+      </article>
+    </div>
+  </section>
+
+  <section class="hs-section">
+    <div class="hs-head">
+      <h2>הצצה לשיעורים בלומדות</h2>
+      <p>כדי לראות קצת יותר מקרוב איך הלמידה נראית בפועל, הוספנו כאן תמונות מתוך עמודי השיעורים.</p>
+    </div>
+    <div class="hs-gallery">
+      <article class="hs-gallery-card">
+        <img src="/images/holon-scope-lessons/sisi-shot.png" alt="תצוגת שיעורים מתוך הלומדה של כיתה ב׳">
+        <h3>כיתה ב׳ · חשיבה מחשובית ויצירה</h3>
+        <p>תצוגה מתוך הלומדה עם יחידות קצרות, משימות מדורגות ועבודה דרך עולמות תוכן משחקיים.</p>
+      </article>
+      <article class="hs-gallery-card">
+        <img src="/images/holon-scope-lessons/gamelab-shot.png" alt="תצוגת שיעורים מתוך הלומדה של כיתה ג׳">
+        <h3>כיתה ג׳ · מערכות חכמות ופיתוח משחקים</h3>
+        <p>תצוגה מתוך הלומדה עם רצף שיעורים שמוביל ממשחקי חשיבה לבניית משחק מלא.</p>
       </article>
     </div>
   </section>
