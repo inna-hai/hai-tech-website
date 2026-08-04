@@ -39,13 +39,10 @@
 *{box-sizing:border-box} html{scroll-behavior:smooth}
 body{margin:0;font-family:'Heebo',Arial,sans-serif;background:linear-gradient(180deg,#f8fbff 0%,#eef5ff 100%);color:var(--text);line-height:1.7}
 a{color:inherit}.hs-page{width:min(1180px,calc(100% - 32px));margin:0 auto;padding:112px 0 42px}
-.hs-hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#0f172a 0%,#1d4ed8 45%,#14b8a6 100%);border-radius:36px;padding:42px;color:#fff;box-shadow:var(--shadow)}
-.hs-hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 15% 20%,rgba(255,255,255,.14),transparent 28%),radial-gradient(circle at 90% 0,rgba(255,255,255,.12),transparent 24%)}
-.hs-hero>*{position:relative;z-index:1}.hs-hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}.hs-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:8px 16px;font-weight:800;margin-bottom:16px}
-.hs-hero h1{margin:0 0 12px;font-size:clamp(2.2rem,5vw,4rem);line-height:1.05}.hs-hero p{margin:0;max-width:860px;color:#dbeafe;font-size:1.06rem;font-weight:600}
-.hs-hero-visual img{width:100%;display:block;border-radius:28px;box-shadow:0 18px 44px rgba(15,23,42,.24);aspect-ratio:16/11;object-fit:cover;border:1px solid rgba(255,255,255,.18)}
-.hs-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.hs-btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border-radius:999px;padding:12px 20px;font-weight:900}.hs-btn.primary{background:#fff;color:var(--blue2)}.hs-btn.secondary{border:1px solid rgba(255,255,255,.35);color:#fff}
-.hs-highlights{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px}.hs-stat{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.14);border-radius:22px;padding:16px;text-align:center}.hs-stat strong{display:block;font-size:1.35rem}.hs-stat span{color:#dbeafe;font-size:.95rem}
+.hs-hero{background:#fff;border:1px solid var(--line);border-radius:28px;padding:26px 28px;box-shadow:var(--shadow);margin-bottom:8px}
+.hs-hero-grid{display:block}.hs-badge{display:inline-flex;align-items:center;gap:8px;background:#eef4ff;border:1px solid #dbe7ff;color:var(--blue2);border-radius:999px;padding:8px 16px;font-weight:800;margin-bottom:14px}
+.hs-hero h1{margin:0 0 8px;font-size:clamp(1.9rem,4.5vw,3rem);line-height:1.08;color:var(--text)}.hs-hero p{margin:0;max-width:760px;color:var(--muted);font-size:1rem;font-weight:700}
+.hs-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}.hs-btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border-radius:999px;padding:12px 20px;font-weight:900}.hs-btn.primary{background:var(--blue2);color:#fff}.hs-btn.secondary{border:1px solid var(--line);color:var(--blue2);background:#f8fbff}
 .hs-section{margin-top:24px;background:#fff;border:1px solid var(--line);border-radius:30px;padding:28px;box-shadow:var(--shadow)}
 .hs-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:18px}.hs-head h2{margin:0;font-size:clamp(1.7rem,3vw,2.5rem);color:var(--blue2)}.hs-head p{margin:0;color:var(--muted);font-weight:700;max-width:650px}
 .hs-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.hs-meta-card{background:linear-gradient(180deg,#fbfdff,#f5f9ff);border:1px solid var(--line);border-radius:22px;padding:18px}.hs-meta-card strong{display:block;color:var(--blue2);margin-bottom:6px}.hs-meta-card span{color:var(--muted);font-weight:700}
@@ -56,8 +53,8 @@ a{color:inherit}.hs-page{width:min(1180px,calc(100% - 32px));margin:0 auto;paddi
 .hs-progress{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.hs-step{background:linear-gradient(180deg,#fbfdff,#f5f9ff);border:1px solid var(--line);border-radius:24px;padding:20px}.hs-step h3{margin:0 0 10px;color:var(--blue2)}
 .hs-gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.hs-gallery-card{background:linear-gradient(180deg,#fbfdff,#f5f9ff);border:1px solid var(--line);border-radius:24px;padding:16px}.hs-gallery-card img{width:100%;display:block;border-radius:18px;border:1px solid var(--line);box-shadow:0 12px 30px rgba(37,99,235,.08)}.hs-gallery-card .lesson-shot{height:430px;object-fit:cover}.hs-gallery-card .lesson-shot.grade2{object-position:center 82%}.hs-gallery-card .lesson-shot.grade3{object-position:center 80%}.hs-gallery-card h3{margin:14px 0 6px;color:var(--blue2);font-size:1.15rem}.hs-gallery-card p{margin:0;color:var(--muted);font-weight:700}
 .hs-cta{background:linear-gradient(135deg,#1d4ed8,#7c3aed);color:#fff;text-align:center}.hs-cta h2{color:#fff}.hs-cta p{color:#e9edff;max-width:760px;margin:0 auto 18px}
-@media(max-width:980px){.hs-hero-grid,.hs-highlights,.hs-meta,.hs-grid,.hs-progress,.hs-gallery{grid-template-columns:1fr 1fr}}
-@media(max-width:680px){.hs-page{width:min(100% - 22px,1180px);padding:112px 0 30px}.hs-hero,.hs-section{padding:24px}.hs-hero-grid,.hs-highlights,.hs-meta,.hs-grid,.hs-progress,.hs-gallery{grid-template-columns:1fr}.hs-head{display:block}.hs-actions .hs-btn{width:100%}}
+@media(max-width:980px){.hs-meta,.hs-grid,.hs-progress,.hs-gallery{grid-template-columns:1fr 1fr}}
+@media(max-width:680px){.hs-page{width:min(100% - 22px,1180px);padding:112px 0 30px}.hs-hero,.hs-section{padding:22px}.hs-meta,.hs-grid,.hs-progress,.hs-gallery{grid-template-columns:1fr}.hs-head{display:block}.hs-actions .hs-btn{width:100%}}
 </style>
 </head>
 <body>
@@ -84,25 +81,12 @@ a{color:inherit}.hs-page{width:min(1180px,calc(100% - 32px));margin:0 auto;paddi
 
 <main id="main-content" class="hs-page">
   <header class="hs-hero">
-    <div class="hs-hero-grid">
-      <div>
-        <span class="hs-badge">חולון · מרכז סקו״פ · חוגי טכנולוגיה לילדים</span>
-        <h1>חוגי טכנולוגיה לילדים בחולון</h1>
-        <p>כיתות ב׳–ג׳ במרכז סקו״פ חולון — עם תצוגה ברורה של מה הילדים לומדים בפועל בתוך הלומדות.</p>
-        <div class="hs-actions">
-          <a class="hs-btn primary" href="#gallery">לצפייה בשיעורים</a>
-          <a class="hs-btn secondary" href="#courses">פירוט החוגים</a>
-        </div>
-        <div class="hs-highlights">
-          <div class="hs-stat"><strong>2</strong><span>מסלולים בעמוד הזה</span></div>
-          <div class="hs-stat"><strong>30</strong><span>שיעורים בכל מסלול</span></div>
-          <div class="hs-stat"><strong>ב׳–ג׳</strong><span>מותאם לפי שכבה</span></div>
-          <div class="hs-stat"><strong>עשייה</strong><span>תוצרים אמיתיים לאורך השנה</span></div>
-        </div>
-      </div>
-      <div class="hs-hero-visual">
-        <img src="/images/institutions/steam-holon-kids-9-10.webp" alt="חוגי טכנולוגיה לילדים בחולון במרכז סקו״פ">
-      </div>
+    <span class="hs-badge">חולון · מרכז סקו״פ · כיתות ב׳–ג׳</span>
+    <h1>חוגי טכנולוגיה לילדים בחולון</h1>
+    <p>אלגוריתמיקה יצירתית, מערכות חכמות ופיתוח משחקים — במרכז סקו״פ חולון.</p>
+    <div class="hs-actions">
+      <a class="hs-btn primary" href="#courses">פירוט החוגים</a>
+      <a class="hs-btn secondary" href="#gallery">צפייה בשיעורים</a>
     </div>
   </header>
 
