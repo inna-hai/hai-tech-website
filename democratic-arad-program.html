@@ -51,10 +51,11 @@ a{color:inherit}.arad-page{width:min(1180px,calc(100% - 32px));margin:0 auto;pad
 .arad-card img{width:100%;display:block;aspect-ratio:16/10;object-fit:cover;border-radius:20px;margin-bottom:16px}.arad-top{display:flex;justify-content:space-between;gap:12px;align-items:start;margin-bottom:12px}.arad-top h3{margin:0;font-size:1.55rem;color:var(--blue2);line-height:1.08}.arad-grade{display:inline-flex;background:#eef4ff;color:var(--blue2);padding:7px 12px;border-radius:999px;font-weight:900}
 .arad-tag{display:inline-flex;padding:7px 12px;border-radius:999px;font-weight:900;font-size:.92rem}.tag-blue{background:#dbeafe;color:#1d4ed8}.tag-green{background:#dcfce7;color:#15803d}.tag-purple{background:#f3e8ff;color:#7e22ce}
 .arad-card p{margin:0 0 12px;color:#334155;font-weight:650}.arad-list{margin:0;padding-right:18px;color:var(--muted)}.arad-list li{margin-bottom:7px}.arad-result{margin-top:14px;background:#f8fbff;border:1px solid var(--line);border-radius:18px;padding:14px;color:#334155;font-weight:800}.arad-card-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.arad-card-btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border-radius:999px;padding:11px 16px;font-weight:900;background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe}.arad-card-btn.secondary{background:#fff7ed;color:#c2410c;border-color:#fed7aa}
+.arad-library{display:grid;gap:18px}.arad-library-group{background:linear-gradient(180deg,#fbfdff,#f5f9ff);border:1px solid var(--line);border-radius:28px;padding:22px}.arad-library-group h3{margin:0 0 8px;color:var(--blue2);font-size:1.45rem}.arad-library-group p{margin:0 0 16px;color:var(--muted);font-weight:700}.arad-library-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.arad-lesson{background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:0 10px 24px rgba(37,99,235,.06)}.arad-lesson h4{margin:0 0 8px;font-size:1.08rem;color:#1e293b}.arad-lesson p{margin:0 0 12px;color:var(--muted);font-weight:700;font-size:.96rem}.arad-lesson-tags{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}.arad-lesson-tags span{background:#f8fafc;border:1px solid #e2e8f0;border-radius:999px;padding:6px 9px;font-weight:900;font-size:.78rem;color:#475569}.arad-lesson-actions{display:flex;gap:8px;flex-wrap:wrap}.arad-lesson-actions a{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border-radius:999px;padding:9px 13px;font-weight:900;background:#0f172a;color:#fff}.arad-lesson-actions a.secondary{background:#f8fafc;color:#0f172a;border:1px solid #e2e8f0}
 .arad-principles{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.arad-step{background:linear-gradient(180deg,#fbfdff,#f5f9ff);border:1px solid var(--line);border-radius:24px;padding:20px}.arad-step h3{margin:0 0 10px;color:var(--blue2)}
 .arad-cta{background:linear-gradient(135deg,#1d4ed8,#7c3aed);color:#fff;text-align:center}.arad-cta h2{color:#fff}.arad-cta p{color:#e9edff;max-width:760px;margin:0 auto 18px}
-@media(max-width:980px){.arad-hero-grid,.arad-highlights,.arad-meta,.arad-grid,.arad-principles{grid-template-columns:1fr 1fr}}
-@media(max-width:680px){.arad-page{width:min(100% - 22px,1180px);padding:112px 0 30px}.arad-hero,.arad-section{padding:24px}.arad-hero-grid,.arad-highlights,.arad-meta,.arad-grid,.arad-principles{grid-template-columns:1fr}.arad-head{display:block}.arad-actions .arad-btn{width:100%}}
+@media(max-width:980px){.arad-hero-grid,.arad-highlights,.arad-meta,.arad-grid,.arad-principles,.arad-library-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:680px){.arad-page{width:min(100% - 22px,1180px);padding:112px 0 30px}.arad-hero,.arad-section{padding:24px}.arad-hero-grid,.arad-highlights,.arad-meta,.arad-grid,.arad-principles,.arad-library-grid{grid-template-columns:1fr}.arad-head{display:block}.arad-actions .arad-btn{width:100%}}
 </style>
 </head>
 <body>
@@ -186,6 +187,125 @@ a{color:inherit}.arad-page{width:min(1180px,calc(100% - 32px));margin:0 auto;pad
           <a class="arad-card-btn secondary" target="_blank" rel="noopener" href="https://robotics15.hai.tech/appforge.html">WebMakers Lab</a>
         </div>
       </article>
+    </div>
+  </section>
+
+  <section class="arad-section">
+    <div class="arad-head">
+      <h2>מאגר לומדות לבחירת המדריך</h2>
+      <p>כאן המדריך יכול לבחור מתוך כמה לומדות מתאימות לכל שכבה — לפי הרמה בפועל של הקבוצה, רמת הקריאה, קצב ההתקדמות והעניין של הילדים.</p>
+    </div>
+    <div class="arad-library">
+      <div class="arad-library-group">
+        <h3>א׳–ג׳ · לומדות מתאימות להתחלה, חשיבה ומשחק</h3>
+        <p>מתאים לקבוצות צעירות או מעורבות שבהן צריך התחלה נגישה, משימות קצרות וחוויה משחקית עם הרבה הצלחות קטנות.</p>
+        <div class="arad-library-grid">
+          <article class="arad-lesson">
+            <h4>סדרת סיסי</h4>
+            <p>לומדת יסוד מצוינת לחשיבה מחשובית, רצפים, תנאים ואתגרי פתרון בעיות.</p>
+            <div class="arad-lesson-tags"><span>א׳–ב׳</span><span>15 שיעורים</span><span>חשיבה מחשובית</span></div>
+            <div class="arad-lesson-actions"><a target="_blank" rel="noopener" href="https://robotics15.hai.tech/sisi.html">פתיחת הלומדה</a><a class="secondary" target="_blank" rel="noopener" href="https://robotics15.hai.tech/finale.html">שיעור שיא</a></div>
+          </article>
+          <article class="arad-lesson">
+            <h4>סנסי קלאסי</h4>
+            <p>5 שיעורים קצרים על חיישנים והיגיון תגובתי — טוב כהיכרות ראשונה עם רובוטיקה.</p>
+            <div class="arad-lesson-tags"><span>ב׳–ג׳</span><span>5 שיעורים</span><span>חיישנים</span></div>
+            <div class="arad-lesson-actions"><a target="_blank" rel="noopener" href="https://robotics15.hai.tech/sensi-classic.html?lesson=1">פתיחת הלומדה</a><a class="secondary" target="_blank" rel="noopener" href="https://robotics15.hai.tech/sensi-classic-slides/index.html">מצגות</a></div>
+          </article>
+          <article class="arad-lesson">
+            <h4>GameLab / PlayCode בסיסי</h4>
+            <p>כניסה חווייתית לעולם המשחקים עם Blockly, דמויות, ניקוד ואתגרי משחק פשוטים.</p>
+            <div class="arad-lesson-tags"><span>ג׳</span><span>משחקים</span><span>Blockly</span></div>
+            <div class="arad-lesson-actions"><a target="_blank" rel="noopener" href="https://robotics15.hai.tech/gamelab.html">פתיחת הלומדה</a><a class="secondary" target="_blank" rel="noopener" href="https://robotics15.hai.tech/gamelab-play.html">גרסת Play</a></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="arad-library-group">
+        <h3>ד׳–ו׳ · לומדות לבניית מערכות, משחקים ואתרי Web</h3>
+        <p>מתאים לקבוצות שכבר יכולות לעבוד עם פרויקטים גדולים יותר, לחשוב מערכתית, ולעשות מעבר מדורג מבלוקים לקוד.</p>
+        <div class="arad-library-grid">
+          <article class="arad-lesson">
+            <h4>סנסי בעיר החכמה</h4>
+            <p>לומדת רובוטיקה מורחבת עם עיר חכמה, חיישנים, תגובות לסביבה ומשימות מדורגות.</p>
+            <div class="arad-lesson-tags"><span>ג׳–ו׳</span><span>15 שיעורים</span><span>Blockly</span></div>
+            <div class="arad-lesson-actions"><a target="_blank" rel="noopener" href="https://robotics15.hai.tech/sensi-city.html?lesson=1">פתיחת הלומדה</a><a class="secondary" target="_blank" rel="noopener" href="https://robotics15.hai.tech/smart-city.html">מפת המסלול</a></div>
+          </article>
+          <article class="arad-lesson">
+            <h4>GameLab / PlayCode Lab</h4>
+            <p>לבניית משחקים, דמויות, משימות, ניקוד ושלבים — מצוין לקבוצות שאוהבות תוצר מהיר.</p>
+            <div class="arad-lesson-tags"><span>ד׳–ו׳</span><span>משחקים</span><span>יצירה</span></div>
+            <div class="arad-lesson-actions"><a target="_blank" rel="noopener" href="https://robotics15.hai.tech/gamelab.html">פתיחת הלומדה</a><a class="secondary" target="_blank" rel="noopener" href="https://robotics15.hai.tech/gamelab-play.html">גרסת Play</a></div>
+          </article>
+          <article class="arad-lesson">
+            <h4>WebCode Lab</h4>
+            <p>מעבר מדורג לעולם פיתוח האתרים — מבלוקים, דרך קוד שנוצר, ועד HTML/CSS/JavaScript.</p>
+            <div class="arad-lesson-tags"><span>ד׳–ו׳</span><span>Web</span><span>קוד אמיתי</span></div>
+            <div class="arad-lesson-actions"><a target="_blank" rel="noopener" href="https://robotics15.hai.tech/webcode.html">פתיחת הלומדה</a><a class="secondary" target="_blank" rel="noopener" href="https://robotics15.hai.tech/webcode-play.html">גרסת Play</a></div>
+          </article>
+          <article class="arad-lesson">
+            <h4>WebMakers Lab</h4>
+            <p>לומדת בניית אפליקציות ואתרים — טובה לקבוצות חזקות יותר או לפרויקט ארוך יותר.</p>
+            <div class="arad-lesson-tags"><span>ה׳–ו׳</span><span>אפליקציות</span><span>פרויקט</span></div>
+            <div class="arad-lesson-actions"><a target="_blank" rel="noopener" href="https://robotics15.hai.tech/appforge.html">פתיחת הלומדה</a><a class="secondary" target="_blank" rel="noopener" href="https://robotics15.hai.tech/appforge-play.html">גרסת Play</a></div>
+          </article>
+          <article class="arad-lesson">
+            <h4>Roblox Studio</h4>
+            <p>מתאים לקבוצות שאוהבות עולמות, משחקים ובנייה — דרך כניסה חזקה מאוד למוטיבציה.</p>
+            <div class="arad-lesson-tags"><span>ד׳–ו׳</span><span>Roblox</span><span>עולמות</span></div>
+            <div class="arad-lesson-actions"><a target="_blank" rel="noopener" href="https://robotics15.hai.tech/roblox.html">פתיחת הלומדה</a><a class="secondary" target="_blank" rel="noopener" href="https://robotics15.hai.tech/roblox-course.html">עמוד קורס</a></div>
+          </article>
+          <article class="arad-lesson">
+            <h4>Minecraft</h4>
+            <p>לומדה למדריכים שרוצים לנצל אהבה קיימת של ילדים לעולמות משחקיים ולעבוד דרך בנייה ומשימות.</p>
+            <div class="arad-lesson-tags"><span>ד׳–ו׳</span><span>Minecraft</span><span>מעורבות גבוהה</span></div>
+            <div class="arad-lesson-actions"><a target="_blank" rel="noopener" href="https://robotics15.hai.tech/minecraft.html">פתיחת הלומדה</a><a class="secondary" target="_blank" rel="noopener" href="https://robotics15.hai.tech/minecraft-teachers.html">עמוד מדריכים</a></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="arad-library-group">
+        <h3>ז׳ ומעלה · לומדות לקוד אמיתי, פיתוח ופרויקטים</h3>
+        <p>מתאים לקבוצות בוגרות יותר שמסוגלות לעבוד לאורך זמן על מוצר, להבין קוד אמיתי ולהתנסות בפרויקט עם זהות אישית.</p>
+        <div class="arad-library-grid">
+          <article class="arad-lesson">
+            <h4>Python Turtle</h4>
+            <p>דרך נגישה וכיפית להיכנס ל-Python אמיתי דרך ציור, צורות, דפוסים וחשיבה אלגוריתמית.</p>
+            <div class="arad-lesson-tags"><span>ז׳+</span><span>Python</span><span>ציור בקוד</span></div>
+            <div class="arad-lesson-actions"><a target="_blank" rel="noopener" href="https://robotics15.hai.tech/python-turtle.html">פתיחת הלומדה</a><a class="secondary" target="_blank" rel="noopener" href="https://robotics15.hai.tech/python-turtle-course.html">עמוד קורס</a></div>
+          </article>
+          <article class="arad-lesson">
+            <h4>Pygame</h4>
+            <p>לומדת משחקים ב-Python — טובה לקבוצות חזקות שרוצות לבנות משחק בקוד אמיתי.</p>
+            <div class="arad-lesson-tags"><span>ז׳+</span><span>Python</span><span>משחקים</span></div>
+            <div class="arad-lesson-actions"><a target="_blank" rel="noopener" href="https://robotics15.hai.tech/pygame.html">פתיחת הלומדה</a><a class="secondary" target="_blank" rel="noopener" href="https://robotics15.hai.tech/pygame-course.html">עמוד קורס</a></div>
+          </article>
+          <article class="arad-lesson">
+            <h4>WebMakers Lab</h4>
+            <p>בניית אפליקציות, אתרי Web ורעיונות למוצרים דיגיטליים — מסלול מצוין לקבוצות יזמיות.</p>
+            <div class="arad-lesson-tags"><span>ז׳+</span><span>Web</span><span>מוצר דיגיטלי</span></div>
+            <div class="arad-lesson-actions"><a target="_blank" rel="noopener" href="https://robotics15.hai.tech/appforge.html">פתיחת הלומדה</a><a class="secondary" target="_blank" rel="noopener" href="https://robotics15.hai.tech/appforge-play.html">גרסת Play</a></div>
+          </article>
+          <article class="arad-lesson">
+            <h4>CodeQuest</h4>
+            <p>לומדה לקוד מתקדם יותר ואתגרי תכנות — טובה לקבוצה בוגרת או לתלמידים מהירים במיוחד.</p>
+            <div class="arad-lesson-tags"><span>ז׳+</span><span>אתגרי קוד</span><span>מתקדמים</span></div>
+            <div class="arad-lesson-actions"><a target="_blank" rel="noopener" href="https://robotics15.hai.tech/codequest.html">פתיחת הלומדה</a><a class="secondary" target="_blank" rel="noopener" href="https://robotics15.hai.tech/codequest-play.html">גרסת Play</a></div>
+          </article>
+          <article class="arad-lesson">
+            <h4>Roblox Studio</h4>
+            <p>עדיין יכול להתאים גם לבוגרים, במיוחד לקבוצות שבהן המוטיבציה גבוהה יותר סביב בניית עולמות ומשחקים.</p>
+            <div class="arad-lesson-tags"><span>ו׳–ח׳</span><span>Roblox</span><span>יצירה</span></div>
+            <div class="arad-lesson-actions"><a target="_blank" rel="noopener" href="https://robotics15.hai.tech/roblox.html">פתיחת הלומדה</a><a class="secondary" target="_blank" rel="noopener" href="https://robotics15.hai.tech/roblox-course.html">עמוד קורס</a></div>
+          </article>
+          <article class="arad-lesson">
+            <h4>Money Smart Lab</h4>
+            <p>אופציה מעולה אם רוצים לשלב טכנולוגיה, חשיבה מעשית ועולמות של חיים אמיתיים לנוער.</p>
+            <div class="arad-lesson-tags"><span>ז׳+</span><span>חינוך פיננסי</span><span>AI ודיגיטל</span></div>
+            <div class="arad-lesson-actions"><a target="_blank" rel="noopener" href="https://robotics15.hai.tech/money-smart-lab.html">פתיחת הלומדה</a><a class="secondary" target="_blank" rel="noopener" href="https://robotics15.hai.tech/money-smart-course.html">עמוד קורס</a></div>
+          </article>
+        </div>
+      </div>
     </div>
   </section>
 
