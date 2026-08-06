@@ -56,8 +56,9 @@ a{color:inherit}.od-page{width:min(1180px,calc(100% - 32px));margin:0 auto;paddi
 .od-tag{display:inline-flex;padding:7px 12px;border-radius:999px;font-weight:900;font-size:.92rem}.tag-blue{background:#dbeafe;color:#1d4ed8}.tag-green{background:#dcfce7;color:#15803d}.tag-purple{background:#f3e8ff;color:#7e22ce}.tag-orange{background:#ffedd5;color:#c2410c}
 .od-card p{margin:0 0 12px;color:#334155;font-weight:650}.od-list{margin:0;padding-right:18px;color:var(--muted)}.od-list li{margin-bottom:7px}.od-result{margin-top:14px;background:#f8fbff;border:1px solid var(--line);border-radius:18px;padding:14px;color:#334155;font-weight:800}
 .od-cta{background:linear-gradient(135deg,#1d4ed8,#7c3aed);color:#fff;text-align:center}.od-cta h2{color:#fff}.od-cta p{color:#e9edff;max-width:760px;margin:0 auto 18px}
-@media(max-width:980px){.od-hero-grid,.od-highlights,.od-meta,.od-schedule-grid,.od-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:680px){.od-page{width:min(100% - 22px,1180px);padding:112px 0 30px}.od-hero,.od-section{padding:24px}.od-hero-grid,.od-highlights,.od-meta,.od-schedule-grid,.od-grid{grid-template-columns:1fr}.od-head{display:block}.od-actions .od-btn{width:100%}}
+.od-enroll-wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;align-items:start}.od-enroll-card{background:linear-gradient(180deg,#fbfdff,#f3f7ff);border:1px solid var(--line);border-radius:26px;padding:22px}.od-enroll-card h3{margin:0 0 10px;color:var(--blue2);font-size:1.35rem}.od-enroll-card p{margin:0 0 14px;color:var(--muted);font-weight:700}.od-enroll-list{display:grid;gap:10px}.od-enroll-item{display:flex;justify-content:space-between;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 14px}.od-enroll-item strong{color:#334155}.od-enroll-item span{color:var(--blue2);font-weight:900;direction:ltr}.od-form{display:grid;gap:12px}.od-field{display:grid;gap:7px;text-align:right}.od-field label{font-weight:800;color:#334155}.od-field input,.od-field select,.od-field textarea{width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:16px;font:inherit;background:#fff;color:var(--text)}.od-field textarea{min-height:96px;resize:vertical}.od-field input:focus,.od-field select:focus,.od-field textarea:focus{outline:none;border-color:#93c5fd;box-shadow:0 0 0 4px rgba(37,99,235,.12)}.od-form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.od-submit{border:none;cursor:pointer}.od-form-note{margin:0;color:var(--muted);font-weight:700;font-size:.95rem}.od-success{display:none;background:#ecfdf5;border:1px solid #a7f3d0;color:#166534;border-radius:18px;padding:16px;font-weight:800;text-align:center}.od-error{display:none;background:#fef2f2;border:1px solid #fecaca;color:#b91c1c;border-radius:18px;padding:14px;font-weight:800;text-align:center}
+@media(max-width:980px){.od-hero-grid,.od-highlights,.od-meta,.od-schedule-grid,.od-grid,.od-enroll-wrap{grid-template-columns:1fr 1fr}}
+@media(max-width:680px){.od-page{width:min(100% - 22px,1180px);padding:112px 0 30px}.od-hero,.od-section{padding:24px}.od-hero-grid,.od-highlights,.od-meta,.od-schedule-grid,.od-grid,.od-enroll-wrap,.od-form-grid{grid-template-columns:1fr}.od-head{display:block}.od-actions .od-btn{width:100%}}
 </style>
 </head>
 <body>
@@ -91,7 +92,7 @@ a{color:inherit}.od-page{width:min(1180px,calc(100% - 32px));margin:0 auto;paddi
         <p>בבית ספר דפנה הילדים לא רק לומדים טכנולוגיה — הם יוצרים, בונים, פותרים בעיות ומתקדמים שלב אחר שלב במסלול שמתאים בדיוק לגיל שלהם.</p>
         <div class="od-actions">
           <a class="od-btn primary" href="#courses">לכל החוגים</a>
-          <a class="od-btn secondary" target="_blank" rel="noopener" href="https://wa.me/972533009742?text=%D7%94%D7%99%D7%99%2C%20%D7%A0%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%97%D7%95%D7%92%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%99%D7%99%D7%98%D7%A7%20%D7%91%D7%A2%D7%95%D7%9E%D7%A8%20%D7%91%D7%99%D7%AA%20%D7%A1%D7%A4%D7%A8%20%D7%93%D7%A4%D7%A0%D7%94">לפרטים והרשמה</a>
+          <a class="od-btn secondary" href="#enroll">לפרטים והרשמה</a>
         </div>
         <div class="od-highlights">
           <div class="od-stat"><strong>5</strong><span>חוגים מדורגים לפי גיל</span></div>
@@ -241,12 +242,82 @@ a{color:inherit}.od-page{width:min(1180px,calc(100% - 32px));margin:0 auto;paddi
     </div>
   </section>
 
+  <section id="enroll" class="od-section">
+    <div class="od-head">
+      <h2>הרשמה לחוג</h2>
+      <p>בחרו חוג עם יום ושעה, מלאו את פרטי ההורה והילד, ואנחנו נדאג לחזור אליכם עם אישור והשלמת הרשמה.</p>
+    </div>
+    <div class="od-enroll-wrap">
+      <div class="od-enroll-card">
+        <h3>האפשרויות לבחירה</h3>
+        <p>אפשר לבחור ישירות את הקבוצה הרצויה לפי גיל, יום ושעה.</p>
+        <div class="od-enroll-list">
+          <div class="od-enroll-item"><strong>אלגוריתמיקה · כיתות א׳–ב׳</strong><span>ראשון · 16:30</span></div>
+          <div class="od-enroll-item"><strong>מיינקראפט · כיתה ג׳</strong><span>ראשון · 17:30</span></div>
+          <div class="od-enroll-item"><strong>פיתוח משחקים עם AI · כיתה ד׳</strong><span>ראשון · 18:30</span></div>
+          <div class="od-enroll-item"><strong>קבוצה נוספת לפי ביקוש</strong><span>חמישי · 16:30</span></div>
+          <div class="od-enroll-item"><strong>סטארטאפ AI · כיתות ה׳–ו׳</strong><span>חמישי · 17:30</span></div>
+          <div class="od-enroll-item"><strong>הדפסת תלת־ממד · כיתות ה׳–ו׳</strong><span>חמישי · 18:30</span></div>
+        </div>
+      </div>
+
+      <div class="od-enroll-card">
+        <form id="omer-enroll-form" class="od-form" onsubmit="return submitOmerLead(event)">
+          <div class="od-form-grid">
+            <div class="od-field">
+              <label for="omer-parent-name">שם ההורה</label>
+              <input id="omer-parent-name" name="name" type="text" required placeholder="למשל: אינה גרויס">
+            </div>
+            <div class="od-field">
+              <label for="omer-parent-phone">טלפון</label>
+              <input id="omer-parent-phone" name="phone" type="tel" required inputmode="numeric" pattern="[0-9\-\+\s\(\)]{9,20}" oninput="this.value=this.value.replace(/[^0-9\-\+\s\(\)]/g,'')" placeholder="050-000-0000">
+            </div>
+          </div>
+
+          <div class="od-form-grid">
+            <div class="od-field">
+              <label for="omer-child-name">שם הילד/ה</label>
+              <input id="omer-child-name" name="childName" type="text" required placeholder="שם הילד או הילדה">
+            </div>
+            <div class="od-field">
+              <label for="omer-child-age">גיל / כיתה</label>
+              <input id="omer-child-age" name="childAge" type="text" required placeholder="למשל: כיתה ד׳ או גיל 9">
+            </div>
+          </div>
+
+          <div class="od-field">
+            <label for="omer-course">בחירת חוג, יום ושעה</label>
+            <select id="omer-course" name="interest" required>
+              <option value="">בחרו חוג</option>
+              <option value="אלגוריתמיקה · כיתות א׳–ב׳ · יום ראשון 16:30">אלגוריתמיקה · כיתות א׳–ב׳ · יום ראשון 16:30</option>
+              <option value="מיינקראפט · כיתה ג׳ · יום ראשון 17:30">מיינקראפט · כיתה ג׳ · יום ראשון 17:30</option>
+              <option value="פיתוח משחקים עם AI · כיתה ד׳ · יום ראשון 18:30">פיתוח משחקים עם AI · כיתה ד׳ · יום ראשון 18:30</option>
+              <option value="קבוצה נוספת לפי ביקוש · יום חמישי 16:30">קבוצה נוספת לפי ביקוש · יום חמישי 16:30</option>
+              <option value="סטארטאפ AI · כיתות ה׳–ו׳ · יום חמישי 17:30">סטארטאפ AI · כיתות ה׳–ו׳ · יום חמישי 17:30</option>
+              <option value="הדפסת תלת־ממד · כיתות ה׳–ו׳ · יום חמישי 18:30">הדפסת תלת־ממד · כיתות ה׳–ו׳ · יום חמישי 18:30</option>
+            </select>
+          </div>
+
+          <div class="od-field">
+            <label for="omer-notes">הערות נוספות</label>
+            <textarea id="omer-notes" name="message" placeholder="אם חשוב לנו לדעת משהו על הילד/ה, העדפה, חבר/ה שרוצים להירשם יחד וכו׳"></textarea>
+          </div>
+
+          <button class="od-btn primary od-submit" type="submit">שליחת הרשמה</button>
+          <p class="od-form-note">בלחיצה על שליחה הפרטים יישמרו במערכת הלידים של דרך ההייטק ונחזור אליכם להשלמת הרישום.</p>
+        </form>
+        <div id="omer-success" class="od-success">✅ קיבלנו את ההרשמה! נחזור אליכם בהקדם עם המשך פרטים.</div>
+        <div id="omer-error" class="od-error">לא הצלחנו לשלוח כרגע. אפשר לנסות שוב או לשלוח לנו וואטסאפ.</div>
+      </div>
+    </div>
+  </section>
+
   <section class="od-section od-cta">
     <div class="od-head" style="display:block;text-align:center;margin-bottom:0">
-      <h2>רוצים לשמור מקום?</h2>
-      <p>פתיחת החוגים בספטמבר. אם תרצו, אפשר להירשם או לקבל התאמה לחוג המתאים לפי הכיתה והאופי של הילד או הילדה.</p>
+      <h2>רוצים לדבר איתנו לפני ההרשמה?</h2>
+      <p>אם אתם מתלבטים בין החוגים, אנחנו נשמח לעזור להתאים את המסלול המדויק לילד או לילדה.</p>
       <div class="od-actions" style="justify-content:center;margin-top:22px">
-        <a class="od-btn primary" target="_blank" rel="noopener" href="https://wa.me/972533009742?text=%D7%94%D7%99%D7%99%2C%20%D7%A0%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%95%D7%9C%D7%94%D7%A8%D7%A9%D7%9E%D7%94%20%D7%9C%D7%97%D7%95%D7%92%D7%99%20%D7%A2%D7%95%D7%9E%D7%A8%20%D7%91%D7%91%D7%99%D7%AA%20%D7%A1%D7%A4%D7%A8%20%D7%93%D7%A4%D7%A0%D7%94">וואטסאפ להרשמה</a>
+        <a class="od-btn primary" target="_blank" rel="noopener" href="https://wa.me/972533009742?text=%D7%94%D7%99%D7%99%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%A2%D7%9E%D7%95%D7%93%20%D7%97%D7%95%D7%92%D7%99%20%D7%A2%D7%95%D7%9E%D7%A8%20%D7%91%D7%91%D7%99%D7%AA%20%D7%A1%D7%A4%D7%A8%20%D7%93%D7%A4%D7%A0%D7%94%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A2%D7%96%D7%A8%D7%94%20%D7%91%D7%91%D7%97%D7%99%D7%A8%D7%AA%20%D7%97%D7%95%D7%92">וואטסאפ להתייעצות</a>
         <a class="od-btn secondary" href="/locations.html">חזרה למוקדים הפרונטליים</a>
       </div>
     </div>
@@ -255,6 +326,65 @@ a{color:inherit}.od-page{width:min(1180px,calc(100% - 32px));margin:0 auto;paddi
 
 <script>
 document.addEventListener('DOMContentLoaded', function(){ if (window.lucide) lucide.createIcons(); });
+
+async function submitOmerLead(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('button[type="submit"]');
+  const success = document.getElementById('omer-success');
+  const error = document.getElementById('omer-error');
+  const originalText = btn.textContent;
+  const phoneInput = document.getElementById('omer-parent-phone');
+  const phoneDigits = phoneInput.value.replace(/[^0-9]/g, '');
+
+  success.style.display = 'none';
+  error.style.display = 'none';
+
+  if (phoneDigits.length < 9 || phoneDigits.length > 15) {
+    error.textContent = 'נא להזין מספר טלפון תקין.';
+    error.style.display = 'block';
+    return false;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'שולחים...';
+
+  const body = {
+    name: document.getElementById('omer-parent-name').value,
+    phone: phoneInput.value,
+    childName: document.getElementById('omer-child-name').value,
+    childAge: document.getElementById('omer-child-age').value,
+    interest: document.getElementById('omer-course').value,
+    message: document.getElementById('omer-notes').value,
+    source: 'omer-dafna-registration-form',
+    utm: (typeof getUtmData === 'function') ? getUtmData() : {},
+  };
+
+  try {
+    const res = await fetch('/lms/api/leads/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+
+    if (!res.ok) throw new Error('Lead submit failed');
+
+    if (typeof gtag === 'function') {
+      gtag('event', 'generate_lead', { event_category: 'form', event_label: 'omer-dafna-registration' });
+      gtag('event', 'contact_form_submit', { event_category: 'form', event_label: 'omer-dafna-registration' });
+    }
+
+    form.style.display = 'none';
+    success.style.display = 'block';
+  } catch (err) {
+    btn.disabled = false;
+    btn.textContent = originalText;
+    error.textContent = 'לא הצלחנו לשלוח כרגע. אפשר לנסות שוב או לשלוח לנו וואטסאפ.';
+    error.style.display = 'block';
+  }
+
+  return false;
+}
 </script>
 </body>
 </html>
