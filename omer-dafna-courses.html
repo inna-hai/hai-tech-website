@@ -319,7 +319,7 @@ a{color:inherit}.od-page{width:min(1180px,calc(100% - 32px));margin:0 auto;paddi
           <button class="od-btn primary od-submit" type="submit">שליחת הרשמה</button>
           <p class="od-form-note">בלחיצה על שליחה הפרטים יישמרו במערכת הלידים של דרך ההייטק ונחזור אליכם להשלמת הרישום.</p>
         </form>
-        <div id="omer-success" class="od-success">✅ קיבלנו את ההרשמה! נחזור אליכם בהקדם עם המשך פרטים.</div>
+        <div id="omer-success" class="od-success">✅ ההרשמה התקבלה! מיד נעביר אתכם למסך התשלום.</div>
         <div id="omer-error" class="od-error">לא הצלחנו לשלוח כרגע. אפשר לנסות שוב או לשלוח לנו וואטסאפ.</div>
       </div>
     </div>
@@ -391,6 +391,9 @@ async function submitOmerLead(e) {
 
     form.style.display = 'none';
     success.style.display = 'block';
+    setTimeout(() => {
+      window.location.href = 'https://mrng.to/VVyWWu1yu7';
+    }, 900);
   } catch (err) {
     btn.disabled = false;
     btn.textContent = originalText;
