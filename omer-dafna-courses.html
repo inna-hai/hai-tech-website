@@ -276,9 +276,16 @@ a{color:inherit}.od-page{width:min(1180px,calc(100% - 32px));margin:0 auto;paddi
 
           <div class="od-form-grid">
             <div class="od-field">
+              <label for="omer-parent-email">מייל</label>
+              <input id="omer-parent-email" name="email" type="email" required placeholder="name@example.com">
+            </div>
+            <div class="od-field">
               <label for="omer-child-name">שם הילד/ה</label>
               <input id="omer-child-name" name="childName" type="text" required placeholder="שם הילד או הילדה">
             </div>
+          </div>
+
+          <div class="od-form-grid">
             <div class="od-field">
               <label for="omer-child-age">גיל / כיתה</label>
               <input id="omer-child-age" name="childAge" type="text" required placeholder="למשל: כיתה ד׳ או גיל 9">
@@ -352,6 +359,7 @@ async function submitOmerLead(e) {
   const body = {
     name: document.getElementById('omer-parent-name').value,
     phone: phoneInput.value,
+    email: document.getElementById('omer-parent-email').value,
     childName: document.getElementById('omer-child-name').value,
     childAge: document.getElementById('omer-child-age').value,
     interest: document.getElementById('omer-course').value,
