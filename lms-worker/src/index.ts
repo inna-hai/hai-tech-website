@@ -134,31 +134,44 @@ app.post('/lms/api/leads/submit', async (c) => {
 
   try {
     const body = await c.req.json();
-    const { name, phone, email, childName, childAge, interest, message, source, utm } = body;
+    const parentName = body.parentName || body.name;
+    const parentPhone = body.parentPhone || body.phone;
+    const parentEmail = body.parentEmail || body.email;
+    const childName = body.childName;
+    const childAge = body.childAge || body.grade;
+    const interest = body.interest;
+    const cycleId = body.cycleId;
+    const cycleLabel = body.cycleLabel;
+    const message = body.message;
+    const source = body.source;
+    const utm = body.utm;
 
     // Validate required fields
-    if (!name || typeof name !== 'string' || name.trim().length < 2) {
+    if (!parentName || typeof parentName !== 'string' || parentName.trim().length < 2) {
       return c.json({ error: 'שם לא תקין' }, 400);
     }
-    if (!phone && !email) {
+    if (!parentPhone && !parentEmail) {
       return c.json({ error: 'נדרש טלפון או אימייל' }, 400);
     }
 
     // Block XSS/HTML injection in name
     const dangerousPattern = /<[^>]*>|\{\{|\}\}|<script|javascript:|on\w+=/i;
-    if (dangerousPattern.test(name) || (phone && dangerousPattern.test(phone))) {
-      console.warn(`[LEAD-PROXY] Blocked suspicious input from ${ip}: ${name}`);
+    if (dangerousPattern.test(parentName) || (parentPhone && dangerousPattern.test(parentPhone))) {
+      console.warn(`[LEAD-PROXY] Blocked suspicious input from ${ip}: ${parentName}`);
       return c.json({ error: 'קלט לא תקין' }, 400);
     }
 
     // Validate phone format (Israeli)
-    if (phone) {
-      const cleanPhone = phone.replace(/[-\s()]/g, '');
+    if (parentPhone) {
+      const cleanPhone = parentPhone.replace(/[-\s()]/g, '');
       const validPhone = /^(05\d{8}|9725\d{8}|0[2-9]\d{7})$/.test(cleanPhone);
       if (!validPhone) {
         return c.json({ error: 'מספר טלפון לא תקין' }, 400);
       }
     }
+
+    const normalizedInterest = cycleLabel?.trim() || interest?.trim() || undefined;
+    const normalizedMessage = message?.trim() || undefined;
 
     // Forward to CRM (server-side, key hidden)
     const crmResponse = await fetch('https://crm.orma-ai.com/api/webhook/leads', {
@@ -168,20 +181,22 @@ app.post('/lms/api/leads/submit', async (c) => {
         'x-api-key': 'haitech-crm-api-key-2026',
       },
       body: JSON.stringify({
-        name: name.trim(),
-        phone: phone?.trim() || undefined,
-        email: email?.trim() || undefined,
+        parentName: parentName.trim(),
+        parentPhone: parentPhone?.trim() || undefined,
+        parentEmail: parentEmail?.trim() || undefined,
         childName: childName?.trim() || undefined,
         childAge: childAge || undefined,
-        interest: interest?.trim() || undefined,
-        message: message?.trim() || undefined,
+        cycleId: cycleId?.trim() || undefined,
+        cycleLabel: cycleLabel?.trim() || undefined,
+        interest: normalizedInterest,
+        message: normalizedMessage,
         source: source || 'website',
         utm: utm || undefined,
       }),
     });
 
     const result = await crmResponse.json();
-    console.log(`[LEAD-PROXY] ${ip}: ${name} → CRM ${crmResponse.status}`);
+    console.log(`[LEAD-PROXY] ${ip}: ${parentName} → CRM ${crmResponse.status}`);
 
     // Save lead to D1 database (backup + analytics)
     try {
@@ -215,13 +230,13 @@ app.post('/lms/api/leads/submit', async (c) => {
             utm_source, utm_medium, utm_campaign, utm_term, utm_content, gclid, fbclid, crm_ok)
           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         `).bind(
-          name.trim(),
-          phone?.trim() || null,
-          email?.trim() || null,
+          parentName.trim(),
+          parentPhone?.trim() || null,
+          parentEmail?.trim() || null,
           childName?.trim() || null,
           childAge || null,
-          interest?.trim() || null,
-          message?.trim() || null,
+          normalizedInterest || null,
+          normalizedMessage || null,
           source || 'website',
           (utm as any)?.utm_source || null,
           (utm as any)?.utm_medium || null,
@@ -232,7 +247,7 @@ app.post('/lms/api/leads/submit', async (c) => {
           (utm as any)?.fbclid || null,
           crmResponse.ok ? 1 : 0
         ).run();
-        console.log(`[LEAD-DB] Saved lead: ${name.trim()}`);
+        console.log(`[LEAD-DB] Saved lead: ${parentName.trim()}`);
       }
     } catch (dbErr) {
       console.error('[LEAD-DB] Error saving to D1:', dbErr);
@@ -247,12 +262,13 @@ app.post('/lms/api/leads/submit', async (c) => {
           </div>
           <div style="background: #f8fafc; padding: 24px; border: 1px solid #e2e8f0; border-radius: 0 0 12px 12px;">
             <table style="width: 100%; border-collapse: collapse;">
-              <tr><td style="padding: 8px 0; font-weight: bold; color: #334155;">📝 שם:</td><td style="padding: 8px 0;">${name.trim()}</td></tr>
-              <tr><td style="padding: 8px 0; font-weight: bold; color: #334155;">📱 טלפון:</td><td style="padding: 8px 0; direction: ltr;">${phone?.trim() || 'לא צוין'}</td></tr>
-              <tr><td style="padding: 8px 0; font-weight: bold; color: #334155;">📧 אימייל:</td><td style="padding: 8px 0;">${email?.trim() || 'לא צוין'}</td></tr>
+              <tr><td style="padding: 8px 0; font-weight: bold; color: #334155;">📝 שם:</td><td style="padding: 8px 0;">${parentName.trim()}</td></tr>
+              <tr><td style="padding: 8px 0; font-weight: bold; color: #334155;">📱 טלפון:</td><td style="padding: 8px 0; direction: ltr;">${parentPhone?.trim() || 'לא צוין'}</td></tr>
+              <tr><td style="padding: 8px 0; font-weight: bold; color: #334155;">📧 אימייל:</td><td style="padding: 8px 0;">${parentEmail?.trim() || 'לא צוין'}</td></tr>
               ${childName ? `<tr><td style="padding: 8px 0; font-weight: bold; color: #334155;">👦 שם הילד/ה:</td><td style="padding: 8px 0;">${childName.trim()}</td></tr>` : ''}
-              ${childAge ? `<tr><td style="padding: 8px 0; font-weight: bold; color: #334155;">🎂 גיל:</td><td style="padding: 8px 0;">${childAge}</td></tr>` : ''}
-              ${interest ? `<tr><td style="padding: 8px 0; font-weight: bold; color: #334155;">📚 מתעניין/ת ב:</td><td style="padding: 8px 0;">${interest.trim()}</td></tr>` : ''}
+              ${childAge ? `<tr><td style="padding: 8px 0; font-weight: bold; color: #334155;">🎂 גיל / כיתה:</td><td style="padding: 8px 0;">${childAge}</td></tr>` : ''}
+              ${normalizedInterest ? `<tr><td style="padding: 8px 0; font-weight: bold; color: #334155;">📚 מסלול שנבחר:</td><td style="padding: 8px 0;">${normalizedInterest}</td></tr>` : ''}
+              ${cycleId ? `<tr><td style="padding: 8px 0; font-weight: bold; color: #334155;">🆔 cycleId:</td><td style="padding: 8px 0; direction:ltr;">${cycleId.trim()}</td></tr>` : ''}
               ${message ? `<tr><td style="padding: 8px 0; font-weight: bold; color: #334155;">💬 הודעה:</td><td style="padding: 8px 0;">${message.trim()}</td></tr>` : ''}
             </table>
             <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 16px 0;">
@@ -267,7 +283,7 @@ app.post('/lms/api/leads/submit', async (c) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           to: 'info@hai.tech',
-          subject: `🎯 ליד חדש: ${name.trim()} ${phone ? '(' + phone.trim() + ')' : ''}`,
+          subject: `🎯 ליד חדש: ${parentName.trim()} ${parentPhone ? '(' + parentPhone.trim() + ')' : ''}`,
           html: emailBody,
         }),
       });
@@ -276,7 +292,7 @@ app.post('/lms/api/leads/submit', async (c) => {
         const emailErrText = await emailRes.text().catch(() => '');
         console.error(`[LEAD-PROXY] Email notification failed: ${emailRes.status} ${emailErrText}`);
       } else {
-        console.log(`[LEAD-PROXY] Email notification sent for ${name.trim()}`);
+        console.log(`[LEAD-PROXY] Email notification sent for ${parentName.trim()}`);
       }
     } catch (emailErr) {
       console.error('[LEAD-PROXY] Email notification failed:', emailErr);

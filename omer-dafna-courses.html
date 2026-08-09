@@ -300,14 +300,14 @@ a{color:inherit}.od-page{width:min(1180px,calc(100% - 32px));margin:0 auto;paddi
 
           <div class="od-field">
             <label for="omer-course">בחירת חוג, יום ושעה</label>
-            <select id="omer-course" name="interest" required>
+            <select id="omer-course" name="cycleId" required>
               <option value="">בחרו חוג</option>
-              <option value="אלגוריתמיקה · כיתות א׳–ב׳ · יום ראשון 16:30">אלגוריתמיקה · כיתות א׳–ב׳ · יום ראשון 16:30</option>
-              <option value="מיינקראפט · כיתה ג׳ · יום ראשון 17:30">מיינקראפט · כיתה ג׳ · יום ראשון 17:30</option>
-              <option value="פיתוח משחקים עם AI · כיתה ד׳ · יום ראשון 18:30">פיתוח משחקים עם AI · כיתה ד׳ · יום ראשון 18:30</option>
-              <option value="קבוצה נוספת לפי ביקוש · יום חמישי 16:30">קבוצה נוספת לפי ביקוש · יום חמישי 16:30</option>
-              <option value="סטארטאפ AI · כיתות ה׳–ו׳ · יום חמישי 17:30">סטארטאפ AI · כיתות ה׳–ו׳ · יום חמישי 17:30</option>
-              <option value="הדפסת תלת־ממד · כיתות ה׳–ו׳ · יום חמישי 18:30">הדפסת תלת־ממד · כיתות ה׳–ו׳ · יום חמישי 18:30</option>
+              <option value="cd8de7af-9793-4948-a328-937b31db363c">עומר - אלגוריתמיקה כיתות א׳-ב׳ · יום ראשון 16:30-17:30 · מתחיל 04/10/2026</option>
+              <option value="6c91b0ec-2d96-435e-ac52-072ba847eaaa">עומר - מיינקראפט כיתה ג׳ · יום ראשון 17:30-18:30 · מתחיל 04/10/2026</option>
+              <option value="2f813141-b501-4ba2-a241-e4ca4a6ab443">עומר - פיתוח משחקים עם AI כיתה ד׳ · יום ראשון 18:30-19:30 · מתחיל 04/10/2026</option>
+              <option value="5cdad2e0-6e9e-47b2-b354-e25b822642c7">עומר - רובלוקס · יום חמישי 16:30-17:30 · מתחיל 08/10/2026</option>
+              <option value="0fe349bb-dbc1-4007-9208-4d88d792ba79">עומר - סטארטאפ AI כיתות ה׳-ו׳ · יום חמישי 17:30-18:30 · מתחיל 08/10/2026</option>
+              <option value="a86769aa-985b-4cb0-bbfc-e4c60216d6de">עומר - הדפסת תלתממד כיתות ה׳-ו׳ · יום חמישי 18:30-19:30 · מתחיל 08/10/2026</option>
             </select>
           </div>
 
@@ -365,13 +365,17 @@ async function submitOmerLead(e) {
   btn.disabled = true;
   btn.textContent = 'שולחים...';
 
+  const courseSelect = document.getElementById('omer-course');
+  const selectedOption = courseSelect.options[courseSelect.selectedIndex];
+
   const body = {
-    name: document.getElementById('omer-parent-name').value,
-    phone: phoneInput.value,
-    email: document.getElementById('omer-parent-email').value,
+    parentName: document.getElementById('omer-parent-name').value,
+    parentPhone: phoneInput.value,
+    parentEmail: document.getElementById('omer-parent-email').value,
     childName: document.getElementById('omer-child-name').value,
     childAge: document.getElementById('omer-child-age').value,
-    interest: document.getElementById('omer-course').value,
+    cycleId: courseSelect.value,
+    cycleLabel: selectedOption ? selectedOption.text : '',
     message: document.getElementById('omer-notes').value,
     source: 'omer-dafna-registration-form',
     utm: (typeof getUtmData === 'function') ? getUtmData() : {},
