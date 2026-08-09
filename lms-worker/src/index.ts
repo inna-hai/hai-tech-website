@@ -181,6 +181,9 @@ app.post('/lms/api/leads/submit', async (c) => {
         'x-api-key': 'haitech-crm-api-key-2026',
       },
       body: JSON.stringify({
+        name: parentName.trim(),
+        phone: parentPhone?.trim() || undefined,
+        email: parentEmail?.trim() || undefined,
         parentName: parentName.trim(),
         parentPhone: parentPhone?.trim() || undefined,
         parentEmail: parentEmail?.trim() || undefined,
