@@ -11,19 +11,24 @@ interface NewUserData {
 }
 
 const CRM_WEBHOOK_URL = 'https://crm.orma-ai.com/api/webhook/leads';
-const CRM_API_KEY = 'haitech-crm-api-key-2026';
 const NOTIFICATION_WEBHOOK_URL = 'https://notify.hai.tech/new-lead';
 
 /**
  * Push new LMS registration to CRM (fire-and-forget)
  */
-export async function pushToCRM(user: NewUserData): Promise<void> {
+export async function pushToCRM(user: NewUserData, crmApiKey?: string): Promise<void> {
+  const apiKey = crmApiKey?.trim();
+  if (!apiKey) {
+    console.error('[LMS→CRM] Missing CRM_API_KEY secret');
+    return;
+  }
+
   try {
     const res = await fetch(CRM_WEBHOOK_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'x-api-key': CRM_API_KEY,
+        'x-api-key': apiKey,
       },
       body: JSON.stringify({
         name: user.name,

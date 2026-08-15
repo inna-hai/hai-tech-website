@@ -16,6 +16,7 @@ WOO_API_KEY = "ck_b014b84b67cf70ee0a52912a07e16f5c78de7af3"
 # Secrets (set via: wrangler secret put JWT_SECRET)
 # JWT_SECRET - set in Cloudflare dashboard or CLI
 # WOO_API_SECRET - set in Cloudflare dashboard or CLI
+# CRM_API_KEY - set in Cloudflare dashboard or CLI
 # HAITECH_PAY_SECRET - set in Cloudflare dashboard or CLI
 
 # Routes - all /lms/api/* goes to this worker

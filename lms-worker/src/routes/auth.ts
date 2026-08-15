@@ -453,7 +453,7 @@ authRoutes.post('/register', async (c) => {
   // Fire-and-forget: push to CRM + send email notification
   c.executionCtx.waitUntil(
     Promise.allSettled([
-      pushToCRM({ name, email, phone }),
+      pushToCRM({ name, email, phone }, c.env.CRM_API_KEY),
       notifyNewRegistration({ name, email, phone }),
     ])
   );

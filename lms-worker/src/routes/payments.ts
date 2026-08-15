@@ -79,6 +79,23 @@ async function sendWelcomeEmail(userName: string, userEmail: string, courseTitle
 }
 import { verifyToken } from './auth';
 
+function sendPaymentLeadToCRM(env: Env, leadBody: Record<string, unknown>, logMessage: string): void {
+  const crmApiKey = env.CRM_API_KEY?.trim();
+  if (!crmApiKey) {
+    console.error('[PAYMENT-LEAD] Missing CRM_API_KEY secret');
+    return;
+  }
+
+  fetch('https://crm.orma-ai.com/api/webhook/leads', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'x-api-key': crmApiKey },
+    body: JSON.stringify(leadBody),
+  }).catch((err) => {
+    console.error('[PAYMENT-LEAD] Failed to send to CRM:', err);
+  });
+  console.log(logMessage);
+}
+
 export const paymentRoutes = new Hono<{ Bindings: Env }>();
 
 const WOO_SITE = 'https://haitechdigitalcourses.hai.tech';
@@ -223,12 +240,7 @@ paymentRoutes.post('/create-link', async (c) => {
         source: 'purchase-form',
         message: `רכישה: ${courseName || 'מוצר'}` + (couponCode ? ` (קופון: ${couponCode})` : ''),
       };
-      fetch('https://crm.orma-ai.com/api/webhook/leads', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-api-key': 'haitech-crm-api-key-2026' },
-        body: JSON.stringify(leadBody),
-      }).catch(() => {});
-      console.log(`[PAYMENT-LEAD] Sent to CRM: ${firstName} (${email})`);
+      sendPaymentLeadToCRM(c.env, leadBody, `[PAYMENT-LEAD] Sent to CRM: ${firstName} (${email})`);
     } catch {}
 
     const order = await createWooOrder({
@@ -364,12 +376,7 @@ paymentRoutes.post('/create-payment/:courseId', async (c) => {
         source: 'purchase-form',
         message: `רכישת קורס: ${course.title}` + (couponCode ? ` (קופון: ${couponCode})` : ''),
       };
-      fetch('https://crm.orma-ai.com/api/webhook/leads', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-api-key': 'haitech-crm-api-key-2026' },
-        body: JSON.stringify(leadBody),
-      }).catch(() => {});
-      console.log(`[PAYMENT-LEAD] Sent to CRM: ${userName} (${userEmail}) — ${course.title}`);
+      sendPaymentLeadToCRM(c.env, leadBody, `[PAYMENT-LEAD] Sent to CRM: ${userName} (${userEmail}) — ${course.title}`);
     } catch {}
 
     const nameParts = (userName || '').split(' ');
