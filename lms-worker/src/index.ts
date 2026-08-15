@@ -23,6 +23,7 @@ export interface Env {
   // WooCommerce REST API (haitechdigitalcourses.hai.tech)
   WOO_API_KEY: string;
   WOO_API_SECRET: string;
+  CRM_API_KEY: string;
   // HMAC secret for auto-login payment URLs (must match WP snippet #67)
   HAITECH_PAY_SECRET: string;
 }
@@ -133,6 +134,12 @@ app.post('/lms/api/leads/submit', async (c) => {
   }
 
   try {
+    const crmApiKey = c.env.CRM_API_KEY?.trim();
+    if (!crmApiKey) {
+      console.error('[LEAD-PROXY] Missing CRM_API_KEY secret');
+      return c.json({ error: 'שגיאת הגדרה בשליחת הליד' }, 500);
+    }
+
     const body = await c.req.json();
     const parentName = body.parentName || body.name;
     const parentPhone = body.parentPhone || body.phone;
@@ -178,7 +185,7 @@ app.post('/lms/api/leads/submit', async (c) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'x-api-key': 'haitech-crm-api-key-2026',
+        'x-api-key': crmApiKey,
       },
       body: JSON.stringify({
         name: parentName.trim(),
