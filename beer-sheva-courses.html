@@ -40,6 +40,13 @@ a{color:inherit}
 .bs-subtitle{max-width:920px;margin:14px 0 0;color:var(--muted);font-size:1.02rem;font-weight:700;position:relative;z-index:1}
 .bs-nav{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:18px 0}
 .bs-nav a{text-decoration:none;text-align:center;background:rgba(255,255,255,.82);border:1px solid var(--border);border-radius:18px;padding:11px 8px;font-weight:900;color:var(--blue2);box-shadow:var(--soft)}
+.bs-register{margin:22px 0 0;display:grid;gap:14px;background:linear-gradient(135deg,#174ea6 0%,#1f6feb 55%,#00a6a6 100%);color:#fff;border-radius:26px;padding:24px;box-shadow:var(--shadow);position:relative;z-index:1}
+.bs-register h2{margin:0;font-size:clamp(1.5rem,3vw,2.3rem);line-height:1.1;color:#fff}
+.bs-register p{margin:0;font-size:1.02rem;font-weight:700;max-width:780px}
+.bs-register strong{color:#fff59d}
+.bs-register-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.bs-register-btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;background:#fff;color:#174ea6;font-weight:900;padding:14px 22px;border-radius:999px;box-shadow:0 14px 28px rgba(0,0,0,.16)}
+.bs-register-note{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.24);border-radius:18px;padding:14px 16px;font-weight:800}
 .bs-schedule{background:#fff;border:1px solid var(--border);border-radius:30px;padding:26px;margin:24px 0;box-shadow:var(--shadow)}
 .bs-section-title{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:18px}
 .bs-section-title h2{margin:0;color:var(--blue2);font-size:clamp(1.8rem,3vw,2.65rem);line-height:1.08;letter-spacing:-.035em}
@@ -107,6 +114,14 @@ a{color:inherit}
     <span class="eyebrow">באר שבע · כיוונים 2026-2027</span>
     <h1>חוגי טכנולוגיה לילדים</h1>
     <p class="bs-subtitle">כל החוגים, המרכזים, הימים והשעות — בלי מידע נוסף.</p>
+    <section class="bs-register" aria-label="הרשמה לחוגים דרך כיוונים">
+      <h2>להרשמה דרך כיוונים</h2>
+      <p>ההרשמה מתבצעת באתר כיוונים. אחרי שנכנסים לקישור, צריך לחפש בשדה החיפוש את הביטוי <strong>"חוגי הייטק"</strong> כדי לראות את החוגים הרלוונטיים.</p>
+      <div class="bs-register-actions">
+        <a class="bs-register-btn" href="https://kivunim7.co.il/hugim-search-result/?search=hug&amp;cat=%D7%94%D7%A2%D7%A9%D7%A8%D7%94" target="_blank" rel="noopener">להרשמה באתר כיוונים</a>
+      </div>
+      <div class="bs-register-note">חשוב: באתר כיוונים יש לחפש <strong>חוגי הייטק</strong> בשורת החיפוש.</div>
+    </section>
   </header>
 
   <nav class="bs-nav" aria-label="ניווט בין חוגים">
