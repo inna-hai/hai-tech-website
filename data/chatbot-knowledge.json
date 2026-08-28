@@ -114,6 +114,21 @@
       "popular": true
     },
     {
+      "id": "roblox-group-20261004",
+      "name": "רובלוקס מתחילים גילאי 10-13",
+      "nameEn": "Roblox Beginners Group Cycle",
+      "ages": "10-13",
+      "lessons": 10,
+      "language": "Lua / Roblox Studio",
+      "emoji": "🎮",
+      "description": "מחזור אונליין קבוצתי לילדים שאוהבים Roblox ורוצים ללמוד ליצור משחקים בעצמם. 10 מפגשים בלייב ב-Google Meet, ימי ראשון בשעה 17:00, החל מ-04.10.2026. המחיר הוא 999 ש״ח לכל המחזור.",
+      "prerequisites": "מתאים למתחילים, מומלץ חשבון Roblox",
+      "tags": ["רובלוקס", "קבוצתי", "אונליין", "מתחילים"],
+      "registrationLink": "https://crm.orma-ai.com/campaign/roblox-group-20261004",
+      "price": 999,
+      "featured": true
+    },
+    {
       "id": "python-pygame",
       "name": "Python: פיתוח משחקים",
       "nameEn": "Python Game Development",
