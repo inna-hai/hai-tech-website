@@ -1,0 +1,114 @@
+name: Provision Seatly production host
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: provision-seatly-production
+  cancel-in-progress: false
+
+jobs:
+  provision:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Configure deployment SSH key
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SEATLY_DEPLOY_SSH_KEY }}
+          SSH_KNOWN_HOSTS: ${{ secrets.SEATLY_SSH_KNOWN_HOSTS }}
+        run: |
+          set -euo pipefail
+          install -d -m 700 "$HOME/.ssh"
+          printf '%s\n' "$SSH_PRIVATE_KEY" > "$HOME/.ssh/seatly-deploy"
+          printf '%s\n' "$SSH_KNOWN_HOSTS" > "$HOME/.ssh/known_hosts"
+          chmod 600 "$HOME/.ssh/seatly-deploy" "$HOME/.ssh/known_hosts"
+
+      - name: Create tunnel and route the production hostname
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          DEPLOY_HOST: ${{ vars.SEATLY_HOST }}
+          DEPLOY_USER: ${{ vars.SEATLY_USER }}
+        run: |
+          set -euo pipefail
+          CF_API="https://api.cloudflare.com/client/v4"
+          AUTH_HEADER="Authorization: Bearer ${CLOUDFLARE_API_TOKEN}"
+          SSH=(ssh -i "$HOME/.ssh/seatly-deploy" -o BatchMode=yes -o StrictHostKeyChecking=yes)
+
+          cf_get() {
+            curl --fail-with-body --silent --show-error \
+              -H "$AUTH_HEADER" -H "Content-Type: application/json" "$CF_API$1"
+          }
+          cf_write() {
+            local method="$1" path="$2" data="$3"
+            curl --fail-with-body --silent --show-error -X "$method" \
+              -H "$AUTH_HEADER" -H "Content-Type: application/json" \
+              --data "$data" "$CF_API$path"
+          }
+
+          zone_json="$(cf_get '/zones?name=hai.tech&status=active')"
+          zone_id="$(jq -r '.result[0].id // empty' <<<"$zone_json")"
+          account_id="$(jq -r '.result[0].account.id // empty' <<<"$zone_json")"
+          test -n "$zone_id" && test -n "$account_id"
+
+          tunnels_json="$(cf_get "/accounts/$account_id/cfd_tunnel?name=seatly-production&is_deleted=false")"
+          tunnel_id="$(jq -r '.result[0].id // empty' <<<"$tunnels_json")"
+          if [ -z "$tunnel_id" ]; then
+            create_payload='{"name":"seatly-production","config_src":"cloudflare"}'
+            create_json="$(cf_write POST "/accounts/$account_id/cfd_tunnel" "$create_payload")"
+            tunnel_id="$(jq -r '.result.id // empty' <<<"$create_json")"
+          fi
+          test -n "$tunnel_id"
+
+          config_payload='{"config":{"ingress":[{"hostname":"seatly.hai.tech","service":"http://localhost:3170"},{"service":"http_status:404"}],"warp-routing":{"enabled":false}}}'
+          cf_write PUT "/accounts/$account_id/cfd_tunnel/$tunnel_id/configurations" "$config_payload" >/dev/null
+
+          token_json="$(cf_get "/accounts/$account_id/cfd_tunnel/$tunnel_id/token")"
+          tunnel_token="$(jq -r '.result // empty' <<<"$token_json")"
+          test -n "$tunnel_token"
+
+          dns_json="$(cf_get "/zones/$zone_id/dns_records?name=seatly.hai.tech")"
+          dns_id="$(jq -r '.result[0].id // empty' <<<"$dns_json")"
+          dns_payload="$(jq -cn --arg target "${tunnel_id}.cfargotunnel.com" '{type:"CNAME",name:"seatly",content:$target,ttl:1,proxied:true}')"
+          if [ -n "$dns_id" ]; then
+            cf_write PUT "/zones/$zone_id/dns_records/$dns_id" "$dns_payload" >/dev/null
+          else
+            cf_write POST "/zones/$zone_id/dns_records" "$dns_payload" >/dev/null
+          fi
+
+          routes_json="$(cf_get "/zones/$zone_id/workers/routes")"
+          while IFS= read -r route_id; do
+            [ -n "$route_id" ] || continue
+            curl --fail-with-body --silent --show-error -X DELETE \
+              -H "$AUTH_HEADER" -H "Content-Type: application/json" \
+              "$CF_API/zones/$zone_id/workers/routes/$route_id" >/dev/null
+          done < <(jq -r '.result[] | select(.pattern == "seatly.hai.tech/*") | .id' <<<"$routes_json")
+
+          printf '%s' "$tunnel_token" | "${SSH[@]}" "$DEPLOY_USER@$DEPLOY_HOST" \
+            'umask 077; install -d -m 700 "$HOME/.config/cloudflared"; cat > "$HOME/.config/cloudflared/seatly-token.tmp"; mv "$HOME/.config/cloudflared/seatly-token.tmp" "$HOME/.config/cloudflared/seatly-token"; chmod 600 "$HOME/.config/cloudflared/seatly-token"'
+
+          "${SSH[@]}" "$DEPLOY_USER@$DEPLOY_HOST" \
+            'systemctl --user daemon-reload && systemctl --user enable --now cloudflared-seatly.service && systemctl --user restart cloudflared-seatly.service && systemctl --user is-active cloudflared-seatly.service && systemctl --user is-active restaurant-crm.service'
+
+          echo "Tunnel and server services are active."
+
+      - name: Verify the live Git version
+        run: |
+          set -euo pipefail
+          for attempt in $(seq 1 30); do
+            health="$(curl --compressed --fail --silent --show-error --max-time 20 https://seatly.hai.tech/api/health || true)"
+            home="$(curl --compressed --fail --silent --show-error --max-time 20 https://seatly.hai.tech/ || true)"
+            if [[ "$health" == *'"database": "file"'* && "$home" == *'Zest'* && "$home" == *'<div id="root"></div>'* ]]; then
+              echo "Verified seatly.hai.tech serves Zest from the self-hosted main branch build."
+              exit 0
+            fi
+            echo "Waiting for tunnel/DNS propagation (attempt $attempt/30)..."
+            sleep 5
+          done
+          echo "Live verification did not converge in time."
+          exit 1
