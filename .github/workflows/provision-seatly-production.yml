@@ -84,29 +84,12 @@ jobs:
           fi
           test -n "$tunnel_id"
 
-          config_payload='{"config":{"ingress":[{"hostname":"seatly.hai.tech","service":"http://localhost:3170"},{"service":"http_status:404"}],"warp-routing":{"enabled":false}}}'
+          config_payload='{"config":{"ingress":[{"hostname":"seatly.hai.tech","service":"http://localhost:3170"},{"service":"http://localhost:3170"}],"warp-routing":{"enabled":false}}}'
           cf_write PUT "/accounts/$account_id/cfd_tunnel/$tunnel_id/configurations" "$config_payload" >/dev/null
 
           token_json="$(cf_get "/accounts/$account_id/cfd_tunnel/$tunnel_id/token")"
           tunnel_token="$(jq -r '.result // empty' <<<"$token_json")"
           test -n "$tunnel_token"
-
-          dns_json="$(cf_get "/zones/$zone_id/dns_records?name=seatly.hai.tech")"
-          dns_id="$(jq -r '.result[0].id // empty' <<<"$dns_json")"
-          dns_payload="$(jq -cn --arg target "${tunnel_id}.cfargotunnel.com" '{type:"CNAME",name:"seatly",content:$target,ttl:1,proxied:true}')"
-          if [ -n "$dns_id" ]; then
-            cf_write PUT "/zones/$zone_id/dns_records/$dns_id" "$dns_payload" >/dev/null
-          else
-            cf_write POST "/zones/$zone_id/dns_records" "$dns_payload" >/dev/null
-          fi
-
-          routes_json="$(cf_get "/zones/$zone_id/workers/routes")"
-          while IFS= read -r route_id; do
-            [ -n "$route_id" ] || continue
-            curl --fail-with-body --silent --show-error -X DELETE \
-              -H "$AUTH_HEADER" -H "Content-Type: application/json" \
-              "$CF_API/zones/$zone_id/workers/routes/$route_id" >/dev/null
-          done < <(jq -r '.result[] | select(.pattern == "seatly.hai.tech/*") | .id' <<<"$routes_json")
 
           printf '%s' "$tunnel_token" | "${SSH[@]}" "$DEPLOY_USER@$DEPLOY_HOST" \
             'umask 077; install -d -m 700 "$HOME/.config/cloudflared"; cat > "$HOME/.config/cloudflared/seatly-token.tmp"; mv "$HOME/.config/cloudflared/seatly-token.tmp" "$HOME/.config/cloudflared/seatly-token"; chmod 600 "$HOME/.config/cloudflared/seatly-token"'
@@ -114,7 +97,24 @@ jobs:
           "${SSH[@]}" "$DEPLOY_USER@$DEPLOY_HOST" \
             'systemctl --user daemon-reload && systemctl --user enable --now cloudflared-seatly.service && systemctl --user restart cloudflared-seatly.service && systemctl --user is-active cloudflared-seatly.service && systemctl --user is-active restaurant-crm.service'
 
-          echo "Tunnel and server services are active."
+          tunnel_origin="https://${tunnel_id}.cfargotunnel.com"
+          tunnel_ready=0
+          for attempt in $(seq 1 20); do
+            health="$(curl --compressed --fail --silent --show-error --max-time 20 "$tunnel_origin/api/health" || true)"
+            if [[ "$health" == *'"database": "file"'* ]]; then
+              tunnel_ready=1
+              break
+            fi
+            echo "Waiting for the tunnel connector (attempt $attempt/20)..."
+            sleep 3
+          done
+          test "$tunnel_ready" = 1
+
+          npx --yes wrangler@4.102.0 deploy \
+            --config workers/seatly-proxy/wrangler.toml \
+            --var "UPSTREAM_ORIGIN:${tunnel_origin}"
+
+          echo "Tunnel, server services, and Worker route are active."
 
       - name: Verify the live Git version
         run: |

@@ -1,9 +1,8 @@
-const UPSTREAM_ORIGIN = "https://restaurant-crm.orma-ai.com";
-
 export default {
-  async fetch(request) {
+  async fetch(request, env) {
+    const upstreamOrigin = env.UPSTREAM_ORIGIN || "https://restaurant-crm.orma-ai.com";
     const incomingUrl = new URL(request.url);
-    const upstreamUrl = new URL(incomingUrl.pathname + incomingUrl.search, UPSTREAM_ORIGIN);
+    const upstreamUrl = new URL(incomingUrl.pathname + incomingUrl.search, upstreamOrigin);
     const headers = new Headers(request.headers);
 
     headers.set("x-forwarded-host", incomingUrl.host);
@@ -22,8 +21,8 @@ export default {
     const location = responseHeaders.get("location");
 
     if (location) {
-      const redirectUrl = new URL(location, UPSTREAM_ORIGIN);
-      if (redirectUrl.origin === UPSTREAM_ORIGIN) {
+      const redirectUrl = new URL(location, upstreamOrigin);
+      if (redirectUrl.origin === upstreamOrigin) {
         redirectUrl.protocol = incomingUrl.protocol;
         redirectUrl.host = incomingUrl.host;
         responseHeaders.set("location", redirectUrl.toString());
