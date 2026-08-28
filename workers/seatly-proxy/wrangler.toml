@@ -8,4 +8,4 @@ routes = [
 ]
 
 [vars]
-UPSTREAM_ORIGIN = "https://restaurant-crm.orma-ai.com"
+UPSTREAM_ORIGIN = "https://seatly-origin.hai.tech"
