@@ -1,0 +1,8 @@
+name = "seatly-proxy"
+main = "src/index.js"
+compatibility_date = "2026-06-24"
+workers_dev = false
+
+routes = [
+  { pattern = "seatly.hai.tech/*", zone_name = "hai.tech" }
+]
