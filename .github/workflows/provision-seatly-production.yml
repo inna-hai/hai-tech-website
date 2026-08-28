@@ -41,14 +41,33 @@ jobs:
           SSH=(ssh -i "$HOME/.ssh/seatly-deploy" -o BatchMode=yes -o StrictHostKeyChecking=yes)
 
           cf_get() {
-            curl --fail-with-body --silent --show-error \
-              -H "$AUTH_HEADER" -H "Content-Type: application/json" "$CF_API$1"
+            local path="$1" response_file http_code
+            response_file="$(mktemp)"
+            http_code="$(curl --silent --show-error -o "$response_file" -w '%{http_code}' \
+              -H "$AUTH_HEADER" -H "Content-Type: application/json" "$CF_API$path")"
+            if [[ "$http_code" != 2* ]]; then
+              echo "Cloudflare GET $path failed with HTTP $http_code" >&2
+              jq '{success,errors}' "$response_file" >&2 || true
+              rm -f "$response_file"
+              return 1
+            fi
+            cat "$response_file"
+            rm -f "$response_file"
           }
           cf_write() {
-            local method="$1" path="$2" data="$3"
-            curl --fail-with-body --silent --show-error -X "$method" \
+            local method="$1" path="$2" data="$3" response_file http_code
+            response_file="$(mktemp)"
+            http_code="$(curl --silent --show-error -o "$response_file" -w '%{http_code}' -X "$method" \
               -H "$AUTH_HEADER" -H "Content-Type: application/json" \
-              --data "$data" "$CF_API$path"
+              --data "$data" "$CF_API$path")"
+            if [[ "$http_code" != 2* ]]; then
+              echo "Cloudflare $method $path failed with HTTP $http_code" >&2
+              jq '{success,errors}' "$response_file" >&2 || true
+              rm -f "$response_file"
+              return 1
+            fi
+            cat "$response_file"
+            rm -f "$response_file"
           }
 
           zone_json="$(cf_get '/zones?name=hai.tech&status=active')"
