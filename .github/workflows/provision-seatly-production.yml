@@ -97,7 +97,11 @@ jobs:
           "${SSH[@]}" "$DEPLOY_USER@$DEPLOY_HOST" \
             'systemctl --user daemon-reload && systemctl --user enable --now cloudflared-seatly.service && systemctl --user restart cloudflared-seatly.service && systemctl --user is-active cloudflared-seatly.service && systemctl --user is-active restaurant-crm.service'
 
-          tunnel_origin="https://${tunnel_id}.cfargotunnel.com"
+          origin_host="seatly-origin.hai.tech"
+          dns_payload="$(jq -cn --arg target "${tunnel_id}.cfargotunnel.com" '{type:"CNAME",name:"seatly-origin",content:$target,ttl:1,proxied:true}')"
+          cf_write POST "/zones/$zone_id/dns_records" "$dns_payload" >/dev/null
+
+          tunnel_origin="https://${origin_host}"
           tunnel_ready=0
           for attempt in $(seq 1 20); do
             health="$(curl --compressed --fail --silent --show-error --max-time 20 "$tunnel_origin/api/health" || true)"
