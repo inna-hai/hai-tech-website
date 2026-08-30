@@ -91,10 +91,12 @@
         .faq-item.open .faq-q::after { transform: rotate(45deg); }
         .faq-a { padding: 0 22px 20px; color: #475569; line-height: 1.8; display: none; }
         .faq-item.open .faq-a { display: block; }
-        .cta-section { background: linear-gradient(135deg, #0f766e, #2563eb); border-radius: 18px; padding: 38px; text-align: center; color: white; margin: 3rem 0; }
+        .cta-section { background: linear-gradient(135deg, #0f766e, #2563eb); border-radius: 18px; padding: 38px; text-align: center; color: white; margin: 3rem 0; position: relative; }
+        .cta-section::before { pointer-events: none; }
+        .cta-section h2, .cta-section p, .cta-section a { position: relative; z-index: 2; }
         .cta-section h2 { color: white; margin-top: 0; }
-        .cta-btn { display: inline-block; background: #22c55e; color: #ffffff; padding: 14px 34px; border-radius: 30px; text-decoration: none; font-weight: 700; }
-        .cta-btn-outline { display: inline-block; background: transparent; color: #ffffff; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: 700; border: 2px solid rgba(255,255,255,0.55); margin-right: 10px; }
+        .cta-btn { display: inline-block; background: #22c55e; color: #ffffff; padding: 14px 34px; border-radius: 30px; text-decoration: none; font-weight: 700; cursor: pointer; }
+        .cta-btn-outline { display: inline-block; background: transparent; color: #ffffff; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: 700; border: 2px solid rgba(255,255,255,0.55); margin-right: 10px; cursor: pointer; }
         .meta-line { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; margin-top: 18px; color: rgba(255,255,255,0.86); font-size: 0.95rem; }
         @media (max-width: 720px) {
             .compare-grid { grid-template-columns: 1fr; }
