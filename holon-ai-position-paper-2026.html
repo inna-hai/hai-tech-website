@@ -434,6 +434,51 @@
             align-items: start;
         }
 
+        .phases-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .phase-card {
+            padding: 24px;
+            border-radius: 24px;
+            background: linear-gradient(180deg, #ffffff, #f8fbff);
+            border: 1px solid var(--line);
+            box-shadow: 0 16px 36px rgba(15, 23, 42, 0.06);
+        }
+
+        .phase-step {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 42px;
+            height: 42px;
+            padding: 0 14px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
+            font-weight: 900;
+            margin-bottom: 14px;
+        }
+
+        .phase-card h3 {
+            margin: 0 0 10px;
+            color: var(--primary);
+            font-size: 1.14rem;
+        }
+
+        .phase-card p,
+        .phase-card li {
+            color: var(--muted);
+            line-height: 1.85;
+        }
+
+        .phase-card ul {
+            margin: 12px 18px 0 0;
+            padding: 0;
+        }
+
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -561,7 +606,8 @@
             .timeline-grid,
             .principles-grid,
             .gallery-grid,
-            .focus-grid {
+            .focus-grid,
+            .phases-grid {
                 grid-template-columns: 1fr 1fr;
             }
         }
@@ -582,7 +628,8 @@
             .principles-grid,
             .hero-pills,
             .gallery-grid,
-            .focus-grid {
+            .focus-grid,
+            .phases-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -871,6 +918,46 @@
                     <span class="timeline-date">5.4.2027</span>
                     <h3>מפגש סיום</h3>
                     <p>מפגש הסיום יתקיים ב־5.4.2027 במכון הטכנולוגי HIT.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>מה קורה אחרי השלב הראשון של התוכנית</h2>
+            <p class="section-intro">
+                בהמשך לסרטון ולמסר הפותח, חשוב להראות למנהלים שהתוכנית לא נגמרת בסבב ההדרכות הראשון.
+                משם היא ממשיכה למסלול עירוני ברור של ליווי, בחירה בקבוצות מובילות, האקתון ויום שיא מסכם.
+            </p>
+            <div class="phases-grid">
+                <article class="phase-card">
+                    <span class="phase-step">שלב 1</span>
+                    <h3>הדרכות, בנייה וליווי</h3>
+                    <p>בין 1.11.2026 ל־31.1.2027 הקבוצות עוברות תהליך עבודה מסודר בבתי הספר.</p>
+                    <ul>
+                        <li>מפגשים דו-שבועיים בני 90 דקות.</li>
+                        <li>מורה קבוע לכל כיתה.</li>
+                        <li>ליווי ומענה של צוות ההדרכה והמערכת גם בין המפגשים.</li>
+                    </ul>
+                </article>
+                <article class="phase-card">
+                    <span class="phase-step">שלב 2</span>
+                    <h3>האקתון עירוני לקבוצות שעלו לגמר</h3>
+                    <p>ב־15.2.2027 בשעה 12:00 בבית רותר מתקיים אירוע האקתון עבור 20 הקבוצות המובילות.</p>
+                    <ul>
+                        <li>זהו שלב של הצגה, חידוד, שיפור ודמו.</li>
+                        <li>מומלץ שכל בית ספר ישלח מורה מלווה.</li>
+                        <li>בשלב זה נכנס גם צוות הסטודנטים של HIT.</li>
+                    </ul>
+                </article>
+                <article class="phase-card">
+                    <span class="phase-step">שלב 3</span>
+                    <h3>יום שיא ומפגש סיום</h3>
+                    <p>ב־5.4.2027 יתקיים מפגש הסיום במכון הטכנולוגי HIT, כאירוע שיא מסכם של התוכנית.</p>
+                    <ul>
+                        <li>סיכום התהליך העירוני והצגת הישגים.</li>
+                        <li>מתן במה לקבוצות, לתוצרים וללמידה שנצברה.</li>
+                        <li>חיזוק החיבור בין בתי הספר, העירייה ו־HIT.</li>
+                    </ul>
                 </article>
             </div>
         </section>
