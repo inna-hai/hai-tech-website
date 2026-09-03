@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOLON AI | נייר עמדה למנהלים | דרך ההייטק</title>
+    <meta name="description" content="נייר עמדה למנהלים עבור תוכנית HOLON AI של דרך ההייטק: היערכות, שיבוץ, הדרכות בבתי הספר, האקתון עירוני ומפגש סיום.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://hai.tech/holon-ai-position-paper-2026.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hai.tech/holon-ai-position-paper-2026.html">
+    <meta property="og:title" content="HOLON AI | נייר עמדה למנהלים">
+    <meta property="og:description" content="מסמך הצגה למנהלים עבור תוכנית HOLON AI: מערכת שיבוץ, ציר זמנים, עקרונות ההפעלה והאקתון עירוני.">
+    <meta property="og:image" content="https://hai.tech/images/institutions/steam-holon-kids-9-10.webp">
+    <meta property="og:locale" content="he_IL">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="image/png" href="/images/brand/logo.webp">
+
+    <style>
+        :root {
+            --page-bg: #f4f7fb;
+            --card: rgba(255, 255, 255, 0.94);
+            --text: #0f172a;
+            --muted: #475569;
+            --line: #d9e2ec;
+            --primary: #0f3d91;
+            --secondary: #0097a7;
+            --accent: #ffb300;
+            --shadow: 0 22px 48px rgba(15, 23, 42, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Heebo", Arial, sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at top right, rgba(0, 151, 167, 0.14), transparent 28%),
+                radial-gradient(circle at top left, rgba(15, 61, 145, 0.14), transparent 26%),
+                linear-gradient(180deg, #f8fbff 0%, #f2f7fb 42%, #ffffff 100%);
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .paper {
+            width: min(1180px, calc(100% - 32px));
+            margin: 0 auto;
+            padding: 34px 0 72px;
+        }
+
+        .topbar,
+        .hero,
+        .section,
+        .timeline-card,
+        .video-card,
+        .summary-card {
+            background: var(--card);
+            border: 1px solid rgba(217, 226, 236, 0.9);
+            border-radius: 28px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+        }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            padding: 18px 22px;
+            margin-bottom: 22px;
+            flex-wrap: wrap;
+        }
+
+        .brand-cluster {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-box img {
+            width: 74px;
+            height: 74px;
+            object-fit: contain;
+            background: #fff;
+            border-radius: 18px;
+            padding: 9px;
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+        }
+
+        .logo-box strong,
+        .doc-meta strong {
+            display: block;
+            font-size: 1rem;
+        }
+
+        .logo-box span,
+        .doc-meta span {
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .doc-meta {
+            text-align: left;
+        }
+
+        .print-btn {
+            border: none;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
+            padding: 14px 22px;
+            font: inherit;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 14px 28px rgba(15, 61, 145, 0.22);
+        }
+
+        .hero {
+            padding: 34px;
+            margin-bottom: 22px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(15, 61, 145, 0.98), rgba(0, 151, 167, 0.9));
+            z-index: 0;
+        }
+
+        .hero-grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 26px;
+            align-items: center;
+        }
+
+        .hero-copy,
+        .hero-side {
+            color: #fff;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.14);
+            border: 1px solid rgba(255, 255, 255, 0.24);
+            font-weight: 800;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            margin: 0 0 12px;
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            line-height: 1.02;
+            color: #fff;
+        }
+
+        .hero p {
+            margin: 0;
+            line-height: 1.9;
+            color: rgba(255, 255, 255, 0.94);
+            font-size: 1.05rem;
+        }
+
+        .hero-pills,
+        .summary-grid,
+        .principles-grid,
+        .timeline-grid {
+            display: grid;
+            gap: 16px;
+        }
+
+        .hero-pills {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            margin-top: 22px;
+        }
+
+        .hero-pill,
+        .summary-card,
+        .principle,
+        .timeline-card {
+            border-radius: 22px;
+        }
+
+        .hero-pill {
+            padding: 15px 16px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            font-weight: 700;
+            line-height: 1.6;
+        }
+
+        .hero-side {
+            display: grid;
+            gap: 14px;
+        }
+
+        .hero-side-card {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 22px;
+        }
+
+        .hero-side-card strong {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+        }
+
+        .hero-side-card span {
+            display: block;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+        }
+
+        .section {
+            padding: 30px;
+            margin-bottom: 22px;
+        }
+
+        .section h2 {
+            margin: 0 0 10px;
+            font-size: clamp(1.7rem, 3vw, 2.4rem);
+        }
+
+        .section-intro {
+            margin: 0 0 22px;
+            color: var(--muted);
+            line-height: 1.9;
+            font-size: 1.02rem;
+        }
+
+        .summary-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .summary-card {
+            padding: 22px;
+            background: linear-gradient(180deg, #ffffff, #f7fbff);
+            border: 1px solid var(--line);
+        }
+
+        .summary-card strong {
+            display: block;
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .summary-card span {
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .principles-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .principle {
+            padding: 24px;
+            background: linear-gradient(180deg, #fbfdff, #f3f9ff);
+            border: 1px solid var(--line);
+        }
+
+        .principle h3 {
+            margin: 0 0 10px;
+            font-size: 1.18rem;
+            color: var(--primary);
+        }
+
+        .principle p,
+        .principle li,
+        .timeline-card p,
+        .timeline-card li,
+        .video-note,
+        .system-list li {
+            color: var(--muted);
+            line-height: 1.85;
+        }
+
+        .principle ul,
+        .system-list {
+            margin: 12px 18px 0 0;
+            padding: 0;
+        }
+
+        .system-panel {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            align-items: stretch;
+        }
+
+        .system-box {
+            border-radius: 24px;
+            padding: 24px;
+            background: linear-gradient(135deg, rgba(15, 61, 145, 0.06), rgba(0, 151, 167, 0.08));
+            border: 1px solid var(--line);
+        }
+
+        .system-box h3 {
+            margin: 0 0 10px;
+            color: var(--primary);
+        }
+
+        .timeline-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .timeline-card {
+            padding: 22px;
+            background: linear-gradient(180deg, #ffffff, #f8fbff);
+            border: 1px solid var(--line);
+            position: relative;
+        }
+
+        .timeline-card::before {
+            content: "";
+            width: 52px;
+            height: 6px;
+            border-radius: 999px;
+            display: block;
+            margin-bottom: 14px;
+            background: linear-gradient(90deg, var(--accent), var(--secondary));
+        }
+
+        .timeline-date {
+            display: inline-block;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .timeline-card h3 {
+            margin: 0 0 10px;
+            font-size: 1.15rem;
+        }
+
+        .timeline-card ul {
+            margin: 12px 18px 0 0;
+            padding: 0;
+        }
+
+        .video-layout {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 22px;
+            align-items: start;
+        }
+
+        .video-card {
+            overflow: hidden;
+        }
+
+        .video-frame {
+            position: relative;
+            padding-top: 56.25%;
+            background: #0f172a;
+        }
+
+        .video-frame iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .video-copy {
+            padding: 10px 0;
+        }
+
+        .video-copy h3 {
+            margin: 0 0 10px;
+            font-size: 1.35rem;
+            color: var(--primary);
+        }
+
+        .video-link {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 14px;
+            padding: 12px 18px;
+            border-radius: 999px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        .closing {
+            background: linear-gradient(135deg, #0f3d91, #005f73);
+            color: #fff;
+        }
+
+        .closing h2,
+        .closing p,
+        .closing li {
+            color: #fff;
+        }
+
+        .closing .section-intro {
+            color: rgba(255, 255, 255, 0.88);
+        }
+
+        .closing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .closing-box {
+            padding: 22px;
+            border-radius: 22px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+        }
+
+        .closing-box h3 {
+            margin: 0 0 10px;
+            font-size: 1.12rem;
+        }
+
+        .closing-box ul {
+            margin: 12px 18px 0 0;
+            padding: 0;
+        }
+
+        @media (max-width: 980px) {
+            .hero-grid,
+            .system-panel,
+            .video-layout,
+            .closing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .summary-grid,
+            .timeline-grid,
+            .principles-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .paper {
+                width: min(100% - 22px, 1180px);
+                padding: 22px 0 44px;
+            }
+
+            .hero,
+            .section {
+                padding: 22px;
+            }
+
+            .summary-grid,
+            .timeline-grid,
+            .principles-grid,
+            .hero-pills {
+                grid-template-columns: 1fr;
+            }
+
+            .topbar {
+                align-items: flex-start;
+            }
+
+            .doc-meta {
+                text-align: right;
+            }
+
+            .print-btn {
+                width: 100%;
+            }
+        }
+
+        @media print {
+            body {
+                background: #fff;
+            }
+
+            .paper {
+                width: 100%;
+                padding: 0;
+            }
+
+            .topbar,
+            .hero,
+            .section,
+            .timeline-card,
+            .video-card,
+            .summary-card,
+            .principle {
+                box-shadow: none;
+                break-inside: avoid;
+            }
+
+            .print-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="paper">
+        <section class="topbar" aria-label="פרטי המסמך">
+            <div class="brand-cluster">
+                <div class="logo-box">
+                    <img src="/images/brand/logo-haitech-transparent.webp" alt="לוגו דרך ההייטק">
+                    <div>
+                        <strong>דרך ההייטק</strong>
+                        <span>תוכניות טכנולוגיה, קוד ובינה מלאכותית לילדים ונוער</span>
+                    </div>
+                </div>
+                <div class="logo-box">
+                    <img src="/images/institutions/holon-emblem.svg" alt="סמל העיר חולון">
+                    <div>
+                        <strong>HOLON AI</strong>
+                        <span>נייר עמדה להצגה בפני מנהלי בתי הספר בעיר חולון</span>
+                    </div>
+                </div>
+            </div>
+            <div class="doc-meta">
+                <strong>תאריך המסמך</strong>
+                <span>3.9.2026</span>
+                <span>מסמך עבודה פרטי להצגה / שיתוף / PDF</span>
+            </div>
+            <button class="print-btn" type="button" onclick="window.print()">הדפסה / PDF</button>
+        </section>
+
+        <section class="hero">
+            <div class="hero-grid">
+                <div class="hero-copy">
+                    <div class="eyebrow">HOLON AI · תוכנית עירונית לבתי הספר</div>
+                    <h1>תוכנית AI עירונית שמחברת בין כיתות, מורים, מערכת שיבוץ והאקתון מסכם</h1>
+                    <p>
+                        HOLON AI היא תוכנית הפעלה עירונית לתלמידים בבתי הספר בחולון, המבוססת על מפגשי עומק
+                        אחת לשבועיים, ליווי רציף בין המפגשים, שיבוץ מסודר לפי כיתות ומורה קבוע לכל כיתה לאורך כל התהליך.
+                        המטרה היא לאפשר תהליך יציב, מדיד ונוח לניהול עבור המנהלים, הרכזים וצוותי ההוראה.
+                    </p>
+                    <div class="hero-pills">
+                        <div class="hero-pill">מפגש כפול של 90 דקות רצופות לכל כיתה</div>
+                        <div class="hero-pill">אחת לשבועיים לאורך תקופת ההדרכות</div>
+                        <div class="hero-pill">אותו מורה מלווה בכל שיעורי אותה הכיתה</div>
+                        <div class="hero-pill">BYOD עירוני, עבודה בקבוצות שמארגנים המורים מראש</div>
+                    </div>
+                </div>
+                <div class="hero-side">
+                    <div class="hero-side-card">
+                        <strong>מה יוצג בפני המנהלים</strong>
+                        <span>מערכת שיבוץ מסודרת, ציר זמנים ברור, אופן הליווי, מבנה ההדרכות ושלב ההאקתון.</span>
+                    </div>
+                    <div class="hero-side-card">
+                        <strong>עיקרון הפעלה מרכזי</strong>
+                        <span>רצף עבודה יציב לכל כיתה: מורה קבוע, קבוצות עבודה מוגדרות מראש, וליווי מקצועי בין המפגשים.</span>
+                    </div>
+                    <div class="hero-side-card">
+                        <strong>שיא התוכנית</strong>
+                        <span>האקתון עירוני ב־15.2 בשעה 12:00 בבית רותר, עבור 20 הקבוצות שיעלו לגמר.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>עיקרי התוכנית בקצרה</h2>
+            <p class="section-intro">
+                זהו מבנה העבודה המוצע להצגה בפני המנהלים, כך שכל בית ספר יראה מהר מה נדרש ממנו,
+                איך פועל השיבוץ, ומהו הרצף מרגע ההיערכות ועד מפגש הסיום.
+            </p>
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <strong>אוקטובר</strong>
+                    <span>חודש היערכות פנימי, תיאומים, שיבוצים וסנכרון מול בתי הספר.</span>
+                </div>
+                <div class="summary-card">
+                    <strong>6.10</strong>
+                    <span>זום רכזי שכבות לצורך תיאום, יישור קו והכנה לפתיחת המהלך.</span>
+                </div>
+                <div class="summary-card">
+                    <strong>8.10</strong>
+                    <span>יעד לסיום השיבוץ המלא של הכיתות, המורים וסלוטי ההדרכה.</span>
+                </div>
+                <div class="summary-card">
+                    <strong>1.11–31.1</strong>
+                    <span>הדרכות בפועל בבתי הספר, עם ליווי שוטף של צוות ההדרכה והמערכת.</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>עקרונות ההפעלה בבתי הספר</h2>
+            <p class="section-intro">
+                כדי לייצר יציבות חינוכית וניהולית, התוכנית נשענת על כמה עקרונות ברורים שמקלים על בית הספר,
+                שומרים על רצף פדגוגי ומאפשרים בקרה טובה לאורך הפרויקט.
+            </p>
+            <div class="principles-grid">
+                <article class="principle">
+                    <h3>קצב עבודה ושיעורים</h3>
+                    <ul>
+                        <li>ההדרכות יתקיימו אחת לשבועיים.</li>
+                        <li>כל מפגש יהיה שיעור כפול של 90 דקות רצופות.</li>
+                        <li>מבנה זה מאפשר כניסה לעומק, עבודה על משימה ותוצר משמעותי בכל מפגש.</li>
+                    </ul>
+                </article>
+                <article class="principle">
+                    <h3>רצף מורה-כיתה</h3>
+                    <ul>
+                        <li>לכל כיתה ישובץ מורה קבוע.</li>
+                        <li>חשוב לשמור על אותו מורה בכל השיעורים של אותה הכיתה.</li>
+                        <li>כך נשמרת היכרות עם הקבוצה, הקצב, האתגרים והתוצרים.</li>
+                    </ul>
+                </article>
+                <article class="principle">
+                    <h3>עבודה בקבוצות</h3>
+                    <ul>
+                        <li>התלמידים יעבדו בקבוצות עבודה לאורך הפרויקט.</li>
+                        <li>המורים בבית הספר יארגנו את הקבוצות מראש.</li>
+                        <li>העבודה בקבוצות תאפשר אחריות משותפת והתקדמות יעילה בין מפגש למפגש.</li>
+                    </ul>
+                </article>
+                <article class="principle">
+                    <h3>תשתית טכנולוגית</h3>
+                    <ul>
+                        <li>כלל התלמידים נמצאים בפרויקט עירוני של BYOD.</li>
+                        <li>המשמעות היא עבודה על ציוד אישי קיים, עם היערכות מקדימה בהתאם לבית הספר.</li>
+                        <li>צוות ההדרכה והמערכת ילוו את ההפעלה ויתנו מענה לאורך הדרך.</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>מערכת השיבוץ שתוצג למנהלים</h2>
+            <p class="section-intro">
+                בפני המנהלים תעמוד מערכת שיבוץ שמטרתה לייצר סדר תפעולי מלא: מי המורה של כל כיתה,
+                מתי נפגשים, מהו רצף המפגשים, ומהו סטטוס ההפעלה בכל בית ספר.
+            </p>
+            <div class="system-panel">
+                <div class="system-box">
+                    <h3>מה המערכת תאפשר לראות</h3>
+                    <ul class="system-list">
+                        <li>שיבוץ כיתה למורה קבוע לאורך כל התוכנית.</li>
+                        <li>חלונות זמן פנויים ומאוישים לכל בית ספר.</li>
+                        <li>סטטוס שיבוץ עד מועד היעד של 8.10.</li>
+                        <li>מעקב אחר רצף המפגשים הדו-שבועי לכל כיתה.</li>
+                    </ul>
+                </div>
+                <div class="system-box">
+                    <h3>מה זה נותן למנהלים בפועל</h3>
+                    <ul class="system-list">
+                        <li>תמונה ברורה של לוח ההדרכות הבית ספרי.</li>
+                        <li>ודאות לגבי זהות המורה שמלווה כל כיתה.</li>
+                        <li>יכולת התארגנות מוקדמת סביב קבוצות התלמידים וציוד ה-BYOD.</li>
+                        <li>עבודה מסודרת מול צוות ההדרכה והמערכת בין המפגשים.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>ציר זמנים לתוכנית HOLON AI</h2>
+            <p class="section-intro">
+                ציר הזמן הבא מרכז את אבני הדרך כפי שנמסרו, ומסדר אותן באופן נוח להצגה מול מנהלים, רכזים וצוותי הדרכה.
+            </p>
+            <div class="timeline-grid">
+                <article class="timeline-card">
+                    <span class="timeline-date">אוקטובר 2026</span>
+                    <h3>היערכות פנימית ושיבוצים</h3>
+                    <p>חודש המוקדש לבניית התשתית התפעולית של התוכנית.</p>
+                    <ul>
+                        <li>תיאום מול בתי הספר והמנהלים.</li>
+                        <li>הגדרת כיתות, קבוצות, מורים וחלונות זמן.</li>
+                        <li>בדיקת מוכנות סביב BYOD והפעלה בשטח.</li>
+                    </ul>
+                </article>
+                <article class="timeline-card">
+                    <span class="timeline-date">6.10.2026</span>
+                    <h3>זום רכזי שכבות</h3>
+                    <p>מפגש תיאום מרכזי עם רכזי השכבות לצורך יישור קו לפני תחילת ההפעלה.</p>
+                </article>
+                <article class="timeline-card">
+                    <span class="timeline-date">8.10.2026</span>
+                    <h3>סיום שיבוץ</h3>
+                    <p>עד תאריך זה נדרש להשלים את כלל השיבוצים במערכת.</p>
+                </article>
+                <article class="timeline-card">
+                    <span class="timeline-date">1.11.2026–31.1.2027</span>
+                    <h3>הדרכות בפועל בבתי הספר</h3>
+                    <p>שלב ההפעלה המרכזי של התוכנית, אחת לשבועיים, עם מפגשים כפולים של 90 דקות.</p>
+                    <ul>
+                        <li>מורה קבוע לכל כיתה.</li>
+                        <li>עבודה בקבוצות שאורגנו מראש.</li>
+                        <li>ליווי מקצועי שוטף בין המפגשים.</li>
+                    </ul>
+                </article>
+                <article class="timeline-card">
+                    <span class="timeline-date">15.2.2027 · 12:00</span>
+                    <h3>האקתון עירוני בבית רותר</h3>
+                    <p>אירוע שיא עבור 20 הקבוצות שעלו לגמר.</p>
+                    <ul>
+                        <li>מומלץ לשלוח מורה מלווה מבית הספר.</li>
+                        <li>בשלב זה נכנס גם צוות הסטודנטים של HIT.</li>
+                        <li>זהו שלב הצגה, חידוד וריצה מסכמת של התוצרים.</li>
+                    </ul>
+                </article>
+                <article class="timeline-card">
+                    <span class="timeline-date">אפריל 2027</span>
+                    <h3>מפגש סיום</h3>
+                    <p>מפגש הסיום יתקיים באפריל, והמועד המדויק יעודכן בהמשך.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>סרטון ההסבר על הפרויקט</h2>
+            <p class="section-intro">
+                לצורך הצגה מהירה וברורה בפגישה, אפשר לשלב גם את סרטון ההסבר שלנו על אופן העבודה,
+                האווירה בכיתות והתועלת של תוכניות טכנולוגיה מבוססות פרויקט.
+            </p>
+            <div class="video-layout">
+                <div class="video-copy">
+                    <h3>דרך מהירה להכניס את המנהלים לתמונה</h3>
+                    <p class="video-note">
+                        הסרטון מתאים לפתיחה קצרה של המפגש או לשליחה מקדימה, כדי להמחיש איך נראית ההפעלה,
+                        איך תלמידים עובדים בפועל, ואיך תוכנית HOLON AI מתחברת לעולמות של חדשנות, למידה פעילה ותוצרים.
+                    </p>
+                    <a class="video-link" href="https://youtu.be/I-3trUqQeRU" target="_blank" rel="noopener">לצפייה ישירה בסרטון</a>
+                </div>
+                <div class="video-card">
+                    <div class="video-frame">
+                        <iframe
+                            src="https://www.youtube.com/embed/I-3trUqQeRU"
+                            title="דרך ההייטק - סרטון הסבר"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section closing">
+            <h2>מה חשוב להדגיש במפגש עם המנהלים</h2>
+            <p class="section-intro">
+                התוכנית בנויה כך שתהיה ברורה תפעולית, רציפה פדגוגית ומרימה אירוע שיא עירוני משמעותי.
+                זהו לא רק רצף שיעורים, אלא מהלך עירוני עם ליווי, מערכת שיבוץ, אחריות ברורה ואופק מסכם.
+            </p>
+            <div class="closing-grid">
+                <div class="closing-box">
+                    <h3>המסרים המרכזיים</h3>
+                    <ul>
+                        <li>לכל כיתה יש מורה קבוע לאורך כל הדרך.</li>
+                        <li>העבודה מתקיימת במבנה דו-שבועי שמאפשר עומק ולא רק טעימה.</li>
+                        <li>יש ליווי מקצועי גם בין המפגשים, לא רק בזמן השיעור עצמו.</li>
+                    </ul>
+                </div>
+                <div class="closing-box">
+                    <h3>אבני השיא</h3>
+                    <ul>
+                        <li>השלמת שיבוץ מוקדמת עד 8.10.2026.</li>
+                        <li>הדרכות בפועל בין 1.11.2026 ל־31.1.2027.</li>
+                        <li>האקתון מסכם ב־15.2.2027 ומפגש סיום באפריל 2027.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
