@@ -189,7 +189,8 @@
         .hero-pills,
         .summary-grid,
         .principles-grid,
-        .timeline-grid {
+        .timeline-grid,
+        .focus-grid {
             display: grid;
             gap: 16px;
         }
@@ -197,6 +198,35 @@
         .hero-pills {
             grid-template-columns: repeat(2, minmax(0, 1fr));
             margin-top: 22px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 22px;
+        }
+
+        .hero-link,
+        .ghost-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 18px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 800;
+        }
+
+        .hero-link {
+            background: #fff;
+            color: var(--primary);
+        }
+
+        .ghost-link {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.18);
         }
 
         .hero-pill,
@@ -259,6 +289,10 @@
             grid-template-columns: repeat(4, minmax(0, 1fr));
         }
 
+        .focus-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
         .summary-card {
             padding: 22px;
             background: linear-gradient(180deg, #ffffff, #f7fbff);
@@ -275,6 +309,33 @@
         .summary-card span {
             color: var(--muted);
             line-height: 1.7;
+        }
+
+        .focus-card {
+            padding: 22px;
+            background: linear-gradient(180deg, #ffffff, #f7fbff);
+            border: 1px solid var(--line);
+            border-radius: 22px;
+        }
+
+        .focus-card strong {
+            display: block;
+            font-size: 0.92rem;
+            letter-spacing: 0.04em;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .focus-card h3 {
+            margin: 0 0 8px;
+            font-size: 1.14rem;
+            color: var(--primary);
+        }
+
+        .focus-card p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.8;
         }
 
         .principles-grid {
@@ -499,7 +560,8 @@
             .summary-grid,
             .timeline-grid,
             .principles-grid,
-            .gallery-grid {
+            .gallery-grid,
+            .focus-grid {
                 grid-template-columns: 1fr 1fr;
             }
         }
@@ -519,8 +581,13 @@
             .timeline-grid,
             .principles-grid,
             .hero-pills,
-            .gallery-grid {
+            .gallery-grid,
+            .focus-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .hero-actions a {
+                width: 100%;
             }
 
             .topbar {
@@ -600,6 +667,10 @@
                         אחת לשבועיים, ליווי רציף בין המפגשים, שיבוץ מסודר לפי כיתות ומורה קבוע לכל כיתה לאורך כל התהליך.
                         המטרה היא לאפשר תהליך יציב, מדיד ונוח לניהול עבור המנהלים, הרכזים וצוותי ההוראה.
                     </p>
+                    <div class="hero-actions">
+                        <a class="hero-link" href="#timeline">ציר הזמן המלא</a>
+                        <a class="ghost-link" href="https://robotics15.hai.tech/venture-ai.html?v=92b9253" target="_blank" rel="noopener">לעמוד ההשראה Venture AI</a>
+                    </div>
                     <div class="hero-pills">
                         <div class="hero-pill">מפגש כפול של 90 דקות רצופות לכל כיתה</div>
                         <div class="hero-pill">אחת לשבועיים לאורך תקופת ההדרכות</div>
@@ -621,6 +692,36 @@
                         <span>האקתון עירוני ב־15.2 בשעה 12:00 בבית רותר, עבור 20 הקבוצות שיעלו לגמר.</span>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>המהלך ב־4 מסרים ברורים</h2>
+            <p class="section-intro">
+                בהשראת הסגנון החד והקצר של Venture AI, הוספנו גם לגרסת HOLON AI שכבת מסרים מהירה
+                שמתאימה במיוחד לפתיחת פגישה עם מנהלים.
+            </p>
+            <div class="focus-grid">
+                <article class="focus-card">
+                    <strong>שיבוץ</strong>
+                    <h3>מורה קבוע לכל כיתה</h3>
+                    <p>כל כיתה מקבלת רצף עבודה יציב עם אותו מורה לאורך כל המפגשים.</p>
+                </article>
+                <article class="focus-card">
+                    <strong>קצב</strong>
+                    <h3>אחת לשבועיים, 90 דקות</h3>
+                    <p>מפגש כפול שמאפשר גם למידה, גם ביצוע וגם התקדמות ממשית בכל פעם.</p>
+                </article>
+                <article class="focus-card">
+                    <strong>ליווי</strong>
+                    <h3>לא רק בזמן השיעור</h3>
+                    <p>יש מענה, ליווי ותמיכה לקבוצות גם בין השלבים ובין המפגשים.</p>
+                </article>
+                <article class="focus-card">
+                    <strong>שיא</strong>
+                    <h3>האקתון וגמר עירוני</h3>
+                    <p>התוכנית נבנית לעבר אירוע שיא עירוני עם 20 קבוצות גמר ומפגש סיום ב־HIT.</p>
+                </article>
             </div>
         </section>
 
@@ -720,7 +821,7 @@
             </div>
         </section>
 
-        <section class="section">
+        <section id="timeline" class="section">
             <h2>ציר זמנים לתוכנית HOLON AI</h2>
             <p class="section-intro">
                 ציר הזמן הבא מרכז את אבני הדרך כפי שנמסרו, ומסדר אותן באופן נוח להצגה מול מנהלים, רכזים וצוותי הדרכה.
@@ -819,6 +920,10 @@
                         איך תלמידים עובדים בפועל, ואיך תוכנית HOLON AI מתחברת לעולמות של חדשנות, למידה פעילה ותוצרים.
                     </p>
                     <a class="video-link" href="https://youtu.be/I-3trUqQeRU" target="_blank" rel="noopener">לצפייה ישירה בסרטון</a>
+                    <p class="video-note" style="margin-top: 16px;">
+                        אפשר גם להפנות לעמוד ההשראה:
+                        <a href="https://robotics15.hai.tech/venture-ai.html?v=92b9253" target="_blank" rel="noopener" style="font-weight: 800; color: var(--primary);">Venture AI</a>
+                    </p>
                 </div>
                 <div class="video-card">
                     <div class="video-frame">
