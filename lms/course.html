@@ -434,10 +434,11 @@
                 // Update hero
                 document.getElementById('courseTitle').textContent = course.title;
                 document.getElementById('courseDescription').textContent = course.description;
-                document.getElementById('lessonsCount').textContent = `${lessons.length} שיעורים`;
+                const displayLessonsCount = course.lessons_count || lessons.length;
+                document.getElementById('lessonsCount').textContent = `${displayLessonsCount} שיעורים`;
                 document.getElementById('duration').textContent = `${course.duration_hours || Math.ceil(lessons.length * 0.5)} שעות`;
                 document.getElementById('level').textContent = course.level || 'למתחילים';
-                document.getElementById('lessonsHeader').textContent = `${lessons.length} שיעורים`;
+                document.getElementById('lessonsHeader').textContent = `${displayLessonsCount} שיעורים`;
 
                 // Update thumbnail
                 if (course.image) {
