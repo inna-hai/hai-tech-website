@@ -565,7 +565,7 @@
             
             // Handle contact request at any point
             if (intent === 'contact') {
-                return '📞 אפשר ליצור קשר בוואטסאפ: 053-300-9742\n\nזמינים בימים א\'-ה\' לכל שאלה!';
+                return '📞 אפשר ליצור קשר בוואטסאפ: 053-300-9742\n\nזמינים 24/7 לכל שאלה!';
             }
             
             // Handle thanks

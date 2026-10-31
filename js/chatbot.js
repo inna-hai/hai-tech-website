@@ -501,7 +501,7 @@ class HaiTechChatbot {
     }
 
     getContactResponse() {
-        return '📞 דרכי התקשרות:\n\n• וואטסאפ (מומלץ!): 053-300-9742\n• אימייל: info@hai.tech\n• פייסבוק: @Hai.tech.beersheva\n\nזמינים בימים א\'-ה\' לענות על כל שאלה! 💬';
+        return '📞 דרכי התקשרות:\n\n• וואטסאפ (מומלץ!): 053-300-9742\n• אימייל: info@hai.tech\n• פייסבוק: @Hai.tech.beersheva\n\nזמינים 24/7 לענות על כל שאלה! 💬';
     }
 
     getDefaultResponse() {
