@@ -492,6 +492,62 @@ div[data-userway-widget] {
     transform: rotate(-45deg) translate(5px, -5px);
 }
 
+/* Unified navbar: labels never wrap; tighten spacing on mid widths and
+   switch to the hamburger menu before items run out of room. */
+.nav-links a {
+    white-space: nowrap;
+}
+
+.navbar .logo {
+    flex-shrink: 0;
+}
+
+@media (max-width: 1440px) {
+    .navbar .container {
+        padding: 12px 16px;
+    }
+
+    .nav-links {
+        gap: 0;
+    }
+
+    .nav-links a:not(.btn) {
+        padding: 10px 8px;
+    }
+
+    .nav-links .nav-link-secondary {
+        padding: 8px 12px;
+        margin-inline-start: 4px;
+    }
+
+    .nav-links .btn-nav {
+        margin-inline-start: 6px;
+    }
+}
+
+@media (max-width: 1259px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        padding: 24px;
+        gap: 16px;
+        box-shadow: var(--shadow);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .mobile-menu-btn {
+        display: flex;
+    }
+}
+
 /* ===== Hero Section ===== */
 .hero {
     min-height: 100vh;
