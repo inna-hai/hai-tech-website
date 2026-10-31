@@ -323,7 +323,9 @@
             if (confirm('להתנתק?')) {
                 localStorage.removeItem('hai_lms_token');
                 localStorage.removeItem('hai_lms_user');
-                window.location.href = 'login.html';
+                localStorage.removeItem('hai_lms_isLoggedIn');
+                // Also clear the server's httpOnly auth_token cookie, otherwise the API still treats the user as logged in
+                fetch('/lms/api/auth/logout', { method: 'POST', credentials: 'include' }).catch(() => {}).finally(() => { window.location.href = 'login.html'; });
             }
         }
 
