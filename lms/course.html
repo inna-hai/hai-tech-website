@@ -276,8 +276,8 @@
         async function purchaseCourse() {
             let token = getToken();
             if (!token) {
-                // Not logged in - show login modal
-                showEnrollModal();
+                // Not logged in - ask to log in / register, then come back straight to checkout
+                showEnrollModal('purchase');
                 return;
             }
 
@@ -464,6 +464,13 @@
                     document.getElementById('couponSection').style.display = 'block';
                     document.getElementById('buyBtn').style.display = 'flex';
                     document.getElementById('startBtn').style.display = 'none';
+                    // Came back from login/register after clicking "רכוש קורס" → continue straight to checkout
+                    const pageUrl = new URL(window.location.href);
+                    if (pageUrl.searchParams.get('buy') === '1' && getToken()) {
+                        pageUrl.searchParams.delete('buy');
+                        history.replaceState(null, '', pageUrl.toString());
+                        setTimeout(() => purchaseCourse(), 300);
+                    }
                 } else if (isEnrolled) {
                     // Show start button + enrolled badge, hide purchase UI
                     document.getElementById('startBtn').style.display = 'flex';
@@ -537,8 +544,23 @@
             }
         }
 
-        // Show enrollment modal for locked lessons
-        function showEnrollModal() {
+        // Enrollment modal. mode 'lesson' = a locked lesson was clicked; 'purchase' = "רכוש קורס" clicked while logged out.
+        function showEnrollModal(mode = 'lesson') {
+            updateEnrollModal();
+            if (mode === 'purchase' && !getToken()) {
+                document.getElementById('enrollModalIcon').textContent = '🛒';
+                document.getElementById('enrollModalTitle').textContent = 'כמעט סיימנו – נשאר רק להתחבר';
+                document.getElementById('enrollModalText').textContent = 'כדי שהקורס יישמר אצלך, יש להתחבר או ליצור חשבון (לוקח 30 שניות). מיד אחר כך נעבור לתשלום.';
+                // After login/register, return here with buy=1 so checkout opens automatically
+                const back = new URL(window.location.href);
+                back.searchParams.set('buy', '1');
+                const returnUrl = encodeURIComponent(back.toString());
+                document.getElementById('loginLink').href = `login.html?redirect=${returnUrl}`;
+                document.getElementById('registerLink').href = `register.html?redirect=${returnUrl}`;
+            } else {
+                document.getElementById('enrollModalIcon').textContent = '🔒';
+                document.getElementById('enrollModalTitle').textContent = 'שיעור זה נעול';
+            }
             document.getElementById('enrollModal').style.display = 'flex';
         }
 
@@ -558,8 +580,8 @@
     <div id="enrollModal" class="modal-overlay" style="display: none;">
         <div class="modal-content">
             <button class="modal-close" onclick="closeEnrollModal()">✕</button>
-            <div class="modal-icon">🔒</div>
-            <h2>שיעור זה נעול</h2>
+            <div class="modal-icon" id="enrollModalIcon">🔒</div>
+            <h2 id="enrollModalTitle">שיעור זה נעול</h2>
             <p id="enrollModalText">כדי לצפות בכל השיעורים בקורס, יש להירשם.</p>
             
             <div class="modal-actions" id="modalActionsNotLoggedIn">
