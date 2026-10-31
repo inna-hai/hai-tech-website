@@ -2168,9 +2168,34 @@ section {
 }
 
 .contact-form {
-    background: var(--bg-light);
+    background: var(--bg-dark);
+    color: #e2e8f0;
+    border: 1px solid #1e293b;
     padding: 40px;
     border-radius: var(--radius-lg);
+}
+
+/* Dark form: light labels/notes; inputs stay white for readability */
+.contact-form .form-group label,
+.contact-form .consent-checkbox,
+.contact-form .consent-checkbox label {
+    color: #e2e8f0;
+}
+
+.contact-form .required-note,
+.contact-form .form-trust-badges span,
+.contact-form .form-trust-line {
+    color: #94a3b8;
+}
+
+.contact-form .consent-checkbox a {
+    color: #a5b4fc;
+}
+
+.contact-form .form-group input,
+.contact-form .form-group select,
+.contact-form .form-group textarea {
+    border-color: #334155;
 }
 
 .required-note {
