@@ -5,6 +5,7 @@
  * - Google Ads base tag (AW-581343244) — only when the page doesn't already load/config it.
  * - Meta Pixel (3538415382997972) + PageView — only when not already present.
  * - /js/lead-tracking.js (WhatsApp click attribution + conversions).
+ * - /js/analytics.js (GA4 G-E0E5PN9645) — only when the page doesn't already load it.
  *
  * Non-HTML responses, non-200s, and internal/private pages pass through untouched.
  * Any failure falls back to the original response.
@@ -49,6 +50,7 @@ const PIXEL_SNIPPET =
   `'https://connect.facebook.net/en_US/fbevents.js');fbq('init','${PIXEL_ID}');fbq('track','PageView');</script>`;
 
 const TRACKING_SNIPPET = `<script src="/js/lead-tracking.js" defer></script>`;
+const GA4_SNIPPET = `<script src="/js/analytics.js?v=20261031" defer></script>`;
 
 function shouldSkip(pathname) {
   let path = pathname;
@@ -80,6 +82,7 @@ export async function onRequest(context) {
     if (!hasAwBase(html)) inject += GTAG_SNIPPET;
     if (!html.includes(`fbq('init','${PIXEL_ID}')`) && !html.includes(`fbq('init', '${PIXEL_ID}')`)) inject += PIXEL_SNIPPET;
     if (!html.includes('/js/lead-tracking.js')) inject += TRACKING_SNIPPET;
+    if (!/js\/analytics\.js/.test(html)) inject += GA4_SNIPPET;
     if (!inject) return response;
 
     const headers = new Headers(response.headers);
