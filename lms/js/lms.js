@@ -203,7 +203,10 @@ const LMS = {
         LMS.storage.remove('token');
         LMS.storage.remove('user');
         LMS.storage.set('isLoggedIn', false);
-        window.location.href = 'login.html';
+        // Also clear the server's httpOnly auth_token cookie, otherwise the API still treats the user as logged in
+        fetch(`${LMS.config.apiUrl}/auth/logout`, { method: 'POST', credentials: 'include' })
+            .catch(() => {})
+            .finally(() => { window.location.href = 'login.html'; });
     },
     
     /**
