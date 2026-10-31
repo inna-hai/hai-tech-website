@@ -52,8 +52,10 @@
             </button>
             <div class="user-avatar" id="userAvatar" onclick="toggleUserMenu()" style="cursor: pointer;">?</div>
             <div id="userMenu" style="display: none; position: absolute; top: 60px; left: 20px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 8px; min-width: 150px; z-index: 200;">
-                <a href="admin.html" style="display: block; padding: 10px 16px; color: var(--text-secondary); text-decoration: none; border-radius: 8px;" onmouseover="this.style.background='var(--bg-hover)'" onmouseout="this.style.background='transparent'">🛠️ Admin</a>
-                <a href="#" onclick="signOut()" style="display: block; padding: 10px 16px; color: #ef4444; text-decoration: none; border-radius: 8px;" onmouseover="this.style.background='var(--bg-hover)'" onmouseout="this.style.background='transparent'">🚪 התנתק</a>
+                <a href="login.html" id="menuLogin" style="display: none; padding: 10px 16px; color: var(--text-secondary); text-decoration: none; border-radius: 8px;" onmouseover="this.style.background='var(--bg-hover)'" onmouseout="this.style.background='transparent'">🔑 התחברות</a>
+                <a href="register.html" id="menuRegister" style="display: none; padding: 10px 16px; color: var(--text-secondary); text-decoration: none; border-radius: 8px;" onmouseover="this.style.background='var(--bg-hover)'" onmouseout="this.style.background='transparent'">✨ הרשמה</a>
+                <a href="admin.html" id="menuAdmin" style="display: none; padding: 10px 16px; color: var(--text-secondary); text-decoration: none; border-radius: 8px;" onmouseover="this.style.background='var(--bg-hover)'" onmouseout="this.style.background='transparent'">🛠️ Admin</a>
+                <a href="#" id="menuLogout" onclick="signOut()" style="display: none; padding: 10px 16px; color: #ef4444; text-decoration: none; border-radius: 8px;" onmouseover="this.style.background='var(--bg-hover)'" onmouseout="this.style.background='transparent'">🚪 התנתק</a>
             </div>
         </div>
     </nav>
@@ -177,10 +179,17 @@
         // Load user info
         function loadUser() {
             const user = JSON.parse(localStorage.getItem('hai_lms_user') || 'null');
-            if (user) {
+            const loggedIn = Boolean(user && localStorage.getItem('hai_lms_token'));
+            if (loggedIn) {
                 document.getElementById('userName').textContent = user.name?.split(' ')[0] || 'תלמיד';
                 document.getElementById('userAvatar').textContent = (user.name?.[0] || 'ת').toUpperCase();
             }
+            // Menu by auth state: logged out → login/register; logged in → logout (+ Admin for admins only)
+            const show = (id, on) => { const el = document.getElementById(id); if (el) el.style.display = on ? 'block' : 'none'; };
+            show('menuLogin', !loggedIn);
+            show('menuRegister', !loggedIn);
+            show('menuLogout', loggedIn);
+            show('menuAdmin', loggedIn && user.role === 'admin');
         }
 
         // Load full catalog when user has no courses
