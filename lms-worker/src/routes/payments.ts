@@ -281,14 +281,16 @@ paymentRoutes.post('/create-payment/:courseId', async (c) => {
   let userId: string;
   let userEmail: string;
   let userName: string;
+  let userPhone: string | null = null;
   try {
     const payload = await verifyToken(token, c.env.JWT_SECRET);
     userId = payload.userId;
-    const user = await c.env.DB.prepare('SELECT email, name FROM users WHERE id = ?')
-      .bind(userId).first() as { email: string; name: string } | null;
+    const user = await c.env.DB.prepare('SELECT email, name, phone FROM users WHERE id = ?')
+      .bind(userId).first() as { email: string; name: string; phone: string | null } | null;
     if (!user) return c.json({ error: 'משתמש לא נמצא' }, 404);
     userEmail = user.email;
     userName = user.name;
+    userPhone = user.phone;
   } catch { return c.json({ error: 'טוקן לא תקין' }, 401); }
 
   const courseId = c.req.param('courseId');
@@ -372,6 +374,7 @@ paymentRoutes.post('/create-payment/:courseId', async (c) => {
       const leadBody: any = {
         name: userName || 'לקוח',
         email: userEmail,
+        phone: userPhone || undefined, // lets the CRM merge this into the signup lead
         interest: course.title,
         source: 'purchase-form',
         message: `רכישת קורס: ${course.title}` + (couponCode ? ` (קופון: ${couponCode})` : ''),
@@ -385,6 +388,7 @@ paymentRoutes.post('/create-payment/:courseId', async (c) => {
       firstName: nameParts[0] || 'לקוח',
       lastName: nameParts.slice(1).join(' ') || '',
       email: userEmail,
+      phone: userPhone || undefined,
       productId: course.woo_product_id,
       courseName: course.title,
       price: finalPrice,
