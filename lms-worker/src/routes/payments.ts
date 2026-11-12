@@ -1,102 +1,26 @@
 /**
  * Payment Routes
- * Handles course purchases via WooCommerce + Morning (GreenInvoice)
- * 
- * Flow:
- * 1. Client calls POST /create-link or POST /create-payment/:courseId
- * 2. Worker creates WooCommerce order with course as line_item + coupon if provided
- * 3. Returns auto-login payment URL (HMAC token, 2-hour expiry)
- * 4. Customer pays via Morning payment form (credit card / Bit)
- * 5. WooCommerce fires webhook → worker enrolls user in course
+ *
+ * Provider is selected by env PAYMENTS_PROVIDER:
+ *   - "morning" (default, also when unset): direct Morning (GreenInvoice) hosted
+ *     payment forms — see ./payments-morning.ts and ../utils/morning.ts.
+ *   - "woocommerce": LEGACY flow below, kept unchanged for rollback:
+ *       1. POST /create-link or /create-payment/:courseId creates a WooCommerce order
+ *          on haitechdigitalcourses.hai.tech and returns an auto-login payment URL
+ *       2. Customer pays via the Morning plugin inside WooCommerce
+ *       3. WooCommerce fires /wc-webhook → worker enrolls the user
  */
 
-import { Hono } from 'hono';
+import { Hono, type Context } from 'hono';
 import { getCookie } from 'hono/cookie';
 import { Env } from '../index';
+import { sendWelcomeEmail, sendPaymentLeadToCRM } from '../utils/payment-notify';
+import { isMorningProvider, morningCreateLink, morningCreatePayment, morningValidateCoupon, morningStatus, morningNotify, morningReturn, morningFailed } from './payments-morning';
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Welcome email helper
-// ─────────────────────────────────────────────────────────────────────────────
-async function sendWelcomeEmail(userName: string, userEmail: string, courseTitle: string, courseId: string) {
-  try {
-    const firstName = userName.split(' ')[0] || userName;
-    const courseUrl = `https://hai.tech/lms/course.html?id=${courseId}`;
-    const html = `<div dir="rtl" style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff;">
-      <div style="background: linear-gradient(135deg, #22c55e, #16a34a); padding: 32px; border-radius: 16px 16px 0 0; text-align: center;">
-        <img src="https://hai.tech/images/brand/logo-haitech-transparent.webp" alt="דרך ההייטק" style="height: 50px; margin-bottom: 16px; filter: brightness(0) invert(1);">
-        <h1 style="color: white; margin: 0; font-size: 24px;">ברוכים הבאים! 🎉</h1>
-      </div>
-      <div style="padding: 32px; border: 1px solid #e2e8f0; border-top: none; border-radius: 0 0 16px 16px;">
-        <p style="font-size: 18px; color: #1e293b; margin: 0 0 8px;">היי <strong>${firstName}</strong>,</p>
-        <p style="font-size: 16px; color: #475569; line-height: 1.7; margin: 0 0 24px;">
-          נרשמת בהצלחה לקורס <strong>${courseTitle}</strong>! 🎓<br>
-          אנחנו שמחים שבחרת ללמוד איתנו.
-        </p>
-        <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px; padding: 20px; margin-bottom: 24px;">
-          <h3 style="color: #166534; margin: 0 0 12px;">📋 פרטי הקורס</h3>
-          <p style="font-size: 14px; color: #334155; margin: 0;"><strong>קורס:</strong> ${courseTitle}</p>
-        </div>
-        <div style="text-align: center; margin: 24px 0;">
-          <a href="${courseUrl}" style="display: inline-block; background: linear-gradient(135deg, #22c55e, #16a34a); color: white; padding: 14px 40px; border-radius: 30px; text-decoration: none; font-size: 16px; font-weight: 700;">🚀 התחילו ללמוד</a>
-        </div>
-        <div style="background: #f8fafc; border-radius: 10px; padding: 16px; margin-bottom: 24px;">
-          <h4 style="color: #334155; margin: 0 0 8px;">💡 איך מתחילים?</h4>
-          <ol style="color: #475569; font-size: 14px; line-height: 1.8; margin: 0; padding-right: 20px;">
-            <li>לחצו על הכפתור למעלה</li>
-            <li>התחברו עם המייל שנרשמתם איתו</li>
-            <li>התחילו מהשיעור הראשון — צפו בסרטון</li>
-            <li>בצעו את המשימה ועברו לשיעור הבא</li>
-          </ol>
-        </div>
-        <div style="background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px; padding: 16px; margin-bottom: 24px;">
-          <p style="color: #92400e; font-size: 14px; margin: 0;">💚 <strong>טיפ:</strong> אפשר לחזור לכל שיעור כמה פעמים שרוצים — הגישה לקורס היא לנצח!</p>
-        </div>
-        <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 24px 0;">
-        <div style="text-align: center;">
-          <p style="color: #94a3b8; font-size: 13px; margin: 0;">שאלות? אנחנו כאן בשבילכם 💚</p>
-          <p style="margin: 8px 0 0;">
-            <a href="https://wa.me/972533009742" style="color: #22c55e; text-decoration: none; font-size: 13px;">📱 WhatsApp: 053-300-9742</a>
-            &nbsp;|&nbsp;
-            <a href="mailto:info@hai.tech" style="color: #22c55e; text-decoration: none; font-size: 13px;">📧 info@hai.tech</a>
-          </p>
-        </div>
-      </div>
-    </div>`;
-
-    await fetch('https://notify.hai.tech/send-email', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        to: userEmail,
-        subject: `🎓 ברוכים הבאים לקורס ${courseTitle} — דרך ההייטק`,
-        html,
-      }),
-    });
-    console.log(`[WELCOME-EMAIL] Sent to ${userEmail} for course ${courseTitle}`);
-  } catch (err) {
-    console.error('[WELCOME-EMAIL] Failed:', err);
-  }
-}
 import { verifyToken } from './auth';
 
-function sendPaymentLeadToCRM(env: Env, leadBody: Record<string, unknown>, logMessage: string): void {
-  const crmApiKey = env.CRM_API_KEY?.trim();
-  if (!crmApiKey) {
-    console.error('[PAYMENT-LEAD] Missing CRM_API_KEY secret');
-    return;
-  }
-
-  fetch('https://crm.orma-ai.com/api/webhook/leads', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'x-api-key': crmApiKey },
-    body: JSON.stringify(leadBody),
-  }).catch((err) => {
-    console.error('[PAYMENT-LEAD] Failed to send to CRM:', err);
-  });
-  console.log(logMessage);
-}
-
 export const paymentRoutes = new Hono<{ Bindings: Env }>();
+type Ctx = Context<{ Bindings: Env }>;
 
 const WOO_SITE = 'https://haitechdigitalcourses.hai.tech';
 
@@ -190,7 +114,7 @@ async function createWooOrder(params: {
 // POST /lms/api/payments/create-link
 // Body: { productId, courseName, price, firstName, lastName, email, phone?, couponCode? }
 // ─────────────────────────────────────────────────────────────────────────────
-paymentRoutes.post('/create-link', async (c) => {
+async function wooCreateLink(c: Ctx) {
   let body: any;
   try { body = await c.req.json(); } catch { return c.json({ error: 'Invalid JSON' }, 400); }
 
@@ -263,13 +187,13 @@ paymentRoutes.post('/create-link', async (c) => {
     console.error('create-link error:', err);
     return c.json({ error: err.message || 'שגיאה ביצירת קישור תשלום' }, 500);
   }
-});
+}
 
 // ─────────────────────────────────────────────────────────────────────────────
 // AUTHENTICATED: Create payment for logged-in LMS user
 // POST /lms/api/payments/create-payment/:courseId
 // ─────────────────────────────────────────────────────────────────────────────
-paymentRoutes.post('/create-payment/:courseId', async (c) => {
+async function wooCreatePayment(c: Ctx) {
   // Verify auth token
   let token = getCookie(c, 'auth_token');
   if (!token) {
@@ -293,7 +217,7 @@ paymentRoutes.post('/create-payment/:courseId', async (c) => {
     userPhone = user.phone;
   } catch { return c.json({ error: 'טוקן לא תקין' }, 401); }
 
-  const courseId = c.req.param('courseId');
+  const courseId = c.req.param('courseId') as string;
   let couponCode: string | null = null;
   try { const b = await c.req.json(); couponCode = b.couponCode || null; } catch {}
 
@@ -410,13 +334,13 @@ paymentRoutes.post('/create-payment/:courseId', async (c) => {
     console.error('Payment error:', err);
     return c.json({ error: err.message || 'שגיאה בתהליך התשלום' }, 500);
   }
-});
+}
 
 // ─────────────────────────────────────────────────────────────────────────────
 // PUBLIC: Validate coupon code (checks LMS DB first, then WooCommerce)
 // POST /lms/api/payments/validate-coupon
 // ─────────────────────────────────────────────────────────────────────────────
-paymentRoutes.post('/validate-coupon', async (c) => {
+async function wooValidateCoupon(c: Ctx) {
   const { code, productId, courseId } = await c.req.json();
   if (!code) return c.json({ valid: false, error: 'קוד קופון חסר' });
 
@@ -491,7 +415,7 @@ paymentRoutes.post('/validate-coupon', async (c) => {
   } catch {
     return c.json({ valid: false, error: 'קוד קופון לא תקין' });
   }
-});
+}
 
 // ─────────────────────────────────────────────────────────────────────────────
 // WooCommerce Webhook — order status updated
@@ -597,7 +521,7 @@ paymentRoutes.post('/wc-webhook', async (c) => {
 // Payment status check
 // GET /lms/api/payments/status/:orderId
 // ─────────────────────────────────────────────────────────────────────────────
-paymentRoutes.get('/status/:orderId', async (c) => {
+async function wooStatus(c: Ctx) {
   const orderId = c.req.param('orderId');
   const auth = wooAuth(c.env.WOO_API_KEY, c.env.WOO_API_SECRET);
 
@@ -638,4 +562,18 @@ paymentRoutes.get('/status/:orderId', async (c) => {
     paid,
     total: order.total,
   });
-});
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Route table — PAYMENTS_PROVIDER=morning (default) | woocommerce (legacy)
+// ─────────────────────────────────────────────────────────────────────────────
+paymentRoutes.post('/create-link', (c) => (isMorningProvider(c.env) ? morningCreateLink(c) : wooCreateLink(c)));
+paymentRoutes.post('/create-payment/:courseId', (c) => (isMorningProvider(c.env) ? morningCreatePayment(c) : wooCreatePayment(c)));
+paymentRoutes.post('/validate-coupon', (c) => (isMorningProvider(c.env) ? morningValidateCoupon(c) : wooValidateCoupon(c)));
+paymentRoutes.get('/status/:orderId', (c) => (isMorningProvider(c.env) ? morningStatus(c) : wooStatus(c)));
+
+// Morning hosted payment form callbacks (provider-independent so in-flight payments
+// still complete if the flag is flipped back to woocommerce).
+paymentRoutes.post('/morning/notify', morningNotify);
+paymentRoutes.get('/morning/return', morningReturn);
+paymentRoutes.get('/morning/failed', morningFailed);

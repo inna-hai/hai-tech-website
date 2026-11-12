@@ -20,11 +20,27 @@ export interface Env {
   DB: D1Database;
   JWT_SECRET: string;
   CORS_ORIGIN: string;
-  // WooCommerce REST API (haitechdigitalcourses.hai.tech)
+  // Payment provider: 'morning' (default when unset) | 'woocommerce' (legacy rollback)
+  PAYMENTS_PROVIDER?: string;
+  // Morning (GreenInvoice) API — secrets
+  MORNING_API_KEY_ID?: string;
+  MORNING_API_SECRET?: string;
+  // HMAC secret for signed purchase tokens in Morning success/notify URLs
+  PAYMENT_LINK_SECRET?: string;
+  // Optional: verifies x-webhook-signature on Morning UI webhooks (not relied upon)
+  MORNING_WEBHOOK_SECRET?: string;
+  // Optional overrides (sandbox: https://sandbox.d.greeninvoice.co.il/api/v1 + https://api.sandbox.morning.dev/idp/v1/oauth/token)
+  MORNING_BASE_URL?: string;
+  MORNING_TOKEN_URL?: string;
+  MORNING_PAYMENT_DOC_TYPE?: string;   // default 320 (חשבונית מס/קבלה)
+  MORNING_PAYMENT_PLUGIN_ID?: string;  // default: CRM's default clearing plugin
+  PUBLIC_SITE_URL?: string;            // default https://hai.tech
+  CRM_BASE_URL?: string;               // default https://crm.orma-ai.com
+  CRM_API_KEY: string;
+  // LEGACY WooCommerce REST API (haitechdigitalcourses.hai.tech) — only used when PAYMENTS_PROVIDER=woocommerce
   WOO_API_KEY: string;
   WOO_API_SECRET: string;
-  CRM_API_KEY: string;
-  // HMAC secret for auto-login payment URLs (must match WP snippet #67)
+  // HMAC secret for auto-login payment URLs (must match WP snippet #67) — legacy WooCommerce only
   HAITECH_PAY_SECRET: string;
 }
 
@@ -112,7 +128,7 @@ app.route('/lms/api/parent', parentRoutes);
 app.route('/lms/api/admin', adminRoutes);
 app.route('/lms/api/payments', paymentRoutes);
 
-// Webhook routes (WooCommerce order webhooks)
+// Webhook routes (legacy WooCommerce order webhooks; Morning callbacks also reachable here)
 app.route('/lms/api/webhooks', paymentRoutes);
 app.post('/lms/api/webhooks/wc-webhook', (c) => c.redirect('/lms/api/payments/wc-webhook', 307));
 

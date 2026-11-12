@@ -252,6 +252,8 @@
           productId: currentProductId,
           courseName: currentCourseName,
           price: discountedPrice !== null ? discountedPrice : currentPrice,
+          // Pre-coupon list price: the server applies the coupon itself (Morning flow)
+          listPrice: currentPrice,
           firstName: nameParts[0],
           lastName: nameParts.slice(1).join(' ') || '',
           email,

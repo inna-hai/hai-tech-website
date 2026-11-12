@@ -501,6 +501,14 @@
                     }
                     // Clean URL
                     window.history.replaceState({}, document.title, `course.html?id=${courseId}`);
+                } else if (paymentStatus === 'processing') {
+                    // Morning redirected back before the payment document was confirmed — re-check on next load
+                    const pendingOrder = urlParams.get('order');
+                    if (pendingOrder) {
+                        localStorage.setItem('hai_lms_pending_payment', JSON.stringify({ orderId: pendingOrder, courseId }));
+                    }
+                    alert('התשלום התקבל ונמצא בעיבוד. הגישה לקורס תיפתח בדקות הקרובות — אפשר לרענן את העמוד.');
+                    window.history.replaceState({}, document.title, `course.html?id=${courseId}`);
                 } else if (paymentStatus === 'failed') {
                     alert('התשלום לא הושלם. נסה שוב.');
                     window.history.replaceState({}, document.title, `course.html?id=${courseId}`);

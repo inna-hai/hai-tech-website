@@ -1,5 +1,9 @@
-import { redirectToMinecraftSummerCheckout } from './_minecraft-summer.js';
+import { minecraftSummerHandler } from './_minecraft-summer.js';
 
 export async function onRequestGet(context) {
-  return redirectToMinecraftSummerCheckout('football', context);
+  return minecraftSummerHandler('football', context);
+}
+
+export async function onRequestPost(context) {
+  return minecraftSummerHandler('football', context);
 }

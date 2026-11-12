@@ -1,7 +1,10 @@
 /**
- * GET /buy/roblox-may26
+ * GET/POST /buy/roblox-may26
  *
- * Creates a fresh pending WooCommerce order for the Roblox Group May 2026
+ * Default (PAYMENTS_PROVIDER unset or "morning"): billing-details form → Morning hosted
+ * payment form (see functions/_lib/buy-checkout.js). CRM cycle fc6fee2c-80b5-4120-a68c-5a207d1441be.
+ *
+ * LEGACY (PAYMENTS_PROVIDER=woocommerce): creates a fresh pending WooCommerce order for the Roblox Group May 2026
  * cohort (product 40158) and 302-redirects directly to the WC payment page,
  * bypassing the cart UI.
  *
@@ -10,12 +13,24 @@
  * URL that lands the customer straight on the payment form.
  */
 
+import { handleBuy } from '../_lib/buy-checkout.js';
+
 const PRODUCT_ID = 40158;
 const WC_SITE = 'https://haitechdigitalcourses.hai.tech';
 
-export async function onRequestGet({ env, request }) {
-  const wcKey = env.WOO_CONSUMER_KEY || 'ck_b206053e871dc496cb21312b88370d99ff4aadf5';
-  const wcSecret = env.WOO_CONSUMER_SECRET || 'cs_411effc674399295754f01cce70908da70039fa2';
+export async function onRequestGet(context) {
+  return handleBuy('roblox-may26', context, legacyWooRedirect);
+}
+
+export async function onRequestPost(context) {
+  return handleBuy('roblox-may26', context, legacyWooRedirect);
+}
+
+// Legacy WooCommerce path (PAYMENTS_PROVIDER=woocommerce). Credentials come from env only.
+async function legacyWooRedirect({ env, request }) {
+  const wcKey = env.WOO_CONSUMER_KEY || env.WOO_API_KEY;
+  const wcSecret = env.WOO_CONSUMER_SECRET || env.WOO_API_SECRET;
+  if (!wcKey || !wcSecret) return new Response('WooCommerce credentials not configured', { status: 500 });
   const auth = 'Basic ' + btoa(`${wcKey}:${wcSecret}`);
 
   // Carry UTM/source/referrer for attribution into the WC order notes
