@@ -11,13 +11,26 @@ database_id = "f0b888ec-914b-46ee-a698-a4adec7f09c0"
 # Environment variables
 [vars]
 CORS_ORIGIN = "https://hai.tech"
-WOO_API_KEY = "ck_b014b84b67cf70ee0a52912a07e16f5c78de7af3"
+# Payment provider: "morning" (default when unset) = direct Morning hosted payment forms;
+# "woocommerce" = legacy WooCommerce checkout on haitechdigitalcourses.hai.tech (rollback only).
+PAYMENTS_PROVIDER = "morning"
+# Optional (non-secret) Morning overrides — uncomment to change:
+# MORNING_BASE_URL = "https://sandbox.d.greeninvoice.co.il/api/v1"      # default https://api.greeninvoice.co.il/api/v1
+# MORNING_TOKEN_URL = "https://api.sandbox.morning.dev/idp/v1/oauth/token" # default https://api.morning.co/idp/v1/oauth/token
+# MORNING_PAYMENT_DOC_TYPE = "320"   # 320 חשבונית מס/קבלה (default), 400 קבלה
+# MORNING_PAYMENT_PLUGIN_ID = "..."  # default: CRM's default clearing plugin
 
-# Secrets (set via: wrangler secret put JWT_SECRET)
-# JWT_SECRET - set in Cloudflare dashboard or CLI
-# WOO_API_SECRET - set in Cloudflare dashboard or CLI
-# CRM_API_KEY - set in Cloudflare dashboard or CLI
-# HAITECH_PAY_SECRET - set in Cloudflare dashboard or CLI
+# Secrets (set via: wrangler secret put <NAME>) — never put values in this file
+# JWT_SECRET
+# CRM_API_KEY             - also used to forward verified Morning payments to the CRM
+# MORNING_API_KEY_ID      - Morning API client_id
+# MORNING_API_SECRET      - Morning API client_secret
+# PAYMENT_LINK_SECRET     - HMAC key for signed purchase tokens (success/notify URLs)
+# MORNING_WEBHOOK_SECRET  - optional, verifies x-webhook-signature
+# Legacy WooCommerce only (PAYMENTS_PROVIDER=woocommerce):
+# WOO_API_KEY             - was previously committed here in plain text — REVOKE and set as a secret
+# WOO_API_SECRET
+# HAITECH_PAY_SECRET
 
 # Routes - all /lms/api/* goes to this worker
 routes = [

@@ -1,3 +1,14 @@
+/**
+ * Minecraft summer 2026 tracks — /buy/minecraft-summer-<track>.
+ * Default: Morning checkout via ../_lib/buy-checkout.js (PRODUCTS['minecraft-summer-<track>']).
+ * redirectToMinecraftSummerCheckout() below is the LEGACY WooCommerce path (PAYMENTS_PROVIDER=woocommerce).
+ */
+import { handleBuy } from '../_lib/buy-checkout.js';
+
+export function minecraftSummerHandler(trackKey, context) {
+  return handleBuy(`minecraft-summer-${trackKey}`, context, (ctx) => redirectToMinecraftSummerCheckout(trackKey, ctx));
+}
+
 const WC_SITE = 'https://haitechdigitalcourses.hai.tech';
 const PRICE_ILS = 497;
 
@@ -33,8 +44,9 @@ export async function redirectToMinecraftSummerCheckout(trackKey, { env, request
   const track = TRACKS[trackKey];
   if (!track) return new Response('Unknown summer track', { status: 404 });
 
-  const wcKey = env.WOO_CONSUMER_KEY || env.WOO_API_KEY || 'ck_b206053e871dc496cb21312b88370d99ff4aadf5';
-  const wcSecret = env.WOO_CONSUMER_SECRET || env.WOO_API_SECRET || 'cs_411effc674399295754f01cce70908da70039fa2';
+  const wcKey = env.WOO_CONSUMER_KEY || env.WOO_API_KEY;
+  const wcSecret = env.WOO_CONSUMER_SECRET || env.WOO_API_SECRET;
+  if (!wcKey || !wcSecret) return new Response('WooCommerce credentials not configured', { status: 500 });
   const auth = 'Basic ' + btoa(`${wcKey}:${wcSecret}`);
 
   const url = new URL(request.url);
