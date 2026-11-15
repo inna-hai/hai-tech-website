@@ -641,7 +641,8 @@ authRoutes.put('/password', async (c) => {
   }
 });
 
-// Refresh token — accepts old token (even if nearly expired) and issues new 30-day one
+// Refresh token — allow a signed token to be renewed for 30 days after expiry.
+// This keeps long-lived browser sessions usable without accepting old tokens forever.
 authRoutes.post('/refresh', async (c) => {
   let token = getCookie(c, 'auth_token');
   if (!token) {
@@ -651,8 +652,19 @@ authRoutes.post('/refresh', async (c) => {
   if (!token) return c.json({ error: 'No token provided' }, 401);
 
   try {
-    const payload = await verifyToken(token, c.env.JWT_SECRET);
-    const newToken = await generateToken(payload.userId, payload.email, payload.role, c.env.JWT_SECRET);
+    const secretKey = new TextEncoder().encode(c.env.JWT_SECRET);
+    const { payload } = await jose.jwtVerify(token, secretKey, {
+      clockTolerance: 60 * 60 * 24 * 30,
+    });
+    const userId = payload.userId as string | undefined;
+    if (!userId) return c.json({ error: 'טוקן לא תקין' }, 401);
+
+    const user = await c.env.DB.prepare(
+      'SELECT id, email, role FROM users WHERE id = ?'
+    ).bind(userId).first<{ id: string; email: string; role: string }>();
+    if (!user) return c.json({ error: 'User not found' }, 404);
+
+    const newToken = await generateToken(user.id, user.email, user.role, c.env.JWT_SECRET);
     setCookie(c, 'auth_token', newToken, {
       httpOnly: true,
       secure: true,
