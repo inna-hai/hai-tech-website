@@ -211,6 +211,35 @@
         let currentCoursePrice = 0;
         let originalCoursePrice = 0;
         let appliedCouponCode = null;
+        const checkoutIntentKey = 'hai_lms_checkout_intent';
+
+        function saveCheckoutIntent() {
+            const couponInput = document.getElementById('couponInput');
+            const couponMessage = document.getElementById('couponMessage');
+            const couponCode = couponMessage?.classList.contains('success')
+                ? (appliedCouponCode || couponInput?.value.trim().toUpperCase() || null)
+                : null;
+            localStorage.setItem(checkoutIntentKey, JSON.stringify({
+                courseId,
+                couponCode,
+                expectedPrice: currentCoursePrice,
+                createdAt: Date.now()
+            }));
+        }
+
+        function getCheckoutIntent() {
+            try {
+                const intent = JSON.parse(localStorage.getItem(checkoutIntentKey) || 'null');
+                if (!intent || intent.courseId !== courseId || Date.now() - intent.createdAt > 30 * 60 * 1000) {
+                    localStorage.removeItem(checkoutIntentKey);
+                    return null;
+                }
+                return intent;
+            } catch {
+                localStorage.removeItem(checkoutIntentKey);
+                return null;
+            }
+        }
 
         // Apply coupon code
         async function applyCoupon() {
@@ -257,11 +286,13 @@
                     couponMessage.className = 'coupon-message success';
                     couponInput.disabled = true;
                     applyCouponBtn.textContent = '✓';
+                    return true;
                 } else {
                     couponMessage.textContent = data.error || 'קוד קופון לא תקין';
                     couponMessage.className = 'coupon-message error';
                     applyCouponBtn.disabled = false;
                     applyCouponBtn.textContent = 'החל';
+                    return false;
                 }
             } catch (error) {
                 console.error('Coupon error:', error);
@@ -269,6 +300,7 @@
                 couponMessage.className = 'coupon-message error';
                 applyCouponBtn.disabled = false;
                 applyCouponBtn.textContent = 'החל';
+                return false;
             }
         }
 
@@ -277,6 +309,8 @@
             let token = getToken();
             if (!token) {
                 // Not logged in - ask to log in / register, then come back straight to checkout
+                // Persist the exact amount and coupon across the login page reload.
+                saveCheckoutIntent();
                 showEnrollModal('purchase');
                 return;
             }
@@ -358,6 +392,7 @@
                 }
 
                 if (data.paymentUrl) {
+                    localStorage.removeItem(checkoutIntentKey);
                     // GA4: begin_checkout event
                     if (typeof gtag !== 'undefined') {
                         gtag('event', 'begin_checkout', {
@@ -487,12 +522,29 @@
                     document.getElementById('couponSection').style.display = 'block';
                     document.getElementById('buyBtn').style.display = 'flex';
                     document.getElementById('startBtn').style.display = 'none';
-                    // Came back from login/register after clicking "רכוש קורס" → continue straight to checkout
+                    // Came back from login/register after clicking "רכוש קורס".
+                    // Restore and revalidate the exact checkout intent before creating a Morning link.
                     const pageUrl = new URL(window.location.href);
                     if (pageUrl.searchParams.get('buy') === '1' && getToken()) {
                         pageUrl.searchParams.delete('buy');
                         history.replaceState(null, '', pageUrl.toString());
-                        setTimeout(() => purchaseCourse(), 300);
+                        const intent = getCheckoutIntent();
+                        if (!intent) {
+                            alert('פרטי הרכישה לא נשמרו. לבטיחותך, לא נפתח קישור תשלום. יש להחיל שוב את הקופון.');
+                        } else {
+                            let restored = true;
+                            if (intent.couponCode) {
+                                const couponInput = document.getElementById('couponInput');
+                                couponInput.value = intent.couponCode;
+                                restored = await applyCoupon();
+                            }
+                            if (!restored || Number(currentCoursePrice) !== Number(intent.expectedPrice)) {
+                                localStorage.removeItem(checkoutIntentKey);
+                                alert('התשלום נעצר: לא הצלחנו לשחזר ולאמת את המחיר שלפני ההתחברות. לא נוצר קישור תשלום.');
+                            } else {
+                                setTimeout(() => purchaseCourse(), 300);
+                            }
+                        }
                     }
                 } else if (isEnrolled) {
                     // Show start button + enrolled badge, hide purchase UI
