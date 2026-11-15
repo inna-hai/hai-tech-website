@@ -285,6 +285,14 @@
             buyBtn.disabled = true;
             buyBtn.innerHTML = '<span>מעבד...</span>';
 
+            // Read the applied code from the UI as well as the in-memory value. This
+            // keeps the checkout request aligned with the price the customer sees.
+            const couponInput = document.getElementById('couponInput');
+            const couponMessage = document.getElementById('couponMessage');
+            const requestedCouponCode = couponMessage?.classList.contains('success')
+                ? (appliedCouponCode || couponInput?.value.trim().toUpperCase() || null)
+                : null;
+
             // GA4: add_to_cart event
             if (typeof gtag !== 'undefined') {
                 gtag('event', 'add_to_cart', {
@@ -301,7 +309,7 @@
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ couponCode: appliedCouponCode })
+                    body: JSON.stringify({ couponCode: requestedCouponCode })
                 });
 
                 // Auto-refresh token if expired (401), then retry once
@@ -314,7 +322,7 @@
                                 'Authorization': `Bearer ${newToken}`,
                                 'Content-Type': 'application/json'
                             },
-                            body: JSON.stringify({ couponCode: appliedCouponCode })
+                            body: JSON.stringify({ couponCode: requestedCouponCode })
                         });
                     } else {
                         // Refresh also failed — session truly expired
@@ -326,6 +334,21 @@
                 }
 
                 const data = await response.json();
+
+                // Never redirect to a hosted payment form when its server-side
+                // amount differs from the amount currently displayed in the LMS.
+                // This is a hard safety stop against coupon/session state drift.
+                if (data.success && data.paymentUrl && Number(data.total) !== Number(currentCoursePrice)) {
+                    console.error('Checkout amount mismatch', {
+                        displayed: currentCoursePrice,
+                        server: data.total,
+                        couponCode: requestedCouponCode
+                    });
+                    alert('התשלום נעצר: הסכום בקופה אינו תואם למחיר שמוצג. לא בוצע חיוב.');
+                    buyBtn.disabled = false;
+                    buyBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span>רכוש קורס</span>';
+                    return;
+                }
 
                 if (data.free) {
                     // Free course - enrolled directly
